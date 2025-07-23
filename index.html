@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Barcode Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5" x-data="barcodeGenerator()">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                <div class="card-header">
+                    <div class="card-header">
+                        <h3 class="card-title text-center ">Golden Barcode Generator</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="numero_ticket" class="form-label">Ticket number</label>
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="numero_ticket" 
+                                   x-model="ticketNumber"
+                                   placeholder="9 digits example: 05(dont capture)-01(station)-1234567" 
+                                   @keyup.enter="generateBarcode()">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="minutes_ago" class="form-label">Minutes before:</label>
+                            <input type="number" 
+                                   class="form-control" 
+                                   id="minutes_ago" 
+                                   x-model="minutesAgo"
+                                   min="1" 
+                                   max="14"                                  
+                                   @keyup.enter="generateBarcode()">
+                        </div>
+                        
+                        <button type="button" 
+                                class="btn btn-primary w-100" 
+                                @click="generateBarcode()"
+                                :disabled="loading">
+                            <span x-show="loading" class="spinner-border spinner-border-sm me-2"></span>
+                            <span x-text="loading ? 'Generando...' : 'Generar Código de Barras'"></span>
+                        </button>
+                        
+                        <div x-show="error" class="alert alert-danger mt-3" x-text="error"></div>
+                        
+                        <div x-show="showResult" class="mt-4 text-center">
+                            <canvas id="barcode" class="mb-3"></canvas>
+                            <div class="alert alert-info">
+                                <p class="mb-1"><strong>Código Generado:</strong> <span x-text="generatedCode"></span></p>
+                                <p class="mb-0"><strong>Timestamp:</strong> <span x-text="timestamp"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function barcodeGenerator() {
+            return {
+                ticketNumber: '',
+                minutesAgo: 7,
+                loading: false,
+                error: '',
+                showResult: false,
+                generatedCode: '',
+                timestamp: '',
+                
+                generateRealisticCodeByNum(ticketNumber, minutesAgo = 7) {
+                    // Extract last 7 digits and add random number between 500-1000
+                    const lastSevenDigits = ticketNumber.slice(-7);
+                    const newNum = parseInt(lastSevenDigits) + Math.floor(Math.random() * (1000 - 500 + 1)) + 500;
+                    
+                    // Extract station code (first 2 digits)
+                    const stationCode = ticketNumber.slice(0, 2);
+                    
+                    // Calculate old date (current time minus specified minutes, adjusted for UTC-6)
+                    const UTC_OFFSET = 6;
+                    const now = new Date();
+                    const utc_local = new Date(now.getTime() - (UTC_OFFSET * 60 * 60 * 1000));
+                    const oldDate = new Date(utc_local.getTime() - (minutesAgo * 60 * 1000));
+                    
+                    // Format hour as HHmm
+                    const stringHour = oldDate.toISOString().slice(11, 16).replace(':', '');
+                    
+                    // Format date as YYMMDD
+                    const year = oldDate.getFullYear().toString().slice(-2);
+                    const month = (oldDate.getMonth() + 1).toString().padStart(2, '0');
+                    const day = oldDate.getDate().toString().padStart(2, '0');
+                    const stringDate = year + month + day;
+                    
+                    // Generate the final code
+                    const code = `9999${newNum}0001${stationCode}${stringHour}${stringDate}`;
+                    
+                    console.log(`New number: ${newNum} - Station code: ${stationCode}, Ticket number: ${lastSevenDigits}`);
+                    console.log(`Old date: ${oldDate} - String hour: ${stringHour}`);
+                    console.log(`Generated code: ${code}`);
+                    
+                    return code;
+                },
+                
+                generateBarcode() {
+                    this.loading = true;
+                    this.error = '';
+                    this.showResult = false;
+                    
+                    // Validate input
+                    if (!this.ticketNumber.trim()) {
+                        this.error = 'the ticket number is required';
+                        this.loading = false;
+                        return;
+                    }
+                    
+                    if (this.ticketNumber.length < 7) {
+                        this.error = 'the ticket number must be at least 7 digits';
+                        this.loading = false;
+                        return;
+                    }
+                    
+                    try {
+                        // Generate the realistic code
+                        const codeData = this.generateRealisticCodeByNum(this.ticketNumber.trim(), this.minutesAgo);
+                        
+                        // Small delay to show loading state
+                        setTimeout(() => {
+                            try {
+                                // Generate barcode using jsbarcode
+                                const canvas = document.getElementById('barcode');
+                                JsBarcode(canvas, codeData, {
+                                    format: "CODE128",
+                                    width: 2,
+                                    height: 100,
+                                    displayValue: true,
+                                    fontSize: 20,
+                                    textAlign: "center",
+                                    textPosition: "bottom",
+                                    textMargin: 2,
+                                    fontOptions: "",
+                                    font: "monospace",
+                                    background: "#ffffff",
+                                    lineColor: "#000000",
+                                    margin: 10
+                                });
+                                
+                                // Show result
+                                this.generatedCode = codeData;
+                                this.timestamp = new Date().toISOString();
+                                this.showResult = true;
+                                this.loading = false;
+                                
+                            } catch (error) {
+                                this.error = 'Error generating barcode: ' + error.message;
+                                this.loading = false;
+                            }
+                        }, 500);
+                        
+                    } catch (error) {
+                        this.error = 'Error generating barcode: ' + error.message;
+                        this.loading = false;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
