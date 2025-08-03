@@ -49,9 +49,14 @@
                         
                         <div x-show="error" class="alert alert-danger mt-3" x-text="error"></div>
                         
+                         <div x-show="barcode" class="mt-4">
+                            <div class="card">
+                                    <canvas id="barcode" class="mt-4"></canvas>
+                            </div>
+                        </div>             
                         <div x-show="showResult" class="mt-4 text-center">
-                            <canvas id="barcode" class="mb-3"></canvas>
-                            <div class="alert alert-info">
+                           
+                            <div class="alert alert-info text-muted">
                                 <p class="mb-1"><strong>Código Generado:</strong> <span x-text="generatedCode"></span></p>
                                 <p class="mb-0"><strong>Timestamp:</strong> <span x-text="timestamp"></span></p>
                             </div>
