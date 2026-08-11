@@ -2,58 +2,607 @@
 <rss version="2.0">
   <channel>
     <title>RSS Classifier — Misc</title>
-    <link>https://example.invalid/</link>
+    <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Misc category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 11 Aug 2026 04:52:19 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 11 Aug 2026 05:31:46 +0000</lastBuildDate>
     <item>
       <title>A two-month calendar on my Desktop</title>
       <link>https://leancrew.com/all-this/2026/08/a-two-month-calendar-on-my-desktop/</link>
-      <description>A few days ago, I posted this image on Mastodon : The code I ran to get this two-month calendar on my Desktop was bash: if [ $(date +"%-d") -gt 15 ]; then cal -A 1 else cal -B 1 fi |\…</description>
+      <description>&lt;p&gt;A few days ago, I posted this image &lt;a href="https://fosstodon.org/@drdrang/117021219801155387"&gt;on Mastodon&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Two-month calendar in TerminalWidget" class="ss" src="https://leancrew.com/all-this/images2026/20260805-Two-month%20calendar%20in%20TerminalWidget.png" title="Two-month calendar in TerminalWidget" width="70%" /&gt;&lt;/p&gt;
+&lt;p&gt;The code I ran to get this two-month calendar on my Desktop was&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bash:
+if [ $(date +"%-d") -gt 15 ]; then
+  cal -A 1
+else
+  cal -B 1
+fi |\
+terminal-widget --target cal --font Menlo --bg "#eeeeee" --text -
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I have since updated a couple of things and need more room to talk about it all.&lt;/p&gt;
+&lt;p&gt;First, the app that put that widget on my Desktop is Brett Terpstra’s &lt;a href="https://terminalwidget.app/"&gt;TerminalWidget&lt;/a&gt;, which he &lt;a href="https://brettterpstra.com/2026/08/01/introducing-terminalwidget/"&gt;just released&lt;/a&gt;. As a one-time user of &lt;a href="https://leancrew.com/all-this/2007/06/album-art-with-geektool/"&gt;GeekTool&lt;/a&gt;, I’ve been waiting for TerminalWidget since Brett first began talking about it. While GeekTool and the similar &lt;a href="https://leancrew.com/all-this/2011/03/nerdtool-picts-and-buddhism/"&gt;NerdTool&lt;/a&gt; might still work, I wanted an app that worked with macOS’s modern widget system. TerminalWidget does.&lt;/p&gt;
+&lt;p&gt;I put a medium-sized widget in the upper-left corner of my Desktop by dragging one out from the widget editor window. If you’ve never done this before (I hadn’t), read &lt;a href="https://support.apple.com/guide/mac-help/add-and-customize-widgets-mchl52be5da5/mac"&gt;Apple’s instructions&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Widget editor window" class="ss" src="https://leancrew.com/all-this/images2026/20260805-Widget%20editor%20window.png" title="Widget editor window" width="100%" /&gt;&lt;/p&gt;
+&lt;p&gt;I then right-clicked on the widget and renamed it &lt;code&gt;cal&lt;/code&gt;. Now it’s ready for me to run the command that puts the calendar into the widget.&lt;/p&gt;
+&lt;p&gt;The command is a pipeline, and the executable after the pipe is &lt;code&gt;terminal-widget&lt;/code&gt;. This is a symbolic link to the command that’s buried in the TerminalWidget app package. I created the link with&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ln -s /Applications/TerminalWidget.app/Contents/MacOS/TerminalWidget ~/bin/terminal-widget
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;where &lt;code&gt;~/bin&lt;/code&gt; is a directory in my &lt;code&gt;$PATH&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;I won’t go through the options given to &lt;code&gt;terminal-widget&lt;/code&gt;; they’re explained in &lt;a href="https://terminalwidget.app/cli"&gt;TerminalWidget’s CLI page&lt;/a&gt;. Suffice it to say that the options put whatever is sent to &lt;code&gt;terminal-widget&lt;/code&gt; into the &lt;code&gt;cal&lt;/code&gt; widget and format it the way I want.&lt;/p&gt;
+&lt;p&gt;Instead, let’s talk about the command that comes before the pipe:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bash:
+if [ $(date +"%-d") -gt 15 ]; then
+  cal -A 1
+else
+  cal -B 1
+fi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I think this will run in any Bourne-like shell. I know it runs in zsh and bash.&lt;/p&gt;
+&lt;p&gt;The idea is to run the &lt;a href="https://leancrew.com/all-this/man/man1/cal.html"&gt;&lt;code&gt;cal&lt;/code&gt; command&lt;/a&gt;, displaying the current month and either the month before or the month after. Which other month to show is determined by the &lt;code&gt;if&lt;/code&gt; statement at the top. It runs the &lt;a href="https://leancrew.com/all-this/man/man1/date.html"&gt;&lt;code&gt;date&lt;/code&gt; command&lt;/a&gt; and formats the output as just the day of the month with no leading zero. If this is greater than 15, &lt;code&gt;cal&lt;/code&gt; is passed the option to show one month after the current month. Otherwise, &lt;code&gt;cal&lt;/code&gt; is passed the option to show one month before the current month.&lt;/p&gt;
+&lt;p&gt;(Brett uses &lt;code&gt;cal&lt;/code&gt; as one of his &lt;a href="https://terminalwidget.app/widgets"&gt;example widgets&lt;/a&gt;, but his command doesn’t include an &lt;code&gt;if&lt;/code&gt;. It always displays the current month and the month after.)&lt;/p&gt;
+&lt;p&gt;By the way, if you run the above command in the Terminal, you’ll notice its output is slightly different from what’s shown in the widget:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Output from cal in Terminal" class="ss" src="https://leancrew.com/all-this/images2026/20260805-Output%20from%20cal%20in%20Terminal.png" title="Output from cal in Terminal" width="70%" /&gt;&lt;/p&gt;
+&lt;p&gt;The current date is highlighted. I think this is because &lt;code&gt;cal&lt;/code&gt; is written to format its output as plain text when it’s being saved to a file or piped to another command but jumps back to invert today’s date when it’s being run in a terminal. It’s similar to the way &lt;a href="https://leancrew.com/all-this/man/man1/ls.html"&gt;&lt;code&gt;ls&lt;/code&gt;&lt;/a&gt; lists files one per line when being piped but formats them in columns when its output goes to a terminal.&lt;/p&gt;
+&lt;p&gt;OK, this is nice for testing out TerminalWidget, but running this command once won’t get it to change when we get past the 15th of the month. It needs to be run every day, preferably in the morning.&lt;/p&gt;
+&lt;p&gt;The classic Unix way to schedule tasks is &lt;a href="https://leancrew.com/all-this/man/man8/cron.html"&gt;&lt;code&gt;cron&lt;/code&gt;&lt;/a&gt;, but &lt;a href="https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/ScheduledJobs.html#//apple_ref/doc/uid/10000172i-CH1-SW2"&gt;according to Apple&lt;/a&gt; your Mac must be awake when a &lt;code&gt;cron&lt;/code&gt; job is scheduled. If it isn’t, the job runs the next time the job is scheduled &lt;em&gt;and&lt;/em&gt; the Mac is awake. Because I don’t know when my MacBook Pro will be awake, &lt;code&gt;cron&lt;/code&gt; is not a good option for scheduling this task. I need to use &lt;a href="https://leancrew.com/all-this/man/man8/launchd.html"&gt;&lt;code&gt;launchd&lt;/code&gt;&lt;/a&gt;, which will run the specified command at the scheduled time &lt;em&gt;or&lt;/em&gt; the next time the Mac wakes up.&lt;/p&gt;
+&lt;p&gt;The easiest way to set up &lt;code&gt;launchd&lt;/code&gt; agents is to use &lt;a href="https://www.soma-zone.com/LaunchControl/"&gt;LaunchControl&lt;/a&gt; and let its GUI handle the tricky bits, but you can do it by hand if you must. First, make a plist file that describes what command is to be run and when and save it in your &lt;code&gt;~/Library/LaunchAgents&lt;/code&gt; folder. Here’s the file, named &lt;code&gt;com.leancrew.calwidget.plist&lt;/code&gt;, that LaunchControl built for me:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;xml:
+&amp;lt;?xml version="1.0" encoding="UTF-8"?&amp;gt;
+&amp;lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&amp;gt;
+&amp;lt;plist version="1.0"&amp;gt;
+&amp;lt;dict&amp;gt;
+  &amp;lt;key&amp;gt;Label&amp;lt;/key&amp;gt;
+  &amp;lt;string&amp;gt;com.leancrew.calwidget&amp;lt;/string&amp;gt;
+  &amp;lt;key&amp;gt;ProgramArguments&amp;lt;/key&amp;gt;
+  &amp;lt;array&amp;gt;
+    &amp;lt;string&amp;gt;/bin/zsh&amp;lt;/string&amp;gt;
+    &amp;lt;string&amp;gt;/Users/drang/bin/calwidget.sh&amp;lt;/string&amp;gt;
+  &amp;lt;/array&amp;gt;
+  &amp;lt;key&amp;gt;StartCalendarInterval&amp;lt;/key&amp;gt;
+  &amp;lt;array&amp;gt;
+   &amp;lt;dict&amp;gt;
+    &amp;lt;key&amp;gt;Hour&amp;lt;/key&amp;gt;
+    &amp;lt;integer&amp;gt;6&amp;lt;/integer&amp;gt;
+    &amp;lt;key&amp;gt;Minute&amp;lt;/key&amp;gt;
+    &amp;lt;integer&amp;gt;30&amp;lt;/integer&amp;gt;
+   &amp;lt;/dict&amp;gt;
+  &amp;lt;/array&amp;gt;
+&amp;lt;/dict&amp;gt;
+&amp;lt;/plist&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;ProgramArguments&lt;/code&gt; section tells &lt;code&gt;launchd&lt;/code&gt; to run my &lt;code&gt;calwidget.sh&lt;/code&gt; script via zsh. Because &lt;code&gt;launchd&lt;/code&gt; commands aren’t run under my usual environment, I give full file paths to both zsh and my script. The &lt;code&gt;StartCalendarInterval&lt;/code&gt; section tells &lt;code&gt;launchd&lt;/code&gt; to run the job every day at 6:30 AM.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;calwidget.sh&lt;/code&gt; script is basically what we’ve seen before, but with a couple of small changes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bash:
+if [ $(date +"%-d") -gt 7 ]; then
+  cal -A 1
+else
+  cal -B 1
+fi |\
+/Applications/TerminalWidget.app/Contents/MacOS/TerminalWidget \
+  --target cal --font Menlo --fg "000000" --bg "eeeeee" --text -
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I decided I’d prefer to see the month before the current month only if we’re a week or less into the current month. Hence the change from &lt;code&gt;15&lt;/code&gt; to &lt;code&gt;7&lt;/code&gt; in the &lt;code&gt;if&lt;/code&gt; statement. Also, I changed the &lt;code&gt;terminal-widget&lt;/code&gt; command to the full path of the executable it’s linked to because &lt;code&gt;launchd&lt;/code&gt; doesn’t know my usual &lt;code&gt;$PATH&lt;/code&gt;. And finally, I added a &lt;code&gt;--fg&lt;/code&gt; option to ensure that both the foreground and background colors are what I want—I decided not to rely on defaults.&lt;/p&gt;
+&lt;p&gt;I loaded this job into &lt;code&gt;launchd&lt;/code&gt; via LaunchControl, but I also tested doing it with &lt;a href="https://leancrew.com/all-this/man/man1/launchctl.html"&gt;&lt;code&gt;launchctl&lt;/code&gt;&lt;/a&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;launchctl load -w ~/Library/LaunchAgents/com.leancrew.calwidget.plist
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;launchctl&lt;/code&gt; man page calls &lt;code&gt;load&lt;/code&gt; a “legacy subcommand,” suggesting that I should learn the newer way of doing things, but I find the descriptions of the recommended subcommands incomprehensible. And I haven’t found a good tutorial for them. Again, LaunchControl just does what I want it to do.&lt;/p&gt;
+&lt;div class="update"&gt;
+&lt;p&gt;&lt;strong&gt;Update 5 Aug 2026 10:36 PM&lt;/strong&gt;&lt;br /&gt;
+Eric Hemmeter &lt;a href="https://fosstodon.org/@ehemmete@mastodon.social/117045209633791732"&gt;sent me a link on Mastodon&lt;/a&gt; to &lt;a href="https://babodee.wordpress.com/2016/04/09/launchctl-2-0-syntax/"&gt;this 2016 article&lt;/a&gt; by Babo D, which does a much better job of explaining &lt;code&gt;launchctl&lt;/code&gt;’s “new” syntax than Apple does anywhere that I’ve seen. While I don’t think this will take the place of LaunchControl for me, I certainly understand the recommended subcommands better now than I ever have. I’ve saved a web archive version of the page in case it disappears. Thanks, Eric!&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;While this exercise was mostly a proof of concept, I do like having quick access to a two-month calendar and will probably keep this widget. Now I need to think about what other information I want immediate access to.&lt;/p&gt;</description>
       <guid isPermaLink="false">825a60e96dff9781dc6392a0d74ed5449208f7d13ff0c0e6f82664029e3fd177</guid>
       <pubDate>Wed, 05 Aug 2026 21:34:08 +0000</pubDate>
     </item>
     <item>
       <title>My rules for using spreadsheets</title>
       <link>https://leancrew.com/all-this/2026/08/my-rules-for-using-spreadsheets/</link>
-      <description>[Equations in this post may not look right (or appear at all) in your RSS reader. Go to the original article to see them rendered properly.] My fundamental rule is Don’t , but a single word wouldn’t…</description>
+      <description>&lt;p&gt;[Equations in this post may not look right (or appear at all) in your RSS reader. Go to &lt;a href="https://leancrew.com/all-this/2026/08/my-rules-for-using-spreadsheets/"&gt;the original article&lt;/a&gt; to see them rendered properly.]&lt;/p&gt;
+  &lt;hr /&gt;
+  &lt;p&gt;My fundamental rule is &lt;em&gt;Don’t&lt;/em&gt;, but a single word wouldn’t make for much of a blog post.&lt;/p&gt;
+&lt;p&gt;In what follows, I hope to explain how I’ve come to that rule and the exceptions I make to it. I’ve been thinking about how I use and don’t use spreadsheets quite a bit lately. This introspection was inspired in part by &lt;a href="https://macstockconferenceandexpo.com/schedule/#:~:text=How%20the%20Cool%20Kids%20Really%20Use%20Spreadsheets"&gt;Allison Sheridan’s presentation at Macstock&lt;/a&gt; (which you can see &lt;a href="https://www.podfeet.com/blog/2026/07/macstock-2026-how-the-cool-kids-really-use-spreadsheets/"&gt;on her site&lt;/a&gt; along with a couple of &lt;a href="https://www.podfeet.com/blog/2026/07/visicalc-ken-case/"&gt;other&lt;/a&gt; recent &lt;a href="https://www.podfeet.com/blog/2026/07/excel-find-dependencies/"&gt;spreadsheet posts&lt;/a&gt;) and in part by my recent use of Numbers to &lt;a href="https://leancrew.com/all-this/2026/07/sum-of-cubes-via-difference-tables/"&gt;make difference tables&lt;/a&gt; and &lt;a href="https://leancrew.com/all-this/2026/07/plotting-baseball-team-progress/"&gt;clean up a table of data&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Let’s start by considering what makes spreadsheets so attractive. Right off the bat, you’re presented with a grid of cells that act as data containers. You don’t have to define these containers, you don’t have to name them, you don’t have to initialize them—they’re just there, waiting for you to fill them as you see fit.&lt;/p&gt;
+&lt;p&gt;When it comes time to start operating on this data, you &lt;em&gt;still&lt;/em&gt; don’t have to name the cells. You just click (or click and drag) to fill in the function arguments. The spreadsheet app fills in the appropriate row/column reference. If you want a reminder of what a cell is for, you can type a name or description in an adjacent cell. Similarly, you don’t have to figure out the appropriate order of the operations. The app works out the cell dependency chain and recalculates everything, everywhere, all at once.&lt;/p&gt;
+&lt;p&gt;And because you can set the size, color, border, and font styling of every cell, your spreadsheet can generate nice-looking tables for inserting into your reports, memos, and slideshows.&lt;/p&gt;
+&lt;p&gt;So a spreadsheet is a data store, a logic machine, and a presentation tool. Are you getting it?&lt;/p&gt;
+&lt;p&gt;But if spreadsheets are all that, where does my &lt;em&gt;Don’t&lt;/em&gt; rule come from? There are many sources, but I’d have to say I’ve been strongly influenced by the last 10–15 years of my working life, during which time I had to analyze dozens and dozens of data sets, all of which were sent to me as Excel spreadsheets. The engineering firms that sent me the spreadsheets had created them not simply as data stores. They included some of their own analysis (which typically overlapped slightly with mine), and they formatted the spreadsheets as tables to put into their own reports. This made my work harder for a few reasons:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Because I had to make sure I understood and agreed with their analysis, I had to review all their formulas. Some of these formulas were complex—nested &lt;code&gt;IF&lt;/code&gt; statements are easy to follow in a traditional programming language, but they’re a mess in a spreadsheet. Some were inconsistent—different rows in the same table would have different formulas, as if they were written by different people at different times or adapted from a spreadsheet on a previous project. Some of them referred to cells that were far away and required a lot of scrolling to track down. None of them—not a single one in over a decade—used cell names to help make the formulas easier to understand.&lt;/p&gt;
+&lt;p&gt;The complicated formulas mentioned above sometimes—not often, but sometimes—contained mistakes. And sometimes the formulas were correct, but the descriptions in the header cells were wrong. This meant phone calls were needed to resolve the discrepancies, further slowing the analysis.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;It was common for the data to be split over two or more sheets. I think this was done mainly to make the tables fit better into the other engineers’ reports, which was fine for their purposes but not for mine. I had to recombine the data for my analyses. Also, the sheets often had complicated, multiline headers, which meant I couldn’t just export them as CSV files.&lt;/li&gt;
+&lt;li&gt;Every engineer I worked with built their spreadsheets in a different way. Those who worked for the same firm didn’t adhere to an “ABC Engineering” house style. Even individual engineers would change their spreadsheet styling from one project to the next. Basically, every spreadsheet that came in the door was &lt;em&gt;sui generis&lt;/em&gt;, and I had to do all the data cleaning by hand. This slowed me down, not only because I couldn’t rely on automation for this step, but also because I had to double- and triple-check my work to avoid copy/paste mistakes.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Fundamentally, this experience—especially Item 1—soured me on the use of spreadsheets for anything large or complex. The engineers I was working with were smart, but their spreadsheets weren’t. My conclusion was that the simplicity of the typical click-and-drag method of assembling a spreadsheet encouraged poor organization and errors as the spreadsheets grew or were adapted to new data.  It’s easy to say “Oh, I would never do that,” but I’m old enough to know that I &lt;em&gt;would&lt;/em&gt; do that. I see the ease with which I can build spreadsheets with today’s apps as a Siren song that will lead me onto the rocks.&lt;/p&gt;
+&lt;p&gt;(If you’re getting ready to write to me about the &lt;a href="https://retractionwatch.com/2013/04/18/influential-reinhart-rogoff-economics-paper-suffers-database-error/"&gt;Reinhart/Rogoff paper&lt;/a&gt;, you can relax. It is the prime example of elementary spreadsheet errors—errors that two Harvard professors would &lt;em&gt;surely&lt;/em&gt; never make—and it led to a lot of suffering through unnecessary government austerity policies. And if you’re now getting ready to write to me about how Reinhart and Rogoff’s errors don’t negate the essential truth of their conclusions, you can just fuck off.)&lt;/p&gt;
+&lt;p&gt;The convenience of having the data and the analysis logic in the same document becomes a problem when you have to apply that logic to several datasets, especially when they differ in size. Spreadsheet templates are great when the data allow you make several spreadsheets with the exact same layout, but the data I tend to deal with don’t fit that rigid pattern. If I’m doing, for example, analyses and plots of several time series, those series seldom extend over the same length of time and the same number of data points. It’s far easier to deal with these size differences when the logic is in a program, separated from the data.&lt;/p&gt;
+&lt;p&gt;Another problem with spreadsheets is that the amount of data they can contain is more limited than when you use other data analysis workflows. The size limits on spreadsheets are, admittedly, quite large, but in an era of Big Data “quite large” may not be big enough. In her &lt;a href="https://www.podfeet.com/blog/2026/07/macstock-2026-how-the-cool-kids-really-use-spreadsheets/"&gt;Macstock talk&lt;/a&gt;, Allison shows how she ran into that problem with the data set of &lt;a href="https://catalog.data.gov/dataset/baby-names-from-social-security-card-applications-national-data"&gt;US baby names&lt;/a&gt;. Let’s take a detour to talk about handling that data.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;One of the ways you can download the baby name dataset is as a zipped collection of CSV files. Each file in the collection is associated with one year and has a name like &lt;code&gt;yob1960.txt&lt;/code&gt;. The contents look like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Mary,F,51472
+Susan,F,39208
+Linda,F,37316
+Karen,F,36378
+Donna,F,34138
+[etc]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;where the first item is the name, the second is the sex at birth, and the third is the number of babies given that name in that year. The lines are ordered first by sex and then by number. If you concatenate all the files, you’ll find there are 2,181,032 entries. As Allison found out, this won’t fit into an Excel spreadsheet, as Excel is limited to 1,048,576 rows. That’s the very computery number &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;msup&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mn&gt;20&lt;/mn&gt;&lt;/msup&gt;&lt;/math&gt; or &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;msup&gt;&lt;mn&gt;1024&lt;/mn&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;/math&gt;. The limit in Numbers is the less computery but more human 1,000,000 rows.&lt;/p&gt;
+&lt;p&gt;Allison got around the size problem by… er… cheating. She eliminated the less popular names to get the list to fit into Excel, and then demonstrated some pivot table stuff. You can see it starting at 1:13:50 &lt;a href="https://www.podfeet.com/blog/2026/07/macstock-2026-how-the-cool-kids-really-use-spreadsheets/"&gt;in the video&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I decided to do something similar to her work but without the cheating. First, I concatenated all the individual files into one big CSV file that also included a field for the year. That was done through these shell commands:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;echo 'Year,Name,Sex,Count' &amp;gt; all-years.csv
+for f in yob*.txt; do
+  y=${f:3:4}
+  sed -e "s/\r$//;s/^/$y,/" $f &amp;gt;&amp;gt; all-years.csv
+done
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The year is extracted from the file name through &lt;a href="https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html#:~:text=Substring%20Expansion."&gt;substring expansion&lt;/a&gt; and then added to the beginning of each line via &lt;code&gt;sed&lt;/code&gt;. The original files are in Windows format with CRLF line endings, so the &lt;code&gt;sed&lt;/code&gt; command also deletes the CR characters. The upshot of all this is a file (with Unix line endings) named &lt;code&gt;all-years.csv&lt;/code&gt; that looks like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Year,Name,Sex,Count
+1880,Mary,F,7065
+1880,Anna,F,2604
+1880,Emma,F,2003
+1880,Elizabeth,F,1939
+1880,Minnie,F,1746
+[etc]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(Yes, even though the data set is said to have come from Social Security registrations, it starts in 1880, decades before the Social Security Act. I can’t explain that. Nor can I explain how Minnie was once the fifth most popular girls’ name.)&lt;/p&gt;
+&lt;p&gt;I’m going to use Python and &lt;a href="https://pandas.pydata.org/"&gt;Pandas&lt;/a&gt; to extract the five most popular girls’ names from 2001 through 2025 (the last year in the dataset). Here’s the start of a simple interactive Python session that does it:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; import pandas as pd
+&amp;gt;&amp;gt;&amp;gt; df = pd.read_csv('all-years.csv')
+&amp;gt;&amp;gt;&amp;gt; cols = ['Name', 'Count']
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This reads the CSV file into a dataframe and defines the columns of the dataframe that we want to include in our output. The &lt;code&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/code&gt; at the beginning of each line is the interactive Python prompt. Here’s how we get the list of names we’re interested in:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; df[(df.Sex=='F') &amp;amp; (df.Year&amp;gt;2000)][cols].groupby('Name')\
+... .sum().sort_values('Count', ascending=False)[:5]
+           Count
+Name            
+Emma      449576
+Olivia    423613
+Isabella  381577
+Sophia    368619
+Emily     353077
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;...&lt;/code&gt; indicates a continuation input line. Everything after that is output.&lt;/p&gt;
+&lt;p&gt;Reading through the command, we see that we’re&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;getting the subset of data consisting of girls born after 2000;&lt;/li&gt;
+&lt;li&gt;limiting the output to the Name and Count fields;&lt;/li&gt;
+&lt;li&gt;grouping the output by Name;&lt;/li&gt;
+&lt;li&gt;summing the Counts for each Name;&lt;/li&gt;
+&lt;li&gt;sorting the results by Count in descending order; and&lt;/li&gt;
+&lt;li&gt;limiting the output to the top five names.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;That’s obviously a long command, but you can see how it’s constructed in a logical fashion.&lt;/p&gt;
+&lt;p&gt;If we want to compare these to the popular girls’ names from a century earlier, the command is very similar:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; df[(df.Sex=='F') &amp;amp; (df.Year&amp;gt;1900) &amp;amp; (df.Year&amp;lt;=1925)][cols].groupby('Name')\
+... .sum().sort_values('Count', ascending=False)[:5]
+            Count
+Name             
+Mary      1056333
+Helen      505522
+Dorothy    475151
+Margaret   402317
+Ruth       364923
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;My wife and I had great aunts with some of these names.&lt;/p&gt;
+&lt;p&gt;If you’re a database maven, you recognize the Pandas &lt;a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html"&gt;&lt;code&gt;groupby&lt;/code&gt; function&lt;/a&gt; as a copy of the SQL &lt;a href="https://en.wikipedia.org/wiki/Group_by_(SQL)"&gt;&lt;code&gt;GROUP BY&lt;/code&gt; construct&lt;/a&gt;. Let’s redo this in an interactive session with &lt;a href="https://sqlite.org/"&gt;SQLite&lt;/a&gt;. We start by importing the data from the CSV file:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sqlite&amp;gt; .mode csv
+sqlite&amp;gt; .import all-years.csv names
+sqlite&amp;gt; .mode columns
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;a href="https://sqlite.org/climode.html"&gt;mode&lt;/a&gt; is set to &lt;code&gt;csv&lt;/code&gt; in order to import the data, then set back to &lt;code&gt;columns&lt;/code&gt; to make the output look the way we want.&lt;/p&gt;
+&lt;p&gt;Now we get the top five girls’ names from the 21st century and show them in descending order:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sqlite&amp;gt; select Name, sum(Count) from names
+     ...&amp;gt; where Sex is "F" and Year &amp;gt; 2000
+     ...&amp;gt; group by Name order by sum(Count) desc limit 5;
+Name      sum(Count)
+--------  ----------
+Emma      449576    
+Olivia    423613    
+Isabella  381577    
+Sophia    368619    
+Emily     353077    
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;SQL is certainly more English-like, but you can see the parallels between it and Pandas. Now for the early 20th century:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sqlite&amp;gt; select Name, sum(Count) from names
+     ...&amp;gt; where Sex is "F" and Year &amp;gt; 1900 and Year &amp;lt;= 1925
+     ...&amp;gt; group by Name order by sum(Count) desc limit 5;
+Name      sum(Count)
+--------  ----------
+Mary      1056333   
+Helen     505522    
+Dorothy   475151    
+Margaret  402317    
+Ruth      364923    
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Allison does similar things with her truncated Excel file using &lt;a href="https://en.wikipedia.org/wiki/Pivot_table"&gt;pivot tables&lt;/a&gt;. I hate the name “pivot table,” because I think it’s an obscure term for the simple operations of grouping and summarizing. For some reason, my feelings on this don’t matter, and pivot tables are here to stay. Pandas has even added a &lt;a href="https://pandas.pydata.org/docs/reference/api/pandas.pivot_table.html"&gt;&lt;code&gt;pivot_table&lt;/code&gt; function&lt;/a&gt; to placate people who’ve come over from Excel. Under the hood, &lt;code&gt;pivot_table&lt;/code&gt; calls &lt;code&gt;groupby&lt;/code&gt;.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Well, that was kind of a long detour, and I forgive you if you’ve forgotten where we were. I had just gone through a list of things that made me leery of using spreadsheets—why my first rule of using spreadsheets is &lt;em&gt;Don’t&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;But I allow for exceptions. My two main exceptions are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;When the problem is both small enough to see on the screen with almost no scrolling and the operations are simple enough to be easily understood without counting commas and parentheses. That was what I did for my &lt;a href="https://leancrew.com/all-this/2026/07/sum-of-cubes-via-difference-tables/"&gt;sum of cubes difference tables&lt;/a&gt;. The formulas consisted mainly of subtractions, with some power and division operations here and there. Only the simultaneous equations solution in the lower right involved actual function calls, and there were no nested calls.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Cubic sum spreadsheet" class="ss" src="https://leancrew.com/all-this/images2026/20260731-Cubic%20sum%20spreadsheet.png" title="Cubic sum spreadsheet" width="100%" /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;When I’m using the spreadsheet as a way station for editing data before passing it along. I did that in the &lt;a href="https://leancrew.com/all-this/2026/07/plotting-baseball-team-progress/"&gt;baseball team progress&lt;/a&gt; post to edit down the large and unwieldy &lt;a href="https://www.baseball-reference.com/teams/CHC/2026-schedule-scores.shtml"&gt;season results tables&lt;/a&gt; from Baseball Reference. It was fast and easy to select the table in Safari, paste it into Numbers, and then delete the columns and rows I didn’t need. But I did it this way only because this was a one-off project. If I were given the job of making progress charts for all 30 teams every day of the season, I’d never do it by hand like that. I’d use the Pandas &lt;a href="https://pandas.pydata.org/docs/reference/api/pandas.read_html.html"&gt;&lt;code&gt;read_html&lt;/code&gt; function&lt;/a&gt; to pull the HTML table into a dataframe and a variety of &lt;a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html#pandas.DataFrame.drop"&gt;&lt;code&gt;drop&lt;/code&gt; commands&lt;/a&gt; to pare it down.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I used to use spreadsheets for data entry, too, but not anymore. It was once the only reliable way to put a table of numbers found in a book into electronic form. But OCR has gotten so much better, I can’t remember the last time I did this.&lt;/p&gt;
+&lt;p&gt;I know there are lots of people who love using spreadsheets. They’ve spent a lot of time learning the ins and outs and don’t want to switch to another tool. That’s fine. This post was about &lt;em&gt;my&lt;/em&gt; rules, not anyone else’s. I’m not saying good, accurate, complex work can’t be done in spreadsheets. It just won’t be done by me.&lt;/p&gt;</description>
       <guid isPermaLink="false">f2a4c94211783bb8be479606678fbf2a82fe3862579b27a6cbca4a871a648418</guid>
       <pubDate>Sat, 01 Aug 2026 15:29:24 +0000</pubDate>
     </item>
     <item>
-      <title>Plotting baseball team progress</title>
-      <link>https://leancrew.com/all-this/2026/07/plotting-baseball-team-progress/</link>
-      <description>I noticed today that the Cubs and Yankees have the same record. I knew that the Cubs have had some extreme ups and downs this year, but I wasn’t sure if the Yankees had, so I decided to plot their…</description>
-      <guid isPermaLink="false">8f9d9dfd0e24e3972912598bba026bf5c52d4dbf0df97338d08d4884c33d50ca</guid>
-      <pubDate>Fri, 24 Jul 2026 01:36:45 +0000</pubDate>
-    </item>
-    <item>
       <title>Sum of cubes via difference tables</title>
       <link>https://leancrew.com/all-this/2026/07/sum-of-cubes-via-difference-tables/</link>
-      <description>[Equations in this post may not look right (or appear at all) in your RSS reader. Go to the original article to see them rendered properly.] Yesterday I watched the most recent Numberphile video , in…</description>
+      <description>&lt;p&gt;[Equations in this post may not look right (or appear at all) in your RSS reader. Go to &lt;a href="https://leancrew.com/all-this/2026/07/sum-of-cubes-via-difference-tables/"&gt;the original article&lt;/a&gt; to see them rendered properly.]&lt;/p&gt;
+  &lt;hr /&gt;
+  &lt;p&gt;Yesterday I watched the most recent &lt;a href="https://www.youtube.com/watch?v=cOTf_YEmSOU"&gt;Numberphile video&lt;/a&gt;, in which Ben Sparks explains a few finite series and the equations that simplify the calculation of their sums. He derives the formulas graphically, and it’s all very cleverly done, especially the one for the sum of cubes.&lt;/p&gt;
+&lt;p&gt;The idea is to get a simple polynomial expression in &lt;em&gt;n&lt;/em&gt; for&lt;/p&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;munderover&gt;&lt;mo&gt;∑&lt;/mo&gt;&lt;mrow&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/munderover&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;msup&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;/math&gt;
+&lt;p&gt;As I said, Ben’s graphical method is really clever and easy to understand, and it leads to this expression:&lt;/p&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mfrac&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;mo form="prefix" stretchy="false"&gt;(&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;msup&gt;&lt;mo form="postfix" stretchy="false"&gt;)&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;/math&gt;
+&lt;p&gt;I wanted to see if I could get that same result using a nongraphical and less clever method. The method that came to mind was to generate a handful of values, put them in a table, and start taking differences.&lt;/p&gt;
+&lt;p&gt;Here are some values of &lt;em&gt;n&lt;/em&gt;, &lt;em&gt;N&lt;/em&gt;, and the first four differences:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="right"&gt;n&lt;/th&gt;
+&lt;th align="right"&gt;N&lt;/th&gt;
+&lt;th align="right"&gt;Δ&lt;/th&gt;
+&lt;th align="right"&gt;Δ²&lt;/th&gt;
+&lt;th align="right"&gt;Δ³&lt;/th&gt;
+&lt;th align="right"&gt;Δ⁴&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="right"&gt;1&lt;/td&gt;
+&lt;td align="right"&gt;1&lt;/td&gt;
+&lt;td align="right"&gt;8&lt;/td&gt;
+&lt;td align="right"&gt;19&lt;/td&gt;
+&lt;td align="right"&gt;18&lt;/td&gt;
+&lt;td align="right"&gt;6&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="right"&gt;2&lt;/td&gt;
+&lt;td align="right"&gt;9&lt;/td&gt;
+&lt;td align="right"&gt;27&lt;/td&gt;
+&lt;td align="right"&gt;37&lt;/td&gt;
+&lt;td align="right"&gt;24&lt;/td&gt;
+&lt;td align="right"&gt;6&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="right"&gt;3&lt;/td&gt;
+&lt;td align="right"&gt;36&lt;/td&gt;
+&lt;td align="right"&gt;64&lt;/td&gt;
+&lt;td align="right"&gt;61&lt;/td&gt;
+&lt;td align="right"&gt;30&lt;/td&gt;
+&lt;td align="right"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="right"&gt;4&lt;/td&gt;
+&lt;td align="right"&gt;100&lt;/td&gt;
+&lt;td align="right"&gt;125&lt;/td&gt;
+&lt;td align="right"&gt;91&lt;/td&gt;
+&lt;td align="right"&gt;&lt;/td&gt;
+&lt;td align="right"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="right"&gt;5&lt;/td&gt;
+&lt;td align="right"&gt;225&lt;/td&gt;
+&lt;td align="right"&gt;216&lt;/td&gt;
+&lt;td align="right"&gt;&lt;/td&gt;
+&lt;td align="right"&gt;&lt;/td&gt;
+&lt;td align="right"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="right"&gt;6&lt;/td&gt;
+&lt;td align="right"&gt;441&lt;/td&gt;
+&lt;td align="right"&gt;&lt;/td&gt;
+&lt;td align="right"&gt;&lt;/td&gt;
+&lt;td align="right"&gt;&lt;/td&gt;
+&lt;td align="right"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;The differences are calculated by looking in the preceding column and subtracting the value in the same row from the value in the following row. This sort of thing is fairly easy to do by hand but is &lt;em&gt;really&lt;/em&gt; easy to do in a spreadsheet. Here’s a screenshot of the table in Numbers, where I’m displaying the formula for the first difference, Δ:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Difference table in Numbers" class="ss" src="https://leancrew.com/all-this/images2026/20260719-Difference%20table%20in%20Numbers.png" title="Difference table in Numbers" width="100%" /&gt;&lt;/p&gt;
+&lt;p&gt;That formula can be filled into all the difference cells, which is why it’s so easy. (I included only the first six rows in the table above because I figured you’d trust me that all the values in the fourth difference column, Δ⁴, are the same.)&lt;/p&gt;
+&lt;p&gt;The constant values in the fourth difference column mean &lt;em&gt;N&lt;/em&gt; is a fourth-degree polynomial in &lt;em&gt;n&lt;/em&gt;:&lt;/p&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/msub&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msub&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msub&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msub&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;/math&gt;
+&lt;p&gt;Because the constant fourth difference is 6, we know that&lt;/p&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;6&lt;/mn&gt;&lt;mrow&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mi&gt;!&lt;/mi&gt;&lt;/mrow&gt;&lt;/mfrac&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;6&lt;/mn&gt;&lt;mn&gt;24&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mrow&gt;&lt;/math&gt;
+&lt;p&gt;This comes from the fact that differences are analogous to derivatives, and&lt;/p&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;msup&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msup&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;/mrow&gt;&lt;mrow&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;/mfrac&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mo&gt;⋅&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo&gt;⋅&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mo&gt;⋅&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt; &lt;mn&gt;24&lt;/mn&gt;&lt;/mrow&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msub&gt;&lt;/math&gt;
+&lt;p&gt;Once we know the degree of the polynomial and have &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msub&gt;&lt;/math&gt;, we can figure out the other coefficients by solving a set of four simultaneous equations for four different values of &lt;em&gt;n&lt;/em&gt; and &lt;em&gt;N&lt;/em&gt;. For example:&lt;/p&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+&lt;mtable columnalign="left"&gt;
+&lt;mtr&gt;&lt;mtd&gt;
+&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;⋅&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;⋅&lt;/mo&gt;&lt;msup&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;⋅&lt;/mo&gt;&lt;msup&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;⋅&lt;/mo&gt;&lt;msup&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;
+&lt;/mtd&gt;&lt;/mtr&gt;
+&lt;mtr&gt;&lt;mtd&gt;
+&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;⋅&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;⋅&lt;/mo&gt;&lt;msup&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;⋅&lt;/mo&gt;&lt;msup&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;⋅&lt;/mo&gt;&lt;msup&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;9&lt;/mn&gt;&lt;/mrow&gt;
+&lt;/mtd&gt;&lt;/mtr&gt;
+&lt;mtr&gt;&lt;mtd&gt;
+&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;⋅&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;⋅&lt;/mo&gt;&lt;msup&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;⋅&lt;/mo&gt;&lt;msup&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;⋅&lt;/mo&gt;&lt;msup&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;36&lt;/mn&gt;&lt;/mrow&gt;
+&lt;/mtd&gt;&lt;/mtr&gt;
+&lt;mtr&gt;&lt;mtd&gt;
+&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;⋅&lt;/mo&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;⋅&lt;/mo&gt;&lt;msup&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;⋅&lt;/mo&gt;&lt;msup&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;⋅&lt;/mo&gt;&lt;msup&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;100&lt;/mn&gt;&lt;/mrow&gt;
+&lt;/mtd&gt;&lt;/mtr&gt;
+&lt;/mtable&gt;
+&lt;/math&gt;
+&lt;p&gt;We could use any four of the six &lt;em&gt;N&lt;/em&gt;s we’ve calculated, but the first four are convenient. Let’s solve them in Python using NumPy and the &lt;a href="https://numpy.org/doc/2.3/reference/generated/numpy.linalg.solve.html"&gt;&lt;code&gt;solve&lt;/code&gt; function&lt;/a&gt; from the &lt;code&gt;linalg&lt;/code&gt; submodule. We can do this interactively:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;python:
+from numpy import np
+m = np.array([[1, 1, 1, 1], [1, 2, 4, 8], [1, 3, 9, 27], [1, 4, 16, 64]])
+b = np.array([1 - 1**4/4, 9 - 2**4/4, 36 - 3**4/4, 100 - 4**4/4])
+np.linalg.solve(m, b)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The last line returns&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;python:
+array([ 1.77635684e-15, -3.99680289e-15,  2.50000000e-01,  5.00000000e-01])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Those first two elements of the solution array are at the lower limit of what a floating point number can be. So we can say&lt;/p&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;mspace width="1.0em"&gt;&lt;/mspace&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;mspace width="1.0em"&gt;&lt;/mspace&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mfrac&gt;&lt;mspace width="1.0em"&gt;&lt;/mspace&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mrow&gt;&lt;/math&gt;
+&lt;p&gt;Therefore,&lt;/p&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mfrac&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mfrac&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;/math&gt;
+&lt;p&gt;or, after collecting terms,&lt;/p&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mfrac&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;mo form="prefix" stretchy="false"&gt;(&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;msup&gt;&lt;mo form="postfix" stretchy="false"&gt;)&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;/math&gt;
+&lt;p&gt;which is the formula Ben got in the video.&lt;/p&gt;
+&lt;p&gt;Doing basically the same thing in Mathematica is&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;m = {{1, 1, 1, 1}, {1, 2, 4, 8}, {1, 3, 9, 27}, {1, 4, 16, 64}};
+b = {1 - 1^4/4, 9 - 2^4/4, 36 - 3^4/4, 100 - 4^4/4};
+LinearSolve[m, b]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;which returns&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{0, 0, 1/4, 1/2}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is the same as the Python answer but with no need to think about floating point precision.&lt;/p&gt;
+&lt;p&gt;A third way to solve the simultaneous equations is to do it in a spreadsheet. Here’s how that looks in Numbers:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Simultaneous equations solution in Numbers" class="ss" src="https://leancrew.com/all-this/images2026/20260719-Simultaneous%20equations%20solution%20in%20Numbers.png" title="Simultaneous equations solution in Numbers" width="100%" /&gt;&lt;/p&gt;
+&lt;p&gt;where&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;the block of yellow cells is the matrix &lt;code&gt;m&lt;/code&gt; in the Python and Mathematica solutions;&lt;/li&gt;
+&lt;li&gt;the block of magenta cells is the inverse of &lt;code&gt;m&lt;/code&gt;;&lt;/li&gt;
+&lt;li&gt;the block of cyan cells is the vector &lt;code&gt;b&lt;/code&gt; in the Python and Mathematica solutions; and&lt;/li&gt;
+&lt;li&gt;the block of gray cells is the solution for &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/msub&gt;&lt;/math&gt; through &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msub&gt;&lt;/math&gt;, determined by multiplying the magenta matrix by the cyan vector.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The spreadsheet uses a combination of &lt;a href="https://support.apple.com/guide/functions/minverse-ffa8a8890aa0/web"&gt;&lt;code&gt;MINVERSE&lt;/code&gt;&lt;/a&gt; and &lt;a href="https://support.apple.com/guide/functions/mmult-ffa6eccc9b2e/15.3/web/1.0"&gt;&lt;code&gt;MMULT&lt;/code&gt;&lt;/a&gt;, functions that are also in Excel and Google Sheets. As with the Python solution, there are floating point artifacts here. They’re mostly hidden by my choice to show only four decimal places, but that -0.0000 for &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/msub&gt;&lt;/math&gt; is a clue that these are not exact answers.&lt;/p&gt;
+&lt;p&gt;You might well ask why I’d bother using Python or Mathematica to solve the simultaneous equations if I already had a spreadsheet open to make the difference table. The answer is that I generally prefer working in an environment where my formulas and expressions are always visible. It makes things easier to debug, and I’m always debugging.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;There are other ways to determine the coefficients. My favorite is a step-by-step procedure that simplifies the problem one polynomial degree at a time.&lt;/p&gt;
+&lt;p&gt;Given that we know &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mi&gt;/&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mrow&gt;&lt;/math&gt; from the difference table above, we can make a new table for&lt;/p&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;mi&gt;P&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mfrac&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;/math&gt;
+&lt;p&gt;and its differences. By subtracting the fourth-degree term from &lt;em&gt;N&lt;/em&gt;, we expect &lt;em&gt;P&lt;/em&gt; to be a third-degree polynomial. Here are the first five rows of the difference table for &lt;em&gt;P&lt;/em&gt;:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="right"&gt;n&lt;/th&gt;
+&lt;th align="right"&gt;P&lt;/th&gt;
+&lt;th align="right"&gt;Δ&lt;/th&gt;
+&lt;th align="right"&gt;Δ²&lt;/th&gt;
+&lt;th align="right"&gt;Δ³&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="right"&gt;1&lt;/td&gt;
+&lt;td align="right"&gt;0.75&lt;/td&gt;
+&lt;td align="right"&gt;4.25&lt;/td&gt;
+&lt;td align="right"&gt;6.50&lt;/td&gt;
+&lt;td align="right"&gt;3.00&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="right"&gt;2&lt;/td&gt;
+&lt;td align="right"&gt;5.00&lt;/td&gt;
+&lt;td align="right"&gt;10.75&lt;/td&gt;
+&lt;td align="right"&gt;9.50&lt;/td&gt;
+&lt;td align="right"&gt;3.00&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="right"&gt;3&lt;/td&gt;
+&lt;td align="right"&gt;15.75&lt;/td&gt;
+&lt;td align="right"&gt;20.25&lt;/td&gt;
+&lt;td align="right"&gt;12.50&lt;/td&gt;
+&lt;td align="right"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="right"&gt;4&lt;/td&gt;
+&lt;td align="right"&gt;36.00&lt;/td&gt;
+&lt;td align="right"&gt;32.75&lt;/td&gt;
+&lt;td align="right"&gt;&lt;/td&gt;
+&lt;td align="right"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="right"&gt;5&lt;/td&gt;
+&lt;td align="right"&gt;68.75&lt;/td&gt;
+&lt;td align="right"&gt;&lt;/td&gt;
+&lt;td align="right"&gt;&lt;/td&gt;
+&lt;td align="right"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;As expected, they become constant at the third difference. Using the same technique we used to get &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msub&gt;&lt;/math&gt;, we can say&lt;/p&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mrow&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mi&gt;!&lt;/mi&gt;&lt;/mrow&gt;&lt;/mfrac&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mn&gt;6&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mrow&gt;&lt;/math&gt;
+&lt;p&gt;Moving on, we make a table for&lt;/p&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;mi&gt;Q&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi&gt;P&lt;/mi&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;/math&gt;
+&lt;p&gt;and its differences. Here are the first four rows of that table:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="right"&gt;n&lt;/th&gt;
+&lt;th align="right"&gt;Q&lt;/th&gt;
+&lt;th align="right"&gt;Δ&lt;/th&gt;
+&lt;th align="right"&gt;Δ²&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="right"&gt;1&lt;/td&gt;
+&lt;td align="right"&gt;0.25&lt;/td&gt;
+&lt;td align="right"&gt;0.75&lt;/td&gt;
+&lt;td align="right"&gt;0.50&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="right"&gt;2&lt;/td&gt;
+&lt;td align="right"&gt;1.00&lt;/td&gt;
+&lt;td align="right"&gt;1.25&lt;/td&gt;
+&lt;td align="right"&gt;0.50&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="right"&gt;3&lt;/td&gt;
+&lt;td align="right"&gt;2.25&lt;/td&gt;
+&lt;td align="right"&gt;1.75&lt;/td&gt;
+&lt;td align="right"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="right"&gt;4&lt;/td&gt;
+&lt;td align="right"&gt;4.00&lt;/td&gt;
+&lt;td align="right"&gt;&lt;/td&gt;
+&lt;td align="right"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;These become constant at the second difference, and we can say&lt;/p&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mi&gt;/&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mrow&gt;&lt;mrow&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mi&gt;!&lt;/mi&gt;&lt;/mrow&gt;&lt;/mfrac&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mrow&gt;&lt;/math&gt;
+&lt;p&gt;Finally, we make a table for&lt;/p&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;mi&gt;R&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi&gt;Q&lt;/mi&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mfrac&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;/math&gt;
+&lt;p&gt;which is this:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="right"&gt;n&lt;/th&gt;
+&lt;th align="right"&gt;R&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="right"&gt;1&lt;/td&gt;
+&lt;td align="right"&gt;0.00&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="right"&gt;2&lt;/td&gt;
+&lt;td align="right"&gt;0.00&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="right"&gt;3&lt;/td&gt;
+&lt;td align="right"&gt;0.00&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="right"&gt;4&lt;/td&gt;
+&lt;td align="right"&gt;0.00&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Since all the &lt;em&gt;R&lt;/em&gt; values are zero, the rest of the coefficients, &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/msub&gt;&lt;/math&gt; and &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/msub&gt;&lt;/math&gt;, must be zero, and we’re done.&lt;/p&gt;
+&lt;p&gt;If it’s not obvious why &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/mrow&gt;&lt;/math&gt;, consider this:&lt;/p&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+&lt;mtable columnalign="left"&gt;
+&lt;mtr&gt;
+&lt;mtd&gt;&lt;mi&gt;R&lt;/mi&gt;&lt;mspace height="1em"&gt;&lt;/mspace&gt;&lt;/mtd&gt;
+&lt;mtd&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;/mtd&gt;
+&lt;mtd&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msub&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msub&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msub&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;/mtd&gt;
+&lt;/mtr&gt;
+&lt;mtr&gt;
+&lt;mtd&gt;&lt;mspace height="1em"&gt;&lt;/mspace&gt;&lt;/mtd&gt;
+&lt;mtd&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;/mtd&gt;
+&lt;mtd&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/msub&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msub&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msub&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msub&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msub&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msub&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msub&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;msup&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;
+&lt;/mtd&gt;
+&lt;/mtr&gt;
+&lt;mtr&gt;
+&lt;mtd&gt;&lt;mspace height="1em"&gt;&lt;/mspace&gt;&lt;/mtd&gt;
+&lt;mtd&gt;&lt;mo&gt;=&lt;/mo&gt;
+&lt;/mtd&gt;
+&lt;mtd&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/msub&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;mi&gt;n&lt;/mi&gt;
+&lt;/mtd&gt;
+&lt;/mtr&gt;
+&lt;/mtable&gt;&lt;/math&gt;
+&lt;p&gt;The only way for &lt;em&gt;R&lt;/em&gt; to be zero for all values of &lt;em&gt;n&lt;/em&gt; is if &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/mrow&gt;&lt;/math&gt;.&lt;/p&gt;
+&lt;p&gt;Building these tables is fairly easy, but it’s not as fast as building and solving the simultaneous equations. Still, there’s some satisfaction in marching to the answer this way. It’s basically a recursive solution, where we’re simplifying the problem with each step.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Using difference tables to work out the formula for the sum of cubes isn’t as slick as the graphical method shown in the video, but it does have the advantage of not requiring any ingenuity. I’m not opposed to ingenuity, but sometimes you want to just set the problem up, turn the mathematical crank, and get the answer.&lt;/p&gt;</description>
       <guid isPermaLink="false">3155bc47228d023cfc49d32d24975d2fd0972561811b59f16604b05f9960c285</guid>
       <pubDate>Mon, 20 Jul 2026 02:07:47 +0000</pubDate>
     </item>
     <item>
       <title>Floating Saturn calculations</title>
       <link>https://leancrew.com/all-this/2026/07/floating-saturn-calculations/</link>
-      <description>[Equations in this post may not look right (or appear at all) in your RSS reader. Go to the original article to see them rendered properly.] You’ve probably seen somewhere that the density of Saturn…</description>
+      <description>&lt;p&gt;[Equations in this post may not look right (or appear at all) in your RSS reader. Go to &lt;a href="https://leancrew.com/all-this/2026/07/floating-saturn-calculations/"&gt;the original article&lt;/a&gt; to see them rendered properly.]&lt;/p&gt;
+  &lt;hr /&gt;
+  &lt;p&gt;You’ve probably seen somewhere that the density of Saturn is less than that of water. If there were a bathtub big enough to hold it, Saturn would float. I think I first read this in one of Isaac Asimov’s collections of science essays. If you do an image search, you can easily find &lt;a href="https://www.google.com/search?hs=qZbV&amp;amp;sca_esv=dd11972937bd8ee9&amp;amp;udm=2&amp;amp;fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8c4u0nXx4bEIpwm1lnNH832SMIiTl3t-JZ4hGJOxPbHYSIu8Q64jU5EwQ-803VaKbd8XGNh2EAGT96nVa30badWeLcMOEWQcU9WGmTgQb8mz6mPncLV6BMXrUfQD5ftu4HKiVJOOiqhNYT8Keh_15lhVLohIhM8kHnw_tixWHDpdAHWCTimc1GO2znH-0EdfLD74c9fw&amp;amp;q=saturn+floating+in+water&amp;amp;sa=X&amp;amp;ved=2ahUKEwjGueL9vNiVAxXjqysGHThVNzEQtKgLegQIGhAB&amp;amp;biw=1106&amp;amp;bih=835&amp;amp;dpr=2"&gt;many illustrations&lt;/a&gt; of Saturn floating in water. Most of these show no more than half of Saturn under the water. Could that be right?&lt;/p&gt;
+&lt;p&gt;Because there were several things I should have been doing this afternoon, I decided to work out how much of Saturn should be underwater in these images. Even better, I’d do the more general problem: how much of any sphere would be submerged in a liquid if the density of the sphere is less than that of the liquid?&lt;/p&gt;
+&lt;p&gt;Here’s a cross-section of the problem:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Floating sphere" class="ss" src="https://leancrew.com/all-this/images2026/20260716-Floating%20sphere.png" title="Floating sphere" width="75%" /&gt;&lt;/p&gt;
+&lt;p&gt;We’ll say the sphere has a radius &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/math&gt;, a diameter &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/mrow&gt;&lt;/math&gt;, and a uniform density of &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;msub&gt;&lt;mi&gt;ρ&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;/msub&gt;&lt;/math&gt;. The density of the liquid is &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;msub&gt;&lt;mi&gt;ρ&lt;/mi&gt;&lt;mi&gt;ℓ&lt;/mi&gt;&lt;/msub&gt;&lt;/math&gt;. Because the sphere floats, &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;ρ&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;/msub&gt;&lt;mo&gt;&amp;lt;&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;ρ&lt;/mi&gt;&lt;mi&gt;ℓ&lt;/mi&gt;&lt;/msub&gt;&lt;/mrow&gt;&lt;/math&gt;. The distance &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;/math&gt; is how far the bottom of the sphere is below the liquid surface.&lt;/p&gt;
+&lt;p&gt;The mechanics of the system is simple: the mass of liquid displaced by the submerged portion of the sphere is equal to the entire mass of the sphere. That is,&lt;/p&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;ρ&lt;/mi&gt;&lt;mi&gt;ℓ&lt;/mi&gt;&lt;/msub&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;msub&gt;&lt;mi&gt;V&lt;/mi&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;ρ&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;/msub&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;msub&gt;&lt;mi&gt;V&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;/msub&gt;&lt;/mrow&gt;&lt;/math&gt;
+&lt;p&gt;where&lt;/p&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;V&lt;/mi&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;mi&gt;π&lt;/mi&gt;&lt;msup&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/mfrac&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;mo form="prefix" stretchy="false"&gt;(&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mo form="postfix" stretchy="false"&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;
+&lt;p&gt;is the volume of the submerged portion of the sphere and&lt;/p&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;V&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/mfrac&gt;&lt;mi&gt;π&lt;/mi&gt;&lt;msup&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;/math&gt;
+&lt;p&gt;is the volume of the entire sphere. These expressions are usually given in terms of &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/math&gt;, as I’ve shown here, but eventually I want to work out the value of &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;/math&gt; as a fraction of &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;/math&gt;.&lt;/p&gt;
+&lt;p&gt;In fact, since I want to make a plot, which requires pure numbers, let’s nondimensionalize our variables by saying&lt;/p&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;mi&gt;β&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/mfrac&gt;&lt;mspace width="1.0em"&gt;&lt;/mspace&gt;&lt;mrow&gt;&lt;mi mathvariant="normal"&gt;a&lt;/mi&gt;&lt;mi mathvariant="normal"&gt;n&lt;/mi&gt;&lt;mi mathvariant="normal"&gt;d&lt;/mi&gt;&lt;/mrow&gt;&lt;mspace width="1.0em"&gt;&lt;/mspace&gt;&lt;mi&gt;ρ&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;msub&gt;&lt;mi&gt;ρ&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;/msub&gt;&lt;msub&gt;&lt;mi&gt;ρ&lt;/mi&gt;&lt;mi&gt;ℓ&lt;/mi&gt;&lt;/msub&gt;&lt;/mfrac&gt;&lt;/mrow&gt;&lt;/math&gt;
+&lt;p&gt;Putting all this together and doing a little algebra, we get&lt;/p&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;msub&gt;&lt;mi&gt;ρ&lt;/mi&gt;&lt;mi&gt;ℓ&lt;/mi&gt;&lt;/msub&gt;&lt;mo form="prefix" stretchy="false"&gt;(&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;β&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;msup&gt;&lt;mi&gt;β&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mi&gt;ρ&lt;/mi&gt;&lt;mo form="postfix" stretchy="false"&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/mrow&gt;&lt;/math&gt;
+&lt;p&gt;Since neither &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/math&gt; nor &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;msub&gt;&lt;mi&gt;ρ&lt;/mi&gt;&lt;mi&gt;ℓ&lt;/mi&gt;&lt;/msub&gt;&lt;/math&gt; is zero, the expression in the parentheses must be. In other words,&lt;/p&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;mi&gt;ρ&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo form="prefix" stretchy="false"&gt;(&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;msup&gt;&lt;mi&gt;β&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;β&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msup&gt;&lt;mo form="postfix" stretchy="false"&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;
+&lt;p&gt;Since &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;mo&gt;&amp;lt;&lt;/mo&gt;&lt;mi&gt;β&lt;/mi&gt;&lt;mo&gt;≤&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mrow&gt;&lt;/math&gt;, the right-hand side of the equation must be greater than zero, so we don’t have to worry about negative densities.&lt;/p&gt;
+&lt;p&gt;Typically, we’d want to calculate &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mi&gt;β&lt;/mi&gt;&lt;/math&gt; for a given value of &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mi&gt;ρ&lt;/mi&gt;&lt;/math&gt;, so this equation isn’t in the most useful form. But it’s easy to plot values using this equation, even if we do want &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mi&gt;ρ&lt;/mi&gt;&lt;/math&gt; to be plotted on the horizontal axis.&lt;/p&gt;
+&lt;p&gt;I mentioned earlier that I prefer to show the depth &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;/math&gt; as a fraction of the diameter, not the radius, i.e.,&lt;/p&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;mfrac&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;/mfrac&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mrow&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/mrow&gt;&lt;/mfrac&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mi&gt;β&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mrow&gt;&lt;/math&gt;
+&lt;p&gt;Here’s that plot, which comes out in a sigmoidal shape:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Floating sphere plot" class="ss" src="https://leancrew.com/all-this/images2026/20260716-Floating%20sphere%20plot.png" title="Floating sphere plot" width="100%" /&gt;&lt;/p&gt;
+&lt;p&gt;To figure out how much of Saturn would be under the water, we need Saturn’s density, which we can find on NASA’s old &lt;a href="https://web.archive.org/web/20250821165423/https://nssdc.gsfc.nasa.gov/planetary/factsheet/saturnfact.html"&gt;Saturn Fact Sheet&lt;/a&gt;, as archived on the Wayback Machine. It’s &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;mn&gt;687&lt;/mn&gt;&lt;mspace width="0.278em"&gt;&lt;/mspace&gt;&lt;mrow&gt;&lt;mi mathvariant="normal"&gt;k&lt;/mi&gt;&lt;mi mathvariant="normal"&gt;g&lt;/mi&gt;&lt;mi mathvariant="normal"&gt;/&lt;/mi&gt;&lt;msup&gt;&lt;mi mathvariant="normal"&gt;m&lt;/mi&gt;&lt;mn mathvariant="normal"&gt;3&lt;/mn&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;/mrow&gt;&lt;/math&gt;, which means our density ratio is 0.687. Looking that up in the plot, we see that the submerged portion of Saturn is between 60% and 65% of its diameter. A quick numerical solution gives us 62.7% of the diameter. Only 37.3% would be high and dry.&lt;/p&gt;
+&lt;p&gt;So those many illustrations showing more than half of Saturn’s diameter sticking out above the water are all wet.&lt;sup id="fnref:yes"&gt;&lt;a href="#fn:yes" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt; Of course, just seeing that Saturn’s specific gravity was over 0.5 is enough to know that most of it is underwater, but now we can put a number on it.&lt;/p&gt;
+&lt;div class="footnotes"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:yes"&gt;
+&lt;p&gt;Yes, I went there. &lt;a href="#fnref:yes" rev="footnote"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
       <guid isPermaLink="false">fb736977c1866dfde8f6e0601db5335922fceeeb8a7f85e32521a9c33d0a0eda</guid>
       <pubDate>Fri, 17 Jul 2026 02:14:08 +0000</pubDate>
     </item>
     <item>
       <title>Old icons</title>
       <link>https://leancrew.com/all-this/2026/07/old-icons/</link>
-      <description>There’s been a lot of talk lately about Mac application icons and “squircle jail.” Inspired by this post from Paul Kafasis on the Rogue Amoeba blog, 1 many Mac-adjacent people have taken up his cause…</description>
+      <description>&lt;p&gt;There’s been a lot of talk lately about Mac application icons and “squircle jail.” Inspired by &lt;a href="https://weblog.rogueamoeba.com/2026/06/26/free-the-icons/"&gt;this post&lt;/a&gt; from Paul Kafasis on the Rogue Amoeba blog,&lt;sup id="fnref:tsunami"&gt;&lt;a href="#fn:tsunami" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt; many Mac-adjacent people have taken up his cause to “Free the Icons.”&lt;/p&gt;
+&lt;p&gt;I agree, but Apple’s 50th anniversary has gotten me thinking a lot lately about the early days of the Mac, so it’s only natural that my mind shifted to the highly constrained icons Mac applications had back then.&lt;/p&gt;
+&lt;p&gt;In those days, icons were 32×32 pixel images, and every pixel was either black or white. The classic original Mac application icons were the ones for MacWrite and MacPaint.&lt;sup id="fnref:infinite"&gt;&lt;a href="#fn:infinite" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="MacWrite and MacPaint" class="ss" src="https://leancrew.com/all-this/images2026/20260707-MacWrite%20and%20MacPaint.png" title="MacWrite and MacPaint" width="350px" /&gt;&lt;/p&gt;
+&lt;p&gt;You can see that Apple liked the idea of app icons being a tilted rectangle with some image inside the rectangle to indicate what the app did. The hand was Apple’s way of telling you that this icon was for doing things, and the rectangle was tilted to match the orientation of the hand. (If you were left-handed, this was just another injustice inflicted on you by a cruel right-handed world.)&lt;/p&gt;
+&lt;p&gt;Document icons were typically upright rectangles with dog-eared corners and similar designs inside the rectangle—no hands because documents don’t do anything. But we’re not here to talk about document icons.&lt;/p&gt;
+&lt;p&gt;Other Apple app icons that fit this pattern were the ones for MacDraw and HyperCard:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="MacDraw and HyperCard" class="ss" src="https://leancrew.com/all-this/images2026/20260707-MacDraw%20and%20HyperCard.png" title="MacDraw and HyperCard" width="350px" /&gt;&lt;/p&gt;
+&lt;p&gt;The HyperCard icon was a bit of a departure, in that it had a stack of rectangles, but the idea was the same. There was no image on the top card of the stack, probably because there wasn’t enough room.&lt;/p&gt;
+&lt;p&gt;Many of the complaints about squircle jail are about the loss of icon elements that “stick out” from the rest of the design. As you can see, this idea was there from the very start; the hands stick out from the tilted rectangles.&lt;/p&gt;
+&lt;p&gt;Most other software publishers followed Apple’s lead. Here are the icons for Aldus PageMaker and QuarkXPress:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="PageMaker and Quark XPress" class="ss" src="https://leancrew.com/all-this/images2026/20260707-PageMaker%20and%20Quark%20XPress.png" title="PageMaker and Quark XPress" width="350px" /&gt;&lt;/p&gt;
+&lt;p&gt;Aldus had a slightly different idea for what the hand should look like.&lt;/p&gt;
+&lt;p&gt;It’s important to recall that the Mac didn’t have a Dock back then. You launched an app by finding its icon on your disk and double-clicking.&lt;sup id="fnref:document"&gt;&lt;a href="#fn:document" rel="footnote"&gt;3&lt;/a&gt;&lt;/sup&gt; The icon always had the name of the app underneath it, which was good. If you had both PageMaker and XPress, I imagine it would be easy to confuse such similar icons in a Dock.&lt;/p&gt;
+&lt;p&gt;The folks at THINK took a slightly different approach for their Pascal editor/compiler. They kept the idea of hands, but because nobody programs with a pencil, they put two hands on a keyboard and showed them generating a flowchart:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="THINK Pascal" class="ss" src="https://leancrew.com/all-this/images2026/20260707-THINK%20Pascal.png" title="THINK Pascal" width="128px" /&gt;&lt;/p&gt;
+&lt;p&gt;Other publishers abandoned either the hands or the tilted rectangle or both. As people got more used to working with Macs, these clues for what’s an app and what isn’t became unnecessary, and icon design became less constrained. Even Apple gave up on them for utilities like Disk First Aid and Font/DA Mover:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Disk First Aid and FontDA Mover" class="ss" src="https://leancrew.com/all-this/images2026/20260707-Disk%20First%20Aid%20and%20FontDA%20Mover.png" title="Disk First Aid and FontDA Mover" width="350px" /&gt;&lt;/p&gt;
+&lt;p&gt;And there was, of course, my favorite Apple icon of this era, the one for ResEdit:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ResEdit" class="ss" src="https://leancrew.com/all-this/images2026/20260707-ResEdit.png" title="ResEdit" width="128px" /&gt;&lt;/p&gt;
+&lt;p&gt;This is what old-timers mean when they talk about Apple and whimsy.&lt;/p&gt;
+&lt;div class="footnotes"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:tsunami"&gt;
+&lt;p&gt;As opposed to his wonderful personal blog, &lt;a href="https://onefoottsunami.com/"&gt;&lt;em&gt;One Foot Tsunami&lt;/em&gt;&lt;/a&gt;. &lt;a href="#fnref:tsunami" rev="footnote"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:infinite"&gt;
+&lt;p&gt;All of the icon images in this post are screenshots taken from an &lt;a href="https://infinitemac.org/"&gt;Infinite Mac&lt;/a&gt; session. &lt;a href="#fnref:infinite" rev="footnote"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:document"&gt;
+&lt;p&gt;Yes, you could also launch an app by double-clicking on the icon of one of its documents. But I told you we’re not here to talk about document icons. &lt;a href="#fnref:document" rev="footnote"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
       <guid isPermaLink="false">247cbe5520e813fdfa8454b0e8ee4eb1781a62e36d69904696cb3d18c68d395a</guid>
       <pubDate>Wed, 08 Jul 2026 02:30:46 +0000</pubDate>
-    </item>
-    <item>
-      <title>Indiana jewel box bank</title>
-      <link>https://leancrew.com/all-this/2026/07/indiana-jewel-box-bank/</link>
-      <description>I visited my eighth and final Louis Sullivan jewel box bank yesterday morning. The Purdue State Bank (now a Chase branch) is in West Lafayette, Indiana. As a graduate of the University of Illinois, I…</description>
-      <guid isPermaLink="false">7cc65ff1951f6ac1f0eedcc1523ffcdaff8b4d4038b9147fc3daf6e22674205e</guid>
-      <pubDate>Fri, 03 Jul 2026 00:50:26 +0000</pubDate>
     </item>
   </channel>
 </rss>

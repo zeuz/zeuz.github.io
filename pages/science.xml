@@ -2,10 +2,10 @@
 <rss version="2.0">
   <channel>
     <title>RSS Classifier — Science</title>
-    <link>https://example.invalid/</link>
+    <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Science category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 11 Aug 2026 04:52:19 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 11 Aug 2026 05:31:46 +0000</lastBuildDate>
     <item>
       <title>Apple Reportedly Testing Controversial Chinese Chips as Memory Supply Crunch Intensifies</title>
       <link>https://gizmodo.com/apple-reportedly-testing-controversial-chinese-chips-as-memory-supply-crunch-intensifies-2000796483</link>
@@ -112,11 +112,25 @@
       <pubDate>Mon, 10 Aug 2026 10:00:00 +0000</pubDate>
     </item>
     <item>
+      <title>First-Ever mRNA Flu Vaccine Finally Approved By FDA In Time For 2026 Season – After They Initially Refused To Review It</title>
+      <link>https://www.iflscience.com/first-ever-mrna-flu-vaccine-finally-approved-by-fda-in-time-for-2026-season-after-they-initially-refused-to-review-it-84318</link>
+      <description>Retailers should soon start receiving stocks of the vaccine, which is approved for adults aged 50 and over.</description>
+      <guid isPermaLink="false">7acc11ef24fbd0d00d842ab5d90f8541517b962a21d988f8b4476a2c332cc706</guid>
+      <pubDate>Mon, 10 Aug 2026 09:55:49 +0000</pubDate>
+    </item>
+    <item>
       <title>Anyone For Meat Lettuce? Plants Genetically Engineered To Produce Pig Protein By Adding Animal Gene To Their Cells</title>
       <link>https://www.iflscience.com/anyone-for-meat-lettuce-plants-genetically-engineered-to-produce-pig-protein-by-adding-animal-gene-to-their-cells-84313</link>
       <description>The lettuce, while more meaty than the regular kind, can produce only one of the many components of muscle, and so doesn't look or taste particularly porky.</description>
       <guid isPermaLink="false">ae7757452bb41cb36dbb1c0156aa74fc9b45595512bb4b18656213a830fcfb85</guid>
       <pubDate>Mon, 10 Aug 2026 09:53:58 +0000</pubDate>
+    </item>
+    <item>
+      <title>This Week's Total Solar Eclipse Will Occur On The Perseids Meteor Shower Peak – For The First Time In Recorded Science History</title>
+      <link>https://www.iflscience.com/this-weeks-total-solar-eclipse-will-occur-on-the-perseids-meteor-shower-peak-for-the-first-time-in-recorded-science-history-84327</link>
+      <description>We went through 5,000 years' worth of eclipse data so you don't have to.</description>
+      <guid isPermaLink="false">5f5aa5f8c72d6c6c4e23f14ffe1fd8858c7acaba9b9f78432b957f9d44d0cbf2</guid>
+      <pubDate>Mon, 10 Aug 2026 09:53:29 +0000</pubDate>
     </item>
     <item>
       <title>'Now our lives have changed': Drop in coal burning is helping the African Sahel turn green after decades of drought</title>
@@ -128,9 +142,30 @@
     <item>
       <title>'His urine goes on tour around Europe, showing the kings and queens this glowing pee': The weird world of alchemy before chemistry</title>
       <link>https://www.livescience.com/chemistry/his-urine-goes-on-tour-around-europe-showing-the-kings-and-queens-this-glowing-pee-the-weird-world-of-alchemy-before-chemistry</link>
-      <description>&lt;p&gt;Hannah Osborne is the planet Earth and animals editor at Live Science. Prior to Live Science, she worked for several years at Newsweek as the science editor. Before this she was science editor at…</description>
+      <description>&amp;lt;p&amp;gt;Hannah Osborne is the planet Earth and animals editor at Live Science. Prior to Live Science, she worked for several years at Newsweek as the science editor. Before this she was science editor at International Business Times U.K. Hannah holds a master&amp;#039;s in journalism from Goldsmith&amp;#039;s, University of London.&amp;lt;/p&amp;gt;</description>
       <guid isPermaLink="false">00da5ff7e0fee85469ee36542640b5d88eb01762d3c5ee576cc4b3a2940fbfc6</guid>
       <pubDate>Sun, 09 Aug 2026 12:15:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>World’s First Dogs Genetically Engineered To Remove Allergy-Causing Protein Celebrate Their Second Birthday</title>
+      <link>https://www.iflscience.com/worlds-first-dogs-genetically-engineered-to-remove-allergy-causing-protein-celebrate-their-second-birthday-84319</link>
+      <description>Alfie and Bailey won't stimulate your immune system, but they will pull on your heartstrings.</description>
+      <guid isPermaLink="false">9a5775a627624fae77650b3d44c14136726778813b50e247219f1427469832f3</guid>
+      <pubDate>Sun, 09 Aug 2026 10:26:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>NASA Pulls Off Smart Move To Prolong Lifespan Of Aging Voyager 2 As It Flies 21.37 Billion Kilometers From Earth</title>
+      <link>https://www.iflscience.com/nasa-pulls-off-smart-move-to-prolong-lifespan-of-aging-voyager-2-as-it-flies-2137-billion-kilometers-from-earth-84310</link>
+      <description>Voyager is refusing to die. Long live Voyager.</description>
+      <guid isPermaLink="false">2e61b78bb536806b0a4b27496fecc6ec170af35b8449674132bf961ee5a96d78</guid>
+      <pubDate>Sun, 09 Aug 2026 10:26:08 +0000</pubDate>
+    </item>
+    <item>
+      <title>We Finally Have The First Pictures Of The SpaceX Rocket Crash Site On The Moon – And It Did In Fact Leave A Mark</title>
+      <link>https://www.iflscience.com/we-finally-have-the-first-pictures-of-the-spacex-rocket-crash-site-on-the-moon-and-it-did-in-fact-leave-a-mark-84323</link>
+      <description>A dark scar is now visible near the Einstein Crater, just at the edge of the near side of the Moon.</description>
+      <guid isPermaLink="false">35fc3d2fb4d4ec6ba61378a8bf81cd8e9a32c3a99af7861fa1fc7026c038e411</guid>
+      <pubDate>Sun, 09 Aug 2026 10:25:27 +0000</pubDate>
     </item>
     <item>
       <title>This Year's Super El Niño Is Far Beyond Anything Scientists Have Seen Before: “We're In Uncharted Territory"</title>
@@ -196,6 +231,13 @@
       <pubDate>Fri, 07 Aug 2026 09:48:53 +0000</pubDate>
     </item>
     <item>
+      <title>For The First Time Ever We've Photographed Earth Being Hidden Behind A Martian Moon</title>
+      <link>https://www.iflscience.com/for-the-first-time-ever-weve-photographed-earth-being-hidden-behind-a-martian-moon-84305</link>
+      <description>We've never before seen Earth hidden by another astronomical object from the surface of another world.</description>
+      <guid isPermaLink="false">e654359b3e1613613d183936bd82abe07f11d17b0fb2e90a65b2ea478ddc84d7</guid>
+      <pubDate>Fri, 07 Aug 2026 09:46:52 +0000</pubDate>
+    </item>
+    <item>
       <title>A New Longest-Living Fish? Sturgeon Could Top 400 Years – Far Longer Than Scientists Believed, But Something Indigenous Communities Had Long Understood</title>
       <link>https://www.iflscience.com/a-new-longest-living-fish-sturgeon-could-top-400-years-far-longer-than-scientists-believed-but-something-indigenous-communities-had-long-understood-84308</link>
       <description>Some sturgeon alive today were swimming around when the Declaration of Independence was signed in 1776.</description>
@@ -212,7 +254,7 @@
     <item>
       <title>AI found a weakness in one of the world's most studied encryption systems — is your data under threat?</title>
       <link>https://www.livescience.com/technology/artificial-intelligence/ai-found-a-weakness-in-one-of-the-worlds-most-studied-encryption-systems-is-your-data-under-threat</link>
-      <description>&lt;p&gt;Carly Page is a technology journalist and copywriter specialising in cybersecurity, digital policy, and emerging technologies. With more than a decade of experience, she has become a trusted…</description>
+      <description>&amp;lt;p&amp;gt;Carly Page is a technology journalist and copywriter specialising in cybersecurity, digital policy, and emerging technologies. With more than a decade of experience, she has become a trusted voice in the security community, known for breaking news, deep-dive analysis, and accessible reporting on complex technical issues. Carly previously served as the senior cybersecurity reporter at TechCrunch, where she covered major incidents, nation-state hacking campaigns, and the evolving landscape of privacy regulation. She has also presented on cybersecurity trends at TechCrunch Disrupt.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;As a freelancer, Carly writes for leading publications including Forbes, IT Pro, LeadDev, Resilience Media, The Register, TechCrunch, TechFinitive, TechRadar, TES, The Telegraph, TIME, Uswitch, WIRED, and others. Her work spans news reporting, investigative features, interviews with industry leaders, and consumer-focused explainers on everything from ransomware resilience to the future of AI security.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;In addition to journalism, Carly provides editorial and copywriting services for technology companies and research organisations. &amp;lt;/p&amp;gt;</description>
       <guid isPermaLink="false">4496dc97544740557d66c5e608b9b88c549ca3f6496523b6337a2d58680a8205</guid>
       <pubDate>Fri, 07 Aug 2026 09:30:00 +0000</pubDate>
     </item>
@@ -268,7 +310,7 @@
     <item>
       <title>Engineers build world's first portable diamond-powered quantum computer — it works at room temperature and can be plugged into an outlet</title>
       <link>https://www.livescience.com/technology/quantum/scientists-built-a-room-temperature-quantum-computer-with-diamond-based-qubits</link>
-      <description>&lt;p&gt;Tristan is a science and technology journalist, independent researcher, and consultant. His primary areas of coverage include quantum computing and artificial intelligence (AI). &lt;/p&gt;&lt;p&gt;As a…</description>
+      <description>&amp;lt;p&amp;gt;Tristan is a science and technology journalist, independent researcher, and consultant. His primary areas of coverage include quantum computing and artificial intelligence (AI). &amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;As a researcher, he volunteers at the Center for AGI Investigations where he investigates claims related to the emergence of artificial general intelligence. His journalism career began in 2017 as an intern at The Next Web before eventually becoming the managing editor of The Next Web’s &amp;quot;Neural,&amp;quot; a news vertical dedicated to AI and deep tech. &amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;Prior to his career in science and technology, Tristan served in the U.S. Navy for 10 years as an information systems technician and shipboard engineer. Outside of work, Tristan enjoys gaming with his wife and studying military history. He and his family live in southern California.&amp;lt;/p&amp;gt;</description>
       <guid isPermaLink="false">65c55555b1556545c58c91886eee39e3e092b7807691d0cef260da10d4221447</guid>
       <pubDate>Thu, 06 Aug 2026 09:00:00 +0000</pubDate>
     </item>
@@ -292,13 +334,6 @@
       <description>null</description>
       <guid isPermaLink="false">f158289f0715c83271246f9976c6adcb6a1d401726cd4700f0041950ef8a7efa</guid>
       <pubDate>Wed, 05 Aug 2026 15:48:37 +0000</pubDate>
-    </item>
-    <item>
-      <title>Diagnostic dilemma: Man who consulted ChatGPT about cutting out table salt ended up hospitalized with psychosis</title>
-      <link>https://www.livescience.com/health/diagnostic-dilemma-man-who-consulted-chatgpt-about-cutting-out-table-salt-ended-up-hospitalized-with-psychosis</link>
-      <description>null</description>
-      <guid isPermaLink="false">25e8afe7b52a07c268b062c3210a40cc3a2d16af17ff38367478161f5fd92a94</guid>
-      <pubDate>Wed, 05 Aug 2026 10:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Half of the world's dams could be 'functionally inoperable' by 2060 from being flooded with sediment — and the American West is a major hotspot</title>
@@ -376,13 +411,6 @@
       <description>null</description>
       <guid isPermaLink="false">f12b2498c712bc1ad2e049525c0dded6798f6a26d5ea20f8c51c5a5e2c97b0de</guid>
       <pubDate>Mon, 03 Aug 2026 10:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Hubble telescope takes one of the most detailed looks at neighboring Andromeda galaxy ever — Space photo of the week</title>
-      <link>https://www.livescience.com/space/astronomy/hubble-telescope-takes-one-of-the-most-detailed-looks-at-neighboring-andromeda-galaxy-ever-space-photo-of-the-week</link>
-      <description>null</description>
-      <guid isPermaLink="false">e8ae06b46843704c44ae05e93e5aaf18b4b613cb26f4d1c3b23ca0648fd12511</guid>
-      <pubDate>Sun, 02 Aug 2026 11:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>
