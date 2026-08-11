@@ -1,0 +1,255 @@
+<?xml version="1.0" ?>
+<rss version="2.0">
+  <channel>
+    <title>RSS Classifier — Programming</title>
+    <link>https://example.invalid/</link>
+    <description>Filtered posts in the Programming category</description>
+    <generator>rss-classifier</generator>
+    <lastBuildDate>Tue, 11 Aug 2026 04:52:19 +0000</lastBuildDate>
+    <item>
+      <title>Brett Cannon: My nomination statement for the 2026 Python packaging council</title>
+      <link>https://snarky.ca/my-nomination-statement-for-the-2026-python-packaging-council/</link>
+      <description>I have decided to run for the inaugural/2026 Python packaging council (PPC). I will say I have the support of my employer (Microsoft) to do this, but they didn&amp;apost ask me to and my usual thing…</description>
+      <guid isPermaLink="false">50f564d7298c122ad5e90d171f962505fd15eaa1f3cfb2eb4542c4c2c760d96f</guid>
+      <pubDate>Mon, 10 Aug 2026 22:22:12 +0000</pubDate>
+    </item>
+    <item>
+      <title>James Bennett: Breaking up (lines) is hard to do</title>
+      <link>https://www.b-list.org/weblog/2026/aug/10/newlines/</link>
+      <description>Here’s a seemingly simple question: given a chunk of multi-line text, how do you split it and return an array whose members are the constituent lines of the text? Hopefully, your first instinct is to…</description>
+      <guid isPermaLink="false">3973351cd5c9c9611079a63b6ec6d28d4f4b9f2d87259e248f9198b5c797c187</guid>
+      <pubDate>Mon, 10 Aug 2026 16:42:29 +0000</pubDate>
+    </item>
+    <item>
+      <title>Ed Crewe: From Routing Checks to Trajectory Testing: Evaluating an Agentic Chatbot</title>
+      <link>http://edcrewe.blogspot.com/2026/08/from-routing-checks-to-trajectory.html</link>
+      <description>pre[class*="language-"] { border-radius: 6px; font-size: 14px; overflow-x: auto; } Which Agentic Chatbot? I have been working on a Python based AI test framework for a chatbot interface for my…</description>
+      <guid isPermaLink="false">0258814a3a3a11ed90ff5fbc97524eb872699b5676dc6adcba1b4c57efbeab3c</guid>
+      <pubDate>Mon, 10 Aug 2026 10:37:15 +0000</pubDate>
+    </item>
+    <item>
+      <title>Django Weblog: Django is moving to an annual release cycle</title>
+      <link>https://www.djangoproject.com/weblog/2026/aug/10/annual-release-cycle/</link>
+      <description>Django's Steering Council has accepted the Django Enhancement Proposal DEP 20 to move Django to an annual release cycle. From January 2028, Django will make one feature release a year, giving every…</description>
+      <guid isPermaLink="false">8189e59fdaadbf92603cb1d6bd486b867321811edd70ed9fe522d0bf1e4906b5</guid>
+      <pubDate>Mon, 10 Aug 2026 09:00:49 +0000</pubDate>
+    </item>
+    <item>
+      <title>Ned Batchelder: Caller-specific coverage</title>
+      <link>https://nedbatchelder.com/blog/202608/callerspecific_coverage</link>
+      <description>I’ve had an idea rattling around to get more detail from coverage measurement. Can we measure the coverage in a function separately for each caller of the function? Here’s why I want it: in Acidica…</description>
+      <guid isPermaLink="false">9046e14b16ce5c56c6ecad2fb988702dc333c6cc52c9167b274f05c4b6899978</guid>
+      <pubDate>Sun, 09 Aug 2026 17:56:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: Free real-world Pandas exercises, with solutions</title>
+      <link>https://lernerpython.com/2026/08/09/free-real-world-pandas-exercises/</link>
+      <description>If you want to get better at Pandas, the hard part isn’t finding tutorials. It’s finding problems worth solving. Most exercises hand you a tidy little table of five rows and ask you to sum a column…</description>
+      <guid isPermaLink="false">12199f10fc1781fe5fd0bebc9205b62df05d56720aaedbac3c55c180dbbc7c07</guid>
+      <pubDate>Sun, 09 Aug 2026 14:12:10 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hynek Schlawack: Production-ready Python Docker Containers with uv</title>
+      <link>https://hynek.me/articles/docker-uv/</link>
+      <description>Starting with 0.3.0 , Astral’s uv brought many great features, including support for cross-platform lock files uv.lock . Together with subsequent fixes, it has become Python’s finest workflow tool…</description>
+      <guid isPermaLink="false">351e017e704d299713340494f1b00466c1fbad283644bc0efaf6944bcfa687f3</guid>
+      <pubDate>Thu, 06 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Django Weblog: Django 6.1 released</title>
+      <link>https://www.djangoproject.com/weblog/2026/aug/05/django-61-released/</link>
+      <description>The Django team is happy to announce the release of Django 6.1. The release notes offer a harmonious mélange of new features and usability improvements. A few highlights are: Model field fetch modes…</description>
+      <guid isPermaLink="false">84d3ec392690b0fe5baa4b33ce7be08a2d27c79383b8a584cc1c6e3b21702d2d</guid>
+      <pubDate>Wed, 05 Aug 2026 19:30:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Tryton News: Security Release for issue #14947</title>
+      <link>https://discuss.tryton.org/t/security-release-for-issue-14947/9302</link>
+      <description>Cédric Krier has discovered that Tryton does not prevent weasyprint to access local files when rendering HTML report to PDF. Impact CVSS v3.0 Base Score: 4.9 Attack Vector: Network Attack…</description>
+      <guid isPermaLink="false">449c23fb53557970c00df4485146d3989ddd5a4b6583b9ff86a6215a8a2c4a11</guid>
+      <pubDate>Wed, 05 Aug 2026 06:00:46 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python GUIs: Handling Image Drag and Drop from Web Browsers in PyQt6 — Why toLocalFile() returns an empty string and how to handle remote image drops correctly</title>
+      <link>https://www.pythonguis.com/faq/dragging-and-dropping-in-rich-text-example-app/</link>
+      <description>When dragging and dropping images from a web browser into a PyQt6 rich text editor, toLocalFile() sometimes returns a blank string. It works for some images (like Google image search results) but…</description>
+      <guid isPermaLink="false">8c74933aa09ecd525ef293de6f9201e7432e2231f305d43f43c22c4304da78c1</guid>
+      <pubDate>Wed, 05 Aug 2026 06:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Insider: Python 3.14.7 and 3.13.15 are now available!</title>
+      <link>https://blog.python.org/2026/08/python-3147-31315/</link>
+      <description>A pair of bug fix releases await your upgrade.</description>
+      <guid isPermaLink="false">59622f567df45159fbf0ba930043b03bdfdbe11a3dd2b240606651ada0e6859a</guid>
+      <pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Marc-André Lemburg: Pymmich – an AI-first OSS project 🐍✨</title>
+      <link>https://malemburg.com/pymmich-an-ai-first-oss-project/</link>
+      <description>A couple of months ago, I decided to switch to Immich , the photo management software, for storing and managing photos. I had used Nextcloud Memories before that, but found the Immich app more…</description>
+      <guid isPermaLink="false">cf26f37fff636eef1d522ee8cfc4c2072d24d347a6edfcbcae320afa910420cc</guid>
+      <pubDate>Tue, 04 Aug 2026 20:36:44 +0000</pubDate>
+    </item>
+    <item>
+      <title>Django Weblog: Django security releases issued: 6.0.8 and 5.2.17</title>
+      <link>https://www.djangoproject.com/weblog/2026/aug/04/security-releases/</link>
+      <description>In accordance with our security release policy , the Django team is issuing releases for Django 6.0.8 and Django 5.2.17 . These releases address the security issues detailed below. We encourage…</description>
+      <guid isPermaLink="false">b6b5bb0448ddea0ed46b4faab4cb9efc1db67aa26c761f478c4ad15e48033ea7</guid>
+      <pubDate>Tue, 04 Aug 2026 11:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Insider: Python 3.15.0 candidate 1 is here!</title>
+      <link>https://blog.python.org/2026/08/python-3150-rc1/</link>
+      <description>Get those wheels rolling!</description>
+      <guid isPermaLink="false">d0df44ca0b99b2b86bcdf7c4d8d9a8afdf06e9f3b0ab7bf349609171414c7020</guid>
+      <pubDate>Tue, 04 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python⇒Speed: Faster floating point math with Rust’s new API</title>
+      <link>https://pythonspeed.com/articles/faster-float-math-rust/</link>
+      <description>Floating point math is often slower than integer math because the compiler is being conservative about how it optimizes your code. While some programming languages already had solutions of a sort,…</description>
+      <guid isPermaLink="false">2e65ea554752aef9c4b7ee58e6213c686effff3f9ba685dcb7738ea8f77f1272</guid>
+      <pubDate>Sun, 02 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Glyph Lefkowitz: Adversarial Communication</title>
+      <link>https://blog.glyph.im/2026/06/adversarial-communication.html</link>
+      <description>As I have discussed in previous posts , “AIs” can make mistakes . In fact, they do make mistakes, and their mistake-making patterns are such that where and how they will make mistakes is both…</description>
+      <guid isPermaLink="false">e9ab8d77a1131b6c8526dda4ea72459f588bdc1528fca48d7cb7439cee565630</guid>
+      <pubDate>Tue, 23 Jun 2026 20:06:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hynek Schlawack: How to Ditch Codecov for Python Projects</title>
+      <link>https://hynek.me/articles/ditch-codecov-python/</link>
+      <description>Codecov’s unreliability breaking CI on my open source projects has been a constant source of frustration for me for years. I have found a way to enforce coverage over a whole GitHub Actions…</description>
+      <guid isPermaLink="false">a6441ae356de287204172b08a8f2f527e2023ee5f334bbd351a7d79d27ec8d35</guid>
+      <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Glyph Lefkowitz: Opaque Types in Python</title>
+      <link>https://blog.glyph.im/2026/05/opaque-types-in-python.html</link>
+      <description>Let’s say you’re writing a Python library. In this library, you have some collection of state that represents “options” or “configuration” for a bunch of operations. Such a set of options is a…</description>
+      <guid isPermaLink="false">8abb1564dd5ccef0d7eac2f0dee217e8068248019e0ccf95c9eecfff926d1732</guid>
+      <pubDate>Fri, 22 May 2026 00:33:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Donovan Preston: Using osascript with terminal agents on macOS</title>
+      <link>https://donovanpreston.blogspot.com/2026/04/using-osascript-with-terminal-agents-on.html</link>
+      <description>Here is a useful trick that is unreasonably effective for simple computer use goals using modern terminal agents. On macOS, there has been a terminal osascript command since the original release…</description>
+      <guid isPermaLink="false">87993b210824a00db1b89731621f4f259be5c57d5c0f8c682821b04ae1f7a95f</guid>
+      <pubDate>Sat, 04 Apr 2026 13:31:26 +0000</pubDate>
+    </item>
+    <item>
+      <title>Donovan Preston: "Start Drag" and "Drop" to select text with macOS Voice Control</title>
+      <link>https://donovanpreston.blogspot.com/2026/03/start-drag-and-drop-to-select-text-with.html</link>
+      <description>I have been using macOS voice control for about three years. First it was a way to reduce pain from excessive computer use. It has been a real struggle. Decades of computer use habits with typing and…</description>
+      <guid isPermaLink="false">d420c266f30f3d23800605b7d9d6acbfd1fb9841960c250b73502da84cb2b59f</guid>
+      <pubDate>Mon, 16 Mar 2026 11:04:46 +0000</pubDate>
+    </item>
+    <item>
+      <title>Glyph Lefkowitz: What Is Code Review For?</title>
+      <link>https://blog.glyph.im/2026/03/what-is-code-review-for.html</link>
+      <description>Humans Are Bad At Perceiving Humans are not particularly good at catching bugs. For one thing, we get tired easily. There is some science on this, indicating that humans can’t even maintain enough…</description>
+      <guid isPermaLink="false">f6f41609faee482b206809b319a0c95c7db77638877302477c552d0d7a1afe1e</guid>
+      <pubDate>Wed, 04 Mar 2026 05:24:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Glyph Lefkowitz: The “Dependency Cutout” Workflow Pattern, Part I</title>
+      <link>https://blog.glyph.im/2025/11/dependency-cutout-workflow-pattern.html</link>
+      <description>Tell me if you’ve heard this one before. You’re working on an application. Let’s call it “FooApp”. FooApp has a dependency on an open source library, let’s call it “LibBar”. You find a bug in LibBar…</description>
+      <guid isPermaLink="false">46e3039e7a941f8b7327ca33a1bd6dfd8a8d4f6ccfec07d80f2ee09aa5abbe3c</guid>
+      <pubDate>Tue, 11 Nov 2025 01:44:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Glyph Lefkowitz: The Futzing Fraction</title>
+      <link>https://blog.glyph.im/2025/08/futzing-fraction.html</link>
+      <description>The most optimistic vision of generative AI 1 is that it will relieve us of the tedious, repetitive elements of knowledge work so that we can get to work on the really interesting problems that such…</description>
+      <guid isPermaLink="false">f31e2c3452abd45956c71d09284a822cbd0f2e3f13ebc2c9fabf1761a536fd48</guid>
+      <pubDate>Fri, 15 Aug 2025 07:51:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Glyph Lefkowitz: The Best Line Length</title>
+      <link>https://blog.glyph.im/2025/08/the-best-line-length.html</link>
+      <description>What’s a good maximum line length for your coding standard? This is, of course, a trick question. By posing it as a question, I have created the misleading impression that it is a question, but Black…</description>
+      <guid isPermaLink="false">a36dc6fcf41b5de52b8f9de2456ab11bc8c9bd4e761b33dc0ef7a68fcc262b8a</guid>
+      <pubDate>Fri, 08 Aug 2025 05:37:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Glyph Lefkowitz: Stop Writing `__init__` Methods</title>
+      <link>https://blog.glyph.im/2025/04/stop-writing-init-methods.html</link>
+      <description>The History Before dataclasses were added to Python in version 3.7 — in June of 2018 — the __init__ special method had an important use. If you had a class representing a data structure — for example…</description>
+      <guid isPermaLink="false">374503d99b3fc7674e06d7a2f961f4feae9dcb1c964f2ab25bec60f46709d52e</guid>
+      <pubDate>Thu, 17 Apr 2025 22:35:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Glyph Lefkowitz: The “Active Enum” Pattern</title>
+      <link>https://blog.glyph.im/2025/01/active-enum.html</link>
+      <description>Have you ever written some Python code that looks like this? 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 from enum import Enum , auto class SomeNumber ( Enum ): one = auto () two = auto () three =…</description>
+      <guid isPermaLink="false">cf715a7e40d1dd6d34720ab1ddb74bad085f3beac2279239659808d0b677c8e8</guid>
+      <pubDate>Fri, 10 Jan 2025 22:37:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hynek Schlawack: Python Project-Local Virtualenv Management Redux</title>
+      <link>https://hynek.me/articles/python-virtualenv-redux/</link>
+      <description>One of my first TIL entries was about how you can imitate Node’s node_modules semantics in Python on UNIX-like operating systems. A lot has happened since then (to the better!) and it’s time for an…</description>
+      <guid isPermaLink="false">65f936d1ee1ab0f0a5def0b2ff15449017c1008408e09dd383be43c0206628fc</guid>
+      <pubDate>Mon, 23 Sep 2024 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Glyph Lefkowitz: Python macOS Framework Builds</title>
+      <link>https://blog.glyph.im/2024/09/python-macos-framework-builds.html</link>
+      <description>When you build Python, you can pass various options to ./configure that change aspects of how it is built. There is documentation for all of these options , and they are things like --prefix to tell…</description>
+      <guid isPermaLink="false">c913733cb74cc893873c0ea0fa6903bb3b081da723c14987c153629e0cf45330</guid>
+      <pubDate>Wed, 11 Sep 2024 19:43:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hynek Schlawack: Why I Still Use Python Virtual Environments in Docker</title>
+      <link>https://hynek.me/articles/docker-virtualenv/</link>
+      <description>Whenever I publish something about my Python Docker workflows, I invariably get challenged about whether it makes sense to use virtual environments in Docker containers. As always, it’s a…</description>
+      <guid isPermaLink="false">57885e311c8122bd0365a7d9210e256dd9ad962efcd1c5a4bbf868fffca23194</guid>
+      <pubDate>Mon, 02 Sep 2024 11:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Glyph Lefkowitz: Against Innovation Tokens</title>
+      <link>https://blog.glyph.im/2024/07/against-innovation-tokens.html</link>
+      <description>Updated 2024-07-04: After some discussion, added an epilogue going into more detail about the value of the distinction between the two types of tokens. In 2015, Dan McKinley laid out a model for…</description>
+      <guid isPermaLink="false">fb7dac2b84b715595902eeab52eaedade58c7f0dd5efc8e15b9aadec02141952</guid>
+      <pubDate>Thu, 04 Jul 2024 19:54:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Moshe Zadka: The Prehistory of Kubernetes: From Cubic Equations to Cloud Orchestration</title>
+      <link>https://orbifold.xyz/cubic-k8s.html</link>
+      <description>The story of Kubernetes , the leading container orchestration platform, is a tale of mathematical innovation, wartime necessity, and the open-source revolution. It begins, perhaps unexpectedly,…</description>
+      <guid isPermaLink="false">2acc2478ecf0cfdfb302e5a435dd7515b36c4a3f99a6a1dd12ae3c6410f7e363</guid>
+      <pubDate>Thu, 20 Jun 2024 04:30:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Glyph Lefkowitz: A Grand Unified Theory of the AI Hype Cycle</title>
+      <link>https://blog.glyph.im/2024/05/grand-unified-ai-hype.html</link>
+      <description>The Cycle The history of AI goes in cycles, each of which looks at least a little bit like this: Scientists do some basic research and develop a promising novel mechanism, N . One important detail…</description>
+      <guid isPermaLink="false">d4a3c9376c91eb985bcd5e03faddb6f9f79253c31e85266f3707a1f3ff7a4322</guid>
+      <pubDate>Wed, 22 May 2024 16:58:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hynek Schlawack: You Can Build Portable Binaries of Python Applications</title>
+      <link>https://hynek.me/til/python-portable-binaries/</link>
+      <description>Contrary to popular belief, it’s possible to ship portable executables of Python applications without sending your users to Python packaging hell.</description>
+      <guid isPermaLink="false">538747a7d1210b2e1eb43f9e942241c02ee071569953b11f5a690d3aa45657a1</guid>
+      <pubDate>Tue, 19 Mar 2024 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Glyph Lefkowitz: Unsigned Commits</title>
+      <link>https://blog.glyph.im/2024/01/unsigned-commits.html</link>
+      <description>I am going to tell you why I don’t think you should sign your Git commits, even though doing so with SSH keys is now easier than ever. But first, to contextualize my objection, I have a brief…</description>
+      <guid isPermaLink="false">3c3eacaf09adb606379ed75acda072d59eb1a644db4f24d570f64094cdef40ca</guid>
+      <pubDate>Thu, 25 Jan 2024 00:29:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Glyph Lefkowitz: Your Text Editor (Probably) Isn’t Malware Any More</title>
+      <link>https://blog.glyph.im/2024/01/no-more-editor-malware.html</link>
+      <description>In 2015, I wrote one of my more popular blog posts, “ Your Text Editor Is Malware ”, about the sorry state of security in text editors in general, but particularly in Emacs and Vim. It’s nearly been a…</description>
+      <guid isPermaLink="false">9e85f42e1cd51aa4320d6109d2e0e4963310ffced5423fa98ddeef34687cf83f</guid>
+      <pubDate>Tue, 23 Jan 2024 02:05:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

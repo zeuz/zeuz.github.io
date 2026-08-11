@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<rss version="2.0">
+  <channel>
+    <title>RSS Classifier — Misc</title>
+    <link>https://example.invalid/</link>
+    <description>Filtered posts in the Misc category</description>
+    <generator>rss-classifier</generator>
+    <lastBuildDate>Tue, 11 Aug 2026 04:52:19 +0000</lastBuildDate>
+    <item>
+      <title>A two-month calendar on my Desktop</title>
+      <link>https://leancrew.com/all-this/2026/08/a-two-month-calendar-on-my-desktop/</link>
+      <description>A few days ago, I posted this image on Mastodon : The code I ran to get this two-month calendar on my Desktop was bash: if [ $(date +"%-d") -gt 15 ]; then cal -A 1 else cal -B 1 fi |\…</description>
+      <guid isPermaLink="false">825a60e96dff9781dc6392a0d74ed5449208f7d13ff0c0e6f82664029e3fd177</guid>
+      <pubDate>Wed, 05 Aug 2026 21:34:08 +0000</pubDate>
+    </item>
+    <item>
+      <title>My rules for using spreadsheets</title>
+      <link>https://leancrew.com/all-this/2026/08/my-rules-for-using-spreadsheets/</link>
+      <description>[Equations in this post may not look right (or appear at all) in your RSS reader. Go to the original article to see them rendered properly.] My fundamental rule is Don’t , but a single word wouldn’t…</description>
+      <guid isPermaLink="false">f2a4c94211783bb8be479606678fbf2a82fe3862579b27a6cbca4a871a648418</guid>
+      <pubDate>Sat, 01 Aug 2026 15:29:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>Plotting baseball team progress</title>
+      <link>https://leancrew.com/all-this/2026/07/plotting-baseball-team-progress/</link>
+      <description>I noticed today that the Cubs and Yankees have the same record. I knew that the Cubs have had some extreme ups and downs this year, but I wasn’t sure if the Yankees had, so I decided to plot their…</description>
+      <guid isPermaLink="false">8f9d9dfd0e24e3972912598bba026bf5c52d4dbf0df97338d08d4884c33d50ca</guid>
+      <pubDate>Fri, 24 Jul 2026 01:36:45 +0000</pubDate>
+    </item>
+    <item>
+      <title>Sum of cubes via difference tables</title>
+      <link>https://leancrew.com/all-this/2026/07/sum-of-cubes-via-difference-tables/</link>
+      <description>[Equations in this post may not look right (or appear at all) in your RSS reader. Go to the original article to see them rendered properly.] Yesterday I watched the most recent Numberphile video , in…</description>
+      <guid isPermaLink="false">3155bc47228d023cfc49d32d24975d2fd0972561811b59f16604b05f9960c285</guid>
+      <pubDate>Mon, 20 Jul 2026 02:07:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>Floating Saturn calculations</title>
+      <link>https://leancrew.com/all-this/2026/07/floating-saturn-calculations/</link>
+      <description>[Equations in this post may not look right (or appear at all) in your RSS reader. Go to the original article to see them rendered properly.] You’ve probably seen somewhere that the density of Saturn…</description>
+      <guid isPermaLink="false">fb736977c1866dfde8f6e0601db5335922fceeeb8a7f85e32521a9c33d0a0eda</guid>
+      <pubDate>Fri, 17 Jul 2026 02:14:08 +0000</pubDate>
+    </item>
+    <item>
+      <title>Old icons</title>
+      <link>https://leancrew.com/all-this/2026/07/old-icons/</link>
+      <description>There’s been a lot of talk lately about Mac application icons and “squircle jail.” Inspired by this post from Paul Kafasis on the Rogue Amoeba blog, 1 many Mac-adjacent people have taken up his cause…</description>
+      <guid isPermaLink="false">247cbe5520e813fdfa8454b0e8ee4eb1781a62e36d69904696cb3d18c68d395a</guid>
+      <pubDate>Wed, 08 Jul 2026 02:30:46 +0000</pubDate>
+    </item>
+    <item>
+      <title>Indiana jewel box bank</title>
+      <link>https://leancrew.com/all-this/2026/07/indiana-jewel-box-bank/</link>
+      <description>I visited my eighth and final Louis Sullivan jewel box bank yesterday morning. The Purdue State Bank (now a Chase branch) is in West Lafayette, Indiana. As a graduate of the University of Illinois, I…</description>
+      <guid isPermaLink="false">7cc65ff1951f6ac1f0eedcc1523ffcdaff8b4d4038b9147fc3daf6e22674205e</guid>
+      <pubDate>Fri, 03 Jul 2026 00:50:26 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

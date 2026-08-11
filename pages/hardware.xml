@@ -1,0 +1,122 @@
+<?xml version="1.0" ?>
+<rss version="2.0">
+  <channel>
+    <title>RSS Classifier — Hardware</title>
+    <link>https://example.invalid/</link>
+    <description>Filtered posts in the Hardware category</description>
+    <generator>rss-classifier</generator>
+    <lastBuildDate>Tue, 11 Aug 2026 04:52:19 +0000</lastBuildDate>
+    <item>
+      <title>The PiShot Is Ready For Your Snaps</title>
+      <link>https://hackaday.com/2026/08/10/the-pishot-is-ready-for-your-snaps/</link>
+      <description>The formula for a Raspberry Pi camera is by now a straightforward one: take a Pi and camera module, add a display, buttons, and battery, and you’re done. This doesn’t mean that there’s no scope for…</description>
+      <guid isPermaLink="false">b04f0f65fd9068b8a93ffce8561d23d287766c987c02a337bda378467d47e4fb</guid>
+      <pubDate>Tue, 11 Aug 2026 02:00:10 +0000</pubDate>
+    </item>
+    <item>
+      <title>Cotton-Fiberglass Composite Makes Lightweight RV Countertops</title>
+      <link>https://hackaday.com/2026/08/10/cotton-fiberglass-composite-makes-lightweight-rv-countertops/</link>
+      <description>You’ve seen fiber-reinforced-plastic before, no doubt, but perhaps never quite like in this video by [Whitburn Studio]: it’s still got the usual resin, but instead of glass or carbon fibers, he’s…</description>
+      <guid isPermaLink="false">3f5b287246934b5cebd66790bbe652fb070396819467387d0e213e674ceba22b</guid>
+      <pubDate>Mon, 10 Aug 2026 23:00:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>Building a bicycle dropper seat post</title>
+      <link>https://hackaday.com/2026/08/10/building-a-bicycle-dropper-seat-post/</link>
+      <description>A recent addition to mountain bikes is the dropper seat post. This invention is in the vein of office swivel chairs, allowing the seat height to be adjusted with a simple handlebar mounted…</description>
+      <guid isPermaLink="false">b24531d256da1f427e9c7c8e1e619e65ccc0ed600b609735d3fc540768b24658</guid>
+      <pubDate>Mon, 10 Aug 2026 20:00:54 +0000</pubDate>
+    </item>
+    <item>
+      <title>Teardown of an Oxford Nanopore MinION DNA Sequencer</title>
+      <link>https://hackaday.com/2026/08/10/teardown-of-an-oxford-nanopore-minion-dna-sequencer/</link>
+      <description>Detail of the nanopore chip. (Credit: mikeselectricstuff, YouTube) For most people the term ‘DNA sequencing’ probably brings to mind large, expensive laboratory equipment in sterile rooms, but…</description>
+      <guid isPermaLink="false">5a95f4af9d79210ce9df115a13e4ac35ace85b08a7f6481b82ff4dd14c04b9ff</guid>
+      <pubDate>Mon, 10 Aug 2026 18:00:14 +0000</pubDate>
+    </item>
+    <item>
+      <title>Linux Fu: Heads or Tails for VPN</title>
+      <link>https://hackaday.com/2026/08/10/linux-fu-heads-or-tails-for-vpn/</link>
+      <description>If you’ve done much networking, you surely know the frustration of trying to connect to something, say a Raspberry Pi, that lives behind your consumer router. There are a number of solutions for…</description>
+      <guid isPermaLink="false">100dcf75058b521ea17b29ef4e4519ad0666cdafd02104fa87cd8825b3ebcb32</guid>
+      <pubDate>Mon, 10 Aug 2026 17:00:15 +0000</pubDate>
+    </item>
+    <item>
+      <title>The Physics of Keeping Thermal Power Stations Cool</title>
+      <link>https://hackaday.com/2026/08/10/the-physics-of-keeping-thermal-power-stations-cool/</link>
+      <description>Recently thermal power stations have been in the news quite a bit, mostly in the context of them being throttled back or shut down due to the river water used to cool them either getting too warm…</description>
+      <guid isPermaLink="false">318f42f2f3b7ff508b4d9a3f317bcd09f6347ed82de92ec79f9c4d1b28ad8555</guid>
+      <pubDate>Mon, 10 Aug 2026 14:00:09 +0000</pubDate>
+    </item>
+    <item>
+      <title>telephones caught in between</title>
+      <link>https://computer.rip/2026-08-02-telephone-leasing.html</link>
+      <description>During the heyday of AT&amp;T, it was often said that the telephone system was the largest machine ever built. The "hello machine" certainly was vast, but whether or not you consider it to be a single…</description>
+      <guid isPermaLink="false">688067465cb3575454d58b468057456c73070e4da5ef8104cb09ebb4397b9da3</guid>
+      <pubDate>Sun, 02 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>email encryption</title>
+      <link>https://computer.rip/2026-07-19-email-encryption.html</link>
+      <description>Email, one of the most pervasive and enduring technologies of computer networking, was invented in about a dozen places by dozens of people in the 1960s. It's hard to lay out a clear history of the…</description>
+      <guid isPermaLink="false">21905b59b62c499017cec92571df43777a0677d5897dd315952ebd98204bab10</guid>
+      <pubDate>Sun, 19 Jul 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>megawatts by microwave</title>
+      <link>https://computer.rip/2026-07-04-microwave-and-power.html</link>
+      <description>In 1914 the Department of the Interior, through the Bureau of Reclamation, investigated the possibilities of developing the Columbia River. Thousands of arid but potentially fertile acres…</description>
+      <guid isPermaLink="false">bf8843a2f2732be04dd2ea45df0a9896208dd54e165db15ac0a4420ae3358583</guid>
+      <pubDate>Sat, 04 Jul 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>from hookswitch to grave</title>
+      <link>https://computer.rip/2026-06-14-hookswitch-to-grave.html</link>
+      <description>Through decades of consolidation, reorganization, and divestiture, AT&amp;T left a famously complicated corporate history. One of the greatest enterprises in American history, arguably the greatest…</description>
+      <guid isPermaLink="false">8c5fb8e2fce2973c1639306da1758bc3b64f42ede5afa840e98d72b1b6606891</guid>
+      <pubDate>Sun, 14 Jun 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>On Reading SRAMs in IR Images, and Establishing Bounds on Trust</title>
+      <link>https://www.bunniestudios.com/blog/2026/on-reading-srams-in-ir-images-and-establishing-bounds-on-trust/</link>
+      <description>Last month’s name that ware demonstrates that even though non-destructive IR imaging is not capable of resolving an individual bit cell, at least at 22nm it is still possible to constrain the number…</description>
+      <guid isPermaLink="false">d492abc8e411c1f171076f43e3e976e417c0ec053fdf2f13e05f9ddca51d621c</guid>
+      <pubDate>Sun, 31 May 2026 15:21:33 +0000</pubDate>
+    </item>
+    <item>
+      <title>the totalisator</title>
+      <link>https://computer.rip/2026-05-31-totalisator.html</link>
+      <description>It has been an unfortunate turn in the software industry, one of many as of late, that gambling is once again one of its primary engines. With the rise of almost nationwide online sports betting,…</description>
+      <guid isPermaLink="false">d1a04fbe634da49e14f6d099bf0f0991a8dc4c0cdbca0cc7863f0a78643b2d6d</guid>
+      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>extremely low frequencies</title>
+      <link>https://computer.rip/2026-05-09-extremely-low-frequencies.html</link>
+      <description>The submarine is a surprisingly ancient technology—at least in its early, primitive forms. The idea is quite simple, that a well-enough-sealed boat ought to be able to submerge and resurface. It's…</description>
+      <guid isPermaLink="false">6a9ef6b42a629ba2f693395d31005995b90e2cb8592c82316c8b1cff65b300f1</guid>
+      <pubDate>Sat, 09 May 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>voice modems</title>
+      <link>https://computer.rip/2026-04-26-voice-modems.html</link>
+      <description>If you've done much with modern cellphones, you've probably noticed just how odd the architecture can be around audio. Specifically, I mean call audio: modern smartphones have made call audio less…</description>
+      <guid isPermaLink="false">fc7697f89b68f0b6816631cf505a57aa87e5d8c1a0663f7a8adabd7057d5f1ef</guid>
+      <pubDate>Sun, 26 Apr 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>IrDA</title>
+      <link>https://computer.rip/2026-04-11-IrDA.html</link>
+      <description>Light: it's the radiation we can see. The communications potential of light is obvious, and indeed, many of the earliest forms of long-distance communication relied on it: signal fires, semaphore,…</description>
+      <guid isPermaLink="false">80fda2fef0c14a36bd9b75a3cd6afda2b52fec150a8fa5b0c67878cf944ce2c2</guid>
+      <pubDate>Sat, 11 Apr 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>LotusNotes</title>
+      <link>https://computer.rip/2026-03-14-lotusnotes.html</link>
+      <description>I tend to focus on the origin of the computer within the military. Particularly in the early days of digital computing, the military was a key customer, and fundamental concepts of modern computing…</description>
+      <guid isPermaLink="false">8eb78543c979968c9cafe6db9305adbcce8c3d166d0491fe97cd845434e8caa5</guid>
+      <pubDate>Sat, 14 Mar 2026 00:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

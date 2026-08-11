@@ -1,0 +1,584 @@
+<?xml version="1.0" ?>
+<rss version="2.0">
+  <channel>
+    <title>RSS Classifier — Security</title>
+    <link>https://example.invalid/</link>
+    <description>Filtered posts in the Security category</description>
+    <generator>rss-classifier</generator>
+    <lastBuildDate>Tue, 11 Aug 2026 04:52:19 +0000</lastBuildDate>
+    <item>
+      <title>China-Linked Hackers Deploy New StormEncryptor Ransomware, Likely via N-central Flaw</title>
+      <link>https://thehackernews.com/2026/08/china-linked-hackers-deploy-new.html</link>
+      <description>Microsoft has disclosed that Storm-1175, a financially motivated threat actor linked to China, has deployed a previously undocumented ransomware strain called StormEncryptor. The use of…</description>
+      <guid isPermaLink="false">f34414edaa6396fdfcb7cce5f8bf1f7d8268d666c5878b4878afa57fb350dcfe</guid>
+      <pubDate>Mon, 10 Aug 2026 16:38:37 +0000</pubDate>
+    </item>
+    <item>
+      <title>Kimsuky Builds Offline AI Stack to Boost Phishing and Automate Malware Development</title>
+      <link>https://thehackernews.com/2026/08/kimsuky-builds-offline-ai-stack-that.html</link>
+      <description>North Korea's state hackers are no longer content to type prompts into public chatbots. One of the country's main espionage groups has begun running artificial intelligence (AI) offline on its own…</description>
+      <guid isPermaLink="false">3cb49abe519483ce3ad88fd06aef4a8ddd9bd26383210327f7041bfcae5002c3</guid>
+      <pubDate>Mon, 10 Aug 2026 13:19:58 +0000</pubDate>
+    </item>
+    <item>
+      <title>New Passkey Attacks Can Recover Synced Private Keys or Bypass Phishing-Resistant MFA</title>
+      <link>https://thehackernews.com/2026/08/new-passkey-attacks-can-recover-synced.html</link>
+      <description>Three separate research efforts last week demonstrated ways to defeat passkey protections without breaking the cryptography they rest on. Passkeys are designed to replace reusable passwords and…</description>
+      <guid isPermaLink="false">d9e77161bf096e6ebc91569c079f5f5cdfe088efd92442d14e6b92cbd7ed33f8</guid>
+      <pubDate>Mon, 10 Aug 2026 12:25:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>TrueConf Server Flaws Exploited to Replace Client Installers with PhantomCore</title>
+      <link>https://thehackernews.com/2026/08/head-mare-exploits-trueconf-flaws-to.html</link>
+      <description>The threat actor known as Head Mare has been observed weaponizing security flaws in unpatched TrueConf servers once again in attacks targeting Russian companies spanning instrumentation,…</description>
+      <guid isPermaLink="false">5e9fbcaaf3586f61ca4e801666eab2428d1c1b032eda2a32bce27759be37214f</guid>
+      <pubDate>Mon, 10 Aug 2026 11:33:41 +0000</pubDate>
+    </item>
+    <item>
+      <title>Solidity Pro VS Code Extensions Steal Crypto Wallets, API Keys, and Credentials</title>
+      <link>https://thehackernews.com/2026/08/solidity-pro-vs-code-extensions-steal.html</link>
+      <description>Cybersecurity researchers have flagged a malicious Microsoft Visual Studio Code (VS Code) extension named Solidity Pro ("solidity-pro") that has been observed delivering a browser wallet and…</description>
+      <guid isPermaLink="false">6a67a309f6a95dd1cde6a6ef3d982786ac0df7c5850412cd5accacfee27e3eff</guid>
+      <pubDate>Mon, 10 Aug 2026 07:38:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>OpenAI's Next AI Model Astra Shows Cyber Performance Strong Enough to Trigger Pause</title>
+      <link>https://thehackernews.com/2026/08/openais-next-ai-model-astra-shows-cyber.html</link>
+      <description>OpenAI has announced that it's pausing some "internal activities" involving its upcoming artificial intelligence (AI) model Astra after an internal evaluation found it had made significant…</description>
+      <guid isPermaLink="false">ab7599f880cf19374fa1bd20c09a11a1bdbebc1763eef75dab8d29d5c9e8a1d1</guid>
+      <pubDate>Mon, 10 Aug 2026 05:50:03 +0000</pubDate>
+    </item>
+    <item>
+      <title>HANDLE Duplication internals : What happens behind the scenes when you call kernelbase! DuplicateHandle( )</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vk51ts/handle_duplication_internals_what_happens_behind/</link>
+      <description>submitted by /u/_WinAsm [link] [comments]</description>
+      <guid isPermaLink="false">427f3415187acc972d53f54f267e987f50e5b0e096eaef57713016845308fd89</guid>
+      <pubDate>Sun, 09 Aug 2026 23:47:21 +0000</pubDate>
+    </item>
+    <item>
+      <title>[Tool/Writeup] ALPC-Enumerator: A dynamic, userland C++ tool to enumerate ALPC ports and detect ALPC spoofing</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vjkd8g/toolwriteup_alpcenumerator_a_dynamic_userland_c/</link>
+      <description>submitted by /u/Sphinx_321 [link] [comments]</description>
+      <guid isPermaLink="false">7159686e3898fd83898df495a399e14ab33651fa1679b36cce1cf2e648b940c7</guid>
+      <pubDate>Sun, 09 Aug 2026 08:24:22 +0000</pubDate>
+    </item>
+    <item>
+      <title>DEF CON talk: 8 in 10 Banks in Belgium HATE This One Weird eID RCE</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vivabk/def_con_talk_8_in_10_banks_in_belgium_hate_this/</link>
+      <description>submitted by /u/acorn222 [link] [comments]</description>
+      <guid isPermaLink="false">890493eec95ba25b0c46ad5e8c5cd3a89b3be22ea6de07551c095d1f910ea129</guid>
+      <pubDate>Sat, 08 Aug 2026 12:53:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>Agent Tesla – APC Injection, Token Manipulation &amp; Payload Extraction</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1viro28/agent_tesla_apc_injection_token_manipulation/</link>
+      <description>submitted by /u/StructBreaker [link] [comments]</description>
+      <guid isPermaLink="false">1dffc0f399d68cc1b391664b2b9276965fa44939a2c0011fc4d0c232139520d1</guid>
+      <pubDate>Sat, 08 Aug 2026 09:37:51 +0000</pubDate>
+    </item>
+    <item>
+      <title>Atlassian Rovo Can Be Tricked Into Sending Jira and Confluence Data to Attackers</title>
+      <link>https://thehackernews.com/2026/08/atlassian-rovo-can-be-tricked-into.html</link>
+      <description>Attacker-controlled instructions can make Atlassian's Rovo assistant collect Jira or Confluence data that a signed-in user can access, then send it to an outside server. Two security firms found that…</description>
+      <guid isPermaLink="false">fea9ede2083b0efce4a5fba6a8879bf59eaf278d842691198149865b7096066b</guid>
+      <pubDate>Sat, 08 Aug 2026 08:54:50 +0000</pubDate>
+    </item>
+    <item>
+      <title>New CSS Attacks Can Break Webmail Defenses to Steal Passwords and Tokens</title>
+      <link>https://thehackernews.com/2026/08/new-css-attacks-can-break-webmail.html</link>
+      <description>New research shows content inside an email can escape its message boundary and interfere with the webmail interface. Across attack chains spanning Outlook, Gmail, Fastmail, Proton Mail, Yahoo Mail,…</description>
+      <guid isPermaLink="false">1917c477616c0ee323637c71fc1fbde8b5c45fc044f340ce8c37cabc380887fb</guid>
+      <pubDate>Sat, 08 Aug 2026 08:03:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>Metabase Zero-Day Exploited in Wild Allows Admin Access Without Authentication</title>
+      <link>https://thehackernews.com/2026/08/metabase-zero-day-exploited-in-wild.html</link>
+      <description>Metabase has warned that a maximum-severity security flaw impacting its business intelligence and data visualization software package has been exploited in the wild as a zero-day. The vulnerability…</description>
+      <guid isPermaLink="false">ad987e6acd5c0dccc27c5fc95b46e4f6e59a5de19eeb1eaab6ffa6af3f46c241</guid>
+      <pubDate>Sat, 08 Aug 2026 06:58:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>N-able Issues N-central Hotfix 2 as Attackers Reach Managed Systems and Persist</title>
+      <link>https://thehackernews.com/2026/08/n-central-attackers-reach-managed.html</link>
+      <description>N-able has released a fresh round of hotfixes for N‑central as part of its investigation into ongoing exploitation of a recently disclosed security flaw in the Remote Monitoring and Management…</description>
+      <guid isPermaLink="false">542b9d7f48bf9f3db614de404873c0686698e76113d66ea92f6cc16f8b4b61b2</guid>
+      <pubDate>Sat, 08 Aug 2026 06:57:43 +0000</pubDate>
+    </item>
+    <item>
+      <title>Progress Kemp LoadMaster Flaw Hits CISA KEV After 792 Reported Exploit Attempts</title>
+      <link>https://thehackernews.com/2026/08/progress-kemp-loadmaster-flaw-hits-cisa.html</link>
+      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Friday added a critical-severity security flaw impacting Progress Kemp LoadMaster to its Known Exploited Vulnerabilities (KEV)…</description>
+      <guid isPermaLink="false">d0e603e93894dccbc9a80a6c036505aa0ce353a72307e18ea633b70a3bdbff0b</guid>
+      <pubDate>Sat, 08 Aug 2026 06:52:16 +0000</pubDate>
+    </item>
+    <item>
+      <title>LockBit 5.0 Linux Malware Analysis: ChaCha20 + Curve25519 Offline Encryption, strace Evasion &amp; IOCs</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vikrx2/lockbit_50_linux_malware_analysis_chacha20/</link>
+      <description>submitted by /u/Pale_Surround_3924 [link] [comments]</description>
+      <guid isPermaLink="false">a0e45f2ca637eb87eb056d04a6aced3b657e91883648aec69d4e82b190a6120a</guid>
+      <pubDate>Sat, 08 Aug 2026 03:08:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>Windows tcpip.sys ICMP Timestamp Bug: EnableICMPTimestampRep=0 Registry Bypass &amp; RFC 792 Violation | Kernel RE</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vikcl8/windows_tcpipsys_icmp_timestamp_bug/</link>
+      <description>submitted by /u/Pale_Surround_3924 [link] [comments]</description>
+      <guid isPermaLink="false">0f09bd731c02db62ee496277b2f7649e7410af105f111a771776dce8e29a3427</guid>
+      <pubDate>Sat, 08 Aug 2026 02:48:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Nearly 800 Malicious npm Packages Deliver Cross-Platform RAT and Infostealer</title>
+      <link>https://thehackernews.com/2026/08/nearly-800-malicious-npm-packages.html</link>
+      <description>A cluster of nearly 800 malicious packages has been published to the npm registry as part of a new campaign designed to deliver cross-platform malware targeting Windows, Mac, and Linux systems.…</description>
+      <guid isPermaLink="false">bd0f818ce1ad128960f03f33b4a365a241e3ac40840695740ddb56a5b79e22d5</guid>
+      <pubDate>Fri, 07 Aug 2026 18:48:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>ClickFix Attacks Deliver macOS Stealer That Can Drain Crypto Wallets</title>
+      <link>https://thehackernews.com/2026/08/clickfix-attacks-deliver-macos-stealer.html</link>
+      <description>ClickFix-style attacks are being used to deliver a Go-based malware capable of stealing cryptocurrency assets, as well as browser-stored passwords, Apple iCloud Keychain data, and cached…</description>
+      <guid isPermaLink="false">ed477481e4a706a8dd43a1bf95feb3cea67b11e903dedd1879b4d3a953210f4e</guid>
+      <pubDate>Fri, 07 Aug 2026 18:29:08 +0000</pubDate>
+    </item>
+    <item>
+      <title>UNC6671 Vishing Attacks Target Personal Phones to Steal SaaS Data</title>
+      <link>https://thehackernews.com/2026/08/unc6671-vishing-attacks-target-personal.html</link>
+      <description>A recent wave of cyber attacks targeting financial services, private equity, and professional services has been attributed to a data extortion group known as UNC6671. "UNC6671 continues to rely…</description>
+      <guid isPermaLink="false">a2969744481a22dccafe739907a02b3310237b1b47c4c29d9dd6dcb006edb05b</guid>
+      <pubDate>Fri, 07 Aug 2026 18:16:13 +0000</pubDate>
+    </item>
+    <item>
+      <title>New WordPress Pre-Auth XSS Could Lead to PHP Code Execution - Patch ASAP</title>
+      <link>https://thehackernews.com/2026/08/new-wordpress-pre-auth-xss-could-lead.html</link>
+      <description>WordPress has fixed a pre-authentication reflected cross-site scripting (XSS) flaw in its login screen that affects every version of the content management system. pwn.ai demonstrated how the…</description>
+      <guid isPermaLink="false">462bb649a4a1c9358646bd9795cfcbeb26b119c029bff9937a15be2fdf9e6a0d</guid>
+      <pubDate>Fri, 07 Aug 2026 12:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>18-Year-Old Linux SCTP Flaw Could Let Local Users Gain Root and Escape Containers</title>
+      <link>https://thehackernews.com/2026/08/18-year-old-linux-sctp-flaw-could-let.html</link>
+      <description>A use-after-free bug in Linux's SCTP networking code can be turned into full root on a host, and Tencent researchers say they used it to escape a container and reach the machine underneath. The…</description>
+      <guid isPermaLink="false">9ce4a9f038989adc9e1f622d109c249d8b388d65c498db92055c06713306f7f6</guid>
+      <pubDate>Fri, 07 Aug 2026 11:10:33 +0000</pubDate>
+    </item>
+    <item>
+      <title>New NatJack Attacks Hijack TCP Sessions and Spoof DNS by Manipulating NAT Tables</title>
+      <link>https://thehackernews.com/2026/08/new-natjack-attacks-hijack-tcp-sessions.html</link>
+      <description>Security researcher Malcolm Stagg has disclosed a new attack class called NatJack that manipulates network address translation (NAT) connection state to hijack active TCP sessions, spoof DNS…</description>
+      <guid isPermaLink="false">43ffdf174719e77f65281ec2b100512fd743786442bf486da57c0142ed0626d6</guid>
+      <pubDate>Fri, 07 Aug 2026 10:58:38 +0000</pubDate>
+    </item>
+    <item>
+      <title>Microsoft 365 AitM Phishing Hijacks Accounts to Collect Payroll and Finance Emails</title>
+      <link>https://thehackernews.com/2026/08/microsoft-365-aitm-phishing-hijacks.html</link>
+      <description>Cybersecurity researchers have called attention to an active "widespread email-driven phishing campaign" that employs adversary-in-the-middle (AitM) techniques to take control of Microsoft 365…</description>
+      <guid isPermaLink="false">9cd1d8339343a709f2b0d9d7cd4799b84acae0dc1b626fcf550ab026a7513c1f</guid>
+      <pubDate>Fri, 07 Aug 2026 10:38:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>AI-Assisted HTTP Terminator Finds Novel HTTP Desync Techniques and Apache Zero-Day</title>
+      <link>https://thehackernews.com/2026/08/ai-assisted-http-terminator-finds-novel.html</link>
+      <description>PortSwigger says HTTP Terminator, an artificial intelligence (AI)-assisted research system built by James Kettle, generated and proved new HTTP desynchronization techniques after exploring 30,000…</description>
+      <guid isPermaLink="false">6a006763a60438aefd52baf32b13b3c5d6e54ce29c196f99b83256ecfdf6250a</guid>
+      <pubDate>Fri, 07 Aug 2026 10:09:54 +0000</pubDate>
+    </item>
+    <item>
+      <title>Static analyzer for Flutter/Dart AOT snapshots — recovers function names, class hierarchies, call graphs, and behavioral signals from libapp.so without embedding or executing the Dart VM. Supports ARM64 and x86_64, Dart 2.10–3.12.</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vhw5cw/static_analyzer_for_flutterdart_aot_snapshots/</link>
+      <description>submitted by /u/Aggravating-Band4659 [link] [comments]</description>
+      <guid isPermaLink="false">2e4cf1e7ee378d8dd62be5c56c21bbea432dc704ed81fc41fe8dd8d779b588c4</guid>
+      <pubDate>Fri, 07 Aug 2026 09:48:21 +0000</pubDate>
+    </item>
+    <item>
+      <title>Malware Can Abuse Windows Hello for Business Keys for Persistent Entra ID Access</title>
+      <link>https://thehackernews.com/2026/08/malware-can-abuse-windows-hello-for.html</link>
+      <description>Entra ID researcher Dirk-jan Mollema demonstrated that malware already running in a signed-in Windows session can silently use the victim's Windows Hello for Business key to authenticate to…</description>
+      <guid isPermaLink="false">37e207e1b355076e034d8bb7a70ba74c14bba41c7d7da452f7d37261c98a3058</guid>
+      <pubDate>Fri, 07 Aug 2026 08:52:11 +0000</pubDate>
+    </item>
+    <item>
+      <title>Claude Code and Gemini CLI Flaws Let a GitHub Issue Reach CI Workflow Secrets</title>
+      <link>https://thehackernews.com/2026/08/claude-code-and-gemini-cli-flaws-let.html</link>
+      <description>A GitHub issue opened by an account with no repository privileges was enough to execute code on the CI runners behind Anthropic's and Google's own coding-agent repositories. On OpenAI's, it was…</description>
+      <guid isPermaLink="false">008c715ca8aa9750c9b0330951caadf937ff8316f910a275d935eba54e922f7b</guid>
+      <pubDate>Fri, 07 Aug 2026 08:18:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>TeamPCP Linked To Redis Attacks Dating Back To 2020 And Later Supply Chain Campaign</title>
+      <link>https://thehackernews.com/2026/08/teampcp-linked-to-redis-attacks-dating.html</link>
+      <description>A new analysis has uncovered that the threat actor tracked as TeamPCP has been active on the cybercrime scene as far back as 2020, indicating the group has been compromising internet-facing…</description>
+      <guid isPermaLink="false">b3e75cfc1b71ca1b36fda85491959765241fd4048592a9f9891aa41137e3a733</guid>
+      <pubDate>Fri, 07 Aug 2026 06:50:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>The Binary Hiding in Your Registry: Cracking Windows UCPD's Dynamic Rules</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vhct3j/the_binary_hiding_in_your_registry_cracking/</link>
+      <description>submitted by /u/Psifertex [link] [comments]</description>
+      <guid isPermaLink="false">ecc7fbe16ea4ed2b1dfdb60365a9edb3670373f1ae2d4e66e92f3a7607f693e6</guid>
+      <pubDate>Thu, 06 Aug 2026 18:39:32 +0000</pubDate>
+    </item>
+    <item>
+      <title>New Zapscape KVM Flaw Could Let Privileged L1 Guest Code Escape to Linux Hosts</title>
+      <link>https://thehackernews.com/2026/08/new-zapscape-kvm-flaw-could-let.html</link>
+      <description>Zapscape, a new Linux kernel vulnerability, could allow an attacker with kernel privileges inside an L1 guest virtual machine (VM) to escape KVM isolation and execute code on the host. The risk…</description>
+      <guid isPermaLink="false">26cc7c3f81c254e60f22907fd3d3c8be1b989b425c026a8fac985cb8ff9925d2</guid>
+      <pubDate>Thu, 06 Aug 2026 17:58:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>Cisco Patches 12 SD-WAN and IOS XE Flaws, Including Three 9.9 CVSS Score Bugs</title>
+      <link>https://thehackernews.com/2026/08/cisco-patches-12-sd-wan-and-ios-xe.html</link>
+      <description>Cisco has rolled out updates to address multiple critical security vulnerabilities impacting Catalyst SD-WAN and IOS XE Software as part of a comprehensive internal security review. The…</description>
+      <guid isPermaLink="false">ca0c0173a06739ed5f780a190c802d4450b537473b25291487b6d6c45fbfccb0</guid>
+      <pubDate>Thu, 06 Aug 2026 17:13:15 +0000</pubDate>
+    </item>
+    <item>
+      <title>New Interrupt Injection Attack Can Bypass Spectre v2 Defenses on Intel and AMD CPUs</title>
+      <link>https://thehackernews.com/2026/08/new-interrupt-injection-attack-can.html</link>
+      <description>An unprivileged Linux program can time a hardware interrupt to land in the gap between a processor sanitizing its branch predictor and the kernel using it, re-poisoning the predictor after the…</description>
+      <guid isPermaLink="false">d85c352604bc5fd0023b3daa9a8eff279364180c94f68fecc9973410ad9d205b</guid>
+      <pubDate>Thu, 06 Aug 2026 16:17:13 +0000</pubDate>
+    </item>
+    <item>
+      <title>Reverse engineered the DualSense PS5 USB protocol from a Raspberry Pi 5 (topology, report map, auth handshake) — write-up + PoC</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vh6bwp/reverse_engineered_the_dualsense_ps5_usb_protocol/</link>
+      <description>submitted by /u/DESTRUCTION-ITA2 [link] [comments]</description>
+      <guid isPermaLink="false">38e9a1ba4751c98f314301a583e4c61eb479ecb37b42e0caf97753d9295034d3</guid>
+      <pubDate>Thu, 06 Aug 2026 14:47:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>Over 4,400 Rockwell PLCs Exposed Online, 22 Found in Water Attack Cities</title>
+      <link>https://thehackernews.com/2026/08/over-4400-rockwell-plcs-exposed-online.html</link>
+      <description>Forescout found 22 internet-facing Rockwell Automation programmable logic controllers (PLCs) in cities hit by recent cyberattacks on US water utilities. Nineteen used the same mobile carrier…</description>
+      <guid isPermaLink="false">afb2501641e45eb4f9cf3f11055895e6fc014e68d1a2ba5931a6541a963656fb</guid>
+      <pubDate>Thu, 06 Aug 2026 12:16:58 +0000</pubDate>
+    </item>
+    <item>
+      <title>CryptoJS Weak RNG Behind $5.7 Million in Drains Affects Five Crypto Wallet Apps</title>
+      <link>https://thehackernews.com/2026/08/cryptojs-weak-rng-behind-57-million-in.html</link>
+      <description>Coinspect has identified CryptoJS.lib.WordArray.random() as the weak random number generator behind the Ill Bloom wallet drains. Introduced in the JavaScript cryptography library 12 years ago, the…</description>
+      <guid isPermaLink="false">b0bcfe553b41da1a2192486902d003228349687faf1abdedc518ed53b2d23a28</guid>
+      <pubDate>Thu, 06 Aug 2026 11:49:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>Apple iCloud Private Relay Can Expose Real IPs Through WebKit Proxy Bypasses</title>
+      <link>https://thehackernews.com/2026/08/webkit-proxy-bypasses-can-expose-real.html</link>
+      <description>Cybersecurity researchers have disclosed a security issue with Apple's iCloud Private Relay tool that can expose a user's real IP address. Introduced with iOS 15, iCloud Private Relay employs a…</description>
+      <guid isPermaLink="false">39c1ce43817169149b80a56c280cc6a4148acfaae28a028ba60fa4efab8cbec1</guid>
+      <pubDate>Thu, 06 Aug 2026 11:33:08 +0000</pubDate>
+    </item>
+    <item>
+      <title>AI Recommendation Poisoning: How "Ask AI" Buttons Silently Alter LLM Memory</title>
+      <link>https://thehackernews.com/2026/08/ai-recommendation-poisoning-how-ask-ai.html</link>
+      <description>A new class of prompt injection is spreading across commercial websites. It requires no malware, no stolen credentials, and no zero-day exploit. It abuses a standard feature built into almost every…</description>
+      <guid isPermaLink="false">db0b711951635e6ab6fec7c08892b92df91b7d28aa87a1b39a9dbe4f97868e57</guid>
+      <pubDate>Thu, 06 Aug 2026 11:30:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>The Cipher Behind QSYRUPWD: Reconstructing IBM i Password Hashes</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vh1cjx/the_cipher_behind_qsyrupwd_reconstructing_ibm_i/</link>
+      <description>submitted by /u/tnavda [link] [comments]</description>
+      <guid isPermaLink="false">7f5e1e09e43ef8589b5dd131d76db4cd9a7f812ead90c414eed0bb6cdb36bb08</guid>
+      <pubDate>Thu, 06 Aug 2026 11:17:19 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Compile khunt Inside Oracle to Turn SQL Injection Into Windows SYSTEM Access</title>
+      <link>https://thehackernews.com/2026/08/attackers-compile-khunt-inside-oracle.html</link>
+      <description>Attackers broke into an organization's Oracle database through a SQL injection flaw in a public-facing web application, then installed a post-exploitation toolkit without writing an…</description>
+      <guid isPermaLink="false">02a898f83cdc62763ce6c3e8609ae545450cefb7eb60552d17e308f0130ec41e</guid>
+      <pubDate>Thu, 06 Aug 2026 09:19:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>AWS, Google, and Vercel Agent Flaws Let Attackers Trigger Tools Without Running the Model</title>
+      <link>https://thehackernews.com/2026/08/aws-google-and-vercel-patch-agent-flaws.html</link>
+      <description>Security flaws in agent infrastructure from Amazon Web Services (AWS), Google, and Vercel let untrusted or forged instructions reach an agent's tools with no check that a model turn had…</description>
+      <guid isPermaLink="false">ef3343e6f4b87210a0f743354415c285166a52eff43043b72cfb6a35e40baaaf</guid>
+      <pubDate>Thu, 06 Aug 2026 08:57:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>Chinese-Made Zbtlink Routers Ship With Backdoor That Opens Unauthenticated Root Shells</title>
+      <link>https://thehackernews.com/2026/08/chinese-made-zbtlink-routers-ship-with.html</link>
+      <description>Cybersecurity researchers have disclosed details of a "factory-shipped backdoor" implanted in at least 20 Chinese router models from Zbtlink. According to a new report from VulnCheck, the implant…</description>
+      <guid isPermaLink="false">3df3ed2da0ca7f3b8d79fc3b3f24dcaf936cf36cdb8f2f67c82b33c2f4ca7b07</guid>
+      <pubDate>Thu, 06 Aug 2026 08:05:22 +0000</pubDate>
+    </item>
+    <item>
+      <title>Ransom Cartel Creator Gets 16 Years in Prison for Operating Ransomware-as-a-Service</title>
+      <link>https://thehackernews.com/2026/08/ransom-cartel-creator-gets-16-years-in.html</link>
+      <description>A federal judge in Alexandria, Virginia, sentenced Maksim Silnikau to 16 years in prison on August 5 for creating and running Ransom Cartel, the ransomware-as-a-service operation he stood up in 2021.…</description>
+      <guid isPermaLink="false">d4c5c0394162d595a5af04b23b2ec76b7847f1547bad74b733e03bdc62270d93</guid>
+      <pubDate>Thu, 06 Aug 2026 07:19:54 +0000</pubDate>
+    </item>
+    <item>
+      <title>CISA Flags TeamCity CVE-2026-63077 RCE Flaw Under Active Exploitation in the Wild</title>
+      <link>https://thehackernews.com/2026/08/cisa-flags-teamcity-cve-2026-63077-rce.html</link>
+      <description>A newly patched security flaw impacting on-premise versions of JetBrains TeamCity has come under active exploitation in the wild, according to the U.S. Cybersecurity and Infrastructure Security…</description>
+      <guid isPermaLink="false">f5db1194771c2fe2bf43b7a8d72a575189172f30fd649e9f326b9212dee35637</guid>
+      <pubDate>Thu, 06 Aug 2026 06:51:43 +0000</pubDate>
+    </item>
+    <item>
+      <title>Snowflake Hacker Pleads Guilty Over Breaches Affecting at Least 100 Million People</title>
+      <link>https://thehackernews.com/2026/08/snowflake-hacker-pleads-guilty-over.html</link>
+      <description>Connor Riley Moucka pleaded guilty in Seattle federal court on Wednesday to computer fraud, wire fraud, aggravated identity theft and a related conspiracy over the 2024 breaches of Snowflake…</description>
+      <guid isPermaLink="false">bcd2e32fd390393a8570fa36725d7d23f76bca9f78ad6f667542aff984e4ca6c</guid>
+      <pubDate>Thu, 06 Aug 2026 06:04:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>Over 250 ClickFix Domains Use Browser Fingerprinting to Hide macOS Malware Lures</title>
+      <link>https://thehackernews.com/2026/08/over-250-clickfix-domains-use-browser.html</link>
+      <description>A macOS ClickFix operation spanning more than 250 front-end domains now fingerprints visitors before deciding whether to show them a malware lure, a change Microsoft Threat Intelligence tracked on…</description>
+      <guid isPermaLink="false">2e80fdd6ecd8667dea8ffd12f576444b5530f8e27e77ac2c84e8286eff8c536c</guid>
+      <pubDate>Wed, 05 Aug 2026 18:44:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>OpenAI Disrupts Poipet Scam Network Using ChatGPT Across Multiple Fraud Schemes</title>
+      <link>https://thehackernews.com/2026/08/openai-disrupts-poipet-scam-network.html</link>
+      <description>OpenAI said it disrupted a Cambodia-based scam operation that used its generative artificial intelligence (AI) chatbot ChatGPT to facilitate a wide range of investment, romance, gambling, and…</description>
+      <guid isPermaLink="false">a10ba3627b51b549d9bf5f8c4159911826188051b718eec894290e82fc366001</guid>
+      <pubDate>Wed, 05 Aug 2026 18:33:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>LockBit string deobfuscation: affine cipher DLL loading reversed with Ghidra</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vgc1dv/lockbit_string_deobfuscation_affine_cipher_dll/</link>
+      <description>submitted by /u/AldairMaihuiri [link] [comments]</description>
+      <guid isPermaLink="false">51bd882f80ae9bbb4f9cc7d3f6d8dfb4c07d07a82a36abca440633ab6aa0cece</guid>
+      <pubDate>Wed, 05 Aug 2026 16:20:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>Poison Claude Sells Discounted Claude Access While Its Operator Sees Every Customer Prompt</title>
+      <link>https://thehackernews.com/2026/08/poison-claude-sells-discounted-claude.html</link>
+      <description>Cybersecurity researchers have discovered more than half-a-dozen services advertisements for illegal access to artificial intelligence (AI) models on underground cybercrime forums and messaging…</description>
+      <guid isPermaLink="false">bb800ebdc035c073075b1027bb86302ffd36e78d4dcc5fb63ffedb246f45016c</guid>
+      <pubDate>Wed, 05 Aug 2026 15:36:03 +0000</pubDate>
+    </item>
+    <item>
+      <title>Paperclip AI Flaws Let Attackers Run Host Commands via Malicious Agent Imports</title>
+      <link>https://thehackernews.com/2026/08/paperclip-ai-flaws-let-attackers-run.html</link>
+      <description>Two security flaws in Paperclip could let attackers execute commands on a network server or a developer's computer. Paperclip is an open-source control plane for teams of artificial…</description>
+      <guid isPermaLink="false">f73b7f9ded69f6f205f83321e09d9cd6a34e50f3794ea55524ce6529f448f6e9</guid>
+      <pubDate>Wed, 05 Aug 2026 15:14:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>Veeam, Terraform MCP, Django Patch Critical Flaws, Led by CVSS 10.0 Cross-Tenant Bug</title>
+      <link>https://thehackernews.com/2026/08/veeam-terraform-mcp-django-patch.html</link>
+      <description>HashiCorp, Veeam, and the Django Software Foundation have patched 11 vulnerabilities across Terraform MCP Server, Veeam Service Provider Console, and Django. The three most serious: An…</description>
+      <guid isPermaLink="false">f5d68be54e7459264d99faab6f8b5b6a6199e74b3419e5148b249bf3e69bccd3</guid>
+      <pubDate>Wed, 05 Aug 2026 14:27:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>Trojanized npm Packages Employ NullReceiver Tactic to Decode C2 IP from Blockchain</title>
+      <link>https://thehackernews.com/2026/08/trojanized-npm-packages-decode-c2-ip.html</link>
+      <description>Cybersecurity researchers have flagged an evolution of the EtherHiding blockchain-based command-and-control (C2) technique that conceals the C2 server IP address inside a made-up…</description>
+      <guid isPermaLink="false">c9a89787fcd9b569645a2105261adcca22da6b578470f8318f0d4c880f5bbb66</guid>
+      <pubDate>Wed, 05 Aug 2026 13:41:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>New OVSwrap Linux Kernel Flaw Lets Local Users Gain Root via Open vSwitch</title>
+      <link>https://thehackernews.com/2026/08/new-ovswrap-linux-kernel-flaw-lets.html</link>
+      <description>A memory corruption flaw in the Linux kernel's Open vSwitch datapath gives ordinary local users a path to root on a broad set of default-configured distributions, and a public exploit ships with…</description>
+      <guid isPermaLink="false">d07100e0047460a2a64048bb2ebf1cd18e4b322c7707e4500d170a381a602fa3</guid>
+      <pubDate>Wed, 05 Aug 2026 11:43:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>Kali365 Weaponizes Microsoft Authentication Against US Companies: New Enterprise Risk</title>
+      <link>https://thehackernews.com/2026/08/kali365-weaponizes-microsoft.html</link>
+      <description>Kali365 is turning a legitimate Microsoft login into a gateway to corporate data. The phishing kit targets US organizations with attacker-controlled device codes that victims approve on Microsoft's…</description>
+      <guid isPermaLink="false">151b3d525eb522a35e7fb56aa7dc7231d5eb6a95838763ab96fd6c692a4fbfc8</guid>
+      <pubDate>Wed, 05 Aug 2026 11:43:19 +0000</pubDate>
+    </item>
+    <item>
+      <title>Critical Gitea Flaw Let Unauthenticated Attackers Read Server Files via Org-Mode Markup</title>
+      <link>https://thehackernews.com/2026/08/critical-gitea-flaw-let-unauthenticated.html</link>
+      <description>An unauthenticated attacker can read any file the service account can access on Gitea, the self-hosted Git platform, in versions 1.22.1 through 1.27.0. No login, no repository write access.…</description>
+      <guid isPermaLink="false">db75fef1f60f1d487a35cbc590b52f7224e27d87372c6c55991e904b756c17a6</guid>
+      <pubDate>Wed, 05 Aug 2026 11:04:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>Leaked n8n API Tokens Exposed Live Instances to Credential Theft</title>
+      <link>https://thehackernews.com/2026/08/leaked-n8n-api-tokens-exposed-live.html</link>
+      <description>GitGuardian researchers found 321 n8n instances accepting API tokens exposed in public GitHub commits and demonstrated four ways attackers could use them to access sensitive data and downstream…</description>
+      <guid isPermaLink="false">bc4a451223c068276ecd4b498467cef50595a11e5fe90f4601bf8db2f62a2d34</guid>
+      <pubDate>Wed, 05 Aug 2026 10:35:29 +0000</pubDate>
+    </item>
+    <item>
+      <title>Open VSX Removes 77 Malicious Evil Twin Extensions Exfiltrating Developer Data</title>
+      <link>https://thehackernews.com/2026/08/open-vsx-removes-77-malicious-evil-twin.html</link>
+      <description>A cluster of 77 extensions on the Open VSX marketplace has been found to impersonate legitimate developer tools while transmitting information about the systems and development environments on…</description>
+      <guid isPermaLink="false">a59f82bbe84e3ebdc875e9795ad5d61c8498ffe01ea1e0f25a0e238008a7d4f9</guid>
+      <pubDate>Wed, 05 Aug 2026 09:23:03 +0000</pubDate>
+    </item>
+    <item>
+      <title>Full read and write control of a Daikin VAM heat-recovery ventilation unit over the P1/P2 bus, using an Arduino Uno registered as a genuine BRC301B61-compatible slave controller.</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vg1f8u/full_read_and_write_control_of_a_daikin_vam/</link>
+      <description>submitted by /u/Witty_Initial4890 [link] [comments]</description>
+      <guid isPermaLink="false">439cc0bfb602271d19b825e9778fb011bfd9a6b8827c9d0aae486b271b0733dc</guid>
+      <pubDate>Wed, 05 Aug 2026 08:28:51 +0000</pubDate>
+    </item>
+    <item>
+      <title>Reverse Engineering Google Slides</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vg1del/reverse_engineering_google_slides/</link>
+      <description>submitted by /u/IamMichaelSalim [link] [comments]</description>
+      <guid isPermaLink="false">ead44accebd9ef530d2b282f11364ccdd2012a9d873ba4d549f41c8acd9ab6f0</guid>
+      <pubDate>Wed, 05 Aug 2026 08:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>TP-Link NX510v - Root Access, UART, Bootloader, Firmware Research</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vfqxkd/tplink_nx510v_root_access_uart_bootloader/</link>
+      <description>submitted by /u/Jeffry84 [link] [comments]</description>
+      <guid isPermaLink="false">fafff93ed961646f54be956c90603293d6529e07afac79761efa5d983a734824</guid>
+      <pubDate>Tue, 04 Aug 2026 23:44:32 +0000</pubDate>
+    </item>
+    <item>
+      <title>Troubleshooting slow PostgreSQL queries</title>
+      <link>https://prefetch.net/blog/2026/06/08/troubleshooting-slow-postgresql-queries/</link>
+      <description>With modern distributed systems performance issues can surface in unexpected ways. When it comes to database servers like PostgreSQL issues can surface as slow pages, API calls timing out, jobs not…</description>
+      <guid isPermaLink="false">fa6c5958648a39338a8ac79182f26d15870e175f45b2caee94a2021796fc94e5</guid>
+      <pubDate>Mon, 08 Jun 2026 12:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Using the Prometheus blackbox exporter to monitor modern web infrastructure</title>
+      <link>https://prefetch.net/blog/2026/06/08/using-the-prometheus-blackbox-exporter-to-monitor-modern-web-infrastructure/</link>
+      <description>Prometheus is a monitoring system that collects time series metrics from targets at regular intervals. Those metrics are stored with labels, queried with PromQL (Prometheus's custom query…</description>
+      <guid isPermaLink="false">c0396239b66e4843f4ca8b0ba161bdee24ec7ad10d40ec201d1c3c0e584d079d</guid>
+      <pubDate>Mon, 08 Jun 2026 04:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Layered defenses against software supply chain attacks</title>
+      <link>https://prefetch.net/blog/2026/06/06/protecting_against_supply_chain_attacks/</link>
+      <description>Software supply chain attacks target the dependencies, build systems, and publishing pipelines that produce the software we run, instead of the application itself. A single compromised package can…</description>
+      <guid isPermaLink="false">73d1e432bd785db21585e2097438b60543aa20fc8ca35c82c1cab2607168e1dd</guid>
+      <pubDate>Sat, 06 Jun 2026 05:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Visualizing PostgreSQL index types</title>
+      <link>https://prefetch.net/blog/2026/06/04/visualizing-postgresql-index-types/</link>
+      <description>Over the past few months I've been doing diving deep into PostgreSQL. I've spent a good bit of my career supporting Oracle and MySQL, but over the past few years I've spent more time managing…</description>
+      <guid isPermaLink="false">18602dea0c0fc278ca40656432c9da845e5b6ff927d8d7245fb433b429d68746</guid>
+      <pubDate>Thu, 04 Jun 2026 22:39:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>MSSQLand – Lightweight MS-SQL Interaction Tool for Lateral Movement and Post-Exploitation</title>
+      <link>https://www.darknet.org.uk/2026/03/mssqland-lightweight-ms-sql-interaction-tool-for-lateral-movement-and-post-exploitation/</link>
+      <description>MSSQLand enables red teams to interact with MS-SQL servers and linked instances in restricted environments without complex T-SQL queries. Assembly-ready tool for lateral movement.</description>
+      <guid isPermaLink="false">596707037f4c45360a81005c8b032d57cbe998ee07cd44cdc48360ce0370314a</guid>
+      <pubDate>Tue, 24 Mar 2026 01:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Credential Stuffing in 2025 – How Combolists, Infostealers and Account Takeover Became an Industry</title>
+      <link>https://www.darknet.org.uk/2026/03/credential-stuffing-in-2025-how-combolists-infostealers-and-account-takeover-became-an-industry/</link>
+      <description>Credential stuffing drove 22% of all breaches in 2025. How combolists, infostealers and ATO tooling are fuelling enterprise account takeover at scale</description>
+      <guid isPermaLink="false">1d656192e7a24ea66b27a207031ffdba266316a96654ab6310b5b31b3c2d572e</guid>
+      <pubDate>Wed, 11 Mar 2026 01:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>DumpBrowserSecrets – Browser Credential Harvesting with App-Bound Encryption Bypass</title>
+      <link>https://www.darknet.org.uk/2026/03/dumpbrowsersecrets-browser-credential-harvesting-with-app-bound-encryption-bypass/</link>
+      <description>DumpBrowserSecrets extracts saved passwords, cookies, OAuth tokens and autofill data from Chrome, Edge, Firefox, Opera and Vivaldi, bypassing App-Bound Encryption via Early Bird APC injection.</description>
+      <guid isPermaLink="false">bde374fa42415faeee79d63502ab06bcc015a2268eec79e09e2ab99b7ce3dee0</guid>
+      <pubDate>Mon, 09 Mar 2026 01:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Systemic Ransomware Events in 2025 – How Jaguar Land Rover Showed What a Category 3 Supply Chain Breach Looks Like</title>
+      <link>https://www.darknet.org.uk/2025/11/systemic-ransomware-events-in-2025-how-jaguar-land-rover-showed-what-a-category-3-supply-chain-breach-looks-like/</link>
+      <description>Systemic ransomware events in 2025, how Jaguar Land Rover’s shutdown exposed Category 3 supply chain risk, with lessons from Toyota, Nissan and Ferrari.</description>
+      <guid isPermaLink="false">dcec0c00daba03141a0c7fef83e85c1b964113e2cf1ad1c57d2af1bc850d2e06</guid>
+      <pubDate>Wed, 26 Nov 2025 01:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>SmbCrawler – SMB Share Discovery and Secret-Hunting</title>
+      <link>https://www.darknet.org.uk/2025/11/smbcrawler-smb-share-discovery-and-secret-hunting/</link>
+      <description>SmbCrawler is a credentialed SMB share crawler for red teams that discovers misconfigured shares and hunts secrets across Windows networks.</description>
+      <guid isPermaLink="false">891d57295f0c8d112dabb695624f15d10ecc3ef02300d424345ff0bb60a93a95</guid>
+      <pubDate>Mon, 24 Nov 2025 01:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Heisenberg Dependency Health Check – GitHub Action for Supply Chain Risk</title>
+      <link>https://www.darknet.org.uk/2025/11/heisenberg-dependency-health-check-github-action-for-supply-chain-risk/</link>
+      <description>Heisenberg Dependency Health Check is a GitHub Action that flags risky or newly introduced dependencies in pull requests using supply-chain signals.</description>
+      <guid isPermaLink="false">e567cc6916d4609fc295474b3c8e89b46a958318ce9073052cdfee4e473a96c6</guid>
+      <pubDate>Fri, 21 Nov 2025 01:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>mcp-scan – Real-Time Guardrail Monitoring and Dynamic Proxy for MCP Servers</title>
+      <link>https://www.darknet.org.uk/2025/11/mcp-scan-real-time-guardrail-monitoring-and-dynamic-proxy-for-mcp-servers/</link>
+      <description>mcp-scan is a dynamic proxy and guardrail monitor for MCP servers, providing real-time traffic inspection and enforcement for agents and tools.</description>
+      <guid isPermaLink="false">a7c53d63a31e786093e23e4d0464f945a7f60077d1029f6f4ebf597591b3cea4</guid>
+      <pubDate>Mon, 17 Nov 2025 01:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Initial Access Brokers (IAB) in 2025 – From Dark Web Listings to Supply Chain Ransomware Events</title>
+      <link>https://www.darknet.org.uk/2025/11/initial-access-brokers-iab-in-2025-from-dark-web-listings-to-supply-chain-ransomware-events/</link>
+      <description>Initial access brokers in 2025, how dark web access listings feed ransomware supply chain events like JLR, and what CISOs can do to detect and disrupt them</description>
+      <guid isPermaLink="false">adc33d399e6615ae27b2f7d2ce4fb83e4de153ebebf00be6871e013e0d0b023e</guid>
+      <pubDate>Wed, 12 Nov 2025 01:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Reconnoitre – Open-Source Reconnaissance and Service Enumeration Tool</title>
+      <link>https://www.darknet.org.uk/2025/11/reconnoitre-open-source-reconnaissance-and-service-enumeration-tool/</link>
+      <description>Reconnoitre automates network reconnaissance and service enumeration for penetration testers and red teams using structured, repeatable workflows.</description>
+      <guid isPermaLink="false">174f7bd0afcde8e1ec6319df8e8f3aa293e2c8f1658818e53419665e19510da5</guid>
+      <pubDate>Mon, 10 Nov 2025 01:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Using terrascan to detect compliance and security violations</title>
+      <link>https://prefetch.net/blog/2022/05/08/using-terrascan-to-detect-compliance-and-security-violations/</link>
+      <description>Over the past several years I've read numerous horror stories about cloud deployments gone wrong. S3 buckets with PCI data left open to the raw Internet, EC2 instance profiles that weren't scoped…</description>
+      <guid isPermaLink="false">8e64ea3ea5e440256ae76ca33100cdf2eb5559b1b19869486ebce69d7b709473</guid>
+      <pubDate>Sun, 08 May 2022 05:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Understanding cloud spend in your Terraform workflows</title>
+      <link>https://prefetch.net/blog/2022/05/01/understanding-cloud-spend-in-your-terraform-workflows/</link>
+      <description>Having worked in the "cloud" for several years, one thing that I'm super conscious about is our cloud bill. There are tons of subtleties associated with billing, such as AZ-to-AZ traffic costs or…</description>
+      <guid isPermaLink="false">3123c6d2eecadeaa028c85fbbe37bc54ddc5ccabc1bfd2780b8df462336cbd71</guid>
+      <pubDate>Sun, 01 May 2022 05:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Using the Kubernetes can-i subcommand to debug authentication issues</title>
+      <link>https://prefetch.net/blog/2022/04/08/using-the-kubernetes-can-i-subcommand-to-debug-authentication-issues/</link>
+      <description>When I was first getting started with Kubernetes, RBAC was one of the topics that took me the longest to grok. Not because the resources (Roles, ClusterRoles, etc) are hard to interpret, but…</description>
+      <guid isPermaLink="false">e91f4694a3b1a1bc6316a062615f60cb982d5e74c0293b9fe1f8560309f30d17</guid>
+      <pubDate>Fri, 08 Apr 2022 06:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Ways to debug Kubernetes pods without shells</title>
+      <link>https://prefetch.net/blog/2022/04/08/ways-to-debug-kubernetes-pods-without-shells/</link>
+      <description>Debugging production issues can sometimes be a challenge in Kubernetes environments. One specific challenge is debugging containers that don't contain a shell. You may have seen the following when…</description>
+      <guid isPermaLink="false">8f5372997a4767ba390d386a29ca4e2d7b92de108e3bdc1f3e8a30c0850b62f8</guid>
+      <pubDate>Fri, 08 Apr 2022 05:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>The importance of the C asm volatile statement</title>
+      <link>https://prefetch.net/blog/2022/04/07/the-importance-of-asm-volatile/</link>
+      <description>Last month I started a course that teaches you how to write your own Operating System. Working at the intersection of hardware and software (X86 Assembly and C) has been incredibly rewarding. I've…</description>
+      <guid isPermaLink="false">71372591547cc5df93c1059574bd0ef2656869345f370317ead25dcf4f29b159</guid>
+      <pubDate>Thu, 07 Apr 2022 05:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Diving into container images</title>
+      <link>https://prefetch.net/blog/2022/03/02/diving-into-container-images/</link>
+      <description>Container images are one of the items that makes up a "container." In most cases container images use a base image (e.g., Alpine, Ubuntu, etc.), and then one or more application-specific layers are…</description>
+      <guid isPermaLink="false">5427cb3ab95959a25bb779f5e61d850d2d5e6d26ed3f671cc4a382fabc03be7b</guid>
+      <pubDate>Wed, 02 Mar 2022 14:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Why df fails to show one or more file systems when run as an unprivileged user</title>
+      <link>https://prefetch.net/blog/2022/03/01/why-df-fails-to-show-one-or-more-file-systems-when-run-as-an-unprivileged-user/</link>
+      <description>One of my friends recently reached out with a fun problem. His monitoring system was periodically not firing when file systems grew past the thresholds he defined. When we hopped on one of his EC2…</description>
+      <guid isPermaLink="false">4a820b9e0a25bce687eb402abde71a2843a2474d7f4da932c4f0071f80e6ea21</guid>
+      <pubDate>Tue, 01 Mar 2022 14:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Debugging Kubernetes network issues with nsenter, dig and tcpdump</title>
+      <link>https://prefetch.net/blog/2020/08/03/debugging-kubernetes-network-issues-with-nsenter-dig-and-tcpdump/</link>
+      <description>As a Kubernetes administrator I frequently find myself needing to debug application and system issues. Most of the issues I encounter can be solved with Grafana dashboards and Prometheus…</description>
+      <guid isPermaLink="false">78f472d92aa8f77f091bd57354dd3aa41e1ecabf33e479eb4eb2cb28eda49b43</guid>
+      <pubDate>Mon, 03 Aug 2020 05:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>How the docker pull command works under the covers (with HTTP headers to illustrate the process)</title>
+      <link>https://prefetch.net/blog/2020/07/22/how-the-docker-pull-command-works-under-the-covers-with-http-headers-to-illustrate-the-process/</link>
+      <description>I talked previously about needing to decode docker HTTP headers to debug a registry issue. That debugging session was super fun, but I had a few questions about how that interaction actually…</description>
+      <guid isPermaLink="false">a835a4303d7cf80275011601fcee7dce95b7a7e3f7590d250fda13fa5ef11777</guid>
+      <pubDate>Wed, 22 Jul 2020 05:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

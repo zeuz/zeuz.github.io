@@ -1,0 +1,213 @@
+<?xml version="1.0" ?>
+<rss version="2.0">
+  <channel>
+    <title>RSS Classifier — Tech</title>
+    <link>https://example.invalid/</link>
+    <description>Filtered posts in the Tech category</description>
+    <generator>rss-classifier</generator>
+    <lastBuildDate>Tue, 11 Aug 2026 04:52:19 +0000</lastBuildDate>
+    <item>
+      <title>El iPhone tendrá una función para demostrar que una foto es real y no de IA</title>
+      <link>https://hipertextual.com/apple/apple-reference-image-iphone-autenticar-fotos/</link>
+      <description>Apple ya prepara una respuesta para combatir el problema de las imágenes de IA que buscan pasar por fotografías reales. El gigante tecnológico está desarrollando un sistema capaz de certificar que…</description>
+      <guid isPermaLink="false">3f2e17dd4667c3074951edfc1fa18e90acbcc2d38161bfe17c17983ffc489479</guid>
+      <pubDate>Mon, 10 Aug 2026 23:40:12 +0000</pubDate>
+    </item>
+    <item>
+      <title>Cyber Vulnerability Sweep Picks Up Royal Navy Drones Sending Data To China</title>
+      <link>https://tech.slashdot.org/story/26/08/10/2043251/cyber-vulnerability-sweep-picks-up-royal-navy-drones-sending-data-to-china?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+      <description>A routine security assessment found that cameras aboard Royal Navy Kraken unmanned surface vessels were sending "heartbeat" signals to an IP address in China. "A thorough investigation found no…</description>
+      <guid isPermaLink="false">87e849b0cea35f42cc212fb91b5bb86ae025555ad3fe056f974f333c2a75fb11</guid>
+      <pubDate>Mon, 10 Aug 2026 23:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>ASML construyó uno de los monopolios más valiosos del mundo. China le ha recordado que nada dura para siempre</title>
+      <link>https://www.xataka.com/empresas-y-economia/asml-construyo-uno-monopolios-valiosos-mundo-china-le-ha-recordado-que-nada-dura-para-siempre</link>
+      <description>Hay industrias donde competir significa hacerlo mejor, más barato o más rápido. En la litografía avanzada, durante mucho tiempo, competir significaba algo mucho más difícil: ser capaz de construir…</description>
+      <guid isPermaLink="false">060f342c3f1eaac4917a76263b697d6c8f451a316ce2f094e627279833561c64</guid>
+      <pubDate>Mon, 10 Aug 2026 21:55:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>La nueva IA de ChatGPT ya encuentra fallos de seguridad antes que los hackers</title>
+      <link>https://hipertextual.com/inteligencia-artificial/openai-gpt-5-6-cyber-daybreak-blue-red/</link>
+      <description>OpenAI decidió pausar el desarrollo de Astra, su nueva IA que resultó ser demasiado peligrosa . Aunque el anuncio decepcionó a algunos que ya pensaban en el próximo ChatGPT, la empresa ha…</description>
+      <guid isPermaLink="false">1595f649f64e5f2d55ce185b98eda5e59391864d58405ec8f1648fe27bc6d967</guid>
+      <pubDate>Mon, 10 Aug 2026 21:51:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Valve Slowly Expands SteamOS Support On Non-Valve Hardware</title>
+      <link>https://hardware.slashdot.org/story/26/08/10/2027209/valve-slowly-expands-steamos-support-on-non-valve-hardware?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+      <description>Valve is continuing to broaden SteamOS support beyond its own hardware, with the latest beta adding "initial gamepad support" for a few recent gaming handhelds and improving compatibility for a few…</description>
+      <guid isPermaLink="false">7d340b90d4b7da86c71830d254ee02786c9b250c08a977b96afc7b9910733780</guid>
+      <pubDate>Mon, 10 Aug 2026 21:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Microsoft admite que no copiará el Liquid Glass del iPhone en Windows 11 y tiene una buena razón</title>
+      <link>https://hipertextual.com/software/microsoft-no-trae-liquid-glass-windows-11-iphone/</link>
+      <description>Cuando Apple anunció iOS 26 con Liquid Glass , muchos usuarios pensaron que se trataba de una idea original nunca antes vista. La realidad es que Microsoft hizo algo parecido hace casi dos décadas…</description>
+      <guid isPermaLink="false">ed4b221aa389957270b88adcfa1e14527fc7dde9913c44e0e24a0324bda3c5d0</guid>
+      <pubDate>Mon, 10 Aug 2026 20:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Meta quiere plantar cara a OpenAI y Google con un arma muy particular: una IA potente que funciona offline en tu ordenador</title>
+      <link>https://www.xataka.com/robotica-e-ia/meta-quiere-plantar-cara-a-openai-google-arma-muy-particular-ia-potente-que-funciona-offline-tu-ordenador</link>
+      <description>Nos hemos acostumbrado a utilizar modelos de inteligencia artificial sin pensar demasiado en dónde están funcionando. Escribimos una pregunta desde el móvil o el ordenador, pero buena parte del…</description>
+      <guid isPermaLink="false">467ec0a325a3c8528ccc7fd76d3883d75b2346d917a8c9a70bea3c08549cff53</guid>
+      <pubDate>Mon, 10 Aug 2026 19:31:18 +0000</pubDate>
+    </item>
+    <item>
+      <title>El océano acaba de batir su récord histórico absoluto de temperatura: 20,96 °C que nos asoman a un territorio desconocido</title>
+      <link>https://www.xataka.com/ecologia-y-naturaleza/oceano-acaba-batir-su-record-historico-absoluto-temperatura-20-96-c-que-nos-asoman-a-territorio-desconocido</link>
+      <description>El mar está absorbiendo las consecuencias de un planeta cada vez más caliente, y los datos no dejan lugar a dudas. Según las últimas mediciones, el mes pasado ha pasado a la historia de la…</description>
+      <guid isPermaLink="false">9e71396d3d385fdf65112b49954e5111236f269e8df655aa0e6cc0a11ce73a63</guid>
+      <pubDate>Mon, 10 Aug 2026 18:31:18 +0000</pubDate>
+    </item>
+    <item>
+      <title>Enrique Pérez, astrofísico, sobre la sonificación del eclipse para personas ciegas: “la luminosidad más alta se representa con timbre de flauta”</title>
+      <link>https://www.xataka.com/espacio/enrique-perez-astrofisico-sonificacion-eclipse-para-personas-ciegas-luminosidad-alta-se-representa-timbre-flauta</link>
+      <description>El eclipse solar de este miércoles va a ser un espectáculo para los sentidos. Para todos los sentidos. Por eso, no es justo dejar fuera a quienes se encuentran privados de alguno de ellos. Las…</description>
+      <guid isPermaLink="false">78a95f820e6366d8fac07cfdc34e39767de8e92def7795b163fe0cc3c91e2b42</guid>
+      <pubDate>Mon, 10 Aug 2026 18:01:19 +0000</pubDate>
+    </item>
+    <item>
+      <title>Meta's 'Open' Muse Glimmer Model Can Run On a Single Computer</title>
+      <link>https://tech.slashdot.org/story/26/08/10/163237/metas-open-muse-glimmer-model-can-run-on-a-single-computer?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+      <description>Meta has released Muse Glimmer, a slimmed-down open-weight AI model designed to run locally on a single GPU for agent tasks such as scheduling, file management, coding, and tool use. The release…</description>
+      <guid isPermaLink="false">efa1d2106362483734aa04d7be872625805e03d1fa4a3793b588bf79f0093405</guid>
+      <pubDate>Mon, 10 Aug 2026 18:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Los Picos de Europa escondían otra montaña subterránea: más de mil kilos de basura, el efecto de años de turismo en las alturas</title>
+      <link>https://www.xataka.com/magnet/picos-europa-escondian-otra-montana-subterranea-mil-kilos-basura-efecto-anos-turismo-alturas</link>
+      <description>Hace 300 millones de años, un mar cálido cubría lo que hoy es el norte de España. La lenta acumulación de sedimentos y el violento choque tectónico levantaron un coloso de roca caliza: así…</description>
+      <guid isPermaLink="false">7999b67cd089a6109af450f22049b677664230db835b6333f1133094ee020c0a</guid>
+      <pubDate>Mon, 10 Aug 2026 17:31:15 +0000</pubDate>
+    </item>
+    <item>
+      <title>EEUU sigue siendo superior en modelos de IA para generar texto o código. Si hablamos de vídeo, hay un rey absoluto: China</title>
+      <link>https://www.xataka.com/robotica-e-ia/eeuu-sigue-siendo-superior-modelos-ia-para-generar-texto-codigo-hablamos-video-hay-rey-absoluto-china</link>
+      <description>Se llama Minimax H3 y es el modelo de IA generativa de vídeo que se ha puesto de moda en los últimos días. Tiene buenas razones para hacerlo porque los resultados son espectaculares —podéis ver…</description>
+      <guid isPermaLink="false">cb0e6dd1477d0fcaca0ce8755950bca6fc3d9030291181f7ae08f1c4461b5710</guid>
+      <pubDate>Mon, 10 Aug 2026 17:01:16 +0000</pubDate>
+    </item>
+    <item>
+      <title>Taiwan 'Throttles' Mobile Internet For First Time During Annual War Games</title>
+      <link>https://tech.slashdot.org/story/26/08/10/1557258/taiwan-throttles-mobile-internet-for-first-time-during-annual-war-games?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+      <description>Taiwan deliberately throttled mobile internet across the Taichung area during its annual Han Kuang war games, "simulating communication disruption in the event of a Chinese attack or natural…</description>
+      <guid isPermaLink="false">ca2bd2e3bca2c893d01048269c6719f27c29b9e3fea2dda5978f6c7fe367acd1</guid>
+      <pubDate>Mon, 10 Aug 2026 17:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>La alta velocidad entre Madrid y Zaragoza ya no es tan alta: tras el accidente de Adamuz, cada vez son más los viajeros que huyen del AVE</title>
+      <link>https://www.xataka.com/movilidad/alta-velocidad-madrid-zaragoza-no-alta-accidente-adamuz-cada-vez-viajeros-que-huyen-ave</link>
+      <description>El trayecto que unía Zaragoza con Madrid en poco más de una hora en AVE se ha convertido en una línea en la que sus viajeros ya no saben realmente cuándo van a llegar. Y no es la única, pues…</description>
+      <guid isPermaLink="false">4bbf0a9ce6d0de014a2f69cde783ca9d1bfc72e23e138fa9dc257ab874981ab1</guid>
+      <pubDate>Mon, 10 Aug 2026 15:15:16 +0000</pubDate>
+    </item>
+    <item>
+      <title>Creíamos que elogiar constantemente a nuestros hijos forjaba su autoestima. La ciencia dice lo contrario</title>
+      <link>https://www.xataka.com/medicina-y-salud/creiamos-que-elogiar-constantemente-a-pequenos-forjaba-su-autoestima-ciencia-demuestra-que-estabamos-equivocados</link>
+      <description>Hacer elogios a los más pequeños de la casa, como por ejemplo apuntar que es muy inteligente o que hace las cosas muy bien, es para muchos algo casi obligatorio para que durante su fase adulta pueda…</description>
+      <guid isPermaLink="false">5f1298d868046ad2cb45a75bf9c6fc683ff8fbbe1caf500fc5b520697c3ff25b</guid>
+      <pubDate>Mon, 10 Aug 2026 15:01:16 +0000</pubDate>
+    </item>
+    <item>
+      <title>El gasto en IA se ha salido de la escala nivel: este año, tres empresas gastarán el equivalente a tres misiones Apolo a la Luna</title>
+      <link>https://www.xataka.com/empresas-y-economia/gasto-ia-se-ha-salido-escala-nivel-este-ano-tres-empresas-gastaran-equivalente-a-tres-misiones-apolo-a-luna</link>
+      <description>760.000 millones de dólares es una cifra difícil de contextualizar. Como no lo podemos medir en Bernabéus, diremos que la Estación Espacial Internacional con su mantenimiento constante supera los…</description>
+      <guid isPermaLink="false">7c236ebbd64e1c9de7e7489006b94af57f6a6d9720613196df0710f4ed07b7fd</guid>
+      <pubDate>Mon, 10 Aug 2026 14:31:16 +0000</pubDate>
+    </item>
+    <item>
+      <title>CATL y BYD coinciden en que ninguna quiere ser la segunda en probar las baterías de estado sólido en coches. Y ya apuntan a 2027</title>
+      <link>https://www.xataka.com/movilidad/catl-byd-coinciden-que-ninguna-quiere-ser-segunda-probar-baterias-estado-solido-coches-apuntan-a-2027</link>
+      <description>Los grandes fabricantes de baterías del mundo ya preparan sus hojas de ruta para el desarrollo y entrada en producción de nuevas químicas que ofrezcan mayor densidad energética y autonomía. Hay…</description>
+      <guid isPermaLink="false">1607c2b5f6fd62a16b4ab23568fd8cbdbaafd84cd7b9631dbbfae34b440bf028</guid>
+      <pubDate>Mon, 10 Aug 2026 14:01:16 +0000</pubDate>
+    </item>
+    <item>
+      <title>Ojo si compraste un Steam Machine o Steam Controller: tus datos pueden haberse filtrado en un hackeo</title>
+      <link>https://hipertextual.com/privacidad/filtracion-datos-compra-steam-machine-steam-controller-valve-europa-ceva-logistics/</link>
+      <description>Si compraste un Steam Machine o Steam Controller en Europa, es posible que tus datos personales se hayan filtrado en un hackeo . Valve comenzó a notificar a los usuarios europeos sobre un…</description>
+      <guid isPermaLink="false">5bcb1e24c3f6808ab9a537c5af2a825a62d1be3a803d7209730232505b54b253</guid>
+      <pubDate>Mon, 10 Aug 2026 13:32:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>En España hay mitos tan ligados al eclipse que hasta le acreditamos un tema prohibido: la derrota de Abderramán III</title>
+      <link>https://www.xataka.com/magnet/lobos-que-se-tragan-al-sol-procesiones-urgentes-rey-portugues-muerto-leyendas-espana-eclipses</link>
+      <description>El eclipse total del 12 de agosto de 2026 es, para la comunidad astronómica, un laboratorio a escala país. La Luna pasa por su nodo descendente y cubre por completo el disco solar sobre el norte de…</description>
+      <guid isPermaLink="false">a05113d61a3120ae35ca778c84ccaa599e1a562a1d00baa8d1b89ad42d2036b4</guid>
+      <pubDate>Mon, 10 Aug 2026 13:31:15 +0000</pubDate>
+    </item>
+    <item>
+      <title>La nueva predicción de la AEMET para el eclipse solar está lista: estos son los peores lugares para ver el eclipse según la meteorología</title>
+      <link>https://www.xataka.com/espacio/nueva-prediccion-aemet-para-eclipse-solar-esta-lista-estos-peores-lugares-para-ver-eclipse-meteorologia</link>
+      <description>La última actualización del boletín meteorológico especial de la AEMET para el día del eclipse solar del miércoles apenas ha variado con respecto al viernes , cuando se hizo la primera publicación. En…</description>
+      <guid isPermaLink="false">5eada66eee8e892a90a9c7d4f873070388f175a65a66ac7140d8ed5a45fc29d9</guid>
+      <pubDate>Mon, 10 Aug 2026 13:13:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>Reino Unido quería tirar un cable submarino de 430 millones: lo cambiaron los fans de Harry Potter porque "pisaba la tumba de Dobby"</title>
+      <link>https://www.xataka.com/energia/reino-unido-queria-tirar-cable-submarino-430-000-millones-cambiaron-fans-harry-potter-porque-pisaba-tumba-dobby</link>
+      <description>Que yo sepa, el 10 de agosto no es el día de los inocentes en ningún sitio, aunque a veces lo parezca en esos momentos en los que la realidad supera a la ficción. Entre Irlanda y Reino Unido se…</description>
+      <guid isPermaLink="false">40a11e693164de33ebf9570021a0d1ebc4aefa7f74eb8232441e6bf5e49f448a</guid>
+      <pubDate>Mon, 10 Aug 2026 12:15:16 +0000</pubDate>
+    </item>
+    <item>
+      <title>El Gobierno ya está retirando gafas para eclipses por riesgos para la vista: cómo comprobar si las tuyas están en la lista</title>
+      <link>https://www.xataka.com/espacio/no-todas-gafas-para-eclipse-seguras-eso-espana-retira-varios-modelos-fallo-que-puede-danarte-vista-como-comprobar-tienes</link>
+      <description>Las gafas para eclipses se han convertido en un bien preciadísimo en el último mes. Muchísimas personas han salido a la calle o a Internet en busca de una protección adecuada para disfrutar del…</description>
+      <guid isPermaLink="false">aef811d1cc8064033039c65b5ba9c76f263aa22bbcd12b147b8ec4c5e97b042e</guid>
+      <pubDate>Mon, 10 Aug 2026 12:01:16 +0000</pubDate>
+    </item>
+    <item>
+      <title>Toxic Underground Fires Are Spreading at California Landfills</title>
+      <link>https://news.slashdot.org/story/26/08/09/2232249/toxic-underground-fires-are-spreading-at-california-landfills?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+      <description>Three years ago environmental regulators discovered garbage burning deep inside California's Chiquita Canyon Landfill, reports the Los Angeles Times. [Alternate URL here.] "Few imagined the…</description>
+      <guid isPermaLink="false">4c39d9e2a7fe84d943be4301f79d073008991418326efc1ccd360a2557dafced</guid>
+      <pubDate>Mon, 10 Aug 2026 11:34:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>DJI y sus drones están en problemas. Los próximos modelos podrían ser más difíciles de volar</title>
+      <link>https://hipertextual.com/tecnologia/dji-y-sus-drones-estan-en-problemas-los-proximos-modelos-podrian-ser-mas-dificiles-de-volar/</link>
+      <description>DJI y todo su catálogo de drones acaba de recibir un aviso que podría poner en peligro una de las funciones más útiles, básicas e importantes de sus cuadricópteros. Y, aunque la posible prohibición…</description>
+      <guid isPermaLink="false">6cb82ce746299af9134070e16f3d41bbf9fbfdbea8898fdbd3abb2f99bf678c8</guid>
+      <pubDate>Mon, 10 Aug 2026 09:10:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>How Accurate Are Flock's AI-Powered License-Reading Cameras?</title>
+      <link>https://yro.slashdot.org/story/26/08/09/230247/how-accurate-are-flocks-ai-powered-license-reading-cameras?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+      <description>Futurism reports: 404 Media revealed that a July 10 audit by the Los Angeles Police Department Office of the Inspector General caught the department's ALPR cameras generating 161 false…</description>
+      <guid isPermaLink="false">c3c1110a75887c37ba654399e27d27c866e1a47ed618f4d87150befe77b79bbd</guid>
+      <pubDate>Mon, 10 Aug 2026 07:34:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Microsoft Responds to Outcry After Quietly Installing Beta 'Photos' App on Enterprise Machines</title>
+      <link>https://tech.slashdot.org/story/26/08/10/0229237/microsoft-responds-to-outcry-after-quietly-installing-beta-photos-app-on-enterprise-machines?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+      <description>Microsoft's cloud storage app OneDrive got a new Photos app in the worst possible way, reports the blog Neowin . "The app is reportedly showing up even on Windows 11 Enterprise machines, despite…</description>
+      <guid isPermaLink="false">170cdad64c71d5849876f066bea5ae0fefb566ea55866899680b0c29b652844d</guid>
+      <pubDate>Mon, 10 Aug 2026 04:34:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Privacy Backlash Explodes Against Meta's Smart Glasses</title>
+      <link>https://yro.slashdot.org/story/26/08/10/0152228/privacy-backlash-explodes-against-metas-smart-glasses?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+      <description>With nearly 70% of the market, "Meta wants its smart glasses to be a big hit," writes the Los Angeles Times. But after some users found ways to disable the light that warns people they're being…</description>
+      <guid isPermaLink="false">795bda84492a0ef6beee9507b7db249c55bee6bb8cb2879aab679610ba1bc0c1</guid>
+      <pubDate>Mon, 10 Aug 2026 01:59:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>AI Reviews Bring 'New Normal' to Linux Release Candidates: Lots of Bug Fixes</title>
+      <link>https://linux.slashdot.org/story/26/08/10/0014253/ai-reviews-bring-new-normal-to-linux-release-candidates-lots-of-bug-fixes?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+      <description>Linux Torvalds expects Linux 7.2 should be released next weekend "unless something really bad pops up," Torvalds said while announcing today's release candidate. But there's something interesting…</description>
+      <guid isPermaLink="false">1e9128fb5165039fb7b83d89b95f7bb8827e8960b99515613a74c2760c42f862</guid>
+      <pubDate>Mon, 10 Aug 2026 00:59:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Flock Accused of Reactivating Its Cameras Without Notifying a Town</title>
+      <link>https://yro.slashdot.org/story/26/08/08/0621205/flock-accused-of-reactivating-its-cameras-without-notifying-a-town?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+      <description>A Massachusetts newspaper reports that officials from the town of Littleton (population: 10,141) "claim that five of Littletonâ(TM)s Flock Safety cameras were switched back on by the company…</description>
+      <guid isPermaLink="false">58f35002b4f29dba3370cc9d1a08e787646084dc4231e6e09005fd42825fe2af</guid>
+      <pubDate>Sun, 09 Aug 2026 23:15:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>
