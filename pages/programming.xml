@@ -7,7 +7,7 @@
     <generator>rss-classifier</generator>
     <lastBuildDate>Tue, 11 Aug 2026 05:31:46 +0000</lastBuildDate>
     <item>
-      <title>James Bennett: Breaking up (lines) is hard to do</title>
+      <title>James Bennett: Breaking up (lines) is hard to do - Planet Python</title>
       <link>https://www.b-list.org/weblog/2026/aug/10/newlines/</link>
       <description>&lt;p&gt;Here’s a seemingly simple question: given a chunk of multi-line text, how do you split it and return an array whose members are the constituent lines of the&amp;nbsp;text?&lt;/p&gt;
 &lt;p&gt;Hopefully, your first instinct is to reach for some sort of standard-library function, maybe something like&amp;nbsp;the &lt;code&gt;splitlines()&lt;/code&gt; method of&amp;nbsp;Python’s &lt;code&gt;str&lt;/code&gt; type. Because it turns out this “simple” question is actually pretty complex to answer! For example, quite some time ago I read &lt;a href="https://yossarian.net/til/post/python-s-splitlines-does-a-lot-more-than-just-newlines/"&gt;a post by William Woodruff&lt;/a&gt; pointing out the surprising discovery that Python treats up to eleven different Unicode code points or code point sequences as indicating a line&amp;nbsp;break.&lt;/p&gt;
@@ -81,7 +81,7 @@
       <pubDate>Mon, 10 Aug 2026 16:42:29 +0000</pubDate>
     </item>
     <item>
-      <title>Ed Crewe: From Routing Checks to Trajectory Testing: Evaluating an Agentic Chatbot</title>
+      <title>Ed Crewe: From Routing Checks to Trajectory Testing: Evaluating an Agentic Chatbot - Planet Python</title>
       <link>http://edcrewe.blogspot.com/2026/08/from-routing-checks-to-trajectory.html</link>
       <description>pre[class*="language-"] { border-radius: 6px; font-size: 14px; overflow-x: auto; }
 &lt;blockquote&gt;
@@ -273,7 +273,7 @@ convo = ConversationalTestCase(
       <pubDate>Mon, 10 Aug 2026 10:37:15 +0000</pubDate>
     </item>
     <item>
-      <title>Django Weblog: Django is moving to an annual release cycle</title>
+      <title>Django Weblog: Django is moving to an annual release cycle - Planet Python</title>
       <link>https://www.djangoproject.com/weblog/2026/aug/10/annual-release-cycle/</link>
       <description>&lt;p&gt;Django's Steering Council has accepted the Django Enhancement Proposal &lt;a href="https://github.com/django/deps/blob/main/accepted/0020-annual-release-cycle.rst"&gt;DEP
 20&lt;/a&gt; to move Django to an annual release cycle. From January 2028, Django
@@ -340,7 +340,7 @@ Steering Council for its consideration.&lt;/p&gt;</description>
       <pubDate>Mon, 10 Aug 2026 09:00:49 +0000</pubDate>
     </item>
     <item>
-      <title>Ned Batchelder: Caller-specific coverage</title>
+      <title>Ned Batchelder: Caller-specific coverage - Planet Python</title>
       <link>https://nedbatchelder.com/blog/202608/callerspecific_coverage</link>
       <description>&lt;p&gt;I&amp;#8217;ve had an idea rattling around to get more detail from coverage
 measurement.  Can we measure the coverage in a function separately for each
@@ -428,14 +428,14 @@ you have ideas for other uses.&lt;/p&gt;</description>
       <pubDate>Sun, 09 Aug 2026 17:56:25 +0000</pubDate>
     </item>
     <item>
-      <title>Hynek Schlawack: Production-ready Python Docker Containers with uv</title>
+      <title>Hynek Schlawack: Production-ready Python Docker Containers with uv - Planet Python</title>
       <link>https://hynek.me/articles/docker-uv/</link>
       <description>&lt;p&gt;Starting with &lt;a href="https://astral.sh/blog/uv-unified-python-packaging"&gt;0.3.0&lt;/a&gt;, Astral’s &lt;a href="https://docs.astral.sh/uv/"&gt;&lt;em&gt;uv&lt;/em&gt;&lt;/a&gt; brought many great features, including support for cross-platform lock files &lt;code&gt;uv.lock&lt;/code&gt;. Together with subsequent fixes, it has become Python’s finest workflow tool for &lt;strong&gt;my&lt;/strong&gt; (non-scientific) use cases. Here’s how I build production-ready containers, as fast as possible.&lt;/p&gt;</description>
       <guid isPermaLink="false">351e017e704d299713340494f1b00466c1fbad283644bc0efaf6944bcfa687f3</guid>
       <pubDate>Thu, 06 Aug 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Django Weblog: Django 6.1 released</title>
+      <title>Django Weblog: Django 6.1 released - Planet Python</title>
       <link>https://www.djangoproject.com/weblog/2026/aug/05/django-61-released/</link>
       <description>&lt;p&gt;The Django team is happy to announce the release of Django 6.1.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://docs.djangoproject.com/en/6.1/releases/6.1/"&gt;The release notes&lt;/a&gt;
@@ -466,7 +466,7 @@ supported versions and the future release schedule.&lt;/p&gt;</description>
       <pubDate>Wed, 05 Aug 2026 19:30:00 +0000</pubDate>
     </item>
     <item>
-      <title>Tryton News: Security Release for issue #14947</title>
+      <title>Tryton News: Security Release for issue #14947 - Planet Python</title>
       <link>https://discuss.tryton.org/t/security-release-for-issue-14947/9302</link>
       <description>&lt;p&gt;&lt;a href="https://foss.heptapod.net/ced"&gt;Cédric Krier&lt;/a&gt; has discovered that &lt;a href="https://bugs.tryton.org/14947"&gt;Tryton does not prevent weasyprint to access local files&lt;/a&gt; when rendering HTML report to PDF.&lt;/p&gt;
 &lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40152-impact-1" name="p-40152-impact-1"&gt;&lt;/a&gt;Impact&lt;/h2&gt;
@@ -518,7 +518,7 @@ supported versions and the future release schedule.&lt;/p&gt;</description>
       <pubDate>Wed, 05 Aug 2026 06:00:46 +0000</pubDate>
     </item>
     <item>
-      <title>Python GUIs: Handling Image Drag and Drop from Web Browsers in PyQt6 — Why toLocalFile() returns an empty string and how to handle remote image drops correctly</title>
+      <title>Python GUIs: Handling Image Drag and Drop from Web Browsers in PyQt6 — Why toLocalFile() returns an empty string and how to handle remote image drops correctly - Planet Python</title>
       <link>https://www.pythonguis.com/faq/dragging-and-dropping-in-rich-text-example-app/</link>
       <description>&lt;blockquote&gt;
 &lt;p&gt;When dragging and dropping images from a web browser into a PyQt6 rich text editor, &lt;code&gt;toLocalFile()&lt;/code&gt; sometimes returns a blank string. It works for some images (like Google image search results) but fails for others (like images embedded directly on a webpage). Why does this happen, and how can I handle it?&lt;/p&gt;
@@ -862,14 +862,14 @@ sys.exit(app.exec())
       <pubDate>Wed, 05 Aug 2026 06:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Python Insider: Python 3.14.7 and 3.13.15 are now available!</title>
+      <title>Python Insider: Python 3.14.7 and 3.13.15 are now available! - Planet Python</title>
       <link>https://blog.python.org/2026/08/python-3147-31315/</link>
       <description>A pair of bug fix releases await your upgrade.</description>
       <guid isPermaLink="false">59622f567df45159fbf0ba930043b03bdfdbe11a3dd2b240606651ada0e6859a</guid>
       <pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Django Weblog: Django security releases issued: 6.0.8 and 5.2.17</title>
+      <title>Django Weblog: Django security releases issued: 6.0.8 and 5.2.17 - Planet Python</title>
       <link>https://www.djangoproject.com/weblog/2026/aug/04/security-releases/</link>
       <description>&lt;p&gt;In accordance with &lt;a href="https://docs.djangoproject.com/en/dev/internals/security/"&gt;our security release policy&lt;/a&gt;,
 the Django team is issuing releases for
@@ -979,14 +979,14 @@ information.&lt;/p&gt;</description>
       <pubDate>Tue, 04 Aug 2026 11:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Python Insider: Python 3.15.0 candidate 1 is here!</title>
+      <title>Python Insider: Python 3.15.0 candidate 1 is here! - Planet Python</title>
       <link>https://blog.python.org/2026/08/python-3150-rc1/</link>
       <description>Get those wheels rolling!</description>
       <guid isPermaLink="false">d0df44ca0b99b2b86bcdf7c4d8d9a8afdf06e9f3b0ab7bf349609171414c7020</guid>
       <pubDate>Tue, 04 Aug 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Python⇒Speed: Faster floating point math with Rust’s new API</title>
+      <title>Python⇒Speed: Faster floating point math with Rust’s new API - Planet Python</title>
       <link>https://pythonspeed.com/articles/faster-float-math-rust/</link>
       <description>&lt;p&gt;Floating point math is often slower than integer math because the
 compiler is being conservative about how it optimizes your code. While
@@ -1008,7 +1008,7 @@ control where it is used.&lt;/li&gt;
       <pubDate>Sun, 02 Aug 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Glyph Lefkowitz: Adversarial Communication</title>
+      <title>Glyph Lefkowitz: Adversarial Communication - Planet Twisted</title>
       <link>https://blog.glyph.im/2026/06/adversarial-communication.html</link>
       <description>&lt;p&gt;As I have discussed in &lt;a href="https://blog.glyph.im/2025/08/futzing-fraction.html"&gt;previous posts&lt;/a&gt;,
 &lt;em&gt;“AIs” can make mistakes&lt;/em&gt;.  In fact, they &lt;em&gt;do&lt;/em&gt; make mistakes, and their
@@ -1290,14 +1290,14 @@ here. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feed
       <pubDate>Tue, 23 Jun 2026 20:06:00 +0000</pubDate>
     </item>
     <item>
-      <title>Hynek Schlawack: How to Ditch Codecov for Python Projects</title>
+      <title>Hynek Schlawack: How to Ditch Codecov for Python Projects - Planet Twisted</title>
       <link>https://hynek.me/articles/ditch-codecov-python/</link>
       <description>&lt;p&gt;Codecov’s unreliability breaking CI on my open source projects has been a constant source of frustration for me for years. I have found a way to enforce coverage over a whole GitHub Actions build matrix that doesn’t rely on third-party services.&lt;/p&gt;</description>
       <guid isPermaLink="false">a6441ae356de287204172b08a8f2f527e2023ee5f334bbd351a7d79d27ec8d35</guid>
       <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Glyph Lefkowitz: Opaque Types in Python</title>
+      <title>Glyph Lefkowitz: Opaque Types in Python - Planet Twisted</title>
       <link>https://blog.glyph.im/2026/05/opaque-types-in-python.html</link>
       <description>&lt;p&gt;Let’s say you’re writing a Python library.&lt;/p&gt;
 &lt;p&gt;In this library, you have some collection of state that represents “options” or
@@ -1507,7 +1507,7 @@ that small cost. &lt;a class="footnote-backref" href="https://glyph.twistedmatr
       <pubDate>Fri, 22 May 2026 00:33:00 +0000</pubDate>
     </item>
     <item>
-      <title>Donovan Preston: Using osascript with terminal agents on macOS</title>
+      <title>Donovan Preston: Using osascript with terminal agents on macOS - Planet Twisted</title>
       <link>https://donovanpreston.blogspot.com/2026/04/using-osascript-with-terminal-agents-on.html</link>
       <description>Here is a useful trick that is unreasonably effective for simple computer use goals using modern terminal agents. On macOS, there has been a terminal osascript command since the original release of Mac OS X. All you have to do is suggest your agent use it and it can perform any application control action available in any AppleScript dictionary for any Mac app. No MCP set up or tools required at all. Agents are much more adapt at using rod terminal commands, especially ones that haven't changed in 30 years. Having a computer control interface that hasn't changed in 30 years and has extensive examples in the Internet corpus makes modern models understand how to use these tools basically Effortlessly.
 macOS locks down these permissions pretty heavily nowadays though, so you will have to grant the application control permission to terminal. But once you have done that, the range of possibilities for commanding applications using natural language is quite extensive.
@@ -1518,7 +1518,7 @@ Another very important tips for using modern agents is to try to practice using 
       <pubDate>Sat, 04 Apr 2026 13:31:26 +0000</pubDate>
     </item>
     <item>
-      <title>Glyph Lefkowitz: What Is Code Review For?</title>
+      <title>Glyph Lefkowitz: What Is Code Review For? - Planet Twisted</title>
       <link>https://blog.glyph.im/2026/03/what-is-code-review-for.html</link>
       <description>&lt;h2 id="humans-are-bad-at-perceiving"&gt;Humans Are Bad At Perceiving&lt;/h2&gt;
 &lt;p&gt;Humans are not particularly good at catching bugs.  For one thing, we get tired
@@ -1666,7 +1666,7 @@ sponsor&lt;/a&gt;!&lt;/p&gt;</description>
       <pubDate>Wed, 04 Mar 2026 05:24:00 +0000</pubDate>
     </item>
     <item>
-      <title>Glyph Lefkowitz: The “Dependency Cutout” Workflow Pattern, Part I</title>
+      <title>Glyph Lefkowitz: The “Dependency Cutout” Workflow Pattern, Part I - Planet Twisted</title>
       <link>https://blog.glyph.im/2025/11/dependency-cutout-workflow-pattern.html</link>
       <description>&lt;p&gt;Tell me if you’ve heard this one before.&lt;/p&gt;
 &lt;p&gt;You’re working on an application.  Let’s call it “FooApp”.  FooApp has a
@@ -1981,7 +1981,7 @@ but we do not live in an ideal world. &lt;a class="footnote-backref" href="http
       <pubDate>Tue, 11 Nov 2025 01:44:00 +0000</pubDate>
     </item>
     <item>
-      <title>Glyph Lefkowitz: The Futzing Fraction</title>
+      <title>Glyph Lefkowitz: The Futzing Fraction - Planet Twisted</title>
       <link>https://blog.glyph.im/2025/08/futzing-fraction.html</link>
       <description>&lt;p&gt;The most optimistic vision of generative AI&lt;sup id="fnref:1:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:1:futzing-fraction-2025-8" id="fnref:1"&gt;1&lt;/a&gt;&lt;/sup&gt; is that it will relieve us of
 the tedious, repetitive elements of knowledge work so that we can get to work
@@ -2658,7 +2658,7 @@ by Gary Drevitch for Psychology Today, July 21, 2025. &lt;a class="footnote-bac
       <pubDate>Fri, 15 Aug 2025 07:51:00 +0000</pubDate>
     </item>
     <item>
-      <title>Glyph Lefkowitz: Stop Writing `__init__` Methods</title>
+      <title>Glyph Lefkowitz: Stop Writing `__init__` Methods - Planet Twisted</title>
       <link>https://blog.glyph.im/2025/04/stop-writing-init-methods.html</link>
       <description>&lt;h2 id="the-history"&gt;The History&lt;/h2&gt;
 &lt;p&gt;Before dataclasses were added to Python in version 3.7 — in June of 2018 — the
@@ -2982,7 +2982,7 @@ rather than writing a literal &lt;code&gt;__init__&lt;/code&gt;. &lt;a class="f
       <pubDate>Thu, 17 Apr 2025 22:35:00 +0000</pubDate>
     </item>
     <item>
-      <title>Glyph Lefkowitz: The “Active Enum” Pattern</title>
+      <title>Glyph Lefkowitz: The “Active Enum” Pattern - Planet Twisted</title>
       <link>https://blog.glyph.im/2025/01/active-enum.html</link>
       <description>&lt;p&gt;Have you ever written some Python code that looks like this?&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
@@ -3294,14 +3294,14 @@ maintainability, and make sure that such a PR would be welcome. &lt;a class="fo
       <pubDate>Fri, 10 Jan 2025 22:37:00 +0000</pubDate>
     </item>
     <item>
-      <title>Hynek Schlawack: Python Project-Local Virtualenv Management Redux</title>
+      <title>Hynek Schlawack: Python Project-Local Virtualenv Management Redux - Planet Twisted</title>
       <link>https://hynek.me/articles/python-virtualenv-redux/</link>
       <description>&lt;p&gt;One of my &lt;a href="https://hynek.me/til/python-project-local-venvs"&gt;first TIL entries&lt;/a&gt; was about how you can imitate Node’s &lt;code&gt;node_modules&lt;/code&gt; semantics in Python on UNIX-like operating systems. A lot has happened since then (to the better!) and it’s time for an update. &lt;em&gt;direnv&lt;/em&gt; still rocks, though.&lt;/p&gt;</description>
       <guid isPermaLink="false">65f936d1ee1ab0f0a5def0b2ff15449017c1008408e09dd383be43c0206628fc</guid>
       <pubDate>Mon, 23 Sep 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Glyph Lefkowitz: Python macOS Framework Builds</title>
+      <title>Glyph Lefkowitz: Python macOS Framework Builds - Planet Twisted</title>
       <link>https://blog.glyph.im/2024/09/python-macos-framework-builds.html</link>
       <description>&lt;p&gt;When you build Python, you can pass various options to &lt;code&gt;./configure&lt;/code&gt; that
 change aspects of how it is built.  There is &lt;a href="https://docs.python.org/3.12/using/configure.html"&gt;documentation for all of these
@@ -3500,14 +3500,14 @@ with Python”.&lt;/p&gt;</description>
       <pubDate>Wed, 11 Sep 2024 19:43:00 +0000</pubDate>
     </item>
     <item>
-      <title>Hynek Schlawack: Why I Still Use Python Virtual Environments in Docker</title>
+      <title>Hynek Schlawack: Why I Still Use Python Virtual Environments in Docker - Planet Twisted</title>
       <link>https://hynek.me/articles/docker-virtualenv/</link>
       <description>&lt;p&gt;Whenever I publish &lt;a href="https://hynek.me/articles/docker-uv/"&gt;something&lt;/a&gt; about my Python Docker workflows, I invariably get challenged about whether it makes sense to use &lt;a href="https://docs.python.org/3/library/venv.html"&gt;&lt;em&gt;virtual environments&lt;/em&gt;&lt;/a&gt; in Docker containers. As always, it’s a trade-off, and I err on the side of standards and predictability.&lt;/p&gt;</description>
       <guid isPermaLink="false">57885e311c8122bd0365a7d9210e256dd9ad962efcd1c5a4bbf868fffca23194</guid>
       <pubDate>Mon, 02 Sep 2024 11:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Glyph Lefkowitz: Against Innovation Tokens</title>
+      <title>Glyph Lefkowitz: Against Innovation Tokens - Planet Twisted</title>
       <link>https://blog.glyph.im/2024/07/against-innovation-tokens.html</link>
       <description>&lt;p class="update-note"&gt;Updated 2024-07-04: After some discussion, added an &lt;a href="https://glyph.twistedmatrix.com/feeds/atom.xml#epilogue"&gt;epilogue&lt;/a&gt; going
 into more detail about the value of the distinction between the two types of
@@ -3844,7 +3844,7 @@ where Haskell was Python. &lt;a class="footnote-backref" href="https://glyph.tw
       <pubDate>Thu, 04 Jul 2024 19:54:00 +0000</pubDate>
     </item>
     <item>
-      <title>Moshe Zadka: The Prehistory of Kubernetes: From Cubic Equations to Cloud Orchestration</title>
+      <title>Moshe Zadka: The Prehistory of Kubernetes: From Cubic Equations to Cloud Orchestration - Planet Twisted</title>
       <link>https://orbifold.xyz/cubic-k8s.html</link>
       <description>&lt;p&gt;The story of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Kubernetes"&gt;Kubernetes&lt;/a&gt;, the leading container orchestration platform, is a tale of mathematical innovation, wartime necessity, and the open-source revolution. It begins, perhaps unexpectedly, with the work of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Omar_Khayyam"&gt;Omar Khayyam&lt;/a&gt;, the 11th-century Persian polymath known for his contributions to mathematics, astronomy, and poetry.&lt;/p&gt;
 &lt;p&gt;Khayyam's work on solving &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Cubic_equation"&gt;cubic equations&lt;/a&gt; laid the foundation for the development of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Algebraic_geometry"&gt;algebraic geometry&lt;/a&gt;, which in turn led to the invention of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Cartesian_coordinate_system"&gt;Cartesian coordinates&lt;/a&gt; by &lt;a class="reference external" href="https://en.wikipedia.org/wiki/René_Descartes"&gt;René Descartes&lt;/a&gt; in the 17th century. This "algebrization of geometry" allowed for the mathematical description of physical phenomena, such as planetary motion, and paved the way for &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Isaac_Newton"&gt;Isaac Newton&lt;/a&gt;'s development of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Calculus"&gt;calculus&lt;/a&gt;.&lt;/p&gt;
@@ -3867,7 +3867,7 @@ where Haskell was Python. &lt;a class="footnote-backref" href="https://glyph.tw
       <pubDate>Thu, 20 Jun 2024 04:30:00 +0000</pubDate>
     </item>
     <item>
-      <title>Glyph Lefkowitz: A Grand Unified Theory of the AI Hype Cycle</title>
+      <title>Glyph Lefkowitz: A Grand Unified Theory of the AI Hype Cycle - Planet Twisted</title>
       <link>https://blog.glyph.im/2024/05/grand-unified-ai-hype.html</link>
       <description>&lt;h2 id="the-cycle"&gt;The Cycle&lt;/h2&gt;
 &lt;p&gt;The history of AI goes in cycles, each of which looks at least a &lt;em&gt;little&lt;/em&gt; bit like this:&lt;/p&gt;
@@ -3923,14 +3923,14 @@ for”.  Or, you know, Python programming.&lt;/p&gt;</description>
       <pubDate>Wed, 22 May 2024 16:58:00 +0000</pubDate>
     </item>
     <item>
-      <title>Hynek Schlawack: You Can Build Portable Binaries of Python Applications</title>
+      <title>Hynek Schlawack: You Can Build Portable Binaries of Python Applications - Planet Twisted</title>
       <link>https://hynek.me/til/python-portable-binaries/</link>
       <description>&lt;p&gt;Contrary to popular belief, it’s possible to ship portable executables of Python applications without sending your users to Python packaging hell.&lt;/p&gt;</description>
       <guid isPermaLink="false">538747a7d1210b2e1eb43f9e942241c02ee071569953b11f5a690d3aa45657a1</guid>
       <pubDate>Tue, 19 Mar 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Glyph Lefkowitz: Unsigned Commits</title>
+      <title>Glyph Lefkowitz: Unsigned Commits - Planet Twisted</title>
       <link>https://blog.glyph.im/2024/01/unsigned-commits.html</link>
       <description>&lt;p&gt;I am going to tell you why I don’t think you should sign your Git commits, even
 though doing so with SSH keys is now easier than ever.  But first, to

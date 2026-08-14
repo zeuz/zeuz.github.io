@@ -95,7 +95,7 @@
       <pubDate>Thu, 13 Aug 2026 20:00:41 +0000</pubDate>
     </item>
     <item>
-      <title>A Keyboard with No Keys</title>
+      <title>A Keyboard with No Keys - Hack a Day</title>
       <link>https://hackaday.com/2026/08/10/a-keyboard-with-no-keys/</link>
       <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/08/audio-keyboard-main.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;For as capable as smartphone hardware is, the software running on them can be especially restrictive and cumbersome. Unlike a single-board computer with GPIO running a standard Linux operating system and some intuitive programming language like Python, smartphones are generally walled gardens where programming major overhead, and if a custom program can be run on them at all the user still has to figure out how to interface hardware with a USB-C port. To skip past all of this, [nicolas.ma] built &lt;a href="https://hackaday.io/project/202196-macro-keypad-controlled-by-sound" target="_blank"&gt;an audio modem that can send keyboard input to a computer&lt;/a&gt; with nothing more than a browser.&lt;/p&gt;
 &lt;p&gt;The &amp;#8220;keyboard&amp;#8221; starts off in a browser running on a standard smartphone. A user can input text into the browser, which then gets converted into a series of audible audio pulses that can be sent to the keyboard. The keyboard itself listens to those pulses, decodes them, and then sends the text through to the computer as a standard USB device thanks to an Arduino Micro at the center. Arduino Micros are excellent choices for keyboard controllers &lt;a href="https://hackaday.com/2020/04/19/kvm-uses-many-arduinos/"&gt;because they have a built-in USB chip&lt;/a&gt;.&lt;/p&gt;
@@ -105,7 +105,7 @@
       <pubDate>Tue, 11 Aug 2026 05:00:08 +0000</pubDate>
     </item>
     <item>
-      <title>The PiShot Is Ready For Your Snaps</title>
+      <title>The PiShot Is Ready For Your Snaps - Hack a Day</title>
       <link>https://hackaday.com/2026/08/10/the-pishot-is-ready-for-your-snaps/</link>
       <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/08/pishot-featured.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;The formula for a Raspberry Pi camera is by now a straightforward one: take a Pi and camera module, add a display, buttons, and battery, and you&amp;#8217;re done. This doesn&amp;#8217;t mean that there&amp;#8217;s no scope for more though, and [Irtaza2009] has one in &lt;a href="https://github.com/Irtaza2009/PiShot/" target="_blank"&gt;the PiShot&lt;/a&gt;. It&amp;#8217;s a few months old now but the repository is still being updated.&lt;/p&gt;
 &lt;p&gt;The 3D printed case follows a compact camera form factor with the screen on the rear, and a cold shoe on top. Inside is a Pi Zero 2 W and a Camera Module 3, with an 18650 cell and battery management/power supply board. The buttons are tactile switches hooked up to GPIOs, and the screen is an ST7789 SPI display.&lt;/p&gt;
@@ -115,7 +115,7 @@
       <pubDate>Tue, 11 Aug 2026 02:00:10 +0000</pubDate>
     </item>
     <item>
-      <title>Cotton-Fiberglass Composite Makes Lightweight RV Countertops</title>
+      <title>Cotton-Fiberglass Composite Makes Lightweight RV Countertops - Hack a Day</title>
       <link>https://hackaday.com/2026/08/10/cotton-fiberglass-composite-makes-lightweight-rv-countertops/</link>
       <description>&lt;div&gt;&lt;img alt="The countertop in its natrual habitat: a van." class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/08/resin-cotton-countertop.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;You&amp;#8217;ve seen fiber-reinforced-plastic before, no doubt, but perhaps never quite like in this video by [Whitburn Studio]: it&amp;#8217;s still got the usual resin, but instead of glass or carbon fibers, he&amp;#8217;s using printed Japanese cotton to create &lt;a href="https://www.youtube.com/watch?v=6GJt5ZBBdJg" target="_blank"&gt;strong, lightweight and good looking parts&lt;/a&gt; for the interior of his RV&amp;#8211; specifically the countertops.&lt;/p&gt;
 &lt;p&gt;The technique is very similar to the sort of moldless composite work Burt Rutan pioneered in aircraft use. The fiber-reinforced plastic is formed around a positive &amp;#8216;buck&amp;#8217; that remains inside the final part, adding stiffness and some backing. Unlike Rutan&amp;#8217;s designs, which used pure Styrofoam inside, [Whitburn] is using a sandwhich of two layers of thin ply (3.6 mm) with XPS foam in between. Adding plywood means you don&amp;#8217;t need many layers of fiber&amp;#8211; again, that&amp;#8217;s a decorative cotton, here&amp;#8211; to get a surface that won&amp;#8217;t dent into the styrofoam when you drop a coffee cup on it.&lt;/p&gt;
@@ -127,7 +127,7 @@
       <pubDate>Mon, 10 Aug 2026 23:00:30 +0000</pubDate>
     </item>
     <item>
-      <title>Building a bicycle dropper seat post</title>
+      <title>Building a bicycle dropper seat post - Hack a Day</title>
       <link>https://hackaday.com/2026/08/10/building-a-bicycle-dropper-seat-post/</link>
       <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/08/seatpostFeatured.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;A recent addition to mountain bikes is the dropper seat post. This invention is in the vein of office swivel chairs, allowing the seat height to be adjusted with a simple handlebar mounted lever. They are rather fascinating inventions ranging in complexity from simple mechanical systems, to electronic monstrosities actuated by Bluetooth. Inspired by the panoply of possibilities, [kane components]&lt;a href="https://www.youtube.com/watch?v=tO4e-PNJhJI" target="_blank"&gt; set forth to create such a home-built dropper post. &lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Inspired by woodworking bar clamps, [kane&amp;#8217;s] design utilizing angled plates binding against a rail inside the dropper post. Two pairs of plates sitting at opposite angles resist opposite forces from either the rider sitting on the post, or the return spring. A simple cable actuated cam moves the plates to a nonbinding position when the lever is actuated, and springs return the plates to a binding rest-state. The return is handled by an air spring pressurized against a piston at the bottom of the shaft.&lt;/p&gt;
@@ -143,7 +143,7 @@
       <pubDate>Mon, 10 Aug 2026 20:00:54 +0000</pubDate>
     </item>
     <item>
-      <title>Teardown of an Oxford Nanopore MinION DNA Sequencer</title>
+      <title>Teardown of an Oxford Nanopore MinION DNA Sequencer - Hack a Day</title>
       <link>https://hackaday.com/2026/08/10/teardown-of-an-oxford-nanopore-minion-dna-sequencer/</link>
       <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="436" src="https://hackaday.com/wp-content/uploads/2026/08/oxford_nanopore_minion_dna_sequences_disassembled_mikeselectricstuff_youtube.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;figure class="wp-caption alignright" id="attachment_1138071" style="width: 355px;"&gt;&lt;img alt="Detail of the nanopore chip. (Credit: mikeselectricstuff, YouTube)" class="size-medium wp-image-1138071" height="355" src="https://hackaday.com/wp-content/uploads/2026/08/oxford_nanopore_minion_dna_sequences_nanopores_mikeselectricstuff_youtube_93ac9b.jpg?w=355" width="355" /&gt;&lt;figcaption class="wp-caption-text" id="caption-attachment-1138071"&gt;Detail of the nanopore chip. (Credit: mikeselectricstuff, YouTube)&lt;/figcaption&gt;&lt;/figure&gt;
 &lt;p&gt;For most people the term &amp;#8216;DNA sequencing&amp;#8217; probably brings to mind large, expensive laboratory equipment in sterile rooms, but over the past decades technological progress really has had its way with it, to the point where it&amp;#8217;s now just another small portable device. Something like the Oxford Nanopore MinION unit that [Mike] &lt;a href="https://www.youtube.com/watch?v=PCiV9UqJrDs" target="_blank"&gt;recently took to bits&lt;/a&gt; to ogle at the intricate insides.&lt;/p&gt;
@@ -156,7 +156,7 @@
       <pubDate>Mon, 10 Aug 2026 18:00:14 +0000</pubDate>
     </item>
     <item>
-      <title>Linux Fu: Heads or Tails for VPN</title>
+      <title>Linux Fu: Heads or Tails for VPN - Hack a Day</title>
       <link>https://hackaday.com/2026/08/10/linux-fu-heads-or-tails-for-vpn/</link>
       <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="484" src="https://hackaday.com/wp-content/uploads/2020/05/LinuxFu.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;If you&amp;#8217;ve done much networking, you surely know the frustration of trying to connect to something, say a Raspberry Pi, that lives behind your consumer router. There are a number of solutions for this, ranging from opening ports on your router along with dynamic DNS. Or, you can operate a VPN server on your network. Modern Linux has a facility called Wireguard that lets you create secure network tunnels very easily, but it is a little difficult to set up. But there are tools like Tailscale that can do most of the work for you. There&amp;#8217;s only one problem: Tailscale is sorta-kinda free, but not really. But it turns out, you can build your own Tailscale network, and it is easier than you might imagine.&lt;/p&gt;
 &lt;p&gt;In all fairness, Tailscale&amp;#8217;s free tier is good and recently got even more generous, allowing unlimited nodes and up to six users. That&amp;#8217;s plenty for most hackers. However, as we&amp;#8217;ve seen before, what they can give they can also take away. Besides, there are some extra services you still have to pay for if you want them, but overall, the free tier is more than enough for most people.&lt;/p&gt;
@@ -206,7 +206,7 @@
       <pubDate>Mon, 10 Aug 2026 17:00:15 +0000</pubDate>
     </item>
     <item>
-      <title>telephones caught in between</title>
+      <title>telephones caught in between - computers are bad</title>
       <link>https://computer.rip/2026-08-02-telephone-leasing.html</link>
       <description>&lt;p&gt;During the heyday of AT&amp;amp;T, it was often said that the telephone system was the
 largest machine ever built. The &amp;quot;hello machine&amp;quot; certainly was vast, but whether
@@ -951,7 +951,7 @@ more than one version was correct over time.&lt;a class="footnote" href="#fnref-
       <pubDate>Sun, 02 Aug 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>email encryption</title>
+      <title>email encryption - computers are bad</title>
       <link>https://computer.rip/2026-07-19-email-encryption.html</link>
       <description>&lt;p&gt;Email, one of the most pervasive and enduring technologies of computer
 networking, was invented in about a dozen places by dozens of people in the
@@ -1518,7 +1518,7 @@ only loosely map to the more proper roles of &amp;quot;transfer agent&amp;quot; 
       <pubDate>Sun, 19 Jul 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>megawatts by microwave</title>
+      <title>megawatts by microwave - computers are bad</title>
       <link>https://computer.rip/2026-07-04-microwave-and-power.html</link>
       <description>&lt;blockquote&gt;
 &lt;p&gt;In 1914 the Department of the Interior, through the Bureau of Reclamation,
@@ -2200,7 +2200,7 @@ telemetering and teleoperation signals over such a long distance.&lt;a class="fo
       <pubDate>Sat, 04 Jul 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>from hookswitch to grave</title>
+      <title>from hookswitch to grave - computers are bad</title>
       <link>https://computer.rip/2026-06-14-hookswitch-to-grave.html</link>
       <description>&lt;p&gt;Through decades of consolidation, reorganization, and divestiture, AT&amp;amp;T left
 a famously complicated corporate history. One of the greatest enterprises in
@@ -2677,7 +2677,7 @@ telephone era.&lt;/p&gt;</description>
       <pubDate>Sun, 14 Jun 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>On Reading SRAMs in IR Images, and Establishing Bounds on Trust</title>
+      <title>On Reading SRAMs in IR Images, and Establishing Bounds on Trust - bunnie's blog</title>
       <link>https://www.bunniestudios.com/blog/2026/on-reading-srams-in-ir-images-and-establishing-bounds-on-trust/</link>
       <description>&lt;p class="wp-block-paragraph"&gt;&lt;a href="https://www.bunniestudios.com/blog/2026/name-that-ware-april-2026/"&gt;Last month’s name that ware&lt;/a&gt; demonstrates that even though non-destructive IR imaging is not capable of resolving an individual bit cell, at least at 22nm it is still possible to constrain the number of bits in an SRAM macro.&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;An important step in establishing trust in a computer is measuring all of its state and confirming that nothing is amiss. A typical trusted boot would make a point of zeroing and/or patterning &amp;amp; hashing all the known bits of memory in a system. This process helps constrain the amount of malicious or foreign code that could be hiding in the system.&lt;/p&gt;
@@ -2725,7 +2725,7 @@ telephone era.&lt;/p&gt;</description>
       <pubDate>Sun, 31 May 2026 15:21:33 +0000</pubDate>
     </item>
     <item>
-      <title>the totalisator</title>
+      <title>the totalisator - computers are bad</title>
       <link>https://computer.rip/2026-05-31-totalisator.html</link>
       <description>&lt;p&gt;It has been an unfortunate turn in the software industry, one of many as of
 late, that gambling is once again one of its primary engines. With the rise of
@@ -3326,7 +3326,7 @@ the idea from France.&lt;a class="footnote" href="#fnref-3"&gt;&amp;#8617;&lt;/a
       <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>extremely low frequencies</title>
+      <title>extremely low frequencies - computers are bad</title>
       <link>https://computer.rip/2026-05-09-extremely-low-frequencies.html</link>
       <description>&lt;p&gt;The submarine is a surprisingly ancient technology—at least in its early,
 primitive forms. The idea is quite simple, that a well-enough-sealed boat ought
@@ -3932,7 +3932,7 @@ more by people without original knowledge of the program.&lt;a class="footnote" 
       <pubDate>Sat, 09 May 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>voice modems</title>
+      <title>voice modems - computers are bad</title>
       <link>https://computer.rip/2026-04-26-voice-modems.html</link>
       <description>&lt;p&gt;If you've done much with modern cellphones, you've probably noticed just how odd
 the architecture can be around audio. Specifically, I mean call audio: modern
@@ -4453,7 +4453,7 @@ elegant setup but it would take some doing.&lt;a class="footnote" href="#fnref-3
       <pubDate>Sun, 26 Apr 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>IrDA</title>
+      <title>IrDA - computers are bad</title>
       <link>https://computer.rip/2026-04-11-IrDA.html</link>
       <description>&lt;p&gt;Light: it's the radiation we can see. The communications potential of light is
 obvious, and indeed, many of the earliest forms of long-distance communication
@@ -4995,7 +4995,7 @@ ranges. AIR targeted five to ten meters. We could build a LAN. We could squirt.
       <pubDate>Sat, 11 Apr 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>LotusNotes</title>
+      <title>LotusNotes - computers are bad</title>
       <link>https://computer.rip/2026-03-14-lotusnotes.html</link>
       <description>&lt;p&gt;I tend to focus on the origin of the computer within the military. Particularly
 in the early days of digital computing, the military was a key customer, and
