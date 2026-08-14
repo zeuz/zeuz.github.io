@@ -5,7 +5,42 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 11 Aug 2026 05:31:46 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 14 Aug 2026 19:35:54 +0000</lastBuildDate>
+    <item>
+      <title>RedLine Stealer – C2 Domains, Defender Bypass &amp; Payload Extraction - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vny7o0/redline_stealer_c2_domains_defender_bypass/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/StructBreaker"&gt; /u/StructBreaker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/kaandemir993/RedLine-Stealer-C2-Defender-Bypass-Payload-Analysis"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vny7o0/redline_stealer_c2_domains_defender_bypass/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">b53f49fa903cb176d1205fd9b5a27e26967b21970ffe87ff3ee3e915a327aae2</guid>
+      <pubDate>Fri, 14 Aug 2026 05:20:13 +0000</pubDate>
+    </item>
+    <item>
+      <title>From P-Code to GNN: extract binary code semantics - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vnr2q7/from_pcode_to_gnn_extract_binary_code_semantics/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/mttd"&gt; /u/mttd &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://blog.quarkslab.com/from-p-code-to-gnn-extract-binary-code-semantics.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vnr2q7/from_pcode_to_gnn_extract_binary_code_semantics/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">d2d004e506d70ab9f1f0b82ac0d33d57ff48e4775d13136b9ae90bb5079df741</guid>
+      <pubDate>Thu, 13 Aug 2026 23:38:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>Live Android application analysis - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vnpedb/live_android_application_analysis/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/toto_fpv"&gt; /u/toto_fpv &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://ismyphonepwned.com/droid2web/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vnpedb/live_android_application_analysis/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">74ce2f72f2e59d8accc7508eaaad88bf54382033d2a48db270bc2c4850c24762</guid>
+      <pubDate>Thu, 13 Aug 2026 22:27:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>I reverse engineered an anti-detect (Stealth) browser to find out exactly how their hooks work. I wrote a detailed breakdown + detector for it. - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vnfumo/i_reverse_engineered_an_antidetect_stealth/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/trustsigRobert"&gt; /u/trustsigRobert &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://trustsig.eu/blog/multilogin-mimic-canvas-webgl-masking/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vnfumo/i_reverse_engineered_an_antidetect_stealth/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">04dcf7dbda76e349973dedf144a73e68c2ac1e3d6e6e0da14b61f85598b74346</guid>
+      <pubDate>Thu, 13 Aug 2026 16:36:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>What happens when a GPU reads memory - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vnfjb2/what_happens_when_a_gpu_reads_memory/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/vitruso"&gt; /u/vitruso &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://blog.doubleword.ai/what-happens-when-a-gpu-reads-memory"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vnfjb2/what_happens_when_a_gpu_reads_memory/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">d63de066ca2e067f50a17784df9d5994e7e5a785a7726df886764fb5c1bf765c</guid>
+      <pubDate>Thu, 13 Aug 2026 16:25:05 +0000</pubDate>
+    </item>
     <item>
       <title>Java runtime debugger which analyze java programs just like x64dbg. Supports breakpoints, hooks, local variable debug, runtime class exploring, dump, redefine, and more</title>
       <link>https://www.reddit.com/r/ReverseEngineering/comments/1vl84wk/java_runtime_debugger_which_analyze_java_programs/</link>
