@@ -5,9 +5,714 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 11 Aug 2026 05:31:46 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2026 17:47:11 +0000</lastBuildDate>
     <item>
-      <title>James Bennett: Breaking up (lines) is hard to do - Planet Python</title>
+      <title>Mike C. Fletcher: OpenGL Extrusions (and Tessellation) - Planet Python</title>
+      <link>http://blog.vrplumber.com/b/2026/08/25/opengl-extrusions-and-tessellation/</link>
+      <description>&lt;p&gt;I've released a new library &lt;a href="https://github.com/mcfletch/opengl_extrusions"&gt;opengl_extrusions&lt;/a&gt; which is a Numpy and Cython library that does 3D extrusions (like the GLE library) and tessellations (one of the things the GLU library does). The motivation being that the GLE library is constrained to compatibility contexts (think "legacy OpenGL"), so it doesn't work under modern core-profile contexts. The library has a very different API from GLE, but it does the same jobs, and has a conformance suite that verifies that it creates the same final shapes for a given input, albeit with a (hopefully cleaner) API. With the new API you get back a structure that looks exactly like what you use to construct a glTF object, arrays of points and index pointers.&lt;/p&gt;
+&lt;p&gt;Tessellation is handled with the CDT algorithm, which is not what GLU's tessellator uses. GLU is deprecated on some platforms (Mac), so we'll eventually need to move off it. This is just one piece of doing that, but it's a useful piece. CDT's biggest advantage is that it can avoid long spiky triangles that tend to cause rendering artefacts.&lt;/p&gt;
+&lt;p&gt;The library is entirely LLM coded, though I've tweaked docs here and there.&lt;/p&gt;</description>
+      <guid isPermaLink="false">98416c7af6ae93c9741e23aef848927577e8d8fe92a2b9da97ca003a95568a9d</guid>
+      <pubDate>Tue, 25 Aug 2026 11:34:34 +0000</pubDate>
+    </item>
+    <item>
+      <title>Django Weblog: The Block and Tackle of Django&amp;#x27;s Code of Conduct Working Group - Planet Python</title>
+      <link>https://www.djangoproject.com/weblog/2026/aug/24/coc-block-tackle/</link>
+      <description>&lt;p&gt;In early 2026, Django's Code of Conduct Working Group adopted &lt;a href="https://www.contributor-covenant.org/version/3/0/code_of_conduct/"&gt;Contributor Covenant 3.0&lt;/a&gt; as Django's Code of Conduct. I talked about why at DjangoCon US 2026 (&lt;a href="https://django-coc-2026.dryan.com/"&gt;slides here&lt;/a&gt;). That talk was mostly the story of how we managed the people side of the process. This post is the technical mechanics of how we managed the change and our work going forward.&lt;/p&gt;
+&lt;h2 id="s-who-can-change-what-and-who-has-to-sign-off"&gt;Who can change what, and who has to sign off&lt;/h2&gt;
+&lt;p&gt;The &lt;a href="https://github.com/django/code-of-conduct/blob/main/membership.md"&gt;Code of Conduct Working Group&lt;/a&gt; is established by the DSF board and kept deliberately small. At least three people, per the &lt;a href="https://github.com/django/code-of-conduct/blob/main/working-group-manual.md"&gt;working group manual&lt;/a&gt;, recruited for diversity of geography, background, and lived experience rather than just availability. Membership is volunteer and term-limited. Terms became annual in February 2026, and if a member doesn't respond to the January renewal check-in within a week, they're rolled off. Nobody has to feel guilty about stepping back.&lt;/p&gt;
+&lt;p&gt;The board isn't a separate, distant approval layer sitting above the working group. The DSF board's president always holds a seat on the working group and acts as its board liaison. Other board members can volunteer alongside them, and two currently do, in addition to the chair. Day to day, the working group operates independently. It only has to go back to the board for three things: spending money, taking a drastic punitive action, or altering the Code of Conduct text itself.&lt;/p&gt;
+&lt;p&gt;There's a second working group in the mix too. The &lt;a href="https://github.com/django/dsf-working-groups/blob/main/active/online-community.md"&gt;Online Community Working Group&lt;/a&gt; handles routine moderation of Django's day-to-day spaces. It doesn't touch the Code of Conduct Working Group at all until something gets escalated: a formal report, a violation spanning multiple spaces, or an issue neither group can resolve alone. Each group appoints one of its own members as liaison to the other. If the two groups can't reach consensus on something that needs joint handling, either chair can send it to the board.&lt;/p&gt;
+&lt;p&gt;Inside the working group itself, decisions are made by consensus first. If that doesn't happen, a two-thirds majority of members without a conflict of interest can decide instead. If neither happens in a reasonable timeframe, it goes to the board.&lt;/p&gt;
+&lt;h2 id="s-the-process-for-changing-the-process"&gt;The process for changing the process&lt;/h2&gt;
+&lt;p&gt;Before anyone touched the Code of Conduct's actual text, the working group created a process for how changes get proposed at all. &lt;a href="https://github.com/django/code-of-conduct/issues/69"&gt;Issue #69&lt;/a&gt;, opened January 13, 2026, asked for exactly that. &lt;a href="https://github.com/django/code-of-conduct/pull/70"&gt;PR #70&lt;/a&gt; answered it the same day by adding &lt;a href="https://github.com/django/code-of-conduct/blob/main/updates.md"&gt;&lt;code&gt;updates.md&lt;/code&gt;&lt;/a&gt; and a &lt;a href="https://github.com/django/code-of-conduct/blob/main/.github/ISSUE_TEMPLATE/coc-change-proposal.md"&gt;structured issue template&lt;/a&gt; for proposals.&lt;/p&gt;
+&lt;p&gt;The rules are plain. Anyone in the Django community can propose a change by opening an issue against that template. It asks what's changing, why, and whether it touches the CoC text itself or just supporting documentation. The working group can skip the full process for genuinely minor edits, things like typos, membership list updates, or FAQ tweaks. Everything else gets discussed at the working group's regular monthly meeting, with input from the wider community pulled in through the &lt;a href="https://forum.djangoproject.com"&gt;forum&lt;/a&gt;, Discord, or DSF Slack when a change is significant enough to warrant it.&lt;/p&gt;
+&lt;p&gt;Approval splits along the same line as the board relationship above. The working group can merge changes to supporting documentation on its own consensus. A change to &lt;code&gt;CODE_OF_CONDUCT.md&lt;/code&gt; itself needs the board's sign-off first. That split isn't just written policy, it's enforced mechanically by a two-line &lt;a href="https://github.com/django/code-of-conduct/blob/main/.github/CODEOWNERS"&gt;&lt;code&gt;CODEOWNERS&lt;/code&gt;&lt;/a&gt; file:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;
+* @django/coc-committee&lt;br /&gt;
+CODE_OF_CONDUCT.md @django/coc-committee @django/dsf-board
+&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Every file in the repo requires the working group's review. &lt;code&gt;CODE_OF_CONDUCT.md&lt;/code&gt; additionally requires the board's. GitHub won't merge a PR touching that one file without both. If you're setting up something similar, this is worth copying directly: two lines, and your governance policy becomes something GitHub enforces instead of something people are trusted to remember.&lt;/p&gt;
+&lt;p&gt;Additionally, we require a 30-day public comment period for all PRs that aren't administrative (fixing typos, updating membership lists, changelog updates, etc.). The working group can merge a PR after 30 days even if nobody comments, but if anyone does, the discussion has to be resolved before merging. This is the mechanism that makes the process public and transparent. It doesn't require anyone to read every comment, but it does require the working group to respond to them. You can use &lt;a href="https://github.com/django/code-of-conduct/blob/main/.github/workflows/pr-min-age.yml"&gt;our workflow&lt;/a&gt; to enforce that for your project as well. There's two settings &lt;a href="https://github.com/django/code-of-conduct/blob/main/.github/workflows/pr-min-age.yml#L20"&gt;&lt;code&gt;BYPASS_LABEL&lt;/code&gt;&lt;/a&gt; and &lt;a href="https://github.com/django/code-of-conduct/blob/main/.github/workflows/pr-min-age.yml#L21"&gt;&lt;code&gt;MIN_AGE_DAYS&lt;/code&gt;&lt;/a&gt; to tweak the behavior, but the defaults are a 30-day wait and an &lt;code&gt;expedited&lt;/code&gt; label that lets the working group skip it for administrative changes.&lt;/p&gt;
+&lt;p&gt;Once something merges, it gets announced on the blog, forum, social, whatever's appropriate for the size of the change, with a summary, the rationale, and links to what actually changed. &lt;code&gt;updates.md&lt;/code&gt; even keeps its own tiny changelog at the bottom, tracking edits to the process document itself, separate from changes to the Code of Conduct. The governance model applies to itself.&lt;/p&gt;
+&lt;h2 id="s-turning-a-rewrite-into-a-project-plan"&gt;Turning a rewrite into a project plan&lt;/h2&gt;
+&lt;p&gt;Two weeks after &lt;code&gt;updates.md&lt;/code&gt; landed, &lt;a href="https://github.com/django/code-of-conduct/issues/74"&gt;issue #74&lt;/a&gt;, "Adopt Contributor Covenant 3," opened and immediately spawned fifteen sub-issues (#75 through #89). Each one was a discrete deliverable: rewrite the Enforcement Manual, rewrite the Reporting Guidelines, rewrite the FAQs, rewrite the CoC text itself, sync all of it to djangoproject.com, then announce it, separately, on the Django blog, the forum, Discord, DSF Slack, and Reddit. A rewrite this size doesn't happen as one PR. It happens as a checklist of small, assignable, individually reviewable pieces.&lt;/p&gt;
+&lt;p&gt;The actual pull requests show how messy that still is in practice. &lt;a href="https://github.com/django/code-of-conduct/pull/90"&gt;PR #90&lt;/a&gt; opened February 10 and closed the same day, unmerged. A first attempt at the policy rewrite that didn't pan out. &lt;a href="https://github.com/django/code-of-conduct/pull/91"&gt;PR #91&lt;/a&gt;, opened minutes later, was the one that actually worked: +1,475/-790 lines, merged five weeks later on March 16. &lt;a href="https://github.com/django/code-of-conduct/pull/97"&gt;PR #97&lt;/a&gt; closed the loop on April 15 with a comparatively small +217/-90, formally adopting Contributor Covenant 3. Start to finish, from &lt;a href="https://github.com/django/code-of-conduct/pull/68"&gt;PR #68&lt;/a&gt; (which first brought these docs into git for change tracking, back on January 10) to PR #97 merging, the whole rewrite took about three months. Most of which was us allowing time for the community to read, comment, and ask questions. The actual work was a few days of writing and reviewing.&lt;/p&gt;
+&lt;h2 id="s-the-paper-trail-that-replaces-trust-us"&gt;The paper trail that replaces "trust us"&lt;/h2&gt;
+&lt;p&gt;The same PR that added &lt;code&gt;updates.md&lt;/code&gt; also added a &lt;a href="https://github.com/django/code-of-conduct/blob/main/.github/workflows/update-changelog.yml"&gt;GitHub Action&lt;/a&gt; that regenerates &lt;a href="https://github.com/django/code-of-conduct/blob/main/CHANGELOG.md"&gt;&lt;code&gt;CHANGELOG.md&lt;/code&gt;&lt;/a&gt; automatically on merge. It's not a list of diffs. It's a list of decisions, in plain language, with the reasoning attached. One real entry from the April 15 rewrite:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;📝 remove weapons policy since we don't host in-person events directly. this makes more sense as guidance for affiliated events so I'll move it there in the process-docs PR&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;That's a documented reason for a scope decision, sitting in a public file anyone can read without asking. Multiply that by every entry in the changelog and that's the actual mechanism behind "trust us" becoming "here's the commit history." Not a promise, a habit, enforced by a bot that runs on every merge whether anyone remembers to update the changelog by hand or not.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Our GitHub Action expects a script to be at &lt;code&gt;scripts/update_changelog.sh&lt;/code&gt; in the repo. View ours at &lt;a href="https://github.com/django/code-of-conduct/blob/main/scripts/update_changelog.sh"&gt;https://github.com/django/code-of-conduct/blob/main/scripts/update_changelog.sh&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="s-what-happens-after-a-report-comes-in"&gt;What happens after a report comes in&lt;/h2&gt;
+&lt;p&gt;The process above covers how the document changes. Reports of actual violations run through a separate mechanism, described in full in the &lt;a href="https://github.com/django/code-of-conduct/blob/main/working-group-manual.md#report-handling-procedures"&gt;working group manual&lt;/a&gt; and the &lt;a href="https://github.com/django/code-of-conduct/blob/main/reporting-guide.md"&gt;reporting guide&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Every report lands in one inbox, &lt;code&gt;conduct@djangoproject.com&lt;/code&gt;, which fans out to the whole working group. The goal is acknowledgment within a day and an initial response within a week, though the manual is upfront that volunteer coordination sometimes takes longer than that. A decision on next steps needs at least two working group members to agree. Anything severe enough to warrant legal advice needs a majority. Outcomes run up the &lt;a href="https://github.com/django/code-of-conduct/blob/main/enforcement-ladder.md"&gt;enforcement ladder&lt;/a&gt;: private warning, 30 to 90 day suspension, 90-plus day suspension, permanent ban. Lower rungs get skipped when severity calls for it.&lt;/p&gt;
+&lt;p&gt;The record-keeping is worth copying too. Every case gets a randomly generated code name, things like "home shelf" or "stunned bulb." Every reported person gets their own persistent code name, like "Person A" or "Blue Jay," so the working group can track repeat patterns across cases without a real name ever touching the primary tracking sheet. A second spreadsheet, access-restricted separately from the first, holds the only mapping from code names back to real identities. Most of the working group can discuss a case, even in public, without either of them knowing who it's actually about.&lt;/p&gt;
+&lt;h3 id="s-the-code-name-generator"&gt;The code name generator&lt;/h3&gt;
+&lt;p&gt;Those code names come from a small Google Apps Script bound to the tracking spreadsheet, not a service or a library where we're sending sensitive data off to a third party. To install it, open the spreadsheet, go to Extensions &amp;gt; Apps Script, paste &lt;a href="https://gist.github.com/dryan/9d4369adbc0777671280e52eda709a85"&gt;the script&lt;/a&gt; into &lt;code&gt;Code.gs&lt;/code&gt;, and save. Reload the spreadsheet and a "Django CoC" menu shows up next to the built-in ones.&lt;/p&gt;
+&lt;p&gt;To use it, select the cell where you want a code name and click Django CoC &amp;gt; Generate Code Name. It picks one adjective and one noun at random from two 100-word lists, joins them with a hyphen, and drops the result into the active cell (something like &lt;code&gt;amber-anchor&lt;/code&gt;). If the cell already has a value, it asks before overwriting.&lt;/p&gt;
+&lt;h3 id="s-record-keeping-spreadsheets"&gt;Record keeping spreadsheets&lt;/h3&gt;
+&lt;p&gt;The record-keeping actually lives across three separate spreadsheets, each with a different level of access.&lt;/p&gt;
+&lt;p&gt;The Report Tracker is the working record. One row per case, using code names instead of real identities, with columns for status, resolution source, safety risk, and consequences. The code name generator menu lives on this sheet.&lt;/p&gt;
+&lt;p&gt;The Person Identity Key is a second, more restricted spreadsheet. It's the only place that maps a code name back to a real name, and it tracks report counts and the highest consequence recorded against that person across cases. Access to it can be limited to a smaller subset of the working group than the Report Tracker itself, so members handling a case can look for patterns without necessarily knowing who they're looking at.&lt;/p&gt;
+&lt;p&gt;The Public Tracker doesn't touch either of those directly. It pulls a single "Annual Stats" tab out of the Report Tracker with &lt;code&gt;IMPORTRANGE&lt;/code&gt;, aggregate counts only (reports, people named, warnings, suspensions, bans, and so on), nothing case-level. That's the sheet behind &lt;a href="https://github.com/django/code-of-conduct/blob/main/statistics.md"&gt;the statistics Django publishes publicly&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="s-borrow-honestly"&gt;Borrow honestly&lt;/h2&gt;
+&lt;p&gt;None of this was invented from scratch, and the working group says so directly. &lt;a href="https://github.com/django/code-of-conduct/blob/main/sources.md"&gt;&lt;code&gt;sources.md&lt;/code&gt;&lt;/a&gt; traces the lineage: the &lt;a href="http://geekfeminism.wikia.com/wiki/Conference_anti-harassment/Responding_to_reports"&gt;Ada Initiative&lt;/a&gt;'s anti-harassment policy, through &lt;a href="https://us.pycon.org/2013/about/code-of-conduct/harassment-incidents/"&gt;PyCon 2013&lt;/a&gt;, into Contributor Covenant. The 2026 rewrite additionally drew on published enforcement materials from the &lt;a href="https://policies.python.org/python.org/code-of-conduct/"&gt;Python Software Foundation&lt;/a&gt;, &lt;a href="https://github.com/openjs-foundation/cross-project-council/tree/main/conduct"&gt;OpenJS Foundation&lt;/a&gt;, and &lt;a href="https://github.com/mozilla/inclusion"&gt;Mozilla&lt;/a&gt;, each one cited with the specific license it was borrowed under. Django's own materials are released under &lt;a href="http://creativecommons.org/licenses/by/3.0/"&gt;CC BY 3.0&lt;/a&gt; for the same reason, so the next community doesn't have to start from a blank page either.&lt;/p&gt;
+&lt;h2 id="s-proof-its-still-running"&gt;Proof it's still running&lt;/h2&gt;
+&lt;p&gt;The process didn't stop being used the moment PR #97 merged. &lt;a href="https://github.com/django/code-of-conduct/pull/106"&gt;PR #106&lt;/a&gt; added Djangonaut Space as an affiliated program in May. &lt;a href="https://github.com/django/code-of-conduct/pull/108"&gt;PR #108&lt;/a&gt; added Django Commons in July. Both went through the same lightweight path described in &lt;a href="https://github.com/django/code-of-conduct/blob/main/affiliated-programs.md"&gt;&lt;code&gt;affiliated-programs.md&lt;/code&gt;&lt;/a&gt;: adopt a complementary CoC, name a point of contact, publish transparency reports at least annually. This wasn't a one-time project. It's infrastructure now, and it's still picking up new communities.&lt;/p&gt;
+&lt;h2 id="s-if-you-want-to-fork-this"&gt;If you want to fork this&lt;/h2&gt;
+&lt;p&gt;Start with &lt;a href="https://github.com/django/code-of-conduct/blob/main/updates.md"&gt;&lt;code&gt;updates.md&lt;/code&gt;&lt;/a&gt; and the &lt;a href="https://github.com/django/code-of-conduct/blob/main/.github/ISSUE_TEMPLATE/coc-change-proposal.md"&gt;issue template&lt;/a&gt; it depends on. That's the whole meta-process in about a hundred lines. Copy the &lt;code&gt;CODEOWNERS&lt;/code&gt; pattern if you have anything resembling a board or steering committee that should have a harder veto than your day-to-day maintainers. Read the &lt;a href="https://github.com/django/code-of-conduct/blob/main/working-group-manual.md"&gt;working group manual&lt;/a&gt; end to end before you build a report-handling process from scratch, most of the hard judgment calls are already made in there.&lt;/p&gt;
+&lt;p&gt;And if you want the record-keeping spreadsheets as actual templates instead of a description, here they are, cleaned of real data and history. Each link opens a "Make a copy" prompt instead of our live copy, so you get your own independent version:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://docs.google.com/spreadsheets/d/1kkIE91EXp53KoSa822foz0ahaPsl9wDdmCHl4MnPjXo/copy"&gt;Report Tracker&lt;/a&gt;, the case-by-case log with the code name generator built in&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.google.com/spreadsheets/d/1QG42vzEFWUFVxoUUmlaGQ3Meb_znekGhTg1wiuj15YA/copy"&gt;Person Identity Key&lt;/a&gt;, the restricted sheet mapping code names back to real names&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.google.com/spreadsheets/d/1bBeNOeUlsWihpC_kLtnx0KKOO4oeVmCQtP8qAUERo1s/copy"&gt;Public Tracker&lt;/a&gt;, which pulls the Annual Stats tab out of the Report Tracker via &lt;code&gt;IMPORTRANGE&lt;/code&gt; for anything you publish externally&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Copying doesn't rewire them to each other. The &lt;code&gt;IMPORTRANGE&lt;/code&gt; formula in your copy of the Public Tracker will still point at our Report Tracker, not yours, since Sheets copies the formula text as-is. After you copy both, open the Public Tracker, find the &lt;code&gt;IMPORTRANGE&lt;/code&gt; formula on the Annual Stats tab, and replace our spreadsheet URL with the URL of your own copy of the Report Tracker. The first time it runs against the new URL, Sheets will show a &lt;code&gt;#REF!&lt;/code&gt; error with an "Allow access" link. Click it once and the formula resolves.&lt;/p&gt;
+&lt;p&gt;A Code of Conduct is an exercise in trust. The processes and mechanics we've put in place are designed to make that trust verifiable, not just assumed. If you want to borrow them, please do. If you have improvements, please share them! We're available on email at &lt;a href="mailto:conduct@djangoproject.com"&gt;&amp;#99;&amp;#111;&amp;#110;&amp;#100;&amp;#117;&amp;#99;&amp;#116;&amp;#64;&amp;#100;&amp;#106;&amp;#97;&amp;#110;&amp;#103;&amp;#111;&amp;#112;&amp;#114;&amp;#111;&amp;#106;&amp;#101;&amp;#99;&amp;#116;&amp;#46;&amp;#99;&amp;#111;&amp;#109;&lt;/a&gt; or open an issue against the &lt;a href="https://github.com/django/code-of-conduct/issues/"&gt;working group repo&lt;/a&gt; and we'll respond.&lt;/p&gt;</description>
+      <guid isPermaLink="false">cb576b4de1f3150644f26e1cceb08e051eea80f385402ebc233001c3f6507d6f</guid>
+      <pubDate>Mon, 24 Aug 2026 14:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Insider: RISC-V is now officially supported by CPython! - Planet Python</title>
+      <link>https://blog.python.org/2026/08/riscv-now-officially-supported/</link>
+      <description>I’m happy to announce that RISC-V platforms are now officially supported by CPython. 🎉 🚀</description>
+      <guid isPermaLink="false">17c83e25119a5bbaf273fc75601f413231674ce65a4c4c41bd87d9139256464c</guid>
+      <pubDate>Mon, 24 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Kay Hayen: Nuitka Release 4.2 - Planet Python</title>
+      <link>https://nuitka.net/posts/nuitka-release-42.html</link>
+      <description>&lt;p&gt;This is to inform you about the new stable release of &lt;a class="reference external" href="https://nuitka.net"&gt;Nuitka&lt;/a&gt;. It is the extremely compatible Python compiler,
+&lt;a class="reference external" href="https://nuitka.net/doc/download.html"&gt;“download now”&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This release adds many new features and corrections with a focus on
+Python 3.14 official support, new installers for Windows and Linux
+(macOS already had one), and initial, experimental support for Python
+3.15.&lt;/p&gt;
+&lt;h2&gt;Bug Fixes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python3:&lt;/strong&gt; Fix, nested generators did not make the exception being
+handled in the delegating generator visible to the code they delegate
+to, so &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;sys.exc_info()&lt;/span&gt;&lt;/code&gt; gave wrong results there. (Fixed in 4.1.1
+already.)&lt;/p&gt;
+&lt;div class="highlight-python notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;sys&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;inner&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exc_info&lt;/span&gt;&lt;span class="p"&gt;()[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;  &lt;span class="c1"&gt;# 4.1: None (bug), 4.1.1: KeyError (correct)&lt;/span&gt;
+    &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;outer&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="ne"&gt;KeyError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"caught"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="ne"&gt;KeyError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;yield from&lt;/span&gt; &lt;span class="n"&gt;inner&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;outer&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.10+:&lt;/strong&gt; Fix, compiled coroutines left the result of their
+send slot uninitialized when they finished by raising, so callers
+like &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;asyncio&lt;/span&gt;&lt;/code&gt; could observe garbage values. (Fixed in 4.1.1
+already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.14:&lt;/strong&gt; Fix, debug builds in module mode needed handling for
+the reference tracing runtime access, and adapted headers are no
+longer used for MSVC, where the compiler and runtime layouts match.
+(Fixed in 4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.11/3.12:&lt;/strong&gt; Fix, optimized class calls bypassing
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;object_new&lt;/span&gt;&lt;/code&gt; did not initialize the managed dict inline values, so
+the first attribute assignment fell back to a separately allocated
+dictionary, which was non-optimal and caused incompatibility in
+corner cases. (Fixed in 4.1.2 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.11+:&lt;/strong&gt; Fix, compiled frame locals were not stored in the
+interpreter frame &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;localsplus&lt;/span&gt;&lt;/code&gt; slots, making them invisible to
+CPython frame introspection. (Fixed in 4.1.2 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.12+:&lt;/strong&gt; Fix, the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;__type_params__&lt;/span&gt;&lt;/code&gt; attribute of generic
+functions was always empty. (Fixed in 4.1.2 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.14:&lt;/strong&gt; Fix, frame locals were cleared too late in the
+deallocator, after the code object and extra locals were already
+released, which could cause crashes. (Fixed in 4.1.2 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.14:&lt;/strong&gt; Fix, type complaint exception messages now use the
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;__qualname__&lt;/span&gt;&lt;/code&gt; of the offending type, as CPython does. (Fixed in
+4.1.2 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.14:&lt;/strong&gt; Fix, the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;ctypes&lt;/span&gt;&lt;/code&gt; dependency configuration did not
+work in flavors where &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;_ctypes&lt;/span&gt;&lt;/code&gt; is a built-in module rather than an
+extension module. (Fixed in 4.1.3 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.12+:&lt;/strong&gt; Fix, the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;has_builtin_module&lt;/span&gt;&lt;/code&gt; helper of Nuitka
+package configuration did not return a boolean value, which could
+break conditional configuration. (Fixed in 4.1.3 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Standalone:&lt;/strong&gt; Fix, standard library path detection for the “Python
+Build Standalone” flavor now considers symlinks in directory
+components. (Fixed in 4.1.2 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Plugins:&lt;/strong&gt; Fix, &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;mypyc&lt;/span&gt;&lt;/code&gt; runtime detection didn’t happen for
+submodules of a package, which affected at least the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;chardet&lt;/span&gt;&lt;/code&gt;
+module. (Fixed in 4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Windows:&lt;/strong&gt; Enables UTF-8 mode for attached consoles, since
+otherwise the CRT runtime could hang or corrupt outputs and inputs.
+(Fixed in 4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Windows:&lt;/strong&gt; Fix, &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;multiprocessing&lt;/span&gt;&lt;/code&gt; was not fully working in
+onefile DLL mode, since spawning needs to point to the outer binary,
+not the DLL. (Fixed in 4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Windows:&lt;/strong&gt; Fix, memory issue for 32 bit Python onefile compression,
+where parallel zstandard compression ran into memory issues for even
+small files when using multiple threads. (Fixed in 4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Windows:&lt;/strong&gt; Fix, console attaching did not work for onefile DLL mode
+with runtime DLLs included, since the DLL uses a separate CRT
+instance with uninitialized stdio streams, so Python level output and
+input were not working. (Fixed in 4.1.3 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Windows:&lt;/strong&gt; Fix, relative paths for the onefile temp directory
+specification did not work in onefile DLL mode. (Fixed in 4.1.3
+already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Windows:&lt;/strong&gt; Fix, DLL dependency scanning failed when it encountered
+folders without read permission, these are now ignored. (Fixed in
+4.1.3 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;macOS:&lt;/strong&gt; Fix, header padding is now also possible for
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--mode=dll&lt;/span&gt;&lt;/code&gt;, since otherwise &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;install_name_tool&lt;/span&gt;&lt;/code&gt; cannot rewrite
+the load paths of the output. (Fixed in 4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;macOS:&lt;/strong&gt; Fix, existing signatures of frameworks were no longer
+copied, as they became invalid after relocation and broke re-signing
+of the binaries. (Fixed in 4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;macOS:&lt;/strong&gt; Fix, now handles another form of self dependency from
+absolute paths. (Fixed in 4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;macOS:&lt;/strong&gt; Fix, detection of statically linked libraries did not
+work, since the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;file&lt;/span&gt;&lt;/code&gt; command output was not used yet, so they
+were treated like dynamic ones, leading to errors. (Fixed in 4.1.2
+already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;macOS:&lt;/strong&gt; Fix, now detects another variation of self dependencies,
+where a less-versioned binary depends on its more versioned self.
+(Fixed in 4.1.2 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Debian:&lt;/strong&gt; Fix, &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--disable-ccache&lt;/span&gt;&lt;/code&gt; did not work when the compiler
+binary was a symlink, e.g. from the Debian &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;ccache&lt;/span&gt;&lt;/code&gt; package. (Fixed
+in 4.1.2 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Linux:&lt;/strong&gt; Fix, large constant blobs could cause linker errors on the
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;x86_64&lt;/span&gt;&lt;/code&gt; architecture, since the default small code model limits
+code and data to 2GB, now the medium code model is used in that case.
+(Fixed in 4.1.3 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;AIX:&lt;/strong&gt; Fix, potential memory leak in the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;dladdr&lt;/span&gt;&lt;/code&gt; helper. (Fixed
+in 4.1.3 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fix, no longer depended on &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;os.__file__&lt;/span&gt;&lt;/code&gt; for detecting the standard
+library path, since that is not a usable path when Nuitka itself is
+compiled in accelerated mode, now &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;types.__file__&lt;/span&gt;&lt;/code&gt; is used instead.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fix, trimming the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;importlib&lt;/span&gt;&lt;/code&gt; bootstrap frames off the traceback on
+error exit now handles missing tracebacks, since very early failures
+can have no traceback at all.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fix, when creating generator, coroutine, and asyncgen objects, the
+assignment of closure variables was not checked for exceptions, so
+such assignments could be wrongly optimized away.&lt;/p&gt;
+&lt;div class="highlight-python notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;make&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;flag&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;flag&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="ne"&gt;ValueError&lt;/span&gt;
+    &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;gen&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+        &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;  &lt;span class="c1"&gt;# x is a closure variable&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;gen&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;make&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# must raise ValueError here&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fix, when running a package main module with &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--python-flag=-m&lt;/span&gt;&lt;/code&gt;,
+the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;__spec__&lt;/span&gt;&lt;/code&gt; value was &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;None&lt;/span&gt;&lt;/code&gt;, breaking code that uses it, e.g.
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;importlib.resources.files()&lt;/span&gt;&lt;/code&gt;, now a proper &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;ModuleSpec&lt;/span&gt;&lt;/code&gt; is set.&lt;/p&gt;
+&lt;div class="highlight-python notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# package_main/__main__.py&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;importlib.resources&lt;/span&gt;
+&lt;span class="c1"&gt;# Running as "python -m package_main", this needs __spec__.&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;importlib&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;resources&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;files&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"package_main"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fix, for fixed import modules, accessing a missing import name used
+the attribute lookup and raised &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;AttributeError&lt;/span&gt;&lt;/code&gt;, now it raises
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;ImportError&lt;/span&gt;&lt;/code&gt; as CPython does.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fix, fixed imports that failed at runtime could segfault, now the
+failure is handled properly.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fix, the hard import modules &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;site&lt;/span&gt;&lt;/code&gt;, &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pkg_resources&lt;/span&gt;&lt;/code&gt;, and
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;importlib_resources&lt;/span&gt;&lt;/code&gt; are now treated as possibly raising, since
+they can be broken in broken installs.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fix, file listing no longer crashes on case-insensitive filesystems
+when a directory that needs to be ignored differs in actual case.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fix, the optimization was not fully deterministic, since iterating
+over the set of escapable variables had unstable ordering, causing
+behavior differences between otherwise identical builds.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fix, decoding of localized filenames only copied the bytes, so
+multi-byte characters in paths were not decoded at all. On Linux the
+environment locale is now respected with a UTF-8 fallback, and
+FreeBSD and NetBSD use the macOS UTF-8 handling.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 2:&lt;/strong&gt; Fix, when Nuitka itself was compiled by Nuitka,
+executing Scons could race on the import lock, since
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;subprocess.Popen(close_fds=True)&lt;/span&gt;&lt;/code&gt; imports the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;resource&lt;/span&gt;&lt;/code&gt; module
+late, which is now pre-loaded.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 2.6:&lt;/strong&gt; Fix, &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;re.sub(flags=...)&lt;/span&gt;&lt;/code&gt; does not work there, now a
+wrapper is used when flags argument is needed.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.5:&lt;/strong&gt; Fix, now uses &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;PyImport_CreateModuleFromInitfunc&lt;/span&gt;&lt;/code&gt;
+for the meta path loader.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.7+:&lt;/strong&gt; Fix, the outermost iterator of an async
+comprehension was wrongly awaited, since whether the qualifier is
+async was not checked before wrapping, causing a &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;TypeError&lt;/span&gt;&lt;/code&gt; at
+runtime.&lt;/p&gt;
+&lt;div class="highlight-python notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;asyncio&lt;/span&gt;
+&lt;span class="k"&gt;async&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;source&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+    &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;span class="k"&gt;async&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="c1"&gt;# The outermost iterator of an async comprehension must be&lt;/span&gt;
+    &lt;span class="c1"&gt;# a plain iterable, it must not be awaited.&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;async&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;source&lt;/span&gt;&lt;span class="p"&gt;()]&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;asyncio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()))&lt;/span&gt;  &lt;span class="c1"&gt;# [1, 2], not TypeError&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.8+:&lt;/strong&gt; Fix, when &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;anext()&lt;/span&gt;&lt;/code&gt; or &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;aclose()&lt;/span&gt;&lt;/code&gt; failed with
+“asynchronous generator is already running”, the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;asend&lt;/span&gt;&lt;/code&gt; and
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;athrow&lt;/span&gt;&lt;/code&gt; wrappers were left unclosed, so using them again could
+misbehave.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.9+:&lt;/strong&gt; Fix, generic aliases did not release their values
+when being released, now they do.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.11+:&lt;/strong&gt; Fix, a &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;__class_getitem__&lt;/span&gt;&lt;/code&gt; set to &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;None&lt;/span&gt;&lt;/code&gt; or a
+non-callable now makes the type non-subscriptable with &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;TypeError&lt;/span&gt;&lt;/code&gt;
+correctly.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.12.4+:&lt;/strong&gt; Fix, throwing an exception into the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;asend&lt;/span&gt;&lt;/code&gt; or
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;athrow&lt;/span&gt;&lt;/code&gt; wrappers of an already running async generator was not
+rejected, which could run the generator body concurrently.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.13+:&lt;/strong&gt; Fix, was rejecting clearing of suspended frames in
+general, now only generator-owned suspended frames are rejected, as
+CPython does.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.13+:&lt;/strong&gt; Fix, when adapting header files, an assertion in
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pycore_long.h&lt;/span&gt;&lt;/code&gt; referenced a stripped macro, causing link errors in
+debug builds.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.14:&lt;/strong&gt; Fix, now follows the CPython changes in
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;async&lt;/span&gt;&lt;/code&gt;/&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;await&lt;/span&gt;&lt;/code&gt; error messages and the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;with&lt;/span&gt;&lt;/code&gt; statement
+attribute lookup order.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.14:&lt;/strong&gt; Fix, reference count leaked the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;__annotate__&lt;/span&gt;&lt;/code&gt;
+functions, now they are properly released.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.14.7+:&lt;/strong&gt; Fix, the error message for source files with
+encoding issues matches CPython 3.14.7 changes, where the byte
+position is reported relative to the seek point after the encoding
+declaration.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.15:&lt;/strong&gt; Fix, follow &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;__cached__&lt;/span&gt;&lt;/code&gt; module attribute removal.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.15:&lt;/strong&gt; Fix, follow the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;TypeVarTuple&lt;/span&gt;&lt;/code&gt; object changes.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.15:&lt;/strong&gt; Fix, follow the changes in duplicate parameter and
+encoding error messages.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.15:&lt;/strong&gt; Fix, follow the complex call argument error message
+changes.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.15:&lt;/strong&gt; Fix, the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;_math_integer&lt;/span&gt;&lt;/code&gt; extension module reports
+its &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;__name__&lt;/span&gt;&lt;/code&gt; wrongly as &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;math.integer&lt;/span&gt;&lt;/code&gt;, which is now worked
+around as well.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Compatibility:&lt;/strong&gt; Fix, the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;__builtins__&lt;/span&gt;&lt;/code&gt; value of compiled
+functions is not always a module, but can already be a dict, e.g. for
+functions created with &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;exec&lt;/span&gt;&lt;/code&gt;, so accessing &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;__builtins__&lt;/span&gt;&lt;/code&gt; failed
+in those cases.&lt;/p&gt;
+&lt;div class="highlight-python notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;builtins&lt;/span&gt;
+&lt;span class="n"&gt;namespace&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"__builtins__"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;vars&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;builtins&lt;/span&gt;&lt;span class="p"&gt;)}&lt;/span&gt;
+&lt;span class="n"&gt;exec&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="sd"&gt;"""&lt;/span&gt;
+&lt;span class="sd"&gt;def f():&lt;/span&gt;
+&lt;span class="sd"&gt;    return 42&lt;/span&gt;
+&lt;span class="sd"&gt;"""&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;namespace&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;namespace&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"f"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__builtins__&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="nb"&gt;vars&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;builtins&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;  &lt;span class="c1"&gt;# must be True&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Plugins:&lt;/strong&gt; Fix, permission errors during DLL and data file scans
+now give a clear error message pointing at the unreadable directory
+and its likely cause, instead of crashing outright.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Plugins:&lt;/strong&gt; Fix, &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;replacements_re&lt;/span&gt;&lt;/code&gt; were not really working newline
+neutral.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Plugins:&lt;/strong&gt; Fix, now splits comma-separated
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--noinclude-qt-plugins&lt;/span&gt;&lt;/code&gt; just like &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--include-qt-plugins&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Windows:&lt;/strong&gt; Fix, the length check for generated C source filenames
+only considered the basename, so long build directory paths could
+exceed the path length limit, now the full path is budgeted and a
+hashed name is used when needed.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Windows:&lt;/strong&gt; Fix, removing an environment variable during startup did
+not clear the underlying process environment, so unset variables
+could still be visible to child processes, causing issues with PGO at
+times.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Windows:&lt;/strong&gt; Fix, prevented a file handle leak in the pefile-based
+DLL dependency detection, which is used for ARM64 or with
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--experimental=force-dependencies-pefile&lt;/span&gt;&lt;/code&gt;, since the PE file was
+not closed after use.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;MSYS2:&lt;/strong&gt; Fix, DLL configuration paths were not normalized, which
+turned them into illegal paths errors during compilation.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;macOS:&lt;/strong&gt; Fix, now checks for the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;create-dmg&lt;/span&gt;&lt;/code&gt; tool availability
+early during options processing.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;macOS:&lt;/strong&gt; Fix, dependency scans no longer run into permission
+issues.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;macOS:&lt;/strong&gt; Fix, no longer crashes at runtime on Chinese app names.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;macOS:&lt;/strong&gt; Fix, now unlocks the keychain more robustly for CI and ssh
+contexts.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Linux:&lt;/strong&gt; Fix, onefile mode now links &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pthread&lt;/span&gt;&lt;/code&gt; explicitly, which
+older Linux versions require, since there &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pthread&lt;/span&gt;&lt;/code&gt; is not yet part
+of &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;libc&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Distutils:&lt;/strong&gt; Fix, for &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--project&lt;/span&gt;&lt;/code&gt; the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;tool.nuitka&lt;/span&gt;&lt;/code&gt; options
+were not used.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Distutils:&lt;/strong&gt; Fix, using &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--project&lt;/span&gt;&lt;/code&gt; with a project that has no
+name set now gives a clear error message telling where to set it,
+instead of failing later in confusing ways.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Distutils:&lt;/strong&gt; Fix, the entry point options now pass the project name
+through, so &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--main-entry-point&lt;/span&gt;&lt;/code&gt; builds derive their output name
+from the project, and the misnamed &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--project-requires&lt;/span&gt;&lt;/code&gt; option was
+renamed.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;PGO:&lt;/strong&gt; Fix, the Python PGO output is now initialized before the
+meta path loader, since probes during loader setup otherwise wrote to
+an uninitialized file handle and crashed.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;PGO:&lt;/strong&gt; Fix, executing the compiled binary during Python PGO did not
+work for uninstalled Python, where the execution environment setup
+was missing. It is now executed via a script if necessary, and
+internal &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;NUITKA_*&lt;/span&gt;&lt;/code&gt; environment variables are no longer passed to
+it, since they could cause the created binary to fail at runtime.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Onefile:&lt;/strong&gt; Fix, memory issues with parallel zstandard compression
+are now avoided on 32 bit Python in general, since the check is based
+on the Python itself rather than the x86 architecture, and Android
+32/64 bit detection was corrected.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Onefile:&lt;/strong&gt; Fix, manually sent signals were not forwarded to the
+Python process in onefile mode, and on non-Windows the child process
+was not terminated on them at all. It now distinguishes signals from
+the terminal, forwarding only manually sent ones, terminates the
+child process on non-Windows, and suppresses duplicated &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;SIGINT&lt;/span&gt;&lt;/code&gt;
+delivery to the child.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Report:&lt;/strong&gt; Fix, could crash when writing the report before the build
+directory was created.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Zig:&lt;/strong&gt; Fix, need to use the newest &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;zig&lt;/span&gt;&lt;/code&gt; on macOS.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Zig:&lt;/strong&gt; Fix, produced binaries for the native CPU architecture of
+the compilation machine by default, making them not portable to older
+machines. Nuitka now creates machine portable binaries by default,
+with the new &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--target-arch&lt;/span&gt;&lt;/code&gt; option allowing to select a higher
+baseline ISA for speed.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;NoGil:&lt;/strong&gt; Fix, frame objects are now owned by the frame object
+rather than the generator.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;NoGil:&lt;/strong&gt; Fix, clearing list objects now stores the item pointer
+atomically and frees with shared-aware allocation in GIL-disabled
+builds.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;NoGil:&lt;/strong&gt; Now tracks more connections in our &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;tp_traverse&lt;/span&gt;&lt;/code&gt; methods
+of compiled types.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;UI:&lt;/strong&gt; Fix, no longer emits a false missing-file warning for
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--include-data-files-external&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;AIX:&lt;/strong&gt; Added COFF dump based DLL dependency detection, with various
+fixes to the parsing, e.g. ignoring hex values and &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;exp&lt;/span&gt;&lt;/code&gt; archive
+members, column based parsing, more error checks, and listing only
+the native architecture.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;AIX:&lt;/strong&gt; The Python DLL locating code is now more general, and a
+wrong structure entry for the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;dladdr&lt;/span&gt;&lt;/code&gt; helper was corrected.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Package Support&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Standalone:&lt;/strong&gt; Added support for the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pyDOE3&lt;/span&gt;&lt;/code&gt; package. (Added in
+4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Standalone:&lt;/strong&gt; Added support for the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;mssql_python&lt;/span&gt;&lt;/code&gt; package.
+(Added in 4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Standalone:&lt;/strong&gt; No longer proposes to recompile the
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;charset_normalizer&lt;/span&gt;&lt;/code&gt; extension module. (Added in 4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Standalone:&lt;/strong&gt; Added support for the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;emoji&lt;/span&gt;&lt;/code&gt; package. (Added in
+4.1.2 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Standalone:&lt;/strong&gt; Added support for the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;mitmproxy&lt;/span&gt;&lt;/code&gt; package. (Added
+in 4.1.2 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Plugins:&lt;/strong&gt; Fix, PyQt5 markdown data files caused errors on Linux,
+they are now excluded. (Fixed in 4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Plugins:&lt;/strong&gt; Added support for newer &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pkg_resources&lt;/span&gt;&lt;/code&gt; versions,
+where the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;EggProvider&lt;/span&gt;&lt;/code&gt; was removed. (Added in 4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Plugins:&lt;/strong&gt; Fix, build artifacts with &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;.a&lt;/span&gt;&lt;/code&gt;, &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;.prl&lt;/span&gt;&lt;/code&gt;, and &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;.la&lt;/span&gt;&lt;/code&gt;
+suffixes in QML directories were no longer included, now they are
+included again. (Fixed in 4.1.2 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Standalone:&lt;/strong&gt; Added automatic detection of &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;cffi&lt;/span&gt;&lt;/code&gt; dependencies.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Standalone:&lt;/strong&gt; Added support for newer &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;scipy&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Standalone:&lt;/strong&gt; Added support for newer &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;sqlfluff&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Standalone:&lt;/strong&gt; Added support for newer &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;datasets&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Standalone:&lt;/strong&gt; Added support for newest &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;toga&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Standalone:&lt;/strong&gt; Added a workaround for deep recursion in the
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;univers.maven&lt;/span&gt;&lt;/code&gt; package, where its &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;list2tuple&lt;/span&gt;&lt;/code&gt; function was
+replaced with a non-recursive version.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Standalone:&lt;/strong&gt; Fix, platform specific &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;gi&lt;/span&gt;&lt;/code&gt; modules are now
+included as well.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Plugins:&lt;/strong&gt; Fix, added the missing &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;webview.platforms.win32&lt;/span&gt;&lt;/code&gt;
+dependency for newer &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pywebview&lt;/span&gt;&lt;/code&gt;, and fixed accidental assignments
+instead of comparisons that caused too many modules to be included
+when Qt was used.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Plugins:&lt;/strong&gt; Detects Qt plugin XML and webview modules automatically.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Plugins:&lt;/strong&gt; Fix, avoided a warning when the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;gi&lt;/span&gt;&lt;/code&gt; module is not
+usable.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Plugins:&lt;/strong&gt; Added support for &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;Tcl&lt;/span&gt;&lt;/code&gt; and &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;Tk&lt;/span&gt;&lt;/code&gt; from zip files.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Plugins:&lt;/strong&gt; Fix, object files on Windows are now also ignored for
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;PySide6&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;macOS:&lt;/strong&gt; No longer needs the onefile workaround for &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;PySide2&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;macOS:&lt;/strong&gt; Added a workaround for a &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;PySide6&lt;/span&gt;&lt;/code&gt; packaging issue.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;macOS:&lt;/strong&gt; Added a non-deployment handler for &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;urllib.request&lt;/span&gt;&lt;/code&gt;,
+catching the common case where &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;certifi&lt;/span&gt;&lt;/code&gt; is not used.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.14:&lt;/strong&gt; Pronounced Python 3.14 as officially supported.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.14:&lt;/strong&gt; Made deferred annotations the default mode.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.14:&lt;/strong&gt; Added support for module-level deferred annotations,
+and Python source generation for &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;__annotate__&lt;/span&gt;&lt;/code&gt; functions.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.14:&lt;/strong&gt; Added support for &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;__annotate__&lt;/span&gt;&lt;/code&gt; for classes, and
+delaying class level annotations when the
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--experimental=deferred-annotations&lt;/span&gt;&lt;/code&gt; flag is given. With 4.2, this
+is the default mode. (Added in 4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.14:&lt;/strong&gt; Added the
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--experimental=no-bytecode-to-compiled-fallback&lt;/span&gt;&lt;/code&gt; flag for
+requiring bytecode code generation to succeed.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.15:&lt;/strong&gt; Added initial support for compiling with Python
+3.15.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.7+:&lt;/strong&gt; Added support for &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;importlib.resources.contents&lt;/span&gt;&lt;/code&gt;
+and &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;importlib.resources.is_resource&lt;/span&gt;&lt;/code&gt;, which had been overlooked so
+far. (Added in 4.1.3 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.12+:&lt;/strong&gt; Added support for the no-argument form of
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;importlib.resources.files()&lt;/span&gt;&lt;/code&gt; as well.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Linux:&lt;/strong&gt; Added support for &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app&lt;/span&gt;&lt;/code&gt; mode, creating a &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;.desktop&lt;/span&gt;&lt;/code&gt;
+file for the compiled result, usable with standalone and onefile.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Installer:&lt;/strong&gt; Added an installer for Windows via NSIS with
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--windows-create-installer&lt;/span&gt;&lt;/code&gt;, and relocated the macOS DMG creation
+into the installer as &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--macos-create-installer&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Installer:&lt;/strong&gt; Added support for a Linux installer via AppImage with
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--linux-create-installer&lt;/span&gt;&lt;/code&gt;, using &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;appimagetool&lt;/span&gt;&lt;/code&gt; from &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;PATH&lt;/span&gt;&lt;/code&gt; or
+a cached download.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;OS400:&lt;/strong&gt; Detects IBMi Python as a flavor.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Plugins:&lt;/strong&gt; Added the ability to resolve variable references to
+compile-time constants during tree building, used for &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pyqtgraph&lt;/span&gt;&lt;/code&gt;
+to resolve &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;QT_LIB&lt;/span&gt;&lt;/code&gt;, enabling dead code elimination of unused Qt
+binding branches. (Added in 4.1.3 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Plugins:&lt;/strong&gt; Added the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;onMetaPathLoaderEntryTemplate&lt;/span&gt;&lt;/code&gt; plugin
+method, allowing plugins to modify the template arguments used to
+generate the meta path loader entries for modules.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Plugins:&lt;/strong&gt; Added the ability to set defines differently for onefile
+builds and backend builds.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;UI:&lt;/strong&gt; Added the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--update-check&lt;/span&gt;&lt;/code&gt; option to check if a newer
+Nuitka version is available.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;macOS:&lt;/strong&gt; Added the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--macos-app-macos-min-version&lt;/span&gt;&lt;/code&gt; option for the
+minimum app version, and now sets &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;CFBundleVersion&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;macOS:&lt;/strong&gt; Added the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--macos-app-category-type&lt;/span&gt;&lt;/code&gt; option to set the
+app category for the app store.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;PGO:&lt;/strong&gt; Added the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--pgo-python-error-exit&lt;/span&gt;&lt;/code&gt; option to control
+error-exit handling.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Reports:&lt;/strong&gt; Added totals for C compilation and linking as well,
+reporting the accumulated user and system CPU time and module count
+of compilation, and the CPU time of linking, next to the existing
+code generation totals.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Optimization&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.14:&lt;/strong&gt; Added &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;_zstd&lt;/span&gt;&lt;/code&gt; and &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;_remote_debugging&lt;/span&gt;&lt;/code&gt; to the
+standard library modules known to never raise on import, allowing
+their imports to be optimized accordingly. (Fixed in 4.1.2 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Replaced our uses of &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;PyCallable_Check&lt;/span&gt;&lt;/code&gt; with a direct &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;tp_call&lt;/span&gt;&lt;/code&gt;
+NULL check, which avoids the expensive &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;__call__&lt;/span&gt;&lt;/code&gt; attribute lookup
+fallback that &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;PyCallable_Check&lt;/span&gt;&lt;/code&gt; does.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Runtime &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;isinstance&lt;/span&gt;&lt;/code&gt; checks now use our own implementation with the
+faster type checking helpers, instead of the generic
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;PyObject_IsInstance&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Made the new style code objects the default. These are treated as
+constant objects now and remove the need for a special path to
+generate them. It reduces the generated code volume by a lot.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Loop value traces for the same loop are now considered the same,
+regardless of being complete or incomplete, enabling more merging of
+optimization traces.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The constant blob is now always created as an object file, removing
+the special Windows resource mode, and the blob creation code was
+made generic.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Loader tables no longer need a NULL terminator, since the entry count
+is now passed into the using code, making them more compact.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The shape of &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;iter&lt;/span&gt;&lt;/code&gt; results is now always known, enabling more
+optimizations in general. As a consequence, &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;os.uname()[0]&lt;/span&gt;&lt;/code&gt;, the OS
+name, is now known at compile time, allowing platform checks based on
+it to be statically optimized.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Added &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;enumerate&lt;/span&gt;&lt;/code&gt; and &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;zip&lt;/span&gt;&lt;/code&gt; built-in nodes, in preparation of
+full optimization for them.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Expanded dual type operations with previously missing sub helpers,
+and fixed mistakes for existing ones.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Anti-Bloat&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;Avoided more &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;tkinter&lt;/span&gt;&lt;/code&gt; dependencies from &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;PIL&lt;/span&gt;&lt;/code&gt;. (Fixed in 4.1.1
+already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Avoided including &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;matplotlib&lt;/span&gt;&lt;/code&gt; due to &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pandas&lt;/span&gt;&lt;/code&gt; plotting. (Fixed
+in 4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Avoided including &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;setuptools_scm&lt;/span&gt;&lt;/code&gt; when using &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;shtab&lt;/span&gt;&lt;/code&gt;. (Fixed in
+4.1.3 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Avoided including &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;setuptools&lt;/span&gt;&lt;/code&gt; when using &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;vcs_versioning&lt;/span&gt;&lt;/code&gt;.
+(Fixed in 4.1.3 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Avoided using &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;click&lt;/span&gt;&lt;/code&gt; when using &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;httpx&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Avoided a &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;toga&lt;/span&gt;&lt;/code&gt; cleanup error during program shutdown on Windows.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Organizational&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Actions:&lt;/strong&gt; Introduced an “integration” branch as an intermediate
+step before develop, for PRs that are not considered fully
+merge-safe, or that may hit a hotfix release instead.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Project:&lt;/strong&gt; Corrected a few mistakes done when changing the license,
+referencing the runtime exception everywhere and using a proper link
+to the correct version of the license file on the web. (Fixed in
+4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Debian:&lt;/strong&gt; Made builds work inside containers that have the
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;x-bit&lt;/span&gt;&lt;/code&gt; stripped from the install file, by making it an executable
+script. (Fixed in 4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Release:&lt;/strong&gt; Fix, the inline copy of &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;atomicwrites&lt;/span&gt;&lt;/code&gt; was still
+needed for Python 2. (Fixed in 4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;UI:&lt;/strong&gt; Fix, duplicate data file targets were not detected, which now
+warns and uses the first variant. (Fixed in 4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;RPM:&lt;/strong&gt; Fix, the inline copy of &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;atomicwrites&lt;/span&gt;&lt;/code&gt; was still needed
+for the update check, and is no longer executed during RPM builds.
+(Fixed in 4.1.3 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Release:&lt;/strong&gt; Better error message for build failures in the PyPI
+release script.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Zed:&lt;/strong&gt; Added autoformatting on save for source files and Nuitka
+Package Configuration files.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;AI:&lt;/strong&gt; Added the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--assume-yes-for-downloads&lt;/span&gt;&lt;/code&gt; flag to autoformat
+commands.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;AI:&lt;/strong&gt; Expanded agent guidance with a verification matrix, skill
+index, and syntax restrictions.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;AI:&lt;/strong&gt; Made it clear that the issue template is to be followed
+strictly by AI assistants, and that issues ignoring it will be closed
+as invalid.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;AI:&lt;/strong&gt; Disallowed local imports unless necessary.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;AI:&lt;/strong&gt; Pointed to the CMD files for repo tools on Windows.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;AI:&lt;/strong&gt; Modernized the agent config, removing cursor compatibility,
+splitting rules into multiple files, and dropping OpenAI and Gemini
+specific files.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Visual Code:&lt;/strong&gt; Also generated a clangd config for the OS/Python
+combination.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Visual Code:&lt;/strong&gt; No longer started the pylint check automatically.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Modules:&lt;/strong&gt; Merged upstream enhancements into the inline &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;stubgen&lt;/span&gt;&lt;/code&gt;
+copy, improving the generated type stubs.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Actions:&lt;/strong&gt; Enabled Python 3.14 in CI.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Actions:&lt;/strong&gt; Dropped an unneeded requirements file installation in
+CI.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Docs:&lt;/strong&gt; Updated the man pages with the new CodeMeter plugin
+options.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Plugins:&lt;/strong&gt; Added separate &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;plugin-warning&lt;/span&gt;&lt;/code&gt; and &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;plugin-error&lt;/span&gt;&lt;/code&gt;
+levels for plugin messages in package configuration, allowing plugins
+to report errors.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;UI:&lt;/strong&gt; Added &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;{PYTHON_VERSION}&lt;/span&gt;&lt;/code&gt; and &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;{PYTHON_VERSION_FULL}&lt;/span&gt;&lt;/code&gt;
+variables for project expansion, expanding to e.g. &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;3.10&lt;/span&gt;&lt;/code&gt; and
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;3.10.11&lt;/span&gt;&lt;/code&gt; respectively.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Debugging:&lt;/strong&gt; Added the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--devel-no-bytecode-to-compiled-fallback&lt;/span&gt;&lt;/code&gt;
+option to check coverage.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Quality:&lt;/strong&gt; Added checker tools for pyright, basedpyright, ruff, and
+clangd, plus initial cleanups for fewer linter errors.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Quality:&lt;/strong&gt; Added &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--assume-yes-for-downloads&lt;/span&gt;&lt;/code&gt; support to the
+checker tools.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Quality:&lt;/strong&gt; Use PyLint from the private pip space.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Quality:&lt;/strong&gt; Autoformat now removes empty module configurations from
+the YAML package configuration, which had accumulated when config
+features were removed.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Quality:&lt;/strong&gt; The autoformat tool now outputs the diff when generated
+files would change with the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--check&lt;/span&gt;&lt;/code&gt; option.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Quality:&lt;/strong&gt; Autoformat converts em-dashes to regular dashes in C
+files.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Quality:&lt;/strong&gt; Autoformat removes the spaces between words in
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;spell-checker:&lt;/span&gt; &lt;span class="pre"&gt;ignore&lt;/span&gt;&lt;/code&gt; lines.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Quality:&lt;/strong&gt; The repo ruff configuration no longer formats, since our
+own autoformat is used, and more unwanted warnings were disabled.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Quality:&lt;/strong&gt; Autoformat now respects the exclusion of certain areas
+for JSON files and image files too, which it previously formatted and
+optimized regardless.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Quality:&lt;/strong&gt; The git pre-push hook no longer fails on submodules that
+are not checked out, skipping the missing files.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Quality:&lt;/strong&gt; The YAML checker no longer outputs traces on success,
+only reporting problems, and the autoformat progress bar total was
+improved.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Tests&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;Disabled parts of the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pkgutil_usage&lt;/span&gt;&lt;/code&gt; test with newer
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pkg_resources&lt;/span&gt;&lt;/code&gt; versions that lost some features. (Fixed in 4.1.1
+already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ignored clang download warnings in output comparisons as well. (Fixed
+in 4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ignored differences from messages about Qt font usage in output
+comparisons. (Fixed in 4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Rejected using &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--all&lt;/span&gt;&lt;/code&gt; and &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--pattern&lt;/span&gt;&lt;/code&gt; at the same time in the
+test runner. (Fixed in 4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;macOS:&lt;/strong&gt; Ignored the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;libffi-trampolines.dylib&lt;/span&gt;&lt;/code&gt; system library
+used by Python 3.14 in test comparisons. (Fixed in 4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Debugging:&lt;/strong&gt; Fix, deep hashing checks failed with active
+exceptions, which was relatively easy to trigger, e.g. with
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;SystemExit&lt;/span&gt;&lt;/code&gt; being set. (Fixed in 4.1.1 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Added support for compiled-only and uncompiled-only exclusive output
+lines to the output comparison tool, allowing tests of
+Nuitka-exclusive features while still comparing the rest of the
+output.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Allowed file accesses under system library paths in tests for the
+Debian Python flavor, since its Python relies on system-packaged
+libraries.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;No longer update resume information for “only” search mode runs.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.11+:&lt;/strong&gt; Normalized traceback comparison by dropping the PEP
+657 caret lines from CPython’s output, which Nuitka does not produce,
+and stripping blank lines between frames.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Added &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;--no-debug-immortal-assumptions&lt;/span&gt;&lt;/code&gt; to PySide tests.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Linux:&lt;/strong&gt; Allowed reading the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;/usr/share/zoneinfo&lt;/span&gt;&lt;/code&gt; directory
+itself in test file access checks, not just paths below it, since the
+system time zone info lives there.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Added app bundle mode and signature verification to the comparison
+test tool, where the signature is verified before running, since some
+programs like Qt WebEngine modify themselves on launch.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Python 3.15:&lt;/strong&gt; Added support for running tests with it.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Added a &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;wait_for&lt;/span&gt;&lt;/code&gt; condition for test cases of &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;nuitka-watch&lt;/span&gt;&lt;/code&gt;,
+where a case is skipped until the condition is met, used e.g. to wait
+for pip installs to start working.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Cleanups&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;Fixed pylint warnings in the coverage rendering tool. (Fixed in 4.1.1
+already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Quality:&lt;/strong&gt; Enforced the required versions for the private pipspace
+packages used for YAML formatting. (Fixed in 4.1.2 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fixed the styling of links in informational messages, as the
+underline of the link was not reset and leaked into the following
+text. (Fixed in 4.1.3 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Quality:&lt;/strong&gt; Updated to the latest &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;ruamel.yaml&lt;/span&gt;&lt;/code&gt; package and
+stopped using its private interface. (Fixed in 4.1.3 already.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Generated internal class names in the node code now start with an
+underscore, so it is obvious they must not be used directly, and the
+stable alias names should be used instead.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cleaned up the pylint watching code.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Watch:&lt;/strong&gt; The &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;nuitka-watch&lt;/span&gt;&lt;/code&gt; tool retries git operations on all
+platforms.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Watch:&lt;/strong&gt; The &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;nuitka-watch&lt;/span&gt;&lt;/code&gt; tool outputs which pip update failed.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Watch:&lt;/strong&gt; The &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;nuitka-watch&lt;/span&gt;&lt;/code&gt; tool writes XML reports like
+ElementTree does.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Watch:&lt;/strong&gt; Improved the automatic staging of changes of
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;nuitka-watch&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The warning about a missing &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;clang-format&lt;/span&gt;&lt;/code&gt; binary now uses the
+shared once-per-warning mechanism, instead of a hand-coded flag.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Completed the finalization of dead trailing statements, so that
+removed dead statements free their nodes properly when optimization
+removes them.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nuitka’s internal value hashing is now stable for dict values, with
+sorted items, where previously the insertion order was used. Since
+dicts with the same contents can have different insertion orders,
+equal dicts could hash differently, which matters for reproducible
+builds and caching, preparing this for future use.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The Jinja2 inline copy no longer imports the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pkg_resources&lt;/span&gt;&lt;/code&gt; inline
+copy unless &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;PackageLoader&lt;/span&gt;&lt;/code&gt; is used.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Windows:&lt;/strong&gt; &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pdb&lt;/span&gt;&lt;/code&gt; files included as data files are now properly
+traced, avoiding warnings in onefile mode, and allowing manual
+copying of such files to be rejected in the future.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+&lt;p&gt;This release makes Python 3.14 officially supported, with deferred
+annotations becoming the default there, adds new installers for Windows
+and Linux AppImage and Linux &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app&lt;/span&gt;&lt;/code&gt; mode for desktop integration, and
+provides initial, experimental Python 3.15 support.&lt;/p&gt;
+&lt;p&gt;The Python source generation for &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;__annotate__&lt;/span&gt;&lt;/code&gt; functions might lead
+the way to better package support where source code is required
+elsewhere.&lt;/p&gt;
+&lt;p&gt;The new style code objects became the default, greatly reducing the
+generated code volume, and constant blobs are now always object files,
+removing the special Windows resource mode. Optimization work continues
+with faster type checks, more merging of optimization traces, and
+statically known shapes of &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;iter&lt;/span&gt;&lt;/code&gt; results, making e.g. the OS name
+from &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;os.uname()&lt;/span&gt;&lt;/code&gt; a compile time constant.&lt;/p&gt;
+&lt;p&gt;New &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;enumerate&lt;/span&gt;&lt;/code&gt; and &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;zip&lt;/span&gt;&lt;/code&gt; built-in nodes prepare for inline
+optimized re-formulations of them in future releases, promising exciting
+performance improvements, but for now the gains are not that much yet.&lt;/p&gt;
+&lt;p&gt;Python 3.15 support is experimental at best (with that version not being
+final yet), and merely initial, more work will be needed to get there.&lt;/p&gt;</description>
+      <guid isPermaLink="false">9df6f621961fe8d30161ada367aa7e6ab756fe286c6cd69f0e6860fd1256a505</guid>
+      <pubDate>Sun, 23 Aug 2026 22:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>James Bennett: Breaking up (lines) is hard to do</title>
       <link>https://www.b-list.org/weblog/2026/aug/10/newlines/</link>
       <description>&lt;p&gt;Here’s a seemingly simple question: given a chunk of multi-line text, how do you split it and return an array whose members are the constituent lines of the&amp;nbsp;text?&lt;/p&gt;
 &lt;p&gt;Hopefully, your first instinct is to reach for some sort of standard-library function, maybe something like&amp;nbsp;the &lt;code&gt;splitlines()&lt;/code&gt; method of&amp;nbsp;Python’s &lt;code&gt;str&lt;/code&gt; type. Because it turns out this “simple” question is actually pretty complex to answer! For example, quite some time ago I read &lt;a href="https://yossarian.net/til/post/python-s-splitlines-does-a-lot-more-than-just-newlines/"&gt;a post by William Woodruff&lt;/a&gt; pointing out the surprising discovery that Python treats up to eleven different Unicode code points or code point sequences as indicating a line&amp;nbsp;break.&lt;/p&gt;
@@ -81,7 +786,7 @@
       <pubDate>Mon, 10 Aug 2026 16:42:29 +0000</pubDate>
     </item>
     <item>
-      <title>Ed Crewe: From Routing Checks to Trajectory Testing: Evaluating an Agentic Chatbot - Planet Python</title>
+      <title>Ed Crewe: From Routing Checks to Trajectory Testing: Evaluating an Agentic Chatbot</title>
       <link>http://edcrewe.blogspot.com/2026/08/from-routing-checks-to-trajectory.html</link>
       <description>pre[class*="language-"] { border-radius: 6px; font-size: 14px; overflow-x: auto; }
 &lt;blockquote&gt;
@@ -273,7 +978,7 @@ convo = ConversationalTestCase(
       <pubDate>Mon, 10 Aug 2026 10:37:15 +0000</pubDate>
     </item>
     <item>
-      <title>Django Weblog: Django is moving to an annual release cycle - Planet Python</title>
+      <title>Django Weblog: Django is moving to an annual release cycle</title>
       <link>https://www.djangoproject.com/weblog/2026/aug/10/annual-release-cycle/</link>
       <description>&lt;p&gt;Django's Steering Council has accepted the Django Enhancement Proposal &lt;a href="https://github.com/django/deps/blob/main/accepted/0020-annual-release-cycle.rst"&gt;DEP
 20&lt;/a&gt; to move Django to an annual release cycle. From January 2028, Django
@@ -340,7 +1045,7 @@ Steering Council for its consideration.&lt;/p&gt;</description>
       <pubDate>Mon, 10 Aug 2026 09:00:49 +0000</pubDate>
     </item>
     <item>
-      <title>Ned Batchelder: Caller-specific coverage - Planet Python</title>
+      <title>Ned Batchelder: Caller-specific coverage</title>
       <link>https://nedbatchelder.com/blog/202608/callerspecific_coverage</link>
       <description>&lt;p&gt;I&amp;#8217;ve had an idea rattling around to get more detail from coverage
 measurement.  Can we measure the coverage in a function separately for each
@@ -428,14 +1133,14 @@ you have ideas for other uses.&lt;/p&gt;</description>
       <pubDate>Sun, 09 Aug 2026 17:56:25 +0000</pubDate>
     </item>
     <item>
-      <title>Hynek Schlawack: Production-ready Python Docker Containers with uv - Planet Python</title>
+      <title>Hynek Schlawack: Production-ready Python Docker Containers with uv</title>
       <link>https://hynek.me/articles/docker-uv/</link>
       <description>&lt;p&gt;Starting with &lt;a href="https://astral.sh/blog/uv-unified-python-packaging"&gt;0.3.0&lt;/a&gt;, Astral’s &lt;a href="https://docs.astral.sh/uv/"&gt;&lt;em&gt;uv&lt;/em&gt;&lt;/a&gt; brought many great features, including support for cross-platform lock files &lt;code&gt;uv.lock&lt;/code&gt;. Together with subsequent fixes, it has become Python’s finest workflow tool for &lt;strong&gt;my&lt;/strong&gt; (non-scientific) use cases. Here’s how I build production-ready containers, as fast as possible.&lt;/p&gt;</description>
       <guid isPermaLink="false">351e017e704d299713340494f1b00466c1fbad283644bc0efaf6944bcfa687f3</guid>
       <pubDate>Thu, 06 Aug 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Django Weblog: Django 6.1 released - Planet Python</title>
+      <title>Django Weblog: Django 6.1 released</title>
       <link>https://www.djangoproject.com/weblog/2026/aug/05/django-61-released/</link>
       <description>&lt;p&gt;The Django team is happy to announce the release of Django 6.1.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://docs.djangoproject.com/en/6.1/releases/6.1/"&gt;The release notes&lt;/a&gt;
@@ -466,7 +1171,7 @@ supported versions and the future release schedule.&lt;/p&gt;</description>
       <pubDate>Wed, 05 Aug 2026 19:30:00 +0000</pubDate>
     </item>
     <item>
-      <title>Tryton News: Security Release for issue #14947 - Planet Python</title>
+      <title>Tryton News: Security Release for issue #14947</title>
       <link>https://discuss.tryton.org/t/security-release-for-issue-14947/9302</link>
       <description>&lt;p&gt;&lt;a href="https://foss.heptapod.net/ced"&gt;Cédric Krier&lt;/a&gt; has discovered that &lt;a href="https://bugs.tryton.org/14947"&gt;Tryton does not prevent weasyprint to access local files&lt;/a&gt; when rendering HTML report to PDF.&lt;/p&gt;
 &lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40152-impact-1" name="p-40152-impact-1"&gt;&lt;/a&gt;Impact&lt;/h2&gt;
@@ -518,7 +1223,7 @@ supported versions and the future release schedule.&lt;/p&gt;</description>
       <pubDate>Wed, 05 Aug 2026 06:00:46 +0000</pubDate>
     </item>
     <item>
-      <title>Python GUIs: Handling Image Drag and Drop from Web Browsers in PyQt6 — Why toLocalFile() returns an empty string and how to handle remote image drops correctly - Planet Python</title>
+      <title>Python GUIs: Handling Image Drag and Drop from Web Browsers in PyQt6 — Why toLocalFile() returns an empty string and how to handle remote image drops correctly</title>
       <link>https://www.pythonguis.com/faq/dragging-and-dropping-in-rich-text-example-app/</link>
       <description>&lt;blockquote&gt;
 &lt;p&gt;When dragging and dropping images from a web browser into a PyQt6 rich text editor, &lt;code&gt;toLocalFile()&lt;/code&gt; sometimes returns a blank string. It works for some images (like Google image search results) but fails for others (like images embedded directly on a webpage). Why does this happen, and how can I handle it?&lt;/p&gt;
@@ -862,14 +1567,14 @@ sys.exit(app.exec())
       <pubDate>Wed, 05 Aug 2026 06:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Python Insider: Python 3.14.7 and 3.13.15 are now available! - Planet Python</title>
+      <title>Python Insider: Python 3.14.7 and 3.13.15 are now available!</title>
       <link>https://blog.python.org/2026/08/python-3147-31315/</link>
       <description>A pair of bug fix releases await your upgrade.</description>
       <guid isPermaLink="false">59622f567df45159fbf0ba930043b03bdfdbe11a3dd2b240606651ada0e6859a</guid>
       <pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Django Weblog: Django security releases issued: 6.0.8 and 5.2.17 - Planet Python</title>
+      <title>Django Weblog: Django security releases issued: 6.0.8 and 5.2.17</title>
       <link>https://www.djangoproject.com/weblog/2026/aug/04/security-releases/</link>
       <description>&lt;p&gt;In accordance with &lt;a href="https://docs.djangoproject.com/en/dev/internals/security/"&gt;our security release policy&lt;/a&gt;,
 the Django team is issuing releases for
@@ -979,14 +1684,14 @@ information.&lt;/p&gt;</description>
       <pubDate>Tue, 04 Aug 2026 11:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Python Insider: Python 3.15.0 candidate 1 is here! - Planet Python</title>
+      <title>Python Insider: Python 3.15.0 candidate 1 is here!</title>
       <link>https://blog.python.org/2026/08/python-3150-rc1/</link>
       <description>Get those wheels rolling!</description>
       <guid isPermaLink="false">d0df44ca0b99b2b86bcdf7c4d8d9a8afdf06e9f3b0ab7bf349609171414c7020</guid>
       <pubDate>Tue, 04 Aug 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Python⇒Speed: Faster floating point math with Rust’s new API - Planet Python</title>
+      <title>Python⇒Speed: Faster floating point math with Rust’s new API</title>
       <link>https://pythonspeed.com/articles/faster-float-math-rust/</link>
       <description>&lt;p&gt;Floating point math is often slower than integer math because the
 compiler is being conservative about how it optimizes your code. While
@@ -1008,7 +1713,7 @@ control where it is used.&lt;/li&gt;
       <pubDate>Sun, 02 Aug 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Glyph Lefkowitz: Adversarial Communication - Planet Twisted</title>
+      <title>Glyph Lefkowitz: Adversarial Communication</title>
       <link>https://blog.glyph.im/2026/06/adversarial-communication.html</link>
       <description>&lt;p&gt;As I have discussed in &lt;a href="https://blog.glyph.im/2025/08/futzing-fraction.html"&gt;previous posts&lt;/a&gt;,
 &lt;em&gt;“AIs” can make mistakes&lt;/em&gt;.  In fact, they &lt;em&gt;do&lt;/em&gt; make mistakes, and their
@@ -1290,14 +1995,14 @@ here. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feed
       <pubDate>Tue, 23 Jun 2026 20:06:00 +0000</pubDate>
     </item>
     <item>
-      <title>Hynek Schlawack: How to Ditch Codecov for Python Projects - Planet Twisted</title>
+      <title>Hynek Schlawack: How to Ditch Codecov for Python Projects</title>
       <link>https://hynek.me/articles/ditch-codecov-python/</link>
       <description>&lt;p&gt;Codecov’s unreliability breaking CI on my open source projects has been a constant source of frustration for me for years. I have found a way to enforce coverage over a whole GitHub Actions build matrix that doesn’t rely on third-party services.&lt;/p&gt;</description>
       <guid isPermaLink="false">a6441ae356de287204172b08a8f2f527e2023ee5f334bbd351a7d79d27ec8d35</guid>
       <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Glyph Lefkowitz: Opaque Types in Python - Planet Twisted</title>
+      <title>Glyph Lefkowitz: Opaque Types in Python</title>
       <link>https://blog.glyph.im/2026/05/opaque-types-in-python.html</link>
       <description>&lt;p&gt;Let’s say you’re writing a Python library.&lt;/p&gt;
 &lt;p&gt;In this library, you have some collection of state that represents “options” or
@@ -1507,7 +2212,7 @@ that small cost. &lt;a class="footnote-backref" href="https://glyph.twistedmatr
       <pubDate>Fri, 22 May 2026 00:33:00 +0000</pubDate>
     </item>
     <item>
-      <title>Donovan Preston: Using osascript with terminal agents on macOS - Planet Twisted</title>
+      <title>Donovan Preston: Using osascript with terminal agents on macOS</title>
       <link>https://donovanpreston.blogspot.com/2026/04/using-osascript-with-terminal-agents-on.html</link>
       <description>Here is a useful trick that is unreasonably effective for simple computer use goals using modern terminal agents. On macOS, there has been a terminal osascript command since the original release of Mac OS X. All you have to do is suggest your agent use it and it can perform any application control action available in any AppleScript dictionary for any Mac app. No MCP set up or tools required at all. Agents are much more adapt at using rod terminal commands, especially ones that haven't changed in 30 years. Having a computer control interface that hasn't changed in 30 years and has extensive examples in the Internet corpus makes modern models understand how to use these tools basically Effortlessly.
 macOS locks down these permissions pretty heavily nowadays though, so you will have to grant the application control permission to terminal. But once you have done that, the range of possibilities for commanding applications using natural language is quite extensive.
@@ -1518,7 +2223,7 @@ Another very important tips for using modern agents is to try to practice using 
       <pubDate>Sat, 04 Apr 2026 13:31:26 +0000</pubDate>
     </item>
     <item>
-      <title>Glyph Lefkowitz: What Is Code Review For? - Planet Twisted</title>
+      <title>Glyph Lefkowitz: What Is Code Review For?</title>
       <link>https://blog.glyph.im/2026/03/what-is-code-review-for.html</link>
       <description>&lt;h2 id="humans-are-bad-at-perceiving"&gt;Humans Are Bad At Perceiving&lt;/h2&gt;
 &lt;p&gt;Humans are not particularly good at catching bugs.  For one thing, we get tired
@@ -1666,7 +2371,7 @@ sponsor&lt;/a&gt;!&lt;/p&gt;</description>
       <pubDate>Wed, 04 Mar 2026 05:24:00 +0000</pubDate>
     </item>
     <item>
-      <title>Glyph Lefkowitz: The “Dependency Cutout” Workflow Pattern, Part I - Planet Twisted</title>
+      <title>Glyph Lefkowitz: The “Dependency Cutout” Workflow Pattern, Part I</title>
       <link>https://blog.glyph.im/2025/11/dependency-cutout-workflow-pattern.html</link>
       <description>&lt;p&gt;Tell me if you’ve heard this one before.&lt;/p&gt;
 &lt;p&gt;You’re working on an application.  Let’s call it “FooApp”.  FooApp has a
@@ -1981,7 +2686,7 @@ but we do not live in an ideal world. &lt;a class="footnote-backref" href="http
       <pubDate>Tue, 11 Nov 2025 01:44:00 +0000</pubDate>
     </item>
     <item>
-      <title>Glyph Lefkowitz: The Futzing Fraction - Planet Twisted</title>
+      <title>Glyph Lefkowitz: The Futzing Fraction</title>
       <link>https://blog.glyph.im/2025/08/futzing-fraction.html</link>
       <description>&lt;p&gt;The most optimistic vision of generative AI&lt;sup id="fnref:1:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:1:futzing-fraction-2025-8" id="fnref:1"&gt;1&lt;/a&gt;&lt;/sup&gt; is that it will relieve us of
 the tedious, repetitive elements of knowledge work so that we can get to work
@@ -2658,7 +3363,7 @@ by Gary Drevitch for Psychology Today, July 21, 2025. &lt;a class="footnote-bac
       <pubDate>Fri, 15 Aug 2025 07:51:00 +0000</pubDate>
     </item>
     <item>
-      <title>Glyph Lefkowitz: Stop Writing `__init__` Methods - Planet Twisted</title>
+      <title>Glyph Lefkowitz: Stop Writing `__init__` Methods</title>
       <link>https://blog.glyph.im/2025/04/stop-writing-init-methods.html</link>
       <description>&lt;h2 id="the-history"&gt;The History&lt;/h2&gt;
 &lt;p&gt;Before dataclasses were added to Python in version 3.7 — in June of 2018 — the
@@ -2982,7 +3687,7 @@ rather than writing a literal &lt;code&gt;__init__&lt;/code&gt;. &lt;a class="f
       <pubDate>Thu, 17 Apr 2025 22:35:00 +0000</pubDate>
     </item>
     <item>
-      <title>Glyph Lefkowitz: The “Active Enum” Pattern - Planet Twisted</title>
+      <title>Glyph Lefkowitz: The “Active Enum” Pattern</title>
       <link>https://blog.glyph.im/2025/01/active-enum.html</link>
       <description>&lt;p&gt;Have you ever written some Python code that looks like this?&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
@@ -3294,14 +3999,14 @@ maintainability, and make sure that such a PR would be welcome. &lt;a class="fo
       <pubDate>Fri, 10 Jan 2025 22:37:00 +0000</pubDate>
     </item>
     <item>
-      <title>Hynek Schlawack: Python Project-Local Virtualenv Management Redux - Planet Twisted</title>
+      <title>Hynek Schlawack: Python Project-Local Virtualenv Management Redux</title>
       <link>https://hynek.me/articles/python-virtualenv-redux/</link>
       <description>&lt;p&gt;One of my &lt;a href="https://hynek.me/til/python-project-local-venvs"&gt;first TIL entries&lt;/a&gt; was about how you can imitate Node’s &lt;code&gt;node_modules&lt;/code&gt; semantics in Python on UNIX-like operating systems. A lot has happened since then (to the better!) and it’s time for an update. &lt;em&gt;direnv&lt;/em&gt; still rocks, though.&lt;/p&gt;</description>
       <guid isPermaLink="false">65f936d1ee1ab0f0a5def0b2ff15449017c1008408e09dd383be43c0206628fc</guid>
       <pubDate>Mon, 23 Sep 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Glyph Lefkowitz: Python macOS Framework Builds - Planet Twisted</title>
+      <title>Glyph Lefkowitz: Python macOS Framework Builds</title>
       <link>https://blog.glyph.im/2024/09/python-macos-framework-builds.html</link>
       <description>&lt;p&gt;When you build Python, you can pass various options to &lt;code&gt;./configure&lt;/code&gt; that
 change aspects of how it is built.  There is &lt;a href="https://docs.python.org/3.12/using/configure.html"&gt;documentation for all of these
@@ -3500,14 +4205,14 @@ with Python”.&lt;/p&gt;</description>
       <pubDate>Wed, 11 Sep 2024 19:43:00 +0000</pubDate>
     </item>
     <item>
-      <title>Hynek Schlawack: Why I Still Use Python Virtual Environments in Docker - Planet Twisted</title>
+      <title>Hynek Schlawack: Why I Still Use Python Virtual Environments in Docker</title>
       <link>https://hynek.me/articles/docker-virtualenv/</link>
       <description>&lt;p&gt;Whenever I publish &lt;a href="https://hynek.me/articles/docker-uv/"&gt;something&lt;/a&gt; about my Python Docker workflows, I invariably get challenged about whether it makes sense to use &lt;a href="https://docs.python.org/3/library/venv.html"&gt;&lt;em&gt;virtual environments&lt;/em&gt;&lt;/a&gt; in Docker containers. As always, it’s a trade-off, and I err on the side of standards and predictability.&lt;/p&gt;</description>
       <guid isPermaLink="false">57885e311c8122bd0365a7d9210e256dd9ad962efcd1c5a4bbf868fffca23194</guid>
       <pubDate>Mon, 02 Sep 2024 11:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Glyph Lefkowitz: Against Innovation Tokens - Planet Twisted</title>
+      <title>Glyph Lefkowitz: Against Innovation Tokens</title>
       <link>https://blog.glyph.im/2024/07/against-innovation-tokens.html</link>
       <description>&lt;p class="update-note"&gt;Updated 2024-07-04: After some discussion, added an &lt;a href="https://glyph.twistedmatrix.com/feeds/atom.xml#epilogue"&gt;epilogue&lt;/a&gt; going
 into more detail about the value of the distinction between the two types of
@@ -3844,7 +4549,7 @@ where Haskell was Python. &lt;a class="footnote-backref" href="https://glyph.tw
       <pubDate>Thu, 04 Jul 2024 19:54:00 +0000</pubDate>
     </item>
     <item>
-      <title>Moshe Zadka: The Prehistory of Kubernetes: From Cubic Equations to Cloud Orchestration - Planet Twisted</title>
+      <title>Moshe Zadka: The Prehistory of Kubernetes: From Cubic Equations to Cloud Orchestration</title>
       <link>https://orbifold.xyz/cubic-k8s.html</link>
       <description>&lt;p&gt;The story of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Kubernetes"&gt;Kubernetes&lt;/a&gt;, the leading container orchestration platform, is a tale of mathematical innovation, wartime necessity, and the open-source revolution. It begins, perhaps unexpectedly, with the work of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Omar_Khayyam"&gt;Omar Khayyam&lt;/a&gt;, the 11th-century Persian polymath known for his contributions to mathematics, astronomy, and poetry.&lt;/p&gt;
 &lt;p&gt;Khayyam's work on solving &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Cubic_equation"&gt;cubic equations&lt;/a&gt; laid the foundation for the development of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Algebraic_geometry"&gt;algebraic geometry&lt;/a&gt;, which in turn led to the invention of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Cartesian_coordinate_system"&gt;Cartesian coordinates&lt;/a&gt; by &lt;a class="reference external" href="https://en.wikipedia.org/wiki/René_Descartes"&gt;René Descartes&lt;/a&gt; in the 17th century. This "algebrization of geometry" allowed for the mathematical description of physical phenomena, such as planetary motion, and paved the way for &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Isaac_Newton"&gt;Isaac Newton&lt;/a&gt;'s development of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Calculus"&gt;calculus&lt;/a&gt;.&lt;/p&gt;
@@ -3867,7 +4572,7 @@ where Haskell was Python. &lt;a class="footnote-backref" href="https://glyph.tw
       <pubDate>Thu, 20 Jun 2024 04:30:00 +0000</pubDate>
     </item>
     <item>
-      <title>Glyph Lefkowitz: A Grand Unified Theory of the AI Hype Cycle - Planet Twisted</title>
+      <title>Glyph Lefkowitz: A Grand Unified Theory of the AI Hype Cycle</title>
       <link>https://blog.glyph.im/2024/05/grand-unified-ai-hype.html</link>
       <description>&lt;h2 id="the-cycle"&gt;The Cycle&lt;/h2&gt;
 &lt;p&gt;The history of AI goes in cycles, each of which looks at least a &lt;em&gt;little&lt;/em&gt; bit like this:&lt;/p&gt;
@@ -3923,14 +4628,14 @@ for”.  Or, you know, Python programming.&lt;/p&gt;</description>
       <pubDate>Wed, 22 May 2024 16:58:00 +0000</pubDate>
     </item>
     <item>
-      <title>Hynek Schlawack: You Can Build Portable Binaries of Python Applications - Planet Twisted</title>
+      <title>Hynek Schlawack: You Can Build Portable Binaries of Python Applications</title>
       <link>https://hynek.me/til/python-portable-binaries/</link>
       <description>&lt;p&gt;Contrary to popular belief, it’s possible to ship portable executables of Python applications without sending your users to Python packaging hell.&lt;/p&gt;</description>
       <guid isPermaLink="false">538747a7d1210b2e1eb43f9e942241c02ee071569953b11f5a690d3aa45657a1</guid>
       <pubDate>Tue, 19 Mar 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Glyph Lefkowitz: Unsigned Commits - Planet Twisted</title>
+      <title>Glyph Lefkowitz: Unsigned Commits</title>
       <link>https://blog.glyph.im/2024/01/unsigned-commits.html</link>
       <description>&lt;p&gt;I am going to tell you why I don’t think you should sign your Git commits, even
 though doing so with SSH keys is now easier than ever.  But first, to
