@@ -5,7 +5,79 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Thu, 27 Aug 2026 00:08:31 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2026 14:01:09 +0000</lastBuildDate>
+    <item>
+      <title>From Squashfs to Root Shell: A Full AArch64 Rehost Story for a Zyxel Enterprise AP - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vztlsr/from_squashfs_to_root_shell_a_full_aarch64_rehost/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/TheReedemer69"&gt; /u/TheReedemer69 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/minanagehsalalma/zyxel-wax650s-research-notebook-public"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vztlsr/from_squashfs_to_root_shell_a_full_aarch64_rehost/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">d95362a96ddab7ef5b8ff7d3affc708c0d091bcba9e53a6f140024a78e4b5062</guid>
+      <pubDate>Thu, 27 Aug 2026 13:12:28 +0000</pubDate>
+    </item>
+    <item>
+      <title>Learn How to Build Security Operations Ready for AI-Powered Attacks - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/learn-how-to-build-security-operations.html</link>
+      <description>Security teams have spent years trying to detect threats faster. AI is changing the harder part: how much time defenders have left to act.
+Advanced AI models can now help attackers discover vulnerabilities, generate exploit code, and move through weaknesses faster than traditional security processes were built to handle.
+The challenge is no longer just finding another vulnerability or</description>
+      <guid isPermaLink="false">e82d3817c98f2190f48ba2520d82309b3a1001b77936805574964f63687323e8</guid>
+      <pubDate>Thu, 27 Aug 2026 11:56:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>Alleged TeamPCP Hackers Charged in Australia Over Major Supply Chain Attacks - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/alleged-teampcp-hackers-charged-in.html</link>
+      <description>The Australian Federal Police (AFP) has charged two Western Australian men with a combined total of 14 offences over their alleged role in TeamPCP, the cybercrime group behind the March 2026 compromise of the open-source security scanners Trivy and Checkmarx KICS and the AI gateway LiteLLM.
+Louis Michael Gaebler, 23, and Ruben Ian Thomson, 21, appeared in Perth Magistrates Court on August 27,</description>
+      <guid isPermaLink="false">086ab85c0a9896edcb1e463e442383bc2c9c44537db865dcdb30968e17c54435</guid>
+      <pubDate>Thu, 27 Aug 2026 11:56:26 +0000</pubDate>
+    </item>
+    <item>
+      <title>What the Data Says About AI in Security Operations in 2026 - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/what-data-says-about-ai-in-security.html</link>
+      <description>AI is officially mainstream in security operations. According to Prophet Security's State of AI in Security Operations 2026 report (produced from ViB’s survey of 250+ cybersecurity pros), 40% of security teams now use AI daily. Another 56% are currently testing it out, and only 4% have no plans to adopt it.
+For the teams already using AI, what is actually changing? Here are the ten biggest</description>
+      <guid isPermaLink="false">3e5ef371e873f02cb2e795ff50f3035876bf36b1fe8e0fb5bc3149f0ed0c6805</guid>
+      <pubDate>Thu, 27 Aug 2026 11:30:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Spark RAT Targets Cambodia, Abuses Vulnerable OPSWAT Driver to Disable Security Tools - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/spark-rat-targets-cambodia-abuses.html</link>
+      <description>Individuals and organizations in Cambodia have emerged as the target of a new campaign that delivers an open-source remote access trojan (RAT) called Spark RAT.
+"The samples employ diverse lure themes, suggesting an effort to appeal to a broad range of potential victims. These include government notices, public health materials, real estate-related content, and other topics," Acronis Threat</description>
+      <guid isPermaLink="false">8dbd0c8885b89c43c7d9c2ecb4900ed95033e8aade4736f03c301661bd51a70d</guid>
+      <pubDate>Thu, 27 Aug 2026 11:00:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>GoCaracal Malware Uses Ethereum Smart Contract to Fetch Replacement C2 Address - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/gocaracal-malware-uses-ethereum-smart.html</link>
+      <description>Threat actors linked by Arctic Wolf to Dark Caracal with medium confidence deployed a previously undocumented Go-based malware framework, GoCaracal, during a June 2026 intrusion at an unnamed communications organization in Venezuela.
+GoCaracal provides operators with remote shell access and payload execution, while the extended profile adds browser data theft, keylogging, remote desktop control</description>
+      <guid isPermaLink="false">983da53d6bf03478127861079f0c4fd9fd641f39839168753f9ab748c907631f</guid>
+      <pubDate>Thu, 27 Aug 2026 09:33:38 +0000</pubDate>
+    </item>
+    <item>
+      <title>New GPUThor Rowhammer Defeats ECC on NVIDIA RTX A6000 to Gain Host Root Access - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/gputhor-rowhammer-defeats-ecc-on-nvidia.html</link>
+      <description>Academic researchers have disclosed a Rowhammer attack impacting NVIDIA workstation GPUs with GDDR6 memory that defeats error correction codes (ECC), the mitigation NVIDIA recommends against GPU Rowhammer, and enables denial-of-service (DoS) and privilege escalation to a root shell.
+Dubbed GPUThor, the attack was developed by researchers at the University of Toronto, who hammered four DRAM</description>
+      <guid isPermaLink="false">cfc1b1c1cceaac4d514c3171d183353af1d3cb6d677f3c02ba05b14beaa5f1ef</guid>
+      <pubDate>Thu, 27 Aug 2026 08:13:11 +0000</pubDate>
+    </item>
+    <item>
+      <title>HexWalk 2.2.0 Hex analyzer new release, added multi-encoding support: ASCII, UTF8, UTF16, Latin1... works both on Windows, Linux and MacOs, give it a try! - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vzn44u/hexwalk_220_hex_analyzer_new_release_added/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/gcarmix1"&gt; /u/gcarmix1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/gcarmix/hexwalk"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vzn44u/hexwalk_220_hex_analyzer_new_release_added/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">a7341e673cf924367ae99017b926417ba05159fcbfed9919bc0c3432ca542f27</guid>
+      <pubDate>Thu, 27 Aug 2026 07:28:45 +0000</pubDate>
+    </item>
+    <item>
+      <title>CISA Adds Six Exploited Flaws to KEV, Including NetScaler, Linux, and SQL Server Bugs - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/cisa-adds-six-exploited-flaws-to-kev.html</link>
+      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Wednesday added six flaws to its Known Exploited Vulnerabilities (KEV) catalog, including a high-severity security vulnerability impacting Citrix NetScaler ADC and NetScaler Gateway, citing evidence of active exploitation.
+The vulnerabilities are listed below -
+  CVE-2019-1068 - A remote code execution vulnerability in&amp;nbsp;</description>
+      <guid isPermaLink="false">0802721c638e7e6b489739f2362a5898ecce1888bf1ba1e005613db7acf304fc</guid>
+      <pubDate>Thu, 27 Aug 2026 07:05:28 +0000</pubDate>
+    </item>
     <item>
       <title>drakoarmy/datadome-rs: High-end Rust DataDome deobfuscator &amp; solver with VM disassembly — all 3 challenge types (tags, interstitial, slider). - Reverse Engineering</title>
       <link>https://www.reddit.com/r/ReverseEngineering/comments/1vzcww2/drakoarmydatadomers_highend_rust_datadome/</link>
@@ -188,6 +260,13 @@ SOCRadar Threat Research Unit (STRU) said the platform, which it tracks as Anony
       <pubDate>Wed, 26 Aug 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
+      <title>conduit -- authentication bypass vulnerability - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/1ff5a036-a13e-11f1-a129-901b0e9408dc.html</link>
+      <description/>
+      <guid isPermaLink="false">ce1491028c4a8e8f8236d656cdd9f0f0106c85f00c0fe54a4683db99f397336d</guid>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
       <title>Reverse Engineering Heroes of Newerth Using Cheat Engine &amp; Ghidra - Reverse Engineering</title>
       <link>https://www.reddit.com/r/ReverseEngineering/comments/1vygc51/reverse_engineering_heroes_of_newerth_using_cheat/</link>
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Electrical-Moose1253"&gt; /u/Electrical-Moose1253 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.youtube.com/watch?v=KTEIn9XwSkI"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vygc51/reverse_engineering_heroes_of_newerth_using_cheat/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
@@ -309,6 +388,13 @@ The vulnerability, tracked as CVE-2026-21962 (CVSS score: 10.0), allows an unaut
       <link>http://www.vuxml.org/freebsd/9008d14d-a0af-11f1-8144-8447094a420f.html</link>
       <description/>
       <guid isPermaLink="false">a920b4ad0155a003e0bfb338312a14f51772566afb7b0baaa10eb64690718a3f</guid>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>net/rsync -- multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/fee67ad5-a05e-11f1-ad2b-40b034429ecf.html</link>
+      <description/>
+      <guid isPermaLink="false">cdd5885d2325a978fcca30f03f1244af5c55ce73239ce138bbdb1b7d2fca1abd</guid>
       <pubDate>Tue, 25 Aug 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
