@@ -5,7 +5,210 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 25 Aug 2026 17:47:11 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2026 00:08:31 +0000</lastBuildDate>
+    <item>
+      <title>drakoarmy/datadome-rs: High-end Rust DataDome deobfuscator &amp; solver with VM disassembly — all 3 challenge types (tags, interstitial, slider). - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vzcww2/drakoarmydatadomers_highend_rust_datadome/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/alex_pushing40"&gt; /u/alex_pushing40 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/drakoarmy/datadome-rs"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vzcww2/drakoarmydatadomers_highend_rust_datadome/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">bb835ae5750c6af30bf9665eba8820d92c39962c573a5cc3cdaf287b9e921e7b</guid>
+      <pubDate>Wed, 26 Aug 2026 23:08:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>csca-masterlist-tools - extract CSCA certs from ICAO passport Master Lists, with an OpenSSL fallback for the six that strict ASN.1 parsers reject - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vz6wwn/cscamasterlisttools_extract_csca_certs_from_icao/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Eginnn"&gt; /u/Eginnn &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/Eginn-33/csca-masterlist-tools"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vz6wwn/cscamasterlisttools_extract_csca_certs_from_icao/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">24acc0b7394cfca91624ff9bfc517d8ecfc09b06df59c9083e59ef7a950b5736</guid>
+      <pubDate>Wed, 26 Aug 2026 19:21:58 +0000</pubDate>
+    </item>
+    <item>
+      <title>FBI Disrupts China-Linked QTFY Infrastructure Used to Steal Data From U.S. Organizations - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/fbi-disrupts-china-linked-qtfy.html</link>
+      <description>The U.S. Department of Justice (DoJ) on Wednesday announced the disruption of two hacking platforms named QScan and QTRouter operated by Chinese threat actors to target critical infrastructure and other sensitive networks in the country.
+The activity has been attributed to a Chinese state-sponsored group known as QTFY, employed by Nanjing Xinjiuwei Network Technology Company (南京鑫玖维网络科技有限公司).&amp;</description>
+      <guid isPermaLink="false">7de0afeff7180a5c0a1f32daaee45b0fd3627af58a7443dcddc62d6b043c23a0</guid>
+      <pubDate>Wed, 26 Aug 2026 16:42:03 +0000</pubDate>
+    </item>
+    <item>
+      <title>binviz – a binary visualiser with calibrated thresholds instead of magic numbers - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vz1ofo/binviz_a_binary_visualiser_with_calibrated/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Low-Web7052"&gt; /u/Low-Web7052 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/karankantaria/binviz"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vz1ofo/binviz_a_binary_visualiser_with_calibrated/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">8c7bfa8940261facb28a157ae2b38358a95b3fc8eb9a9771545c19d92e0aa9a5</guid>
+      <pubDate>Wed, 26 Aug 2026 16:17:42 +0000</pubDate>
+    </item>
+    <item>
+      <title>Nimbus Manticore Expands Toolset With TWOSTROKE-Like Backdoor and SSH Tunneler - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/nimbus-manticore-expands-toolset-with.html</link>
+      <description>Cybersecurity researchers have discovered additional infrastructure and previously undocumented malware associated with Nimbus Manticore, an Iranian state-sponsored hacking group affiliated with the Islamic Revolutionary Guard Corps (IRGC).
+Group-IB, in a new analysis published today, described the cyber espionage actor as among the most active Iranian APT groups in 2026. Nimbus Manticore (aka</description>
+      <guid isPermaLink="false">e9e47c1505c3786322efdde94a1b039b8664ee4366059fba5db71a73a1e9a605</guid>
+      <pubDate>Wed, 26 Aug 2026 15:35:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>NovaCookies Campaigns Abuse Genuine Docusign Notifications to Steal Microsoft 365 Sessions - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/novacookies-campaigns-abuse-genuine.html</link>
+      <description>Cybersecurity researchers have disclosed details of a new adversary-in-the-middle (AitM) phishing toolkit called NovaCookies that's used as a proxy to redirect Microsoft 365 sign-ins, while capturing authenticated sessions in the process.
+In a report shared with The Hacker News ahead of publication, Island characterized the $320/month service as a subscription-based phishing platform that</description>
+      <guid isPermaLink="false">2ebaeb4b7cbb103acfbc9dec1e186c1014cc1491bfbb6b5dd06aa56bb3b332a4</guid>
+      <pubDate>Wed, 26 Aug 2026 13:44:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>CISA Red Team Compromised Two Critical Infrastructure Orgs, One Detected Nothing - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/cisa-red-team-compromised-two-critical.html</link>
+      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has published the results of two red team assessments it conducted simultaneously against two critical infrastructure organizations, using what it described as similar tradecraft while recording sharply different defensive outcomes.
+Both organizations were fully compromised at the domain level, and in both, the red team also</description>
+      <guid isPermaLink="false">12db486c1dfdc5367c7ab27288367e05d96da990610c5a33b4dc85a69766aa8f</guid>
+      <pubDate>Wed, 26 Aug 2026 13:07:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>Unpatched Kaltura mwEmbed Flaws Could Let Remote Attackers Read Files and Run Code - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/unpatched-kaltura-mwembed-flaws-could.html</link>
+      <description>The CERT Coordination Center (CERT/CC) has disclosed two unpatched vulnerabilities in Kaltura's HTML5 video player library that allow a remote, unauthenticated attacker to read arbitrary files from a server and execute code on it.
+The flaws, tracked as CVE-2026-19913 and CVE-2026-19912, both stem from the same unsafe deserialization in the mwEmbedLoader.php endpoint of the mwEmbed player</description>
+      <guid isPermaLink="false">0bed38f0cb397725b366a1858e54c9369089e7034869643d006112ee961a5625</guid>
+      <pubDate>Wed, 26 Aug 2026 11:55:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Imagine the SOC Without a Queue: From Alert Backlog to AI Hypothesis Engine - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/imagine-soc-without-queue-from-alert.html</link>
+      <description>The SOC we've always known was built around a model that guarantees most of the alert queue will never receive analyst review. There's never time. In a traditional SOC, the typical progression follows a well-known pattern: an alert arrives; a detection engine assigns a severity score. The issue then waits for a human to decide if it should escalate to an investigation.
+Given the volume of</description>
+      <guid isPermaLink="false">92f4cf46c924fb674b5ba0d672ae59492c6ac10f01784c85f86296229b900146</guid>
+      <pubDate>Wed, 26 Aug 2026 11:36:49 +0000</pubDate>
+    </item>
+    <item>
+      <title>Claude Opus 4.6 Bypasses Gym Booking Limit, Cancels Other Users' Reservations in Tests - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/claude-opus-46-bypasses-gym-booking.html</link>
+      <description>Aikido Security has published research that recreates the Australian gym-booking incident in a synthetic environment, finding that Claude Opus 4.6, running on the OpenClaw agent harness, exploited a client-side-only booking restriction in 9 of 10 runs.
+The original incident was first reported by ABC News on August 10, based on chat logs and screenshots the user supplied. He had asked an</description>
+      <guid isPermaLink="false">4cc7e7338c8935821518ad23c0c48d6c9aa51b30bcff7544e6d40f0bccae2e66</guid>
+      <pubDate>Wed, 26 Aug 2026 10:27:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>MmMapIoSpace Returns NULL: Tracing the Real Kernel Mechanism Through ntoskrnl - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vyt6ba/mmmapiospace_returns_null_tracing_the_real_kernel/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Important_Map6928"&gt; /u/Important_Map6928 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://sibouzitoun.tech/articles/mmmapiospace-returns-null-tracing-the-real-kernel-mechanism-through-ntoskrnlexe/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vyt6ba/mmmapiospace_returns_null_tracing_the_real_kernel/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">b6b79a72cbce6a4df4dcf9af43313affcfd5e55e15fcb8fe14e044661ca86044</guid>
+      <pubDate>Wed, 26 Aug 2026 10:25:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>OpenAI Bans Russian ChatGPT Accounts Used to Run Influence Operation - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/openai-bans-russian-chatgpt-accounts.html</link>
+      <description>OpenAI on Tuesday said it banned a cluster of Russian ChatGPT accounts that used VPNs to bypass access restrictions and run an influence operation, which relied on its artificial intelligence (AI) tool to generate social media posts and comments that were shared on Substack, Telegram, X, Facebook and LinkedIn.
+The accounts "were being used to promote the International Burke Institute (IBI), a</description>
+      <guid isPermaLink="false">89ee3583d4c0bd016790e6a1043ec4eddcf1b97c8d5149dd320c35d13e2a6ddf</guid>
+      <pubDate>Wed, 26 Aug 2026 09:38:45 +0000</pubDate>
+    </item>
+    <item>
+      <title>INTERPOL Operation Jackal IV Arrests 58, Identifies 263 in Global Cyber Fraud Crackdown - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/interpol-operation-jackal-iv-arrests-58.html</link>
+      <description>An eight-month INTERPOL operation targeting West African organized crime groups has led to arrests of 58 people and the identification of 263 suspects.
+"The operation, which brought together 22 countries from six continents, is a response to the escalating global threat posed by West African criminal networks – such as the Black Axe and other similar groups," INTERPOL said.
+"These groups are</description>
+      <guid isPermaLink="false">0738f94e5da062fdafb3e9d33e8b5a4f6812eb720400664371c4b9fe75654a0e</guid>
+      <pubDate>Wed, 26 Aug 2026 07:54:12 +0000</pubDate>
+    </item>
+    <item>
+      <title>New SLEEPWALKER Backdoor Waits for One Crafted Packet, Then Runs Its Own Bytecode - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/newly-sleepwalker-backdoor-waits-for.html</link>
+      <description>An independent malware researcher has documented a previously unreported Windows backdoor, dubbed SLEEPWALKER, that stays inert in memory until a specifically crafted network packet reaches the machine and then runs commands written in a 23-instruction language of its own design.
+The sample is an unsigned 64-bit Windows dynamic-link library (DLL) of 59,904 bytes, built to be side-loaded into&amp;</description>
+      <guid isPermaLink="false">6b128155cd5b33e239b34934b9719790799ced96f2b8a5dd1e8ee2fd9fffde6b</guid>
+      <pubDate>Wed, 26 Aug 2026 07:12:55 +0000</pubDate>
+    </item>
+    <item>
+      <title>Critical Gitea RCE Actively Exploited as Reported Attack Drops Miner-Like Payload - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/critical-gitea-rce-actively-exploited.html</link>
+      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Tuesday warned of active exploitation efforts targeting a recently patched critical security flaw impacting Gitea.
+The vulnerability in question is CVE-2026-60004 (CVSS score: 9.8), a case of remote code execution that allows an attacker with ordinary write access to a repository to execute arbitrary shell commands as the</description>
+      <guid isPermaLink="false">34b2d7555acc1ead8167f72d49658ad71aa8f67d8936f715bda2459e5b92097a</guid>
+      <pubDate>Wed, 26 Aug 2026 06:27:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>Fake Apple Support AI Calls Target Stolen-Device Owners for Passcodes and 2FA Codes - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/fake-apple-support-ai-calls-target.html</link>
+      <description>Cybersecurity researchers have disclosed details of a phishing-as-a-service (PhaaS) platform built to strip Apple's Activation Lock from stolen devices, using rented AI voice agents that call theft victims posing as Apple Support and ask for their device passcode.
+SOCRadar Threat Research Unit (STRU) said the platform, which it tracks as AnonyMousKIT, is credit-metered and drives lures across</description>
+      <guid isPermaLink="false">f67b06345fbed90aca61d49cb2fa61d65c7f2432115fe6a884432bd019d0b649</guid>
+      <pubDate>Wed, 26 Aug 2026 05:47:28 +0000</pubDate>
+    </item>
+    <item>
+      <title>Newly discovered vulnerable Driver. - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vyls5g/newly_discovered_vulnerable_driver/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/TradeZealousideal323"&gt; /u/TradeZealousideal323 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/ioallocate/imMapper"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vyls5g/newly_discovered_vulnerable_driver/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">893fd09dd5338d0af0d532392dfda7bfef8e1d144ee12aac5018594791213d2d</guid>
+      <pubDate>Wed, 26 Aug 2026 03:38:33 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- hwpmc fails to detach PMCs during exec credential transitions - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/9c2801aa-a0fd-11f1-ae1f-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">53e864b672459f24d6a87093fea3027899e486fe7e3e17c1c904698acd92d0fa</guid>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Kernel use-after-free via the SNDCTL_DSP_SYNCSTART ioctl - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/226751fb-a0fe-11f1-ae1f-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">8b79aeac345b61d5b211582c776b70957003029b63818a750788a8e7224499d6</guid>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Kernel use-after-free via tty ioctls - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/a34b5154-a0ff-11f1-ae1f-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">6a1a1f6d7b1164f5c8f8d3d92faba04a037050e3f74fc33e9b942399ec6b2b6d</guid>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Multiple vulnerabilities in ppp(8) - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/204af099-a0ff-11f1-ae1f-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">6717bebf83a1d05b72fcd4ca4c04e295eace989232e82e9a5f58497dc03fe68e</guid>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- TOCTOU race in POSIX shared memory large page configuration - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/ef63188f-a0ff-11f1-ae1f-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">899dace1bebe30a877ce8ec0e184549cf6d061e7c213c770be8a4a2d4ca36f25</guid>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Unauthorized credential switching - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/55fbe7b1-a0fe-11f1-ae1f-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">83ab0fd96753f757f5569e31cf1e79d9711a605eb92a9ba78f6b9566bf5246b0</guid>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Use-after-free in unix SOCK_STREAM message handling - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/e99e4b19-a0fd-11f1-ae1f-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">9d95865fc969f0167eb8335a387bf2bd2633720b51f1b261fd1fd994a400583e</guid>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Reverse Engineering Heroes of Newerth Using Cheat Engine &amp; Ghidra - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vygc51/reverse_engineering_heroes_of_newerth_using_cheat/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Electrical-Moose1253"&gt; /u/Electrical-Moose1253 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.youtube.com/watch?v=KTEIn9XwSkI"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vygc51/reverse_engineering_heroes_of_newerth_using_cheat/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">c8c0eca6c1e331e3918259d5e2325e91ca976440945709b880ccefd11aa87b51</guid>
+      <pubDate>Tue, 25 Aug 2026 23:36:14 +0000</pubDate>
+    </item>
+    <item>
+      <title>GitHub - pedrocatalao/skyroads-mac: Native macOS port of SkyRoads (1993), the classic DOS game rewritten in C + SDL2, universal binary for Apple Silicon &amp; Intel - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vydnz1/github_pedrocatalaoskyroadsmac_native_macos_port/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/pedrocatalao"&gt; /u/pedrocatalao &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/pedrocatalao/skyroads-mac"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vydnz1/github_pedrocatalaoskyroadsmac_native_macos_port/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">a500ed805e43e302543c14eb7cc0b198fe0130bfc34550e2bebddf3c7d442dd1</guid>
+      <pubDate>Tue, 25 Aug 2026 21:47:19 +0000</pubDate>
+    </item>
+    <item>
+      <title>U.S. Sanctions Iran-Linked Hackers Behind Critical Infrastructure Breaches - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/us-sanctions-iran-linked-hackers-behind.html</link>
+      <description>The U.S. Department of the Treasury has announced fresh sanctions on Iranian cyber actors as part of what it called an "unprecedented, whole-of-government, economic campaign" against the nation and its enablers.
+"We are launching an economic onslaught against Iran's financial connections around the globe. Our objective is to sever every economic lifeline that sustains this tyrannical regime</description>
+      <guid isPermaLink="false">41499bb1756a79bb9640d4cc6a7dc492f8f11533bec2178574f02fc672962d78</guid>
+      <pubDate>Tue, 25 Aug 2026 18:17:17 +0000</pubDate>
+    </item>
     <item>
       <title>CrossCode game.compiled.js deobfuscation - Reverse Engineering</title>
       <link>https://www.reddit.com/r/ReverseEngineering/comments/1vy1c0l/crosscode_gamecompiledjs_deobfuscation/</link>
@@ -99,6 +302,13 @@ The vulnerability, tracked as CVE-2026-21962 (CVSS score: 10.0), allows an unaut
       <link>http://www.vuxml.org/freebsd/f68670ea-a05d-11f1-8144-8447094a420f.html</link>
       <description/>
       <guid isPermaLink="false">0ffbe55622f0efae2c426b4721a98553fb4424bcd9d1d31bfeee5095c6b632fb</guid>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>OpenSSL -- Multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/9008d14d-a0af-11f1-8144-8447094a420f.html</link>
+      <description/>
+      <guid isPermaLink="false">a920b4ad0155a003e0bfb338312a14f51772566afb7b0baaa10eb64690718a3f</guid>
       <pubDate>Tue, 25 Aug 2026 00:00:00 +0000</pubDate>
     </item>
     <item>

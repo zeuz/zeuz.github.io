@@ -5,7 +5,419 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 25 Aug 2026 17:47:11 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2026 00:08:31 +0000</lastBuildDate>
+    <item>
+      <title>Talk Python to Me: #560: Building a Research OS: From Django to 30,000 Samples - Planet Python</title>
+      <link>https://talkpython.fm/episodes/show/560/building-a-research-os-from-django-to-30-000-samples</link>
+      <description>In 2020, a gastroenterologist in Glasgow did the math on his new research study and came up with 30,000 samples, arriving over two years from three cities and a dozen hospitals. He asked around about how researchers keep track of that. The answer was Microsoft Excel. Shaun Chuah had written some HTML by hand in Notepad back in high school and that was about the whole of his programming experience, so he opened the Django tutorial and started reading. Six years later that app is Foundry120, holding 10 terabytes of clinical and genomics data with an agentic AI running on top of it.&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Episode sponsors&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;a href='https://talkpython.fm/sentry'&amp;gt;Sentry Error Monitoring, Code talkpython26&amp;lt;/a&amp;gt;&amp;lt;br&amp;gt;
+&amp;lt;a href='https://talkpython.fm/course-certifications'&amp;gt;Talk Python Courses&amp;lt;/a&amp;gt;&amp;lt;br&amp;gt;
+&amp;lt;a href='https://talkpython.fm/training'&amp;gt;Talk Python Courses&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;h2 class="links-heading mb-4"&amp;gt;Links from the show&amp;lt;/h2&amp;gt;
+&amp;lt;div&amp;gt;&amp;lt;strong&amp;gt;Guest&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Shaun Chuah&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://github.com/shaunchuah?featured_on=talkpython" target="_blank" &amp;gt;github.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Up and Running with Rust Course&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://training.talkpython.fm/courses/up-and-running-with-rust" target="_blank" &amp;gt;talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Foundry120&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.foundry120.com/?featured_on=talkpython" target="_blank" &amp;gt;www.foundry120.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Designing Data Intensive Applications&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/?featured_on=talkpython" target="_blank" &amp;gt;www.oreilly.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Microsoft Foundry&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://ai.azure.com/home?featured_on=talkpython" target="_blank" &amp;gt;ai.azure.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;ChatIBD&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.chatibd.com/?featured_on=talkpython" target="_blank" &amp;gt;www.chatibd.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Blog&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://shaunchuah.github.io/?featured_on=talkpython" target="_blank" &amp;gt;shaunchuah.github.io&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;@drshaunchuah&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://x.com/drshaunchuah?featured_on=talkpython" target="_blank" &amp;gt;x.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;github.com/shaunchuah&amp;lt;/strong&amp;gt;: &amp;lt;a href="http://github.com/shaunchuah?featured_on=talkpython" target="_blank" &amp;gt;github.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Watch this episode on YouTube&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.youtube.com/watch?v=zwL1-VQMUo0" target="_blank" &amp;gt;youtube.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Episode #560 deep-dive&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/episodes/show/560/building-a-research-os-from-django-to-30-000-samples#takeaways-anchor" target="_blank" &amp;gt;talkpython.fm/560&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Episode transcripts&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/episodes/transcript/560/building-a-research-os-from-django-to-30-000-samples" target="_blank" &amp;gt;talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Theme Song: Developer Rap&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;🥁 Served in a Flask 🎸&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/flasksong" target="_blank" &amp;gt;talkpython.fm/flasksong&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;---==  Don't be a stranger  ==---&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;YouTube&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/youtube" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-youtube"&amp;gt;&amp;lt;/i&amp;gt; youtube.com/@talkpython&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Bluesky&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://bsky.app/profile/talkpython.fm" target="_blank" &amp;gt;@talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Mastodon&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://fosstodon.org/web/@talkpython" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-mastodon"&amp;gt;&amp;lt;/i&amp;gt; @talkpython@fosstodon.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;X.com&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://x.com/talkpython" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-twitter"&amp;gt;&amp;lt;/i&amp;gt; @talkpython&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Michael on Bluesky&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://bsky.app/profile/mkennedy.codes?featured_on=talkpython" target="_blank" &amp;gt;@mkennedy.codes&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Michael on Mastodon&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://fosstodon.org/web/@mkennedy" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-mastodon"&amp;gt;&amp;lt;/i&amp;gt; @mkennedy@fosstodon.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Michael on X.com&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://x.com/mkennedy?featured_on=talkpython" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-twitter"&amp;gt;&amp;lt;/i&amp;gt; @mkennedy&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;/div&amp;gt;</description>
+      <guid isPermaLink="false">120f12d8341046b0b18e7c3250d60214b8e05a82049d299100434ecaab236bae</guid>
+      <pubDate>Wed, 26 Aug 2026 20:04:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>Rodrigo Girão Serrão: Why OOP exists - Planet Python</title>
+      <link>https://mathspp.com/blog/why-oop-exists</link>
+      <description>&lt;img alt="" src="https://mathspp.com/images/e/2/6/5/9/e265997ff34b06c2346b7545a751c0ca4a7454aa-thumbnail.webp" /&gt;
+                                &lt;p&gt;Learn the fundamental principles behind OOP and how they connect to the syntax of Python.&lt;/p&gt;
+&lt;h2 id="introduction"&gt;Introduction&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#introduction"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Welcome!
+This article will teach you the core ideas behind &lt;strong&gt;object-oriented programming&lt;/strong&gt;, commonly known as &lt;strong&gt;OOP&lt;/strong&gt;.
+This is the article I wish I read many years ago, when I was first learning about OOP in Python.&lt;/p&gt;
+&lt;p&gt;If you're new to OOP, this article will explain why OOP exists, how it works, and how to work with OOP in Python.
+If you think you already know OOP, this article will change the way you think about programming and Python.&lt;/p&gt;
+&lt;h2 id="code-is-about-real-world-things"&gt;Code is about real-world things&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#code-is-about-real-world-things"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Let me tell you about a programming project I had to do in college where you had to write a library management service.
+We were expected to work in pairs and I was paired with my good friend Tito.&lt;/p&gt;
+&lt;p&gt;Tito and I sat down and started going through the problem statement, figuring out what we needed to implement.
+We got to a point where Tito turned to me and said:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;It's not obvious to me what's the best way to &lt;strong&gt;represent a &lt;em&gt;book&lt;/em&gt;&lt;/strong&gt; in our program.
+Maybe you can start implementing the search functionality and I'll think about this for a while.&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The &lt;em&gt;search functionality&lt;/em&gt; was a set of functions that the problem statement required us to implement:&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;&lt;code&gt;find_by_title(catalog, search_term)&lt;/code&gt;: returns a sublist with the books whose title contains the given search term&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;find_by_genre(catalog, genre)&lt;/code&gt;: returns a sublist with the books of the given genre&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;find_by_author(catalog, author)&lt;/code&gt;: returns a sublist with the books written by the given author&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;I nodded, but then I thought about it for a second.
+If I don't know &lt;em&gt;anything&lt;/em&gt; about how to work with books, there's no way I can implement these three functions.
+Tito agreed with me and told me he'd provide me with these functions:&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;&lt;code&gt;book_title(book)&lt;/code&gt;: returns the title of the given book&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;book_genre(book)&lt;/code&gt;: returns the genre of the given book&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;book_author(book)&lt;/code&gt;: returns the author of the given book&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;He told me to think of these functions as auxiliary functions that he would implement.
+I didn't have them &lt;em&gt;yet&lt;/em&gt;, but I could write my search functions &lt;em&gt;trusting&lt;/em&gt; he'd implement them correctly.&lt;/p&gt;
+&lt;div class="notices blue"&gt;
+&lt;p&gt;In OOP, you have entities with associated data (books with authors, titles, and genres) and a set of functions to operate on those entities (the functions &lt;code&gt;find_by_xxx&lt;/code&gt;).&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Now, think about it for a second.
+Can &lt;em&gt;you&lt;/em&gt; implement the functions &lt;code&gt;find_by_title&lt;/code&gt;, &lt;code&gt;find_by_genre&lt;/code&gt;, and &lt;code&gt;find_by_author&lt;/code&gt;, using the auxiliary functions that Tito will implement?
+How would you go about it?&lt;/p&gt;
+&lt;p&gt;I worked on it for a bit, and eventually used &lt;a href="https://mathspp.com/blog/pydonts/list-comprehensions-101"&gt;a list comprehension&lt;/a&gt; to define the function &lt;code&gt;find_by_title&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;def find_by_title(catalog, search_term):
+    search_term = search_term.casefold()
+    return [
+        book
+        for book in catalog
+        if search_term in book_title(book).casefold()
+    ]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The function &lt;code&gt;find_by_title&lt;/code&gt; goes through the list of books called &lt;code&gt;catalog&lt;/code&gt; with a loop and uses the auxiliary function &lt;code&gt;book_title&lt;/code&gt; to retrieve the title.
+It then uses &lt;a href="https://mathspp.com/blog/how-to-work-with-case-insensitive-strings"&gt;&lt;code&gt;casefold&lt;/code&gt; to perform a case-insensitive search&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Something worth...&lt;/p&gt;</description>
+      <guid isPermaLink="false">a1601629c41fe54a8e8cb9c5ba7574eb1443b8e74e2764a791d184e29edcbbbd</guid>
+      <pubDate>Wed, 26 Aug 2026 14:01:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: MIT just called for an educational revolution - Planet Python</title>
+      <link>https://lernerpython.com/2026/08/26/mit-just-called-for-an-educational-revolution/</link>
+      <description>&lt;p class="wp-block-paragraph"&gt;As someone who teaches Python programming for a living, I&amp;#8217;ve spent the last few years wrestling with the educational implications of AI. I&amp;#8217;m changing everything I do to adjust to our new AI reality, experimenting with new ideas, including my AI-based Socratic tutor (&lt;a href="https://practice.lernerpython.com/" rel="noreferrer noopener" target="_blank"&gt;https://practice.lernerpython.com/&lt;/a&gt;). I keep what works, throw away what doesn&amp;#8217;t, and then try the next thing. I&amp;#8217;ve never been more challenged as a business owner. And yet, I&amp;#8217;ve never been more excited about being an instructor.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;What about universities? I&amp;#8217;ve said for a while that they&amp;#8217;ll also need to change, but that they cannot do so nearly as quickly as I can. They&amp;#8217;re big and bureaucratic, and have to answer to donors, staff members, students, parents, and governments. It&amp;#8217;ll take years for them to figure out what they want to do, and how to do it.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;And then, last night, I received &lt;a href="https://orgchart.mit.edu/letters/ai-and-education-watershed-moment-mit" rel="noreferrer noopener" target="_blank"&gt;e-mail from Sally Kornbluth&lt;/a&gt;, the president of MIT, with a message addressed to all MIT students, faculty, staff, and alumni. The subject, &amp;#8220;AI and education: A watershed moment for MIT,&amp;#8221; was quite the understatement.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Kornbluth announced a report from an ad-hoc committee on AI in education (&lt;a href="https://aiandeducation.mit.edu/report/"&gt;https://aiandeducation.mit.edu/report/&lt;/a&gt;). It&amp;#8217;s the clearest, deepest, and most profound take I&amp;#8217;ve yet read on the subject. It doesn&amp;#8217;t hold back, spelling out the good and the bad. I&amp;#8217;m still absorbing the full impact of what they wrote —&amp;nbsp;and they wrote a lot. But the report — which I expect will be given formal backing in the near future — has, more or less, called for a complete revolution in how instruction works. And they&amp;#8217;re willing to take the lead in trying new approaches, technologies, and assessments, both for their own future and for the future of university education.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Maybe a university can&amp;#8217;t change as quickly as my one-person business. But the report sounds urgent and focused, and I think we should expect MIT to change as quickly as any large organization can. The report even recognizes the slow pace at which curricular changes are normally made, and encourages departments to allow for curricular experimentation without onerous bureaucracy.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Among the many smart, important points they make:&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;&lt;strong&gt;Classes are going to change&lt;/strong&gt;. Instructors will need to re-assess what people need to get out of a course, and think about how AI can be integrated into it. Whether that means developing new course-specific tools or having students use AI to advance their knowledge and understanding will depend on the course and the instructor. But they are actively encouraging instructors to think deeply about what they are really trying to teach, and what tools might help them to achieve that more easily.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Embracing apprenticeship&lt;/strong&gt;. You could argue that graduate school (and to a lesser degree, undergraduate studies) are already an apprenticeship program, in which aspiring researchers learn from their more experienced professors and peers. AI threatens this model to some degree, enticing researchers to use agents to accomplish a task, rather than bringing on someone who might take longer or make mistakes. As they say in their report, &amp;#8220;Using research as an opportunity for learning-by-doing may produce seeming &amp;#8216;inefficiencies,&amp;#8217; but that’s a feature, not a bug.&amp;#8221; Struggling and working through problems is an inherent part of the learning process.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Education is about the process of learning.&lt;/strong&gt; I keep meeting people (students and professionals) who say that they ask AI to write papers and essays for them, because they &amp;#8220;know it anyway,&amp;#8221; and this is just a faster way of producing the same text they would have written on their own. This is, of course, nonsense —&amp;nbsp;as the saying goes, &amp;#8220;writing is thinking,&amp;#8221; and anyone who writes knows that as you struggle over how best to make your argument, you&amp;#8217;re learning more than any classroom could teach. As the report says: &amp;#8220;Getting the right answer from a chatbot can create the illusion of learning – but it can also trigger &amp;#8216;cognitive surrender&amp;#8217;, where students fall back on AI at the first hint of struggle.&amp;#8221; They similarly say, &amp;#8220;All of us who teach at MIT will need to be prepared to help students understand both that the &lt;em&gt;process &lt;/em&gt;of education is necessarily a productive struggle, and that the most important &lt;em&gt;product &lt;/em&gt;of their education is not a GPA or a diploma but &lt;em&gt;themselves&lt;/em&gt;: their personal growth and intellectual maturity and the development of their own imagination, insight, and judgment.&amp;#8221;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Assessment will need to change.&lt;/strong&gt; The report says, &amp;#8220;MIT should take this opportunity to consider what role grades play in our overall system, and if the current approach could be improved.&amp;#8221; The old standards of homework assignments and exams might not be the best ways to know whether a student has really mastered the material. I&amp;#8217;ve been saying for a while that it might be time to bring back oral exams, either alone or alongside project-based learning. The report discourages the use of AI detectors, which have a history of being unreliable and discriminatory. Plus, &amp;#8220;stepping up &amp;#8216;policing&amp;#8217; around AI use builds an adversarial atmosphere of distrust between instructors and students, which understandably hurts students’ motivation and morale.&amp;#8221;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Constructionism has its moment?&lt;/strong&gt; I feel like all of the educators who spoke of project-based, constructivist, and constructionist approaches for decades might finally have their moment in the sun. The report points to the potential for individualized attention and instruction that AI can uniquely provide — and which would go hand-in-hand with the project-based approach. Seymour Papert developed constructionism at MIT, calling for a revolution in education around personalized, project-based, technological learning. I&amp;#8217;m an MIT alumnus, a constructionist at heart, and I did my PhD in learning sciences under one of Papert&amp;#8217;s students. So watching Papert&amp;#8217;s own institution consider a revamp of education around his principles is, for me, delicious.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ethics are crucial.&lt;/strong&gt; We&amp;#8217;re now in an era where anyone can generate a decent-sounding article within minutes. The report emphasizes that a culture of transparency around the use of AI is and will continue to play a critical role. This is true not just for students, but also for instructors and researchers, who will be expected to clearly state where and how they used AI in their work. The report says, and I believe rightly so, that using AI is just fine — but you need to be specific about how you use it, and what you did with it. They also point to the need for equitable access to AI, ensuring that all members of the MIT community can use this technology, not just those who can most easily afford it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="wp-block-paragraph"&gt;The report also emphasizes, repeatedly, the importance of human interactions in all of this. AI, more even than phones and the Internet, has a tendency to push people to hole up by themselves, rather than interact with others. (The report points to fewer in-person study groups, and a drop in the number of students coming to office hours.) And it is those interactions that are not only at the heart of research, science, and learning, but of human existence. They stress the need for incorporating &amp;#8220;social learning&amp;#8221; into projects, and to encourage people to work together. As they say, &amp;#8220;Instructors should intentionally structure such interactions to achieve desired learning objectives and maintain quality, even in large classes.&amp;#8221;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;This report isn&amp;#8217;t the last word on AI and education, and it isn&amp;#8217;t meant to be. A year from now, we&amp;#8217;ll probably see parts that were prescient, and other parts that were misguided (if well meaning). But it&amp;#8217;s the first time I&amp;#8217;ve seen a major university announce a plan to reshape the entire university&amp;#8217;s educational approach around our new reality. This is an ad-hoc committee, and thus doesn&amp;#8217;t have any official standing. But the fact that MIT&amp;#8217;s president sent it out to every member of the MIT community tells me that this is way beyond a simple committee. I expect that MIT will put serious effort (and money) behind the changes needed to see these things through. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;If you&amp;#8217;re an educator, then you owe it to yourself, and to your students, to read this report. And then to re-assess what you do, starting with the principles that MIT is using to evaluate itself, as the first stage of what&amp;#8217;ll likely be a revolutionary transformation.&lt;/p&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/08/26/mit-just-called-for-an-educational-revolution/"&gt;MIT just called for an educational revolution&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">f2508154c89583e08fa958b59e9a12fd88cdb1fd6f2f489e6d506a07ca2f546e</guid>
+      <pubDate>Wed, 26 Aug 2026 12:14:28 +0000</pubDate>
+    </item>
+    <item>
+      <title>Anarcat: A more nuanced view of LLMs - Planet Python</title>
+      <link>https://anarc.at/blog/2026-08-25-llm-nuance/</link>
+      <description>&lt;blockquote&gt;&lt;p&gt;Also in this series:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://anarc.at/blog/2026-05-16-four-horsemen/"&gt;The Four Horsemen of the LLM Apocalypse&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://anarc.at/blog/2026-08-18-people-vs-ai-overlords/"&gt;The people vs the AI overlords&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;After ranting and railing about LLMs or "AI" as the optimists (or
+&lt;a href="https://en.wikipedia.org/wiki/Accelerationism"&gt;accelerationists&lt;/a&gt;?)  call it, I figured it might be important to
+be a little more honest about my use of LLMs and how I think about it
+more practically in the world.&lt;/p&gt;
+&lt;h1 id="the-debian-vote-context"&gt;The Debian vote context&lt;/h1&gt;
+&lt;p&gt;This is not a coming out. I am not using LLMs on a daily basis, and
+this blog is, again, written out of my cold dead hands in a dying
+world, with over-engineered hardware and (to a certain extent, hi
+Emacs!) software, powered by 100% green energy built on &lt;a href="https://en.wikipedia.org/wiki/James_Bay_Cree_hydroelectric_conflict"&gt;stolen land&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There is a &lt;a href="https://www.debian.org/vote/2026/vote_002"&gt;vote going on in Debian&lt;/a&gt;. If you're unfamiliar with it,
+you can &lt;a href="https://lwn.net/SubscriberLink/1087134/77bf350b3d40bc95/"&gt;catch up at LWN&lt;/a&gt;. So far I've essentially said "LLM is
+bad" which is not a very balanced or useful opinion. Obviously, people
+are using LLMs, sometimes unknowing or unwillingly, and we need to
+take that into account. Furthermore, there has been many different
+blog posts on Debian planet about this. Some that I found
+&lt;a href="https://grep.be/blog//en/computer/debian/Programming_and_GR_2026_002/"&gt;balanced&lt;/a&gt;, &lt;a href="https://diziet.dreamwidth.org/20998.html"&gt;good summaries&lt;/a&gt;, even if I &lt;a href="https://changelog.complete.org/archives/44740-ai-in-debian-the-vote-proposals-and-nuance"&gt;didn't fully agree with
+them&lt;/a&gt;, at least some did the basic civil service of being
+&lt;a href="http://blog.fai-project.org/posts/llm-usage-gr/"&gt;short&lt;/a&gt;. But others were just not only &lt;a href="https://k1024.org/posts/2026/2026-08-23-another-optimistic-take-on-ai/"&gt;Wrong&lt;/a&gt; but also &lt;a href="http://aigarius.com/blog/2026/08/22/optimistic-take-on-ai/"&gt;so long
+that I couldn't finish&lt;/a&gt; that I just &lt;em&gt;had&lt;/em&gt; to write &lt;em&gt;something&lt;/em&gt;.&lt;sup id="fnref:1"&gt;&lt;a href="https://anarc.at/tag/python-planet/#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;This is not an explanation of the ballots, nor how I will vote. This
+vote is Debian's failure of framing that debate in a reasonable way:
+we have 8 options on the ballot with many duplicates. We have failed
+to do the hard work of summarizing and aggregating options into a
+meaningful set. I doubt the final vote will represent a readable
+position we can rally around.&lt;/p&gt;
+&lt;p&gt;I have not read the &lt;a href="https://lists.debian.org/debian-vote/2026/07/threads.html"&gt;two&lt;/a&gt; &lt;a href="https://lists.debian.org/debian-vote/2026/08/threads.html"&gt;months&lt;/a&gt; of debates on the topic
+either. Normally, before voting, I take a cursory look at the debate
+to see points of view I might have missed. But in this case, it will
+just make me sad, add noise, and I'm already pretty sure on where I
+stand on this.&lt;/p&gt;
+&lt;p&gt;So let me describe how I use LLMs and how I think they fit in our
+work, as computer engineers and hobbyists.&lt;/p&gt;
+&lt;h1 id="my-llm-use"&gt;My LLM use&lt;/h1&gt;
+&lt;h2 id="debian-packaging"&gt;Debian Packaging&lt;/h2&gt;
+&lt;p&gt;An astute reader has &lt;a href="https://piaille.fr/@TurboTrain/117067460922413248"&gt;pointed out&lt;/a&gt; that I maintain a package in
+Debian made to use Anthropic. It's actually multiple packages:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://tracker.debian.org/pkg/llm"&gt;&lt;code&gt;llm&lt;/code&gt;&lt;/a&gt;: a &lt;a href="https://llm.datasette.io/en/stable/"&gt;CLI utility and Python library for interacting with
+Large Language Models&lt;/a&gt;, with OpenAI as its default API backend&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://tracker.debian.org/pkg/llm-anthropic"&gt;&lt;code&gt;llm-anthropic&lt;/code&gt;&lt;/a&gt;: a plugin for &lt;code&gt;llm&lt;/code&gt; which allows me to talk to
+Anthropic's API instead of OpenAI&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://tracker.debian.org/pkg/anthropic-sdk-python"&gt;&lt;code&gt;anthropic-sdk-python&lt;/code&gt;&lt;/a&gt;: the SDK &lt;code&gt;llm-anthropic&lt;/code&gt; requires to do
+its work&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As I previously &lt;a href="https://kolektiva.social/@Anarcat/117071797145506717"&gt;explained in response&lt;/a&gt;, I am not entirely
+comfortable with this work: it's a compromise. In fact, I first
+uploaded &lt;code&gt;llm&lt;/code&gt; to the &lt;code&gt;contrib&lt;/code&gt; section of Debian, where we keep
+software that depends on other non-free software, but I was told that,
+since &lt;a href="https://tracker.debian.org/pkg/yt-dlp"&gt;&lt;code&gt;yt-dlp&lt;/code&gt;&lt;/a&gt; was in &lt;code&gt;main&lt;/code&gt;, &lt;code&gt;llm&lt;/code&gt; belonged there as well.&lt;/p&gt;
+&lt;p&gt;So I &lt;a href="https://tracker.debian.org/news/1718613/accepted-llm-028-2-source-all-into-unstable/"&gt;moved it to main&lt;/a&gt;, alongside similarly controversial tools
+like &lt;a href="https://tracker.debian.org/pkg/llama.cpp"&gt;&lt;code&gt;llama.cpp&lt;/code&gt;&lt;/a&gt; or the &lt;a href="https://tracker.debian.org/pkg/python-openai"&gt;&lt;code&gt;python-openai&lt;/code&gt;&lt;/a&gt; library.&lt;/p&gt;
+&lt;h2 id="openai-and-anthropic-usage"&gt;OpenAI and Anthropic usage&lt;/h2&gt;
+&lt;p&gt;An important part of my work is technology watch. I keep tabs on
+thousands of (new and old) software projects, follow news, and
+generally try to keep my skills up to date. It's a &lt;a href="https://anarc.at/blog/2018-05-26-kubecon-rant/"&gt;pretty impossible
+race&lt;/a&gt;, especially as I grow older, but I still think I'm doing the
+right choices in my job.&lt;/p&gt;
+&lt;p&gt;Testing large language models is part of that work. At first, I was
+using ChatGPT's web interface, but it was annoying to copy-paste
+things into a browser, so I looked for different interfaces.&lt;/p&gt;
+&lt;p&gt;For a while I tried &lt;a href="https://github.com/karthink/gptel"&gt;&lt;code&gt;gptel&lt;/code&gt;&lt;/a&gt;, a "simple, extensible LLM client for
+Emacs" but I found it kind of terrifying. Giving a LLM control over an
+Emacs buffer seems like a security nightmare, so I &lt;a href="https://gitlab.com/anarcat/emacs-d/-/commit/57fb1c13e63b58142ece426fc32f4ebdb325a6c3"&gt;stopped doing
+that&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So I use the &lt;code&gt;llm&lt;/code&gt; command-line tool to talk to Anthropic's API. I
+started that in the summer of 2025, when I bought 20$USD of API
+credits. Before that, I paid for a ChatGPT subscription and then
+OpenAI credits, which expired and sent me over to Anthropic, which
+&lt;em&gt;seemed&lt;/em&gt; then to have better ethics.&lt;/p&gt;
+&lt;p&gt;As it turns out, Anthropic is also happy to work for the US military
+(which is a big red line for me). Anthropic also won't let you &lt;a href="https://evanp.me/2026/07/23/claude-wont-let-me-talk-about-the-gaza-genocide/"&gt;talk
+about the genocide in Gaza&lt;/a&gt;, it is &lt;a href="https://annas-archive.gl/blog/physical-destruction.html"&gt;destroying physical books&lt;/a&gt;,
+and is &lt;a href="https://www.flyingpenguin.com/mythos-grading-mythos-got-patches-yet/"&gt;blackmailing us to use their product for security
+coverage&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Needless to say, Anthropic and "Claude" are not my friends, but they
+seem like the lesser evil in current "frontier models". So I have
+renewed, a couple of weeks ago, another 20$USD of API credits with
+Anthropic.&lt;/p&gt;
+&lt;h2 id="actual-prompts-and-responses"&gt;Actual prompts and responses&lt;/h2&gt;
+&lt;p&gt;So what does 20$ give you at Anthropic anyways? What &lt;em&gt;am&lt;/em&gt; I using LLMs
+for and how?&lt;/p&gt;
+&lt;p&gt;The neat thing with &lt;code&gt;llm&lt;/code&gt; is that everything is logged in a &lt;code&gt;sqlite&lt;/code&gt;
+database, so there are some answers that are easy to get:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; llm logs status
+Logging is ON for all prompts
+Found log database at /home/anarcat/.config/io.datasette.llm/logs.db
+Number of threads logged:   7
+Number of turns logged:     12
+Number of legacy conversations: 543
+Number of legacy responses: 970
+Database file size:         9.61MB
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That is 10MB of logs, with about a thousand prompts.&lt;/p&gt;
+&lt;p&gt;My logs go back to 2024-03-07, a little over two years ago, and
+include a mix of Anthropic and OpenAI responses. I used it more in
+2024 than 2025, and if the trend continues, I will have used it less
+in 2026 again:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; llm logs list -n 0  --json | jq -r .[].datetime_utc | sed 's/-.*//' | sort | uniq -c 
+    527 2024
+    357 2025
+     98 2026
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It looks like about 10 prompts per month right now, down from a peak
+of about 60 per month in 2024. It's pretty difficult to analyze those
+actual logs to get more patterns and I won't run the prompts through a
+model &lt;em&gt;again&lt;/em&gt; to process them.&lt;/p&gt;
+&lt;h2 id="how-im-using-models-now"&gt;How I'm using models now&lt;/h2&gt;
+&lt;p&gt;At first, I was using it partly for benchmarking model's capabilities,
+like &lt;a href="https://simonwillison.net/"&gt;Simon Willison&lt;/a&gt; does with his pelicans, clearly not trusting
+its output. But I was impressed by the capacities of the Claude Opus
+4.5 model when it &lt;a href="https://gitlab.com/anarcat/scripts/-/blob/main/transmodify.py?ref_type=heads"&gt;wrote this script in January&lt;/a&gt;. Impressed, but
+also scared: it's the first time I felt I could delegate the entirety
+of my programming to a model. Just run the code, if it works, it
+works, right?&lt;/p&gt;
+&lt;p&gt;So what do I use it now? As an example, here are the 10 last prompts
+in my history:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;there is now Claude 5, and a fable model, maybe you know about it?&lt;/li&gt;
+&lt;li&gt;impress me&lt;/li&gt;
+&lt;li&gt;not impressive, i already know all of this&lt;/li&gt;
+&lt;li&gt;chat&lt;/li&gt;
+&lt;li&gt;in postfix, i have a 300k mailing that happens regularly here. normally, it delivers within about...&lt;/li&gt;
+&lt;li&gt;is there a way i could have drained the maildrop queue faster without removing the milter?&lt;/li&gt;
+&lt;li&gt;the problem was that rspamd was timing out on the FUZZY_CALLBACK check. how do i disable that?&lt;/li&gt;
+&lt;li&gt;how do i disable all spam checks? i just want rspamd to add dkim signatures&lt;/li&gt;
+&lt;li&gt;how do the default_destination_concurrency_limit and initial_destination_concurrency settings int...&lt;/li&gt;
+&lt;li&gt;mic check&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The first one was me trying to confirm which model I am using, which
+is not always obvious when going through the whole &lt;code&gt;llm&lt;/code&gt; stack I've
+been using. The following two are an attempt at seeing what the model
+is capable of and I was "not impressed", to which Claude answered that
+I have a "high bar", which, fair enough.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;chat&lt;/code&gt; is me failing to use a command line, which shows that
+perhaps I need to readjust that "high bar", again.&lt;/p&gt;
+&lt;p&gt;The next five are a rather embarrassing debacle in a large Postfix
+mailing that went sideways, and where I couldn't find an actual
+Postfix expert of my level to help. The fabled Claude Fable 5 answered
+rather correctly, but dangerously, that I could empty the queue by
+disabling the &lt;code&gt;non_smtpd_milters&lt;/code&gt;. What Fable (and myself) did not
+realize is that the milter was also adding DKIM signatures, so while the
+mailing was expedited, it was done without those precious signatures,
+which got us promptly blocked at Gmail. We have recovered since, and,
+thanks to the model and reading the &lt;a href="https://www.postfix.org/pickup.8.html"&gt;Postfix manual&lt;/a&gt; for the
+hundredth time, that &lt;a href="https://www.postfix.org/pickup.8.html"&gt;pickup(8)&lt;/a&gt; is single-threaded and that we
+needed to review the architecture of that mailing (and our spam
+filters) a bit. Many tickets ensued.&lt;/p&gt;
+&lt;p&gt;The last one is a test I did to make sure my last uploads of
+&lt;code&gt;llm-anthropic&lt;/code&gt; and its dependency worked correctly.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Note that the above excludes 5 questions I asked Anthropic while
+writing this article, where I asked for synonyms and "what nanometer
+scale are arduino processors built from? how is an arduino CPU
+printed?", a question which Wikipedia furiously evades providing a
+good answer.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Those prompts are pretty typical of my LLM use: I'm testing the models
+to see if they work at all, but also, out of desperation, I fire off a
+prompt after I fire off questions to colleagues or search engines (in
+that order). It's often weird edge cases like the Prometheus query
+language, Python's matplotlib, LaTeX, Elisp, optimizations, and so on.&lt;/p&gt;
+&lt;p&gt;I use models for translation a lot. Being fully bilingual, it is
+common for me to think of a word in French or English and fail to find
+exactly the right word for that in the other language. Models help
+with that, and are also useful to find synonyms. Those are low-token
+uses that seem pretty innocuous to me, but I realize the irony of this
+after writing about the &lt;a href="https://anarc.at/blog/2026-05-16-four-horsemen/#the-tower-of-babel"&gt;tower of
+Babel&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="what-i-am-not-using-models-for"&gt;What I am not using models for&lt;/h2&gt;
+&lt;p&gt;I am not using models to write prose.&lt;/p&gt;
+&lt;p&gt;I am not using models to &lt;em&gt;read&lt;/em&gt; prose. If it's generated with LLMs, I
+stop reading.&lt;/p&gt;
+&lt;p&gt;I am not using models to write code, with the exception of that single
+Python script above.&lt;/p&gt;
+&lt;p&gt;I am generally not using models to &lt;em&gt;review&lt;/em&gt; code, with exceptions. If
+I get stuck on a hard problem, I might feed a piece of code to the
+model. I repeatedly fed &lt;a href="https://gitlab.com/anarcat/asncounter/"&gt;&lt;code&gt;asncounter&lt;/code&gt;&lt;/a&gt; into Claude to try to fix a
+performance regression I had introduced. It found micro-optimizations
+that taught me a thing or two about Python's internal implementations,
+but overall, it was mostly a waste of time. This was in June 2025, so
+perhaps now models would fare better. I have not tried again.&lt;/p&gt;
+&lt;p&gt;I am not using LLMs to do Debian packaging. When I can, I manually
+review the diffs of packages I upload into Debian, still, by hand.&lt;/p&gt;
+&lt;p&gt;I do this for the reasons outlined in &lt;a href="https://anarc.at/blog/2026-05-16-four-horsemen/"&gt;The Four Horsemen of the LLM
+Apocalypse&lt;/a&gt;, because I refuse to be
+complicit in the:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;aggressive and illegal scraping of the servers I steward&lt;/li&gt;
+&lt;li&gt;world-wide computer hardware shortage (making it, by the way,
+nearly impossible to run presumably clean local models) and the
+attack on our job conditions (also discussed in
+&lt;a href="https://anarc.at/blog/2026-08-18-people-vs-ai-overlords/"&gt;The people vs the AI overlords&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;death of copyright and free software&lt;/li&gt;
+&lt;li&gt;complication and enshifitication of everything, and the
+destruction of our communities&lt;/li&gt;
+&lt;li&gt;the imperialist &lt;a href="https://www.thenerdreich.com/"&gt;Nerd Reich&lt;/a&gt; that wants to take over the world&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Like I reluctantly use Intel computers, I &lt;em&gt;do&lt;/em&gt; fire off a prompt. But
+I still hold on to the dream that we can build &lt;a href="https://en.wikipedia.org/wiki/Community_of_practice"&gt;communities of
+practice&lt;/a&gt; that hold human knowledge collectively and not &lt;a href="https://gizmodo.com/sam-altman-says-intelligence-will-be-a-utility-and-hes-just-the-man-to-collect-the-bills-2000732953"&gt;offload
+that as a utility&lt;/a&gt; to some megalomaniac billionaire.&lt;/p&gt;
+&lt;h1 id="their-llm-use-i-am-forced-into"&gt;Their LLM use I am forced into&lt;/h1&gt;
+&lt;p&gt;So that's me. Clearly, I'm going against the grain here. Everywhere I
+look, I see LLM-generated code and projects. Slop and botnets have
+flooded the web.&lt;/p&gt;
+&lt;p&gt;I use &lt;a href="https://wadamesh.com/"&gt;Wadamesh&lt;/a&gt;, clearly &lt;a href="https://github.com/ALLFATHER-BV/wadamesh/graphs/contributors?from=2026-05-23"&gt;vibe-coded&lt;/a&gt;, because it's the best
+graphical interface for MeshCore that runs on portable devices. I wish
+it was made by a human, in a community I could participate in, but it
+isn't, and I don't.&lt;/p&gt;
+&lt;p&gt;I package the above &lt;code&gt;llm&lt;/code&gt; toolset, which is &lt;a href="https://simonwillison.net/2026/Aug/24/llm-anthropic/"&gt;more and more
+vibe-coded&lt;/a&gt;, but I still review the diffs. And I have to say: I
+trust Simon here. The code is verbose as hell, feels overengineered,
+and &lt;code&gt;llm&lt;/code&gt; feels slow, but it generally works, and Simon is still at
+the gate.&lt;/p&gt;
+&lt;p&gt;The Anthropic SDK is another thing entirely. The &lt;a href="https://salsa.debian.org/python-team/packages/anthropic-sdk-python/-/commit/a3087b3cef63ae239a1f558a6b46565ce0485b7d"&gt;0.91.0 to 0.120
+upload&lt;/a&gt;, for example, was nuts:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; 806 files changed, 72281 insertions(+), 1478 deletions(-)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I explicitly did not review that entire diff. It feels like there's a
+lot of garbage there to just have a shim between a proprietary API and
+Python. But this is the hand I've been dealt.&lt;/p&gt;
+&lt;h1 id="larger-projects-llm-use"&gt;Larger projects LLM use&lt;/h1&gt;
+&lt;p&gt;LLMs are being used in the Linux kernel, Firefox, &lt;code&gt;rsync&lt;/code&gt;, Rust, and
+other places. I don't feel good about this, particularly in Rust, but
+they at least made a decent &lt;a href="https://forge.rust-lang.org/policies/llm-usage.html"&gt;policy&lt;/a&gt;. I am glad GCC made a &lt;a href="https://lwn.net/Articles/1086041/"&gt;policy
+against LLM contributions&lt;/a&gt; and I support the &lt;a href="https://human-emacs.org/"&gt;human Emacs&lt;/a&gt;
+project.&lt;/p&gt;
+&lt;p&gt;We need to have a set of foundational tools that are "clean" in the
+sense that they are built upon a community of people that understand
+how they are built.&lt;/p&gt;
+&lt;p&gt;Maybe that's naive or even impossible. The Linux kernel and GCC, in
+particular, are massive projects that have long grown past the scale
+of a single person's understanding. But the theory was that a
+&lt;em&gt;community&lt;/em&gt; of humans can understand &lt;em&gt;collectively&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Now we seem to be throwing up our hands and giving up on
+that community. That LLMs will just fix the problem, whatever it
+is. But we're all just one rug pull away from being completely
+incapable of managing those projects. The argument there is that we'll
+just switch to local models, but no one is actually doing that.
+All I see is people use local models &lt;a href="https://micahflee.com/agentic-coding-techniques/"&gt;as a corner case&lt;/a&gt;
+(for privacy) or as in &lt;a href="https://changelog.complete.org/archives/44740-ai-in-debian-the-vote-proposals-and-nuance"&gt;theory&lt;/a&gt;, but in reality, everyone uses the
+centralized frontier models right now. We just can't fallback.&lt;/p&gt;
+&lt;p&gt;We're in the same situation we were, a decade or two ago, when
+Microsoft decided it would kill free office alternatives by making
+Office free for non-profits. It worked: thousands, if not millions of
+schools, community groups and individuals stopped looking for
+alternatives (including free software but also "piracy") for Office
+and embraced what seemed like a generous offer.&lt;/p&gt;
+&lt;p&gt;Now Microsoft pulled the plug and &lt;a href="https://slate.com/technology/2026/08/microsoft-software-nonprofit-data-delete.html"&gt;Over 170,000 Nonprofits Lost All
+Their Data&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I'm afraid the rug pull on LLMs will be much worse: never mind that
+Linus won't be able to use his &lt;a href="https://github.com/torvalds/linux/commit/818bebeb63dd6bf5f4e07e145f6cdbace520a34c"&gt;tireless helper&lt;/a&gt; to fix obscure kernel
+bugs; we're looking at a collapse of the economy so large that we are
+already &lt;a href="https://prospect.org/2026/08/03/ai-bailout-could-be-baked-into-bubble-private-equity-life-insurers-loans/"&gt;talking about bailing out the companies responsible&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In a sense, the most striking thing about the Debian vote is it has
+actually no option to completely refuse upstream LLM contributions. It
+seems the community has taken it for granted that it's now impossible
+to build Debian entirely without LLMs. We lost the battle even without
+a fight, it seems.&lt;/p&gt;
+&lt;h1 id="a-plea-for-small"&gt;A plea for small&lt;/h1&gt;
+&lt;p&gt;If it has really become impossible for us to manage the complexity we
+have built, maybe it's time to stop and think about what we're doing
+in the first place. We're struggling to even &lt;a href="https://bootstrappable.org/"&gt;bootstrap&lt;/a&gt; our
+current toolchain!&lt;/p&gt;
+&lt;p&gt;This is one of the things I like the most about working on the mesh:
+it's low tech, small Arduino devices that is built with decades-old
+&lt;a href="https://en.wikipedia.org/wiki/Semiconductor_device_fabrication"&gt;semiconductor processes&lt;/a&gt; that is understandable by human
+beings.&lt;/p&gt;
+&lt;p&gt;Maybe the answer lies more in single-purpose devices like those
+communicators and simpler multi-purpose computers than what we have
+now, which is what the &lt;a href="https://en.wikipedia.org/wiki/Permacomputing"&gt;permacomputing&lt;/a&gt; movement is about.&lt;/p&gt;
+&lt;p&gt;Small is beautiful, let's scale it down.&lt;/p&gt;
+&lt;!-- posted to the federation on 2026-08-25T17:09:23.309024 --&gt;
+&lt;div class="footnotes"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+and yes, I'm sorry this has gotten this long, I hope you will
+forgive those 3000 words.&lt;a href="https://anarc.at/tag/python-planet/#fnref:1" rev="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
+      <guid isPermaLink="false">368b068900acf0df843706408a9651da2ee1c187671ad8cfcc9c8cde5b0ecbc8</guid>
+      <pubDate>Tue, 25 Aug 2026 16:07:58 +0000</pubDate>
+    </item>
     <item>
       <title>Mike C. Fletcher: OpenGL Extrusions (and Tessellation) - Planet Python</title>
       <link>http://blog.vrplumber.com/b/2026/08/25/opengl-extrusions-and-tessellation/</link>
