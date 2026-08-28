@@ -5,7 +5,284 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Thu, 27 Aug 2026 00:08:31 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 28 Aug 2026 14:01:54 +0000</lastBuildDate>
+    <item>
+      <title>PyCharm: Security Incident Affecting JetBrains Cadence - Planet Python</title>
+      <link>https://blog.jetbrains.com/pycharm/2026/08/cadence-security-incident-august-2026/</link>
+      <description>&lt;p&gt;We are investigating a security incident affecting JetBrains Cadence. Cadence is a JetBrains-hosted service that integrates with PyCharm through an optional plugin, and lets you run your projects on cloud compute resources. Our investigation has confirmed unauthorized access to the service and the exposure of customer data associated with its use.&lt;/p&gt;
+&lt;p&gt;We have contacted affected users directly and have taken steps to contain the incident.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;This post provides the latest information about the incident, its potential impact, and the actions we recommend Cadence users take. We will update it as our investigation progresses and additional information becomes available.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Last updated: &lt;/strong&gt;August 28, 2026, 11:50 CEST&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;August 28, 2026, 11:50 CEST&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://blog.jetbrains.com/pycharm/2025/06/training-your-ml-models-with-cadence/"&gt;Cadence&lt;/a&gt; is a JetBrains-hosted service integrated with PyCharm through an optional plugin, that lets you run your projects on cloud compute resources. Cadence uses JetBrains TeamCity to orchestrate this work. We recently disclosed &lt;a href="https://blog.jetbrains.com/teamcity/2026/07/cve-2026-63077/"&gt;CVE-2026-63077&lt;/a&gt;, a critical vulnerability in TeamCity that can allow an unauthenticated attacker to execute arbitrary commands on a vulnerable server.&lt;/p&gt;
+&lt;p&gt;We have since confirmed the Cadence environment was vulnerable to CVE-2026-63077 and was exploited through this vulnerability.&lt;/p&gt;
+&lt;p&gt;Cadence users should immediately revoke or rotate all credentials and secrets that may have been used to run their Cadence executions. They should also treat all executions, including their inputs and outputs in your Cadence project, as potentially untrusted.&lt;/p&gt;
+&lt;h3 class="wp-block-heading"&gt;&lt;strong&gt;Actions required immediately&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;We strongly recommend that Cadence users:&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;Revoke and rotate all credentials and secrets that may have been used to run Cadence executions.&lt;/li&gt;
+&lt;li&gt;Review connected systems for suspicious activity, particularly AWS accounts, S3 buckets, deployment environments, package/container registries, and other systems accessible using credentials mentioned above.&lt;/li&gt;
+&lt;li&gt;Review source code repositories for unauthorized changes made during the affected period.&lt;/li&gt;
+&lt;li&gt;Review any source code or project files synchronized to Cadence from PyCharm and rotate any credentials, tokens, or other sensitive information contained within them.&lt;/li&gt;
+&lt;li&gt;Treat all executions, including their inputs and outputs in your Cadence project, as potentially untrusted.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Cadence users can contact us to request an inventory of the credentials and secrets associated with their Cadence usage. This may help users identify which credentials need to be revoked or rotated, but the inventory should not be considered exhaustive.&lt;/p&gt;
+&lt;p&gt;We have collated a list of Indicators of Compromise (IoCs) below. These indicators are not exhaustive, and the absence of these indicators does not confirm that an account or system was unaffected:&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;Activity occurring from August 8, 2026, onwards, particularly authentication or activity using credentials previously stored in or accessible through Cadence.&lt;/li&gt;
+&lt;li&gt;IP addresses associated with observed exploitation activity:
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;150.109.230.104&lt;/li&gt;
+&lt;li&gt;43.153.227.206&lt;/li&gt;
+&lt;li&gt;62.210.127.48&lt;/li&gt;
+&lt;li&gt;210.247.242.190&lt;/li&gt;
+&lt;li&gt;15.235.225.205&lt;/li&gt;
+&lt;li&gt;152.233.30.18&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Authentication or other activity from unexpected IP addresses or locations.&lt;/li&gt;
+&lt;li&gt;Unexpected repository clones or downloads, and unexpected commits to repositories.&lt;/li&gt;
+&lt;li&gt;Changes to repository secrets, webhooks, collaborators, or permissions.&lt;/li&gt;
+&lt;li&gt;New or modified personal access tokens, API tokens, or SSH keys in external services.&lt;/li&gt;
+&lt;li&gt;New service accounts created in external services.&lt;/li&gt;
+&lt;li&gt;Unexpected changes to cloud IAM roles, policies, or permissions.&lt;/li&gt;
+&lt;li&gt;Unexpected access to cloud storage, including S3 buckets and objects, in services such as AWS and Google Cloud.&lt;/li&gt;
+&lt;li&gt;Unexpected publication or modification of packages or releases.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="wp-block-heading"&gt;&lt;strong&gt;Affected server&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;We have confirmed that the following Cadence server was successfully exploited: &lt;code&gt;api.cadence.jetbrains.com&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 class="wp-block-heading"&gt;&lt;strong&gt;Affected period&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;August 8, 2026, to August 24, 2026.&lt;/p&gt;
+&lt;h3 class="wp-block-heading"&gt;&lt;strong&gt;What happened&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;The Cadence server used TeamCity to orchestrate workloads and was vulnerable to CVE-2026-63077. Threat actors exploited the vulnerability and gained unauthorized access to the affected Cadence environments, with activity identified from August 8, 2026. We discovered the exploitation on August 23, 2026, and took the affected server offline on August 24, 2026, while we continued our investigation.&lt;/p&gt;
+&lt;h3 class="wp-block-heading"&gt;&lt;strong&gt;What we know&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Our investigation is ongoing, but we have confirmed that the threat actors:&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;Accessed personal data and extracted it from the affected environment. Confirmed affected personal data includes usernames, real names, email addresses, last-login timestamps, and last accessed IP addresses.&lt;/li&gt;
+&lt;li&gt;Compromised a full backup of the Cadence server dating from 2024. This means credentials, configuration, artifacts, logs, or other data present in that backup must also be treated as potentially exposed.&lt;/li&gt;
+&lt;li&gt;Compromised multiple AWS IAM users and associated credentials/secrets used with Cadence, including IAM users belonging to JetBrains employees who used the service. These credentials were present in the compromised 2024 backup.&lt;/li&gt;
+&lt;li&gt;Accessed files stored in S3 buckets within JetBrains AWS accounts used by Cadence. We are still determining the full scope of the data accessed. We do not currently know whether the threat actors accessed storage buckets in customer accounts. However, some users may have configured Cadence to access their own storage buckets, and the credentials used for those connections may have also been exposed.&lt;/li&gt;
+&lt;li&gt;May have accessed source code synchronized from PyCharm projects to the affected server. If you used PyCharm to upload or synchronize project files for execution in Cadence, you should treat that code, and any credentials or configuration contained within it, as potentially compromised.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The likely consequences of the personal data exposure include an increased risk of targeted phishing, social engineering, impersonation, and other unsolicited or malicious communications using the affected names and email addresses.&lt;/p&gt;
+&lt;p&gt;As the threat actors gained access to the Cadence server, any credentials or secrets stored in Cadence, contained in the compromised backup, or made available to executions on the affected server should be considered compromised and must be revoked or rotated.&lt;/p&gt;
+&lt;p&gt;This includes but is not limited to:&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;Cloud credentials, including AWS, Azure, and Google Cloud.&lt;/li&gt;
+&lt;li&gt;Source control credentials and tokens, including GitHub, GitLab, and Bitbucket.&lt;/li&gt;
+&lt;li&gt;Package repository credentials, including npm, Maven, NuGet, PyPI, and similar services.&lt;/li&gt;
+&lt;li&gt;Container registry credentials, including Docker Hub, ECR, GCR, ACR, and other registries.&lt;/li&gt;
+&lt;li&gt;Slack tokens, webhooks, API tokens, SSH/deployment keys, service account credentials, signing keys/certificates, and credentials for any other external systems used by your Cadence executions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="wp-block-heading"&gt;&lt;strong&gt;Actions JetBrains has taken&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;We took the Cadence server offline on August 24, 2026, while we continue to investigate the incident. At present, we have confirmed that the incident is limited to data associated with the Cadence host mentioned above.&lt;/p&gt;
+&lt;p&gt;The server should have been patched as part of our response to the vulnerability, but it was not. We sincerely apologize for this failure and the impact it may have on you.&lt;/p&gt;
+&lt;p&gt;We have invalidated all access tokens used by the JetBrains Cadence plugin in PyCharm to connect to Cadence, and took the server offline on August 24, 2026.&lt;/p&gt;
+&lt;p&gt;We are also notifying the relevant authorities and taking the necessary steps to protect the data of Cadence users.&lt;/p&gt;
+&lt;h3 class="wp-block-heading"&gt;&lt;strong&gt;Further updates&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;We will publish further findings and guidance here as our investigation progresses. We recommend checking this page frequently for the latest information. We will also contact affected users directly if we identify any important new information that may require action on their part.&lt;/p&gt;
+&lt;p&gt;For more information about the underlying vulnerability, please see our original &lt;a href="https://blog.jetbrains.com/teamcity/2026/07/cve-2026-63077/"&gt;security advisory&lt;/a&gt; to TeamCity customers and users.&lt;/p&gt;
+&lt;p&gt;If you previously used Cadence and need assistance identifying which credentials may have been exposed or have any questions regarding this incident, contact the JetBrains Security team at &lt;a href="mailto:security@jetbrains.com?subject=Security incident affecting JetBrains Cadence"&gt;security@jetbrains.com&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We recognize the seriousness of this incident and apologize again for the impact.&lt;/p&gt;</description>
+      <guid isPermaLink="false">22a7630ed258bca220a1209b4059e2f77c594d5a5f74477a3f08ce832e574cd3</guid>
+      <pubDate>Fri, 28 Aug 2026 09:50:14 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Morsels: When to use NotImplemented - Planet Python</title>
+      <link>https://www.pythonmorsels.com/when-to-use-notimplemented/</link>
+      <description>&lt;p&gt;When should you return &lt;code&gt;NotImplemented&lt;/code&gt; from a dunder method? Why not return &lt;code&gt;False&lt;/code&gt; or raise an exception instead?&lt;/p&gt;
+&lt;div&gt;
+    &lt;a href="https://www.pythonmorsels.com/when-to-use-notimplemented/"&gt;&lt;img height="270" src="https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F2194688607-133ce96fdb5268e41a80febe64c1eef8ebae405d26bc8242e6e63d3a0388b004-d_1920x1080%3F%26region%3Dus&amp;amp;src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png" width="480" /&gt;&lt;/a&gt;
+  &lt;p&gt;
+  &lt;strong&gt;Table of contents&lt;/strong&gt;
+  &lt;ol&gt;
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/when-to-use-notimplemented/#dunder-methods-return-notimplemented" target="_blank"&gt;Dunder methods return &lt;code&gt;NotImplemented&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/when-to-use-notimplemented/#notimplemented-means-i-dont-know" target="_blank"&gt;&lt;code&gt;NotImplemented&lt;/code&gt; means "I don't know"&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/when-to-use-notimplemented/#using-notimplemented-with-your-objects" target="_blank"&gt;Using &lt;code&gt;NotImplemented&lt;/code&gt; with &lt;em&gt;your&lt;/em&gt; objects&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/when-to-use-notimplemented/#why-not-return-false-instead-of-notimplemented" target="_blank"&gt;Why not return &lt;code&gt;False&lt;/code&gt; instead of &lt;code&gt;NotImplemented&lt;/code&gt;?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/when-to-use-notimplemented/#return-notimplemented-from-your-dunder-methods" target="_blank"&gt;Return &lt;code&gt;NotImplemented&lt;/code&gt; from your dunder methods&lt;/a&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+    &lt;h2&gt;Dunder methods return &lt;code&gt;NotImplemented&lt;/code&gt;&lt;/h2&gt;
+        &lt;p&gt;Integers and floating point numbers can be compared with equality:&lt;/p&gt;
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;3.0&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
+&lt;span class="go"&gt;True&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;p&gt;This is powered by the &lt;a href="https://www.pythonmorsels.com/overloading-equality-in-python/" target="_blank"&gt;&lt;code&gt;__eq__&lt;/code&gt;&lt;/a&gt; method.&lt;/p&gt;
+        &lt;p&gt;But strangely, if we call the &lt;code&gt;__eq__&lt;/code&gt; method on an integer, giving it a floating point number, we'll get back &lt;code&gt;NotImplemented&lt;/code&gt;:&lt;/p&gt;
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;3.0&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__eq__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="go"&gt;NotImplemented&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;p&gt;But if we do the same thing on a floating point number, giving it an integer, we get the answer we're expecting:&lt;/p&gt;
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;3.0&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__eq__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="go"&gt;True&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;p&gt;The same thing happens with many other operations in Python.&lt;/p&gt;
+        &lt;p&gt;For example, the &lt;code&gt;+&lt;/code&gt; operator is &lt;a href="https://www.pythonmorsels.com/arithmetic-dunder-methods/" target="_blank"&gt;powered by the &lt;code&gt;__add__&lt;/code&gt; method&lt;/a&gt;:&lt;/p&gt;
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;3.0&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;
+&lt;span class="go"&gt;6.0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;p&gt;But just as with equality, floating point numbers can be added to integers, but integers cannot be added to floating point numbers:&lt;/p&gt;
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;3.0&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__add__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="go"&gt;6.0&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__add__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="go"&gt;NotImplemented&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;p&gt;What is the &lt;code&gt;NotImplemented&lt;/code&gt; value and why do we get it?&lt;/p&gt;
+    &lt;h2&gt;&lt;code&gt;NotImplemented&lt;/code&gt; means "I don't know"&lt;/h2&gt;
+      &lt;p&gt;&lt;a href="https://www.pythonmorsels.com/what-are-dunder-methods/" target="_blank"&gt;Dunder methods&lt;/a&gt; that perform an …&lt;/p&gt;
+&lt;/div&gt;
+&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/when-to-use-notimplemented/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/when-to-use-notimplemented/&lt;/a&gt;&lt;/h3&gt;</description>
+      <guid isPermaLink="false">29ab8e63a1648b591f934b990cb0b36152d8912fe3c7357b9ed57bb9bd5cc13a</guid>
+      <pubDate>Thu, 27 Aug 2026 21:45:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Robin Wilson: How to fix a weird pandas and pyarrow issue with BirdNetPi - Planet Python</title>
+      <link>https://blog.rtwilson.com/how-to-fix-a-weird-pandas-and-pyarrow-issue-with-birdnetpi/</link>
+      <description>&lt;p&gt;&lt;strong&gt;Summary:&lt;/strong&gt; If you get Python crashing immediately in BirdNetPi, try uninstalling the pyarrow Python package.&lt;/p&gt;
+&lt;p&gt;I&amp;#8217;ve got a &lt;a href="https://github.com/Nachtzuster/BirdNET-Pi"&gt;BirdNetPi&lt;/a&gt; set up at home. This is a bit of software that runs on a Raspberry Pi and listens on a microphone (I&amp;#8217;ve mounted mine on the outside of an upstairs window, using a 3D printed mount/cover to protect it from the rain) for bird noises. It then classifies them using a machine learning model and tells you what birds it&amp;#8217;s heard. It has a nice web interface which shows graphs like this:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="file" src="https://blog.rtwilson.com/wp-content/uploads/2026/08/image-1787852896012.png" /&gt;&lt;/p&gt;
+&lt;p&gt;as well as allowing you to listen to the recordings, correct errors, do more detailed statistics etc.&lt;/p&gt;
+&lt;p&gt;When I first installed it, I had some problems. One of the big ones, in fact, was that the graph above wasn&amp;#8217;t present on the homepage (I didn&amp;#8217;t actually know there &lt;em&gt;should&lt;/em&gt; be a graph there, so it took me a while to realise it was missing) and when loading the detailed Species Stats page I just got a message from Streamlit saying &amp;quot;Connecting&amp;#8230;&amp;quot;.&lt;/p&gt;
+&lt;p&gt;Investigating this in more depth, I found that a lot (but not all) of the Python scripts involved in creating the visualisations crashed as soon as you started them, giving an &amp;#8216;Illegal instruction&amp;#8217; error. This is a remarkably low-level error to get from Python, and suggested something was going wrong with a package that had some sort of native (C/C++) extension.&lt;/p&gt;
+&lt;p&gt;My first guess was that it was something to do with pandas, so I tried uninstalling and reinstalling pandas &amp;#8211; but that didn&amp;#8217;t fix it. I installed pandas in a new virtual environment and I could import it fine &amp;#8211; so it wasn&amp;#8217;t pandas itself that was causing the problem.&lt;/p&gt;
+&lt;p&gt;Then I realised I could use part of Python&amp;#8217;s profiling tools to help narrow down what import was the problem. I ran &lt;code&gt;birdnet/bin/python -X importtime -c &amp;#039;import pandas&amp;#039;&lt;/code&gt;, which uses the BirdNet Python interpreter to run &lt;code&gt;import pandas&lt;/code&gt; while printing out timing information about how long each import took. This should allow me to see what package was imported just before the crash &amp;#8211; and it did. The output looked like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import time:      1623 |      10550 |     pandas.compat.numpy
+import time:       309 |        309 |         gc
+import time:      1121 |       1121 |         pyarrow._generated_version&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The most recently imported package at the time of the crash was &lt;a href="https://arrow.apache.org/docs/python/index.html"&gt;pyarrow&lt;/a&gt; &amp;#8211; a Python interface for the arrow file format. I believe it was originally installed as an optional dependency of pandas. I confirmed this was the problem by running &lt;code&gt;import pyarrow&lt;/code&gt; in the BirdNet Python interpreter, and it immediately crashed.&lt;/p&gt;
+&lt;p&gt;This narrowed down the problem, but I wasn&amp;#8217;t sure how I&amp;#8217;d get the correct version of pyarrow installed. However, before doing that, I thought I&amp;#8217;d try and see whether BirdNetPi actually used pyarrow anywhere. Searching through the git repo for &lt;code&gt;arrow&lt;/code&gt; found no uses of it, so I thought it was worth trying uninstalling the package entirely.&lt;/p&gt;
+&lt;p&gt;This solved the problem straight away &amp;#8211; and I haven&amp;#8217;t found anything in BirdNetPi that has broken as a result of it.&lt;/p&gt;</description>
+      <guid isPermaLink="false">b287a2cb131bb24171da8081c5d99ca1af53232cdc0e708994b09d9ea282b9df</guid>
+      <pubDate>Thu, 27 Aug 2026 17:57:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>Core Dispatch: Core Dispatch #10 - Planet Python</title>
+      <link>https://coredispatch.xyz/editions/10</link>
+      <description>&lt;p&gt;Welcome back to Core Dispatch! This edition covers August 5 through August 27,
+2026. Python 3.12.14, 3.11.16, and 3.10.21 shipped on August 12. Next up is
+Python 3.15.0 release candidate 2, due September 1.&lt;/p&gt;
+&lt;p&gt;There are five new PEPs to catch up on. &lt;a href="https://peps.python.org/pep-0805/"&gt;PEP 805&lt;/a&gt;
+proposes a model for safe parallel Python. &lt;a href="https://peps.python.org/pep-0843/"&gt;PEP 843&lt;/a&gt;
+and &lt;a href="https://peps.python.org/pep-0844/"&gt;PEP 844&lt;/a&gt; offer two approaches to
+explicit module exports. &lt;a href="https://peps.python.org/pep-0841/"&gt;PEP 841&lt;/a&gt; proposes
+syntax for frozen types, while &lt;a href="https://peps.python.org/pep-0839/"&gt;PEP 839&lt;/a&gt;
+adds C APIs for building immutable collections. &lt;a href="https://peps.python.org/pep-0833/"&gt;PEP 833&lt;/a&gt;
+also reached Final, freezing the HTML form of the simple repository API. HTML
+support stays, but future standards work moves to JSON. Speaking of PEPs, PEP
+11 was also updated to list RISC-V as a &lt;a href="https://peps.python.org/pep-0011/#tier-3"&gt;tier 3&lt;/a&gt;
+platform.&lt;/p&gt;
+&lt;p&gt;Many core team members spoke about Python core development at EuroPython this
+year. All nine talks are in this edition&amp;#x27;s Core Team Musings, covering the
+CPython ABI, the JIT, free-threading, interpreter internals, security, and
+contributing to Python. Voters can also catch up on nominee AMAs for the PSF
+Board and inaugural Python Packaging Council elections before ballots open on
+September 1.&lt;/p&gt;
+&lt;p&gt;Python 3.15 is in the release candidate phase, so this is the moment
+for maintainers to test their projects and
+&lt;a href="https://discuss.python.org/t/python-3-15-0-release-candidate-1-is-here/108395#p-298000-call-to-action-1"&gt;publish Python 3.15 wheels to PyPI&lt;/a&gt;.
+Wheels built against the 3.15 release candidates will work with future 3.15
+releases, and publishing them now helps downstream projects test too. Please
+&lt;a href="https://github.com/python/cpython/issues"&gt;file any CPython issues&lt;/a&gt; you find.&lt;/p&gt;
+&lt;h3&gt;Upcoming Releases&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://peps.python.org/pep-0790/"&gt;Python 3.15.0 release candidate 2&lt;/a&gt; — Sep 01&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Official News&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.python.org/2026/08/riscv-now-officially-supported/"&gt;RISC-V is now officially supported by CPython&lt;/a&gt; — By Stan Ulbrych&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.python.org/2026/08/2026-packaging-council-nominees/"&gt;2026 Python Packaging Council election candidates announced&lt;/a&gt; — By Pradyun Gedam&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.python.org/2026/08/python-31214-31116-31021/"&gt;Python 3.12.14, 3.11.16, and 3.10.21 are now available&lt;/a&gt; — By Thomas Wouters&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pyfound.blogspot.com/2026/08/announcing-psf-board-candidates-for-2026.html"&gt;2026 PSF Board candidates announced&lt;/a&gt; — By Marie Nordin&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;PEP Updates&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://peps.python.org/pep-0833/"&gt;PEP 833: Freezing the HTML simple repository API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://peps.python.org/pep-0805/"&gt;PEP 805: Safe parallel Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://peps.python.org/pep-0843/"&gt;PEP 843: &lt;code&gt;export&lt;/code&gt; statement for DRY re-exports&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://peps.python.org/pep-0839/"&gt;PEP 839: &lt;code&gt;PyFrozenSetWriter&lt;/code&gt; and &lt;code&gt;PyFrozenDictWriter&lt;/code&gt; C API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://peps.python.org/pep-0844/"&gt;PEP 844: &lt;code&gt;public&lt;/code&gt; and &lt;code&gt;private&lt;/code&gt; builtins&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://peps.python.org/pep-0841/"&gt;PEP 841: Adding &lt;code&gt;frozen&lt;/code&gt; syntax to optimize immutable types&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Steering Council Updates&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://discuss.python.org/t/2026-08-06-python-steering-council-meeting-summary/108612"&gt;2026-08-06 Python Steering Council meeting summary&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://discuss.python.org/t/2026-07-30-python-steering-council-meeting-summary/108449"&gt;2026-07-30 Python Steering Council meeting summary&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://discuss.python.org/t/2026-07-23-python-steering-council-meeting-summary/108442"&gt;2026-07-23 Python Steering Council meeting summary&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Merged PRs&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/python/cpython/pull/156003"&gt;Bound ZIP member decompression for bzip2, LZMA, and Zstandard&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/python/cpython/pull/155293"&gt;Keep &lt;code&gt;stringprep&lt;/code&gt; and &lt;code&gt;encodings.idna&lt;/code&gt; limited to RFC 3454 Unicode attributes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/python/cpython/pull/155025"&gt;Make asynchronous generators thread-safe in free-threaded builds&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/python/cpython/pull/153462"&gt;Prevent crashes when &lt;code&gt;os.scandir()&lt;/code&gt; iterators are shared across threads&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/python/cpython/pull/155439"&gt;Preserve outside cancellation after &lt;code&gt;asyncio.TaskGroup.cancel()&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/python/cpython/pull/156176"&gt;Raise &lt;code&gt;zlib.error&lt;/code&gt; instead of returning corrupted output from &lt;code&gt;zlib.Decompress.flush()&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/python/cpython/pull/155936"&gt;Fix socket leaks and silent errors for accepted &lt;code&gt;asyncio&lt;/code&gt; connections&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/python/cpython/pull/6898"&gt;Make &lt;code&gt;PyCapsule_Import()&lt;/code&gt; import submodules when needed&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/python/cpython/pull/155119"&gt;Add build options for &lt;code&gt;zlib-rs&lt;/code&gt;, &lt;code&gt;zlib-ng&lt;/code&gt;, and &lt;code&gt;libbzip2-rs&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Discussion&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://discuss.python.org/t/pep-842-module-exports-new-revision/108460"&gt;PEP 842: Module exports (new revision)&lt;/a&gt; — 🆕 🔥 136 new replies · 3.2k views&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://discuss.python.org/t/pep-844-public-and-private-builtins/108515"&gt;PEP 844: &lt;code&gt;public&lt;/code&gt; and &lt;code&gt;private&lt;/code&gt; builtins&lt;/a&gt; — 🆕 🔥 130 new replies · 3.3k views&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://discuss.python.org/t/pep-805-safe-parallel-python/108670"&gt;PEP 805: Safe parallel Python&lt;/a&gt; — 🆕 🔥 56 new replies · 1.7k views&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://discuss.python.org/t/pep-843-export-statement-for-dry-re-exports/108687"&gt;PEP 843: &lt;code&gt;export&lt;/code&gt; statement for DRY re-exports&lt;/a&gt; — 🆕 🔥 38 new replies · 916 views&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://discuss.python.org/t/pep-718-subscriptable-functions/28457"&gt;PEP 718: Subscriptable functions&lt;/a&gt; — 🔥 38 new replies · 16.0k views&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://discuss.python.org/t/pep-835-shorthand-syntax-for-annotated-type-metadata/107814"&gt;PEP 835: Shorthand syntax for &lt;code&gt;Annotated&lt;/code&gt; type metadata&lt;/a&gt; — 🔥 26 new replies · 6.4k views&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://discuss.python.org/t/pep-832-virtual-environment-discovery/106998"&gt;PEP 832: Virtual environment discovery&lt;/a&gt; — 🔥 19 new replies · 10.8k views&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://discuss.python.org/t/pep-767-annotating-read-only-attributes/73408"&gt;PEP 767: Annotating read-only attributes&lt;/a&gt; — 9 new replies · 8.0k views&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://discuss.python.org/t/pep-822-dedented-multiline-string-d-string/105519"&gt;PEP 822: Dedented multiline string (&lt;code&gt;d&lt;/code&gt;-string)&lt;/a&gt; — 8 new replies · 9.0k views&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://discuss.python.org/t/pep-838-adding-python-version-to-pyvenv-cfg/108234"&gt;PEP 838: Adding &lt;code&gt;python-version&lt;/code&gt; to &lt;code&gt;pyvenv.cfg&lt;/code&gt;&lt;/a&gt; — 5 new replies · 782 views&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Core Dev Musings&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://snarky.ca/whats-missing-to-have-reproducible-builds-on-pypi/"&gt;What&amp;#x27;s missing for reproducible builds on PyPI&lt;/a&gt; — By Brett Cannon&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://sethmlarson.dev/when-str-lower-is-a-security-vulnerability?utm_campaign=rss"&gt;When &lt;code&gt;str.lower()&lt;/code&gt; is a security vulnerability in Python&lt;/a&gt; — By Seth Larson&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=An8lO29SxXE"&gt;What every Python developer should know about the CPython ABI&lt;/a&gt; — By Nathan Goldbaum&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=QP9fiB_c8Kk"&gt;CPython JIT update: What to expect in Python 3.15&lt;/a&gt; — By Diego Russo&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=NN_kHSIw0SY"&gt;Inside Python 3.15&amp;#x27;s JIT optimizer&lt;/a&gt; — By Ken Jin&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=kRq2V_2252A"&gt;Free-threaded Python: Past, present, and future&lt;/a&gt; — By Thomas Wouters&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=rYbMwGNNFc8"&gt;Python dictionaries: Past, present, and free-threaded future&lt;/a&gt; — By Lysandros Nikolaou&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=Xmr89QEr720"&gt;Learning from the not-so-secret Python security &amp;quot;cabal&amp;quot;&lt;/a&gt; — By Seth Larson&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=bVYh2LDPG3M"&gt;The coolest feature in Python 3.14: &lt;code&gt;sys.remote_exec()&lt;/code&gt;&lt;/a&gt; — By Savannah Ostrowski&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=ZMxuMIFmDuc"&gt;Become a Python core developer in three easy steps&lt;/a&gt; — By Tomas Roun&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=SavVPtsqUf0"&gt;Lazy imports and the art of interpreter procrastination&lt;/a&gt; — By Pablo Galindo Salgado and Noah Kim&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Upcoming CFPs &amp;amp; Conferences&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://istanbul.python.pizza/"&gt;📋 Python Pizza Istanbul 2026 Deadline&lt;/a&gt; — Aug 26&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://2026.pycon.org.au/"&gt;PyCon AU 2026&lt;/a&gt; — Aug 26&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pl.pycon.org/2026/"&gt;PyCon PL 2026&lt;/a&gt; — Aug 27&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.pycon.ke/"&gt;PyCon Kenya 2026&lt;/a&gt; — Aug 28&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pycontg.pytogo.org/"&gt;PyCon Togo 2026&lt;/a&gt; — Aug 28&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://2026.pycon.ie/"&gt;📋 PyCon Ireland 2026 Deadline (extended)&lt;/a&gt; — Aug 31&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wagtail.org/wagtail-space-2026/"&gt;📋 Wagtail Space 2026 Deadline&lt;/a&gt; — Sep 11&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.pyday.co/"&gt;PyDay Boyacá 2026&lt;/a&gt; — Sep 12&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pycon.pythoncameroon.org/"&gt;PyCon Cameroon 2026&lt;/a&gt; — Sep 17&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://na.pycon.org/"&gt;📋 PyCon Namibia 2027 Deadline&lt;/a&gt; — Sep 20&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;One More Thing&lt;/h3&gt;
+&lt;blockquote&gt;&lt;p&gt;"No CVE, no merg-e"&lt;/p&gt;— &lt;a href="https://github.com/sethmlarson"&gt;Seth Larson&lt;/a&gt;&lt;/blockquote&gt;
+&lt;h3&gt;Credits&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/savannahostrowski"&gt;Savannah Ostrowski&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <guid isPermaLink="false">8206c8dcb163037eb86ee09177f8eaf252b2a65012269f898e3c6f75704e11b4</guid>
+      <pubDate>Thu, 27 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Talk Python to Me: #560: Building a Research OS: From Django to 30,000 Samples - Planet Python</title>
       <link>https://talkpython.fm/episodes/show/560/building-a-research-os-from-django-to-30-000-samples</link>

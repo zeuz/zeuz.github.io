@@ -5,7 +5,137 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Thu, 27 Aug 2026 14:01:09 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 28 Aug 2026 14:01:54 +0000</lastBuildDate>
+    <item>
+      <title>Identifying golden-section search in EVM bytecode from a hardcoded constant - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w0qdho/identifying_goldensection_search_in_evm_bytecode/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/H3rnst"&gt; /u/H3rnst &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://devilsintheopcodes.substack.com/p/mev-arbitrage-optimal-trade-size"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w0qdho/identifying_goldensection_search_in_evm_bytecode/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">c1dc904c52e0d833531f3d48c324c08e57358e9a36503a5366f680fd48524d3a</guid>
+      <pubDate>Fri, 28 Aug 2026 13:18:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>Interactive pattern discovery in binaries (FF-16-TUI) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w0pwwp/interactive_pattern_discovery_in_binaries_ff16tui/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/HexLasso"&gt; /u/HexLasso &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/HexLasso/FF-16-TUI"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w0pwwp/interactive_pattern_discovery_in_binaries_ff16tui/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">ad3e0497b6339ac05140134a7474217406ccd01ec475a72eb689184ef4e4bd10</guid>
+      <pubDate>Fri, 28 Aug 2026 12:59:32 +0000</pubDate>
+    </item>
+    <item>
+      <title>Two Unitree G1 EDU Humanoid Robot Flaws Enable Root RCE, One Starts Over Bluetooth - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/two-unitree-g1-edu-humanoid-robot-flaws.html</link>
+      <description>Security researcher Olivier Laflamme has disclosed two independent root remote code execution (RCE) chains affecting the Unitree G1 EDU, including a Bluetooth Low Energy (BLE) path that can reach root on the robot's Locomotion PC.
+The flaws are tracked as&amp;nbsp;CVE-2026-76639&amp;nbsp;and&amp;nbsp;CVE-2026-76640, with the first involving a network-adjacent path through chat_go and bashrunner and the</description>
+      <guid isPermaLink="false">71935d470414f85bb7af7e5c5338617e8cc347387ba74b710675ed21093701e1</guid>
+      <pubDate>Fri, 28 Aug 2026 12:07:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>Three CVSS 10.0 ServiceNow Flaws Could Let Unauthenticated Attackers Execute Code and SQL - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/three-cvss-100-servicenow-flaws-could.html</link>
+      <description>ServiceNow has released patches for four security flaws impacting the ServiceNow AI Platform, three of them rated 10.0 on the CVSS scoring system and exploitable, in certain circumstances, by an unauthenticated attacker.
+The company said it deployed a security update to hosted instances and provided the update to its partners and self-hosted customers, which leaves organizations that run their</description>
+      <guid isPermaLink="false">3afbe0d05465fb231b47f699358a63b9e3927021e1b39a55b670754447c3fb8e</guid>
+      <pubDate>Fri, 28 Aug 2026 11:20:32 +0000</pubDate>
+    </item>
+    <item>
+      <title>China-Made ZBT Routers Ship With Two Implants Giving Unauthenticated Attackers Root Access - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/china-made-zbt-routers-ship-with-two.html</link>
+      <description>VulnCheck has disclosed two previously undocumented factory implants in firmware for routers built by Shenzhen Zhibotong Electronics (ZBT), each of which gives an unauthenticated remote attacker the ability to run commands as root on affected devices.
+The implants, named SPEAKINGSTONE and DARKLANTERN by the company's zero-day research team, are tracked as CVE-2026-74232 and CVE-2026-74233.</description>
+      <guid isPermaLink="false">a7ca13ebc5adb174dd16151824d9a32f4d520f7acf6f085c61cb82f375c0d97f</guid>
+      <pubDate>Fri, 28 Aug 2026 10:58:29 +0000</pubDate>
+    </item>
+    <item>
+      <title>Critical cPanel Flaw Could Let One Hosting Customer Take Root Control of a Whole Server - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/critical-cpanel-flaw-could-let-one.html</link>
+      <description>cPanel has released patches for a security flaw affecting domain parking and addon domain functionality in cPanel and WebHost Manager (WHM), which could allow code execution as the root user.
+The vulnerability, assigned the CVE identifier CVE-2026-65643, impacts all supported versions of cPanel &amp;amp; WHM.
+cPanel described the issue as a critical security vulnerability and said that an</description>
+      <guid isPermaLink="false">99fb8ec92adf42986254218f4a846142fc41583de1727582c600e59ad55145e9</guid>
+      <pubDate>Fri, 28 Aug 2026 09:45:15 +0000</pubDate>
+    </item>
+    <item>
+      <title>PaperCut Zero-Day Exploited in Attacks, Affecting All NG and MF Versions - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/papercut-zero-day-exploited-in-attacks.html</link>
+      <description>PaperCut has alerted customers that bad actors are actively exploiting a vulnerability impacting all versions of its PaperCut NG and PaperCut MF print management software in zero-day attacks.
+The company has released an emergency patch for v25 and v26 to address the issue. It said it's "aware of confirmed customer incidents and is treating this matter with the highest priority." An</description>
+      <guid isPermaLink="false">2485cf37fe39fe76b7bb91f0203a59ca1e66911179213aa24a3bddee5fabeb6e</guid>
+      <pubDate>Fri, 28 Aug 2026 08:25:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>APT28-Linked HOOKEDGE Backdoor Targets European Government and Diplomatic Organizations - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/apt28-linked-hookedge-backdoor-targets.html</link>
+      <description>Cybersecurity researchers have flagged a fresh set of campaigns targeting government and diplomatic organizations in Romania, Spain, and Türkiye between late September 2025 and early April 2026.
+These campaigns, per Recorded Future Insikt Group, have led to the deployment of a previously undocumented backdoor dubbed HOOKEDGE, a lightweight Windows batch script that's distributed via</description>
+      <guid isPermaLink="false">a17de877fef33137e21cea0cd0e196fc7af461c590d45210d3029bd9a4cfd177</guid>
+      <pubDate>Fri, 28 Aug 2026 08:20:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>AI IR Overlay – Incident Response Specification for AI Agents - Darknet - The Darkside</title>
+      <link>https://www.darknet.org.uk/2026/08/ai-ir-overlay-incident-response-specification-for-ai-agents/</link>
+      <description>AI IR Overlay specifies containment for agents using valid credentials, with a working kill-switch contract and an admitted gap when no SOC is staffed.</description>
+      <guid isPermaLink="false">611211c522219469546dd0cb31197936dd63198bfb633f1c74e0dd77113cf4d6</guid>
+      <pubDate>Fri, 28 Aug 2026 06:35:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>Needed a lightweight PE parser for a reverse engineering project. readpe parses PE/PE32+ files without dependencies: - DOS header validation - PE signature check - Section headers - Import directory parsing Built in C with no external libs. Use - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w0bnql/needed_a_lightweight_pe_parser_for_a_reverse/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Limp-Impact6334"&gt; /u/Limp-Impact6334 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/DaviAlcanfor/readpe"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w0bnql/needed_a_lightweight_pe_parser_for_a_reverse/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">db944c19799a5754bb9bf56cff1abec13a3e843009c0fb216972d369345a1d68</guid>
+      <pubDate>Fri, 28 Aug 2026 00:36:13 +0000</pubDate>
+    </item>
+    <item>
+      <title>Gitlab -- Vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/161b1c49-a29b-11f1-a883-2cf05da270f3.html</link>
+      <description/>
+      <guid isPermaLink="false">5619008880a3d2675ea17739cb4c03f67986bc67dd99a7494dbb869a2507daca</guid>
+      <pubDate>Fri, 28 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>untauri: extract the brotli-packed HTML/CSS/JS frontend out of a compiled Tauri (Rust) binary - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w0772t/untauri_extract_the_brotlipacked_htmlcssjs/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Imaginary_Heat_2235"&gt; /u/Imaginary_Heat_2235 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/hbofz/untauri"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w0772t/untauri_extract_the_brotlipacked_htmlcssjs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">4844e9e7c08b3b30e951e624bf3f65bd0b76170a979680af27dc46e2d99ce43d</guid>
+      <pubDate>Thu, 27 Aug 2026 21:31:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>UniBLEed: Unauthenticated Root RCE on Any Unitree G1 Humanoid Robot Within Bluetooth Range - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w05z1p/unibleed_unauthenticated_root_rce_on_any_unitree/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/WiseTuna"&gt; /u/WiseTuna &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://boschko.ca/g1-ble-rce/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w05z1p/unibleed_unauthenticated_root_rce_on_any_unitree/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">a1c7bebb3c3e7a886bdcb3a52b58824ea821eed7fa163ef671dd6620e6cc7dde</guid>
+      <pubDate>Thu, 27 Aug 2026 20:45:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>OpenAI Says Reward Hacking Drove AI Agents to Exploit Zero-Days and Breach Hugging Face - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/openai-says-reward-hacking-drove-ai.html</link>
+      <description>OpenAI on Wednesday revealed that reward hacking was a key driver behind the artificial intelligence (AI)-powered hack of Hugging Face last month, adding that it found evidence of misaligned behavior as early as late May.
+The incident, the company said, took place during cybersecurity evaluations of several OpenAI models, and that it was mainly fueled by what it described as a "highly capable</description>
+      <guid isPermaLink="false">33359928f249fa956637e2cfd268305efeb6268b1487f8a7d42f52fb2d87b00d</guid>
+      <pubDate>Thu, 27 Aug 2026 18:36:19 +0000</pubDate>
+    </item>
+    <item>
+      <title>PHANTOMPULSE RAT analysis: on-chain C2 resolution, sinkhole vectors, and REF6598 intrusion set TTPs - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vzwwy4/phantompulse_rat_analysis_onchain_c2_resolution/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/AvenueJay"&gt; /u/AvenueJay &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.elastic.co/security-labs/threat-command/embedding-security-in-llm-workflows"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vzwwy4/phantompulse_rat_analysis_onchain_c2_resolution/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">39239401dee13f3581a63baaf6e84882d2b39460d3883deb1ba2f3dcb4e9b3dc</guid>
+      <pubDate>Thu, 27 Aug 2026 15:18:44 +0000</pubDate>
+    </item>
+    <item>
+      <title>Next.js Patches Critical AVIF and Windows Flaws Enabling Unauthenticated RCE - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/nextjs-patches-critical-avif-and.html</link>
+      <description>Credit:&amp;nbsp;Hacktron
+Vercel has released security patches for two critical-severity vulnerabilities in the Next.js web framework, both of which allow unauthenticated remote code execution, one exploitable via specially crafted AVIF image files and the other through a path traversal flaw affecting servers that use a Windows filesystem.
+The Windows path traversal, tracked as&amp;nbsp;CVE-2026-75604&amp;</description>
+      <guid isPermaLink="false">4ec948fcbb64d20d9c4db9ba9671b090e78b2e8d111b74f600bcb65e82df0e34</guid>
+      <pubDate>Thu, 27 Aug 2026 15:13:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Amazon Kiro Prompt Injection Can Exfiltrate Sensitive Data Through Kiro Powers - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/amazon-kiro-prompt-injection-can.html</link>
+      <description>Cybersecurity researchers have disclosed details of a vulnerability in Amazon Kiro, an artificial intelligence (AI)-powered, agentic integrated development environment (IDE), that could facilitate data exfiltration via prompt injection and Kiro Powers.
+The security flaw, which does not have a CVE identifier, works against Kiro IDE 0.7.45 on Windows, according to Mindgard. The latest version of</description>
+      <guid isPermaLink="false">d986308abf62062ab7df0cdae8bc4b6c0eade1694c2a052727912e8142dbd8a9</guid>
+      <pubDate>Thu, 27 Aug 2026 13:39:56 +0000</pubDate>
+    </item>
     <item>
       <title>From Squashfs to Root Shell: A Full AArch64 Rehost Story for a Zyxel Enterprise AP - Reverse Engineering</title>
       <link>https://www.reddit.com/r/ReverseEngineering/comments/1vztlsr/from_squashfs_to_root_shell_a_full_aarch64_rehost/</link>
@@ -77,6 +207,13 @@ The vulnerabilities are listed below -
   CVE-2019-1068 - A remote code execution vulnerability in&amp;nbsp;</description>
       <guid isPermaLink="false">0802721c638e7e6b489739f2362a5898ecce1888bf1ba1e005613db7acf304fc</guid>
       <pubDate>Thu, 27 Aug 2026 07:05:28 +0000</pubDate>
+    </item>
+    <item>
+      <title>PHP Composer -- Multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/db135cd1-a232-11f1-85ed-10ffe07f9334.html</link>
+      <description/>
+      <guid isPermaLink="false">367d31531cffcc00f1cceba20cf4163c45f464b95ed8be461536c35f62b5744e</guid>
+      <pubDate>Thu, 27 Aug 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>drakoarmy/datadome-rs: High-end Rust DataDome deobfuscator &amp; solver with VM disassembly — all 3 challenge types (tags, interstitial, slider). - Reverse Engineering</title>
