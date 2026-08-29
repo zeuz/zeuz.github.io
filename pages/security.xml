@@ -5,7 +5,64 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Fri, 28 Aug 2026 14:01:54 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 29 Aug 2026 14:01:47 +0000</lastBuildDate>
+    <item>
+      <title>Berlin Refuses to Pay Hackers Who Stole Data From the City's State Network - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/berlin-refuses-to-pay-hackers-who-stole.html</link>
+      <description>Berlin's state government has confirmed that it is the target of an extortion attempt following the August compromise of the city's state administrative network, and said it will not meet the extortionists' demands.
+The same statement disclosed that forensic work had found further data outflows in the portfolio of the Senate Department for Mobility, Transport, Climate Protection and Environment</description>
+      <guid isPermaLink="false">387779dd069ae9e03045dd9d7f7205afd6bf2407fc89e086d43d6c17077997e7</guid>
+      <pubDate>Fri, 28 Aug 2026 21:30:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>RE: CVX Decomp - Disabling the fog and motion blur effects on PS2 - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w12uii/re_cvx_decomp_disabling_the_fog_and_motion_blur/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/MrFroz1995"&gt; /u/MrFroz1995 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.youtube.com/watch?v=D86W7VNyqPY"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w12uii/re_cvx_decomp_disabling_the_fog_and_motion_blur/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">eed7532c5970354a4a6e18b7e1ddcdef8350a947e575a91f7013df43b7ea356b</guid>
+      <pubDate>Fri, 28 Aug 2026 21:05:54 +0000</pubDate>
+    </item>
+    <item>
+      <title>Cosmos EVM Flaw Exploited After Cosmos Labs Knew Every Blockchain Running It Was Vulnerable - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/cosmos-evm-flaw-exploited-after-cosmos.html</link>
+      <description>Cosmos Labs has warned that a critical balance-handling flaw in the shared Cosmos EVM module was exploited to drain funds from six blockchains between August 20 and August 25, 2026.
+The vulnerability, designated GHSA-7g4w-cg88-2cq2, is rated Critical by Cosmos Labs and was published without a CVE identifier, a weakness classification, or a CVSS score.
+Affected versions are &amp;lt; 0.6.2 and &amp;gt;=</description>
+      <guid isPermaLink="false">a7bcc63445a4e6277f9454bcf51544fbfd4bb190b8d77020c519fc94642e8384</guid>
+      <pubDate>Fri, 28 Aug 2026 20:38:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Chain Two PaperCut Flaws to Execute Code Without Authentication - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/attackers-chain-two-papercut-flaws-to.html</link>
+      <description>Malicious actors are exploiting a newly patched security flaw in PaperCut NG and MF to execute arbitrary code on susceptible instances, as the company released a fresh emergency fix with additional hardening.
+"This vulnerability gives an unauthenticated attacker remote control over PaperCut's trusted configuration, which could be used to execute arbitrary Java code inside the application's</description>
+      <guid isPermaLink="false">d1a653cc22e392f4ab37f7ba5dd38c1580df60b0b6b055492c77569711b86ce4</guid>
+      <pubDate>Fri, 28 Aug 2026 17:12:15 +0000</pubDate>
+    </item>
+    <item>
+      <title>Android 17 Adds OS-Wide ECH to Hide Website Visits From Network Providers - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/android-17-adds-os-wide-ech-to-hide.html</link>
+      <description>Google on Thursday announced new network security protections in Android 17 to bolster connection privacy, address cellular vulnerabilities, and safeguard the privacy of users' home networks.
+Topping the list is support for Encrypted Client Hello (ECH), a privacy standard that prevents networks from eavesdropping on which websites a user is visiting.
+"This new privacy standard works in tandem</description>
+      <guid isPermaLink="false">ae8050f949e06ec7e83c17a6c697494373cb01e584c2de30d679e6104b94f2b1</guid>
+      <pubDate>Fri, 28 Aug 2026 16:20:46 +0000</pubDate>
+    </item>
+    <item>
+      <title>ownCloud Flaw Exploited to Steal Nuclear Records From Philippine Research Body - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/snowflake-github-actions-flaw-lets.html</link>
+      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Thursday added a critical security flaw impacting ownCloud to its Known Exploited Vulnerabilities (KEV) catalog following reports that a Chinese-speaking threat actor weaponized the vulnerability to target a nuclear research body in the Philippines.
+The vulnerability, tracked as CVE-2023-49105 (CVSS score: 9.8), is a case of</description>
+      <guid isPermaLink="false">829e3c3bcc6fbebbef5d9ce8ff32bdb93739e79622c1804fec3b12bd476895f7</guid>
+      <pubDate>Fri, 28 Aug 2026 15:56:55 +0000</pubDate>
+    </item>
+    <item>
+      <title>19 Chrome and Edge Extensions Found With Wallet-Stealing and Crypto-Draining Code - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/19-chrome-and-edge-extensions-found.html</link>
+      <description>Cybersecurity researchers have discovered a cluster of 18 Google Chrome and one Microsoft Edge extensions that were published over the last six months and harbored wallet secret stealing and cryptocurrency draining capabilities.
+The extensions, per Socket security researcher Karlo Zanki, share similarities in code and tradecraft, with evidence indicating that the campaign may have been active</description>
+      <guid isPermaLink="false">a08dfdd0979227bd01c0dc01e46b930d3bc09f8ab0d662e3b97b176e682bcda1</guid>
+      <pubDate>Fri, 28 Aug 2026 15:27:26 +0000</pubDate>
+    </item>
     <item>
       <title>Identifying golden-section search in EVM bytecode from a hardcoded constant - Reverse Engineering</title>
       <link>https://www.reddit.com/r/ReverseEngineering/comments/1w0qdho/identifying_goldensection_search_in_evm_bytecode/</link>
@@ -88,6 +145,20 @@ These campaigns, per Recorded Future Insikt Group, have led to the deployment of
       <link>http://www.vuxml.org/freebsd/161b1c49-a29b-11f1-a883-2cf05da270f3.html</link>
       <description/>
       <guid isPermaLink="false">5619008880a3d2675ea17739cb4c03f67986bc67dd99a7494dbb869a2507daca</guid>
+      <pubDate>Fri, 28 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Elixir -- Denial of service via uncontrolled recursion in charlist conversion - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/2ab3c852-d10a-4d68-be6b-80619116c33a.html</link>
+      <description/>
+      <guid isPermaLink="false">cda5f1e2b3e4848265b1461ec9b52e783354380efc58d1a4a56f9b9cb03cc5e8</guid>
+      <pubDate>Fri, 28 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>phpBB -- multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/4d06b948-a323-11f1-a655-3497f65b111b.html</link>
+      <description/>
+      <guid isPermaLink="false">95656f9a1d35fee34ba008ebbbf8ed839236625f4b80210d4284f53f88aa010a</guid>
       <pubDate>Fri, 28 Aug 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
@@ -213,6 +284,13 @@ The vulnerabilities are listed below -
       <link>http://www.vuxml.org/freebsd/db135cd1-a232-11f1-85ed-10ffe07f9334.html</link>
       <description/>
       <guid isPermaLink="false">367d31531cffcc00f1cceba20cf4163c45f464b95ed8be461536c35f62b5744e</guid>
+      <pubDate>Thu, 27 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>NSD -- multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/a711b018-a24b-11f1-81e6-3c7c3fba4204.html</link>
+      <description/>
+      <guid isPermaLink="false">e86831b0663582fe549b20dc7e0b2301abaafff7f2073e7a636d4c451f27b32f</guid>
       <pubDate>Thu, 27 Aug 2026 00:00:00 +0000</pubDate>
     </item>
     <item>

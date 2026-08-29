@@ -5,7 +5,16 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Fri, 28 Aug 2026 14:01:54 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 29 Aug 2026 14:01:47 +0000</lastBuildDate>
+    <item>
+      <title>Django Weblog: Django Developers Survey 2026 results - Planet Python</title>
+      <link>https://www.djangoproject.com/weblog/2026/aug/28/django-developers-survey-2026-results/</link>
+      <description>&lt;p&gt;The results from the &lt;a href="https://lp.jetbrains.com/django-developer-survey-2026/"&gt;2026 Django Developers Survey&lt;/a&gt; are now available. This is the fifth annual report conducted from May to July 2026 by the &lt;a href="https://www.djangoproject.com/foundation/"&gt;Django Software Foundation&lt;/a&gt; in collaboration with &lt;a href="https://www.jetbrains.com/pycharm/"&gt;JetBrains PyCharm&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The full report includes infographics, quotes, and dedicated sections so you can easily navigate the results. There is also a &lt;a href="https://blog.jetbrains.com/pycharm/2026/08/the-state-of-django-2026-boring-is-so-back/"&gt;The State of Django 2026: Boring is so back&lt;/a&gt; blog post highlighting key Django trends in 2026 and actionable ideas for your own Django development.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://djangochat.com/episodes/django-developers-survey-2026"&gt;Django Chat podcast&lt;/a&gt; also covers the survey in a special summer episode, from Django 6.1 and HTMX to async, AI, deployment, testing, and Python tooling.&lt;/p&gt;</description>
+      <guid isPermaLink="false">7120680d54d557f47c08bb5e300ad1cd4d7e5012e5f77356fc722420323a4f4c</guid>
+      <pubDate>Fri, 28 Aug 2026 14:55:00 +0000</pubDate>
+    </item>
     <item>
       <title>PyCharm: Security Incident Affecting JetBrains Cadence - Planet Python</title>
       <link>https://blog.jetbrains.com/pycharm/2026/08/cadence-security-incident-august-2026/</link>
