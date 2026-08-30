@@ -5,7 +5,38 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sat, 29 Aug 2026 14:01:47 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 30 Aug 2026 14:01:11 +0000</lastBuildDate>
+    <item>
+      <title>Reverse Engineering Unknown File Formats with ImHex - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w2cixp/reverse_engineering_unknown_file_formats_with/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/WerWolv"&gt; /u/WerWolv &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://werwolv.net/posts/file_format_reverse_engineering/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w2cixp/reverse_engineering_unknown_file_formats_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">574c3dde03cc38f50b9c6468f904b69fa8e8ed512ffde5ba9c26eef50cea772c</guid>
+      <pubDate>Sun, 30 Aug 2026 09:05:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>TerminalFix Uses Fake Cloudflare CAPTCHAs to Deploy Reverse-Tunnel Backdoor - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/terminalfix-uses-fake-cloudflare.html</link>
+      <description>Microsoft has disclosed details of a new ClickFix variant, dubbed TerminalFix, that aims to trick users into running a malicious command in Windows Terminal or PowerShell.
+"While traditional ClickFix campaigns direct victims to the Windows Run dialog, TerminalFix campaigns apply the same technique but direct users to Windows Terminal or PowerShell instead, increasing the likelihood that complex</description>
+      <guid isPermaLink="false">391cfb953f250ddf3e46dccd800eadde6623e521aef9c5892ca2ee6598d6cc7c</guid>
+      <pubDate>Sun, 30 Aug 2026 07:36:33 +0000</pubDate>
+    </item>
+    <item>
+      <title>Five Critical WordPress Plugin and Theme Flaws Enable Site Takeover or RCE - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/five-critical-wordpress-plugin-and.html</link>
+      <description>Multiple critical security flaws have been disclosed in WordPress plugins and themes, including WPMU DEV Dashboard, Avada, TranslatePress, Pods, and GiveWP, that could lead to authentication bypass, account takeover, and arbitrary code execution.
+The vulnerabilities, according to Wordfence and Patchstack, are listed below -
+  CVE-2026-76581 (CVSS score: 9.8) - An authentication bypass flaw in</description>
+      <guid isPermaLink="false">9e56e27342205cdecdd8814e8d710bf7a3bb09aba1d78e81d35ce8b0f7256302</guid>
+      <pubDate>Sat, 29 Aug 2026 16:25:03 +0000</pubDate>
+    </item>
+    <item>
+      <title>net-p2p/c-lightning -- unknown vulnerability - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/d2e1db41-f7a7-45e9-ace3-b94038416545.html</link>
+      <description/>
+      <guid isPermaLink="false">368edf7e015439481996364a5c9e99a1830db4de8110fde9f938f9d6a3a3c13d</guid>
+      <pubDate>Sat, 29 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Berlin Refuses to Pay Hackers Who Stole Data From the City's State Network - The Hacker News</title>
       <link>https://thehackernews.com/2026/08/berlin-refuses-to-pay-hackers-who-stole.html</link>
