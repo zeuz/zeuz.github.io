@@ -5,7 +5,89 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sun, 30 Aug 2026 14:01:11 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 31 Aug 2026 14:01:17 +0000</lastBuildDate>
+    <item>
+      <title>Found a full Linusware 1.2 source code reconstruction on GitHub. - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w3e6ro/found_a_full_linusware_12_source_code/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/IndependenceBig2223"&gt; /u/IndependenceBig2223 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/tekkenbugattii/LinusWare-Source-Code"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w3e6ro/found_a_full_linusware_12_source_code/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">2808174cb1cf784176a4afcfdd147c127b4cac80d4cfa653e567f34e40c5adb5</guid>
+      <pubDate>Mon, 31 Aug 2026 13:41:51 +0000</pubDate>
+    </item>
+    <item>
+      <title>ValleyRAT Backdoor Hides in Signed Adware That Users Add to Antivirus Exclusions - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/valleyrat-backdoor-hides-in-signed.html</link>
+      <description>The threat actor known as Silver Fox has been observed distributing the ValleyRAT backdoor disguised as a signed Chinese adware application, running the malware under a trusted process to slip past users who add such software to their antivirus exclusions.
+Russian cybersecurity vendor Kaspersky said the attackers built the disguise around QN Wallpaper, a genuine Chinese desktop-wallpaper tool</description>
+      <guid isPermaLink="false">5208e337921a2ec080a243bfdb985b18dd6a78d9c182a79b51c42c4565a6d607</guid>
+      <pubDate>Mon, 31 Aug 2026 12:14:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>(DEFCON) How much of our Bluetooth firmware reverse engineering work can now be automated with LLMs? - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w3bhk3/defcon_how_much_of_our_bluetooth_firmware_reverse/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Bluetooth4Breakfast"&gt; /u/Bluetooth4Breakfast &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://darkmentor.com/publication/2026-08-defcon/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w3bhk3/defcon_how_much_of_our_bluetooth_firmware_reverse/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">fd76f39e5f74da1d6786f3e0bf5a45ae74f331f252d1201534b519435375e6da</guid>
+      <pubDate>Mon, 31 Aug 2026 11:51:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>Aurora Ransomware Operators Use Cursor AI in Attacks Against 10 Targets - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/aurora-ransomware-operators-use-cursor.html</link>
+      <description>Threat actors associated with Aurora (aka Aur0ra) ransomware have been observed using SpaceX's artificial intelligence (AI)-powered coding assistant Cursor to break into target networks, according to findings from CloudSEK and Gambit Security.
+The two independent analyses are based on exposed infrastructure associated with the Russian-speaking cybercrime group, leading to the discovery of its</description>
+      <guid isPermaLink="false">35ce103fbba8ba013d1ea41ea9ed4526a74e220beb8cba70eb45f30b3bb5dca9</guid>
+      <pubDate>Mon, 31 Aug 2026 11:47:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>Securing Claude Code: The New Compliance API, Local Visibility, and Identity Governance - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/securing-claude-code-new-compliance-api.html</link>
+      <description>Claude Code reads files, runs shell commands, invokes MCP tools, and acts through the credentials available on a developer’s machine. Anthropic’s new Compliance API endpoints give security teams their clearest view yet into that activity. They also expose a larger problem: activity logs alone cannot tell you whether an agent’s access is legitimate.
+AI has moved from the browser tab to the</description>
+      <guid isPermaLink="false">e0266283f0d4b05042fa9db8d75621de3fdfc7a9602a05ceeb9222fe2f8a42f5</guid>
+      <pubDate>Mon, 31 Aug 2026 11:31:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>China-Linked Fire Ant Hijacks Cisco Routers to Steal Credentials and Blind Security Logs - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/china-linked-fire-ant-hijacks-cisco.html</link>
+      <description>A China-nexus cyber espionage actor tracked as Fire Ant has expanded a long-running campaign beyond VMware hypervisors to compromise Cisco IOS XR routers, Terminal Access Controller Access-Control System (TACACS) servers, and Linux management hosts used to route, authenticate, and manage high-value networks.
+Sygnia, the incident response firm that investigated the intrusion, said the actor</description>
+      <guid isPermaLink="false">075b9bb7c18ca7454401b0e1688d4ddb9537eaf3eaa2a5e534d28bf36140687b</guid>
+      <pubDate>Mon, 31 Aug 2026 09:04:55 +0000</pubDate>
+    </item>
+    <item>
+      <title>DoJ Corrects China Hacking Claim, Says U.S. Agencies Were Targets, Not Victims - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/doj-corrects-china-hacking-claim-says.html</link>
+      <description>The U.S. Department of Justice (DoJ) on Friday corrected a previously issued press statement that several of its agencies were victims of attacks carried out by Chinese threat actors, instead now pointing out that they were among those targeted.
+Last week, the DoJ said the National Aeronautics and Space Administration, Federal Reserve, Department of Energy, Department of Justice, Department</description>
+      <guid isPermaLink="false">9c4aff24795366cb485d28672a101af37009499c58e592415ad87d827c5f2b37</guid>
+      <pubDate>Mon, 31 Aug 2026 07:56:53 +0000</pubDate>
+    </item>
+    <item>
+      <title>Praetorian – Offensive Security Tools Built Around Portable Go Workflows - Darknet - The Darkside</title>
+      <link>https://www.darknet.org.uk/2026/08/praetorian-offensive-security-go-tools/</link>
+      <description>Praetorian's Go security tools consolidate established offensive workflows, with portable binaries, direct pipelines and a partial shared SDK.</description>
+      <guid isPermaLink="false">5d41903c6d318aa301ce4c72977ca417b93dbd6a08244917f4bd045131faf9b6</guid>
+      <pubDate>Mon, 31 Aug 2026 07:40:18 +0000</pubDate>
+    </item>
+    <item>
+      <title>No-open exploit for code execution on the Wyze WLPA19CV2 LED bulb - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w34j4y/noopen_exploit_for_code_execution_on_the_wyze/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/nickfromstatefarm"&gt; /u/nickfromstatefarm &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/nickdaria/wyze-bulb-color-pwned"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w34j4y/noopen_exploit_for_code_execution_on_the_wyze/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">689dadb0b4ed2b5f4e00d93b0a22268d4c433647f4ab9c9dc476ed1c9a972017</guid>
+      <pubDate>Mon, 31 Aug 2026 05:34:50 +0000</pubDate>
+    </item>
+    <item>
+      <title>Reverse-engineered a guitar amp's DSP firmware to run it as an instruction-level emulator (open source, GPLv3) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w2k057/reverseengineered_a_guitar_amps_dsp_firmware_to/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/talruum_"&gt; /u/talruum_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/andrezaiats/zamphenom"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w2k057/reverseengineered_a_guitar_amps_dsp_firmware_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">2d03dc803bd0f214e2483c0d476b9d7d28c5d5dc6d9a782f7f8f4f8537559239</guid>
+      <pubDate>Sun, 30 Aug 2026 15:06:28 +0000</pubDate>
+    </item>
+    <item>
+      <title>Reconstructing Angry Birds 1.4.2's ARMv7 native runtime for AArch64 Android - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w2jgda/reconstructing_angry_birds_142s_armv7_native/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/WhiteMsf"&gt; /u/WhiteMsf &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/WhiteMsf/angry-birds-arm64"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w2jgda/reconstructing_angry_birds_142s_armv7_native/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">102f355008b84ca02c9bf734b6fc875281b214108a866b5ab7648b06d91c062d</guid>
+      <pubDate>Sun, 30 Aug 2026 14:44:44 +0000</pubDate>
+    </item>
     <item>
       <title>Reverse Engineering Unknown File Formats with ImHex - Reverse Engineering</title>
       <link>https://www.reddit.com/r/ReverseEngineering/comments/1w2cixp/reverse_engineering_unknown_file_formats_with/</link>

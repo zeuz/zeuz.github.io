@@ -5,7 +5,129 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sat, 29 Aug 2026 14:01:47 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 31 Aug 2026 14:01:17 +0000</lastBuildDate>
+    <item>
+      <title>Graham Dumpleton: Introducing wrapture - Planet Python</title>
+      <link>https://grahamdumpleton.me/posts/2026/08/introducing-wrapture/</link>
+      <description>&lt;p&gt;For the best part of two decades, through &lt;a href="https://github.com/GrahamDumpleton/wrapt"&gt;wrapt&lt;/a&gt;, I have been dealing with the mechanics of monkey patching in Python. Anyone who has followed wrapt will know I am quite pedantic about correctness, to the point of caring whether a wrapper preserves every last introspectable detail of the thing it wraps. For much of that time I have wanted the same standard from the tools I use when testing code, and &lt;code&gt;unittest.mock&lt;/code&gt;, which does what it does well enough, was never designed to give it. A fabricated &lt;code&gt;Mock&lt;/code&gt; answers every method call and verifies nothing. A patched call records a flat list of calls, with no return values and no sense of what was called from what. The calls an object makes to itself are invisible, because the substitute never runs the real code at all. What I want a test to be sure of, that the right calls happened, in the right order, with the real code actually running, sits just outside what substitution can express.&lt;/p&gt;
+&lt;p&gt;Seeing the real calls as they happen, with the real code still doing the work, was also something I had already spent years on for a quite different purpose. I was the original author of the New Relic Python agent, written while I worked there, and that left me with a lasting interest in instrumenting Python programs. Attaching observation to code you do not control, recording what flows through it, and doing so without disturbing the program being watched, is a problem I have never really stopped thinking about.&lt;/p&gt;
+&lt;p&gt;Testing and tracing look like different problems, but from where I sat they wanted the same thing, and I had long believed that wrapt's approach of wrapping real code rather than replacing it could serve both. wrapture (the name being &lt;code&gt;wrapt&lt;/code&gt; plus &lt;code&gt;capture&lt;/code&gt;) is me finally getting around to finding out whether that belief held up.&lt;/p&gt;
+&lt;h2&gt;Wrap anything, capture everything&lt;/h2&gt;
+&lt;p&gt;The one idea everything in wrapture sits on is to wrap rather than replace. A binding names a location in code, a method of a class or a function in a module, and when applied installs a wrapt wrapper around the real callable. Unless you tell it otherwise the wrapper is transparent. The real code runs, with wrapture in a position to watch the call, change it, or answer it instead.&lt;/p&gt;
+&lt;p&gt;Take a small call graph where an order service charges a payment gateway and then records the result in a ledger:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;import wrapture
+class Gateway:
+    def charge(self, amount, currency=&amp;quot;USD&amp;quot;):
+        return {&amp;quot;id&amp;quot;: f&amp;quot;ch_{amount}&amp;quot;, &amp;quot;amount&amp;quot;: amount}
+class Ledger:
+    def record(self, entry):
+        return f&amp;quot;led_{entry['id']}&amp;quot;
+class OrderService:
+    def __init__(self):
+        self.gateway = Gateway()
+        self.ledger = Ledger()
+    def place(self, amount):
+        result = self.gateway.charge(amount)
+        self.ledger.record(result)
+        return result
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;None of these classes import wrapture or know they are about to be observed. Bindings are created by naming the methods, and a timeline opens a recording scope in which every call through them lands on a tape:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;place = wrapture.binding(OrderService, &amp;quot;place&amp;quot;)
+charge = wrapture.binding(Gateway, &amp;quot;charge&amp;quot;)
+record = wrapture.binding(Ledger, &amp;quot;record&amp;quot;)
+with wrapture.timeline(place, charge, record) as tape:
+    OrderService().place(500)
+print(tape.tree())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Running this the output is:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;__main__:OrderService.place(amount=500)  -&amp;gt; {'id': 'ch_500', 'amount': 500}
+  __main__:Gateway.charge(amount=500, currency='USD')  -&amp;gt; {'id': 'ch_500', 'amount': 500}
+  __main__:Ledger.record(entry={'id': 'ch_500', 'amount': 500})  -&amp;gt; 'led_ch_500'
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That is the call graph as it actually ran. The arguments are normalised against the real signatures (so &lt;code&gt;charge(500)&lt;/code&gt; and &lt;code&gt;charge(amount=500)&lt;/code&gt; look the same), the return values are the real ones, and the nesting comes from what really called what. The &lt;code&gt;tape.tree()&lt;/code&gt; call is a convenience for debugging and for demonstrations like this one; in a test you would query the tape instead, and outside of a test the events would be going to a sink, which I will come to.&lt;/p&gt;
+&lt;p&gt;The same bindings intervene as well as observe. The real method can be stubbed out, made to fail, or left running while one thing about the call is changed on the way in or out:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;gateway = Gateway()
+with wrapture.binding(Gateway, &amp;quot;charge&amp;quot;).on_call.raises(TimeoutError(&amp;quot;down&amp;quot;)):
+    gateway.charge(500)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Inside the block the call raises &lt;code&gt;TimeoutError&lt;/code&gt;, and after the block exits the original method is back exactly as it was.&lt;/p&gt;
+&lt;h2&gt;Three uses of one mechanism&lt;/h2&gt;
+&lt;p&gt;That is the whole mechanism. What makes it interesting is that it serves three purposes which are usually handled by three different tools.&lt;/p&gt;
+&lt;p&gt;The first is plain monkey patching. wrapt's &lt;code&gt;wrap_object()&lt;/code&gt; has always been able to patch a target, but it leaves the bookkeeping to you. wrapture adds a lifecycle and a vocabulary over the top of it. A binding declares a target without touching it, &lt;code&gt;apply()&lt;/code&gt; installs the patch, &lt;code&gt;remove()&lt;/code&gt; restores the original, &lt;code&gt;suspend()&lt;/code&gt; makes it inert in place, and a group of bindings applies and removes as one unit. Behaviour is configured on the binding, with &lt;code&gt;returns()&lt;/code&gt;, &lt;code&gt;raises()&lt;/code&gt;, &lt;code&gt;transforms_args()&lt;/code&gt;, &lt;code&gt;transforms_result()&lt;/code&gt; and a few others, and can be scripted to change over time, so &amp;quot;succeed twice, then time out&amp;quot; is three lines rather than a hand-written counter. This layer is useful on its own with nothing else switched on.&lt;/p&gt;
+&lt;p&gt;The second is unit testing, which is where the recording comes in. Because the real code runs, a test can assert on how calls actually flowed through it, and the interesting cases are the error paths. Inject a failure at the gateway, then check that the ledger was never written:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;with wrapture.timeline(place, charge, record) as tape:
+    charge.on_call.raises(TimeoutError(&amp;quot;down&amp;quot;))
+    try:
+        OrderService().place(500)
+    except TimeoutError:
+        pass
+    record.events.assert_never()
+    print(tape.tree())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With the assertion passing, the tree shows where the failure was injected and how it propagated:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;__main__:OrderService.place(amount=500)  !! TimeoutError
+  __main__:Gateway.charge(amount=500, currency='USD')  !! TimeoutError (injected)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When a test must supply a stand-in, because the code under test receives a collaborator rather than importing it, wrapture provides &lt;code&gt;stub()&lt;/code&gt; for a callable and &lt;code&gt;mock(Spec)&lt;/code&gt; for a whole object, and these record onto the same tape as everything else. Both are strict: signatures are checked and nothing is invented on first touch. There is deliberately no spec-less &lt;code&gt;Mock()&lt;/code&gt; equivalent, and the &lt;a href="https://wrapture.readthedocs.io/en/latest/coming-from-mock.html"&gt;comparison with unittest.mock&lt;/a&gt; in the documentation explains why, alongside a mapping of each mock idiom to its wrapture counterpart. An opt-in pytest plugin sweeps each test for patches left applied and attaches recordings to failure reports.&lt;/p&gt;
+&lt;p&gt;The third use is ad-hoc tracing of a running application, including one you cannot modify or redeploy. Take the bindings, drop the test around them, and the only remaining question is where the events go. A sink answers that. In practice this is done with a &lt;code&gt;wrapture.toml&lt;/code&gt; file naming the targets and the sink, and no code at all. Here is one for a slightly bigger version of the shop above, where the gateway declines some cards and the order service logs a warning when it does:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[[observe]]
+target = &amp;quot;shop:OrderService&amp;quot;
+name = &amp;quot;place&amp;quot;
+[[observe]]
+target = &amp;quot;shop:PaymentGateway&amp;quot;
+match = &amp;quot;*&amp;quot;
+exclude = &amp;quot;_*&amp;quot;
+[[observe]]
+target = &amp;quot;shop:Ledger&amp;quot;
+name = &amp;quot;record&amp;quot;
+[[log]]
+name = &amp;quot;shop.*&amp;quot;
+[[sink]]
+type = &amp;quot;printer&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Running the program as &lt;code&gt;python -m wrapture main.py&lt;/code&gt; applies the config before the program starts, so the patches are in place before the application imports anything, and the printer sink writes the trace to stderr as it happens:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;shop:OrderService.place(order_id='order-1', amount=30, card='5100-0010')
+  shop:PaymentGateway.charge(amount=30, card='5100-0010')
+  shop:PaymentGateway.charge -&amp;gt; 'ch_30' [7us]
+  shop:Ledger.record(order_id='order-1', amount=30)
+  shop:Ledger.record -&amp;gt; 'ledger:order-1:30' [5us]
+shop:OrderService.place -&amp;gt; 'ch_30' [234us]
+shop:OrderService.place(order_id='order-2', amount=240, card='5100-0020')
+  shop:PaymentGateway.charge(amount=240, card='5100-0020')
+  shop:PaymentGateway.charge -&amp;gt; 'ch_240' [4us]
+  shop:Ledger.record(order_id='order-2', amount=240)
+  shop:Ledger.record -&amp;gt; 'ledger:order-2:240' [3us]
+shop:OrderService.place -&amp;gt; 'ch_240' [105us]
+shop:OrderService.place(order_id='order-3', amount=75, card='4000-0030')
+  shop:PaymentGateway.charge(amount=75, card='4000-0030')
+  shop:PaymentGateway.charge !! PaymentDeclinedError [4us]
+  log shop.orders WARNING 'order order-3 declined'
+shop:OrderService.place !! PaymentDeclinedError [260us]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Unlike the tidy reconstruction from &lt;code&gt;tape.tree()&lt;/code&gt;, this is the live view, with an opening line as each call begins and a closing line with the outcome and how long it took. The &lt;code&gt;[[log]]&lt;/code&gt; entry captures the application's ordinary &lt;code&gt;logging&lt;/code&gt; calls as events too, so the warning appears nested inside the call that logged it rather than somewhere in a separate log file. With &lt;a href="https://github.com/GrahamDumpleton/autowrapt"&gt;autowrapt&lt;/a&gt; installed, even the launcher is unnecessary: &lt;code&gt;AUTOWRAPT_BOOTSTRAP=wrapture&lt;/code&gt; in the environment applies the same config at interpreter startup, so the program runs with plain &lt;code&gt;python&lt;/code&gt;. That covers the case where something else owns the command line, like a container entry point or a WSGI server.&lt;/p&gt;
+&lt;p&gt;The printer is the simplest sink. Others stream events to disk as JSON lines, count without retaining, and compose with fan-out, sampling and filtering. Sitting on top of the tracing layer is &lt;a href="https://wrapture.readthedocs.io/en/latest/otel-export.html"&gt;OpenTelemetry export&lt;/a&gt;: with the &lt;code&gt;wrapture[otel]&lt;/code&gt; extra installed, one &lt;code&gt;[otel]&lt;/code&gt; table in the config sends the same events to any OTLP backend as spans, metrics and correlated logs. Every tree of events carries a W3C trace id, and the id arrives and leaves in &lt;code&gt;traceparent&lt;/code&gt; headers, so two services both observed by wrapture join up as one distributed trace without either of them calling an OpenTelemetry API.&lt;/p&gt;
+&lt;p&gt;The point I want to land is that these are layers of one mechanism and not separate products. The binding vocabulary that stubs a method in a test is the same one that traces it in production, and the config that names methods for a printed call tree is the config that exports spans. What starts as a monkey patch or a test assertion can grow into observability without the code being rewritten along the way.&lt;/p&gt;
+&lt;h2&gt;Where it sits beside what already exists&lt;/h2&gt;
+&lt;p&gt;Part of why I built this is that nothing I could find did all of it. &lt;code&gt;unittest.mock&lt;/code&gt; records a flat call list with no nesting and no return values, and a patched call returns a fabricated &lt;code&gt;MagicMock&lt;/code&gt; rather than running the real code. Span assertion tools such as OpenTelemetry's &lt;code&gt;InMemorySpanExporter&lt;/code&gt; require the code to already be instrumented. Tools built on &lt;code&gt;sys.settrace&lt;/code&gt; give you a firehose with no assertion API. APM agents are all-or-nothing products rather than toolkits, and their auto-instrumentation only covers the frameworks they already know about. wrapture needs none of that. You point at your own methods by name and a trace appears, and the same pointing is how it lands in a test, a terminal, or a backend.&lt;/p&gt;
+&lt;p&gt;Just as important is what it is not. It is not a fabrication tool, and &lt;code&gt;unittest.mock&lt;/code&gt; remains the right thing for invented objects. It is not a production APM, although it is a toolkit that APM-like things could be built on. And it is not an OpenTelemetry competitor; it emits to OpenTelemetry rather than trying to replace it.&lt;/p&gt;
+&lt;h2&gt;Pre-built instrumentation&lt;/h2&gt;
+&lt;p&gt;Pointing at your own methods is the core of wrapture, but for common third-party packages the pointing has already been done. The companion &lt;a href="https://github.com/GrahamDumpleton/wrapture-instrumentation"&gt;wrapture-instrumentation&lt;/a&gt; package provides ready-made instrumentation, with Flask and Jinja2 covered so far. Each records a request or a template render as one structured tree, and enabling one is an &lt;code&gt;[[instrument]]&lt;/code&gt; entry in &lt;code&gt;wrapture.toml&lt;/code&gt; naming the target. Installing the package brings in wrapture and nothing else; the instrumentation for a package you do not have is inert. It is being built target by target, and the &lt;a href="https://wrapture.readthedocs.io/en/latest/instrumentation-packages.html"&gt;instrumentation packages&lt;/a&gt; guide describes how to write one for a package not yet covered.&lt;/p&gt;
+&lt;h2&gt;Built with AI, on purpose&lt;/h2&gt;
+&lt;p&gt;Every line of code and documentation in wrapture was written by an AI assistant working under my direction. I want to be upfront about that, and equally upfront about what it was not. This was not vibe coding, where a one-shot prompt produces a pile of generated code and the person driving hopes for the best because they lack the knowledge to judge what came back. Vibe coding has earned its bad reputation. I engineered wrapture carefully from the start. I have spent a long time in this particular corner of Python and knew exactly what the result needed to be, and the AI was the means of producing it rather than the source of the design.&lt;/p&gt;
+&lt;p&gt;The experiment had two halves. The first was whether an idea I had carried around for years actually held up once built. The second, and just as much the point, was whether a library of this kind could be produced this way, with an AI doing the writing and me doing the directing, to a standard I would be happy to put my name to.&lt;/p&gt;
+&lt;p&gt;The process is what makes the result worth trusting or not, so it deserves describing. The work started well before any code, with days spent on design documents setting out the goals, the scope, the shape of the API and the layers it would be built in, which the AI and I argued over before implementation began. From there it proceeded in layers, each one specified, discussed, implemented, tested and documented before the next began. Documentation grew with the code rather than after it, and every example in the docs runs as a doctest, so the docs are continually proven against the implementation. Writing them repeatedly exposed designs that read worse than they demoed. The test suite runs against every supported Python version, including the free-threaded builds, on every change. The overhead of Python instrumentation is the usual objection to it, so the recording path was also put through a performance pass, with the cost of a call observed and exported through wrapture measured against the same call instrumented directly with the OpenTelemetry SDK and in the style of its instrumentation packages. The result was comparable per call, with the figures in the &lt;a href="https://wrapture.readthedocs.io/en/latest/otel-export.html#what-it-costs"&gt;OpenTelemetry export&lt;/a&gt; guide.&lt;/p&gt;
+&lt;p&gt;The step I would most recommend to anyone attempting something similar came late. I took the unit test suites of well-known Python packages that lean heavily on &lt;code&gt;unittest.mock&lt;/code&gt; and had the AI replicate their tests using wrapture instead, side by side with the originals. Every point of friction became a decision: sometimes a documented position on why wrapture deliberately differs, and sometimes a missing feature that got specified, built and documented like everything else. Several pieces of wrapture exist only because a real test suite could not be expressed cleanly without them.&lt;/p&gt;
+&lt;p&gt;Throughout, the division of labour was consistent. The AI wrote the code, the tests and the prose. I set the direction, made the design calls, reviewed what came back, and sent plenty of it back. My experience with wrapt and with Python's darker corners is all through the result, in what was asked for as much as in what was refused.&lt;/p&gt;
+&lt;p&gt;The first commit was in the middle of August and the current release is the eleventh alpha, so this all happened in a bit over two weeks. In that time it accumulated over 1000 tests and over 150 pages of documentation. The documentation is admittedly quite dense in places and needs some work still, but it is complete in the sense that every part of the package is covered. One thing a brand new library has over an old one is coherence. Mature packages accrete features one release at a time, and there is never a moment when the whole API can be redesigned to match what was learned along the way. Because wrapture arrived in a compressed period with the whole design still in view, when validation showed a design could be better it was redesigned rather than worked around.&lt;/p&gt;
+&lt;p&gt;I know some people are firmly opposed to using AI-written software. If that is you, I understand, and I am not going to argue with your position. It is a reasonable one to hold, and this post exists so you can make the call with the facts in hand rather than discover them later. If AI involvement rules wrapture out for you then wrapture is not for you, and that does not worry me one bit. This has been about finding out whether the process works, and I now have my answer to that. The longer version of all this is on the &lt;a href="https://wrapture.readthedocs.io/en/latest/how-wrapture-was-built.html"&gt;how wrapture was built&lt;/a&gt; page in the documentation.&lt;/p&gt;
+&lt;h2&gt;What's next&lt;/h2&gt;
+&lt;p&gt;wrapture is in alpha, with pre-releases on &lt;a href="https://pypi.org/project/wrapture/"&gt;PyPI&lt;/a&gt;. Until 1.0.0 is final a plain &lt;code&gt;pip install wrapture&lt;/code&gt; picks up the latest pre-release, so there is no need to pin a version. It requires Python 3.12 or later and wrapt 2.4.0 or later. The API is complete for the three uses described above and I am not expecting it to break, so code written against it today should carry forward to 1.0.0.&lt;/p&gt;
+&lt;p&gt;What it needs now is use. &lt;code&gt;unittest.mock&lt;/code&gt; and OpenTelemetry's own instrumentation are the established tools for the two halves of what wrapture does, and the open question is whether an alternative that does both from one mechanism is something people want. Reports of it working, or not, on real code, and of what confused or was missing, are what will decide whether anything changes before a beta. They go to the &lt;a href="https://github.com/GrahamDumpleton/wrapture/issues"&gt;issue tracker&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To be clear, wrapture was never premised on anyone else using it. I built it because I wanted to see it exist, not because I had identified a gap in the market. If people find it useful and pick it up, that is great, and I will aim to support it. If there is no interest, I will keep treating it as an experiment and work on it for my own purposes. Either way the questions got answered, and getting them answered was the point.&lt;/p&gt;
+&lt;p&gt;There is a lot more in wrapture than fits in an introduction, and I expect to write about specific parts of it in follow-up posts, starting with how it can be used for unit testing, and then tracing a Flask application through to an OpenTelemetry backend without touching the application code. For now the &lt;a href="https://wrapture.readthedocs.io/en/latest/getting-started.html"&gt;getting started&lt;/a&gt; page is the place to begin.&lt;/p&gt;</description>
+      <guid isPermaLink="false">fcfae531909f877e4e581a3482254130d66a364f4ad09d3275b956953d7a96ae</guid>
+      <pubDate>Mon, 31 Aug 2026 13:39:00 +0000</pubDate>
+    </item>
     <item>
       <title>Django Weblog: Django Developers Survey 2026 results - Planet Python</title>
       <link>https://www.djangoproject.com/weblog/2026/aug/28/django-developers-survey-2026-results/</link>
