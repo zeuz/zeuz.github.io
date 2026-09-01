@@ -5,7 +5,425 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Mon, 31 Aug 2026 14:01:17 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 01 Sep 2026 14:01:48 +0000</lastBuildDate>
+    <item>
+      <title>Graham Dumpleton: Unit testing with wrapture - Planet Python</title>
+      <link>https://grahamdumpleton.me/posts/2026/09/unit-testing-with-wrapture/</link>
+      <description>&lt;p&gt;In &lt;a href="https://grahamdumpleton.me/posts/2026/08/introducing-wrapture/"&gt;introducing wrapture&lt;/a&gt; I said the one idea everything sits on is to wrap rather than replace. That is easy to say and harder to see the point of, so this post takes a small piece of code and writes tests for it twice, once with &lt;code&gt;unittest.mock&lt;/code&gt; and once with wrapture. I am not going to walk through every mock idiom and show its wrapture spelling, since a good part of the time the two are doing the same thing with different syntax, and the &lt;a href="https://wrapture.readthedocs.io/en/latest/coming-from-mock.html"&gt;comparison page&lt;/a&gt; in the documentation already maps one onto the other. What I want to show is the handful of cases where the difference is structural, where wrapping the real code lets a test say something that substitution cannot.&lt;/p&gt;
+&lt;h2&gt;The code under test&lt;/h2&gt;
+&lt;p&gt;An order service which takes a payment through a gateway, records it in a ledger, and sends a notification. If the ledger write fails, the payment is refunded and the error propagates. The collaborators can be injected through the constructor, so there is a seam for a mock to sit behind, and the payment step goes through a private method on the service itself.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;class Gateway:
+    def charge(self, amount, currency=&amp;quot;USD&amp;quot;):
+        return {&amp;quot;id&amp;quot;: f&amp;quot;ch_{amount}&amp;quot;, &amp;quot;amount&amp;quot;: amount}
+    def refund(self, charge_id):
+        return {&amp;quot;id&amp;quot;: f&amp;quot;re_{charge_id}&amp;quot;}
+class Ledger:
+    def record(self, entry):
+        return f&amp;quot;led_{entry['id']}&amp;quot;
+class Notifier:
+    def send(self, message):
+        return True
+class OrderService:
+    def __init__(self, gateway=None, ledger=None, notifier=None):
+        self.gateway = Gateway() if gateway is None else gateway
+        self.ledger = Ledger() if ledger is None else ledger
+        self.notifier = Notifier() if notifier is None else notifier
+    def place(self, amount):
+        charge = self._take_payment(amount)
+        try:
+            self.ledger.record(charge)
+        except Exception:
+            self.gateway.refund(charge[&amp;quot;id&amp;quot;])
+            raise
+        self.notifier.send(f&amp;quot;order {charge['id']} placed&amp;quot;)
+        return charge
+    def _take_payment(self, amount):
+        return self.gateway.charge(amount)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Where the two look the same&lt;/h2&gt;
+&lt;p&gt;Stubbing a return value is the bread and butter of both tools, and on the surface there is nothing to choose between them:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;from unittest.mock import patch
+def test_stub_with_mock():
+    with patch.object(Gateway, &amp;quot;charge&amp;quot;, return_value={&amp;quot;id&amp;quot;: &amp;quot;stub&amp;quot;, &amp;quot;amount&amp;quot;: 0}):
+        assert OrderService().place(500)[&amp;quot;id&amp;quot;] == &amp;quot;stub&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;import wrapture
+def test_stub_with_wrapture():
+    with wrapture.binding(Gateway, &amp;quot;charge&amp;quot;).on_call.returns({&amp;quot;id&amp;quot;: &amp;quot;stub&amp;quot;, &amp;quot;amount&amp;quot;: 0}):
+        assert OrderService().place(500)[&amp;quot;id&amp;quot;] == &amp;quot;stub&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Even here there is a difference under the surface. A mock only checks a stubbed call against the real signature if you asked for &lt;code&gt;autospec=True&lt;/code&gt;, so without it a call that has drifted from the method's signature returns the stub happily:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;def test_drifted_call_with_mock():
+    with patch.object(Gateway, &amp;quot;charge&amp;quot;, return_value={&amp;quot;id&amp;quot;: &amp;quot;stub&amp;quot;}):
+        assert Gateway().charge(500, bogus=True) == {&amp;quot;id&amp;quot;: &amp;quot;stub&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That test passes. A wrapture binding is strict by default, so a call the real method would have rejected is rejected by the stub too:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;def test_drifted_call_with_wrapture():
+    with wrapture.binding(Gateway, &amp;quot;charge&amp;quot;).on_call.returns({&amp;quot;id&amp;quot;: &amp;quot;stub&amp;quot;}):
+        with pytest.raises(TypeError):
+            Gateway().charge(500, bogus=True)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The error names the site and the problem:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;TypeError: orders:Gateway.charge (stubbed): got an unexpected keyword argument 'bogus'
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There is a &lt;code&gt;strict=False&lt;/code&gt; option for the rare patch which genuinely means to accept a different shape, but the default is the direction I care about. A test which passes because the stub was more forgiving than the real code is a test that will be wrong in production.&lt;/p&gt;
+&lt;h2&gt;Calls an object makes to itself&lt;/h2&gt;
+&lt;p&gt;The mock approach to testing &lt;code&gt;OrderService&lt;/code&gt; is to inject a &lt;code&gt;MagicMock&lt;/code&gt; as the gateway and assert on what it recorded:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;from unittest.mock import MagicMock
+def test_self_call_with_mock():
+    gateway = MagicMock()
+    service = OrderService(gateway=gateway)
+    service.place(500)
+    gateway.charge.assert_called_once_with(500)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Look at what the mock actually saw, by printing &lt;code&gt;gateway.mock_calls&lt;/code&gt; after the call:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[call.charge(500),
+ call.charge().__getitem__('id'),
+ call.charge().__getitem__().__str__(),
+ call.charge().__getitem__('id'),
+ call.charge().__getitem__().__str__()]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;charge()&lt;/code&gt; call is there, followed by a trail of fabricated chains as the service reached into a return value that was never a real dictionary. What is not there, and cannot be, is &lt;code&gt;_take_payment()&lt;/code&gt;. The call from &lt;code&gt;place()&lt;/code&gt; to &lt;code&gt;_take_payment()&lt;/code&gt; never crosses the seam the mock sits behind, so as far as the test can tell the private method does not exist. If you instead reach for &lt;code&gt;patch.object(OrderService, &amp;quot;_take_payment&amp;quot;)&lt;/code&gt; to get at it, you have replaced it, and now the real payment logic does not run and the gateway is never charged. Either the method is invisible or it is gone.&lt;/p&gt;
+&lt;p&gt;With wrapture the binding is on the class, so a call the object makes to itself passes through the wrapper like any other:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;def test_self_call_with_wrapture():
+    take_payment = wrapture.binding(OrderService, &amp;quot;_take_payment&amp;quot;)
+    charge = wrapture.binding(Gateway, &amp;quot;charge&amp;quot;)
+    with wrapture.timeline(take_payment, charge) as tape:
+        OrderService().place(500)
+        take_payment.events.with_args(amount=500).assert_once()
+        assert tape.parent_of(charge.events.first) is take_payment.events.first
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The second assertion says the charge happened inside the payment step, and &lt;code&gt;tape.tree()&lt;/code&gt; shows the same thing:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;orders:OrderService._take_payment(amount=500)  -&amp;gt; {'id': 'ch_500', 'amount': 500}
+  orders:Gateway.charge(amount=500, currency='USD')  -&amp;gt; {'id': 'ch_500', 'amount': 500}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Real arguments, normalised against the real signature so the &lt;code&gt;currency&lt;/code&gt; default appears even though the caller never passed it, and real return values, nested the way the calls actually nested.&lt;/p&gt;
+&lt;h2&gt;Running the real code while changing one thing&lt;/h2&gt;
+&lt;p&gt;This is where substitution runs out of road entirely. &lt;code&gt;Mock(wraps=real)&lt;/code&gt; will forward calls to the real method, but it cannot change the arguments the real method receives, and it cannot touch the result on the way back. The standard library has no way to say &amp;quot;run the real method, but change one thing about it&amp;quot;.&lt;/p&gt;
+&lt;p&gt;For wrapture that is the ordinary case. Here the real &lt;code&gt;charge()&lt;/code&gt; runs and only the id in its result is rewritten, which is useful when a real id would be unstable across runs but everything else about the result matters:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;def test_pinned_result_with_wrapture():
+    charge = wrapture.binding(Gateway, &amp;quot;charge&amp;quot;)
+    charge.on_call.transforms_result(lambda r: {**r, &amp;quot;id&amp;quot;: &amp;quot;ch_TEST&amp;quot;})
+    with charge:
+        assert OrderService().place(500) == {&amp;quot;id&amp;quot;: &amp;quot;ch_TEST&amp;quot;, &amp;quot;amount&amp;quot;: 500}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;transforms_args()&lt;/code&gt; does the same on the way in, and &lt;code&gt;validates_args()&lt;/code&gt; and &lt;code&gt;validates_result()&lt;/code&gt; check without changing. These are stages, and they compose, so a binding can rewrite one argument and check the result at the same time while the real code does the actual work in between.&lt;/p&gt;
+&lt;h2&gt;Asserting on what did not happen&lt;/h2&gt;
+&lt;p&gt;The tests that matter most are usually on the error paths, and the interesting fact on an error path is often an absence. When the ledger write fails, the refund must be issued and the notification must not be sent. Here it is with mock, and it takes three doubles to write:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;def test_error_path_with_mock():
+    gateway = MagicMock()
+    ledger = MagicMock()
+    ledger.record.side_effect = OSError(&amp;quot;disk full&amp;quot;)
+    notifier = MagicMock()
+    service = OrderService(gateway, ledger, notifier)
+    with pytest.raises(OSError):
+        service.place(500)
+    gateway.refund.assert_called_once_with(gateway.charge.return_value[&amp;quot;id&amp;quot;])
+    notifier.send.assert_not_called()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The refund assertion is the awkward part. Because the gateway is a mock, the charge id is a fabricated &lt;code&gt;MagicMock&lt;/code&gt; rather than &lt;code&gt;&amp;quot;ch_500&amp;quot;&lt;/code&gt;, so the only way to assert on it is to ask the mock what it invented. The test cannot say &amp;quot;the refund was for the charge that was taken&amp;quot;, only &amp;quot;the refund was passed whatever &lt;code&gt;charge()&lt;/code&gt; returned&amp;quot;, which is the same thing only if you trust the code you are testing. (With a plain &lt;code&gt;Mock&lt;/code&gt; rather than &lt;code&gt;MagicMock&lt;/code&gt; the test does not even get that far, since &lt;code&gt;charge[&amp;quot;id&amp;quot;]&lt;/code&gt; fails with a &lt;code&gt;TypeError&lt;/code&gt; about subscripting.)&lt;/p&gt;
+&lt;p&gt;With wrapture the failure is injected at the ledger and nothing else is touched:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;def test_error_path_with_wrapture():
+    charge = wrapture.binding(Gateway, &amp;quot;charge&amp;quot;)
+    refund = wrapture.binding(Gateway, &amp;quot;refund&amp;quot;)
+    record = wrapture.binding(Ledger, &amp;quot;record&amp;quot;)
+    send = wrapture.binding(Notifier, &amp;quot;send&amp;quot;)
+    record.on_call.raises(OSError(&amp;quot;disk full&amp;quot;))
+    with wrapture.timeline(charge, refund, record, send) as tape:
+        with pytest.raises(OSError):
+            OrderService().place(500)
+        refund.events.with_args(charge_id=&amp;quot;ch_500&amp;quot;).assert_once()
+        send.events.assert_never()
+        tape.assert_order(charge, record, refund)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The real gateway was charged, so the refund is asserted against the real charge id. The notifier is real and was never called. And &lt;code&gt;assert_order()&lt;/code&gt; says the refund came after the failed ledger write, across three different bindings. The tape shows exactly that:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;orders:Gateway.charge(amount=500, currency='USD')  -&amp;gt; {'id': 'ch_500', 'amount': 500}
+orders:Ledger.record(entry={'id': 'ch_500', 'amount': 500})  !! OSError (injected)
+orders:Gateway.refund(charge_id='ch_500')  -&amp;gt; {'id': 're_ch_500'}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When an assertion fails, the message shows what was recorded rather than just the count that was wrong. Asserting on a refund for the wrong id gives:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;AssertionError: expected exactly 1 event(s), got 0
+&amp;lt;EventLog orders:Gateway.refund[charge_id='ch_999']: 0 event(s)&amp;gt;
+    (no events)
+  filtered from:
+    &amp;lt;EventLog orders:Gateway.refund: 1 event(s)&amp;gt;
+        orders:Gateway.refund(charge_id='ch_500')
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &amp;quot;filtered from&amp;quot; section is there because an over-narrowed filter producing an empty log is the easiest way to get a wrong assertion, and showing what the filter discarded is the fastest way to see it.&lt;/p&gt;
+&lt;h2&gt;How the tests are shaped&lt;/h2&gt;
+&lt;p&gt;Beyond what the assertions can say, the shape of the test code changes in a few ways that are worth pointing out.&lt;/p&gt;
+&lt;p&gt;A binding declares a target without touching it. &lt;code&gt;binding()&lt;/code&gt; never patches, so bindings can be created at module scope, given behaviour, and shared, with each test applying and removing them. Nothing happens until &lt;code&gt;apply()&lt;/code&gt;, a &lt;code&gt;with&lt;/code&gt; block, or a timeline. That separation of declaration from effect is what lets the four bindings in the error path test be declared up front and read like a cast list.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;with&lt;/code&gt; block is the primitive, and for a test that binds one or two targets around its whole body there is a decorator form that says the same thing without the nesting. The bindings arrive as keyword arguments, and expectations can be declared on the decorator and are verified when the test finishes:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;@wrapture.taped()
+@wrapture.bound(Ledger, &amp;quot;record&amp;quot;).on_call.raises(OSError(&amp;quot;disk full&amp;quot;))
+@wrapture.bound(Gateway, &amp;quot;refund&amp;quot;).expect_once()
+@wrapture.bound(Notifier, &amp;quot;send&amp;quot;).expect_never()
+def test_error_path_with_decorators(tape, record, refund, send):
+    with pytest.raises(OSError):
+        OrderService().place(500)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That is the same test as before with the assertions moved to the top as a contract, and a body that only performs the action. An expectation with nothing recording is an error rather than a silent pass.&lt;/p&gt;
+&lt;p&gt;Fixtures work the way you would expect, and because a fixture yields the binding a test can reconfigure it mid-flight, which is how a test walks a collaborator through failing and then recovering:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;@pytest.fixture
+def stub_charge():
+    with wrapture.binding(Gateway, &amp;quot;charge&amp;quot;).on_call.returns({&amp;quot;id&amp;quot;: &amp;quot;stub&amp;quot;, &amp;quot;amount&amp;quot;: 0}) as charge:
+        yield charge
+def test_gateway_recovers(stub_charge):
+    stub_charge.on_call.raises(TimeoutError(&amp;quot;down&amp;quot;))
+    with pytest.raises(TimeoutError):
+        OrderService().place(500)
+    stub_charge.on_call.returns({&amp;quot;id&amp;quot;: &amp;quot;retry&amp;quot;, &amp;quot;amount&amp;quot;: 0})
+    assert OrderService().place(500)[&amp;quot;id&amp;quot;] == &amp;quot;retry&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Finally there is an opt-in pytest plugin, enabled with one line in &lt;code&gt;conftest.py&lt;/code&gt;, which fails any test that leaves a binding applied and attaches the tape's tree to the failure report of any test that recorded one. The leak sweep is the thing I would turn on first. A patch that leaks changes the behaviour of every test that runs after it, and I suspect plenty of people have lost hours to that without ever knowing which test was the culprit.&lt;/p&gt;
+&lt;h2&gt;Where mock still fits&lt;/h2&gt;
+&lt;p&gt;Everything above follows one rule, which is to wrap the real code and record what actually flowed, with one deliberate opt-out. When the test itself must supply the thing being called, because the code under test receives a callback or a collaborator rather than importing one, &lt;code&gt;stub()&lt;/code&gt; supplies a single callable and &lt;code&gt;mock(Spec)&lt;/code&gt; a whole object. Both are strict, in that signatures are checked and a name the spec does not have raises, and both record onto the same tape as everything else.&lt;/p&gt;
+&lt;p&gt;What wrapture does not provide is a spec-less &lt;code&gt;MagicMock()&lt;/code&gt; whose attributes exist on first touch and whose call chains all answer. That is the thing which would let a misspelled &lt;code&gt;gateway.chargee.assert_not_called()&lt;/code&gt; pass silently in the tests above, and it is left out on purpose. If a test wants an object invented as it is touched, &lt;code&gt;unittest.mock&lt;/code&gt; is the tool for that, and it has the other advantage of being in the standard library, on every team's common ground. The two coexist in one suite without difficulty, and the comparison page is there for translating between them.&lt;/p&gt;
+&lt;h2&gt;What's next&lt;/h2&gt;
+&lt;p&gt;The error path test leaned on the timeline and the tape without much explanation of what they are or what an event holds. That is the subject of the next post, where the example is a resource leak, which is a bug nothing in a return value will ever tell you about.&lt;/p&gt;</description>
+      <guid isPermaLink="false">44a9b077c91b16eb65945f9ab4c32660f42e1e0f69ba3eb2f1d9d09e7fb3169e</guid>
+      <pubDate>Tue, 01 Sep 2026 07:38:51 +0000</pubDate>
+    </item>
+    <item>
+      <title>Seth Michael Larson: Buying GameCube games from other regions - Planet Python</title>
+      <link>https://sethmlarson.dev/buying-gamecube-games-from-another-region?utm_campaign=rss</link>
+      <description>&lt;p&gt;This blog post was inspired by discovering that &lt;a href="https://en.wikipedia.org/wiki/Pok%C3%A9mon_Ruby_and_Sapphire#Pok%C3%A9mon_Box:_Ruby_and_Sapphire"&gt;Pokémon Box: Ruby &amp;amp; Sapphire&lt;/a&gt;,
+a legendarily rare and expensive GameCube game in the United States (&lt;a href="https://www.pricecharting.com/game/gamecube/pokemon-box"&gt;&amp;gt;$2,500 USD&lt;/a&gt;),
+could be purchased &lt;a href="https://www.pricecharting.com/game/jp-gamecube/pokemon-box"&gt;complete-in-box (CIB) in Japan for $50 USD&lt;/a&gt;.
+That's a savings of $2450, or ~98% of the US price.
+This is a somewhat extreme example: in the US market
+Pokémon Box was only sold online
+and at a single store: the Pokémon Center in New York City.&lt;/p&gt;
+&lt;p&gt;This big price difference between regions got me thinking:
+what other games are cheaper in other regions and by how much?
+&lt;!-- more --&gt;
+Please note that the below data was taken from &lt;a href="https://pricecharting.com"&gt;Pricecharting&lt;/a&gt; on
+August 30th, 2026. Shipping costs aren't included in the price, shipping from
+Japan to the US is typically $15-$20 USD on eBay, but many games are already
+imported to the US.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;&lt;th colspan="2"&gt;Game&lt;/th&gt;&lt;th&gt;Diff.&lt;/th&gt;&lt;th&gt;Price (US)&lt;/th&gt;&lt;th&gt;Price (PAL)&lt;/th&gt;&lt;th&gt;Price (JP)&lt;/th&gt;&lt;/thead&gt;
+&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/pokemon-box"&gt;Pokémon Box&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$2348&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/pokemon-box"&gt;$2400&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/pokemon-box"&gt;$204&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/pokemon-box"&gt;$52&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$1553&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/pokemon-box"&gt;$1574&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/pokemon-box"&gt;$137&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/pokemon-box"&gt;$21&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/cubivore"&gt;Cubivore&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$612&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/cubivore"&gt;$640&lt;/a&gt;&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/cubivore"&gt;$28&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$318&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/cubivore"&gt;$341&lt;/a&gt;&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/cubivore"&gt;$23&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/gotcha-force"&gt;Gotcha Force&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$405&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/gotcha-force"&gt;$474&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/gotcha-force"&gt;$137&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/gotcha-force"&gt;$69&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$204&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/gotcha-force"&gt;$249&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/gotcha-force"&gt;$121&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/gotcha-force"&gt;$45&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/resident-evil-code-veronica-x"&gt;Resident Evil: Code Veronica X&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$239&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/resident-evil-code-veronica-x"&gt;$299&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/resident-evil-code-veronica-x"&gt;$80&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/biohazard-code-veronica-x"&gt;$60&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$151&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/resident-evil-code-veronica-x"&gt;$213&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/resident-evil-code-veronica-x"&gt;$62&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/biohazard-code-veronica-x"&gt;—&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/chibi-robo"&gt;Chibi Robo&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$189&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/chibi-robo"&gt;$210&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/chibi-robo"&gt;$223&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/chibi-robo"&gt;$34&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$136&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/chibi-robo"&gt;$144&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/chibi-robo"&gt;$161&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/chibi-robo"&gt;$25&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/pokemon-xd-gale-of-darkness"&gt;Pokémon XD: Gale of Darkness&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$170&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/pokemon-xd-gale-of-darkness"&gt;$209&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/pokemon-xd-gale-of-darkness"&gt;$232&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/pokemon-xd-gale-of-darkness"&gt;$62&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$129&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/pokemon-xd-gale-of-darkness"&gt;$150&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/pokemon-xd-gale-of-darkness"&gt;$183&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/pokemon-xd-gale-of-darkness"&gt;$54&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/fire-emblem-path-of-radiance"&gt;Fire Emblem: Path of Radiance&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$166&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/fire-emblem-path-of-radiance"&gt;$214&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/fire-emblem-path-of-radiance"&gt;$187&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/fire-emblem-path-of-radiance"&gt;$48&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$101&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/fire-emblem-path-of-radiance"&gt;$145&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/fire-emblem-path-of-radiance"&gt;$145&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/fire-emblem-path-of-radiance"&gt;$44&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/resident-evil-2"&gt;Resident Evil 2&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$90&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/resident-evil-2"&gt;$161&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/resident-evil-2"&gt;$78&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/biohazard-2"&gt;$71&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$77&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/resident-evil-2"&gt;$106&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/resident-evil-2"&gt;$29&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/biohazard-2"&gt;$44&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/pokemon-colosseum"&gt;Pokémon Colosseum&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$98&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/pokemon-colosseum"&gt;$142&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/pokemon-colosseum"&gt;$64&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/pokemon-colosseum"&gt;$44&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$83&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/pokemon-colosseum"&gt;$109&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/pokemon-colosseum"&gt;$49&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/pokemon-colosseum"&gt;$26&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/zelda-twilight-princess"&gt;Legend of Zelda: Twilight Princess&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$108&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/zelda-twilight-princess"&gt;$196&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/zelda-twilight-princess"&gt;$115&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/zelda-twilight-princess"&gt;$88&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$66&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/zelda-twilight-princess"&gt;$146&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/zelda-twilight-princess"&gt;$107&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/zelda-twilight-princess"&gt;$80&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/resident-evil-3-nemesis"&gt;Resident Evil 3: Nemesis&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$97&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/resident-evil-3-nemesis"&gt;$156&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/resident-evil-3-nemesis"&gt;$59&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/biohazard-3-last-escape"&gt;$74&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$52&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/resident-evil-3-nemesis"&gt;$99&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/resident-evil-3-nemesis"&gt;$47&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/biohazard-3-last-escape"&gt;$69&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/zelda-four-swords-adventures"&gt;Legend of Zelda: Four Swords Adventures&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$92&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/zelda-four-swords-adventures"&gt;$77&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/zelda-four-swords-adventures"&gt;$130&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/zelda-four-swords"&gt;$38&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$58&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/zelda-four-swords-adventures"&gt;$56&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/zelda-four-swords-adventures"&gt;$79&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/zelda-four-swords"&gt;$21&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/eternal-darkness"&gt;Eternal Darkness&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$82&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/eternal-darkness"&gt;$114&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/eternal-darkness"&gt;$32&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/eternal-darkness"&gt;$34&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$60&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/eternal-darkness"&gt;$85&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/eternal-darkness"&gt;$25&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/eternal-darkness"&gt;$33&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/billy-hatcher-and-the-giant-egg"&gt;Billy Hatcher and the Giant Egg&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$66&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/billy-hatcher-and-the-giant-egg"&gt;$89&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/billy-hatcher-and-the-giant-egg"&gt;$23&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/billy-hatcher-and-the-giant-egg"&gt;$34&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$55&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/billy-hatcher-and-the-giant-egg"&gt;$65&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/billy-hatcher-and-the-giant-egg"&gt;$10&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/billy-hatcher-and-the-giant-egg"&gt;$34&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/wario-world"&gt;Wario World&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$55&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/wario-world"&gt;$80&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/wario-world"&gt;$60&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/wario-world"&gt;$25&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$44&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/wario-world"&gt;$62&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/wario-world"&gt;$45&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/wario-world"&gt;$18&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;Even more excitingly, &lt;a href="https://projectpokemon.org/home/files/file/4950-pokemon-box-ruby-sapphire-universal-version/"&gt;there is a mod patch for Pokémon Box&lt;/a&gt; enabling the
+Japanese version to communicate and trade Pokémon between
+&lt;a href="https://bulbapedia.bulbagarden.net/wiki/Software_region"&gt;US, JP, and PAL Game Boy Advance games&lt;/a&gt;. This means if you wanted
+to use Pokémon Box functionality you could buy a Japanese copy for $50,
+patch the software, and use the software as if it were from any region.&lt;/p&gt;
+&lt;p&gt;This fact carries beyond GameCube games, as you'd imagine.
+Legend of Zelda: Minish Cap is &lt;a href="https://www.pricecharting.com/game/gameboy-advance/zelda-minish-cap"&gt;$90 for a loose US copy&lt;/a&gt;
+and &lt;a href="https://www.pricecharting.com/game/jp-gameboy-advance/zelda-minish-cap"&gt;only $40 for a Japanese copy&lt;/a&gt;.
+Surprisingly it's not always the case that the US release is
+cheaper than the Japanese release. For example, the &lt;a href="https://en.wikipedia.org/wiki/Sonic_Gems_Collection"&gt;Sonic Gems Collection&lt;/a&gt;
+for GameCube costs &lt;a href="https://www.pricecharting.com/game/gamecube/sonic-gems-collection"&gt;$55 CIB for a US release&lt;/a&gt;
+compared to &lt;a href="https://www.pricecharting.com/game/jp-gamecube/sonic-gems-collection"&gt;$180 CIB for JP&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I suspect this is because the soundtrack for Sonic CD is different for
+each region, JP Sonic Gems Collection carrying the far-superior
+and sought after JP Sonic CD soundtrack. The US Sonic CD soundtrack
+was included in the US and PAL Sonic Gems Collection releases.
+The Japanese Sonic CD soundtrack was &lt;a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2825322428"&gt;released for the first time
+outside Japan in Sonic Origins&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Why shouldn't you buy other regions' games?&lt;/h2&gt;
+&lt;p&gt;The primary reason is if you don't speak the language. Many PAL
+GameCube titles include English as one of the many supported languages,
+but this can't be said for NTSC-J. Most Japanese titles are exclusively
+in Japanese, and I don't speak the language. For some games this is fine,
+not knowing Japanese won't hamper games that aren't text-heavy, but
+RPGs or story-based adventures will impact the fun-factor.
+There are some modifications you can apply to translate the Japanese
+text back into English.&lt;/p&gt;
+&lt;p&gt;Many consoles are region-locked, and thus require
+either purchasing a matching region console, modifying a console to support all regions,
+or dumping ROMs and using emulators (usually with a dedicated device or console modification).
+So you can't use any region's software without at least some extra work
+or hardware. The Nintendo GameCube has three main regions: NTSC-J (Japan), NTSC-M (Americas),
+and PAL (and maybe NTSC-K (Korea)? I cannot tell if this is actually its own region).&lt;/p&gt;
+&lt;p&gt;I've gone the way of modifying my GameCube hardware with a solderless
+mod-chip called the &lt;a href="https://docs.flippydrive.com/"&gt;FlippyDrive&lt;/a&gt;, but other &lt;a href="https://github.com/makeo/PicoLoader"&gt;open source options
+for a similar device are now available&lt;/a&gt;.
+This modification allows running any regions games on any region hardware.&lt;/p&gt;
+&lt;p&gt;If you are using unmodified hardware you may run into issues with
+frame rate if you're mixing software and hardware from an NTSC region (US, JP, KR)
+and the PAL region. I am not super knowledgeable in this area,
+look around for solutions to this issue before buying.&lt;/p&gt;
+&lt;br /&gt;&lt;hr /&gt;&lt;p&gt;Thanks for reading ♥ I would love to hear your thoughts! Contact me via &lt;a href="https://mastodon.social/@sethmlarson"&gt;Mastodon&lt;/a&gt;, &lt;a href="https://bsky.app/profile/sethmlarson.dev"&gt;Bluesky&lt;/a&gt;, or &lt;a href="mailto:sethmichaellarson@gmail.com"&gt;email&lt;/a&gt;. Browse the &lt;a href="https://sethmlarson.dev/"&gt;blog archive&lt;/a&gt;. Check out my &lt;a href="https://sethmlarson.dev/blogroll"&gt;blogroll&lt;/a&gt;.&lt;/p&gt;&lt;hr /&gt;&lt;br /&gt;</description>
+      <guid isPermaLink="false">f1608cf916fd80385f47bcde74f5b3b255b4f1b48d65ffafddf806d26937dcfa</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>PyCharm: Fine-Tuning SOTA Object Detection Models on Real-World Datasets - Planet Python</title>
+      <link>https://blog.jetbrains.com/pycharm/2026/08/fine-tuning-sota-object-detection-models-on-real-world-datasets/</link>
+      <description>&lt;p&gt;In our &lt;a href="https://blog.jetbrains.com/pycharm/2026/07/best-object-detection-models-for-machine-learning-in-2026/"&gt;previous blog post&lt;/a&gt; in this series, we discussed state-of-the-art models for object detection: the architectures, the theory, and what makes YOLO12, YOLO26, and RF-DETR tick. If you want the theoretical background on these models, start there.&lt;/p&gt;
+&lt;p&gt;This post is the practical follow-up: how to actually &lt;strong&gt;use&lt;/strong&gt; these models, how to &lt;strong&gt;fine-tune&lt;/strong&gt; them on diverse, specialized datasets that look nothing like their training data, and how to &lt;strong&gt;evaluate&lt;/strong&gt; the results – all within PyCharm.&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;Why fine-tune at all?&lt;/h2&gt;
+&lt;p&gt;Every pretrained detector you download was trained on some distribution of images, almost always &lt;a href="https://cocodataset.org/" rel="noopener" target="_blank"&gt;COCO&lt;/a&gt;, which is ~118k training images of everyday scenes containing 80 common object categories (people, cars, dogs, chairs, etc.).&lt;/p&gt;
+&lt;p&gt;Real-world deployment data rarely looks like COCO. Things that object detection might actually be applied to, such as damaged industrial cables, bone fractures on X-rays, or densely stacked soda bottles on a shelf, are:&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;&lt;strong&gt;Out of vocabulary&lt;/strong&gt;: &amp;#8220;Bone fracture&amp;#8221; is not one of COCO&amp;#8217;s 80 classes, so the model literally has no output category for it.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Out of visual distribution&lt;/strong&gt;: X-ray imagery, industrial close-ups, and heavily occluded shelf scenes differ drastically from consumer photos in texture, viewpoint, and object density.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Deploying a detector on off-distribution data therefore requires &lt;strong&gt;fine-tuning&lt;/strong&gt;. But before we break the models, let&amp;#8217;s establish that we get similar results on our hardware to the ones reported by developers.&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;The models&lt;/h2&gt;
+&lt;p&gt;For the purposes of this experiment, we’ll focus on three current SOTA object detection families and examine two sizes of each model:&lt;/p&gt;
+&lt;table class="has-fixed-layout"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;strong&gt;Family&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;Variants&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;Implementation&lt;/strong&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;YOLO12&lt;/td&gt;&lt;td&gt;&lt;code&gt;yolov12n, yolov12m&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://github.com/sunsmarterjie/yolov12" rel="noopener" target="_blank"&gt;Original authors&amp;#8217; repo&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLO26&lt;/td&gt;&lt;td&gt;&lt;code&gt;yolo26n, yolo26m&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://github.com/ultralytics/ultralytics" rel="noopener" target="_blank"&gt;Ultralytics&lt;/a&gt; PyPI package&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;RF-DETR&lt;/td&gt;&lt;td&gt;&lt;code&gt;RFDETRNano, RFDETRBase&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://github.com/roboflow/rf-detr" rel="noopener" target="_blank"&gt;Roboflow&lt;/a&gt; PyPI package&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;h3 class="wp-block-heading"&gt;Sanity check: Reproducing COCO &lt;code&gt;val2017&lt;/code&gt; baselines&lt;/h3&gt;
+&lt;p&gt;We’re going to be working with six pretrained checkpoints: Two different sizes of each of the three models. To check that these models are behaving as expected, we evaluated all of them on the full 5,000-image COCO validation dataset (&lt;code&gt;val2017&lt;/code&gt;) to verify the numbers reported in the previous post:&lt;/p&gt;
+&lt;table class="has-fixed-layout"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;strong&gt;Model&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;Params (M)&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;mAP50&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;mAP50-95&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;Latency (ms)&lt;/strong&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;YOLOv12-N&lt;/td&gt;&lt;td&gt;2.55&lt;/td&gt;&lt;td&gt;0.5548&lt;/td&gt;&lt;td&gt;0.4021&lt;/td&gt;&lt;td&gt;23.9&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLO26-N&lt;/td&gt;&lt;td&gt;2.57&lt;/td&gt;&lt;td&gt;0.5498&lt;/td&gt;&lt;td&gt;0.3952&lt;/td&gt;&lt;td&gt;&lt;strong&gt;12.3&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLOv12-M&lt;/td&gt;&lt;td&gt;19.67&lt;/td&gt;&lt;td&gt;0.6953&lt;/td&gt;&lt;td&gt;&lt;strong&gt;0.5259&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;72.4&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLO26-M&lt;/td&gt;&lt;td&gt;21.90&lt;/td&gt;&lt;td&gt;0.6906&lt;/td&gt;&lt;td&gt;0.5181&lt;/td&gt;&lt;td&gt;13.9&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;RF-DETR Nano&lt;/td&gt;&lt;td&gt;30.47&lt;/td&gt;&lt;td&gt;0.6750&lt;/td&gt;&lt;td&gt;0.4835&lt;/td&gt;&lt;td&gt;&lt;strong&gt;12.4&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;RF-DETR Base&lt;/td&gt;&lt;td&gt;32.17&lt;/td&gt;&lt;td&gt;0.7210&lt;/td&gt;&lt;td&gt;&lt;strong&gt;0.5325&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;12.9&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;Three things stand out even before we leave COCO behind:&lt;/p&gt;
+&lt;ol class="wp-block-list"&gt;
+&lt;li&gt;&lt;strong&gt;Larger models (mostly) have better performance.&lt;/strong&gt; RF-DETR Base leads (0.5325 mAP50-95), but the medium YOLOs get remarkably close (0.5259 / 0.5181) with ~10M fewer parameters.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;YOLO26&amp;#8217;s NMS-free design pays off in throughput.&lt;/strong&gt; YOLO26-N is the fastest model in the lineup (12.3 ms latency) at essentially the same mAP50-95 as YOLOv12-N, which, despite being the smallest model here, is considerably slower (23.9 ms latency). Attention is expensive. (If you want more detail on the model architectures and how they affect performance, see the &lt;a href="https://blog.jetbrains.com/pycharm/2026/07/best-object-detection-models-for-machine-learning-in-2026/"&gt;previous blog post&lt;/a&gt; in this series.)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RF-DETR Nano is not &amp;#8220;nano&amp;#8221; by parameter count&lt;/strong&gt; (~30M – more than YOLO26-M), but it is well-optimized: With 12.4 ms latency, it is the second-fastest overall.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Published papers report &lt;em&gt;optimized&lt;/em&gt; inference latency: That is, they measure the model&amp;#8217;s forward pass in isolation, stripped of the surrounding stages of the object detection pipeline. We deliberately skipped that aggressive optimization so our numbers reflect what you&amp;#8217;d actually see when deploying these models.&lt;/p&gt;
+&lt;p&gt;As a result, our latency figures don&amp;#8217;t line up with the benchmarks in the models&amp;#8217; white papers. There are two main reasons for this:&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;&lt;strong&gt;Hardware:&lt;/strong&gt; We used different hardware from the NVIDIA T4 GPU that serves as the &lt;em&gt;de facto&lt;/em&gt; standard in object detection benchmarking.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Unoptimized computation graph:&lt;/strong&gt; We ran the models in their native framework rather than converting them to TensorRT. TensorRT compiles a network into a hardware-specific engine, fusing layers, selecting the fastest kernels for the target GPU, and optionally running in reduced precision. That can cut latency substantially, but the resulting engine is tied to one GPU and requires an extra build step, so it doesn&amp;#8217;t represent how these models perform out of the box.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Accuracy is a different story: While our latencies diverge from the published ones, our mAP50-95 results fall within reasonable noise bounds of the reported figures.&lt;/p&gt;
+&lt;p&gt;Now that we’ve seen what our pretrained models can do on COCO, the dataset they were trained on, let&amp;#8217;s see what happens when they&amp;#8217;re tested off distribution.&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;The datasets&lt;/h2&gt;
+&lt;p&gt;For evaluation, we used &lt;a href="https://rf100-vl.org/" rel="noopener" target="_blank"&gt;RF100-VL&lt;/a&gt;, a large-scale collection of 100 multimodal datasets covering concepts deliberately chosen to be rare in object detection models’ pretraining data. These datasets contain exactly the off-distribution targets we care about. These targets also mirror common real-life applications for object detection, giving us a realistic test of these models’ capabilities out in the wild.&lt;/p&gt;
+&lt;p&gt;We picked three datasets that stress test the models in different ways:&lt;/p&gt;
+&lt;table class="has-fixed-layout"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;strong&gt;Dataset&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;Domain&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;Why it&amp;#8217;s hard&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;Classes&lt;/strong&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;strong&gt;&lt;code&gt;cable-damage&lt;/code&gt;&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Technical/industrial&lt;/td&gt;&lt;td&gt;Fine-grained damage types on visually similar backgrounds&lt;/td&gt;&lt;td&gt;&lt;code&gt;break, thunderbolt&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;strong&gt;&lt;code&gt;bone-fracture&lt;/code&gt;&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Medical (X-ray)&lt;/td&gt;&lt;td&gt;Entirely different imaging modality; subtle features&lt;/td&gt;&lt;td&gt;&lt;code&gt;angle, fracture, line, messed_up_angle&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;strong&gt;&lt;code&gt;soda-bottles&lt;/code&gt;&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Retail&lt;/td&gt;&lt;td&gt;Heavy occlusion, many near-identical instances per image&lt;/td&gt;&lt;td&gt;&lt;code&gt;coca-cola, fanta, sprite&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;h2 class="wp-block-heading"&gt;Tutorial: Fine-tuning all three models in PyCharm 🙂&lt;/h2&gt;
+&lt;h3 class="wp-block-heading"&gt;Step 1: Setting up the project&lt;/h3&gt;
+&lt;p&gt;One of the first challenges we had to overcome in this project was that the three implementations do &lt;strong&gt;not&lt;/strong&gt; share a compatible set of dependencies. In particular, the two different generations of YOLO require different versions of the &lt;code&gt;ultralytics&lt;/code&gt; package. PyCharm offers a clean solution for this: one PyCharm project with three isolated &lt;code&gt;uv&lt;/code&gt; environments – one per model family.&lt;/p&gt;
+&lt;p&gt;We&amp;#8217;ll run our computations on a remote GPU. Configuring a remote interpreter in PyCharm follows the same workflow as a local one: the same dialog and the same dropdown as in the local case. Note that remote interpreters require PyCharm Professional; Community Edition supports local environments only.&lt;/p&gt;
+&lt;p&gt;Firstly, we need to instantiate our three &lt;code&gt;uv&lt;/code&gt; virtual environments via:&lt;br /&gt;&lt;/p&gt;
+&lt;pre class="EnlighterJSRAW"&gt;cd yolov12 &amp;amp;&amp;amp; uv venv .venv --python 3.11 
+cd yolov26 &amp;amp;&amp;amp; uv venv .venv --python 3.11 
+cd rf-detr &amp;amp;&amp;amp; uv venv .venv --python 3.11&lt;/pre&gt;
+&lt;p&gt;Once your uv virtual environments exist, register each one as an existing interpreter. Go to &lt;em&gt;Settings | Python | Interpreter&lt;/em&gt;, click &lt;em&gt;Add Interpreter → Add Local Interpreter&lt;/em&gt;, choose &lt;em&gt;Environment &lt;/em&gt;as &lt;em&gt;Select existing&lt;/em&gt;, and point the interpreter field at that environment&amp;#8217;s &lt;code&gt;bin/python&lt;/code&gt;. PyCharm doesn&amp;#8217;t create anything here, it just picks up the environment &lt;code&gt;uv&lt;/code&gt; already built.&lt;/p&gt;
+&lt;p&gt;Repeat for each environment. From then on, switching is a matter of picking one from the &lt;em&gt;Settings | Python | Interpreter&lt;/em&gt; dropdown, or from the interpreter widget in the bottom-right-hand status bar.&lt;/p&gt;
+&lt;img alt="" class="wp-image-733186" src="https://blog.jetbrains.com/wp-content/uploads/2026/08/uv_virtual_env.png" /&gt;
+&lt;p&gt;You can find the full list of dependencies required for each model in their respective project repositories. You can either install all the projects’ dependencies in PyCharm’s built-in &lt;em&gt;Terminal&lt;/em&gt; tool window or install individual packages using the&lt;em&gt; Python Packages&lt;/em&gt; tool window (including selecting specific versions of packages). You can access both of these tool windows by clicking the relevant icons in the lower left-hand corner of the PyCharm toolbar.&amp;nbsp;&lt;/p&gt;
+&lt;img alt="" class="wp-image-733197" src="https://blog.jetbrains.com/wp-content/uploads/2026/08/Screenshot-2026-08-14-at-16.29.31-1.png" /&gt;
+&lt;p&gt;For a step-by-step guide on setting up the environments for all three models, see our &lt;a href="https://github.com/ArinaBelova/sota-object-detection-tutorial/blob/main/environments_setup.md" rel="noopener" target="_blank"&gt;GitHub implementation&lt;/a&gt; of this tutorial.&lt;/p&gt;
+&lt;h3 class="wp-block-heading"&gt;Step 2: Getting the datasets&lt;/h3&gt;
+&lt;p&gt;To obtain the out-of-COCO-distribution datasets, we can install our datasets via the &lt;code&gt;rf-detr&lt;/code&gt; virtual environment, since it has &lt;code&gt;roboflow&lt;/code&gt; as one of its core dependencies. We then set the Roboflow API key as an environment variable so that it is available to the API when downloading the datasets.&lt;/p&gt;
+&lt;pre class="EnlighterJSRAW"&gt;pip install roboflow
+export ROBOFLOW_API_KEY="your_key_here" # you can get API key here: https://docs.roboflow.com/reference/authentication/authentication/find-your-roboflow-api-key &lt;/pre&gt;
+&lt;p&gt;After setting everything up, now you can run the Python script below to get the three datasets we’re going to use in our tutorial:&lt;/p&gt;
+&lt;pre class="EnlighterJSRAW"&gt;import os
+from roboflow import Roboflow
+api_key = os.environ.get("ROBOFLOW_API_KEY")
+if not api_key:
+    raise RuntimeError("ROBOFLOW_API_KEY is not set")
+DATASETS = [
+    "bone-fracture-7fylg",
+    "cable-damage",
+    "soda-bottles",
+]
+VERSION = 2          # RF100 projects are generally published at version 2
+FORMAT = "yolov8"    # or "coco", "voc", "yolov5"
+rf = Roboflow(api_key=api_key)
+workspace = rf.workspace("rf100")
+for slug in DATASETS:
+    print(f"Downloading {slug} ...")
+    try:
+        project = workspace.project(slug)
+        dataset = project.version(VERSION).download(FORMAT)
+        print(f"  -&gt; {dataset.location}")
+    except Exception as e:
+        print(f"  !! failed: {e}")&lt;/pre&gt;
+&lt;p&gt;This script connects to the Roboflow cloud service via its Python API client and downloads three specified RF100 datasets in YOLOv8 format. It loops through each dataset, reports where successful downloads are saved, and prints an error if any download fails.&lt;/p&gt;
+&lt;h3 class="wp-block-heading"&gt;Step 3: Getting a zero-shot baseline by using pretrained models on custom data&lt;/h3&gt;
+&lt;p&gt;Before fine-tuning, we’re going to evaluate the COCO-pretrained checkpoints directly on our three datasets, to see whether the fine-tuning is actually necessary. The result was unambiguous: &lt;strong&gt;The models predicted essentially nothing.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Zero-shot mAP50-95 on the test splits of our three datasets:&lt;/em&gt;&lt;/p&gt;
+&lt;table class="has-fixed-layout"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;strong&gt;Model&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;&lt;code&gt;cable-damage&lt;/code&gt;&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;&lt;code&gt;bone-fracture&lt;/code&gt;&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;&lt;code&gt;soda-bottles&lt;/code&gt;&lt;/strong&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;RF-DETR Nano&lt;/td&gt;&lt;td&gt;0.0004&lt;/td&gt;&lt;td&gt;0.0000&lt;/td&gt;&lt;td&gt;0.0027&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;RF-DETR Base&lt;/td&gt;&lt;td&gt;0.0005&lt;/td&gt;&lt;td&gt;0.0000&lt;/td&gt;&lt;td&gt;0.0004&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLOv12-N&lt;/td&gt;&lt;td&gt;0.0007&lt;/td&gt;&lt;td&gt;0.0000&lt;/td&gt;&lt;td&gt;0.0266&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLO26-N&lt;/td&gt;&lt;td&gt;0.0000&lt;/td&gt;&lt;td&gt;0.0000&lt;/td&gt;&lt;td&gt;0.0033&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLOv12-M&lt;/td&gt;&lt;td&gt;0.0000&lt;/td&gt;&lt;td&gt;0.0000&lt;/td&gt;&lt;td&gt;0.0160&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLO26-M&lt;/td&gt;&lt;td&gt;0.0000&lt;/td&gt;&lt;td&gt;0.0000&lt;/td&gt;&lt;td&gt;0.0012&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;This is to be expected; it’s not a bug! As the models are closed-vocabulary detectors, that is, they have a finite number of predefined target classes, they physically cannot output a class like &lt;code&gt;fracture&lt;/code&gt; that isn&amp;#8217;t in their 80-class COCO head.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;This is the punchline of this whole post: A model scoring 0.72 mAP50 on COCO scores 0.00 on bone fractures. Pretrained ≠ deployable, even when the model is state of the art. Basic machine learning principles still apply, even in the age of AI!&lt;/p&gt;
+&lt;h3 class="wp-block-heading"&gt;Step 4: Fine-tuning&lt;/h3&gt;
+&lt;p&gt;All models were fine-tuned on a single &lt;strong&gt;A100 GPU&lt;/strong&gt; for &lt;strong&gt;10 epochs&lt;/strong&gt;. We used standard Ultralytics/RF-DETR fine-tuning pipelines in order to fine-tune the models on our three datasets. We fine-tuned a model for each dataset. The full fine-tuning pipeline can be found in &lt;code&gt;finetune_rf100.py&lt;/code&gt; scripts in the project repo, under the folders for each model.&lt;/p&gt;
+&lt;p&gt;You can see the core of the training setup below. Both YOLO and RF-DETR are built on PyTorch under the hood, but the training loops are abstracted behind higher-level library APIs: Ultralytics’ &lt;code&gt;YOLO.train()&lt;/code&gt; for the YOLO models, and RF-DETR’s own &lt;code&gt;train()&lt;/code&gt; functionality.&lt;/p&gt;
+&lt;h4 class="wp-block-heading"&gt;YOLO12 and YOLO26&lt;/h4&gt;
+&lt;pre class="EnlighterJSRAW"&gt;train_model = YOLO(args.model)
+train_res = train_model.train(
+                data=str(yaml_path),
+                epochs=args.epochs,
+                imgsz=args.imgsz,
+                batch=args.batch,
+                device=args.device,
+                project=args.project,
+                name=run_name,
+                exist_ok=True,
+                verbose=False,
+            )&lt;/pre&gt;
+&lt;h4 class="wp-block-heading"&gt;RF-DETR&lt;/h4&gt;
+&lt;pre class="EnlighterJSRAW"&gt;ModelClass().train(
+                dataset_dir=str(coco_dir),
+                output_dir=str(output_dir),
+                epochs=args.epochs,
+                batch_size=args.batch_size,
+                grad_accum_steps=args.grad_accum,
+                lr=args.lr,
+                resolution=resolution,
+                early_stopping=True,
+                checkpoint_interval=1,
+            )&lt;/pre&gt;
+&lt;h3 class="wp-block-heading"&gt;Step 5: Results&lt;/h3&gt;
+&lt;p&gt;Fine-tuning transforms the picture. You can see the results on the test set after training:&lt;/p&gt;
+&lt;img alt="" class="wp-image-733209" src="https://blog.jetbrains.com/wp-content/uploads/2026/08/accuracy_vs_speed.png" /&gt;
+&lt;p&gt;On the left, we have the pretrained models’ results for the COCO validation dataset. As we showed earlier, accuracy (mAP50-95) fell between 0.39 and 0.53, and all models except for YOLOv12-M showed low latency. The fine-tuned models on the right showed a similar range of accuracy for the &lt;code&gt;cable-damage&lt;/code&gt; and &lt;code&gt;soda-bottle&lt;/code&gt; detection tasks, only falling lower for the &lt;code&gt;bone-fracture&lt;/code&gt; task. Moreover, the fine-tuned models were comparable in latency to the pretrained models for their intended tasks, and for YOLOv12-M, they were even faster. This suggests that, after fine-tuning to the target domain, the models achieve performance that’s broadly comparable to the pretrained performance on their original training domain.&lt;/p&gt;
+&lt;p&gt;Let’s now have a closer look at the fine-tuned models’ performance, breaking it down by mAP50 and mAP50-95 for the three separate RF-100 datasets:&lt;/p&gt;
+&lt;table class="has-fixed-layout"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;strong&gt;Model&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;&lt;code&gt;cable-damage&lt;/code&gt;&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;&lt;code&gt;bone-fracture&lt;/code&gt;&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;&lt;code&gt;soda-bottles&lt;/code&gt;&lt;/strong&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;RF-DETR Nano&lt;/td&gt;&lt;td&gt;0.9195 (0.4391)&lt;/td&gt;&lt;td&gt;0.2317 (0.1136)&lt;/td&gt;&lt;td&gt;0.9617 (0.6223)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;RF-DETR Base&lt;/td&gt;&lt;td&gt;&lt;strong&gt;0.9281&lt;/strong&gt; (&lt;strong&gt;0.4456&lt;/strong&gt;)&lt;/td&gt;&lt;td&gt;&lt;strong&gt;0.4474&lt;/strong&gt; (&lt;strong&gt;0.1915&lt;/strong&gt;)&lt;/td&gt;&lt;td&gt;0.9688 (0.6332)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLOv12-N&lt;/td&gt;&lt;td&gt;0.9236 (0.4378)&lt;/td&gt;&lt;td&gt;0.0911 (0.0532)&lt;/td&gt;&lt;td&gt;0.9677 (0.6343)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLO26-N&lt;/td&gt;&lt;td&gt;0.8165 (0.3681)&lt;/td&gt;&lt;td&gt;0.0193 (0.0064)&lt;/td&gt;&lt;td&gt;0.9148 (0.5896)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLOv12-M&lt;/td&gt;&lt;td&gt;0.8266 (0.3649)&lt;/td&gt;&lt;td&gt;0.1500 (0.0635)&lt;/td&gt;&lt;td&gt;&lt;strong&gt;0.9706&lt;/strong&gt; (&lt;strong&gt;0.6422&lt;/strong&gt;)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLO26-M&lt;/td&gt;&lt;td&gt;0.8707 (0.3896)&lt;/td&gt;&lt;td&gt;0.2194 (0.1038)&lt;/td&gt;&lt;td&gt;0.9596 (0.6304)&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;What the numbers say:&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;&lt;strong&gt;The &lt;code&gt;soda-bottles&lt;/code&gt; target is the easy win.&lt;/strong&gt; Every model lands in the 0.91–0.97 mAP50 band. This is likely due to the fact that the domain (consumer products in photos) is visually close to existing classes in COCO, so only the vocabulary was new. Interestingly, the attention model family does great here, with YOLOv12-M taking the top spot (0.6422 mAP50-95).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;cable-damage&lt;/code&gt;: Detection is easy, but localization is hard.&lt;/strong&gt; mAP50 reaches 0.93, but mAP50-95 tops out at 0.446. It appears that the models find the damage reliably, yet they struggle to box thin, elongated defects precisely. If your application needs tight boxes at high IoU, this gap would be a significant issue.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;bone-fracture&lt;/code&gt; remains genuinely hard.&lt;/strong&gt; The best model (RF-DETR Base, 0.447 mAP50) is far from production-ready, and the performance spread across models is huge. The modality shift from photos to X-rays means the pretrained backbone features transfer poorly. The different image modality and small, sometimes almost indistinguishable bone fractures make the detection task way harder than the one employed on common objects identification. This is the dataset that would most benefit from domain-specific pretraining, more data, or longer fine-tuning.&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RF-DETR Base is the most consistent performer&lt;/strong&gt;, winning on two out of three datasets and challenging seriously for the third. The DETR-style architecture seems to transfer more robustly to unfamiliar domains.&amp;nbsp;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="wp-block-heading"&gt;Qualitative results&lt;/h3&gt;
+&lt;p&gt;To visually assess how these models perform, we can overlay the predicted bounding boxes on the images. Let&amp;#8217;s look at the objects our models detected in six random images per class:&lt;/p&gt;
+&lt;img alt="" class="wp-image-733331" src="https://blog.jetbrains.com/wp-content/uploads/2026/08/cable-damage_very_low_res.png" /&gt;
+&lt;img alt="" class="wp-image-733256" src="https://blog.jetbrains.com/wp-content/uploads/2026/08/bone-fracture-7fylg.png" /&gt;
+&lt;img alt="" class="wp-image-733320" src="https://blog.jetbrains.com/wp-content/uploads/2026/08/soda-bottles_very_low_res.png" /&gt;
+&lt;p&gt;We can see this confirms the accuracy values we saw above: The noisy images of soda bottles in fridges are labeled accurately, with tight bounding boxes for each object. The cable damage is identified less consistently, with some models failing to find the damage altogether, and others creating unnecessarily large bounding boxes. Finally, the images of broken bones contrast sharply with the other two, with less than half of the images having any break identified, and different models identifying different potential breakage points.&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;Conclusions&amp;nbsp;&lt;/h2&gt;
+&lt;p&gt;Pretrained object detectors are powerful, based on advancements in model architecture over the past five years, but as we’ve seen here, pretrained does not necessarily mean deployable. All six models performed well on COCO, yet when we applied those same checkpoints directly to our specialized datasets, their performance fell close to zero. However, fine-tuning completely changed that picture.&lt;/p&gt;
+&lt;p&gt;After only 10 epochs of fine-tuning, all three model families were able to adapt well to both the &lt;code&gt;cable-damage&lt;/code&gt; and &lt;code&gt;soda-bottle&lt;/code&gt; datasets. As we noted, the &lt;code&gt;soda-bottle&lt;/code&gt; task was particularly transferable, likely because it contained objects similar to those contained in COCO. &lt;code&gt;cable-damage&lt;/code&gt; was also detected relatively reliably, although the larger gap between mAP50 and mAP50-95 showed that precisely locating these tiny defects was still challenging for all of the models. However, &lt;code&gt;bone-fracture&lt;/code&gt; was a completely different story, likely because moving from the sort of natural images contained in COCO to X-rays is a much larger domain shift. While RF-DETR handled this jump best, even its performance shows the limits of fine-tuning, and there are times when you might need to consider more data, longer training, or even domain-specific pretraining.&lt;/p&gt;
+&lt;p&gt;The broader takeaway is that there is no single “best” detector: It is dependent on the task. Model size, latency requirements, licensing restrictions, and most importantly, the similarity between the model’s pretraining data and your target domain all affect the outcome. It is important to refrain from unquestioningly trusting the numbers reported by model providers and explore the fit of a specific model for your own particular task.&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;Get started with PyCharm today&lt;/h2&gt;
+&lt;p&gt;In this post, we’ve gone from validating pretrained YOLO12, YOLO26, and RF-DETR checkpoints on COCO to testing them zero-shot on specialized data, to fine-tuning them on three very different object detection tasks, and then finally, comparing the resulting accuracy and latency. Along the way, we’ve seen how PyCharm can help manage the practical side of a project like this, where multiple model families require different dependency sets and training environments.&lt;/p&gt;
+&lt;p&gt;PyCharm helps you keep these workflows together in a single project while using isolated Python environments for each model family. Its interpreter management, built-in terminal, &lt;em&gt;Python Packages&lt;/em&gt; tool window, and support for remote development make it easier to move between environments and run training on remote GPU hardware without having to manage each part of this workflow separately.&lt;/p&gt;
+&lt;p&gt;If you’d like to try these experiments yourself, maybe look into fine-tuning these models for your own specific object detection use case! PyCharm is available to download and try. You can use the accompanying project code to reproduce our COCO baselines, download the RF100 datasets, fine-tune the models, and evaluate them using the held-out test splits.&lt;/p&gt;
+&lt;p&gt;You can find the &lt;a href="https://github.com/ArinaBelova/sota-object-detection-tutorial" rel="noopener" target="_blank"&gt;full code for this project on GitHub&lt;/a&gt;. And if you’d like to learn more about object detection, including the architectures behind the models we used in this post, check out the &lt;a href="https://blog.jetbrains.com/pycharm/2026/07/best-object-detection-models-for-machine-learning-in-2026/"&gt;previous post in this series&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">0f95c06a91632c29a1454af2faef51411eb393e07758ee73d37c7fe3577e71af</guid>
+      <pubDate>Mon, 31 Aug 2026 13:50:29 +0000</pubDate>
+    </item>
     <item>
       <title>Graham Dumpleton: Introducing wrapture - Planet Python</title>
       <link>https://grahamdumpleton.me/posts/2026/08/introducing-wrapture/</link>

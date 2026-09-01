@@ -5,7 +5,92 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Mon, 31 Aug 2026 14:01:17 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 01 Sep 2026 14:01:48 +0000</lastBuildDate>
+    <item>
+      <title>Iranian Hackers Pose as Recruiters to Deliver Cross-Platform RATs Through Coding Tests - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/iranian-hackers-pose-as-recruiters-to.html</link>
+      <description>The Iranian Nimbus Manticore hacking group has been attributed to two previously undocumented malware families that highlight the continued evolution of its toolset and likely expand its targeting footprint to infect Linux and Apple macOS systems using cross-platform remote access trojans (RATs) developed using Node.js and JavaScript.
+Russian cybersecurity company Kaspersky is tracking the</description>
+      <guid isPermaLink="false">e070f5044982d659cef6c8237c3daf274c98ab4f1d391fda00eb9f597273c857</guid>
+      <pubDate>Tue, 01 Sep 2026 13:08:58 +0000</pubDate>
+    </item>
+    <item>
+      <title>Threat Actors Don’t Want Better Attacks. They Want Repeatable Ones - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/threat-actors-dont-want-better-attacks.html</link>
+      <description>The most common way into a company last year was to ask.
+A web page tells the visitor to prove they are not a robot. While they read the instructions, it quietly places a command on their clipboard. Then it talks them through opening a terminal and pasting it in. The technique is called ClickFix, and it was the most common initial access method Microsoft’s team observed last year, accounting</description>
+      <guid isPermaLink="false">fbd5fa14096242006b42526a0114dd5c9ac66b978a8de6be1e76465b122d4897</guid>
+      <pubDate>Tue, 01 Sep 2026 11:30:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Windows internals walkthrough: PE files and manual module mapping. Parsing IMAGE_DOS_HEADER / IMAGE_NT_HEADERS64, walking sections to locate .text, comparing disk vs memory layouts, and page alignment via VirtualProtect. Verifying with Cheat Engine. Looking for honest feedback! (might be boring) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w481pp/windows_internals_walkthrough_pe_files_and_manual/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Even-Outlandishness7"&gt; /u/Even-Outlandishness7 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.youtube.com/watch?v=9LzhGfc_VTA"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w481pp/windows_internals_walkthrough_pe_files_and_manual/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">2de68deaa353942a2e63caaf7d0260331fe52b5c82b719a63cc8aa1234c60e68</guid>
+      <pubDate>Tue, 01 Sep 2026 10:31:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Steal METR API Key and Consume AI Credits Worth About $600,000 - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/attackers-steal-metr-api-key-and.html</link>
+      <description>METR (short for Model Evaluation and Threat Research and pronounced "Meter"), a research non-profit that evaluates frontier artificial intelligence (AI) models for their ability to carry out long-horizon, agentic tasks, disclosed that it suffered "two notable security incidents" where external actors attempted to gain unauthorized access to its systems.
+No sensitive information is believed to</description>
+      <guid isPermaLink="false">a90472fb7fa5e3854605f01756c2a92e5620b9daf72993b543dec501791da172</guid>
+      <pubDate>Tue, 01 Sep 2026 09:05:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>Russia-Aligned UAC-0099 Plants Nuclear Weapon Prompt in Malware to Disrupt AI Analysis - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/russia-aligned-uac-0099-plants-nuclear.html</link>
+      <description>Cybersecurity researchers have disclosed a new technique dubbed GuardBreaker that's been put to use by a Russia-aligned threat actor known as UAC-0099 against a target in Ukraine with an aim to interfere with artificial intelligence (AI)-assisted analysis.
+The idea, ESET said in a series of posts on X, is to deliberately trip a large language model's (LLM) safety mechanisms and prevent its</description>
+      <guid isPermaLink="false">b2edb3abc9248dd1c43d4fb6c62dc21579c9aa1d69ca5befa8709cca1c067588</guid>
+      <pubDate>Tue, 01 Sep 2026 08:26:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Exploit Critical Langflow and Rails Flaws in Credential-Probing and C2 Activity - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/attackers-exploit-critical-langflow-and.html</link>
+      <description>Threat actors are exploiting two critical flaws impacting Langflow and Ruby on Rails, according to new findings from VulnCheck.
+The vulnerabilities in question are listed below -
+  CVE-2026-0768 (CVSS score: 9.8) - A lack of proper validation of a user-supplied input vulnerability that could be exploited to execute arbitrary Python code in the context of the root user.
+  CVE-2026-66066 aka</description>
+      <guid isPermaLink="false">ad87a0f68a0d5b9bff50d1af21fa2a4a11f5f0df242db2c55867795b4902b7cf</guid>
+      <pubDate>Tue, 01 Sep 2026 07:22:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>Don’t Let Abliteration Abliterate Your Bug Hunting: Discovering Verdict Bias in Uncensored Models - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w42aby/dont_let_abliteration_abliterate_your_bug_hunting/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/onlinereadme"&gt; /u/onlinereadme &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://clearbluejar.github.io/posts/does-abliteration-skew-your-bug-hunting/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w42aby/dont_let_abliteration_abliterate_your_bug_hunting/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">a0b9b3278ead70224ab96be6f7a93cf0cfb66e01ee4e0b8a9905860c114683de</guid>
+      <pubDate>Tue, 01 Sep 2026 05:09:01 +0000</pubDate>
+    </item>
+    <item>
+      <title>Turned a $15 eBay "smart NIC" nobody could get working into a real 10GbE card (no vendor firmware, fully reversible) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w3rads/turned_a_15_ebay_smart_nic_nobody_could_get/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Shiny1712"&gt; /u/Shiny1712 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/nicologiuliani6/cavium-cn6640-snic10e-octeon-ii-nic"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w3rads/turned_a_15_ebay_smart_nic_nobody_could_get/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">08739001677117a8b964d3821454bfdca755c75595af55a5df511b4e56a0cdd1</guid>
+      <pubDate>Mon, 31 Aug 2026 21:16:16 +0000</pubDate>
+    </item>
+    <item>
+      <title>Analysis of a Signed Silver Fox Group AV/EDR Killer Kernel Driver - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w3mreg/analysis_of_a_signed_silver_fox_group_avedr/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/420ass_slayer69"&gt; /u/420ass_slayer69 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://app.reverser.space/p/duckie/silver-fox-group-rootkit-2026#0x140001450"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w3mreg/analysis_of_a_signed_silver_fox_group_avedr/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">19745ecf036d2772a76227b5584c90fc44fd5281278c6870995bd3176f71b293</guid>
+      <pubDate>Mon, 31 Aug 2026 18:40:41 +0000</pubDate>
+    </item>
+    <item>
+      <title>North Korean Job Fraud Expands Beyond IT Into Healthcare and Sales - The Hacker News</title>
+      <link>https://thehackernews.com/2026/08/north-korean-job-fraud-expands-beyond.html</link>
+      <description>Threat actors with ties to the Democratic People's Republic of Korea (aka DPRK or North Korea) have been observed seeking job opportunities beyond the information technology (IT) sector, with recent investigations identifying suspected workers employed in sales and marketing and the medical profession.
+The ongoing insider threat is part of what has been described as the IT worker scheme,</description>
+      <guid isPermaLink="false">0ef2ac856222ffdbd8c201504cf0964637e6436ca04db3b6f2e99f116c119974</guid>
+      <pubDate>Mon, 31 Aug 2026 17:24:28 +0000</pubDate>
+    </item>
+    <item>
+      <title>Undocumented Atari Slapstic 137412-103 driven by 68010 prefetch (Marble Madness) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w3i01e/undocumented_atari_slapstic_137412103_driven_by/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Glittering_String405"&gt; /u/Glittering_String405 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://magno73.github.io/marble-love/slapstic/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w3i01e/undocumented_atari_slapstic_137412103_driven_by/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">ac96b72f9ce907fd1e63069431a9dc0e94b487dada569ef805e6a81a359f8a30</guid>
+      <pubDate>Mon, 31 Aug 2026 15:59:46 +0000</pubDate>
+    </item>
     <item>
       <title>Found a full Linusware 1.2 source code reconstruction on GitHub. - Reverse Engineering</title>
       <link>https://www.reddit.com/r/ReverseEngineering/comments/1w3e6ro/found_a_full_linusware_12_source_code/</link>
@@ -73,6 +158,27 @@ Last week, the DoJ said the National Aeronautics and Space Administration, Feder
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/nickfromstatefarm"&gt; /u/nickfromstatefarm &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/nickdaria/wyze-bulb-color-pwned"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w34j4y/noopen_exploit_for_code_execution_on_the_wyze/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">689dadb0b4ed2b5f4e00d93b0a22268d4c433647f4ab9c9dc476ed1c9a972017</guid>
       <pubDate>Mon, 31 Aug 2026 05:34:50 +0000</pubDate>
+    </item>
+    <item>
+      <title>chromium -- security fixes - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/16cb13dc-a55d-11f1-bf98-a8a1599412c6.html</link>
+      <description/>
+      <guid isPermaLink="false">e987bf42e8235c78497e1fe74d0c1d1ee9c0717add08e805f30820e961f9dd88</guid>
+      <pubDate>Mon, 31 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Keycloak -- multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/2eb1927c-a57b-11f1-9b1f-3c7c3fba4204.html</link>
+      <description/>
+      <guid isPermaLink="false">2ffe6ab7078e178538e47f44858cd4bf30d6ea990081293933c518bca7ddb58e</guid>
+      <pubDate>Mon, 31 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>security/sudo-rs -- sudoedit could circumvent /etc/sudoers restrictions - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/c0acdbac-a524-11f1-8039-589cfc103809.html</link>
+      <description/>
+      <guid isPermaLink="false">d1f560a40046da6eef229be3b0095055af9783e63e10b5760fb6a9e2f44de1fa</guid>
+      <pubDate>Mon, 31 Aug 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Reverse-engineered a guitar amp's DSP firmware to run it as an instruction-level emulator (open source, GPLv3) - Reverse Engineering</title>
