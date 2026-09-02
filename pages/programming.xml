@@ -5,7 +5,1068 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 01 Sep 2026 14:01:48 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 02 Sep 2026 14:02:06 +0000</lastBuildDate>
+    <item>
+      <title>Tryton News: Tryton News September 2026 - Planet Python</title>
+      <link>https://discuss.tryton.org/t/tryton-news-september-2026/9356</link>
+      <description>&lt;div&gt;  &lt;/div&gt;
+&lt;p&gt;&lt;/p&gt;&lt;div class="lightbox-wrapper"&gt;&lt;a class="lightbox" href="https://discuss-cdn.tryton.org/uploads/default/original/2X/c/cc517aeb55ed7903b396da24a1e85618ba34270a.jpeg" title="Photo: Ron Lach, Pexels"&gt;&lt;img alt="Two colleagues focusing on a post production video editing task in a dark studio environment." height="500" src="https://discuss-cdn.tryton.org/uploads/default/optimized/2X/c/cc517aeb55ed7903b396da24a1e85618ba34270a_2_333x500.jpeg" title="Photo: Ron Lach, Pexels" width="333" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;September brings a balance of trytond internals and business-module refinements. The server now retries queued tasks that were dropped because a worker died, enforces request timeouts for the whole request, and exposes routes so RPC endpoints can be registered declaratively. On the user side, European VAT numbers are now validated in the background, stock periods close themselves, and the IBAN editor formats the number as it is typed-in. All of this builds on &lt;a href="https://discuss.tryton.org/t/tryton-release-8-0/"&gt;our last LTS release 8.0&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For an in depth overview of all the &lt;a href="https://bugs.tryton.org/"&gt;Tryton issues please take a look at our issue tracker&lt;/a&gt; or see the issues and merge requests &lt;a href="https://code.tryton.org/tryton/-/labels"&gt;filtered by label&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="heading--user"&gt;Changes for the User&lt;/h2&gt;
+&lt;h3 id="heading--accounting"&gt;Accounting, Invoicing and Payments&lt;/h3&gt;
+&lt;p&gt;The &lt;a href="https://bugs.tryton.org/14930"&gt;automatic VIES check replaces the previous wizard&lt;/a&gt; for European VAT numbers. A background task validates new and modified EU VAT identifiers and refreshes them once the configured validity period has expired. The validity of the identifier is also &lt;a href="https://bugs.tryton.org/14931"&gt;checked when posting an invoice&lt;/a&gt;, so a stale or invalid VAT number is caught before the invoice is sent. The last validation-state and validation-date is displayed in the identifier view.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://bugs.tryton.org/14710"&gt;&lt;code&gt;party required&lt;/code&gt; setting can no longer be changed on an account that already has account moves&lt;/a&gt;. This avoids mixing moves with and without a party on the same account, which used to confuse later reports.&lt;/p&gt;
+&lt;p&gt;The redundant prefix is &lt;a href="https://code.tryton.org/tryton/-/commit/025f022060ab2a2a6169502f60c9ed138844a658"&gt;dropped from the statement and payment journals actions&lt;/a&gt;. So the menus for accounting, statements and payments no longer repeat the “statement” or “payment” word.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://code.tryton.org/tryton/-/commit/c883d23dcb027a8075cc6debe2e8908ab7015e11"&gt;IBAN of a bank account on a party is now formatted with spaces between groups of four characters on changing the field&lt;/a&gt;. This makes it easier to check the number was entered correctly.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://code.tryton.org/tryton/-/commit/ee6db5164d0d32d4ce8d48ab69f2ebb2112ad3e8"&gt;version of the Stripe API used by the payment gateway is updated&lt;/a&gt; to the latest one.&lt;/p&gt;
+&lt;h3 id="heading--stock"&gt;Stock, Production and Shipments&lt;/h3&gt;
+&lt;p&gt;Stock periods can now be &lt;a href="https://code.tryton.org/tryton/-/commit/9539955e9debd2265a6b4f8b79728192b7e99368"&gt;created and closed automatically&lt;/a&gt; by two scheduled tasks, &lt;a href="https://docs.tryton.org/latest/modules-stock/usage/index.html#using-stock-periods"&gt;automating the manual steps&lt;/a&gt; at the start and end of each period.&lt;/p&gt;
+&lt;p&gt;On a stock move that is linked to a shipment but opened outside the shipment form, the &lt;a href="https://bugs.tryton.org/12564"&gt;from and to locations are now read-only&lt;/a&gt;. This prevents the location domain inherited from the shipment from being bypassed. The domain is also &lt;a href="https://code.tryton.org/tryton/-/commit/1e6c3426d11da03d511c69357a7e25b0ec1ded17"&gt;enforced on stock moves&lt;/a&gt;, so each move matches at least one of the shipment’s two move fields: &lt;em&gt;incoming moves&lt;/em&gt; or &lt;em&gt;inventory moves&lt;/em&gt;.&lt;/p&gt;
+&lt;h3 id="heading--ui"&gt;User Interface&lt;/h3&gt;
+&lt;p&gt;In the SAO client, &lt;a href="https://bugs.tryton.org/15025"&gt;tabs now scroll horizontally&lt;/a&gt; when they overflow the tab list. The scrolling is smooth for a nicer effect when adding a new tab.&lt;/p&gt;
+&lt;h2 id="heading--new-releases"&gt;New Releases&lt;/h2&gt;
+&lt;p&gt;We released bug fixes for the currently maintained &lt;a href="https://discuss.tryton.org/t/release-process/395"&gt;long term support series&lt;/a&gt; &lt;a href="https://code.tryton.org/tryton/-/commits/branch/8.0"&gt;8.0&lt;/a&gt;, &lt;a href="https://code.tryton.org/tryton/-/commits/branch/7.8"&gt;7.8&lt;/a&gt;, and &lt;a href="https://code.tryton.org/tryton/-/commits/branch/7.0"&gt;7.0&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="heading--developer"&gt;Changes for Implementers and Developers&lt;/h2&gt;
+&lt;p&gt;A mixin can now be &lt;a href="https://code.tryton.org/tryton/-/commit/33139eb55d0036e7e7c5b538312754994006dd2c"&gt;added to the Database and TableHandler&lt;/a&gt; from the &lt;a href="https://docs.tryton.org/latest/server/topics/configuration.html#database-mixins"&gt;configuration&lt;/a&gt;. This is used by the gis module to register PostGIS as a backend mixin.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://code.tryton.org/tryton/-/commit/571adc3fe3f538b5c89daac271d6ddba5b30fae8"&gt;Pool now exposes routes&lt;/a&gt;, so RPC endpoints can be registered declaratively using a Router.&lt;/p&gt;
+&lt;p&gt;The trytond request &lt;a href="https://bugs.tryton.org/14946"&gt;timeout is now enforced for the whole request&lt;/a&gt;, not just for individual queries. &lt;a href="https://docs.python.org/3/library/threading.html#timer-objects"&gt;A threading timer&lt;/a&gt; injects an exception into the running thread when the timeout expires.&lt;/p&gt;
+&lt;p&gt;Queued tasks that were dequeued but never finished, because the worker was killed, are now &lt;a href="https://bugs.tryton.org/14949"&gt;retried by a scheduled task&lt;/a&gt;. The retry uses the &lt;code&gt;finished_at&lt;/code&gt; timestamp and the task lock to know which tasks are still outstanding.&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;Initial draft powered by Minimax-M3. Curated and finalised by human hands.&lt;/small&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;small&gt;1 post - 1 participant&lt;/small&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;a href="https://discuss.tryton.org/t/tryton-news-september-2026/9356"&gt;Read full topic&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">a482e3e4aa2d17922deb1fc74c929ee5dbda4170115a3720577333646af04614</guid>
+      <pubDate>Wed, 02 Sep 2026 06:00:54 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python GUIs: Are there any built-in QIcons? — Using built-in icons for your apps. - Planet Python</title>
+      <link>https://www.pythonguis.com/faq/built-in-qicons-pyqt/</link>
+      <description>&lt;p&gt;In the tutorials on this site and in &lt;a href="https://www.pythonguis.com/books/"&gt;my books&lt;/a&gt; I recommend using the &lt;a href="https://p.yusukekamiyamane.com/"&gt;fugue icons set&lt;/a&gt;. This is a &lt;em&gt;free&lt;/em&gt; set of icons from Yusuke Kamiyamane, a freelance designer from Tokyo. The set contains 3,570 icons and is a great way to add some nice visual touches to your application without much hassle.&lt;/p&gt;
+&lt;p&gt;But this isn't the only icon set available, and there's another option you may not know about. Read on for details.&lt;/p&gt;
+&lt;p&gt;Veronica asked:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Are there any built-in icons with PyQt5? I have searched the web and it seems like there are some but I can't find any examples of them being used. Does it depend on the situation? If so, then in which cases can I use an icon without downloading it first?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;First we need to clarify what is meant by &lt;em&gt;built-in&lt;/em&gt; icons &amp;mdash; it can mean two different things depending on context &amp;mdash; either Qt built-in, or system built-in (Linux only). I'll start with the Qt built-ins as that's cross-platform (they're available on Windows, macOS and Linux).&lt;/p&gt;
+&lt;h2 id="qt-standard-icons-qstyle-standardpixmap"&gt;Qt Standard Icons (QStyle StandardPixmap)&lt;/h2&gt;
+&lt;p&gt;Qt ships with a small set of standard icons you can use in any of your applications for common actions. These built-in icons are accessed through the &lt;code&gt;QStyle.StandardPixmap&lt;/code&gt; enum and retrieved using &lt;code&gt;style().standardIcon()&lt;/code&gt;. They're available on all platforms &amp;mdash; Windows, macOS, and Linux &amp;mdash; making them a convenient choice when you need common UI icons without bundling external assets.&lt;/p&gt;
+&lt;p&gt;The following Python script displays all the built-in Qt standard icons in a grid layout:&lt;/p&gt;
+&lt;div class="tabbed-area multicode"&gt;&lt;ul class="tabs"&gt;&lt;li class="tab-link current"&gt;PyQt5&lt;/li&gt;
+&lt;li class="tab-link"&gt;PyQt6&lt;/li&gt;
+&lt;li class="tab-link"&gt;PySide2&lt;/li&gt;
+&lt;li class="tab-link"&gt;PySide6&lt;/li&gt;&lt;/ul&gt;&lt;div class="tab-content current code-block-outer" id="9d95f6e3cc8f49dc8040de9a23eb01aa"&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;import sys
+from PyQt5.QtWidgets import QApplication, QGridLayout, QPushButton, QStyle, QWidget
+class Window(QWidget):
+    def __init__(self):
+        super().__init__()
+        icons = sorted([attr for attr in dir(QStyle) if attr.startswith("SP_")])
+        layout = QGridLayout()
+        for n, name in enumerate(icons):
+            btn = QPushButton(name)
+            pixmapi = getattr(QStyle, name)
+            icon = self.style().standardIcon(pixmapi)
+            btn.setIcon(icon)
+            layout.addWidget(btn, n // 4, n % 4)
+        self.setLayout(layout)
+app = QApplication(sys.argv)
+w = Window()
+w.show()
+app.exec_()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="tab-content code-block-outer" id="185b5fee0e55472b99031d457ea9c77f"&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;import sys
+from PyQt6.QtWidgets import (QApplication, QGridLayout, QPushButton, QStyle,
+                             QWidget)
+class Window(QWidget):
+    def __init__(self):
+        super().__init__()
+        icons = sorted([attr for attr in dir(QStyle.StandardPixmap) if attr.startswith("SP_")])
+        layout = QGridLayout()
+        for n, name in enumerate(icons):
+            btn = QPushButton(name)
+            pixmapi = getattr(QStyle.StandardPixmap, name)
+            icon = self.style().standardIcon(pixmapi)
+            btn.setIcon(icon)
+            layout.addWidget(btn, int(n/4), int(n%4))
+        self.setLayout(layout)
+app = QApplication(sys.argv)
+w = Window()
+w.show()
+app.exec()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="tab-content code-block-outer" id="5a8658fe4eca478cb82f4105414014bc"&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;import sys
+from PySide2.QtWidgets import QApplication, QGridLayout, QPushButton, QStyle, QWidget
+class Window(QWidget):
+    def __init__(self):
+        super().__init__()
+        icons = sorted([attr for attr in dir(QStyle) if attr.startswith("SP_")])
+        layout = QGridLayout()
+        for n, name in enumerate(icons):
+            btn = QPushButton(name)
+            pixmapi = getattr(QStyle, name)
+            icon = self.style().standardIcon(pixmapi)
+            btn.setIcon(icon)
+            layout.addWidget(btn, n // 4, n % 4)
+        self.setLayout(layout)
+app = QApplication(sys.argv)
+w = Window()
+w.show()
+app.exec_()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="tab-content code-block-outer" id="52b4d40cf73848f8aa3bf0237a233b8f"&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;import sys
+from PySide6.QtWidgets import QApplication, QGridLayout, QPushButton, QStyle, QWidget
+class Window(QWidget):
+    def __init__(self):
+        super().__init__()
+        icons = sorted(
+            [attr for attr in dir(QStyle.StandardPixmap) if attr.startswith("SP_")]
+        )
+        layout = QGridLayout()
+        for n, name in enumerate(icons):
+            btn = QPushButton(name)
+            pixmapi = getattr(QStyle, name)
+            icon = self.style().standardIcon(pixmapi)
+            btn.setIcon(icon)
+            layout.addWidget(btn, n // 4, n % 4)
+        self.setLayout(layout)
+app = QApplication(sys.argv)
+w = Window()
+w.show()
+app.exec()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;If you run this script you'll see the following window, listing all the available built-in Qt icons.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Qt's Built-in Standard Icons displayed in a grid using QStyle StandardPixmap" height="706" src="https://www.pythonguis.com/feeds/{static}icons-builtin.png" width="900" /&gt;
+&lt;em&gt;Qt's Built-in Icons &amp;mdash; all QStyle.StandardPixmap icons shown with their names&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="complete-list-of-qt-built-in-standard-icons-qstylestandardpixmap"&gt;Complete List of Qt Built-in Standard Icons (QStyle.StandardPixmap)&lt;/h2&gt;
+&lt;p&gt;The full table of all &lt;code&gt;QStyle.StandardPixmap&lt;/code&gt; icon names is below. You can use any of these in PyQt5, PyQt6, PySide2, or PySide6 applications.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;..&lt;/th&gt;
+&lt;th&gt;..&lt;/th&gt;
+&lt;th&gt;..&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_ArrowBack&lt;/td&gt;
+&lt;td&gt;SP_DirIcon&lt;/td&gt;
+&lt;td&gt;SP_MediaSkipBackward&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_ArrowDown&lt;/td&gt;
+&lt;td&gt;SP_DirLinkIcon&lt;/td&gt;
+&lt;td&gt;SP_MediaSkipForward&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_ArrowForward&lt;/td&gt;
+&lt;td&gt;SP_DirOpenIcon&lt;/td&gt;
+&lt;td&gt;SP_MediaStop&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_ArrowLeft&lt;/td&gt;
+&lt;td&gt;SP_DockWidgetCloseButton&lt;/td&gt;
+&lt;td&gt;SP_MediaVolume&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_ArrowRight&lt;/td&gt;
+&lt;td&gt;SP_DriveCDIcon&lt;/td&gt;
+&lt;td&gt;SP_MediaVolumeMuted&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_ArrowUp&lt;/td&gt;
+&lt;td&gt;SP_DriveDVDIcon&lt;/td&gt;
+&lt;td&gt;SP_MessageBoxCritical&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_BrowserReload&lt;/td&gt;
+&lt;td&gt;SP_DriveFDIcon&lt;/td&gt;
+&lt;td&gt;SP_MessageBoxInformation&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_BrowserStop&lt;/td&gt;
+&lt;td&gt;SP_DriveHDIcon&lt;/td&gt;
+&lt;td&gt;SP_MessageBoxQuestion&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_CommandLink&lt;/td&gt;
+&lt;td&gt;SP_DriveNetIcon&lt;/td&gt;
+&lt;td&gt;SP_MessageBoxWarning&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_ComputerIcon&lt;/td&gt;
+&lt;td&gt;SP_FileDialogBack&lt;/td&gt;
+&lt;td&gt;SP_TitleBarCloseButton&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_CustomBase&lt;/td&gt;
+&lt;td&gt;SP_FileDialogContentsView&lt;/td&gt;
+&lt;td&gt;SP_TitleBarContextHelpButton&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_DesktopIcon&lt;/td&gt;
+&lt;td&gt;SP_FileDialogDetailedView&lt;/td&gt;
+&lt;td&gt;SP_TitleBarMaxButton&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_DialogApplyButton&lt;/td&gt;
+&lt;td&gt;SP_FileDialogEnd&lt;/td&gt;
+&lt;td&gt;SP_TitleBarMenuButton&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_DialogCancelButton&lt;/td&gt;
+&lt;td&gt;SP_FileDialogInfoView&lt;/td&gt;
+&lt;td&gt;SP_TitleBarMinButton&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_DialogCloseButton&lt;/td&gt;
+&lt;td&gt;SP_FileDialogListView&lt;/td&gt;
+&lt;td&gt;SP_TitleBarNormalButton&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_DialogDiscardButton&lt;/td&gt;
+&lt;td&gt;SP_FileDialogNewFolder&lt;/td&gt;
+&lt;td&gt;SP_TitleBarShadeButton&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_DialogHelpButton&lt;/td&gt;
+&lt;td&gt;SP_FileDialogStart&lt;/td&gt;
+&lt;td&gt;SP_TitleBarUnshadeButton&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_DialogNoButton&lt;/td&gt;
+&lt;td&gt;SP_FileDialogToParent&lt;/td&gt;
+&lt;td&gt;SP_ToolBarHorizontalExtensionButton&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_DialogOkButton&lt;/td&gt;
+&lt;td&gt;SP_FileIcon&lt;/td&gt;
+&lt;td&gt;SP_ToolBarVerticalExtensionButton&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_DialogResetButton&lt;/td&gt;
+&lt;td&gt;SP_FileLinkIcon&lt;/td&gt;
+&lt;td&gt;SP_TrashIcon&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_DialogSaveButton&lt;/td&gt;
+&lt;td&gt;SP_MediaPause&lt;/td&gt;
+&lt;td&gt;SP_VistaShield&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_DialogYesButton&lt;/td&gt;
+&lt;td&gt;SP_MediaPlay&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_DirClosedIcon&lt;/td&gt;
+&lt;td&gt;SP_MediaSeekBackward&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SP_DirHomeIcon&lt;/td&gt;
+&lt;td&gt;SP_MediaSeekForward&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="how-to-use-a-specific-built-in-qicon-in-your-application"&gt;How to Use a Specific Built-in QIcon in Your Application&lt;/h2&gt;
+&lt;p&gt;In our script above to get the icons we're looking them up by name on the &lt;code&gt;QStyle&lt;/code&gt; object, using &lt;code&gt;getattr&lt;/code&gt; &amp;mdash; but this is only necessary so we can iterate over the list of names and display the icon next to their name. If you want a specific icon you can access it directly. For example, to use the critical message box icon:&lt;/p&gt;
+&lt;div class="tabbed-area multicode"&gt;&lt;ul class="tabs"&gt;&lt;li class="tab-link current"&gt;Others&lt;/li&gt;
+&lt;li class="tab-link"&gt;PyQt6&lt;/li&gt;&lt;/ul&gt;&lt;div class="tab-content current code-block-outer" id="7b9c743ca3ab4c0fbd2cf5348a920482"&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;pixmapi = QStyle.SP_MessageBoxCritical
+icon = self.style().standardIcon(pixmapi)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="tab-content code-block-outer" id="444fbf14bdb544f5a64b793781fe5b45"&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;pixmapi = QStyle.StandardPixmap.SP_MessageBoxCritical
+icon = self.style().standardIcon(pixmapi)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p class="admonition admonition-note"&gt;&lt;span class="admonition-kind"&gt;&lt;i class="fas fa-sticky-note"&gt;&lt;/i&gt;&lt;/span&gt;  In PyQt6 the flags must be accessed via &lt;code&gt;QStyle.StandardPixmap&lt;/code&gt;. In other versions, they are available on &lt;code&gt;QStyle&lt;/code&gt; itself.&lt;/p&gt;
+&lt;p&gt;Once you have the &lt;code&gt;QIcon&lt;/code&gt; object, you can use it anywhere Qt expects an icon &amp;mdash; on buttons, toolbars, menus, window titles, and more.&lt;/p&gt;
+&lt;h2 id="free-desktop-theme-icons-linux"&gt;Free Desktop Theme Icons (Linux)&lt;/h2&gt;
+&lt;p&gt;On Linux desktops there is something called the &lt;em&gt;Free Desktop Specification&lt;/em&gt; which defines standard names for icons for specific actions.&lt;/p&gt;
+&lt;p&gt;If your application uses these specific icon names (and loads the icon from a "theme") then on Linux your application will use the current icon set which is enabled on the desktop. The idea is to make all applications have the same look &amp;amp; feel while remaining user configurable.&lt;/p&gt;
+&lt;h3&gt;Setting Theme Icons in Qt Designer&lt;/h3&gt;
+&lt;p&gt;To use Free Desktop theme icons within Qt Designer you would select the drop-down and choose "Set Icon From Theme..."&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Setting an icon from theme in Qt Designer" height="194" src="https://www.pythonguis.com/feeds/{static}icontheme1.png" width="972" /&gt;&lt;/p&gt;
+&lt;p&gt;You then enter the &lt;em&gt;name&lt;/em&gt; of the icon you want to use, e.g. &lt;code&gt;document-new&lt;/code&gt; (the &lt;a href="https://specifications.freedesktop.org/icon-naming-spec/latest/ar01s04.html"&gt;full list of valid names&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Entering icon theme name in Qt Designer" height="194" src="https://www.pythonguis.com/feeds/{static}icontheme2.png" width="972" /&gt;&lt;/p&gt;
+&lt;h3&gt;Setting Theme Icons in Python Code with QIcon.fromTheme()&lt;/h3&gt;
+&lt;p&gt;If you're not using Qt Designer, you can set icons from a theme in your Python code using &lt;code&gt;QIcon.fromTheme()&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;        icon = QtGui.QIcon.fromTheme("document-new")
+        self.pushButton_n6.setIcon(icon)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;If you're developing a cross-platform Python GUI application you'll still need your own icons for Windows &amp;amp; macOS, but by using these theme names you can ensure that your app looks &lt;em&gt;native&lt;/em&gt; when run on Linux.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Does the &lt;code&gt;QIcon.fromTheme()&lt;/code&gt; method only work on Linux?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Qt themes work on all platforms, it's just that on Linux you get the theme for &lt;em&gt;free&lt;/em&gt;. On non-Linux platforms you have to define your own icon theme from scratch. However, this is only really worth doing if you want to have a Linux-native look &amp;mdash; for other use cases the &lt;code&gt;QResource&lt;/code&gt; system is simpler.&lt;/p&gt;
+&lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
+&lt;p&gt;There are two ways to use built-in icons in your PyQt or PySide applications without downloading external icon sets:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Qt Standard Icons (QStyle.StandardPixmap)&lt;/strong&gt; &amp;mdash; A cross-platform set of common UI icons built into Qt itself, accessible via &lt;code&gt;style().standardIcon()&lt;/code&gt;. These work on Windows, macOS, and Linux.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Free Desktop Theme Icons&lt;/strong&gt; &amp;mdash; Linux-specific system icons accessed via &lt;code&gt;QIcon.fromTheme()&lt;/code&gt; that match the user's current desktop theme for a native look and feel.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For most cross-platform PyQt6 or PySide6 projects, bundling a dedicated icon set like Fugue gives you the most control over your app's appearance. But for quick prototypes or platform-specific tools, Qt's built-in icons are a convenient and dependency-free option.&lt;/p&gt;
+            &lt;p&gt;For an in-depth guide to building Python GUIs with PyQt6 see my book, &lt;a href="https://www.pythonguis.com/pyqt6-book/"&gt;Create GUI Applications with Python &amp;amp; Qt6.&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">71876744b95fb901574fc23fd76f64febb065ee0df6c42e079b297cf7d06581b</guid>
+      <pubDate>Wed, 02 Sep 2026 06:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python GUIs: Understanding QPainter Coordinates in PyQt6 — How the coordinate system works for drawing on canvases in PyQt6 - Planet Python</title>
+      <link>https://www.pythonguis.com/faq/coordinates-on-qpainter/</link>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;I really having trouble understanding the coordinate system used in &lt;code&gt;QPainter&lt;/code&gt;. Can you explain how this works?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;If you've started drawing with &lt;code&gt;QPainter&lt;/code&gt; in PyQt6, you might have been surprised the first time you drew a line. You pass in coordinates like &lt;code&gt;(10, 10, 300, 200)&lt;/code&gt; and the result doesn't look quite like what you'd expect from a math class. That's because &lt;code&gt;QPainter&lt;/code&gt; uses a coordinate system where &lt;strong&gt;the origin (0, 0) is in the top-left corner&lt;/strong&gt; of the canvas, not the bottom-left.&lt;/p&gt;
+&lt;p&gt;This catches a lot of people off guard, so in this tutorial we'll walk through exactly how QPainter coordinates work, how to visualize them, and how to convert between screen coordinates and the mathematical coordinate system you might be more familiar with.&lt;/p&gt;
+&lt;h2 id="the-qpainter-coordinate-system"&gt;The QPainter coordinate system&lt;/h2&gt;
+&lt;p&gt;In most math courses, you learn to plot points on a Cartesian plane where &lt;code&gt;(0, 0)&lt;/code&gt; is at the bottom-left. The x-axis increases to the right, and the y-axis increases upward.&lt;/p&gt;
+&lt;p&gt;QPainter (and most screen-based graphics systems) does things differently:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;(0, 0)&lt;/code&gt; is at the &lt;strong&gt;top-left&lt;/strong&gt; corner of the drawing surface.&lt;/li&gt;
+&lt;li&gt;The &lt;strong&gt;x-axis&lt;/strong&gt; increases to the &lt;strong&gt;right&lt;/strong&gt; (same as math).&lt;/li&gt;
+&lt;li&gt;The &lt;strong&gt;y-axis&lt;/strong&gt; increases &lt;strong&gt;downward&lt;/strong&gt; (opposite of math).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This means that as your y value gets larger, you move &lt;em&gt;down&lt;/em&gt; the screen, not up. Here's a simple diagram to illustrate:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;(0,0) &amp;amp;boxh&amp;amp;boxh&amp;amp;boxh&amp;amp;boxh&amp;amp;boxh&amp;amp;boxh&amp;amp;boxh&amp;amp;boxh&amp;amp;boxh&amp;amp;boxh&amp;amp;boxh&amp;amp;boxh&amp;amp;boxh&amp;amp;boxh&amp;amp;boxh► x increases
+  &amp;amp;boxv
+  &amp;amp;boxv
+  &amp;amp;boxv
+  &amp;amp;boxv
+  ▼
+  y increases
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;So when you call &lt;code&gt;painter.drawLine(10, 10, 300, 200)&lt;/code&gt;, you're drawing a line from a point near the top-left corner down to a point further right and further &lt;em&gt;down&lt;/em&gt; the canvas.&lt;/p&gt;
+&lt;h2 id="seeing-it-in-action"&gt;Seeing it in action&lt;/h2&gt;
+&lt;p&gt;Let's draw a line and annotate the start and end points so you can see exactly where the coordinates land. This complete example creates a small window with a &lt;code&gt;QLabel&lt;/code&gt; displaying a &lt;code&gt;QPixmap&lt;/code&gt; that we draw onto.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;import sys
+from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QPixmap, QPainter, QPen, QFont
+from PyQt6.QtWidgets import QApplication, QLabel, QMainWindow
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("QPainter Coordinates")
+        canvas = QPixmap(400, 300)
+        canvas.fill(Qt.white)
+        painter = QPainter(canvas)
+        # Draw the line.
+        pen = QPen(Qt.blue, 2)
+        painter.setPen(pen)
+        painter.drawLine(10, 10, 300, 200)
+        # Annotate the start point.
+        pen = QPen(Qt.red, 6)
+        painter.setPen(pen)
+        painter.drawPoint(10, 10)
+        painter.setPen(QPen(Qt.black))
+        painter.setFont(QFont("Arial", 10))
+        painter.drawText(20, 15, "(10, 10)")
+        # Annotate the end point.
+        pen = QPen(Qt.red, 6)
+        painter.setPen(pen)
+        painter.drawPoint(300, 200)
+        painter.setPen(QPen(Qt.black))
+        painter.drawText(220, 220, "(300, 200)")
+        painter.end()
+        label = QLabel()
+        label.setPixmap(canvas)
+        self.setCentralWidget(label)
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+app.exec()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Run this and you'll see a blue line drawn from near the top-left corner of the canvas down to a point lower and to the right. The red dots and labels mark each endpoint, making it clear that &lt;code&gt;(10, 10)&lt;/code&gt; is near the top-left and &lt;code&gt;(300, 200)&lt;/code&gt; is toward the bottom-right.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="QPainter coordinates with annotated points" src="https://www.pythonguis.com/feeds/coordinates-annotated.png" /&gt;&lt;/p&gt;
+&lt;p&gt;This is the expected behavior &amp;mdash; the y-axis points downward.&lt;/p&gt;
+&lt;h2 id="why-does-it-work-this-way"&gt;Why does it work this way?&lt;/h2&gt;
+&lt;p&gt;Screen coordinate systems with the origin at the top-left are a convention inherited from early computer displays, where the electron beam in a CRT monitor scanned from the top-left of the screen, line by line, downward. This convention carried forward into virtually all modern windowing and graphics systems, including Qt.&lt;/p&gt;
+&lt;h2 id="converting-from-mathematical-coordinates"&gt;Converting from mathematical coordinates&lt;/h2&gt;
+&lt;p&gt;If you're working with data that uses standard mathematical coordinates (origin at the bottom-left, y increasing upward), you'll need to convert the y values before drawing. The formula is straightforward:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;y_screen = height - 1 - y_math
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Where:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;y_screen&lt;/code&gt; is the y coordinate QPainter expects (origin at top-left).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;y_math&lt;/code&gt; is the y coordinate in standard math notation (origin at bottom-left).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;height&lt;/code&gt; is the height of your drawing surface in pixels.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The &lt;code&gt;- 1&lt;/code&gt; is there because pixel coordinates are zero-indexed. A &lt;code&gt;QPixmap&lt;/code&gt; with a height of 300 has valid y coordinates from 0 to 299.&lt;/p&gt;
+&lt;p&gt;Let's say you have a canvas that's 300 pixels tall, and you want to draw a line from the mathematical point &lt;code&gt;(10, 10)&lt;/code&gt; to &lt;code&gt;(300, 200)&lt;/code&gt; as if the origin were at the bottom-left. You'd convert each y coordinate:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;height = 300
+# Mathematical coordinates.
+x1, y1_math = 10, 10
+x2, y2_math = 300, 200
+# Convert y values for screen drawing.
+y1_screen = height - 1 - y1_math  # 300 - 1 - 10 = 289
+y2_screen = height - 1 - y2_math  # 300 - 1 - 200 = 99
+painter.drawLine(x1, y1_screen, x2, y2_screen)
+# Equivalent to: painter.drawLine(10, 289, 300, 99)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Now the line will go from near the &lt;em&gt;bottom&lt;/em&gt;-left upward to the right &amp;mdash; just like you'd expect on a math plot.&lt;/p&gt;
+&lt;h2 id="a-helper-function-for-coordinate-conversion"&gt;A helper function for coordinate conversion&lt;/h2&gt;
+&lt;p&gt;If you're doing a lot of drawing with mathematical coordinates, a small helper function keeps things tidy:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;def math_to_screen(x, y, height):
+    """Convert mathematical (bottom-left origin) coordinates
+    to screen (top-left origin) coordinates."""
+    return x, height - 1 - y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;You can then use it like this:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;x1, y1 = math_to_screen(10, 10, canvas_height)
+x2, y2 = math_to_screen(300, 200, canvas_height)
+painter.drawLine(x1, y1, x2, y2)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h2 id="comparing-both-coordinate-systems-side-by-side"&gt;Comparing both coordinate systems side by side&lt;/h2&gt;
+&lt;p&gt;This complete example draws the same line using both coordinate systems, so you can see the difference clearly. The left canvas uses QPainter's native coordinates (origin top-left), and the right canvas converts from mathematical coordinates (origin bottom-left).&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;import sys
+from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QPixmap, QPainter, QPen, QFont
+from PyQt6.QtWidgets import (
+    QApplication, QLabel, QMainWindow, QHBoxLayout, QVBoxLayout, QWidget,
+)
+def math_to_screen(x, y, height):
+    """Convert mathematical (bottom-left origin) coordinates
+    to screen (top-left origin) coordinates."""
+    return x, height - 1 - y
+def draw_annotated_line(canvas, x1, y1, x2, y2, label_start, label_end):
+    """Draw a line on a QPixmap with annotated endpoints."""
+    painter = QPainter(canvas)
+    # Draw the line.
+    pen = QPen(Qt.blue, 2)
+    painter.setPen(pen)
+    painter.drawLine(x1, y1, x2, y2)
+    # Draw and label the start point.
+    painter.setPen(QPen(Qt.red, 6))
+    painter.drawPoint(x1, y1)
+    painter.setPen(QPen(Qt.black))
+    painter.setFont(QFont("Arial", 9))
+    painter.drawText(x1 + 8, y1 + 5, label_start)
+    # Draw and label the end point.
+    painter.setPen(QPen(Qt.red, 6))
+    painter.drawPoint(x2, y2)
+    painter.setPen(QPen(Qt.black))
+    painter.drawText(x2 - 80, y2 + 20, label_end)
+    painter.end()
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Coordinate System Comparison")
+        canvas_width = 350
+        canvas_height = 300
+        # --- Left canvas: native QPainter coordinates ---
+        canvas_native = QPixmap(canvas_width, canvas_height)
+        canvas_native.fill(Qt.white)
+        draw_annotated_line(
+            canvas_native,
+            10, 10, 300, 200,
+            "(10, 10)", "(300, 200)",
+        )
+        label_native = QLabel()
+        label_native.setPixmap(canvas_native)
+        title_native = QLabel("Screen coordinates\n(origin top-left)")
+        title_native.setAlignment(Qt.AlignCenter)
+        title_native.setStyleSheet("font-weight: bold;")
+        left_layout = QVBoxLayout()
+        left_layout.addWidget(title_native)
+        left_layout.addWidget(label_native)
+        # --- Right canvas: mathematical coordinates converted ---
+        canvas_math = QPixmap(canvas_width, canvas_height)
+        canvas_math.fill(Qt.white)
+        sx1, sy1 = math_to_screen(10, 10, canvas_height)
+        sx2, sy2 = math_to_screen(300, 200, canvas_height)
+        draw_annotated_line(
+            canvas_math,
+            sx1, sy1, sx2, sy2,
+            f"math(10,10) &amp;rarr; screen({sx1},{sy1})",
+            f"math(300,200) &amp;rarr; screen({sx2},{sy2})",
+        )
+        label_math = QLabel()
+        label_math.setPixmap(canvas_math)
+        title_math = QLabel("Math coordinates converted\n(origin bottom-left)")
+        title_math.setAlignment(Qt.AlignCenter)
+        title_math.setStyleSheet("font-weight: bold;")
+        right_layout = QVBoxLayout()
+        right_layout.addWidget(title_math)
+        right_layout.addWidget(label_math)
+        # --- Combine both sides ---
+        main_layout = QHBoxLayout()
+        main_layout.addLayout(left_layout)
+        main_layout.addLayout(right_layout)
+        container = QWidget()
+        container.setLayout(main_layout)
+        self.setCentralWidget(container)
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+app.exec()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;When you run this, you'll see two canvases side by side. On the left, the line slopes downward from the top-left, which is what QPainter naturally produces. On the right, the same mathematical coordinates have been converted, so the line slopes upward from the bottom-left &amp;mdash; matching what you'd see on a standard math plot.&lt;/p&gt;
+&lt;h2 id="drawing-axes-to-orient-yourself"&gt;Drawing axes to orient yourself&lt;/h2&gt;
+&lt;p&gt;When you're experimenting with coordinates, it can help to draw a simple set of axes on your canvas. Here's a quick helper that draws x and y axes with the origin marked:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;import sys
+from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QPixmap, QPainter, QPen, QFont
+from PyQt6.QtWidgets import QApplication, QLabel, QMainWindow
+def draw_axes(painter, width, height):
+    """Draw simple x and y axes with labels."""
+    painter.setPen(QPen(Qt.gray, 1, Qt.DashLine))
+    # X-axis along the top (y=0).
+    painter.drawLine(0, 0, width - 1, 0)
+    # Y-axis along the left (x=0).
+    painter.drawLine(0, 0, 0, height - 1)
+    # Label the origin.
+    painter.setPen(QPen(Qt.darkGray))
+    painter.setFont(QFont("Arial", 8))
+    painter.drawText(5, 15, "(0, 0)")
+    # Label the x direction.
+    painter.drawText(width - 60, 15, f"x &amp;rarr; ({width - 1})")
+    # Label the y direction.
+    painter.save()
+    painter.translate(15, height - 10)
+    painter.drawText(0, 0, f"y &amp;darr; ({height - 1})")
+    painter.restore()
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("QPainter Axes")
+        canvas_width = 400
+        canvas_height = 300
+        canvas = QPixmap(canvas_width, canvas_height)
+        canvas.fill(Qt.white)
+        painter = QPainter(canvas)
+        draw_axes(painter, canvas_width, canvas_height)
+        # Draw some points to see where they land.
+        points = [
+            (50, 50),
+            (200, 150),
+            (350, 250),
+            (350, 50),
+            (50, 250),
+        ]
+        painter.setPen(QPen(Qt.red, 6))
+        for x, y in points:
+            painter.drawPoint(x, y)
+        painter.setPen(QPen(Qt.black))
+        painter.setFont(QFont("Arial", 9))
+        for x, y in points:
+            painter.drawText(x + 6, y - 6, f"({x}, {y})")
+        painter.end()
+        label = QLabel()
+        label.setPixmap(canvas)
+        self.setCentralWidget(label)
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+app.exec()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;This draws the axes along the top and left edges of the canvas and plots several points with their coordinates labeled. It's a great way to build intuition about where things will appear.&lt;/p&gt;
+&lt;h2 id="valid-coordinate-ranges"&gt;Valid coordinate ranges&lt;/h2&gt;
+&lt;p&gt;One more thing to keep in mind: pixel coordinates on a &lt;code&gt;QPixmap&lt;/code&gt; are zero-indexed. If you create a pixmap with:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;canvas = QPixmap(400, 300)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Then the valid coordinate ranges are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;x&lt;/strong&gt;: 0 to 399 (that's &lt;code&gt;width - 1&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;y&lt;/strong&gt;: 0 to 299 (that's &lt;code&gt;height - 1&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Drawing outside these ranges won't cause an error, but anything beyond the edges simply won't be visible.&lt;/p&gt;
+&lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
+&lt;p&gt;The QPainter coordinate system places &lt;code&gt;(0, 0)&lt;/code&gt; at the top-left of the drawing surface, with x increasing to the right and y increasing downward. This is standard across virtually all screen-based graphics systems.&lt;/p&gt;
+&lt;p&gt;If you need to work with mathematical coordinates where &lt;code&gt;(0, 0)&lt;/code&gt; is at the bottom-left and y increases upward, you can convert using the formula:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;y_screen = height - 1 - y_math
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Once you've internalized this, drawing with QPainter becomes predictable. When in doubt, drop some annotated points on your canvas &amp;mdash; seeing the coordinates labeled right next to the dots is the fastest way to confirm everything is landing where you expect.&lt;/p&gt;
+&lt;p&gt;For more details on Qt's coordinate system, take a look at the &lt;a href="https://doc.qt.io/qt-5/coordsys.html"&gt;official Qt coordinate system documentation&lt;/a&gt;.&lt;/p&gt;
+            &lt;p&gt;For an in-depth guide to building Python GUIs with PyQt6 see my book, &lt;a href="https://www.pythonguis.com/pyqt6-book/"&gt;Create GUI Applications with Python &amp;amp; Qt6.&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">1d0b91e76592607d254d18105e187c2ae8efe48691101419906769c2627c8f88</guid>
+      <pubDate>Wed, 02 Sep 2026 06:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Mark Dufour: Shed Skin restricted-Python-to-C++ compiler v0.9.13 released - Planet Python</title>
+      <link>http://shed-skin.blogspot.com/2026/09/shed-skin-restricted-python-to-c.html</link>
+      <description>&lt;p&gt;I have just released &lt;a href="https://github.com/shedskin/shedskin/releases/tag/v0.9.13"&gt;version 0.9.13&lt;/a&gt; of &lt;a href="https://github.com/shedskin/shedskin"&gt;Shed Skin&lt;/a&gt;, a restricted-python to C++ transpiler. Shed Skin allows one to effectively convert (or transpile) pure Python code to highly optimized machine code. This comes at the cost though of having to conform to a seriously restricted subset of Python features/libraries. Programs currently also cannot be too large, although it is possible to generate extension modules, that can be used in larger programs.
+&lt;p&gt; The following screenshot is of a &lt;a href="https://github.com/shedskin/shedskin/tree/main/examples/doom"&gt;DOOM engine&lt;/a&gt;, that becomes more than 30 times faster after transpilation. The engine is compiled with Shed Skin, then imported in a larger program that uses Pygame for the UI (see also a &lt;a href="https://www.youtube.com/watch?v=171AQx7l43s"&gt;before-after video&lt;/a&gt;).
+  &lt;div class="separator"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZf4Sb2zkaEg1_jinY3n0dy113nTc18kPAjxoAbUyvVXHrsFY18QsNs7Q7IdOzt6rfDIcqaUz50iP-ZCbfzRidbgigeQqQRMbRv1V-0MLPo0VfA9g365Th6aBw0ccK9_1UNMzpgSjfb-FPmKMyuOYKe-LFzuwMDQUrI5_gvYYuDoE_dqMThyphenhyphenZ5tQ/s1201/doom.png"&gt;&lt;img alt="" border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZf4Sb2zkaEg1_jinY3n0dy113nTc18kPAjxoAbUyvVXHrsFY18QsNs7Q7IdOzt6rfDIcqaUz50iP-ZCbfzRidbgigeQqQRMbRv1V-0MLPo0VfA9g365Th6aBw0ccK9_1UNMzpgSjfb-FPmKMyuOYKe-LFzuwMDQUrI5_gvYYuDoE_dqMThyphenhyphenZ5tQ/s320/doom.png" width="320" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Version 0.9.13 is the first version that was heavily improved by the use of AI (more specifically, Claude - thanks to Shakeeb for starting this). It was able to spot (and fix) many bugs, especially in the C++ backend, but also test gaps. It also helped to add support for many missing features in Python 3.15. We are now actually pretty close to full compatibility there, at least with regards to the supported modules and everything that is compatible with Shed Skin (no os.walk yet, for example, as it uses heterogenous tuples of length &gt; 2, something we may fix for 0.9.14).
+&lt;p&gt;The use of AI should make it much easier to contribute as well. For example, if your program doesn't work, AI can minimize it and produce a useful bug report to submit to the project. It can even start to try and fix the problem, create new tests and so on. Or otherwise look for gaps/bugs to work on.&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">516acc74136917a4047abfd4cbfb5c1d5c5dffd8ca89489a9f674157144d5f99</guid>
+      <pubDate>Wed, 02 Sep 2026 00:16:44 +0000</pubDate>
+    </item>
+    <item>
+      <title>Graham Dumpleton: Recording calls with wrapture - Planet Python</title>
+      <link>https://grahamdumpleton.me/posts/2026/09/recording-calls-with-wrapture/</link>
+      <description>&lt;p&gt;In &lt;a href="https://grahamdumpleton.me/posts/2026/09/unit-testing-with-wrapture/"&gt;unit testing with wrapture&lt;/a&gt; the tests leaned on a timeline and a tape to assert on what happened, and I skipped over what those actually are. This post is about the recording side of wrapture: what gets recorded, what one event holds, how a test reads the record back, and the whole-tape views that answer questions about the flow between calls rather than about any one of them.&lt;/p&gt;
+&lt;p&gt;The example is a resource leak, because it is the kind of bug the recording model was made for. Code that acquires a connection has to release it on every path out: the normal return, the early return, and the exception. The path that forgets is the one nobody looks at, and it does not fail. Nothing raises, nothing returns the wrong value, the test passes, and the pool runs dry a week later in production. The failure is an absence, and asserting on an absence needs a record of what did happen, on the real objects, including objects minted mid-call that the test never held.&lt;/p&gt;
+&lt;h2&gt;The code under test&lt;/h2&gt;
+&lt;p&gt;A stand-in for any pooled resource. &lt;code&gt;Database.connect()&lt;/code&gt; mints a &lt;code&gt;Connection&lt;/code&gt;, and a connection answers queries until &lt;code&gt;close()&lt;/code&gt; sets its &lt;code&gt;closed&lt;/code&gt; flag:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;class Connection:
+    def __init__(self, number):
+        self.number = number
+        self.closed = False
+    def execute(self, sql):
+        if self.closed:
+            raise RuntimeError(&amp;quot;connection is closed&amp;quot;)
+        return [(1, &amp;quot;widget&amp;quot;)] if &amp;quot;id = 1&amp;quot; in sql else []
+    def close(self):
+        self.closed = True
+    def __repr__(self):
+        return f&amp;quot;&amp;lt;Connection {self.number}&amp;gt;&amp;quot;
+class Database:
+    def __init__(self):
+        self.issued = 0
+    def connect(self):
+        self.issued += 1
+        return Connection(self.issued)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The repository is where the bug lives. &lt;code&gt;count()&lt;/code&gt; releases in a &lt;code&gt;finally&lt;/code&gt;, so it is safe on every path. &lt;code&gt;find()&lt;/code&gt; releases only when a row was found; the not-found early return leaks its connection:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;class Repository:
+    def __init__(self, database):
+        self.database = database
+    def count(self, table):
+        connection = self.database.connect()
+        try:
+            return len(connection.execute(f&amp;quot;SELECT * FROM {table}&amp;quot;))
+        finally:
+            connection.close()
+    def find(self, table, key):
+        connection = self.database.connect()
+        rows = connection.execute(f&amp;quot;SELECT * FROM {table} WHERE id = {key}&amp;quot;)
+        if not rows:
+            return None
+        connection.close()
+        return rows[0]
+def report(repository, keys):
+    found = [repository.find(&amp;quot;products&amp;quot;, key) for key in keys]
+    return repository.count(&amp;quot;products&amp;quot;), [row for row in found if row]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Running &lt;code&gt;report(Repository(Database()), [1, 2])&lt;/code&gt; returns &lt;code&gt;(0, [(1, 'widget')])&lt;/code&gt;, which is correct. Nothing about that result says a connection was left open.&lt;/p&gt;
+&lt;p&gt;The usual way to test this is a hand-written fake &lt;code&gt;Database&lt;/code&gt; whose &lt;code&gt;connect()&lt;/code&gt; appends to a list, with connections that flip a flag, and a test that walks the list. It works, but it tests a substitute. The real classes never run, the fake has to be kept in step with them, and every acquiring class in the codebase needs its own. The record you want is of the real calls.&lt;/p&gt;
+&lt;h2&gt;The timeline and the tape&lt;/h2&gt;
+&lt;p&gt;Bind &lt;code&gt;connect&lt;/code&gt; on &lt;code&gt;Database&lt;/code&gt; and &lt;code&gt;close&lt;/code&gt; on &lt;code&gt;Connection&lt;/code&gt;, and record both onto one tape. Neither binding has any behaviour configured, so they observe and nothing else:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;connect = wrapture.binding(Database, &amp;quot;connect&amp;quot;)
+close = wrapture.binding(Connection, &amp;quot;close&amp;quot;)
+with wrapture.timeline(connect, close) as tape:
+    report(Repository(Database()), [1, 2])
+print(tape.tree())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;__main__:Database.connect()  -&amp;gt; &amp;lt;Connection 1&amp;gt;
+__main__:Connection.close()  -&amp;gt; None
+__main__:Database.connect()  -&amp;gt; &amp;lt;Connection 2&amp;gt;
+__main__:Database.connect()  -&amp;gt; &amp;lt;Connection 3&amp;gt;
+__main__:Connection.close()  -&amp;gt; None
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Three acquisitions, two releases, and reading down the tape you can already see which one has no partner.&lt;/p&gt;
+&lt;p&gt;The two words are two views of one thing. The timeline is the scope: &lt;code&gt;with wrapture.timeline(...)&lt;/code&gt; opens it, the bindings handed to it are applied on entry and removed on exit, and while it is open every call through every applied binding records an event. The tape is what the scope holds. Bindings applied by other means, a fixture or an outer &lt;code&gt;with&lt;/code&gt;, record onto an open tape as well, and a binding applied with no timeline open records nothing and costs almost nothing beyond wrapt's own dispatch, so leaving bindings applied and only occasionally recording is a supported pattern rather than a mistake.&lt;/p&gt;
+&lt;p&gt;Notice that &lt;code&gt;close&lt;/code&gt; is bound on the &lt;code&gt;Connection&lt;/code&gt; class, not on any connection object. The connections do not exist when the test starts; &lt;code&gt;connect()&lt;/code&gt; mints them mid-call. A binding on the class wraps the method for every instance, present and future, which is exactly what covers objects a factory hands out. A mock injected through a seam cannot see those objects at all.&lt;/p&gt;
+&lt;h2&gt;What one event holds&lt;/h2&gt;
+&lt;p&gt;Each call through a binding inside the scope records one event, and an event is a good deal richer than a mock's call record. The fields a test typically reads are &lt;code&gt;path&lt;/code&gt;, the fully qualified location in &lt;code&gt;module:qualname&lt;/code&gt; form; &lt;code&gt;instance&lt;/code&gt;, the object the method was called on; &lt;code&gt;arguments&lt;/code&gt;, the call normalised against the real signature with defaults applied, so &lt;code&gt;charge(500)&lt;/code&gt; and &lt;code&gt;charge(amount=500)&lt;/code&gt; record identically; &lt;code&gt;result&lt;/code&gt;, the real return value, or &lt;code&gt;exception&lt;/code&gt; when the call raised instead; and &lt;code&gt;seq&lt;/code&gt;, &lt;code&gt;parent_id&lt;/code&gt; and &lt;code&gt;depth&lt;/code&gt;, which place the event in the call tree. There are timings too, &lt;code&gt;started&lt;/code&gt; and &lt;code&gt;duration&lt;/code&gt;, with recording's own bookkeeping excluded from the figure.&lt;/p&gt;
+&lt;p&gt;Because the values are real, they can be compared across events. A &lt;code&gt;connect&lt;/code&gt; event's &lt;code&gt;result&lt;/code&gt; is the connection it minted, and a &lt;code&gt;close&lt;/code&gt; event's &lt;code&gt;instance&lt;/code&gt; is the connection it was called on, so the leaked connections are the difference between the two sets:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;with wrapture.timeline(connect, close):
+    report(Repository(Database()), [1, 2])
+    acquired = {event.result for event in connect.events}
+    released = {event.instance for event in close.events}
+    print(acquired - released)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;{&amp;lt;Connection 2&amp;gt;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That is the whole question answered, and it needed nothing from the repository. Events record what actually flowed, behaviour included: a call stubbed with &lt;code&gt;returns()&lt;/code&gt; records the stubbed result, a failure injected with &lt;code&gt;raises()&lt;/code&gt; records that exception, and when &lt;code&gt;transforms_args()&lt;/code&gt; rewrote the arguments the event keeps both the arguments as the caller sent them and the ones the real method received, which no substitution-based tool can record because replacing a function discards what it would have been called with.&lt;/p&gt;
+&lt;h2&gt;Filters narrow, assertions conclude&lt;/h2&gt;
+&lt;p&gt;A binding's &lt;code&gt;events&lt;/code&gt; property is a filterable view over the tape for that one binding, and it works inside the &lt;code&gt;with&lt;/code&gt; block after the code under test has run. One naming rule holds across the whole package: a method whose name starts with &lt;code&gt;assert_&lt;/code&gt; raises immediately, one starting with &lt;code&gt;expect_&lt;/code&gt; declares and is checked when the scope closes, and everything else returns data. A mistyped assertion name is therefore an &lt;code&gt;AttributeError&lt;/code&gt; rather than the silent pass mock's &lt;code&gt;assert_calld_once&lt;/code&gt; was famous for.&lt;/p&gt;
+&lt;p&gt;Filters chain and never raise. &lt;code&gt;with_args(amount=500)&lt;/code&gt; keeps calls whose normalised arguments include the given values, &lt;code&gt;with_instance(obj)&lt;/code&gt; keeps calls made on exactly that object by identity, &lt;code&gt;raising(TimeoutError)&lt;/code&gt; keeps calls that raised, &lt;code&gt;returning(value)&lt;/code&gt; keeps calls that returned it, and &lt;code&gt;matching(predicate)&lt;/code&gt; is the escape hatch. Assertions then conclude: &lt;code&gt;assert_never()&lt;/code&gt;, &lt;code&gt;assert_once()&lt;/code&gt;, &lt;code&gt;assert_times(n)&lt;/code&gt;, &lt;code&gt;assert_at_least(n)&lt;/code&gt; and &lt;code&gt;assert_at_most(n)&lt;/code&gt;. Each returns the log on success so a passing assertion can keep chaining, and each prints the events it looked at on failure. Asserting three closes when there were two gives:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;AssertionError: expected exactly 3 event(s), got 2
+&amp;lt;EventLog __main__:Connection.close: 2 event(s)&amp;gt;
+    __main__:Connection.close()
+    __main__:Connection.close()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;An assertion is written where it runs. An expectation is the same claim declared on the binding up front, before the run, and verified when the timeline exits:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;close = wrapture.binding(Connection, &amp;quot;close&amp;quot;).expect_times(3)
+with wrapture.timeline(connect, close):
+    report(Repository(Database()), [1, 2])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;ExpectationNotMetError: declared expectation on __main__:Connection.close not met: expected exactly 3 event(s), got 2
+&amp;lt;EventLog __main__:Connection.close: 2 event(s)&amp;gt;
+    __main__:Connection.close()
+    __main__:Connection.close()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;ExpectationNotMetError&lt;/code&gt; derives from &lt;code&gt;AssertionError&lt;/code&gt;, so test frameworks report it as a failure. Expectations read as a contract at the top of the test with the body free of bookkeeping, and an expectation with nothing recording is an error rather than a pass. Verification is skipped when the block itself raised, since the in-flight failure is the real cause and a verification error on top would bury it.&lt;/p&gt;
+&lt;h2&gt;The tree names the culprit&lt;/h2&gt;
+&lt;p&gt;Counting says something leaked, and pairing says what. To say who, add the repository methods to the timeline. The tape then nests each acquire and release under the method that made it, and &lt;code&gt;tape.children_of()&lt;/code&gt; walks the tree, so a root whose children include a &lt;code&gt;connect&lt;/code&gt; but no &lt;code&gt;close&lt;/code&gt; names itself:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;find = wrapture.binding(Repository, &amp;quot;find&amp;quot;)
+count = wrapture.binding(Repository, &amp;quot;count&amp;quot;)
+with wrapture.timeline(find, count, connect, close) as tape:
+    report(Repository(Database()), [1, 2])
+    print(tape.tree())
+    for caller in tape.roots():
+        paths = [child.path for child in tape.children_of(caller)]
+        if &amp;quot;__main__:Connection.close&amp;quot; not in paths:
+            print(&amp;quot;leaked by&amp;quot;, caller)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;__main__:Repository.find(table='products', key=1)  -&amp;gt; (1, 'widget')
+  __main__:Database.connect()  -&amp;gt; &amp;lt;Connection 1&amp;gt;
+  __main__:Connection.close()  -&amp;gt; None
+__main__:Repository.find(table='products', key=2)  -&amp;gt; None
+  __main__:Database.connect()  -&amp;gt; &amp;lt;Connection 2&amp;gt;
+__main__:Repository.count(table='products')  -&amp;gt; 0
+  __main__:Database.connect()  -&amp;gt; &amp;lt;Connection 3&amp;gt;
+  __main__:Connection.close()  -&amp;gt; None
+leaked by __main__:Repository.find(table='products', key=2)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The tree shows the bug as it happened. &lt;code&gt;find()&lt;/code&gt; with a key that matched released its connection, &lt;code&gt;find()&lt;/code&gt; with a key that did not match never called &lt;code&gt;close()&lt;/code&gt;, and &lt;code&gt;count()&lt;/code&gt; released on the way out of its &lt;code&gt;finally&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;When the method is long, or acquires in several places, you want the line rather than the method. Stack capture on the acquire binding records the calling frame with each event, priced per binding so only the acquire pays for it:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;connect = wrapture.binding(Database, &amp;quot;connect&amp;quot;, stack=&amp;quot;caller&amp;quot;)
+with wrapture.timeline(connect, close):
+    report(Repository(Database()), [1, 2])
+    released = {event.instance for event in close.events}
+    for event in connect.events:
+        if event.result not in released:
+            frame = wrapture.stack_frames(event.stack)[0]
+            print(f&amp;quot;{event.result} acquired at line {frame.lineno} in {frame.function}, never released&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;Connection 2&amp;gt; acquired at line 40 in Repository.find, never released
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Order across bindings&lt;/h2&gt;
+&lt;p&gt;Per-binding logs answer questions about one call site; the tape answers questions about the flow between them. &lt;code&gt;tape.assert_order(connect, close)&lt;/code&gt; is a subsequence check across any bindings: other events may appear before, between and after, and only the relative order of the named bindings' events matters. A step can also be a filtered log, which is how to say which call, so &lt;code&gt;tape.assert_order(charge.events.raising(TimeoutError), refund)&lt;/code&gt; reads as &amp;quot;the refund came after the charge that timed out&amp;quot;. &lt;code&gt;consecutive=True&lt;/code&gt; requires the steps to match a consecutive run with nothing of those bindings' in between, and &lt;code&gt;exact=True&lt;/code&gt; requires those bindings' events to be exactly the steps, which are mock's &lt;code&gt;assert_has_calls&lt;/code&gt; and &lt;code&gt;mock_calls ==&lt;/code&gt; respectively, except that they work across bindings instead of within one mock.&lt;/p&gt;
+&lt;p&gt;On failure the message names where the walk stalled and prints the actual timeline, which reads far better than a list diff. Asserting a close before a connect on a run that only leaked:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;AssertionError: expected order not satisfied; stalled waiting for __main__:Database.connect (position 2 of 2)
+  actual timeline:
+    __main__:Repository.find(table='products', key=2)
+    __main__:Database.connect()
+    __main__:Repository.count(table='products')
+    __main__:Database.connect()
+    __main__:Connection.close()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Scoping instead of resetting&lt;/h2&gt;
+&lt;p&gt;A tape is never cleared. Where a mock suite reaches for &lt;code&gt;reset_mock()&lt;/code&gt; to discard setup calls before the act step, wrapture opens the timeline around the part that counts. Timelines nest, and an inner &lt;code&gt;timeline()&lt;/code&gt; with no arguments records only what happens inside it while the outer one keeps the whole run:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;with wrapture.timeline(connect, close) as whole:
+    repository = Repository(Database())
+    repository.count(&amp;quot;products&amp;quot;)                # lands on `whole` only
+    with wrapture.timeline() as act:
+        repository.find(&amp;quot;products&amp;quot;, 1)
+        connect.events.assert_once()            # the act step alone
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Inside the inner block &lt;code&gt;connect.events&lt;/code&gt; reads the innermost tape, so the count is one even though the outer tape holds four events. The same scoping is how a phased test keeps each phase's counts separate, one timeline per phase, with the same bindings applied on entry and removed on exit each time. The second phase can then state &lt;code&gt;assert_never()&lt;/code&gt; outright, where one cumulative tape could only say the count is still one.&lt;/p&gt;
+&lt;h2&gt;Messages and phases as events&lt;/h2&gt;
+&lt;p&gt;Calls are not the only thing that records. An attribute binding records reads and writes of an attribute as &lt;code&gt;get&lt;/code&gt; and &lt;code&gt;set&lt;/code&gt; events on the same tape, which for this example means the &lt;code&gt;closed&lt;/code&gt; flag can be watched directly rather than inferred from &lt;code&gt;close()&lt;/code&gt; being called. That is a subject for a later post. Two other event producers are worth knowing about now, because they change what a test can pin an assertion to.&lt;/p&gt;
+&lt;p&gt;The first is log capture. &lt;code&gt;capture_logs()&lt;/code&gt; records standard library logging onto the tape as events of kind &lt;code&gt;&amp;quot;log&amp;quot;&lt;/code&gt;, selected by logger name pattern and level, and it applies like a binding so &lt;code&gt;timeline()&lt;/code&gt; accepts it alongside them. Give the repository a warning when nothing is found, and the message lands inside the call that logged it:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;logs = wrapture.capture_logs(&amp;quot;myapp.*&amp;quot;)
+with wrapture.timeline(find, connect, close, logs) as tape:
+    report(Repository(Database()), [1, 2])
+    print(tape.tree())
+    warning = logs.events.at_level(&amp;quot;WARNING&amp;quot;).with_message(&amp;quot;*no row*&amp;quot;).assert_once().first
+    assert tape.parent_of(warning) is find.events.with_args(key=2).first
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;__main__:Repository.find(table='products', key=1)  -&amp;gt; (1, 'widget')
+  __main__:Database.connect()  -&amp;gt; &amp;lt;Connection 1&amp;gt;
+  __main__:Connection.close()  -&amp;gt; None
+__main__:Repository.find(table='products', key=2)  -&amp;gt; None
+  __main__:Database.connect()  -&amp;gt; &amp;lt;Connection 2&amp;gt;
+  log myapp.repo WARNING 'no row in products with id 2'
+__main__:Database.connect()  -&amp;gt; &amp;lt;Connection 3&amp;gt;
+__main__:Connection.close()  -&amp;gt; None
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That last assertion is the one pytest's &lt;code&gt;caplog&lt;/code&gt; has no words for: the warning was logged by this call, not merely somewhere during the test. Capture sits at &lt;code&gt;Logger.handle&lt;/code&gt;, so it hears each record once on the logger that emitted it, before propagation and regardless of handler configuration, and nothing the application configured is touched.&lt;/p&gt;
+&lt;p&gt;The second is a block. &lt;code&gt;wrapture.block(name)&lt;/code&gt; is a context manager the code, or the test, uses to declare a stretch of code as one event, with everything recorded inside it nested underneath. In a test body it names the phases of an integration test so that &amp;quot;the events during the second request&amp;quot; stops being an exercise in parent-chasing:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;with wrapture.timeline(connect, close) as tape:
+    repository = Repository(Database())
+    with wrapture.block(&amp;quot;lookups&amp;quot;):
+        repository.find(&amp;quot;products&amp;quot;, 1)
+        repository.find(&amp;quot;products&amp;quot;, 2)
+    with wrapture.block(&amp;quot;summary&amp;quot;):
+        repository.count(&amp;quot;products&amp;quot;)
+    lookups = tape.blocks(&amp;quot;lookups&amp;quot;).assert_once().first
+    tape.within(lookups).for_binding(close).assert_once()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;block: lookups
+  __main__:Database.connect()  -&amp;gt; &amp;lt;Connection 1&amp;gt;
+  __main__:Connection.close()  -&amp;gt; None
+  __main__:Database.connect()  -&amp;gt; &amp;lt;Connection 2&amp;gt;
+block: summary
+  __main__:Database.connect()  -&amp;gt; &amp;lt;Connection 3&amp;gt;
+  __main__:Connection.close()  -&amp;gt; None
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;tape.within(event)&lt;/code&gt; scopes the whole query surface to one block's contents, so an ordering assertion on the view never sees an event outside it. In application code the same marker is inert when nothing is listening, so it can stay in production code permanently, which is what makes the same block a span when the events are going to a tracing backend rather than a test.&lt;/p&gt;
+&lt;h2&gt;As a pytest test&lt;/h2&gt;
+&lt;p&gt;In a test the pairing becomes the assertion, and the failure message carries the leaked connections and where each was acquired. &lt;code&gt;close&lt;/code&gt; is given a declared expectation of at least one call, so a path that acquires nothing at all cannot pass by accident:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;def test_find_releases_its_connection():
+    connect = wrapture.binding(Database, &amp;quot;connect&amp;quot;, stack=&amp;quot;caller&amp;quot;)
+    close = wrapture.binding(Connection, &amp;quot;close&amp;quot;).expect_at_least(1)
+    with wrapture.timeline(connect, close):
+        report(Repository(Database()), [1, 2])
+        released = {event.instance for event in close.events}
+        leaked = [
+            (event.result, wrapture.stack_frames(event.stack)[0])
+            for event in connect.events
+            if event.result not in released
+        ]
+        assert not leaked, f&amp;quot;connections left open: {leaked}&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The test fails today, naming &lt;code&gt;&amp;lt;Connection 2&amp;gt;&lt;/code&gt; and the frame inside &lt;code&gt;find()&lt;/code&gt;. Fix the early return with a &lt;code&gt;finally&lt;/code&gt; and it passes. With the pytest plugin enabled the tape's tree is attached to the failure report as well, so the output shows what ran rather than only the assertion that tripped.&lt;/p&gt;
+&lt;h2&gt;What's next&lt;/h2&gt;
+&lt;p&gt;Everything in this post recorded real calls with the bindings doing nothing but watch. The next post is about the other direction, changing what a call does, and specifically about behaviour that changes over time as the code under test keeps calling, which is what retry logic and circuit breakers need from a test.&lt;/p&gt;</description>
+      <guid isPermaLink="false">d9e9c96943bb90320a9ab224639bbe1fdacdacfdc15fe81f23a5404eefb515b3</guid>
+      <pubDate>Tue, 01 Sep 2026 21:38:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>James Bennett: Boring Python: dependency management - Planet Python</title>
+      <link>https://www.b-list.org/weblog/2022/may/13/boring-python-dependencies/</link>
+      <description>&lt;p&gt;&lt;em&gt;This post has been significantly updated since it was originally written. The most recent update was in September 2026; a summary of what changed is at the&amp;nbsp;end.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This is the first in hopefully a series of posts I intend to write about how to build/manage/deploy/etc. Python applications in as boring a way as&amp;nbsp;possible.&lt;/p&gt;
+&lt;p&gt;So before I go any further, I want to be absolutely clear on what I mean by &amp;#8220;boring&amp;#8221;: I don&amp;#8217;t mean &amp;#8220;reliable&amp;#8221; or &amp;#8220;bug-free&amp;#8221; or &amp;#8220;no incidents&amp;#8221;. While there is some overlap, and some of the things I&amp;#8217;ll be recommending can help to reduce bugs, I also want to be clear: there will be bugs. There will be incidents where a feature or maybe an entire service is down. &amp;#8220;Boring&amp;#8221;, to me, is about the &lt;em&gt;sources&lt;/em&gt; of those incidents. It&amp;#8217;s difficult enough to manage your own code and the bugs and other problems that will inevitably pop up in it from time to time; you don&amp;#8217;t want to compound that by having bugs or other surprises coming from the tools and processes you use to build, manage, and deploy it. So when I call something &amp;#8220;boring&amp;#8221;, I mean it&amp;#8217;s unlikely to add another source of bugs and nasty surprises that cause a pager to go off at &lt;span class="caps"&gt;2AM&lt;/span&gt;; the pager &lt;em&gt;will&lt;/em&gt;, of course, eventually go off at &lt;span class="caps"&gt;2AM&lt;/span&gt;, but when it does you&amp;#8217;ll be able to feel reasonably confident (if that&amp;#8217;s the right word for such a situation) that the source of it was something in your own code that you can diagnose and&amp;nbsp;fix.&lt;/p&gt;
+&lt;p&gt;And so I&amp;#8217;m planning several posts exploring different aspects of making Python development boring (in this sense). But for this first installment, I&amp;#8217;ll be talking about one of the internet&amp;#8217;s favorite topics: managing&amp;nbsp;dependencies.&lt;/p&gt;
+&lt;p&gt;If you’re just interested in the end result, the process I recommend is pretty simple and can be found in the section titled “Putting it all together”. The rest of this post exists to explain, in as much detail as I can manage, all the things going on behind those simple-looking recommendations, and why I make those specific&amp;nbsp;recommendations.&lt;/p&gt;
+&lt;h2&gt;Python packaging: a brief&amp;nbsp;overview&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.b-list.org/weblog/2020/jan/05/packaging/"&gt;I&amp;#8217;ve written about this before&lt;/a&gt;, but to make sure it’s clear I want to do a quick&amp;nbsp;refresher.&lt;/p&gt;
+&lt;p&gt;As I see it, there are three basic aspects to &amp;#8220;packaging&amp;#8221;, and one of the difficult things about “Python packaging&amp;#8221; discussions is lack of clarity around which are being discussed. They&amp;nbsp;are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Given some working code, define and produce from it a distributable&amp;nbsp;artifact.&lt;/li&gt;
+&lt;li&gt;Given that someone has produced a distributable artifact, use it to cause the corresponding code to appear, in working form, somewhere&amp;nbsp;else.&lt;/li&gt;
+&lt;li&gt;Given the existence of potentially many separate projects or versions of projects each with their own independent and potentially-conflicting sets of dependencies, make it possible to work on and run more than one at a time, on the same&amp;nbsp;system.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Most of the actual remaining complexity in “Python packaging” today is concentrated in item (1), and even then only really kicks in if you’re packaging extensions written in non-Python&amp;nbsp;languages.&lt;/p&gt;
+&lt;p&gt;A lot of the &lt;em&gt;perceived&lt;/em&gt; complexity of “Python packaging” is due to its long history, evolving expectations over the course of that history, and the resulting pile of strata of different things people have come up with to try to suit the expectations of different&amp;nbsp;eras.&lt;/p&gt;
+&lt;p&gt;Much of the public grumbling and complaining about “Python packaging” these days is due to the lack of a single, standard first-party, all-in-one high-level tool to handle all aspects of packaging, and the proliferation of third-party tools to try to fill that&amp;nbsp;niche.&lt;/p&gt;
+&lt;p&gt;Finally, most of the meaningful work in Python packaging, for quite a while now, has been the unglamorous, underappreciated slog of people on mailing lists and discussion forums patiently working out what Python packaging really should look like and thoroughly specifying/standardizing it, but with the added thrill of all that having to occur in a way that doesn’t break things for the vast number of people relying on Python and its huge package ecosystem for their day-to-day&amp;nbsp;work.&lt;/p&gt;
+&lt;p&gt;To the extent that we now have a bunch of shiny fancy flashy third-party all-in-one packaging tools, it’s because of that heroic unsung work that’s been quietly going on for years. The fancy new tools get to be so fancy and flashy in large part because modern Python packaging has such strong foundations (and also because, unlike the pre-existing tools, the new ones don’t have to maintain compatibility with literal &lt;em&gt;decades&lt;/em&gt; of historical features and configuration options, all of which have been relied on, at some point, by&amp;nbsp;someone).&lt;/p&gt;
+&lt;p&gt;If I went into detail on everything I’d wind up with several posts’ worth of material, so let me just pick out a few things that I think are the most crucial underpinnings of modern Python&amp;nbsp;packaging:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The “wheel”&amp;nbsp;(&lt;code&gt;.whl&lt;/code&gt;) package format (&lt;a href="https://peps.python.org/pep-0427/"&gt;&lt;span class="caps"&gt;PEP&lt;/span&gt; 427&lt;/a&gt;), which turned Python package installation into a simple matter of unpacking an archive and moving files to their destinations. Any extension modules in other languages are already pre-compiled inside the package, and there is no install-time build step or scripting&amp;nbsp;hook.&lt;/li&gt;
+&lt;li&gt;The development of virtual environments, and the addition of a basic implementation to the Python standard library (as&amp;nbsp;the &lt;code&gt;venv&lt;/code&gt; module, &lt;a href="https://peps.python.org/pep-0405/"&gt;&lt;span class="caps"&gt;PEP&lt;/span&gt; 405&lt;/a&gt;). Virtual environments solve the “how do I have a bunch of projects at once” issue: they’re essentially lightweight Python workspaces that you can install packages into, isolated from each other and from the rest of the host&amp;nbsp;system.&lt;/li&gt;
+&lt;li&gt;The standardization of&amp;nbsp;the &lt;code&gt;pyproject.toml&lt;/code&gt; file as the place to record packaging configuration and metadata (&lt;a href="https://peps.python.org/pep-0621/"&gt;&lt;span class="caps"&gt;PEP&lt;/span&gt; 621&lt;/a&gt;). This allowed package authors to finally stop&amp;nbsp;writing &lt;code&gt;setup.py&lt;/code&gt; scripts (which were the main way to define Python packages for two decades) and start keeping packaging information in a single standard static file that can be read without executing any&amp;nbsp;code.&lt;/li&gt;
+&lt;li&gt;The standardization of&amp;nbsp;the &lt;code&gt;pylock.toml&lt;/code&gt; lock file format (&lt;a href="https://peps.python.org/pep-0751/"&gt;&lt;span class="caps"&gt;PEP&lt;/span&gt; 751&lt;/a&gt;). People had been trying to figure out a standard Python lock file format for a long time; every third-party tool had its own take on this, and people (like me) who tried to stick to first-party tools had to rely on a pile of hacks built on top of a feature&amp;nbsp;(&lt;code&gt;pip&lt;/code&gt; requirements files) never intended to support this functionality. Now there’s one single clear answer, and a lot of packaging tools have support for&amp;nbsp;it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Boring Python packaging: a&amp;nbsp;philosophy&lt;/h2&gt;
+&lt;p&gt;When I wrote the first version of this post, four years ago, I focused on defining a workflow that relied as much as possible on standard first-party (as in, included with Python itself) tooling. I recommended exactly one third-party tool, and only as an optional convenience; the functionality it provided could also be obtained from chaining together the right invocations of first-party&amp;nbsp;tooling.&lt;/p&gt;
+&lt;p&gt;That focus on first-party tooling was deliberate. As I wrote at the&amp;nbsp;time:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[The] core default tools I&amp;#8217;ve mentioned have all been around and stable for a long time, in software terms, at least — they&amp;#8217;re all over a decade old, and their end-user interfaces evolve &lt;em&gt;incredibly&lt;/em&gt; slowly, when they evolve at all. They&amp;#8217;re reliable. They&amp;#8217;re well-understood. That&amp;#8217;s exactly what I want and exactly what I&amp;nbsp;recommend.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This is in line with what I said at the start of this post about wanting things to be &lt;em&gt;boring&lt;/em&gt;. And my stance has not changed, but advances in the foundational standards of Python packaging do let me be a bit more flexible. So although I’m still going to be focused on first-party tools I’ll now point out a couple of places where I think it’s safe to use some of the hip and trendy new third-party tools if you want the added conveniences they&amp;nbsp;offer.&lt;/p&gt;
+&lt;p&gt;Also, I should note here that my use case for Python is deploying networked (primarily web) services, on servers. If you primarily use Python for, say, machine learning or data science, you are likely to already be a happy user of a completely different world of tools optimized for those use cases (in particular, for the much greater amount of non-Python code wrapped by/accessed through Python in those fields and for their different patterns of code reuse and sharing). Please continue using them! They suit your use case really well, and replacing them with my preferred tools and workflow would probably be a regression for&amp;nbsp;you.&lt;/p&gt;
+&lt;p&gt;Now, let’s get&amp;nbsp;started.&lt;/p&gt;
+&lt;h2&gt;Lock it&amp;nbsp;up&lt;/h2&gt;
+&lt;p&gt;The standard Python package manager&amp;nbsp;is &lt;code&gt;pip&lt;/code&gt;. And my eventual goal is to&amp;nbsp;invoke &lt;code&gt;pip install&lt;/code&gt; to, well, do what it says: install a bunch of Python packages. But how to&amp;nbsp;tell &lt;code&gt;pip&lt;/code&gt; &lt;em&gt;which&lt;/em&gt; packages to install? There are a couple of&amp;nbsp;options:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Passing a list of package names on the command&amp;nbsp;line: &lt;code&gt;pip install package1 package2 ...&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Passing a file containing a list of&amp;nbsp;packages: &lt;code&gt;pip install -r filename&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Historically, the second option was referred to as a “requirements file”, and by convention was generally&amp;nbsp;named &lt;code&gt;requirements.txt&lt;/code&gt;. Now that &lt;a href="https://peps.python.org/pep-0751/"&gt;&lt;span class="caps"&gt;PEP&lt;/span&gt; 751&lt;/a&gt; has defined a standard Python lock file format, and now&amp;nbsp;that &lt;code&gt;pip&lt;/code&gt; supports producing and consuming that standard lock file format, that’s the format I&amp;nbsp;recommend.&lt;/p&gt;
+&lt;p&gt;This prompts a question, though: since dependencies could already be specified as part of the metadata&amp;nbsp;in &lt;code&gt;pyproject.toml&lt;/code&gt;, why did we need another file format to record them? By way of an answer, consider a web application written using &lt;a href="https://www.djangoproject.com/"&gt;the Django web framework&lt;/a&gt;. You might think it’s simple enough to just declare Django as a dependency in&amp;nbsp;your &lt;code&gt;pyproject.toml&lt;/code&gt; file, like&amp;nbsp;so:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[project]&lt;/span&gt;
+&lt;span class="n"&gt;dependencies&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"Django"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;But if I create a new virtual environment and&amp;nbsp;run &lt;code&gt;pip install Django&lt;/code&gt; inside it, three packages get&amp;nbsp;installed:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;pip&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;Django
+Collecting&lt;span class="w"&gt; &lt;/span&gt;Django
+&lt;span class="w"&gt;  &lt;/span&gt;Using&lt;span class="w"&gt; &lt;/span&gt;cached&lt;span class="w"&gt; &lt;/span&gt;django-6.1-py3-none-any.whl.metadata&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.9&lt;span class="w"&gt; &lt;/span&gt;kB&lt;span class="o"&gt;)&lt;/span&gt;
+Collecting&lt;span class="w"&gt; &lt;/span&gt;asgiref&amp;gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.9.1&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;from&lt;span class="w"&gt; &lt;/span&gt;Django&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;Using&lt;span class="w"&gt; &lt;/span&gt;cached&lt;span class="w"&gt; &lt;/span&gt;asgiref-3.12.1-py3-none-any.whl.metadata&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;9&lt;/span&gt;.4&lt;span class="w"&gt; &lt;/span&gt;kB&lt;span class="o"&gt;)&lt;/span&gt;
+Collecting&lt;span class="w"&gt; &lt;/span&gt;sqlparse&amp;gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;.5.0&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;from&lt;span class="w"&gt; &lt;/span&gt;Django&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;Using&lt;span class="w"&gt; &lt;/span&gt;cached&lt;span class="w"&gt; &lt;/span&gt;sqlparse-0.6.0-py3-none-any.whl.metadata&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;6&lt;/span&gt;.0&lt;span class="w"&gt; &lt;/span&gt;kB&lt;span class="o"&gt;)&lt;/span&gt;
+Using&lt;span class="w"&gt; &lt;/span&gt;cached&lt;span class="w"&gt; &lt;/span&gt;django-6.1-py3-none-any.whl&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;8&lt;/span&gt;.4&lt;span class="w"&gt; &lt;/span&gt;MB&lt;span class="o"&gt;)&lt;/span&gt;
+Using&lt;span class="w"&gt; &lt;/span&gt;cached&lt;span class="w"&gt; &lt;/span&gt;asgiref-3.12.1-py3-none-any.whl&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;25&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;kB&lt;span class="o"&gt;)&lt;/span&gt;
+Using&lt;span class="w"&gt; &lt;/span&gt;cached&lt;span class="w"&gt; &lt;/span&gt;sqlparse-0.6.0-py3-none-any.whl&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;50&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;kB&lt;span class="o"&gt;)&lt;/span&gt;
+Installing&lt;span class="w"&gt; &lt;/span&gt;collected&lt;span class="w"&gt; &lt;/span&gt;packages:&lt;span class="w"&gt; &lt;/span&gt;sqlparse,&lt;span class="w"&gt; &lt;/span&gt;asgiref,&lt;span class="w"&gt; &lt;/span&gt;Django
+Successfully&lt;span class="w"&gt; &lt;/span&gt;installed&lt;span class="w"&gt; &lt;/span&gt;Django-6.1&lt;span class="w"&gt; &lt;/span&gt;asgiref-3.12.1&lt;span class="w"&gt; &lt;/span&gt;sqlparse-0.6.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And which &lt;em&gt;versions&lt;/em&gt; of those packages I get will depend on when I&amp;nbsp;run &lt;code&gt;pip install&lt;/code&gt;. Right now I get Django 6.1, but Django does frequent bug fix releases, so if I re-run&amp;nbsp;that &lt;code&gt;pip install&lt;/code&gt; in the future I’ll get Django 6.1.1, and further in the future I’ll get Django 6.1.2, and so on. If I test my application locally with the set of packages I installed today, and then deploy it to a server later&amp;nbsp;using &lt;code&gt;pip install&lt;/code&gt; to fetch dependencies, the deployment will very likely get a different set of packages than I used during development, which is a potential source of&amp;nbsp;problems.&lt;/p&gt;
+&lt;p&gt;So the key difference is that&amp;nbsp;the &lt;code&gt;pyproject.toml&lt;/code&gt; file typically specifies a list of direct dependencies, often with broad version constraints or none at all, while a lock file specifies an entire &lt;em&gt;environment&lt;/em&gt;, with all direct and transitive dependencies resolved and pinned to exact versions along with the expected checksums of the packages, to be reproduced as exactly as&amp;nbsp;possible.&lt;/p&gt;
+&lt;p&gt;There are two main approaches to generating a lock&amp;nbsp;file:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Create a virtual environment,&amp;nbsp;use &lt;code&gt;pip&lt;/code&gt; to install all the direct dependencies you care about, then&amp;nbsp;run &lt;code&gt;pip freeze&lt;/code&gt; to export the full resolved package list,&amp;nbsp;and &lt;code&gt;pip lock&lt;/code&gt; on that list to produce&amp;nbsp;a &lt;code&gt;pylock.toml&lt;/code&gt; lock file,&amp;nbsp;or&lt;/li&gt;
+&lt;li&gt;Use a third-party all-in-one packaging frontend which manages the local virtual environment and package syncing and lock file for&amp;nbsp;you.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Managing your local environment and producing your lock file is one of the areas where I think it’s generally &lt;span class="caps"&gt;OK&lt;/span&gt; to use a third-party tool. If something goes wrong with it, it might temporarily mess with your ability to get work done on your own computer, but that won’t break your actual deployed&amp;nbsp;application.&lt;/p&gt;
+&lt;p&gt;The hip and trendy third-party all-in-one tool these days is &lt;a href="https://docs.astral.sh/uv/"&gt;uv&lt;/a&gt;, which has its own tool-specific lock file format&amp;nbsp;(&lt;code&gt;uv.lock&lt;/code&gt;), but also has&amp;nbsp;a &lt;code&gt;uv export&lt;/code&gt; command &lt;a href="https://docs.astral.sh/uv/reference/cli/#uv-export"&gt;which can export to the&amp;nbsp;standard &lt;code&gt;pylock.toml&lt;/code&gt; format&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;My own personal preference, and the tool I use on my own projects, is &lt;a href="https://pdm-project.org/"&gt;&lt;span class="caps"&gt;PDM&lt;/span&gt;&lt;/a&gt;, which has a similar feature set&amp;nbsp;to &lt;code&gt;uv&lt;/code&gt;  and &lt;a href="https://pdm-project.org/en/latest/usage/lockfile/#export-locked-packages-to-alternative-formats"&gt;can export&amp;nbsp;to &lt;code&gt;pylock.toml&lt;/code&gt;&lt;/a&gt; from its own lock format, but &lt;a href="https://pdm-project.org/en/latest/usage/lockfile/#change-lock-file-format"&gt;also can just manage a project directly in&amp;nbsp;a &lt;code&gt;pylock.toml&lt;/code&gt; file&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As long as the tool you choose is one you and your team are all happy with, I think you can pick anything that can produce the standard lock file format and be &lt;span class="caps"&gt;OK&lt;/span&gt;. Also, you should probably automate the process of exporting the lock file(s), to ensure developers don’t have to remember how to manually do it. I personally like to include&amp;nbsp;a &lt;code&gt;Makefile&lt;/code&gt; in most projects, with a target specifically to refresh the lock file(s)&amp;nbsp;(&lt;code&gt;make lock&lt;/code&gt;, for example), but the idea is portable to a lot of task-automation tools, so it’s easy to make it work with whatever your team likes to&amp;nbsp;use.&lt;/p&gt;
+&lt;p&gt;I also want to point out here that if you’re deploying services written in Python, you &lt;em&gt;can&lt;/em&gt; build them as distributable packages and then install those packages to automatically pull their dependencies, rather than using a lock file. I just don’t recommend this, for a few&amp;nbsp;reasons:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The main convenience of distributable packages is that you can re-use them across multiple projects/services/etc. For example, you might have an auth setup you want to use in all your services, and build it as a package that can be installed by those services. When the thing you’re deploying &lt;em&gt;is&lt;/em&gt; the service, this is much less&amp;nbsp;important.&lt;/li&gt;
+&lt;li&gt;It was already extremely common in 2022 when I first wrote this post, and is even more common in 2026 as I rewrite it, that deployment of a Python service will consist of building some type of container and then pushing it to some type of container runtime/orchestration system, and that the manifest which defines that container will be version-controlled along with the service’s code. In which case it doesn’t make much sense to build a package from the code and then pull it into the container to be installed; just copy the source tree into the container, rather than adding extra steps for no&amp;nbsp;benefit.&lt;/li&gt;
+&lt;li&gt;Copying the source tree as-is to its destination without an intermediate trip through packaging avoids some potential issues, primarily around imports: a common error made by people building packages for the first time is relying&amp;#8212;often without realizing it!&amp;#8212;on the fact that in Python the current working directory is (usually) implicitly on the import path. As a result, they end up building packages that only “work” in the original local development environment with a specific working directory (&lt;a href="https://hynek.me/articles/testing-packaging/"&gt;the solution to this, if you’re curious, is to force your local development workflow to depend on the installability of your package&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Ultimately, what you want is to take a known-good, working environment from a developer’s machine, and reproduce exactly that environment elsewhere. And as I already mentioned above, that’s exactly what lock files are&amp;nbsp;for.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Getting&amp;nbsp;testy&lt;/h2&gt;
+&lt;p&gt;In addition to direct dependencies to run an application, it’s fairly common to have additional dependencies needed to run a test suite, linters, or other development and quality-control tasks. But there’s no need for a production deployment to have all those extra dependencies installed, and in general the less stuff you put in your production environment the fewer things you have that can go wrong, so I generally like to install those only when the test suite (or other task requiring extra dependencies) is actually going to be&amp;nbsp;run.&lt;/p&gt;
+&lt;p&gt;The ideal solution for this is &lt;a href="https://packaging.python.org/en/latest/specifications/dependency-groups/"&gt;dependency groups&lt;/a&gt;, which were first defined for library-style package dependencies but are also part of the lock file specification. Unfortunately, as far as I can tell the current release&amp;nbsp;of &lt;code&gt;pip&lt;/code&gt; (26.2.1 as I’m writing this) does not support selecting dependency groups when installing from a lock&amp;nbsp;file.&lt;/p&gt;
+&lt;p&gt;So for the moment (at least&amp;nbsp;until &lt;code&gt;pip&lt;/code&gt; gains support for selecting dependency groups from a lock file), my recommendation for handling different sets of dependencies is just to have multiple lock files. The exact syntax for this will vary depending on what packaging frontend tool you decide to use. But suppose you have a &lt;a href="https://fastapi.tiangolo.com/"&gt;FastAPI&lt;/a&gt; application and want to use &lt;a href="https://docs.pytest.org/"&gt;pytest&lt;/a&gt; to test it. Here’s an example of how that would look&amp;nbsp;with &lt;code&gt;uv&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;uv&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;fastapi&lt;span class="w"&gt;       &lt;/span&gt;&lt;span class="c1"&gt;# Regular dependency&lt;/span&gt;
+uv&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;--dev&lt;span class="w"&gt; &lt;/span&gt;pytest&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;# Used only for tests&lt;/span&gt;
+uv&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--no-dev&lt;span class="w"&gt; &lt;/span&gt;--format&lt;span class="w"&gt; &lt;/span&gt;pylock.toml&lt;span class="w"&gt; &lt;/span&gt;-o&lt;span class="w"&gt; &lt;/span&gt;pylock.deploy.toml
+uv&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--format&lt;span class="w"&gt; &lt;/span&gt;pylock.toml&lt;span class="w"&gt; &lt;/span&gt;-o&lt;span class="w"&gt; &lt;/span&gt;pylock.tests.toml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Or with &lt;span class="caps"&gt;PDM&lt;/span&gt;:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pdm&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;fastapi
+pdm&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;--dev&lt;span class="w"&gt; &lt;/span&gt;pytest
+pdm&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--prod&lt;span class="w"&gt; &lt;/span&gt;--format&lt;span class="w"&gt; &lt;/span&gt;pylock&lt;span class="w"&gt; &lt;/span&gt;-o&lt;span class="w"&gt; &lt;/span&gt;pylock.deploy.toml
+pdm&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--dev&lt;span class="w"&gt; &lt;/span&gt;--format&lt;span class="w"&gt; &lt;/span&gt;pylock&lt;span class="w"&gt; &lt;/span&gt;-o&lt;span class="w"&gt; &lt;/span&gt;pylock.tests.toml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;In either case,&amp;nbsp;the &lt;code&gt;pylock.deploy.toml&lt;/code&gt; file will contain only the dependencies for FastAPI, and is what you’d use for deployment.&amp;nbsp;Meanwhile, &lt;code&gt;pylock.tests.toml&lt;/code&gt; would also contain pytest, and is what you’d use for a development or test/&lt;span class="caps"&gt;CI&lt;/span&gt; environment. You can split this up further if you want&amp;#8212;I’ve done finer-grained splits of dependencies before&amp;#8212;but at the very least I think you should be keeping test-only dependencies separate from the&amp;nbsp;rest.&lt;/p&gt;
+&lt;h2&gt;Using the right&amp;nbsp;invocations&lt;/h2&gt;
+&lt;p&gt;Before putting all this together, it’s worth covering one more detail: how to invoke the tools. This may seem a bit silly, since they all provide executable entry points. Just&amp;nbsp;run &lt;code&gt;pip install&lt;/code&gt;,&amp;nbsp;right?&lt;/p&gt;
+&lt;p&gt;But there’s a potential issue here: in a moment I’m going to recommend creating a Python virtual environment, which opens up the possibility of multiple Python environments coexisting on the same machine. This is certainly a useful feature, but it comes with a new concern, which is how to ensure you’re using and running things in the environment you expect to be&amp;nbsp;using.&lt;/p&gt;
+&lt;p&gt;For example, one way to run into trouble with multiple Python environments is to have one environment’s package directory be first on&amp;nbsp;your &lt;code&gt;$PYTHONPATH&lt;/code&gt; (which controls Python import locations) while a different&amp;nbsp;one’s &lt;code&gt;bin/&lt;/code&gt; directory is first on your&amp;nbsp;general &lt;code&gt;$PATH&lt;/code&gt; (which is where executable scripts will be found). If you just&amp;nbsp;run &lt;code&gt;pip install&lt;/code&gt; you’ll get the second one’s instance&amp;nbsp;of &lt;code&gt;pip&lt;/code&gt;, which may not be at all what you&amp;nbsp;want.&lt;/p&gt;
+&lt;p&gt;This is why the official Python packaging guides, and official documentation for tools&amp;nbsp;like &lt;code&gt;pip&lt;/code&gt;, &lt;a href="https://snarky.ca/why-you-should-use-python-m-pip/"&gt;always use a different approach&lt;/a&gt;: they tell you to&amp;nbsp;run &lt;code&gt;python -m pip&lt;/code&gt; instead&amp;nbsp;of &lt;code&gt;pip&lt;/code&gt;,&amp;nbsp;and &lt;code&gt;python -m venv&lt;/code&gt; instead of a standalone script&amp;nbsp;like &lt;code&gt;virtualenv&lt;/code&gt;.&amp;nbsp;The &lt;code&gt;-m&lt;/code&gt; flag allows a Python module to be run directly like a script (as long as it’s been written to provide an entry point for this,&amp;nbsp;which &lt;code&gt;pip&lt;/code&gt; and &lt;code&gt;venv&lt;/code&gt; both have), and can prevent a lot of potential hard-to-debug issues that can accidentally result from things like manually hacking around with paths, by ensuring you’re getting the version&amp;nbsp;of &lt;code&gt;pip&lt;/code&gt; or &lt;code&gt;venv&lt;/code&gt; that actually goes with the Python environment you&amp;nbsp;invoked.&lt;/p&gt;
+&lt;p&gt;And to guarantee that you get the Python environment you actually want, you can specify the full path. For example, many base Python container images will put the Python interpreter&amp;nbsp;in &lt;code&gt;/usr/local/bin&lt;/code&gt;, so&amp;nbsp;invoking &lt;code&gt;/usr/local/bin/python&lt;/code&gt; instead of&amp;nbsp;just &lt;code&gt;python&lt;/code&gt; ensures you get that&amp;nbsp;interpreter.&lt;/p&gt;
+&lt;p&gt;There’s also one more thing I like to do that isn’t (currently) in some of the popular guides, and that’s invoking Python with&amp;nbsp;the &lt;code&gt;-I&lt;/code&gt; flag. This runs Python in &lt;a href="https://docs.python.org/3/using/cmdline.html#cmdoption-I"&gt;“isolated” mode&lt;/a&gt;, which removes some of the automatic implicit directories from the import path and also ignores environment variables&amp;nbsp;like &lt;code&gt;PYTHONPATH&lt;/code&gt;. Once again, this reduces the number of things that can go wrong (for example,&amp;nbsp;with &lt;code&gt;-I&lt;/code&gt; the current working directory won’t be implicitly added to the import path, so you can’t accidentally depend on it being importable). So whenever you can invoke Python in isolated mode, I generally recommend that you&amp;nbsp;do.&lt;/p&gt;
+&lt;h2&gt;Putting it all&amp;nbsp;together&lt;/h2&gt;
+&lt;p&gt;That was a lot of explanation for what ends up being, ultimately, a pretty simple process to actually use. So now let’s finally take a look at&amp;nbsp;it.&lt;/p&gt;
+&lt;p&gt;First things first: always work in, and always deploy in, a virtual environment. Even if you think you don’t need one. In fact, &lt;em&gt;especially&lt;/em&gt; if you don’t think you need one. This may seem like strange advice if you’re already using a container or other virtual machine, since you’re probably thinking that provides all the isolation you’ll need. But virtual environments don’t cost you anything to create, and if you ever &lt;em&gt;do&lt;/em&gt; end up with multiple Python interpreters&amp;#8212;which is easy to accidentally do, if you use a base system with a purpose-built Python and then install a system package that turns out to depend on the distro’s own Python, for example&amp;#8212;using one from the start will help to save you from potentially having a pager go off one night when suddenly the wrong Python is being&amp;nbsp;invoked.&lt;/p&gt;
+&lt;p&gt;Virtual environments also provide a useful “Python environment” artifact that can be copied between stages of a container build, and many tools automatically recognize and can work with them. And ever since &lt;a href="https://peps.python.org/pep-0668/"&gt;&lt;span class="caps"&gt;PEP&lt;/span&gt; 668&lt;/a&gt; started to be adopted by operating-system vendors, many “system” Python installations will &lt;em&gt;require&lt;/em&gt; you to use a virtual environment in order to install packages&amp;nbsp;with &lt;code&gt;pip&lt;/code&gt; (and only allow you to interact with the “system” Python environment through the system’s own package manager). So use a virtual environment, even if you’re working &lt;a href="https://hynek.me/articles/docker-virtualenv/"&gt;in a container&lt;/a&gt; or other &lt;span class="caps"&gt;VM&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;When you’re working in a local directory on your own computer, you can invoke the correct Python version&amp;nbsp;with &lt;code&gt;-m venv&lt;/code&gt; to create a virtual environment and install things into it, but again this is an area where third-party package tools can be useful, because they’ll manage this for you automatically. If you &lt;em&gt;do&lt;/em&gt; create your local virtual environment manually, you should almost certainly put it inside your project in a subdirectory&amp;nbsp;named &lt;code&gt;.venv&lt;/code&gt;, because that’s already the common unofficial convention supported by a lot of IDEs and other tools, and likely to become the official standard convention once &lt;a href="https://peps.python.org/pep-0832/"&gt;&lt;span class="caps"&gt;PEP&lt;/span&gt; 832&lt;/a&gt;&amp;nbsp;finalizes.&lt;/p&gt;
+&lt;p&gt;In a container, I think the choice that’s most in line with Linux filesystem hierarchy standards is to put a Python virtual environment somewhere&amp;nbsp;under &lt;code&gt;/opt&lt;/code&gt;. Generally I like to create&amp;nbsp;an &lt;code&gt;/opt/venvs&lt;/code&gt; in a base “build” stage, which can populate multiple virtual environments with different package sets to be copied into later stages for tasks like &lt;span class="caps"&gt;CI&lt;/span&gt; or&amp;nbsp;deployment.&lt;/p&gt;
+&lt;p&gt;So, taking as an example current Debian stable (as I write this, Debian 13 “trixie”) and the most recent Python (as I write this, Python 3.14), let’s see what this actually looks like. This example assumes you’re producing standard Python lock files as described above, and naming them according to their purposes as I did (otherwise, adjust the names before using this&amp;nbsp;snippet):&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;# syntax=docker/dockerfile:1&lt;/span&gt;
+&lt;span class="k"&gt;ARG&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;DISTRO&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"slim-trixie"&lt;/span&gt;
+&lt;span class="k"&gt;ARG&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;PYTHON_VERSION&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"3.14"&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;python:${PYTHON_VERSION}-${DISTRO}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;AS&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;dependencies&lt;/span&gt;
+&lt;span class="k"&gt;RUN&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;&amp;lt;END
+mkdir&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;/opt/venvs/deploy
+mkdir&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;/opt/venvs/tests
+&lt;span class="c"&gt;# This is a cache directory for package downloads, to speed up&lt;/span&gt;
+&lt;span class="c"&gt;# rebuilds when the package set doesn't change (or doesn't&lt;/span&gt;
+&lt;span class="c"&gt;# change very much).&lt;/span&gt;
+mkdir&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;/var/cache/pip
+/usr/local/bin/python&lt;span class="w"&gt; &lt;/span&gt;-Im&lt;span class="w"&gt; &lt;/span&gt;venv&lt;span class="w"&gt; &lt;/span&gt;/opt/venvs/deploy
+/usr/local/bin/python&lt;span class="w"&gt; &lt;/span&gt;-Im&lt;span class="w"&gt; &lt;/span&gt;venv&lt;span class="w"&gt; &lt;/span&gt;/opt/venvs/tests
+END
+&lt;span class="k"&gt;COPY&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;pylock.deploy.toml&lt;span class="w"&gt;  &lt;/span&gt;/opt/venvs/deploy/
+&lt;span class="k"&gt;COPY&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;pylock.tests.toml&lt;span class="w"&gt; &lt;/span&gt;/opt/venvs/tests/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The next step is to&amp;nbsp;ensure &lt;code&gt;pip&lt;/code&gt; is present at the latest version in each virtual environment, and invoke it to install&amp;nbsp;packages.&lt;/p&gt;
+&lt;p&gt;At this point you might be wondering: if I was willing to recommend using a third-party packaging frontend earlier for local development use and producing lock files, why am I insisting&amp;nbsp;on &lt;code&gt;pip&lt;/code&gt; here? And the answer is that this is one of the places where I think using boring standard default tools really matters. As I said above, if something goes wrong with your fancy third-party package tool in a local development setup, it just causes a problem for that local development setup. If it goes wrong in your production build/deploy process, it breaks all your builds and deployments until you resolve the issue. I want to avoid that, so I stick&amp;nbsp;to &lt;code&gt;pip&lt;/code&gt; here, because even if it’s not as fancy as some of the newer third-party tools, in my experience it’s much less likely to be a source of unexpected issues than the newer third-party&amp;nbsp;alternatives.&lt;/p&gt;
+&lt;p&gt;Also, I’m not going to go into a full explanation of an ideal Python application Dockerfile here, but the example below does at least use a Docker cache mount to store the downloaded packages, so that subsequent rebuilds only have to download new or changed packages, and can pull everything else from&amp;nbsp;cache.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;pip&lt;/code&gt; invocation adds a few flags, mostly to ensure maximum safety and&amp;nbsp;reproducibility:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--no-deps&lt;/code&gt; tells &lt;code&gt;pip&lt;/code&gt; not to try to resolve the dependency tree for the given list of packages. Because this setup is installing from a lock file, that tree is already fully resolved, so&amp;nbsp;all &lt;code&gt;pip&lt;/code&gt; should need to do is fetch and install the packages listed in the lock file. This speeds up the installation process, and also prevents any unexpected packages from suddenly being requested due to re-running dependency&amp;nbsp;resolution.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--only-binary :all:&lt;/code&gt; is the only one you might need to skip, but try using it first and only remove it if you know it doesn’t work. This&amp;nbsp;tells &lt;code&gt;pip&lt;/code&gt; to only use “wheel”&amp;nbsp;(&lt;code&gt;.whl&lt;/code&gt;) format packages; the wheel format has been around for long enough most of your dependencies are likely to provide it, but if for some reason something you depend on doesn’t, you can change&amp;nbsp;to &lt;code&gt;--prefer-binary&lt;/code&gt; (which will&amp;nbsp;use &lt;code&gt;.whl&lt;/code&gt; packages whenever available) instead. Just be aware that any dependency which doesn’t provide&amp;nbsp;a &lt;code&gt;.whl&lt;/code&gt; will likely have to fall back to executing&amp;nbsp;a &lt;code&gt;setup.py&lt;/code&gt; script in order to install, which comes with some&amp;nbsp;risks.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--require-hashes&lt;/code&gt; should be redundant, since this setup uses a lock file which will include the package hashes, but it’s useful to have as a safety net: if you ever accidentally produce a file that &lt;em&gt;doesn’t&lt;/em&gt; contain package hashes, using this flag will cause installation to fail with an error message saying the hashes couldn’t be&amp;nbsp;found.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you’re using GitHub Actions as your &lt;span class="caps"&gt;CI&lt;/span&gt;/&lt;span class="caps"&gt;CD&lt;/span&gt;, Python core developer Brett Cannon has written &lt;a href="https://github.com/brettcannon/pip-secure-install"&gt;a reusable action&lt;/a&gt; which automatically&amp;nbsp;invokes &lt;code&gt;pip&lt;/code&gt; with these&amp;nbsp;flags.&lt;/p&gt;
+&lt;p&gt;But continuing with the example of a Dockerfile containing a “dependencies” stage, here’s what it looks&amp;nbsp;like:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;# Turn off pip upgrade reminders, since we're about to upgrade&lt;/span&gt;
+&lt;span class="c"&gt;# it anyway, and also specify the directory pip should use as&lt;/span&gt;
+&lt;span class="c"&gt;# its package cache location.&lt;/span&gt;
+&lt;span class="k"&gt;ENV&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;PIP_DISABLE_VERSION_CHECK&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nv"&gt;XDG_CACHE_HOME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/var/cache/pip
+&lt;span class="c"&gt;# Install test dependencies first since they're likely to be a&lt;/span&gt;
+&lt;span class="c"&gt;# superset of the deployment dependencies and will populate the&lt;/span&gt;
+&lt;span class="c"&gt;# package cache.&lt;/span&gt;
+&lt;span class="k"&gt;RUN&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--mount&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;cache,sharing&lt;span class="o"&gt;=&lt;/span&gt;locked,target&lt;span class="o"&gt;=&lt;/span&gt;/var/cache/pip,id&lt;span class="o"&gt;=&lt;/span&gt;pip&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;&amp;lt;END
+/opt/venvs/tests/bin/python&lt;span class="w"&gt; &lt;/span&gt;-Im&lt;span class="w"&gt; &lt;/span&gt;pip&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;--upgrade&lt;span class="w"&gt; &lt;/span&gt;pip
+/opt/venvs/tests/bin/python&lt;span class="w"&gt; &lt;/span&gt;-Im&lt;span class="w"&gt; &lt;/span&gt;pip&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;--no-deps&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;--only-binary&lt;span class="w"&gt; &lt;/span&gt;:all:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;--require-hashes&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;-r&lt;span class="w"&gt; &lt;/span&gt;/opt/venvs/tests/pylock.tests.toml
+END
+&lt;span class="k"&gt;RUN&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--mount&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;cache,sharing&lt;span class="o"&gt;=&lt;/span&gt;locked,target&lt;span class="o"&gt;=&lt;/span&gt;/var/cache/pip,id&lt;span class="o"&gt;=&lt;/span&gt;pip&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;&amp;lt;END
+/opt/venvs/deploy/bin/python&lt;span class="w"&gt; &lt;/span&gt;-Im&lt;span class="w"&gt; &lt;/span&gt;pip&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;--upgrade&lt;span class="w"&gt; &lt;/span&gt;pip
+/opt/venvs/deploy/bin/python&lt;span class="w"&gt; &lt;/span&gt;-Im&lt;span class="w"&gt; &lt;/span&gt;pip&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;--no-deps&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;--only-binary&lt;span class="w"&gt; &lt;/span&gt;:all:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;--require-hashes&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;-r&lt;span class="w"&gt; &lt;/span&gt;/opt/venvs/deploy/pylock.deploy.toml
+END
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now you can pull the installed packages into later stages of your build by copying the virtual environment. For example, in a deployment&amp;nbsp;stage:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;python:${PYTHON_VERSION}-${DISTRO}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;AS&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;deploy&lt;/span&gt;
+&lt;span class="k"&gt;COPY&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--from&lt;span class="o"&gt;=&lt;/span&gt;dependencies&lt;span class="w"&gt; &lt;/span&gt;/opt/venvs/deploy&lt;span class="w"&gt; &lt;/span&gt;/opt/venvs/deploy
+&lt;span class="c"&gt;# Do the rest of your deployment stage setup here: copying in&lt;/span&gt;
+&lt;span class="c"&gt;# your application source code, setting the entry point, etc.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Once again, I’m not going to go into a ton of detail here on other things that make a good Python Dockerfile. If you want to learn more about that, I’d recommend reading &lt;a href="https://pythonspeed.com/docker/"&gt;Itamar Turner-Trauring’s articles on Python and Docker&lt;/a&gt; or &lt;a href="https://hynek.me/articles/docker-uv/"&gt;Hynek Schlawack’s guide to Python and Docker&lt;/a&gt;. Both are regularly updated, and they’ll both give you a solid education in how to containerize&amp;nbsp;Python.&lt;/p&gt;
+&lt;h2&gt;Be up-to-date, but stay&amp;nbsp;cool&lt;/h2&gt;
+&lt;p&gt;The only thing still missing here is how to handle updates as new versions of your dependencies are released. For security updates this is crucial, but it’s also important as a general practice. If you make dependency updates a regular, routine part of your development process that’s easy for developers to do, then it’ll also be routine and easy to apply critical updates when they appear. And by applying updates as they come, a couple dependencies at a time, you avoid building up a huge backlog of deferred updates that will make a critical issue even more difficult to address when one inevitably&amp;nbsp;occurs.&lt;/p&gt;
+&lt;p&gt;And luckily, all of the popular third-party package management tools have straightforward commands you can run to identify and update outdated packages. But there is one wrinkle: you probably don’t want to always eagerly accept most routine dependency updates as soon as they’re released, since that can expose you to potential security issues if a dependency has been compromised but nobody’s noticed it yet. The solution to this is &lt;a href="https://cooldowns.dev"&gt;dependency cooldowns&lt;/a&gt;: when upgrading, only consider packages which have had at least a bit of time for security researchers and scanners to take a look. The typical recommended window is three days; anything newer than that should be excluded from your package updates unless it’s a critical security&amp;nbsp;patch.&lt;/p&gt;
+&lt;p&gt;At this point, most popular tools in the Python ecosystem support dependency cooldowns. For&amp;nbsp;example:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If you’re&amp;nbsp;using &lt;code&gt;uv&lt;/code&gt; you can set &lt;a href="https://docs.astral.sh/uv/reference/settings/#exclude-newer"&gt;the &lt;code&gt;exclude-newer&lt;/code&gt; configuration option&lt;/a&gt;, like&amp;nbsp;so: &lt;code&gt;exclude-newer = "3 days"&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;PDM&lt;/span&gt; &lt;a href="https://pdm-project.org/en/latest/usage/lockfile/#exclude-packages-newer-than-specific-date"&gt;also supports this&lt;/a&gt;, calls the configuration&amp;nbsp;option &lt;code&gt;strategy.exclude-newer&lt;/code&gt;, and you could set it&amp;nbsp;to &lt;code&gt;"3d"&lt;/code&gt; to get the same three-day cooldown rule for new&amp;nbsp;releases.&lt;/li&gt;
+&lt;li&gt;And &lt;code&gt;pip&lt;/code&gt;, as of version 26.1, supports&amp;nbsp;the &lt;code&gt;--uploaded-prior-to&lt;/code&gt; flag with a relative duration. Its relative syntax would&amp;nbsp;be &lt;code&gt;--uploaded-prior-to "P3D"&lt;/code&gt; for a three-day&amp;nbsp;cooldown.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You also can configure third-party dependency update bots to apply updates for you as they appear. &lt;a href="https://docs.github.com/en/code-security/tutorials/secure-your-dependencies/dependabot-quickstart"&gt;GitHub’s Dependabot&lt;/a&gt; automatically applies &lt;a href="https://github.com/dependabot/dependabot-core/discussions/15582"&gt;a three-day cooldown&lt;/a&gt; for everything except critical security updates, and so does &lt;a href="https://docs.renovatebot.com/presets-security/#securityminimumreleaseagepypi"&gt;the Renovate update bot&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Whether to have a dependency update be a periodic manual task for a developer or something to automate via a tool like Dependabot is up to you (though I personally prefer automation). The important thing is you do it and commit to it, on a cadence that lets you take in updates only one or a few at a time, rather than falling behind and needing to update dozens of packages all in one&amp;nbsp;go.&lt;/p&gt;
+&lt;h2&gt;And that’s a&amp;nbsp;wrap&lt;/h2&gt;
+&lt;p&gt;As promised, that was a lot of words for what’s really a pretty simple set of recommendations. Unfortunately there’s a lot of complexity&amp;#8212;necessary complexity, of a sort that pops up in any software packaging ecosystem&amp;#8212;lurking in this topic, and explaining all &lt;em&gt;that&lt;/em&gt; is what drives up the word&amp;nbsp;count.&lt;/p&gt;
+&lt;p&gt;But hopefully you now understand how to do “boring” Python dependency management, relying primarily on standard first-party tooling. Even if you don’t want to adopt my recommendations, I’d like to think that learning what they are and why I make them is helpful to you. For me, these recommendations are the result of over a decade of work, across multiple employers, to develop a dependency management workflow that keeps things up-to-date with minimal risk of causing pagers to go&amp;nbsp;off.&lt;/p&gt;
+&lt;p&gt;Meanwhile I’ve got some ideas for further “boring Python” articles, but those will have to wait for another&amp;nbsp;day.&lt;/p&gt;
+&lt;h2&gt;Changelog&lt;/h2&gt;
+&lt;p&gt;The version of this post you’re looking at right now was written  mostly during late August 2026, and published in early September 2026. It’s a major revision of the original, which was written and published in May&amp;nbsp;2022.&lt;/p&gt;
+&lt;p&gt;The key changes between the two versions&amp;nbsp;are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The 2022 version recommended a workflow using&amp;nbsp;a &lt;code&gt;pip&lt;/code&gt; requirements file with a fully-resolved, version-pinned and hashed package set. This was the closest it was possible to get, using standard tools in 2022, to a real lock file. Now, in late 2026, a true Python lock file format (&lt;span class="caps"&gt;PEP&lt;/span&gt; 751) has been standardized and has support (at least for basic creating and consuming of lock files) across the packaging ecosystem, so I now recommend using&amp;nbsp;it.&lt;/li&gt;
+&lt;li&gt;The 2022 version suggested using&amp;nbsp;the &lt;code&gt;pip-compile&lt;/code&gt; script from &lt;a href="https://pip-tools.readthedocs.io/en/latest/"&gt;the pip-tools project&lt;/a&gt; to make it easier to produce the requirements file. Since I’m now recommending the use of the standardized Python lock file format, and multiple tools can produce that format, it’s no longer&amp;nbsp;needed.&lt;/li&gt;
+&lt;li&gt;As of 2026, my recommendation on third-party packaging tools is that you can use an all-in-one tool&amp;nbsp;like &lt;code&gt;uv&lt;/code&gt; or &lt;code&gt;pdm&lt;/code&gt; as a frontend for local development, to get the convenience of a single tool with a high-level interface managing the local virtual environment, adding/removing/updating packages, and producing the lock files, but just as in 2022 I still recommend&amp;nbsp;using &lt;code&gt;pip&lt;/code&gt; to install packages for production&amp;nbsp;deployments.&lt;/li&gt;
+&lt;li&gt;The 2022 version recommended&amp;nbsp;the &lt;code&gt;python -m&lt;/code&gt; invocation pattern, and suggested&amp;nbsp;the &lt;code&gt;--only-binary :all:&lt;/code&gt; option&amp;nbsp;for &lt;code&gt;pip&lt;/code&gt;. The 2026 version expands on this by recommending explicit invocation of the desired Python interpreter, the use of Python in “isolated mode” whenever possible, and a more comprehensive set&amp;nbsp;of &lt;code&gt;pip&lt;/code&gt; command-line flags to maximize safety and reproducibility of package&amp;nbsp;installs.&lt;/li&gt;
+&lt;li&gt;The 2022 version had a section on applying package updates which mentioned Dependabot and touched on the importance of applying updates regularly. As of 2026, that section is expanded with discussion of the importance of dependency cooldowns, and gives examples of how to configure popular third-party package-management&amp;nbsp;tools.&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <guid isPermaLink="false">b3c88e893d30f6c0d0ee245c79ab7bee04571265db51de96611bc2061c983492</guid>
+      <pubDate>Tue, 01 Sep 2026 16:37:50 +0000</pubDate>
+    </item>
     <item>
       <title>Graham Dumpleton: Unit testing with wrapture - Planet Python</title>
       <link>https://grahamdumpleton.me/posts/2026/09/unit-testing-with-wrapture/</link>

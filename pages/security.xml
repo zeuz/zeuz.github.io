@@ -5,7 +5,133 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 01 Sep 2026 14:01:48 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 02 Sep 2026 14:02:06 +0000</lastBuildDate>
+    <item>
+      <title>BGP Hijack Delivers Malicious Virtualizor Update That Establishes Persistent Root Access - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/bgp-hijack-delivers-malicious.html</link>
+      <description>Virtualizor said hackers used a Border Gateway Protocol (BGP) hijack to divert Softaculous traffic. The hackers then used the diverted update traffic to deliver a malicious Virtualizor package to some installations. A hosting-provider account separately said 5 of its 34 checked Virtualizor hypervisors sustained root-level compromise.
+The incident window ran from approximately August 28 at 20:57</description>
+      <guid isPermaLink="false">eb4d112924cf3f7a506a4c3cffd0ba580881dd6919af2cb1d9cdd0e6cc90cc3d</guid>
+      <pubDate>Wed, 02 Sep 2026 13:12:45 +0000</pubDate>
+    </item>
+    <item>
+      <title>Meta Ads Push StreamRat Android Trojan That Can Gain Near-Complete Device Control - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/meta-ads-push-streamrat-android-trojan.html</link>
+      <description>Cybersecurity researchers have disclosed details of a new Android banking trojan called StreamRat that was promoted to Spanish-speaking users through a fake television-streaming campaign on Meta and can give operators near-complete control of infected devices.
+ThreatFabric said the campaign's advertisement focused on Spain and reached an estimated 570,950 Meta accounts in the European Union</description>
+      <guid isPermaLink="false">ad1ee72069c7ed20e1d9fdd430cd4a070e94b3c55b2ddecfd0f5e975567b2608</guid>
+      <pubDate>Wed, 02 Sep 2026 12:22:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Exploit Two SonicWall SMA 1000 Zero-Days That May Form an Attack Chain - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/attackers-exploit-two-sonicwall-sma.html</link>
+      <description>SonicWall has released security updates to address two security flaws impacting its Secure Mobile Access (SMA) 1000 series VPN appliances that have been exploited in zero-day attacks.
+The vulnerabilities, discovered internally by SonicWall's William Perry and Adam Babis, are listed below -
+  CVE-2026-83548 (CVSS score: 10.0) -&amp;nbsp; A pre-authentication SSRF vulnerability in the Appliance</description>
+      <guid isPermaLink="false">7fb58c18aa4643bc3632e199c461e3acbd98a731f0b7dabd6d3ca74179688c6f</guid>
+      <pubDate>Wed, 02 Sep 2026 10:53:49 +0000</pubDate>
+    </item>
+    <item>
+      <title>GeoNetwork Fixes Unauthenticated RCE Chain Affecting Government Geoportal Backends - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/geonetwork-fixes-unauthenticated-rce.html</link>
+      <description>Two vulnerabilities in GeoNetwork can be chained to achieve unauthenticated remote code execution (RCE) on the open-source geospatial metadata catalog, which sits behind many government and agency geoportals.
+The project shipped fixes in versions 4.4.12 and 4.2.17 on July 8, 2026, and published the vulnerability details on August 31.
+GeoNetwork originated at the United Nations Food and</description>
+      <guid isPermaLink="false">c507e676b0e8fdd287c64b2e9cfb4ba91d412e6fa2050510926c94a9212b05b3</guid>
+      <pubDate>Wed, 02 Sep 2026 09:18:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>Extradited Russian Hacker Faces Charges Over Excel Malware Campaign That Infected Thousands - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/extradited-russian-hacker-faces-charges.html</link>
+      <description>The U.S. Department of Justice (DoJ) has charged a Russian national, extradited from Cyprus on August 28, with using roughly 255 fake accounts on a freelance platform to send malware-laced Excel attachments to about 80,000 of its users in 2016 and 2017.
+Searzhudin Tamirlanovich Aktulaev, 40, was arrested in Cyprus in May 2025, the U.S. Attorney's Office for the Northern District of California</description>
+      <guid isPermaLink="false">02ba4e0a9b730d0c74174b534da3d092eaea8e24d7f6c1cf6321a8f97a7ee1bf</guid>
+      <pubDate>Wed, 02 Sep 2026 09:10:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>Researchers Use Claude to Port Pre-Auth RCE Exploit From One PLC Model to Another - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/researchers-use-claude-to-port-pre-auth.html</link>
+      <description>Forescout Research - Vedere Labs said it used Anthropic's Claude to port a working pre-authentication remote code execution (RCE) exploit from one WAGO programmable logic controller (PLC) to another, executing attacker-supplied ARM shellcode on live hardware.
+The exploit targets&amp;nbsp;CVE-2021-31886, a stack-based buffer overflow in the Nucleus FTP server's handling of the&amp;nbsp;USER&amp;nbsp;command</description>
+      <guid isPermaLink="false">64a2175083e40457c344f6105621326d1a365e1d9d74a47921e91e2d1b05475d</guid>
+      <pubDate>Wed, 02 Sep 2026 07:47:13 +0000</pubDate>
+    </item>
+    <item>
+      <title>Static pattern discovery tool to locate structures from frequent patterns and understand file layout (FF-16) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w53n8x/static_pattern_discovery_tool_to_locate/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/HexLasso"&gt; /u/HexLasso &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/HexLasso/FF-16"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w53n8x/static_pattern_discovery_tool_to_locate/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">451dc9ba18752aa26971a0b291e80a3c3fa440e3bdcb8e9c4f55f699a43e96fb</guid>
+      <pubDate>Wed, 02 Sep 2026 07:42:34 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Exploit Critical Switchvox Flaw to Deploy Reverse Shells Without Credentials - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/attackers-exploit-critical-switchvox.html</link>
+      <description>Threat actors are exploiting a severe security vulnerability in Sangoma Switchvox, an enterprise VoIP platform, that could allow unauthenticated remote code execution.
+The vulnerability in question is CVE-2026-9586 (CVSS score: 9.3), a critical unauthenticated SQL injection vulnerability in Sangoma Switchvox SMB Edition 8.3 (104997) that can allow attackers to remotely execute arbitrary code as</description>
+      <guid isPermaLink="false">48c34cc93caa5988666772e03d1d472cfc31205984ff1e31e11b0a7cd5e3376c</guid>
+      <pubDate>Wed, 02 Sep 2026 07:08:50 +0000</pubDate>
+    </item>
+    <item>
+      <title>Authorities Turn Sality's P2P Network Against Itself, Cutting Off New Malware Payloads - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/authorities-turn-salitys-p2p-network.html</link>
+      <description>The U.S. Department of Justice (DoJ) on Tuesday announced the takedown of a long-standing peer-to-peer (P2P) botnet known as Sality as part of a coordinated law enforcement operation.
+The effort was undertaken on August 31, 2026, by authorities from the U.S., Bulgaria, Hungary, and Romania, in collaboration with private industry partners CrowdStrike and the Shadowserver Foundation. To that</description>
+      <guid isPermaLink="false">9fd0a9b5b8e4a8c813be144c81789f941a5314628f1b9b19b283df394a572c40</guid>
+      <pubDate>Wed, 02 Sep 2026 06:56:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>chromium -- security fixes - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/19d0eaf5-a698-11f1-bf98-a8a1599412c6.html</link>
+      <description/>
+      <guid isPermaLink="false">7aa4b1a71d5d62369c17f3023b25d3ccf76679de83ea9d70553923106b500052</guid>
+      <pubDate>Wed, 02 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>py-strawberry-graphql -- Incorrect authorization - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/1ee62c05-a646-11f1-b187-901b0edee044.html</link>
+      <description/>
+      <guid isPermaLink="false">980a369a50816cebaf476c6210788128b88741824618c819757a3f7b64cfae11</guid>
+      <pubDate>Wed, 02 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Exploit Critical JFrog Artifactory Flaw to Mint Admin Tokens Days After Disclosure - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/attackers-exploit-critical-jfrog.html</link>
+      <description>Threat actors are exploiting a newly patched critical security flaw impacting JFrog Artifactory merely days after public disclosure, according to watchTowr.
+The vulnerability in question is CVE-2026-82329 (CVSS score: 9.8), a case of authentication bypass that could lead to administrative access in Artifactory.
+"JFrog Artifactory contains an authentication weakness that, under default</description>
+      <guid isPermaLink="false">805fe0c0c256db4892d8479ddf2975317e046547aab71f26f8cb22a638a759cb</guid>
+      <pubDate>Tue, 01 Sep 2026 17:53:11 +0000</pubDate>
+    </item>
+    <item>
+      <title>Breeze Comet Executes Hundreds of Fraudulent Transactions via Brazilian Payment Systems - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/breeze-comet-executes-hundreds-of.html</link>
+      <description>Brazilian financial services, retail, and e-commerce organizations have become the target of a financially motivated threat actor dubbed Breeze Comet (formerly UNC5669) since 2024.
+Google Threat Intelligence Group (GTIG) and Mandiant teams described the threat actor as "specializing in manipulating payment systems and banking software in Brazil to conduct fraudulent transfers." The adversary</description>
+      <guid isPermaLink="false">b86534c3ec1e1543bed0b90d58982463c08b03d3d8975a7336f3a9d0704f6448</guid>
+      <pubDate>Tue, 01 Sep 2026 17:19:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>Lumma Stealer – dllhost.exe Hollowing, C2 Domains &amp; Payload Extraction - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w4f0qx/lumma_stealer_dllhostexe_hollowing_c2_domains/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/StructBreaker"&gt; /u/StructBreaker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/kaandemir993/Lumma-Stealer-dllhost-Hollowing-C2-Domains-Payload-Extraction-Analysis"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w4f0qx/lumma_stealer_dllhostexe_hollowing_c2_domains/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">3c9efa64e7290faead773bf6af450fdcc36e537c243ad23b8d47bc72615aaf7a</guid>
+      <pubDate>Tue, 01 Sep 2026 15:19:38 +0000</pubDate>
+    </item>
+    <item>
+      <title>Reverse-engineered Granny.dll (v1.2b) from 2000s for Sacred Gold RPG game. - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w4ehub/reverseengineered_grannydll_v12b_from_2000s_for/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/zebrzysty"&gt; /u/zebrzysty &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/karolak6612/open-grn"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w4ehub/reverseengineered_grannydll_v12b_from_2000s_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">7786672a751146222e5b0492bb8ac4bf38d09cf8e18479bc23d63201dce8bde2</guid>
+      <pubDate>Tue, 01 Sep 2026 15:01:16 +0000</pubDate>
+    </item>
+    <item>
+      <title>13 Malicious Packagist Packages Target Unpatched iPhones to Steal Crypto Wallet Seeds - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/13-malicious-packagist-packages-target.html</link>
+      <description>Cybersecurity researchers have identified a set of 13 malicious Composer theme packages on Packagist that are designed to inject JavaScript into Vietnamese movie and comic streaming sites that install those libraries and initiate the deployment of spyware aimed at unpatched iOS devices.
+"The injected code runs two operations against a site's visitors: a mobile ad-fraud and gambling-redirect</description>
+      <guid isPermaLink="false">0234d2696711adcad37424e412a70a22ec85b07c5c027b07bf47e158a7f08695</guid>
+      <pubDate>Tue, 01 Sep 2026 14:07:20 +0000</pubDate>
+    </item>
     <item>
       <title>Iranian Hackers Pose as Recruiters to Deliver Cross-Platform RATs Through Coding Tests - The Hacker News</title>
       <link>https://thehackernews.com/2026/09/iranian-hackers-pose-as-recruiters-to.html</link>
@@ -61,6 +187,41 @@ The vulnerabilities in question are listed below -
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/onlinereadme"&gt; /u/onlinereadme &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://clearbluejar.github.io/posts/does-abliteration-skew-your-bug-hunting/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w42aby/dont_let_abliteration_abliterate_your_bug_hunting/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">a0b9b3278ead70224ab96be6f7a93cf0cfb66e01ee4e0b8a9905860c114683de</guid>
       <pubDate>Tue, 01 Sep 2026 05:09:01 +0000</pubDate>
+    </item>
+    <item>
+      <title>Erlang/OTP -- multiple vulnerabilities in inets, stdlib, snmp and eldap - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/e9dfc357-a63f-11f1-9195-4c526214c986.html</link>
+      <description/>
+      <guid isPermaLink="false">ed22acba63fec531854bdb48395767963eae5a9377d3d428728541f2417a785c</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Erlang/OTP -- remote crash via gen_tcp with {packet,4} - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/62b56853-a609-11f1-9195-4c526214c986.html</link>
+      <description/>
+      <guid isPermaLink="false">ac2757a304f80d9e13319354b5ff672b58dce998da5f89697813ccd05d8fa753</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>expat2 -- Inefficient Algorithmic Complexity - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/88917664-a65c-11f1-a49c-00a0980083d7.html</link>
+      <description/>
+      <guid isPermaLink="false">9fb919a11d37c1851bcb9788e7fe8fb8c3a7cbceedfe50f34bf8c1837e2971d7</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>expat2 -- Out-of-bounds Read - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/11ab3b16-a65d-11f1-a49c-00a0980083d7.html</link>
+      <description/>
+      <guid isPermaLink="false">27c4e52c681255bd898ea5a0a36687380cd1d928696b2c482c739bdfb0a8c611</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>giflib -- Buffer Overflow vulnerability - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/f55676d9-a65f-11f1-a49c-00a0980083d7.html</link>
+      <description/>
+      <guid isPermaLink="false">0df700f749017aad396dbfd7898ea20dc321c68a4803f0cd5489c354fce561a2</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Turned a $15 eBay "smart NIC" nobody could get working into a real 10GbE card (no vendor firmware, fully reversible) - Reverse Engineering</title>
@@ -1387,153 +1548,6 @@ The "evil twin" extensions were uploaded to the repository between July 26 and A
       <description>With modern distributed systems performance issues can surface in unexpected ways. When it comes to database servers like PostgreSQL issues can surface as slow pages, API calls timing out, jobs not completing, or users saying that the application is "slow". These issues usually occur at 4AM, so having a good debugging methodology (and lots of coffee) baked into your brain can help with speedy remediation. The hard part is that these problems often look the same from the outside: the site is slow and nobody knows why yet…</description>
       <guid isPermaLink="false">fa6c5958648a39338a8ac79182f26d15870e175f45b2caee94a2021796fc94e5</guid>
       <pubDate>Mon, 08 Jun 2026 12:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Using the Prometheus blackbox exporter to monitor modern web infrastructure</title>
-      <link>https://prefetch.net/blog/2026/06/08/using-the-prometheus-blackbox-exporter-to-monitor-modern-web-infrastructure/</link>
-      <description>Prometheus is a monitoring system that collects time series metrics from targets at regular intervals. Those metrics are stored with labels, queried with PromQL (Prometheus's custom query language), and graphed in tools like Grafana. In a typical setup, Prometheus scrapes metrics from exporters running beside the systems you care about: a node exporter that exports system metrics like CPU, memory and network utilization, a postgresql exporter that makes pg_stat* data available, or an application endpoint that exposes custom metrics. That model is powerful, but it mostly answers questions from inside the system…</description>
-      <guid isPermaLink="false">c0396239b66e4843f4ca8b0ba161bdee24ec7ad10d40ec201d1c3c0e584d079d</guid>
-      <pubDate>Mon, 08 Jun 2026 04:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Layered defenses against software supply chain attacks</title>
-      <link>https://prefetch.net/blog/2026/06/06/protecting_against_supply_chain_attacks/</link>
-      <description>Software supply chain attacks target the dependencies, build systems, and publishing pipelines that produce the software we run, instead of the application itself. A single compromised package can reach millions of systems before anyone notices, and once it lands, it runs with the same trust and privileges as the rest of your code. The diagram below shows where these attacks typically land along the chain: Defending against this requires controls at every one of those stages. Recent supply chain compromises Two incidents from earlier this year show just how quickly a compromised pipeline can lead to large scale security incidents: LiteLLM (March 2026): A compromised CI/CD pipeline let attackers ship malicious releases of litellm, a widely used AI infrastructure library, that harvested cloud credentials and API keys on install…</description>
-      <guid isPermaLink="false">73d1e432bd785db21585e2097438b60543aa20fc8ca35c82c1cab2607168e1dd</guid>
-      <pubDate>Sat, 06 Jun 2026 05:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Visualizing PostgreSQL index types</title>
-      <link>https://prefetch.net/blog/2026/06/04/visualizing-postgresql-index-types/</link>
-      <description>Over the past few months I've been doing diving deep into PostgreSQL. I've spent a good bit of my career supporting Oracle and MySQL, but over the past few years I've spent more time managing PostgreSQL. I'm super comfortable getting around a psql prompt, but wanted to really dive into the guts of PostgreSQL to take my knowledge to the next level. I started with the PostgreSQL internals documentation…</description>
-      <guid isPermaLink="false">18602dea0c0fc278ca40656432c9da845e5b6ff927d8d7245fb433b429d68746</guid>
-      <pubDate>Thu, 04 Jun 2026 22:39:59 +0000</pubDate>
-    </item>
-    <item>
-      <title>MSSQLand – Lightweight MS-SQL Interaction Tool for Lateral Movement and Post-Exploitation</title>
-      <link>https://www.darknet.org.uk/2026/03/mssqland-lightweight-ms-sql-interaction-tool-for-lateral-movement-and-post-exploitation/</link>
-      <description>MSSQLand enables red teams to interact with MS-SQL servers and linked instances in restricted environments without complex T-SQL queries. Assembly-ready tool for lateral movement.</description>
-      <guid isPermaLink="false">596707037f4c45360a81005c8b032d57cbe998ee07cd44cdc48360ce0370314a</guid>
-      <pubDate>Tue, 24 Mar 2026 01:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Credential Stuffing in 2025 – How Combolists, Infostealers and Account Takeover Became an Industry</title>
-      <link>https://www.darknet.org.uk/2026/03/credential-stuffing-in-2025-how-combolists-infostealers-and-account-takeover-became-an-industry/</link>
-      <description>Credential stuffing drove 22% of all breaches in 2025. How combolists, infostealers and ATO tooling are fuelling enterprise account takeover at scale</description>
-      <guid isPermaLink="false">1d656192e7a24ea66b27a207031ffdba266316a96654ab6310b5b31b3c2d572e</guid>
-      <pubDate>Wed, 11 Mar 2026 01:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>DumpBrowserSecrets – Browser Credential Harvesting with App-Bound Encryption Bypass</title>
-      <link>https://www.darknet.org.uk/2026/03/dumpbrowsersecrets-browser-credential-harvesting-with-app-bound-encryption-bypass/</link>
-      <description>DumpBrowserSecrets extracts saved passwords, cookies, OAuth tokens and autofill data from Chrome, Edge, Firefox, Opera and Vivaldi, bypassing App-Bound Encryption via Early Bird APC injection.</description>
-      <guid isPermaLink="false">bde374fa42415faeee79d63502ab06bcc015a2268eec79e09e2ab99b7ce3dee0</guid>
-      <pubDate>Mon, 09 Mar 2026 01:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Systemic Ransomware Events in 2025 – How Jaguar Land Rover Showed What a Category 3 Supply Chain Breach Looks Like</title>
-      <link>https://www.darknet.org.uk/2025/11/systemic-ransomware-events-in-2025-how-jaguar-land-rover-showed-what-a-category-3-supply-chain-breach-looks-like/</link>
-      <description>Systemic ransomware events in 2025, how Jaguar Land Rover’s shutdown exposed Category 3 supply chain risk, with lessons from Toyota, Nissan and Ferrari.</description>
-      <guid isPermaLink="false">dcec0c00daba03141a0c7fef83e85c1b964113e2cf1ad1c57d2af1bc850d2e06</guid>
-      <pubDate>Wed, 26 Nov 2025 01:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>SmbCrawler – SMB Share Discovery and Secret-Hunting</title>
-      <link>https://www.darknet.org.uk/2025/11/smbcrawler-smb-share-discovery-and-secret-hunting/</link>
-      <description>SmbCrawler is a credentialed SMB share crawler for red teams that discovers misconfigured shares and hunts secrets across Windows networks.</description>
-      <guid isPermaLink="false">891d57295f0c8d112dabb695624f15d10ecc3ef02300d424345ff0bb60a93a95</guid>
-      <pubDate>Mon, 24 Nov 2025 01:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Heisenberg Dependency Health Check – GitHub Action for Supply Chain Risk</title>
-      <link>https://www.darknet.org.uk/2025/11/heisenberg-dependency-health-check-github-action-for-supply-chain-risk/</link>
-      <description>Heisenberg Dependency Health Check is a GitHub Action that flags risky or newly introduced dependencies in pull requests using supply-chain signals.</description>
-      <guid isPermaLink="false">e567cc6916d4609fc295474b3c8e89b46a958318ce9073052cdfee4e473a96c6</guid>
-      <pubDate>Fri, 21 Nov 2025 01:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>mcp-scan – Real-Time Guardrail Monitoring and Dynamic Proxy for MCP Servers</title>
-      <link>https://www.darknet.org.uk/2025/11/mcp-scan-real-time-guardrail-monitoring-and-dynamic-proxy-for-mcp-servers/</link>
-      <description>mcp-scan is a dynamic proxy and guardrail monitor for MCP servers, providing real-time traffic inspection and enforcement for agents and tools.</description>
-      <guid isPermaLink="false">a7c53d63a31e786093e23e4d0464f945a7f60077d1029f6f4ebf597591b3cea4</guid>
-      <pubDate>Mon, 17 Nov 2025 01:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Initial Access Brokers (IAB) in 2025 – From Dark Web Listings to Supply Chain Ransomware Events</title>
-      <link>https://www.darknet.org.uk/2025/11/initial-access-brokers-iab-in-2025-from-dark-web-listings-to-supply-chain-ransomware-events/</link>
-      <description>Initial access brokers in 2025, how dark web access listings feed ransomware supply chain events like JLR, and what CISOs can do to detect and disrupt them</description>
-      <guid isPermaLink="false">adc33d399e6615ae27b2f7d2ce4fb83e4de153ebebf00be6871e013e0d0b023e</guid>
-      <pubDate>Wed, 12 Nov 2025 01:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Reconnoitre – Open-Source Reconnaissance and Service Enumeration Tool</title>
-      <link>https://www.darknet.org.uk/2025/11/reconnoitre-open-source-reconnaissance-and-service-enumeration-tool/</link>
-      <description>Reconnoitre automates network reconnaissance and service enumeration for penetration testers and red teams using structured, repeatable workflows.</description>
-      <guid isPermaLink="false">174f7bd0afcde8e1ec6319df8e8f3aa293e2c8f1658818e53419665e19510da5</guid>
-      <pubDate>Mon, 10 Nov 2025 01:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Using terrascan to detect compliance and security violations</title>
-      <link>https://prefetch.net/blog/2022/05/08/using-terrascan-to-detect-compliance-and-security-violations/</link>
-      <description>Over the past several years I've read numerous horror stories about cloud deployments gone wrong. S3 buckets with PCI data left open to the raw Internet, EC2 instance profiles that weren't scoped properly, misconfigured NSGs, etc. It takes a LOT of time to truly understand all the ins and outs of running workloads in the cloud, and making sure you get it "right". This is one reason I'm always on the lookout for tools that can add additional guard rails to the infrastructure provisioning process…</description>
-      <guid isPermaLink="false">8e64ea3ea5e440256ae76ca33100cdf2eb5559b1b19869486ebce69d7b709473</guid>
-      <pubDate>Sun, 08 May 2022 05:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Using the Kubernetes can-i subcommand to debug authentication issues</title>
-      <link>https://prefetch.net/blog/2022/04/08/using-the-kubernetes-can-i-subcommand-to-debug-authentication-issues/</link>
-      <description>When I was first getting started with Kubernetes, RBAC was one of the topics that took me the longest to grok. Not because the resources (Roles, ClusterRoles, etc) are hard to interpret, but learning how to scope your Roles to minimize access takes some practice. That and a lot of reading to understand the various API groups and what they contain. In a previous post I mentioned access-matrix, which is an incredible tool for visualizing the RBAC permissions an entity (User, SA, Group, etc.) has…</description>
-      <guid isPermaLink="false">e91f4694a3b1a1bc6316a062615f60cb982d5e74c0293b9fe1f8560309f30d17</guid>
-      <pubDate>Fri, 08 Apr 2022 06:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Ways to debug Kubernetes pods without shells</title>
-      <link>https://prefetch.net/blog/2022/04/08/ways-to-debug-kubernetes-pods-without-shells/</link>
-      <description>Debugging production issues can sometimes be a challenge in Kubernetes environments. One specific challenge is debugging containers that don't contain a shell. You may have seen the following when troubleshooting an issue: Not including a shell in your base image is a best practice, and projects like distroless make it super easy to package your applications with a small shell-less footprint. But when apps go rogue, what options do we have to debug them if the container doesn't include a shell…</description>
-      <guid isPermaLink="false">8f5372997a4767ba390d386a29ca4e2d7b92de108e3bdc1f3e8a30c0850b62f8</guid>
-      <pubDate>Fri, 08 Apr 2022 05:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>The importance of the C asm volatile statement</title>
-      <link>https://prefetch.net/blog/2022/04/07/the-importance-of-asm-volatile/</link>
-      <description>Last month I started a course that teaches you how to write your own Operating System. Working at the intersection of hardware and software (X86 Assembly and C) has been incredibly rewarding. I've learned a TON! One interesting thing I came across in the Linux kernel's bootloader code is the use of "asm volatile"…</description>
-      <guid isPermaLink="false">71372591547cc5df93c1059574bd0ef2656869345f370317ead25dcf4f29b159</guid>
-      <pubDate>Thu, 07 Apr 2022 05:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Diving into container images</title>
-      <link>https://prefetch.net/blog/2022/03/02/diving-into-container-images/</link>
-      <description>Container images are one of the items that makes up a "container." In most cases container images use a base image (e.g., Alpine, Ubuntu, etc.), and then one or more application-specific layers are added on top of that. There are numerous documented best practices for optimizing container images, and these best practices result in smaller images, less network traffic, and a reduction in container creation time. Unfortunately in practice, I've seen numerous cases were these best practices weren't followed. I've come across Dockerfiles that used dozens of RUN commands, didn't take advantage of multistaged builds, didn't optimize for image layer re-use, etc…</description>
-      <guid isPermaLink="false">5427cb3ab95959a25bb779f5e61d850d2d5e6d26ed3f671cc4a382fabc03be7b</guid>
-      <pubDate>Wed, 02 Mar 2022 14:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Why df fails to show one or more file systems when run as an unprivileged user</title>
-      <link>https://prefetch.net/blog/2022/03/01/why-df-fails-to-show-one-or-more-file-systems-when-run-as-an-unprivileged-user/</link>
-      <description>One of my friends recently reached out with a fun problem. His monitoring system was periodically not firing when file systems grew past the thresholds he defined. When we hopped on one of his EC2 instances to debug the issue, I noticed that we were getting a permission denied (EACCES) errno when running df as their monitoring user: When we ran the same command as trusty UID 0, everything worked as expected: A quick check with strace verified this as well: If you aren't familiar with statfs(2), it returns information about a mounted file system in a statfs structure. Here is a blurb from the manual page describing which information is returned: I thought that df was setuid root like the mount uility, so when I initially saw the permission denied error I thought it was something unrelated to permissions…</description>
-      <guid isPermaLink="false">4a820b9e0a25bce687eb402abde71a2843a2474d7f4da932c4f0071f80e6ea21</guid>
-      <pubDate>Tue, 01 Mar 2022 14:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Using Kubernetes affinity rules to control where your pods are scheduled</title>
-      <link>https://prefetch.net/blog/2020/08/03/using-kubernetes-affinity-rules-to-control-where-your-pods-are-scheduled/</link>
-      <description>Kubernetes has truly revolutioned distributed computing. While it solves a number of super hard problems, it also adds a number of new challenges. One of these challenges is ensuring your Kubernetes clusters are designed with failure domains in mind. Designing around failure domains includes things like provisioning infrastructure across availability zones, ensuring your physical servers are in different racks, or making sure the pods that support your application don't wind up on the same physical Kubernetes worker…</description>
-      <guid isPermaLink="false">6421b61c45607142c4e6091e11019909e770fc52d4f484727d9b4078a5d81f4e</guid>
-      <pubDate>Mon, 03 Aug 2020 07:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Debugging Kubernetes network issues with nsenter, dig and tcpdump</title>
-      <link>https://prefetch.net/blog/2020/08/03/debugging-kubernetes-network-issues-with-nsenter-dig-and-tcpdump/</link>
-      <description>As a Kubernetes administrator I frequently find myself needing to debug application and system issues. Most of the issues I encounter can be solved with Grafana dashboards and Prometheus metrics, or by running one or more Elasticsearch queries to examine logs. But there are times when I need to go deeper and actually inspect activity inside a running pod. A lot of debugging guides use the kubectl exec command to run one or more commands inside a container: But what happens if you don't have a shell installed in the container…</description>
-      <guid isPermaLink="false">78f472d92aa8f77f091bd57354dd3aa41e1ecabf33e479eb4eb2cb28eda49b43</guid>
-      <pubDate>Mon, 03 Aug 2020 05:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>How the docker pull command works under the covers (with HTTP headers to illustrate the process)</title>
-      <link>https://prefetch.net/blog/2020/07/22/how-the-docker-pull-command-works-under-the-covers-with-http-headers-to-illustrate-the-process/</link>
-      <description>I talked previously about needing to decode docker HTTP headers to debug a registry issue. That debugging session was super fun, but I had a few questions about how that interaction actually works. So I started to decode all of the HTTP requests and responses from a $(docker pull), which truly helped me solidify how the docker daemon (dockerd) talks to a container registry. I figured I would share my notes here so I (as well as anyone else on the 'net) can reference them in the future…</description>
-      <guid isPermaLink="false">a835a4303d7cf80275011601fcee7dce95b7a7e3f7590d250fda13fa5ef11777</guid>
-      <pubDate>Wed, 22 Jul 2020 05:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>
