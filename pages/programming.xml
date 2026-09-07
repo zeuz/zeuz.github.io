@@ -5,7 +5,1157 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Wed, 02 Sep 2026 14:02:06 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 07 Sep 2026 14:03:20 +0000</lastBuildDate>
+    <item>
+      <title>Graham Dumpleton: Live tracing with wrapture - Planet Python</title>
+      <link>https://grahamdumpleton.me/posts/2026/09/live-tracing-with-wrapture/</link>
+      <description>&lt;p&gt;When I wrote about &lt;a href="https://grahamdumpleton.me/posts/2026/09/unit-testing-with-wrapture/"&gt;unit testing with wrapture&lt;/a&gt; the pattern in every test was the same: create a binding on a method, open a &lt;code&gt;timeline()&lt;/code&gt;, run the code, and read the recorded calls off the tape. What I did not say at the time is that nothing about a binding is specific to testing. A binding observes a call site and emits events, and what happens to those events is decided by whoever is listening. In a test the listener is a tape. Take the tape away and register something else, and the same binding narrates a running program as it goes.&lt;/p&gt;
+&lt;p&gt;That is the whole idea behind the tracing side of wrapture, and this post is the minimal version of it: the shop from the testing series, three bindings, and one sink.&lt;/p&gt;
+&lt;h2&gt;The shop&lt;/h2&gt;
+&lt;p&gt;The code is the order service from the earlier posts, grown just enough to have something worth watching. A card number now travels with the order, the gateway declines cards ending in four zeros, and each order belongs to a tenant.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;class CardDeclined(Exception):
+    pass
+class Gateway:
+    def charge(self, amount, card):
+        if card.endswith(&amp;quot;0000&amp;quot;):
+            raise CardDeclined(f&amp;quot;card ending {card[-4:]} declined&amp;quot;)
+        return {&amp;quot;id&amp;quot;: f&amp;quot;ch_{amount}&amp;quot;, &amp;quot;amount&amp;quot;: amount}
+    def refund(self, charge_id):
+        return {&amp;quot;id&amp;quot;: f&amp;quot;re_{charge_id}&amp;quot;}
+class Ledger:
+    def record(self, entry):
+        return f&amp;quot;led_{entry['id']}&amp;quot;
+class Notifier:
+    def send(self, message):
+        return True
+class OrderService:
+    def __init__(self, gateway=None, ledger=None, notifier=None):
+        self.gateway = Gateway() if gateway is None else gateway
+        self.ledger = Ledger() if ledger is None else ledger
+        self.notifier = Notifier() if notifier is None else notifier
+    def place(self, amount, card, tenant):
+        charge = self._take_payment(amount, card)
+        try:
+            self.ledger.record(charge)
+        except Exception:
+            self.gateway.refund(charge[&amp;quot;id&amp;quot;])
+            raise
+        self.notifier.send(f&amp;quot;order {charge['id']} placed&amp;quot;)
+        return charge
+    def _take_payment(self, amount, card):
+        return self.gateway.charge(amount, card)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That lives in &lt;code&gt;shop.py&lt;/code&gt;. A second module, &lt;code&gt;orders.py&lt;/code&gt;, places three orders, one of which will be declined:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;from shop import CardDeclined, OrderService
+ORDERS = [
+    (500, &amp;quot;4111-1111-1111-1111&amp;quot;, &amp;quot;acme&amp;quot;),
+    (250, &amp;quot;4000-0000-0000-0000&amp;quot;, &amp;quot;globex&amp;quot;),
+    (120, &amp;quot;5555-4444-3333-2222&amp;quot;, &amp;quot;globex&amp;quot;),
+]
+def run():
+    service = OrderService()
+    for amount, card, tenant in ORDERS:
+        try:
+            service.place(amount, card, tenant=tenant)
+        except CardDeclined:
+            pass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The question to answer is a simple one. When an order is placed, what actually happens? Which methods run, with what, and what comes back? A log line would answer that only in the places where someone had already thought to add one, and this code has none.&lt;/p&gt;
+&lt;h2&gt;Three bindings and a sink&lt;/h2&gt;
+&lt;p&gt;The entry point applies a binding to each of the three methods that matter and registers a &lt;code&gt;Printer&lt;/code&gt;, which is the simplest sink wrapture ships: it prints each event to standard error as it happens.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;import wrapture
+from shop import Gateway, Ledger, OrderService
+import orders
+wrapture.binding(OrderService, &amp;quot;place&amp;quot;).apply()
+wrapture.binding(Gateway, &amp;quot;charge&amp;quot;).apply()
+wrapture.binding(Ledger, &amp;quot;record&amp;quot;).apply()
+wrapture.add_sink(wrapture.Printer())
+orders.run()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There is no &lt;code&gt;timeline()&lt;/code&gt; anywhere in that. The bindings are applied for the life of the process, the sink is registered for the life of the process, and events flow from one to the other. Running it, the output is:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;shop:OrderService.place(amount=500, card='4111-1111-1111-1111', tenant='acme')
+  shop:Gateway.charge(amount=500, card='4111-1111-1111-1111')
+  shop:Gateway.charge -&amp;gt; {'id': 'ch_500', 'amount': 500} [8us]
+  shop:Ledger.record(entry={'id': 'ch_500', 'amount': 500})
+  shop:Ledger.record -&amp;gt; 'led_ch_500' [6us]
+shop:OrderService.place -&amp;gt; {'id': 'ch_500', 'amount': 500} [239us]
+shop:OrderService.place(amount=250, card='4000-0000-0000-0000', tenant='globex')
+  shop:Gateway.charge(amount=250, card='4000-0000-0000-0000')
+  shop:Gateway.charge !! CardDeclined [5us]
+shop:OrderService.place !! CardDeclined [60us]
+shop:OrderService.place(amount=120, card='5555-4444-3333-2222', tenant='globex')
+  shop:Gateway.charge(amount=120, card='5555-4444-3333-2222')
+  shop:Gateway.charge -&amp;gt; {'id': 'ch_120', 'amount': 120} [4us]
+  shop:Ledger.record(entry={'id': 'ch_120', 'amount': 120})
+  shop:Ledger.record -&amp;gt; 'led_ch_120' [3us]
+shop:OrderService.place -&amp;gt; {'id': 'ch_120', 'amount': 120} [104us]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Each operation gets a line when it begins, indented by how deeply it is nested, and a closing line with the outcome and how long it took. A &lt;code&gt;-&amp;gt;&lt;/code&gt; marks a return value and &lt;code&gt;!!&lt;/code&gt; marks an exception, so the declined card is visible at a glance, and so is the fact that &lt;code&gt;Ledger.record&lt;/code&gt; never ran for that order. These are the real arguments and the real results, the same &lt;code&gt;-&amp;gt;&lt;/code&gt; and &lt;code&gt;!!&lt;/code&gt; markers that &lt;code&gt;tape.tree()&lt;/code&gt; uses in a test, only arriving live rather than being reconstructed afterwards.&lt;/p&gt;
+&lt;p&gt;The first thing I noticed in that output is something the trace should not contain. The card numbers are in it, in full, because the bindings captured the arguments as given. The same &lt;code&gt;redact()&lt;/code&gt; capture policy the testing series used for keeping secrets off a tape works here, since the binding is the same object:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;wrapture.binding(OrderService, &amp;quot;place&amp;quot;, capture=wrapture.redact(&amp;quot;card&amp;quot;)).apply()
+wrapture.binding(Gateway, &amp;quot;charge&amp;quot;, capture=wrapture.redact(&amp;quot;card&amp;quot;)).apply()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With that in place the opening lines read &lt;code&gt;card='&amp;lt;redacted&amp;gt;'&lt;/code&gt; and everything else is unchanged. I have left it on for the rest of the post, since a trace that is going to be looked at, streamed to a file, or sent anywhere, is exactly the place a card number should not be.&lt;/p&gt;
+&lt;h2&gt;What it costs when nobody is listening&lt;/h2&gt;
+&lt;p&gt;The obvious worry about leaving bindings applied in a program is what they cost when nothing is being traced. The recording gate in wrapture is not &amp;quot;is there a timeline&amp;quot; but &amp;quot;is anything listening&amp;quot;. A tape scoped to a test is one kind of listener, a process sink is another, and when neither is present an applied binding constructs no event at all. The wrapped method runs with only wrapt's own dispatch on top, which the documentation puts at about half a microsecond per call on the machine it was measured on. That is what makes it reasonable to bind the interesting methods once, in the entry point, and let the sink decide whether anything is recorded.&lt;/p&gt;
+&lt;h2&gt;Seeing less&lt;/h2&gt;
+&lt;p&gt;Three orders is a readable trace. Three thousand is not, and the answer is rarely to bind fewer things, because the point of binding the layers is to have them there when a question comes up. The tools for narrowing sit either at the sink or at the binding.&lt;/p&gt;
+&lt;p&gt;At the sink, combinators wrap a sink and gate what reaches it. &lt;code&gt;Depth(1, ...)&lt;/code&gt; forwards only the roots of each tree, which turns the trace into one opening and one closing line per order:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;wrapture.add_sink(wrapture.Depth(1, wrapture.Printer()))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;shop:OrderService.place(amount=500, card='&amp;lt;redacted&amp;gt;', tenant='acme')
+shop:OrderService.place -&amp;gt; {'id': 'ch_500', 'amount': 500} [149us]
+shop:OrderService.place(amount=250, card='&amp;lt;redacted&amp;gt;', tenant='globex')
+shop:OrderService.place !! CardDeclined [33us]
+shop:OrderService.place(amount=120, card='&amp;lt;redacted&amp;gt;', tenant='globex')
+shop:OrderService.place -&amp;gt; {'id': 'ch_120', 'amount': 120} [46us]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;At the binding, &lt;code&gt;when=&lt;/code&gt; takes a predicate that is consulted before any event exists. A falsey answer means no event is constructed, no arguments are captured and nothing is delivered, which is the cheap way to narrow a hot call site. Here it records orders for one tenant only:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;def acme_only(instance, args, kwargs):
+    return kwargs.get(&amp;quot;tenant&amp;quot;) == &amp;quot;acme&amp;quot;
+place = wrapture.binding(OrderService, &amp;quot;place&amp;quot;, when=acme_only,
+                         capture=wrapture.redact(&amp;quot;card&amp;quot;)).apply()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Running the three orders again gives this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;shop:OrderService.place(amount=500, card='&amp;lt;redacted&amp;gt;', tenant='acme')
+  shop:Gateway.charge(amount=500, card='&amp;lt;redacted&amp;gt;')
+  shop:Gateway.charge -&amp;gt; {'id': 'ch_500', 'amount': 500} [7us]
+  shop:Ledger.record(entry={'id': 'ch_500', 'amount': 500})
+  shop:Ledger.record -&amp;gt; 'led_ch_500' [6us]
+shop:OrderService.place -&amp;gt; {'id': 'ch_500', 'amount': 500} [245us]
+shop:Gateway.charge(amount=250, card='&amp;lt;redacted&amp;gt;')
+shop:Gateway.charge !! CardDeclined [5us]
+shop:Gateway.charge(amount=120, card='&amp;lt;redacted&amp;gt;')
+shop:Gateway.charge -&amp;gt; {'id': 'ch_120', 'amount': 120} [4us]
+shop:Ledger.record(entry={'id': 'ch_120', 'amount': 120})
+shop:Ledger.record -&amp;gt; 'led_ch_120' [4us]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The globex orders are gone, but their gateway and ledger calls are not. A &lt;code&gt;when=&lt;/code&gt; decline skips exactly one event, the declined operation's own, and whatever records beneath it still records, now with nothing above it, so each inner call turns up as an anonymous root with no &lt;code&gt;place&lt;/code&gt; to explain it. Sometimes that is exactly what you want, since a binding whose only job is to intervene in a call should not silence what runs beneath it. When the intent is &amp;quot;nothing from here down&amp;quot;, &lt;code&gt;tree=True&lt;/code&gt; says so:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;place = wrapture.binding(OrderService, &amp;quot;place&amp;quot;, when=acme_only, tree=True,
+                         capture=wrapture.redact(&amp;quot;card&amp;quot;)).apply()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;shop:OrderService.place(amount=500, card='&amp;lt;redacted&amp;gt;', tenant='acme')
+  shop:Gateway.charge(amount=500, card='&amp;lt;redacted&amp;gt;')
+  shop:Gateway.charge -&amp;gt; {'id': 'ch_500', 'amount': 500} [7us]
+  shop:Ledger.record(entry={'id': 'ch_500', 'amount': 500})
+  shop:Ledger.record -&amp;gt; 'led_ch_500' [6us]
+shop:OrderService.place -&amp;gt; {'id': 'ch_500', 'amount': 500} [251us]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now the decline covers the whole extent of the declined operation, and the trace is one tenant's orders and nothing else. The skipped calls are not simply lost, either. Each binding counts the operations it declined on &lt;code&gt;filtered_calls&lt;/code&gt;, and after this run &lt;code&gt;place&lt;/code&gt;, &lt;code&gt;charge&lt;/code&gt; and &lt;code&gt;record&lt;/code&gt; report 2, 2 and 1 respectively (the second globex order raised before reaching the ledger), so a trace shorter than expected can be explained rather than guessed at.&lt;/p&gt;
+&lt;h2&gt;Where this leaves things&lt;/h2&gt;
+&lt;p&gt;The whole intervention is a few lines in the program's entry point: bind the methods that matter, register a sink, and the program describes what it is doing as it runs, with real arguments and real results, and costs next to nothing when nothing is listening. The sink protocol itself is three notifications, so a sink that counts, samples, filters, or writes somewhere of your own is a small class, and the &lt;a href="https://wrapture.readthedocs.io/en/latest/ad-hoc-tracing.html"&gt;ad-hoc tracing page&lt;/a&gt; of the documentation covers that side, along with the other combinators and the collectors that keep numbers rather than events.&lt;/p&gt;
+&lt;p&gt;Those few lines in the entry point are still lines in the program, though. For code you cannot or would rather not edit, they can move out of the program entirely, into a file that sits next to it.&lt;/p&gt;</description>
+      <guid isPermaLink="false">e03f0ca3aa374c89b55b8355251034dd93f2bf3f7110ff83964cc25dfe921287</guid>
+      <pubDate>Mon, 07 Sep 2026 01:39:16 +0000</pubDate>
+    </item>
+    <item>
+      <title>Glyph Lefkowitz: ... but what about video games? - Planet Python</title>
+      <link>https://blog.glyph.im/2026/09/but-what-about-video-games.html</link>
+      <description>&lt;p&gt;I get asked this rhetorical question a lot, in various forms:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Sure, datacenters might use a lot of energy, but you don’t &lt;em&gt;have&lt;/em&gt; to use a
+hosted frontier model to do software development.  What if I just run a local
+open-weights model to do some coding, with an open-source coding agent?
+Video games also use my GPU.  Is local model development any worse than
+playing a video game?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;So I want to write down my comprehensive answer to this: Yes, using an LLM to
+write some code is worse than playing a video game, for a few reasons.&lt;/p&gt;
+&lt;h2 id="video-games-are-interactive-llms-are-batch-jobs"&gt;Video Games Are Interactive, LLMs Are Batch Jobs&lt;/h2&gt;
+&lt;p&gt;Video games use compute to respond to human input. You are using your GPU while
+you are looking at a screen, displaying an image. When you are done playing,
+you shut off the game, and your computer goes back to idle. It’s much less
+energy. By contrast, agentic loops with evals (the only kind of “AI” that is
+meaningfully any good at coding) are running hot, for days. To use the most
+recent example of such a thing, &lt;a href="https://forums.paint.net/topic/134563-🍷-extremely-experimental-winelinux-support-how-to-get-started/"&gt;a &lt;em&gt;very rough&lt;/em&gt; first sketch of an
+implementation of a Windows graphics API backend to help port a paint program
+to other
+platforms&lt;/a&gt;,
+it took 3 weeks of Claude time, “day and night”. Do you play a lot of video
+games for 500 hours to make it past the tutorial level, while &lt;em&gt;also&lt;/em&gt; using
+&lt;em&gt;other&lt;/em&gt; computers for other things, as well as the rest of your carbon
+footprint?&lt;/p&gt;
+&lt;h2 id="video-games-need-development-llms-need-training"&gt;Video Games Need Development, LLMs Need Training&lt;/h2&gt;
+&lt;p&gt;Video games use compute to respond to human input during development, too.
+Your game has to be made, but your LLM has to be &lt;em&gt;trained&lt;/em&gt;.  LLMs use a
+historically extreme amount of power, &lt;em&gt;probably&lt;/em&gt; using &lt;a href="https://science.feedback.org/training-and-using-chatgpt-uses-a-lot-of-energy-but-exact-numbers-are-tricky-to-pin-down-without-data-from-openai/"&gt;more than the entire
+Internet&lt;/a&gt;,
+but it’s kind of hard to say.  Still, it seems a reasonable estimate to within
+several orders of magnitude that even over a multi-year project with hundreds
+of developers, the power used to develop an individual video game is &lt;em&gt;nowhere
+close&lt;/em&gt; to training even a small LLM.&lt;/p&gt;
+&lt;p&gt;This is true even for local models.  OpenAI has &lt;a href="https://www.fdd.org/analysis/2026/02/13/openai-alleges-chinas-deepseek-stole-its-intellectual-property-to-train-its-own-models/"&gt;openly claimed that DeepSeek
+“stole its intellectual
+property”&lt;/a&gt;,
+and I have heard grumblings that none of the open-weights generalist models
+could realistically exist without the massive lift that the frontier labs are
+doing with their training, in various other ways too.  Secrecy throughout the
+industry makes this kind of impossible to understand rigorously, but it seems
+fair to say that you are partially culpable for all that famously
+energy-intensive frontier lab training if you’re using a local model.&lt;/p&gt;
+&lt;h3 id="and-they-keep-needing-training"&gt;And They &lt;em&gt;Keep&lt;/em&gt; Needing Training&lt;/h3&gt;
+&lt;p&gt;You also can’t dismiss this as a sunk cost, because in order to stay current
+with industry developments, models need to be updated with new information from
+the rest of the world, which means that you need to &lt;em&gt;keep&lt;/em&gt; training them.
+Beyond the energy for your own use, if you want a real-life agentic workflow
+that actually does useful stuff, practically speaking you would still need to
+update your local models over and over again, at least once every few months,
+which means you would be incentivizing continued energy consumption by whoever
+was doing that training for you, including the energy cost of scraping.&lt;/p&gt;
+&lt;h2 id="lets-be-real-here-you-arent-actually-using-a-local-model"&gt;Let’s Be Real Here, You Aren’t Actually Using A Local Model&lt;/h2&gt;
+&lt;p&gt;This question is a hypothetical thought experiment.  Despite &lt;a href="https://www.faros.ai/blog/open-models-vs-frontier-models"&gt;synthetic
+benchmarks that keep showing there isn’t much
+difference&lt;/a&gt; between
+open weight and frontier models, &lt;a href="https://aimultiple.com/llm-market-share"&gt;nobody’s actually using local models for much
+of anything&lt;/a&gt; beyond sharing those
+talking points.  Depending on which benchmark you’re looking at, &lt;a href="https://whatllm.org/blog/open-source-vs-proprietary-llms-2026"&gt;maybe it’s
+good enough or maybe it’s
+worse&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As an inveterate AI hater, all these systems seem pretty bad to me, but it
+seems that people who find them useful tend to &lt;em&gt;subjectively&lt;/em&gt; believe the
+frontier models are worth the premium, and that’s what they’re actually using.
+Once you have accepted that it is OK to use LLMs for coding at all, it seems
+like a &lt;em&gt;very&lt;/em&gt; quick slippery slope on down to “we’ll go ahead and use the
+frontier models for now anyway, but we could be ethically better in the future
+by switching to an open weights one, that option is always available”.&lt;/p&gt;
+&lt;h2 id="theres-a-reason-we-have-data-centers"&gt;There’s A Reason We Have Data Centers&lt;/h2&gt;
+&lt;p&gt;Devolving power usage to local LLMs might be good to make users responsible for
+their costs and decrease the impacts to communities that are physically next to
+huge concentrations of power utilization, not to mention generation.  However,
+there’s a reason that it makes sense for the providers to build these giant
+facilities: economies of scale &lt;em&gt;reduce&lt;/em&gt; total power consumption, they don’t
+increase it.  If you do all the same stuff with a local model that they have to
+do in hosted environments, &lt;a href="https://omniforge.online/blog/green-ai-at-the-edge"&gt;it will probably take &lt;em&gt;more&lt;/em&gt; power, even though you
+will be incentivized to do different
+stuff&lt;/a&gt;.  This incentive to
+“do different stuff” is why although local models can hypothetically hold their
+own against the frontier labs for some tasks, when people or businesses take
+their inference costs in-house they often find that it’s too painful and move
+back to hosted LLMs.&lt;/p&gt;
+&lt;h2 id="there-are-problems-other-than-power"&gt;There Are Problems Other Than Power&lt;/h2&gt;
+&lt;p&gt;These are subjects for a different post, but you have to consider a lot of
+other externalities: AI psychosis, de-skilling, comprehension debt, cultivating
+a dependency, introducing security defects, limiting your design space based on
+what LLMs can understand, context rot, wasting time on invalid solutions,
+introducing unpredictability into your workflows.  You still have to consider
+the &lt;a href="https://blog.glyph.im/2025/08/futzing-fraction.html"&gt;total cost benefit ratio&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="to-sum-up"&gt;To Sum Up&lt;/h2&gt;
+&lt;p&gt;Local LLMs might alleviate &lt;em&gt;some&lt;/em&gt; of the harms from using the hosted frontier
+providers.  There are fewer privacy concerns, you can measure your power
+utilization and be more directly responsible for it, you can build interfaces
+with affordances that are less oriented towards addiction and dependency than
+the major frontier labs’ harnesses.&lt;/p&gt;
+&lt;p&gt;But they’re not automatically “the same as playing a video game” just because
+they can use the same GPU.&lt;/p&gt;
+&lt;h2 id="acknowledgments"&gt;Acknowledgments&lt;/h2&gt;
+&lt;p class="update-note"&gt;Thank you to &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;my patrons&lt;/a&gt; who are supporting my writing on
+this blog.  If you like what you’ve read here and you’d
+like to read more of it, or you’d like to support my &lt;a href="https://github.com/glyph/"&gt;various open-source
+endeavors&lt;/a&gt;, you can &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;support my work as a
+sponsor&lt;/a&gt;!&lt;/p&gt;</description>
+      <guid isPermaLink="false">61abf78e2333bb90ddaa8b9255bb3f8edbe125eeb8a171bd6db023028b94c950</guid>
+      <pubDate>Sun, 06 Sep 2026 22:57:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Glyph Lefkowitz: ... but what about video games? - Planet Twisted</title>
+      <link>https://blog.glyph.im/2026/09/but-what-about-video-games.html</link>
+      <description>&lt;p&gt;I get asked this rhetorical question a lot, in various forms:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Sure, datacenters might use a lot of energy, but you don’t &lt;em&gt;have&lt;/em&gt; to use a
+hosted frontier model to do software development.  What if I just run a local
+open-weights model to do some coding, with an open-source coding agent?
+Video games also use my GPU.  Is local model development any worse than
+playing a video game?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;So I want to write down my comprehensive answer to this: Yes, using an LLM to
+write some code is worse than playing a video game, for a few reasons.&lt;/p&gt;
+&lt;h2 id="video-games-are-interactive-llms-are-batch-jobs"&gt;Video Games Are Interactive, LLMs Are Batch Jobs&lt;/h2&gt;
+&lt;p&gt;Video games use compute to respond to human input. You are using your GPU while
+you are looking at a screen, displaying an image. When you are done playing,
+you shut off the game, and your computer goes back to idle. It’s much less
+energy. By contrast, agentic loops with evals (the only kind of “AI” that is
+meaningfully any good at coding) are running hot, for days. To use the most
+recent example of such a thing, &lt;a href="https://forums.paint.net/topic/134563-🍷-extremely-experimental-winelinux-support-how-to-get-started/"&gt;a &lt;em&gt;very rough&lt;/em&gt; first sketch of an
+implementation of a Windows graphics API backend to help port a paint program
+to other
+platforms&lt;/a&gt;,
+it took 3 weeks of Claude time, “day and night”. Do you play a lot of video
+games for 500 hours to make it past the tutorial level, while &lt;em&gt;also&lt;/em&gt; using
+&lt;em&gt;other&lt;/em&gt; computers for other things, as well as the rest of your carbon
+footprint?&lt;/p&gt;
+&lt;h2 id="video-games-need-development-llms-need-training"&gt;Video Games Need Development, LLMs Need Training&lt;/h2&gt;
+&lt;p&gt;Video games use compute to respond to human input during development, too.
+Your game has to be made, but your LLM has to be &lt;em&gt;trained&lt;/em&gt;.  LLMs use a
+historically extreme amount of power, &lt;em&gt;probably&lt;/em&gt; using &lt;a href="https://science.feedback.org/training-and-using-chatgpt-uses-a-lot-of-energy-but-exact-numbers-are-tricky-to-pin-down-without-data-from-openai/"&gt;more than the entire
+Internet&lt;/a&gt;,
+but it’s kind of hard to say.  Still, it seems a reasonable estimate to within
+several orders of magnitude that even over a multi-year project with hundreds
+of developers, the power used to develop an individual video game is &lt;em&gt;nowhere
+close&lt;/em&gt; to training even a small LLM.&lt;/p&gt;
+&lt;p&gt;This is true even for local models.  OpenAI has &lt;a href="https://www.fdd.org/analysis/2026/02/13/openai-alleges-chinas-deepseek-stole-its-intellectual-property-to-train-its-own-models/"&gt;openly claimed that DeepSeek
+“stole its intellectual
+property”&lt;/a&gt;,
+and I have heard grumblings that none of the open-weights generalist models
+could realistically exist without the massive lift that the frontier labs are
+doing with their training, in various other ways too.  Secrecy throughout the
+industry makes this kind of impossible to understand rigorously, but it seems
+fair to say that you are partially culpable for all that famously
+energy-intensive frontier lab training if you’re using a local model.&lt;/p&gt;
+&lt;h3 id="and-they-keep-needing-training"&gt;And They &lt;em&gt;Keep&lt;/em&gt; Needing Training&lt;/h3&gt;
+&lt;p&gt;You also can’t dismiss this as a sunk cost, because in order to stay current
+with industry developments, models need to be updated with new information from
+the rest of the world, which means that you need to &lt;em&gt;keep&lt;/em&gt; training them.
+Beyond the energy for your own use, if you want a real-life agentic workflow
+that actually does useful stuff, practically speaking you would still need to
+update your local models over and over again, at least once every few months,
+which means you would be incentivizing continued energy consumption by whoever
+was doing that training for you, including the energy cost of scraping.&lt;/p&gt;
+&lt;h2 id="lets-be-real-here-you-arent-actually-using-a-local-model"&gt;Let’s Be Real Here, You Aren’t Actually Using A Local Model&lt;/h2&gt;
+&lt;p&gt;This question is a hypothetical thought experiment.  Despite &lt;a href="https://www.faros.ai/blog/open-models-vs-frontier-models"&gt;synthetic
+benchmarks that keep showing there isn’t much
+difference&lt;/a&gt; between
+open weight and frontier models, &lt;a href="https://aimultiple.com/llm-market-share"&gt;nobody’s actually using local models for much
+of anything&lt;/a&gt; beyond sharing those
+talking points.  Depending on which benchmark you’re looking at, &lt;a href="https://whatllm.org/blog/open-source-vs-proprietary-llms-2026"&gt;maybe it’s
+good enough or maybe it’s
+worse&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As an inveterate AI hater, all these systems seem pretty bad to me, but it
+seems that people who find them useful tend to &lt;em&gt;subjectively&lt;/em&gt; believe the
+frontier models are worth the premium, and that’s what they’re actually using.
+Once you have accepted that it is OK to use LLMs for coding at all, it seems
+like a &lt;em&gt;very&lt;/em&gt; quick slippery slope on down to “we’ll go ahead and use the
+frontier models for now anyway, but we could be ethically better in the future
+by switching to an open weights one, that option is always available”.&lt;/p&gt;
+&lt;h2 id="theres-a-reason-we-have-data-centers"&gt;There’s A Reason We Have Data Centers&lt;/h2&gt;
+&lt;p&gt;Devolving power usage to local LLMs might be good to make users responsible for
+their costs and decrease the impacts to communities that are physically next to
+huge concentrations of power utilization, not to mention generation.  However,
+there’s a reason that it makes sense for the providers to build these giant
+facilities: economies of scale &lt;em&gt;reduce&lt;/em&gt; total power consumption, they don’t
+increase it.  If you do all the same stuff with a local model that they have to
+do in hosted environments, &lt;a href="https://omniforge.online/blog/green-ai-at-the-edge"&gt;it will probably take &lt;em&gt;more&lt;/em&gt; power, even though you
+will be incentivized to do different
+stuff&lt;/a&gt;.  This incentive to
+“do different stuff” is why although local models can hypothetically hold their
+own against the frontier labs for some tasks, when people or businesses take
+their inference costs in-house they often find that it’s too painful and move
+back to hosted LLMs.&lt;/p&gt;
+&lt;h2 id="there-are-problems-other-than-power"&gt;There Are Problems Other Than Power&lt;/h2&gt;
+&lt;p&gt;These are subjects for a different post, but you have to consider a lot of
+other externalities: AI psychosis, de-skilling, comprehension debt, cultivating
+a dependency, introducing security defects, limiting your design space based on
+what LLMs can understand, context rot, wasting time on invalid solutions,
+introducing unpredictability into your workflows.  You still have to consider
+the &lt;a href="https://blog.glyph.im/2025/08/futzing-fraction.html"&gt;total cost benefit ratio&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="to-sum-up"&gt;To Sum Up&lt;/h2&gt;
+&lt;p&gt;Local LLMs might alleviate &lt;em&gt;some&lt;/em&gt; of the harms from using the hosted frontier
+providers.  There are fewer privacy concerns, you can measure your power
+utilization and be more directly responsible for it, you can build interfaces
+with affordances that are less oriented towards addiction and dependency than
+the major frontier labs’ harnesses.&lt;/p&gt;
+&lt;p&gt;But they’re not automatically “the same as playing a video game” just because
+they can use the same GPU.&lt;/p&gt;
+&lt;h2 id="acknowledgments"&gt;Acknowledgments&lt;/h2&gt;
+&lt;p class="update-note"&gt;Thank you to &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;my patrons&lt;/a&gt; who are supporting my writing on
+this blog.  If you like what you’ve read here and you’d
+like to read more of it, or you’d like to support my &lt;a href="https://github.com/glyph/"&gt;various open-source
+endeavors&lt;/a&gt;, you can &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;support my work as a
+sponsor&lt;/a&gt;!&lt;/p&gt;</description>
+      <guid isPermaLink="false">78ee0ff46cd5b6492008e98a00090de66fb4ebd3d5598f87bcc5a559277f5e88</guid>
+      <pubDate>Sun, 06 Sep 2026 22:57:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>The Python Coding Stack: How I Code (Late 2026 Version) - Planet Python</title>
+      <link>https://www.thepythoncodingstack.com/p/how-i-code-late-2026-version</link>
+      <description>&lt;p&gt;&lt;span&gt;You open a blank &lt;/span&gt;&lt;code&gt;.py&lt;/code&gt;&lt;span&gt; file in your favourite IDE. You have a blank page in front of you. You start writing code.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;This is how it used to be. And perhaps it&amp;#8217;s how it still is for you. This is how I wrote computer programs just over half a year ago, too. But things started changing gradually for me earlier in 2026.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;Last week, I ran a live course. In the first few minutes of the first live session, I opened a blank &lt;/span&gt;&lt;code&gt;.py&lt;/code&gt;&lt;span&gt; file in my IDE. There was nothing on my screen. Then I wrote code. Word by word. Line by line.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;And about half an hour into this first session, it dawned on me: the last time I had gone through this process of opening a blank file and writing code from scratch was the previous time I had to run a live course a couple of months earlier.&lt;/span&gt;&lt;/p&gt;&lt;h2&gt;&lt;strong&gt;&lt;span&gt;My Agent and I&lt;/span&gt;&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;span&gt;Every bit of code I had worked on in between these two live courses was written by my AI agent. I was very much involved in those processes, and I read and reviewed lots of code. But I didn&amp;#8217;t write any.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;Like many, I have mixed feelings about this. I&amp;#8217;m getting a lot more done. But I miss the process of writing code, exploring options, putting a project together, function by function, class by class, module by module.&lt;/span&gt;&lt;/p&gt;&lt;h3&gt;&lt;strong&gt;&lt;span&gt;The Coding Gym&lt;/span&gt;&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;span&gt;I&amp;#8217;m going to force myself to write code. I&amp;#8217;ll make time for it, as I enjoy it too much and I don&amp;#8217;t want to lose the skills and fluency. But it will be like going for a run or lifting weights in the gym. I don&amp;#8217;t run because I need to get from point A to point B quickly and I don&amp;#8217;t lift weights because I need to move those weights from one place to another. I do those things to keep my body healthy and strong. I&amp;#8217;ll code by hand to do the same thing for my mind.&lt;/span&gt;&lt;/p&gt;&lt;h2&gt;&lt;strong&gt;&lt;span&gt;A Real World Example&lt;/span&gt;&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;span&gt;But let&amp;#8217;s go back to how I code now, in late 2026. And let me give you an example of something I worked on last week and used successfully this weekend.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;It&amp;#8217;s not Python code. It&amp;#8217;s a Google Sheets spreadsheet. But that doesn&amp;#8217;t matter. The process is the same.&lt;/span&gt;&lt;/p&gt;&lt;h3&gt;&lt;strong&gt;&lt;span&gt;The Scenario&lt;/span&gt;&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;span&gt;I&amp;#8217;m a member of an athletics club (or &amp;#8216;track and field&amp;#8217;, depending on which flavour of English you speak). This weekend we had our club championships and I was tasked to take care of results and overall points. We award a shield for the best track performance and another for the best field performance.&lt;/span&gt;&lt;/p&gt;&lt;h3&gt;&lt;strong&gt;&lt;span&gt;The Pain Point&lt;/span&gt;&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;span&gt;Last year I was asked to help out at the last minute (and by &amp;#8220;last minute&amp;#8221; I mean it almost literally, as it was 20 minutes before the meeting started). It was a nightmare. I wasn&amp;#8217;t responsible for collating the results, that was done by someone else manually as if it was 1965. I just had to work out their performance points by tapping in lots of numbers into an online calculator using my phone. A laptop would have been easier, but I was only tasked with this job on the day and I only had a phone with me.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;This year I had more notice, so I chose to make my life easier... and the whole process smoother.&lt;/span&gt;&lt;/p&gt;&lt;h3&gt;&lt;strong&gt;&lt;span&gt;The Problem&lt;/span&gt;&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;span&gt;The problem we&amp;#8217;re trying to solve&amp;#8230;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&amp;#8230;is not rocket science. Officials on the track or in the field write results on result sheets and they&amp;#8217;re passed on to the result room by a runner. These sheets contain the name of the event, the athletes&amp;#8217; bib numbers, and their performances. So a result slip may look like this:&lt;/span&gt;&lt;/p&gt;&lt;div class="highlighted_code_block"&gt;&lt;pre class="shiki"&gt;&lt;code class="language-plaintext"&gt;| Event: U16 Boys 100m-1 |                 |
+| ---------------------- | --------------- |
+| Athlete                | Performance (s) |
+| 23                     | 11.5            |
+| 47                     | 11.8            |
+| 13                     | 11.9            |&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;span&gt;Here&amp;#8217;s what happened last year:&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;span&gt;My colleague had to cross-reference bib numbers with a printed-out sheet of registered athletes. She matched names and age groups, then she sorted results into separate sheets for each event and age group.&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;span&gt;I had to look up each athlete&amp;#8217;s date of birth from a spreadsheet I&amp;#8217;d been given that morning (browsing spreadsheets on a phone screen is not fun), then tap their age, event, and performance into an online calculator, one by one, and write the resulting points on a separate sheet.&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;span&gt;The points allow you to compare performances by athletes of different ages in different events, so that we could then find the single best track performance and the single best field performance.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;I was already thinking, at last year&amp;#8217;s event, of the Python program I could write to automate all of this.&lt;/span&gt;&lt;/p&gt;&lt;h3&gt;&lt;strong&gt;&lt;span&gt;The Solution (I would have never bothered with in 2025)&lt;/span&gt;&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;span&gt;So, fast-forward to a couple of weeks ago. This time I had some time to come up with something. But I opted to create a Google Sheet instead of a Python program for two reasons:&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;span&gt;It&amp;#8217;s much easier for others in the club to use it and share it in the future.&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;span&gt;My usual objection that it&amp;#8217;s easier and more fun to write a Python program than create a complex spreadsheet full of linked tabs and formulae didn&amp;#8217;t apply. Either way, it was my agent who was going to do the hard work.&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;span&gt;And here&amp;#8217;s the thing. If I was doing this last year, when I was still coding most things manually (and occasionally opening a ChatGPT window to ask a few things), I still wouldn&amp;#8217;t have done this. I wouldn&amp;#8217;t have had the time.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;But this year was different. Sure, if anything I was busier this year than I was last year. But this year I had agents at my fingertips. Agents who know me and have been working alongside me for a while.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;Here&amp;#8217;s why I wouldn&amp;#8217;t have bothered doing this myself:&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;span&gt;The age group cut-off dates are different for younger age groups (31 August), older age groups (31 December), and Masters athletes (over 35s, where the age group is determined on the day of the competition.)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;span&gt;There are published points tables to compare performances in different events for senior athletes.&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;span&gt;There are published points tables to compare performances in the same event for older athletes, above 30.&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;span&gt;There are older tables to deal with age comparisons for under 30s&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;span&gt;The system needs to take care of all this. None of it is too difficult to write in a Python program or to create one of those power-spreadsheets that link everything together. But it would have required some time and patience, which I didn&amp;#8217;t have.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;But here&amp;#8217;s what I had time for&amp;#8230;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;I was using an agent I communicate with through Discord, which I also have on my phone. I have a good dictation tool on my phone, too. So in the past week, whenever I was preparing dinner, or waiting in line at the shops, or sitting on the sofa in the evening watching TV, I could have a chat with my agent to guide him (it?) to what I wanted. I knew what I wanted. I just didn&amp;#8217;t have the time or desire to do it myself.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;And after a few days of these on-and-off conversations, I had a Google Sheet with 20 tabs, including all the points tables for the various scenarios, all the age group rules, all the registered athletes, who-knows-how-many formulae linking columns, rows, and tabs, and, importantly, just two tabs to input results, one for track events and one for field events.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;You just enter the event session (selecting from a drop-down menu), the bib number, and the performance. And that&amp;#8217;s it. The spreadsheet works out each age group results, the points for each athlete, it shows a live points leaderboard, and so on.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;As I said, none of this is rocket science. I know I would have been able to create this spreadsheet by hand, or write Python code that does the same thing. But I would have needed more time. And I wouldn&amp;#8217;t have been able to multitask as I did last week.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;Oh, and one more thing: I also asked my agent to check the spreadsheet every 15 minutes during our club championships, read the latest results, and post them on a Telegram channel I could share with everyone at the track. So we had live results published online too. I&amp;#8217;d never have bothered to set that up manually.&lt;/span&gt;&lt;/p&gt;&lt;h3&gt;&lt;strong&gt;&lt;span&gt;Programming Will Never Be The Same&lt;/span&gt;&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;span&gt;The real-world example I described above doesn&amp;#8217;t represent every programming task I work on with the help of my AI agents. This was a hobby-type project that I probably wouldn&amp;#8217;t have worked on otherwise because I didn&amp;#8217;t have the time. It wasn&amp;#8217;t too difficult, but it would have been time-consuming to do by hand. The stakes weren&amp;#8217;t high. Sure, we didn&amp;#8217;t want to make mistakes when assigning medals and shields, but it was easy to spot obvious mistakes, and this wasn&amp;#8217;t the Olympic Games, either!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;I&amp;#8217;ll write about other case studies soon, including ones where I was more closely involved in the nitty-gritty of the Python code even though I didn&amp;#8217;t write any, nor make any changes to the code by hand.&lt;/span&gt;&lt;/p&gt;&lt;div&gt;&lt;hr /&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;&lt;span&gt;Do you want to master Python and programming one article at a time, even in this age of AI? Then don&amp;#8217;t miss out on the articles in The Club which are exclusive to premium subscribers here on The Python Coding Stack&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;&lt;p class="button-wrapper"&gt;&lt;a class="button primary" href="https://www.thepythoncodingstack.com/subscribe"&gt;&lt;span&gt;Subscribe now&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;div&gt;&lt;hr /&gt;&lt;/div&gt;&lt;h3&gt;&lt;strong&gt;&lt;span&gt;Coming Soon&amp;#8230; Exploring SOLID Through AI-Assisted Coding&lt;/span&gt;&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;span&gt;I&amp;#8217;m starting a series on the SOLID principles here on &lt;/span&gt;&lt;em&gt;&lt;span&gt;The Python Coding Stack&lt;/span&gt;&lt;/em&gt;&lt;span&gt; soon. I&amp;#8217;ll write posts about each of the five principles, and I&amp;#8217;ll do it my way, the same style I always use when tackling Python topics.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;I&amp;#8217;ll also have a series of posts, which will include video, where I&amp;#8217;ll work on a project from beginning to end using my AI agent and reviewing the code it writes. This project will meander through several OOP concepts, and you&amp;#8217;ll be able to see the SOLID principles come in naturally into the project as solutions to problems we might encounter as the project grows.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;Stay tuned.&lt;/span&gt;&lt;/p&gt;&lt;div&gt;&lt;hr /&gt;&lt;/div&gt;&lt;p&gt;&lt;span&gt;How far are you in the traditional-coding-to-AI-coding arc? Leave a comment and let&amp;#8217;s compare notes!&lt;/span&gt;&lt;/p&gt;&lt;div class="captioned-image-container"&gt;&lt;a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!wVbn!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F61bacbdb-ec15-431f-abf9-91a5f9515c74_1280x720.png" target="_blank"&gt;&lt;div class="image2-inset"&gt;&lt;img height="298.125" src="src" width="530" /&gt;&lt;div class="image-link-expand"&gt;&lt;div class="pencraft pc-display-flex pc-gap-8 pc-reset"&gt;&lt;button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"&gt;&lt;/button&gt;&lt;button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"&gt;&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;hr /&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;&lt;strong&gt;&lt;a href="https://www.thepythoncodingstack.com/subscribe"&gt;&lt;span&gt;Join&lt;/span&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;strong&gt;&lt;a href="https://www.thepythoncodingstack.com/subscribe"&gt;&lt;span&gt; The Club&lt;/span&gt;&lt;/a&gt;&lt;/strong&gt;&lt;em&gt;&lt;span&gt;, the exclusive area for paid subscribers for &lt;/span&gt;&lt;a href="https://www.thepythoncodingstack.com/s/the-club"&gt;&lt;span&gt;more Python posts&lt;/span&gt;&lt;/a&gt;&lt;span&gt;, videos, a members&amp;#8217; forum, and more.&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;&lt;p class="button-wrapper"&gt;&lt;a class="button primary" href="https://www.thepythoncodingstack.com/subscribe"&gt;&lt;span&gt;Subscribe now&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;em&gt;&lt;span&gt;You can also support this publication by making a &lt;/span&gt;&lt;a href="https://buy.stripe.com/00g3de2iGdgg4gg7su"&gt;&lt;span&gt;one-off contribution of any amount you wish&lt;/span&gt;&lt;/a&gt;&lt;span&gt;.&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;&lt;p class="button-wrapper"&gt;&lt;a class="button primary" href="https://buy.stripe.com/00g3de2iGdgg4gg7su"&gt;&lt;span&gt;Support The Python Coding Stack&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;div&gt;&lt;hr /&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;&lt;span&gt;For more Python resources, you can also visit&lt;/span&gt;&lt;/em&gt;&lt;span&gt; &lt;/span&gt;&lt;em&gt;&lt;a href="https://realpython.com/?utm_source=the-python-coding-stack"&gt;&lt;span&gt;Real Python&lt;/span&gt;&lt;/a&gt;&lt;span&gt;&amp;#8212;you may even stumble on one of my own articles or courses there!&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;&lt;p&gt;&lt;em&gt;&lt;span&gt;Also, are you interested in technical writing? You&amp;#8217;d like to make your own writing more narrative, more engaging, more memorable? Have a look at&lt;/span&gt;&lt;/em&gt;&lt;span&gt; &lt;/span&gt;&lt;em&gt;&lt;a href="http://stephengruppetta.com/breaking-the-rules"&gt;&lt;span&gt;Breaking the Rules&lt;/span&gt;&lt;/a&gt;&lt;/em&gt;&lt;span&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;em&gt;&lt;span&gt;And you can find out more about me at&lt;/span&gt;&lt;/em&gt;&lt;span&gt; &lt;/span&gt;&lt;em&gt;&lt;a href="https://stephengruppetta.com/?utm_source=the-python-coding-stack"&gt;&lt;span&gt;stephengruppetta.com&lt;/span&gt;&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">e66411661be7d67d4cb65f08ce705a3e292f5f9045d59dd1a3ef5ca8c690f312</guid>
+      <pubDate>Sun, 06 Sep 2026 20:25:44 +0000</pubDate>
+    </item>
+    <item>
+      <title>Bob Belderbos: 5 design patterns used in my new habit tracker app - Planet Python</title>
+      <link>https://belderbos.dev/blog/python-patterns-django-habit-tracker/</link>
+      <description>&lt;p&gt;There are plenty of habit trackers, but I wanted to build mine with constraints, a calendar view and habit streaks. So I built &lt;a href="https://commitgraph.app" rel="noopener external" target="_blank"&gt;commitgraph&lt;/a&gt;: a small Django + HTMX app. Here are five Python design and testing patterns from building it.&lt;/p&gt;
+&lt;span id="continue-reading"&gt;&lt;/span&gt;&lt;h2 id="1-pure-functions"&gt;1. Pure functions&lt;/h2&gt;
+&lt;p&gt;Streak counting and calendar shading live in two plain modules. They take dates and return values. And work independently from Django, the database, or the user. That makes them easy to test.&lt;/p&gt;
+&lt;pre class="giallo z-code"&gt;&lt;code&gt;&lt;span class="giallo-l"&gt;&lt;span class="z-punctuation z-definition z-comment z-comment"&gt;# streaks.py&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;from&lt;/span&gt;&lt;span&gt; datetime&lt;/span&gt;&lt;span class="z-keyword"&gt; import&lt;/span&gt;&lt;span&gt; date, timedelta&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-storage z-type"&gt;def&lt;/span&gt;&lt;span class="z-entity z-name"&gt; longest_streak&lt;/span&gt;&lt;span class="z-variable z-parameter z-function"&gt;(dates: list[date], is_due&lt;/span&gt;&lt;span class="z-keyword z-storage z-type"&gt;=lambda&lt;/span&gt;&lt;span class="z-variable z-parameter z-function"&gt; _:&lt;/span&gt;&lt;span class="z-constant"&gt; True&lt;/span&gt;&lt;span&gt;) -&amp;gt;&lt;/span&gt;&lt;span class="z-support"&gt; int&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;    days&lt;/span&gt;&lt;span class="z-keyword"&gt; =&lt;/span&gt;&lt;span class="z-support"&gt; set&lt;/span&gt;&lt;span&gt;(dates)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;    if not&lt;/span&gt;&lt;span&gt; days:&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;        return&lt;/span&gt;&lt;span class="z-constant"&gt; 0&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;    best&lt;/span&gt;&lt;span class="z-keyword"&gt; =&lt;/span&gt;&lt;span&gt; run&lt;/span&gt;&lt;span class="z-keyword"&gt; =&lt;/span&gt;&lt;span class="z-constant"&gt; 0&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;    cur, last&lt;/span&gt;&lt;span class="z-keyword"&gt; =&lt;/span&gt;&lt;span class="z-support"&gt; min&lt;/span&gt;&lt;span&gt;(days),&lt;/span&gt;&lt;span class="z-support"&gt; max&lt;/span&gt;&lt;span&gt;(days)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;    while&lt;/span&gt;&lt;span&gt; cur&lt;/span&gt;&lt;span class="z-keyword"&gt; &amp;lt;=&lt;/span&gt;&lt;span&gt; last:&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;        if&lt;/span&gt;&lt;span&gt; is_due(cur):&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;            run&lt;/span&gt;&lt;span class="z-keyword"&gt; =&lt;/span&gt;&lt;span&gt; run&lt;/span&gt;&lt;span class="z-keyword"&gt; +&lt;/span&gt;&lt;span class="z-constant"&gt; 1&lt;/span&gt;&lt;span class="z-keyword"&gt; if&lt;/span&gt;&lt;span&gt; cur&lt;/span&gt;&lt;span class="z-keyword"&gt; in&lt;/span&gt;&lt;span&gt; days&lt;/span&gt;&lt;span class="z-keyword"&gt; else&lt;/span&gt;&lt;span class="z-constant"&gt; 0&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;            best&lt;/span&gt;&lt;span class="z-keyword"&gt; =&lt;/span&gt;&lt;span class="z-support"&gt; max&lt;/span&gt;&lt;span&gt;(best, run)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;        cur&lt;/span&gt;&lt;span class="z-keyword"&gt; +=&lt;/span&gt;&lt;span&gt; timedelta(&lt;/span&gt;&lt;span class="z-variable"&gt;days&lt;/span&gt;&lt;span class="z-keyword"&gt;=&lt;/span&gt;&lt;span class="z-constant"&gt;1&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;    return&lt;/span&gt;&lt;span&gt; best&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Thanks to this boundary the streak logic is easy to unit test; no database nor user are needed.&lt;/p&gt;
+&lt;p&gt;Another example: each calendar cell gets a shade from how much you completed that day. It is tempting to compute that in the template. Instead, I turned it into a helper function:&lt;/p&gt;
+&lt;pre class="giallo z-code"&gt;&lt;code&gt;&lt;span class="giallo-l"&gt;&lt;span class="z-punctuation z-definition z-comment z-comment"&gt;# calendars.py&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-storage z-type"&gt;def&lt;/span&gt;&lt;span class="z-entity z-name"&gt; shade&lt;/span&gt;&lt;span class="z-variable z-parameter z-function"&gt;(completed:&lt;/span&gt;&lt;span class="z-support"&gt; int&lt;/span&gt;&lt;span class="z-variable z-parameter z-function"&gt;, active:&lt;/span&gt;&lt;span class="z-support"&gt; int&lt;/span&gt;&lt;span&gt;) -&amp;gt;&lt;/span&gt;&lt;span class="z-support"&gt; str&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;    if&lt;/span&gt;&lt;span&gt; active&lt;/span&gt;&lt;span class="z-keyword"&gt; ==&lt;/span&gt;&lt;span class="z-constant"&gt; 0&lt;/span&gt;&lt;span class="z-keyword"&gt; or&lt;/span&gt;&lt;span&gt; completed&lt;/span&gt;&lt;span class="z-keyword"&gt; ==&lt;/span&gt;&lt;span class="z-constant"&gt; 0&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;        return&lt;/span&gt;&lt;span class="z-punctuation z-definition z-string z-string"&gt; &amp;quot;bg-[var(--g0)] text-muted&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;    frac&lt;/span&gt;&lt;span class="z-keyword"&gt; =&lt;/span&gt;&lt;span&gt; completed&lt;/span&gt;&lt;span class="z-keyword"&gt; /&lt;/span&gt;&lt;span&gt; active&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;    if&lt;/span&gt;&lt;span&gt; frac&lt;/span&gt;&lt;span class="z-keyword"&gt; &amp;gt;=&lt;/span&gt;&lt;span class="z-constant"&gt; 1&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;        return&lt;/span&gt;&lt;span class="z-punctuation z-definition z-string z-string"&gt; &amp;quot;bg-[#a84420] text-white&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;    if&lt;/span&gt;&lt;span&gt; frac&lt;/span&gt;&lt;span class="z-keyword"&gt; &amp;gt;=&lt;/span&gt;&lt;span class="z-constant"&gt; 0.6&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;        return&lt;/span&gt;&lt;span class="z-punctuation z-definition z-string z-string"&gt; &amp;quot;bg-[#d97a4e] text-[#3a1c0e]&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;    return&lt;/span&gt;&lt;span class="z-punctuation z-definition z-string z-string"&gt; &amp;quot;bg-[#f6ddc9] text-[#3a1c0e]&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;assert shade(5, 5).endswith("text-white")&lt;/code&gt; is again easy to test and it's reusable in different parts of the app.&lt;/p&gt;
+&lt;h2 id="2-a-schedule-is-a-7-bit-integer"&gt;2. A schedule is a 7-bit integer&lt;/h2&gt;
+&lt;p&gt;Claude suggested this nifty approach: a habit runs on a subset of weekdays. That is seven yes/no answers, which fit cleanly into a single 7-bit integer.&lt;/p&gt;
+&lt;pre class="giallo z-code"&gt;&lt;code&gt;&lt;span class="giallo-l"&gt;&lt;span class="z-storage z-type"&gt;class&lt;/span&gt;&lt;span class="z-entity z-name"&gt; Habit&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class="z-entity"&gt;models&lt;/span&gt;&lt;span&gt;.&lt;/span&gt;&lt;span class="z-entity"&gt;Model&lt;/span&gt;&lt;span&gt;):&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-constant"&gt;    ALL_DAYS&lt;/span&gt;&lt;span class="z-keyword z-storage z-type"&gt; = 0b&lt;/span&gt;&lt;span class="z-constant"&gt;1111111&lt;/span&gt;&lt;span class="z-punctuation z-definition z-comment z-comment"&gt;   # every day&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-constant"&gt;    WEEKDAYS&lt;/span&gt;&lt;span class="z-keyword z-storage z-type"&gt; = 0b&lt;/span&gt;&lt;span class="z-constant"&gt;0011111&lt;/span&gt;&lt;span class="z-punctuation z-definition z-comment z-comment"&gt;   # Mon-Fri (weekday() 0-4)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;    due_days&lt;/span&gt;&lt;span class="z-keyword"&gt; =&lt;/span&gt;&lt;span&gt; models.PositiveSmallIntegerField(&lt;/span&gt;&lt;span class="z-variable"&gt;default&lt;/span&gt;&lt;span class="z-keyword"&gt;=&lt;/span&gt;&lt;span class="z-constant"&gt;ALL_DAYS&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-storage z-type"&gt;    def&lt;/span&gt;&lt;span class="z-entity z-name"&gt; is_due_on&lt;/span&gt;&lt;span class="z-variable z-parameter z-function"&gt;(self, day: date) -&amp;gt;&lt;/span&gt;&lt;span class="z-support"&gt; bool&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;        return&lt;/span&gt;&lt;span class="z-support"&gt; bool&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class="z-variable z-language"&gt;self&lt;/span&gt;&lt;span&gt;.due_days&lt;/span&gt;&lt;span class="z-keyword"&gt; &amp;amp;&lt;/span&gt;&lt;span&gt; (&lt;/span&gt;&lt;span class="z-constant"&gt;1&lt;/span&gt;&lt;span class="z-keyword"&gt; &amp;lt;&amp;lt;&lt;/span&gt;&lt;span&gt; day.weekday()))&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;No join table, no seven boolean columns. Adding "weekends only" is a new constant, not a migration.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;is_due_on&lt;/code&gt; one-liner treats &lt;code&gt;due_days&lt;/code&gt; as a &lt;strong&gt;7-bit binary calendar&lt;/strong&gt;, one switch per weekday, ordered right-to-left from Monday (0) to Sunday (6).&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;day.weekday()&lt;/code&gt; gives 0-6 (Mon-Sun). &lt;code&gt;1 &amp;lt;&amp;lt; day.weekday()&lt;/code&gt; puts a single bit at that day's position, and &lt;code&gt;&amp;amp; self.due_days&lt;/code&gt; is non-zero only if the habit is scheduled that day. &lt;code&gt;bool()&lt;/code&gt; turns that into &lt;code&gt;True&lt;/code&gt;/&lt;code&gt;False&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id="3-let-the-standard-library-build-the-month-grid"&gt;3. Let the standard library build the month grid&lt;/h2&gt;
+&lt;p&gt;A month grid can be tricky: leading blanks, trailing blanks, weeks that straddle two months. Python's &lt;code&gt;calendar&lt;/code&gt; module already knows all of it.&lt;/p&gt;
+&lt;pre class="giallo z-code"&gt;&lt;code&gt;&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;import&lt;/span&gt;&lt;span&gt; calendar&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;for&lt;/span&gt;&lt;span&gt; week&lt;/span&gt;&lt;span class="z-keyword"&gt; in&lt;/span&gt;&lt;span&gt; calendar.Calendar(&lt;/span&gt;&lt;span class="z-variable"&gt;firstweekday&lt;/span&gt;&lt;span class="z-keyword"&gt;=&lt;/span&gt;&lt;span class="z-constant"&gt;0&lt;/span&gt;&lt;span&gt;).monthdatescalendar(year, month):&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;    for&lt;/span&gt;&lt;span&gt; day&lt;/span&gt;&lt;span class="z-keyword"&gt; in&lt;/span&gt;&lt;span&gt; week:&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;        if&lt;/span&gt;&lt;span&gt; day.month&lt;/span&gt;&lt;span class="z-keyword"&gt; !=&lt;/span&gt;&lt;span&gt; month:&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-constant"&gt;            ...&lt;/span&gt;&lt;span class="z-punctuation z-definition z-comment z-comment"&gt;  # a padding cell from the previous or next month&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;monthdatescalendar&lt;/code&gt; returns real &lt;code&gt;date&lt;/code&gt; objects, one clean list of weeks; no need to write any logic around how many days April has.&lt;/p&gt;
+&lt;h2 id="4-a-query-vocabulary-on-the-model"&gt;4. A query vocabulary on the model&lt;/h2&gt;
+&lt;p&gt;"Active habits" and "habits active on a given day" show up everywhere. Rather than repeating the filters in every view, I named them on a custom &lt;code&gt;QuerySet&lt;/code&gt; so they are chainable:&lt;/p&gt;
+&lt;pre class="giallo z-code"&gt;&lt;code&gt;&lt;span class="giallo-l"&gt;&lt;span class="z-storage z-type"&gt;class&lt;/span&gt;&lt;span class="z-entity z-name"&gt; HabitQuerySet&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class="z-entity"&gt;models&lt;/span&gt;&lt;span&gt;.&lt;/span&gt;&lt;span class="z-entity"&gt;QuerySet&lt;/span&gt;&lt;span&gt;):&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-storage z-type"&gt;    def&lt;/span&gt;&lt;span class="z-entity z-name"&gt; active&lt;/span&gt;&lt;span class="z-variable z-parameter z-function"&gt;(self):&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;        return&lt;/span&gt;&lt;span class="z-variable z-language"&gt; self&lt;/span&gt;&lt;span&gt;.filter(&lt;/span&gt;&lt;span class="z-variable"&gt;archived_at__isnull&lt;/span&gt;&lt;span class="z-keyword"&gt;=&lt;/span&gt;&lt;span class="z-constant"&gt;True&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-storage z-type"&gt;    def&lt;/span&gt;&lt;span class="z-entity z-name"&gt; active_on&lt;/span&gt;&lt;span class="z-variable z-parameter z-function"&gt;(self, day: date):&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;        return&lt;/span&gt;&lt;span class="z-variable z-language"&gt; self&lt;/span&gt;&lt;span&gt;.filter(&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;            Q(&lt;/span&gt;&lt;span class="z-variable"&gt;start_date__lte&lt;/span&gt;&lt;span class="z-keyword"&gt;=&lt;/span&gt;&lt;span&gt;day)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;            &amp;amp;&lt;/span&gt;&lt;span&gt; (Q(&lt;/span&gt;&lt;span class="z-variable"&gt;archived_at__isnull&lt;/span&gt;&lt;span class="z-keyword"&gt;=&lt;/span&gt;&lt;span class="z-constant"&gt;True&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;span class="z-keyword"&gt; |&lt;/span&gt;&lt;span&gt; Q(&lt;/span&gt;&lt;span class="z-variable"&gt;archived_at__date__gte&lt;/span&gt;&lt;span class="z-keyword"&gt;=&lt;/span&gt;&lt;span&gt;day))&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;        )&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-storage z-type"&gt;class&lt;/span&gt;&lt;span class="z-entity z-name"&gt; Habit&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class="z-entity"&gt;models&lt;/span&gt;&lt;span&gt;.&lt;/span&gt;&lt;span class="z-entity"&gt;Model&lt;/span&gt;&lt;span&gt;):&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;    objects&lt;/span&gt;&lt;span class="z-keyword"&gt; =&lt;/span&gt;&lt;span&gt; HabitQuerySet.as_manager()&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now &lt;code&gt;Habit.objects.filter(user=u).active()&lt;/code&gt; is very readable and the relatively complex &lt;code&gt;Q&lt;/code&gt; expressions are abstracted into the model.&lt;/p&gt;
+&lt;h2 id="5-done-and-due-is-set-algebra"&gt;5. "Done and due" is set algebra&lt;/h2&gt;
+&lt;p&gt;The Today screen needs habits that are due today and not yet checked off. Two sets and one operator.&lt;/p&gt;
+&lt;pre class="giallo z-code"&gt;&lt;code&gt;&lt;span class="giallo-l"&gt;&lt;span&gt;due_ids&lt;/span&gt;&lt;span class="z-keyword"&gt; =&lt;/span&gt;&lt;span&gt; {h.id&lt;/span&gt;&lt;span class="z-keyword"&gt; for&lt;/span&gt;&lt;span&gt; h&lt;/span&gt;&lt;span class="z-keyword"&gt; in&lt;/span&gt;&lt;span&gt; habits}&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;done_ids&lt;/span&gt;&lt;span class="z-keyword"&gt; =&lt;/span&gt;&lt;span class="z-support"&gt; set&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;    HabitCompletion.objects&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;    .filter(&lt;/span&gt;&lt;span class="z-variable"&gt;habit__user&lt;/span&gt;&lt;span class="z-keyword"&gt;=&lt;/span&gt;&lt;span&gt;user,&lt;/span&gt;&lt;span class="z-variable"&gt; date&lt;/span&gt;&lt;span class="z-keyword"&gt;=&lt;/span&gt;&lt;span&gt;day)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;    .values_list(&lt;/span&gt;&lt;span class="z-punctuation z-definition z-string z-string"&gt;&amp;quot;habit_id&amp;quot;&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;span class="z-variable"&gt; flat&lt;/span&gt;&lt;span class="z-keyword"&gt;=&lt;/span&gt;&lt;span class="z-constant"&gt;True&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;)&lt;/span&gt;&lt;span class="z-keyword"&gt; &amp;amp;&lt;/span&gt;&lt;span&gt; due_ids&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The intersection drops any completion for a habit that is not due today, so a spurious record can't inflate the count. The logic is the math, not a nest of &lt;code&gt;if&lt;/code&gt; statements.&lt;/p&gt;
+&lt;p&gt;Here is a REPL snippet that demonstrates how set intersection (&lt;code&gt;&amp;amp;&lt;/code&gt;) filters down to only the elements present in both sets:&lt;/p&gt;
+&lt;pre class="giallo z-code"&gt;&lt;code&gt;&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span&gt; due_ids&lt;/span&gt;&lt;span class="z-keyword"&gt; =&lt;/span&gt;&lt;span&gt; {&lt;/span&gt;&lt;span class="z-constant"&gt;10&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;span class="z-constant"&gt; 11&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;span class="z-constant"&gt; 12&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;span class="z-constant"&gt; 13&lt;/span&gt;&lt;span&gt;}&lt;/span&gt;&lt;span class="z-punctuation z-definition z-comment z-comment"&gt;      # Habits scheduled for today&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span&gt; completed_ids&lt;/span&gt;&lt;span class="z-keyword"&gt; =&lt;/span&gt;&lt;span&gt; {&lt;/span&gt;&lt;span class="z-constant"&gt;11&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;span class="z-constant"&gt; 13&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;span class="z-constant"&gt; 99&lt;/span&gt;&lt;span&gt;}&lt;/span&gt;&lt;span class="z-punctuation z-definition z-comment z-comment"&gt;    # Logged completions (99 is a stray record)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="z-punctuation z-definition z-comment z-comment"&gt; # The '&amp;amp;' operator keeps ONLY IDs present in BOTH sets&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span&gt; done_today&lt;/span&gt;&lt;span class="z-keyword"&gt; =&lt;/span&gt;&lt;span&gt; completed_ids&lt;/span&gt;&lt;span class="z-keyword"&gt; &amp;amp;&lt;/span&gt;&lt;span&gt; due_ids&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="z-support"&gt; print&lt;/span&gt;&lt;span&gt;(done_today)&lt;/span&gt;&lt;span class="z-punctuation z-definition z-comment z-comment"&gt;  # 10, 12 and 99 are dropped because they are not in both sets&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;{&lt;/span&gt;&lt;span class="z-constant"&gt;11&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;span class="z-constant"&gt; 13&lt;/span&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I have also seen this used in RBAC logic to cross-check user roles with endpoint permissions. The intersection of the two sets is the effective permissions a user has.&lt;/p&gt;
+&lt;h2 id="keep-reading"&gt;Keep reading&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://belderbos.dev/blog/build-the-simplest-thing-that-works/"&gt;Build the Simplest Thing That Works&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://belderbos.dev/blog/unsubscribe-without-login-django-signing/"&gt;Unsubscribe links without a login: Django signing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://belderbos.dev/blog/rust-made-me-a-better-python-developer/"&gt;Learning Rust Made Me a Better Python Developer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The thread running through all five patterns: when a piece of logic doesn't strictly need the database or a dependency, stick to this boundary. Fetch your primitive values, do the math in plain Python, so it's more testable in isolation.&lt;/p&gt;
+&lt;p&gt;What is one function in your Django views that would be much easier to trust and test if you decoupled it?&lt;/p&gt;</description>
+      <guid isPermaLink="false">397495e786cfadae07e5929376d9d40856ac1d79b8c70d019d06d9880e62b902</guid>
+      <pubDate>Sun, 06 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Graham Dumpleton: Beyond callables in wrapture - Planet Python</title>
+      <link>https://grahamdumpleton.me/posts/2026/09/beyond-callables-in-wrapture/</link>
+      <description>&lt;p&gt;Every example in this series so far has wrapped a call. A binding named a method, and what flowed through the call was recorded or changed. Plenty of what a test needs to control is not a call, though. An outcome stored in an attribute, an environment variable that must be set or missing, a settings dict that other modules imported by reference at import time, a formatter looked up in a registry, and a generator whose interesting behaviour is spread over its consumption. &lt;code&gt;unittest.mock&lt;/code&gt; and pytest between them cover most of this with &lt;code&gt;patch.dict&lt;/code&gt;, &lt;code&gt;monkeypatch.setattr&lt;/code&gt;, &lt;code&gt;monkeypatch.setenv&lt;/code&gt; and so on, one idiom per shape. wrapture spells all of them as bindings, which buys the same lifecycle everywhere, and in a couple of places lets the binding observe as well as hold.&lt;/p&gt;
+&lt;h2&gt;Attribute bindings&lt;/h2&gt;
+&lt;p&gt;A binding on a class attribute which is not a callable is detected as attribute mode, and instead of &lt;code&gt;on_call&lt;/code&gt; it has &lt;code&gt;on_get&lt;/code&gt;, &lt;code&gt;on_set&lt;/code&gt; and &lt;code&gt;on_delete&lt;/code&gt;, one channel per operation. Under the covers it installs a data descriptor on the class, wrapping whatever was there before, so a property's getter still runs and writes still land in the instance dictionary. Take a model with a status:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;class Model:
+    status = &amp;quot;draft&amp;quot;
+    def publish(self):
+        self.status = &amp;quot;published&amp;quot;
+    def archive(self):
+        self.status = &amp;quot;archived&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Inside a timeline, reads and writes record as &lt;code&gt;get&lt;/code&gt; and &lt;code&gt;set&lt;/code&gt; events on the same tape as everything else:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;status = wrapture.binding(Model, &amp;quot;status&amp;quot;)
+with wrapture.timeline(status) as tape:
+    model = Model()
+    model.status
+    model.publish()
+    model.status
+    print(tape.tree())
+    status.events.of_kind(&amp;quot;set&amp;quot;).with_value(&amp;quot;published&amp;quot;).assert_once()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;get __main__:Model.status -&amp;gt; 'draft'
+set __main__:Model.status = 'published'
+get __main__:Model.status -&amp;gt; 'published'
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That assertion says &lt;code&gt;publish()&lt;/code&gt; wrote the status exactly once, without the test knowing anything about how &lt;code&gt;publish()&lt;/code&gt; works inside. A &lt;code&gt;get&lt;/code&gt; event records the value read in &lt;code&gt;result&lt;/code&gt;, the same field a call's return value uses, and a &lt;code&gt;set&lt;/code&gt; event records the value written in &lt;code&gt;value&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The channels carry the same kinds of verb as &lt;code&gt;on_call&lt;/code&gt;. &lt;code&gt;on_get.returns(value)&lt;/code&gt; answers a read without touching the real attribute, &lt;code&gt;on_set.rejects()&lt;/code&gt; makes a write an &lt;code&gt;AttributeError&lt;/code&gt;, &lt;code&gt;on_set.validates(check)&lt;/code&gt; checks a written value and lets it through, and &lt;code&gt;decorates()&lt;/code&gt; takes full control with the real operation handed in as a function. A guard on state transitions, which needs the current value as well as the new one, is a &lt;code&gt;decorates()&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;ALLOWED = {(&amp;quot;draft&amp;quot;, &amp;quot;published&amp;quot;), (&amp;quot;published&amp;quot;, &amp;quot;archived&amp;quot;)}
+def guard(write, instance, value):
+    current = instance.status
+    if (current, value) not in ALLOWED:
+        raise ValueError(f&amp;quot;cannot move from {current} to {value}&amp;quot;)
+    write(value)
+status.on_set.decorates(guard)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With that applied, &lt;code&gt;publish()&lt;/code&gt; on a fresh model works, a second &lt;code&gt;publish()&lt;/code&gt; raises &lt;code&gt;cannot move from published to published&lt;/code&gt;, and &lt;code&gt;archive()&lt;/code&gt; then works. The real write happens through &lt;code&gt;write(value)&lt;/code&gt; when the guard allows it. Attribute channels have phases too, so &lt;code&gt;on_get.returns_from([...])&lt;/code&gt; can read one way for two reads and another afterwards.&lt;/p&gt;
+&lt;p&gt;Two details come up as soon as this is used on real code. An attribute assigned in &lt;code&gt;__init__&lt;/code&gt; rather than defined on the class does not exist when the binding is created, so the binding takes &lt;code&gt;missing_ok=True&lt;/code&gt;, and the write made in &lt;code&gt;__init__&lt;/code&gt; is then recorded like any other. And when the attribute is a property whose getter does work, the &lt;code&gt;get&lt;/code&gt; event is the parent of whatever that work recorded, which is exactly the question a lazy-loading bug turns on:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;class Account:
+    def __init__(self):
+        self._balance = None
+    def load(self):
+        return 42
+    @property
+    def balance(self):
+        if self._balance is None:
+            self._balance = self.load()
+        return self._balance
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;get __main__:Account.balance -&amp;gt; 42
+  __main__:Account.load()  -&amp;gt; 42
+get __main__:Account.balance -&amp;gt; 42
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The first read triggered the load and the second was served from the cache, which is what the property was written to do, and a test can now assert it.&lt;/p&gt;
+&lt;p&gt;One limit follows from the mechanism. A descriptor on a class fires for access through instances, so &lt;code&gt;Model.status&lt;/code&gt; read off the class itself returns the descriptor without recording, and a class-level write replaces the descriptor outright, which the binding reports by going inactive rather than pretending. The &lt;a href="https://wrapture.readthedocs.io/en/latest/known-limitations.html"&gt;known limitations&lt;/a&gt; page has the details.&lt;/p&gt;
+&lt;h2&gt;Module attributes&lt;/h2&gt;
+&lt;p&gt;A module's plain data is detected as attribute mode too, so a constant or a flag on a module gets the same three channels. A module cannot take a descriptor directly, so while a binding on it is applied the module is given a private subclass of its type with the descriptor installed there, and the original type comes back when the last binding is removed. &lt;code&gt;isinstance(module, ModuleType)&lt;/code&gt; and &lt;code&gt;inspect.ismodule()&lt;/code&gt; are unaffected, and the class is named &lt;code&gt;module&lt;/code&gt; so reprs read the same.&lt;/p&gt;
+&lt;p&gt;What is intercepted is access through the module object. Code that did &lt;code&gt;from config import TIMEOUT&lt;/code&gt; at import time holds the value already, and reads through &lt;code&gt;vars(config)&lt;/code&gt; bypass the descriptor, which is the same caveat that applies to patching a module attribute with mock.&lt;/p&gt;
+&lt;h2&gt;Value bindings&lt;/h2&gt;
+&lt;p&gt;Often a test does not want to observe anything. It wants an environment variable set, a settings key changed, or a module constant lowered, for the duration of the test and then put back. That is a value binding: name the owner positionally, name the slot with &lt;code&gt;attr=&lt;/code&gt; for an attribute or &lt;code&gt;item=&lt;/code&gt; for a mapping entry, and say what it should hold. The pricing function below reads its configuration from all the usual places:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;config.SETTINGS = {&amp;quot;currency&amp;quot;: &amp;quot;USD&amp;quot;, &amp;quot;tax_rate&amp;quot;: 0.2}
+config.TIMEOUT = 30.0
+config.FORMATTERS = {&amp;quot;plain&amp;quot;: lambda total: f&amp;quot;total={total:.2f}&amp;quot;}
+def price(amount, style=&amp;quot;plain&amp;quot;):
+    if &amp;quot;API_KEY&amp;quot; not in os.environ:
+        raise RuntimeError(&amp;quot;API_KEY is not configured&amp;quot;)
+    total = amount * (1 + config.SETTINGS[&amp;quot;tax_rate&amp;quot;])
+    formatter = config.FORMATTERS[style]
+    return f&amp;quot;[{config.SETTINGS['currency']} within {config.TIMEOUT}s] &amp;quot; + formatter(total)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;An environment variable is one entry of &lt;code&gt;os.environ&lt;/code&gt;, so it is &lt;code&gt;item=&lt;/code&gt;. &lt;code&gt;overrides()&lt;/code&gt; holds the value while applied, and on exit the prior state comes back, whether the variable existed before or not:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;api_key = wrapture.binding(os.environ, item=&amp;quot;API_KEY&amp;quot;)
+with api_key.overrides(&amp;quot;sk_test&amp;quot;):
+    print(price(100))
+print(&amp;quot;API_KEY&amp;quot; in os.environ)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[USD within 30.0s] total=120.00
+False
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The other direction is &lt;code&gt;hides()&lt;/code&gt;, under which the slot is absent, which is how the missing-configuration branch gets tested even on a machine where the variable is set. &lt;code&gt;overrides(None)&lt;/code&gt; cannot say that, since &lt;code&gt;None&lt;/code&gt; is a value that is there. A module constant is the same shape with &lt;code&gt;attr=&lt;/code&gt;, and the module can be named by import path so the test needs no import of its own:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;with wrapture.binding(&amp;quot;config&amp;quot;, attr=&amp;quot;TIMEOUT&amp;quot;).overrides(0.5), api_key.overrides(&amp;quot;sk_test&amp;quot;):
+    print(price(100))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[USD within 0.5s] total=120.00
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A value binding holds a value and observes nothing. It has no channels, no events and no phases, and it says so if you ask for them. The two spellings differ by exactly that: &lt;code&gt;binding(&amp;quot;config&amp;quot;, attr=&amp;quot;TIMEOUT&amp;quot;)&lt;/code&gt; holds, and &lt;code&gt;binding(&amp;quot;config&amp;quot;, &amp;quot;TIMEOUT&amp;quot;)&lt;/code&gt; intercepts. When the question shifts from &amp;quot;hold this value&amp;quot; to &amp;quot;does the retry path re-read the timeout, or did it cache it&amp;quot;, the same location upgrades to the interception form and each read becomes an event:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;timeout = wrapture.binding(&amp;quot;config&amp;quot;, &amp;quot;TIMEOUT&amp;quot;)
+timeout.on_get.returns(0.5)
+with timeout, wrapture.timeline() as tape, api_key.overrides(&amp;quot;sk_test&amp;quot;):
+    price(100)
+    price(100)
+print([event.kind for event in tape.for_binding(timeout)])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;['get', 'get']
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Two calls, two reads. &lt;code&gt;price()&lt;/code&gt; reads the timeout every time, and the tape proves it.&lt;/p&gt;
+&lt;p&gt;Everything around bindings applies to value bindings. They are context managers, they can be suspended and resumed, &lt;code&gt;active&lt;/code&gt; reports whether the slot still holds what the binding put there so a teardown can see that something else overwrote it, and the pytest plugin's leak sweep reports one left applied. In the fixture shape one binding is applied holding nothing and each test says what the slot should be, &lt;code&gt;api_key.overrides(&amp;quot;sk_test&amp;quot;)&lt;/code&gt; in one test and &lt;code&gt;api_key.hides()&lt;/code&gt; in the next.&lt;/p&gt;
+&lt;h2&gt;Mapping bindings&lt;/h2&gt;
+&lt;p&gt;The settings dict has a complication. Other modules did &lt;code&gt;from config import SETTINGS&lt;/code&gt; at import time, so they hold the same dict by reference, and a test that replaces &lt;code&gt;config.SETTINGS&lt;/code&gt; with a new dict strands them with the old one. &lt;code&gt;mode=&amp;quot;mapping&amp;quot;&lt;/code&gt; on the location mutates the one dict in place and never replaces it, so every holder sees the test's content, and the original entries come back on exit in their original order:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;SETTINGS = config.SETTINGS      # a holder, as another module would have
+settings = wrapture.binding(config, &amp;quot;SETTINGS&amp;quot;, mode=&amp;quot;mapping&amp;quot;)
+with settings.updates({&amp;quot;tax_rate&amp;quot;: 0.0}), api_key.overrides(&amp;quot;sk_test&amp;quot;):
+    print(price(100))
+with settings.overrides({&amp;quot;currency&amp;quot;: &amp;quot;EUR&amp;quot;, &amp;quot;tax_rate&amp;quot;: 0.1}), api_key.overrides(&amp;quot;sk_test&amp;quot;):
+    print(price(100))
+print(SETTINGS, SETTINGS is config.SETTINGS)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[USD within 30.0s] total=100.00
+[EUR within 30.0s] total=110.00
+{'currency': 'USD', 'tax_rate': 0.2} True
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;updates()&lt;/code&gt; merges the named keys over what is there, which is &lt;code&gt;patch.dict&lt;/code&gt;'s default, and &lt;code&gt;overrides()&lt;/code&gt; makes the given entries the whole content, which is &lt;code&gt;patch.dict(..., clear=True)&lt;/code&gt;. Both took effect through the holder's reference and both restored it. Three dict spellings exist for three different intentions: &lt;code&gt;item=&lt;/code&gt; for one entry changed or absent, &lt;code&gt;attr=&lt;/code&gt; to make &lt;code&gt;config.SETTINGS&lt;/code&gt; a different object with holders of the old one unaffected, and &lt;code&gt;mode=&amp;quot;mapping&amp;quot;&lt;/code&gt; for the one dict to hold these entries for every holder.&lt;/p&gt;
+&lt;p&gt;Bindings group, and a group applies and removes atomically, so a test that needs several of these pinned at once does it in one declaration, and as a fixture the group is a &lt;code&gt;with&lt;/code&gt; around a &lt;code&gt;yield&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;pinned = wrapture.bindings(
+    api_key=wrapture.binding(os.environ, item=&amp;quot;API_KEY&amp;quot;).overrides(&amp;quot;sk_test&amp;quot;),
+    settings=wrapture.binding(config, &amp;quot;SETTINGS&amp;quot;, mode=&amp;quot;mapping&amp;quot;).overrides({&amp;quot;currency&amp;quot;: &amp;quot;EUR&amp;quot;, &amp;quot;tax_rate&amp;quot;: 0.0}),
+    timeout=wrapture.binding(&amp;quot;config&amp;quot;, attr=&amp;quot;TIMEOUT&amp;quot;).overrides(0.5),
+)
+with pinned:
+    print(price(100))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[EUR within 0.5s] total=100.00
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;A callable held in a mapping&lt;/h2&gt;
+&lt;p&gt;The formatter registry is configuration too, a callable in a dict. A value binding could swap the entry wholesale, but naming the entry with &lt;code&gt;mode=&amp;quot;callable&amp;quot;&lt;/code&gt; wraps it instead. The stand-in is installed in the slot, records like any bound callable, has phases like any bound callable, and the original entry comes back on removal:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;loud = wrapture.binding(config.FORMATTERS, item=&amp;quot;plain&amp;quot;, mode=&amp;quot;callable&amp;quot;)
+loud.on_call.transforms_result(str.upper)
+with loud, api_key.overrides(&amp;quot;sk_test&amp;quot;):
+    print(price(100))
+print(config.FORMATTERS[&amp;quot;plain&amp;quot;](120.0))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[USD within 30.0s] TOTAL=120.00
+total=120.00
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The real formatter ran and its result was adjusted on the way out. This reaches a handler in a dispatch table with the whole call vocabulary, which is something that previously needed the callable to be pulled out and wrapped by hand.&lt;/p&gt;
+&lt;h2&gt;Generators and iteration&lt;/h2&gt;
+&lt;p&gt;A callable that returns a generator produces its values later, one at a time, as the caller iterates. That changes both what recording means and what behaviour can do. Take a paginated catalogue and two consumers, one that reads to the end and one that stops as soon as it finds what it wants:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;class Catalogue:
+    def __init__(self, records, page_size=2):
+        self.records = records
+        self.page_size = page_size
+    def pages(self, cursor=0):
+        while cursor &amp;lt; len(self.records):
+            yield {&amp;quot;cursor&amp;quot;: cursor, &amp;quot;items&amp;quot;: self.records[cursor:cursor + self.page_size]}
+            cursor += self.page_size
+def collect_ids(pages):
+    ids = []
+    for page in pages:
+        ids.extend(item[&amp;quot;id&amp;quot;] for item in page[&amp;quot;items&amp;quot;])
+    return ids
+def first_match(pages, predicate):
+    for page in pages:
+        for item in page[&amp;quot;items&amp;quot;]:
+            if predicate(item):
+                return item
+    return None
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A test that hands the consumer a canned list of pages proves it can add up ids and nothing else. A list is never lazy, cannot be abandoned, and cannot fail between items, so the properties a streaming consumer is written to have are exactly the ones such a test cannot check.&lt;/p&gt;
+&lt;p&gt;Binding the generator method records one event covering the whole iteration, not one per page, and the event's &lt;code&gt;items&lt;/code&gt; field counts what was pulled through it. Reading to the end fills in &lt;code&gt;result&lt;/code&gt; with the generator's return value, &lt;code&gt;None&lt;/code&gt; here:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;pages = wrapture.binding(Catalogue, &amp;quot;pages&amp;quot;)
+with wrapture.timeline(pages) as tape:
+    collect_ids(catalogue.pages())
+    event = pages.events.first
+    print(event.items, event.result)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;3 None
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Stopping early looks different. &lt;code&gt;first_match()&lt;/code&gt; finds id 3 on the second page and returns, dropping the generator before it is exhausted. The event closes with the item count reached and no result at all, &lt;code&gt;wrapture.MISSING&lt;/code&gt; rather than &lt;code&gt;None&lt;/code&gt;, and no &lt;code&gt;-&amp;gt;&lt;/code&gt; in the tree, which is the honest signal that the iteration never finished:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;with wrapture.timeline(pages) as tape:
+    first_match(catalogue.pages(), lambda item: item[&amp;quot;id&amp;quot;] == 3)
+    event = pages.events.first
+    print(event.items, event.result is wrapture.MISSING)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;2 True
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That already answers &amp;quot;how far did it read&amp;quot; and &amp;quot;did it finish&amp;quot; without touching the consumer. Item values are deliberately not captured on the tape, since a long stream would retain every item and no policy can guess which ones matter. When a test wants to see the items, or react to them, it says so with an iterator proxy. &lt;code&gt;iterator()&lt;/code&gt; creates a factory with no target, behaviour is configured on its channels, and calling the factory with a generator returns a wrapped generator applying that behaviour. Since the factory takes an iterator and returns one it slots straight into the binding's &lt;code&gt;transforms_result()&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;cursors = []
+outcomes = []
+watch = wrapture.iterator()
+watch.on_item.validates_item(lambda page: cursors.append(page[&amp;quot;cursor&amp;quot;]))
+watch.on_finish.validates(lambda value: outcomes.append((&amp;quot;finished&amp;quot;, value)))
+watch.on_abandon.notifies(lambda: outcomes.append((&amp;quot;abandoned&amp;quot;, None)))
+pages.on_call.transforms_result(watch)
+with pages:
+    collect_ids(catalogue.pages())
+print(cursors, outcomes)
+cursors.clear(); outcomes.clear()
+with pages:
+    first_match(catalogue.pages(), lambda item: item[&amp;quot;id&amp;quot;] == 3)
+print(cursors, outcomes)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[0, 2, 4] [('finished', None)]
+[0, 2] [('abandoned', None)]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;on_abandon&lt;/code&gt; fires when a started, unexhausted generator is closed, whether explicitly or because the consumer dropped it and the garbage collector closed it. That is the question nothing else can see asked: the loop that stopped early, the generator left half-consumed. The proxy also has &lt;code&gt;on_error&lt;/code&gt; for an iteration that raised, and &lt;code&gt;on_item.transforms_item()&lt;/code&gt; to rewrite each item on its way through.&lt;/p&gt;
+&lt;p&gt;An item stage that raises fails the iteration at that point, as if the generator itself had raised while producing that page, which is how to test what a consumer does when page two fails to arrive:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;def fail_at(position, exc):
+    seen = 0
+    def check(page):
+        nonlocal seen
+        seen += 1
+        if seen == position:
+            raise exc
+    return check
+flaky = wrapture.iterator()
+flaky.on_item.validates_item(fail_at(2, OSError(&amp;quot;page 2 failed&amp;quot;)))
+pages.on_call.transforms_result(flaky)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With that applied, &lt;code&gt;collect_ids()&lt;/code&gt; receives the first page and then an &lt;code&gt;OSError&lt;/code&gt; on the second, and a consumer written to cope with that can be tested doing so.&lt;/p&gt;
+&lt;h2&gt;One lifecycle for all of it&lt;/h2&gt;
+&lt;p&gt;The thread through everything here is that whichever shape a patch takes, it is a binding, and everything that applies to a binding applies to it. It is a context manager and it has a decorator form. It groups with other bindings and the group applies and removes as one unit. It can be suspended and resumed, it knows whether it is still in place, and the pytest plugin's leak sweep reports it if a test forgets to remove it. Where the shape allows it, the same binding that holds a value can be upgraded to one that sees who reads it, and a callable pulled out of a dict gets the same phases and recording as one on a class.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://wrapture.readthedocs.io/en/latest/monkey-patching.html"&gt;monkey patching&lt;/a&gt; guide is the full reference for every binding mode, and the worked examples on &lt;a href="https://wrapture.readthedocs.io/en/latest/example-pinning-configuration.html"&gt;pinning configuration&lt;/a&gt;, &lt;a href="https://wrapture.readthedocs.io/en/latest/example-resource-hygiene.html"&gt;checking that resources are released&lt;/a&gt; and &lt;a href="https://wrapture.readthedocs.io/en/latest/example-streaming-data.html"&gt;testing generators and streamed results&lt;/a&gt; each take one of the questions above further than a blog post has room for.&lt;/p&gt;</description>
+      <guid isPermaLink="false">10cfae3b17f7bc1ae84a26d8625df0b1d9e484bdaebd5e290168572e0cd40072</guid>
+      <pubDate>Sat, 05 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Armin Ronacher: Latent Powers - Planet Python</title>
+      <link>https://lucumr.pocoo.org/2026/9/5/latent-powers/</link>
+      <description>&lt;p&gt;A few weeks ago I felt like it would be fun to see if I can make one of those
+cheap Chinese CarPlay dongles run something other than the stock firmware.  The
+idea was that rather than just forwarding CarPlay, why not do something more
+interesting with them?  They all work quite similarly: they act as bridges
+between your car and the phone.  From there they deal with video and audio
+streams and pass some other data through.  Most of them also bring up a custom
+UI for pairing and have a web interface that your phone can reach for updates.&lt;/p&gt;
+&lt;p&gt;Long story short: I had a conversation with Fable and Sol via Pi about what
+could be done with such a dongle or whether I should use a Raspberry Pi instead
+if I wanted to do my own thing there.  I figured it might be quite fun to run my
+own code while still allowing regular CarPlay to pass through.&lt;/p&gt;
+&lt;p&gt;Through working with the LLM I learned about
+&lt;a href="https://github.com/catplay-labs/catplay"&gt;CatPlay&lt;/a&gt;, which is a Rust
+reimplementation of the CarPlay protocol that can run on Carlinkit devices.  In
+particular, it can run on the Carlinkit Mini Ultra, which I figured would be
+easy enough to buy.  I do have a few CarPlay adapters around, but I did not have
+that particular model, so I bought one on Amazon.  Twenty-four hours later, I
+had a device in my hand that was branded as a Carlinkit Mini Ultra, but instead
+of being the Ingenic device that the original author used, it turned out to be
+something else.&lt;/p&gt;
+&lt;p&gt;This is normally where the story would stop.  However, it&amp;#8217;s 2026.  Armed with a
+bit of knowledge about how these systems work, I managed to have some fruitful
+discussions with Kimi K3 and Sol and figure out how &lt;a href="https://github.com/catplay-labs/catplay-firmware/issues/4"&gt;flash the
+device&lt;/a&gt; and in turn,
+how to make CatPlay compile for that SoC.&lt;/p&gt;
+&lt;p&gt;I guess that hacking these USB devices is not necessarily hard, but it&amp;#8217;s
+laborious and you can easily end up bricking your devices.  It also just sucks
+because sometimes you need to work with someone else&amp;#8217;s code that does not itself
+run on your machine.  In the past, I would abandon many such projects for lack
+of tenacity.  But my clanker is tenacious.&lt;/p&gt;
+&lt;p&gt;But so are &lt;em&gt;all of our clankers&lt;/em&gt;.  Some of the projects we&amp;#8217;re now attempting are
+happening because of conversations we have with them.  In this case I did not
+find or decide on CatPlay, the model did.  It was not the only suggestion, but
+it became the best starting point after discarding others.&lt;/p&gt;
+&lt;p&gt;And I discover this more and more.  Particularly when we have solitary
+interactions with these models, some of us &amp;#8220;independently&amp;#8221; decide to work on
+similar projects.  When I talked with an acquaintance about CarPlay he also
+mentioned recently that he decided to try something similar because he too
+wanted to see if he can get his own agent be hooked up with the car.  And guess
+what: he too learned about the CarPlay hacking community, and that it&amp;#8217;s an
+option, from the models and roughly around the same time.&lt;/p&gt;
+&lt;p&gt;It really got me thinking about how this could create situations in which
+completely independent people end up building things they believe are their own
+ideas.  Yet they were inspired or pushed towards doing something by a
+conversation with an LLM — a conversation that someone else also had.  What if
+we took paths, because those were the paths that were more likely with current
+generation models?  There is a running joke in the AI builder community right
+now that we&amp;#8217;re all working on the same things, and in many ways it feels like we
+are.  That might be because those things are obvious, or it might be partly
+because we all use the same models with the same capabilities.&lt;/p&gt;
+&lt;p&gt;A few months ago, I first saw &lt;a href="https://x.com/lucasmeijer"&gt;Lucas Meijer&lt;/a&gt; share the
+idea to make a model in Pi produce HTML reports rather than Markdown.  I thought
+that was pretty unique.  Except, well turns out the models are probably trained
+more and more for that (e.g. Claude Artifacts), and now it has become for many
+the default choice for sharing reports.&lt;/p&gt;
+&lt;p&gt;How much of what we build comes from eliciting the same latent capabilities from
+the same models?  Did the models make us prompt them that way?  Was it because
+we shared ideas on Twitter and other communities that inspired us?  Or is it all
+unrelated?&lt;/p&gt;
+&lt;p&gt;There is something powerful and strange about how LLMs diffuse knowledge and
+capabilities, while perhaps also nudging us all simultaniously and independently
+toward building the same things.&lt;/p&gt;</description>
+      <guid isPermaLink="false">5d266e331f62cd28728b3866d1b686cf51872a3cace210addb5f035e64103b86</guid>
+      <pubDate>Sat, 05 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Morsels: Creating temporary files in Python - Planet Python</title>
+      <link>https://www.pythonmorsels.com/temporary-files/</link>
+      <description>&lt;p&gt;How to create temporary files and directories in Python using the &lt;code&gt;tempfile&lt;/code&gt; module's &lt;code&gt;NamedTemporaryFile&lt;/code&gt; and &lt;code&gt;TemporaryDirectory&lt;/code&gt;.&lt;/p&gt;
+&lt;div&gt;
+    &lt;a href="https://www.pythonmorsels.com/temporary-files/"&gt;&lt;img height="270" src="https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F2196808272-1faa9c1ea9afcbdca269693a805ce48bc95f4cbecfd1a1a5856668254582c2d2-d_1920x1080%3F%26region%3Dus&amp;amp;src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png" width="480" /&gt;&lt;/a&gt;
+  &lt;p&gt;
+  &lt;strong&gt;Table of contents&lt;/strong&gt;
+  &lt;ol&gt;
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/temporary-files/#making-a-temporary-file" target="_blank"&gt;Making a temporary file&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/temporary-files/#leaving-temporary-files-open" target="_blank"&gt;Leaving temporary files open&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/temporary-files/#making-a-temporary-directory" target="_blank"&gt;Making a temporary directory&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/temporary-files/#you-probably-want-a-named-file" target="_blank"&gt;You probably want a named file&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/temporary-files/#create-temporary-files-with-tempfile" target="_blank"&gt;Create temporary files with &lt;code&gt;tempfile&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+    &lt;h2&gt;Making a temporary file&lt;/h2&gt;
+        &lt;p&gt;To make a temporary file in Python, you can use the &lt;code&gt;NamedTemporaryFile&lt;/code&gt; &lt;a href="https://www.pythonmorsels.com/what-is-a-context-manager/" target="_blank"&gt;context manager&lt;/a&gt; from the &lt;code&gt;tempfile&lt;/code&gt; module in Python's standard library:&lt;/p&gt;
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;tempfile&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;NamedTemporaryFile&lt;/span&gt;
+&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;NamedTemporaryFile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"wt"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Temporary text.&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;"The filename is &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;p&gt;Note this context manager will delete the file as soon as it exits, which may be a problem if we actually want to use the file after the context manager has exited:&lt;/p&gt;
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;tempfile&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;NamedTemporaryFile&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;NamedTemporaryFile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"wt"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="gp"&gt;... &lt;/span&gt;    &lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Temporary text.&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;... &lt;/span&gt;    &lt;span class="n"&gt;filename&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;
+&lt;span class="gp"&gt;...&lt;/span&gt;
+&lt;span class="go"&gt;16&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="gt"&gt;Traceback (most recent call last):&lt;/span&gt;
+  File &lt;span class="nb"&gt;"&amp;lt;stdin&amp;gt;"&lt;/span&gt;, line &lt;span class="m"&gt;1&lt;/span&gt;, in &lt;span class="n"&gt;&amp;lt;module&amp;gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="pm"&gt;~~~~^^^^^^^^^^&lt;/span&gt;
+&lt;span class="gr"&gt;FileNotFoundError&lt;/span&gt;: &lt;span class="n"&gt;[Errno 2] No such file or directory: '/tmp/tmph52sw7ra'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;p&gt;Pretty much every time I make a temporary file, I need to close the file without actually deleting it so that I can then pass the filename off to other code that actually uses the file.&lt;/p&gt;
+    &lt;h2&gt;Leaving temporary files open&lt;/h2&gt;
+      &lt;p&gt;If you&amp;#x27;d like to make …&lt;/p&gt;
+&lt;/div&gt;
+&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/temporary-files/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/temporary-files/&lt;/a&gt;&lt;/h3&gt;</description>
+      <guid isPermaLink="false">af4722aaec5e21ff7dd80025e8eeed9f917afe3203bfc8dc53ea454938ab212b</guid>
+      <pubDate>Fri, 04 Sep 2026 14:30:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Talk Python to Me: #561: TonIO, a Multi-threaded Async Runtime for Python - Planet Python</title>
+      <link>https://talkpython.fm/episodes/show/561/tonio-a-multi-threaded-async-runtime-for-python</link>
+      <description>How many cores does your machine have, 10, 18? Your async Python code uses just one of them. That isn't a bug in asyncio. That's the design, and optimizing event loops to be faster by 20% doesn't change it. So Giovanni Barillari started over. Joe is the creator of Granian, the Rust-based server that powers Talk Python. His new project is TonIO, an async runtime written from scratch for free-threaded Python. Real threads, a handful of primitives instead of asyncio's pile of them, and it flat out refuses to start if the GIL is on.&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Episode sponsors&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;a href='https://talkpython.fm/sentry'&amp;gt;Sentry Error Monitoring, Code talkpython26&amp;lt;/a&amp;gt;&amp;lt;br&amp;gt;
+&amp;lt;a href='https://talkpython.fm/devopsbook'&amp;gt;Python in Production&amp;lt;/a&amp;gt;&amp;lt;br&amp;gt;
+&amp;lt;a href='https://talkpython.fm/training'&amp;gt;Talk Python Courses&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;h2 class="links-heading mb-4"&amp;gt;Links from the show&amp;lt;/h2&amp;gt;
+&amp;lt;div&amp;gt;&amp;lt;strong&amp;gt;Guest&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Giovanni Barillari&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://github.com/gi0baro?featured_on=talkpython" target="_blank" &amp;gt;github.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Granian&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://github.com/emmett-framework/granian?featured_on=talkpython" target="_blank" &amp;gt;github.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Hyper&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://github.com/hyperium/hyper?featured_on=talkpython" target="_blank" &amp;gt;github.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Free threaded Python&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://docs.python.org/3/howto/free-threading-python.html#freethreading-python-howto" target="_blank" &amp;gt;docs.python.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Sort of&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://labs.quansight.org/blog/free-threaded-one-year-recap?featured_on=talkpython" target="_blank" &amp;gt;labs.quansight.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;did a whole course&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://training.talkpython.fm/courses/python-concurrency-deep-dive" target="_blank" &amp;gt;training.talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;uvloop&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://github.com/magicstack/uvloop?featured_on=talkpython" target="_blank" &amp;gt;github.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;rloop&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://github.com/gi0baro/rloop?featured_on=talkpython" target="_blank" &amp;gt;github.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;TonIO&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://github.com/gi0baro/tonio?featured_on=talkpython" target="_blank" &amp;gt;github.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;your EuroPython 2026 talk&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.youtube.com/watch?v=3GwyadhJZBQ&amp;amp;amp;list=PLQHk3YPV3Dgk&amp;amp;amp;index=4&amp;amp;amp;t=753s" target="_blank" &amp;gt;www.youtube.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Michael's Cutting Python Web App Memory Over 31% Article&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://mkennedy.codes/posts/cutting-python-web-app-memory-over-31-percent/?featured_on=talkpython" target="_blank" &amp;gt;mkennedy.codes&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Watch this episode on YouTube&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.youtube.com/watch?v=lmG0ocDTsZo" target="_blank" &amp;gt;youtube.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Episode #561 deep-dive&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/episodes/show/561/tonio-a-multi-threaded-async-runtime-for-python#takeaways-anchor" target="_blank" &amp;gt;talkpython.fm/561&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Episode transcripts&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/episodes/transcript/561/tonio-a-multi-threaded-async-runtime-for-python" target="_blank" &amp;gt;talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Theme Song: Developer Rap&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;🥁 Served in a Flask 🎸&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/flasksong" target="_blank" &amp;gt;talkpython.fm/flasksong&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;---==  Don't be a stranger  ==---&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;YouTube&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/youtube" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-youtube"&amp;gt;&amp;lt;/i&amp;gt; youtube.com/@talkpython&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Bluesky&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://bsky.app/profile/talkpython.fm" target="_blank" &amp;gt;@talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Mastodon&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://fosstodon.org/web/@talkpython" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-mastodon"&amp;gt;&amp;lt;/i&amp;gt; @talkpython@fosstodon.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;X.com&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://x.com/talkpython" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-twitter"&amp;gt;&amp;lt;/i&amp;gt; @talkpython&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Michael on Bluesky&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://bsky.app/profile/mkennedy.codes?featured_on=talkpython" target="_blank" &amp;gt;@mkennedy.codes&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Michael on Mastodon&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://fosstodon.org/web/@mkennedy" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-mastodon"&amp;gt;&amp;lt;/i&amp;gt; @mkennedy@fosstodon.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Michael on X.com&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://x.com/mkennedy?featured_on=talkpython" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-twitter"&amp;gt;&amp;lt;/i&amp;gt; @mkennedy&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;/div&amp;gt;</description>
+      <guid isPermaLink="false">5467ec0651652e149b283abbf45cfb77dc5aab4e5b504eca333bf8e3bcdc05cd</guid>
+      <pubDate>Fri, 04 Sep 2026 07:33:34 +0000</pubDate>
+    </item>
+    <item>
+      <title>Trey Hunner: Python Morsels now has spaced repetition - Planet Python</title>
+      <link>https://treyhunner.com/2026/09/python-morsels-now-has-spaced-repetition/</link>
+      <description>&lt;p&gt;Nearly every book I&amp;rsquo;ve read on teaching and education over the past decade has talked about the value of &lt;strong&gt;spaced repetition&lt;/strong&gt;.
+For much of that time, spaced repetition has been something I would &lt;em&gt;recommend&lt;/em&gt; learners do, but it wasn&amp;rsquo;t something I &lt;em&gt;helped&lt;/em&gt; anyone do&amp;hellip; until now.&lt;/p&gt;
+&lt;p&gt;Python Morsels now has &lt;a href="https://www.pythonmorsels.com/recall/"&gt;Daily Recall&lt;/a&gt;: a spaced repetition system &lt;strong&gt;for Python programmers&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2&gt;We learn by recalling, not by reading&lt;/h2&gt;
+&lt;p&gt;The most effective learning techniques all rely on &lt;strong&gt;active recall&lt;/strong&gt;: trying to remember something &lt;em&gt;without&lt;/em&gt; looking it up, whether with flash cards, by explaining an idea in your own words, or by doing a task that requires it.&lt;/p&gt;
+&lt;p&gt;We don&amp;rsquo;t learn by putting information &lt;em&gt;into&lt;/em&gt; our heads.
+We learn by retrieving information &lt;em&gt;from&lt;/em&gt; our heads.
+That&amp;rsquo;s why Python Morsels has always been built around exercises rather than videos: writing code is the most useful form of recall for a Python programmer.&lt;/p&gt;
+&lt;p&gt;But not everything worth remembering warrants an entire Python exercise.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Which &lt;code&gt;uv&lt;/code&gt; command runs a tool without installing it?&lt;/li&gt;
+&lt;li&gt;What is the time complexity of various list operations?&lt;/li&gt;
+&lt;li&gt;Which string method can remove a substring from the end of a string?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A 20-minute exercise is overkill for practicing something that small.
+But practicing it just once isn&amp;rsquo;t enough either.
+A quick question, asked again just before you&amp;rsquo;d forget, is a much better fit.&lt;/p&gt;
+&lt;h2&gt;Spaced repetition beats the forgetting curve&lt;/h2&gt;
+&lt;p&gt;Many of the things I learned in school are long gone, especially the ones I haven&amp;rsquo;t thought about even once in &lt;em&gt;years&lt;/em&gt;.
+I think I could explain photosynthesis in 9th grade.
+I can&amp;rsquo;t today.&lt;/p&gt;
+&lt;p&gt;This is explained by &lt;a href="https://en.wikipedia.org/wiki/Forgetting_curve"&gt;the forgetting curve&lt;/a&gt;: we forget what we don&amp;rsquo;t recall, and the rate of forgetting is somewhat predictable.
+&lt;strong&gt;Spaced repetition&lt;/strong&gt; is about using active recall to beat the forgetting curve.
+Instead of recalling an idea over and over right after learning it, you wait until it has &lt;em&gt;started&lt;/em&gt; to fade, and then try to recall it.
+Each successful recall earns a longer wait before the next one: minutes at first, then hours, then days, and eventually weeks and months.&lt;/p&gt;
+&lt;p&gt;The tricky part is the timing: &lt;em&gt;when&lt;/em&gt; should you try to recall each thing?
+That&amp;rsquo;s where an algorithm helps.
+A spaced repetition system tracks every idea you&amp;rsquo;re trying to remember and prompts you to recall each one right before you&amp;rsquo;d forget it.&lt;/p&gt;
+&lt;h2&gt;What Daily Recall does&lt;/h2&gt;
+&lt;p&gt;Back in April, just before Earth Day, I made &lt;a href="https://whereabouts.earth"&gt;Whereabouts.Earth&lt;/a&gt; to help me learn the name and location of every country in the world.
+When I started, I could name about 90 of the 197 countries on a map.
+By mid-June, with about 10 minutes of practice a day, I knew all of them.&lt;/p&gt;
+&lt;p&gt;Daily Recall is the same idea, but for Python.
+You pick the packs you want to practice, and each day it asks you a few questions from them.
+Answer a question correctly and it&amp;rsquo;ll be a while before you see that one again.
+Miss it and you&amp;rsquo;ll see it again soon.&lt;/p&gt;
+&lt;p&gt;Daily Recall uses &lt;a href="https://github.com/open-spaced-repetition/fsrs4anki/wiki/ABC-of-FSRS"&gt;FSRS&lt;/a&gt; for scheduling, which is one of the most effective spaced repetition algorithms (it&amp;rsquo;s an option in the &lt;a href="https://apps.ankiweb.net/"&gt;Anki&lt;/a&gt; flash card app).&lt;/p&gt;
+&lt;p&gt;If you have trouble remembering which operations on different data structures are fast and which are slow, there&amp;rsquo;s a &lt;a href="https://www.pythonmorsels.com/recall/packs/time-complexity/"&gt;Time Complexity pack&lt;/a&gt; for that.
+If you&amp;rsquo;re struggling to remember the &lt;em&gt;many&lt;/em&gt; different subcommands that &lt;code&gt;uv&lt;/code&gt; supports, there&amp;rsquo;s a &lt;a href="https://www.pythonmorsels.com/recall/packs/uv/"&gt;uv pack&lt;/a&gt; for that.
+There are also &lt;a href="https://www.pythonmorsels.com/recall/packs/"&gt;packs&lt;/a&gt; on string methods, built-in functions, dictionaries, iterable unpacking, f-strings, pytest, and what&amp;rsquo;s new in Python 3.13 and 3.14.
+I&amp;rsquo;m hoping to release about one new pack each week over the next many months.&lt;/p&gt;
+&lt;p&gt;Daily Recall also &lt;strong&gt;works well on a phone&lt;/strong&gt; because recall questions don&amp;rsquo;t require typing a bunch of code.
+So you can &lt;strong&gt;replace 5 minutes of your daily doomscrolling&lt;/strong&gt; with 5 minutes of extra Python learning.&lt;/p&gt;
+&lt;p&gt;Early users who practiced about 5 minutes a day ended their first month with 25 to 50 new things they could still recall weeks after last seeing them.&lt;/p&gt;
+&lt;h2&gt;You can use Daily Recall for free&lt;/h2&gt;
+&lt;p&gt;Most &lt;a href="https://www.pythonmorsels.com/recall/"&gt;Daily Recall&lt;/a&gt; packs are free, and the rest are included with the &lt;a href="https://www.pythonmorsels.com/pricing/"&gt;All Access&lt;/a&gt; plan.
+To get started, &lt;a href="https://www.pythonmorsels.com/accounts/signup/"&gt;create a free Python Morsels account&lt;/a&gt;, pick a pack or two, and answer a few questions.&lt;/p&gt;
+&lt;p&gt;And whether or not you ever use Daily Recall, I&amp;rsquo;d recommend spaced repetition.
+If you&amp;rsquo;d rather write your own flash cards, on Python or anything else, &lt;a href="https://apps.ankiweb.net/"&gt;Anki&lt;/a&gt; works well too.
+The next time you learn something new in Python, don&amp;rsquo;t just read it a second time.
+Try to recall it tomorrow, and then again next week.&lt;/p&gt;
+&lt;p&gt;&lt;a class="subscribe-btn form-big" href="https://www.pythonmorsels.com/recall/"&gt;Try Daily Recall&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">7986bab2fe8a819c9086a31c3de415e34382ad8f68dc1811448c2628f32a08f5</guid>
+      <pubDate>Fri, 04 Sep 2026 00:30:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Bob Belderbos: Why does Alembic need an import you never use? - Planet Python</title>
+      <link>https://belderbos.dev/blog/what-table-true-does-sqlmodel/</link>
+      <description>&lt;p&gt;A coaching session this week surfaced a good question: Alembic autogenerate only works if you import your models first, even though you never reference them.&lt;/p&gt;
+&lt;p&gt;Ruff flags the import as unused.&lt;/p&gt;
+&lt;p&gt;So why is it there?&lt;/p&gt;
+&lt;p&gt;Instead of just adding &lt;code&gt;# noqa: F401&lt;/code&gt;, I stopped and followed the call path into SQLModel and SQLAlchemy. The answer is a nice example of Python &lt;em&gt;metaprogramming&lt;/em&gt;: importing the module executes the class definition, and the class definition registers its table with SQLAlchemy's metadata.&lt;/p&gt;
+&lt;span id="continue-reading"&gt;&lt;/span&gt;&lt;h2 id="the-unused-import-that-isn-t-unused"&gt;The unused import that isn't unused&lt;/h2&gt;
+&lt;p&gt;Here's the line every SQLModel + Alembic setup has in &lt;code&gt;env.py&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class="giallo z-code"&gt;&lt;code&gt;&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;from&lt;/span&gt;&lt;span&gt; tips.models&lt;/span&gt;&lt;span class="z-keyword"&gt; import&lt;/span&gt;&lt;span&gt; Tip, User&lt;/span&gt;&lt;span class="z-punctuation z-definition z-comment z-comment"&gt;  # noqa: F401&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;target_metadata&lt;/span&gt;&lt;span class="z-keyword"&gt; =&lt;/span&gt;&lt;span&gt; SQLModel.metadata&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(That's a real line from &lt;a href="https://github.com/bbelderbos/codeimag.es/blob/main/migrations/env.py#L22" rel="noopener external" target="_blank"&gt;this project's &lt;code&gt;env.py&lt;/code&gt;&lt;/a&gt;.)&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;SQLModel.metadata&lt;/code&gt; is a single shared &lt;code&gt;MetaData&lt;/code&gt; object. A table only gets registered in its tables collection as a side effect of the class being defined.&lt;/p&gt;
+&lt;p&gt;If &lt;code&gt;tips.models&lt;/code&gt; never gets imported, the &lt;code&gt;class Tip(...)&lt;/code&gt; statement never executes, so no table is registered. Alembic then sees empty model metadata when it runs autogenerate. Existing database tables aren't present in that metadata, so Alembic can propose dropping them.&lt;/p&gt;
+&lt;p&gt;So the import isn't there for the names &lt;code&gt;Tip&lt;/code&gt; and &lt;code&gt;User&lt;/code&gt;. It's there to &lt;em&gt;run the module&lt;/em&gt; so the class definitions fire. That's why &lt;code&gt;# noqa: F401&lt;/code&gt; is justified.&lt;/p&gt;
+&lt;p&gt;This is a common confusion for people new to Python, importing an object actually reads and executes the module, and the side effects of that execution are often more important than the names it exports. (For a related trap, where &lt;em&gt;when&lt;/em&gt; an object gets created changes its behavior, see &lt;a href="https://belderbos.dev/blog/two-scoping-bugs-object-lifetimes/"&gt;Two Python Scoping Bugs&lt;/a&gt;.)&lt;/p&gt;
+&lt;p&gt;A better way to write it so we can include any future models without having to list them all is:&lt;/p&gt;
+&lt;pre class="giallo z-code"&gt;&lt;code&gt;&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;import&lt;/span&gt;&lt;span&gt; tips.models&lt;/span&gt;&lt;span class="z-punctuation z-definition z-comment z-comment"&gt;  # noqa: F401&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The interesting question is what "the class definition fires" actually means. Nothing in your model class calls &lt;code&gt;metadata.add_table()&lt;/code&gt;. So who does?&lt;/p&gt;
+&lt;h2 id="following-table-true-into-the-source"&gt;Following table=True into the source&lt;/h2&gt;
+&lt;p&gt;When you write &lt;code&gt;class Tip(SQLModel, table=True)&lt;/code&gt;, the &lt;code&gt;table=True&lt;/code&gt; is a class keyword argument. It gets routed to &lt;code&gt;SQLModelMetaclass&lt;/code&gt;. In sqlmodel 0.0.39, &lt;code&gt;main.py&lt;/code&gt; reads it back out and stashes it on the model config:&lt;/p&gt;
+&lt;pre class="giallo z-code"&gt;&lt;code&gt;&lt;span class="giallo-l"&gt;&lt;span class="z-punctuation z-definition z-comment z-comment"&gt;# sqlmodel/main.py — SQLModelMetaclass.__new__&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;config_table&lt;/span&gt;&lt;span class="z-keyword"&gt; =&lt;/span&gt;&lt;span&gt; get_config(&lt;/span&gt;&lt;span class="z-punctuation z-definition z-string z-string"&gt;&amp;quot;table&amp;quot;&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;if&lt;/span&gt;&lt;span&gt; config_table&lt;/span&gt;&lt;span class="z-keyword"&gt; is&lt;/span&gt;&lt;span class="z-constant"&gt; True&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;    new_cls.model_config[&lt;/span&gt;&lt;span class="z-punctuation z-definition z-string z-string"&gt;&amp;quot;table&amp;quot;&lt;/span&gt;&lt;span&gt;]&lt;/span&gt;&lt;span class="z-keyword"&gt; =&lt;/span&gt;&lt;span&gt; config_table&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-constant"&gt;    ...&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then &lt;code&gt;__init__&lt;/code&gt; on the same metaclass checks that flag and, only when it's set, hands the class over to SQLAlchemy's declarative machinery:&lt;/p&gt;
+&lt;pre class="giallo z-code"&gt;&lt;code&gt;&lt;span class="giallo-l"&gt;&lt;span class="z-punctuation z-definition z-comment z-comment"&gt;# sqlmodel/main.py — SQLModelMetaclass.__init__&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;base_is_table&lt;/span&gt;&lt;span class="z-keyword"&gt; =&lt;/span&gt;&lt;span class="z-support"&gt; any&lt;/span&gt;&lt;span&gt;(is_table_model_class(base)&lt;/span&gt;&lt;span class="z-keyword"&gt; for&lt;/span&gt;&lt;span&gt; base&lt;/span&gt;&lt;span class="z-keyword"&gt; in&lt;/span&gt;&lt;span&gt; bases)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;if&lt;/span&gt;&lt;span&gt; is_table_model_class(&lt;/span&gt;&lt;span class="z-variable z-language"&gt;cls&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;span class="z-keyword"&gt; and not&lt;/span&gt;&lt;span&gt; base_is_table:&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-constant"&gt;    ...&lt;/span&gt;&lt;span class="z-punctuation z-definition z-comment z-comment"&gt;  # build columns and relationships from the model's fields&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;    DeclarativeMeta.&lt;/span&gt;&lt;span class="z-support"&gt;__init__&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class="z-variable z-language"&gt;cls&lt;/span&gt;&lt;span&gt;, classname, bases, dict_,&lt;/span&gt;&lt;span class="z-keyword"&gt; **&lt;/span&gt;&lt;span&gt;kw)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;else&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;    ModelMetaclass.&lt;/span&gt;&lt;span class="z-support"&gt;__init__&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class="z-variable z-language"&gt;cls&lt;/span&gt;&lt;span&gt;, classname, bases, dict_,&lt;/span&gt;&lt;span class="z-keyword"&gt; **&lt;/span&gt;&lt;span&gt;kw)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(&lt;code&gt;is_table_model_class&lt;/code&gt; is just the check that &lt;code&gt;model_config["table"]&lt;/code&gt; is set.)&lt;/p&gt;
+&lt;p&gt;That &lt;code&gt;if/else&lt;/code&gt; is the key fork created by &lt;code&gt;table=True&lt;/code&gt;. With it, SQLModel takes the class down SQLAlchemy's declarative path. Without it, you get a SQLModel/Pydantic model rather than a mapped table model, so no SQLAlchemy &lt;code&gt;Table&lt;/code&gt; is registered in &lt;code&gt;SQLModel.metadata&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;From &lt;code&gt;DeclarativeMeta.__init__&lt;/code&gt; the trail runs straight down into SQLAlchemy:&lt;/p&gt;
+&lt;pre class="giallo z-code"&gt;&lt;code&gt;&lt;span class="giallo-l"&gt;&lt;span class="z-punctuation z-definition z-comment z-comment"&gt;# sqlalchemy/orm/decl_api.py&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;if not&lt;/span&gt;&lt;span class="z-variable z-language"&gt; cls&lt;/span&gt;&lt;span&gt;.&lt;/span&gt;&lt;span class="z-support z-variable"&gt;__dict__&lt;/span&gt;&lt;span&gt;.get(&lt;/span&gt;&lt;span class="z-punctuation z-definition z-string z-string"&gt;&amp;quot;__abstract__&amp;quot;&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;span class="z-constant"&gt; False&lt;/span&gt;&lt;span&gt;):&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;    _as_declarative(reg,&lt;/span&gt;&lt;span class="z-variable z-language"&gt; cls&lt;/span&gt;&lt;span&gt;, dict_)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;_as_declarative&lt;/code&gt; scans the class, builds a &lt;code&gt;Table&lt;/code&gt; object from the columns, and that &lt;code&gt;Table&lt;/code&gt; registers itself:&lt;/p&gt;
+&lt;pre class="giallo z-code"&gt;&lt;code&gt;&lt;span class="giallo-l"&gt;&lt;span class="z-punctuation z-definition z-comment z-comment"&gt;# sqlalchemy/sql/schema.py — Table.__new__&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;metadata._add_table(name, schema, table)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;pre class="giallo z-code"&gt;&lt;code&gt;&lt;span class="giallo-l"&gt;&lt;span class="z-punctuation z-definition z-comment z-comment"&gt;# sqlalchemy/sql/schema.py — MetaData._add_table&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-storage z-type"&gt;def&lt;/span&gt;&lt;span class="z-entity z-name"&gt; _add_table&lt;/span&gt;&lt;span class="z-variable z-parameter z-function"&gt;(self, name, schema, table):&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;    key&lt;/span&gt;&lt;span class="z-keyword"&gt; =&lt;/span&gt;&lt;span&gt; _get_table_key(name, schema)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-variable z-language"&gt;    self&lt;/span&gt;&lt;span&gt;.tables._insert_item(key, table)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There it is. &lt;code&gt;self.tables._insert_item(...)&lt;/code&gt; is the exact moment your model becomes an entry in &lt;code&gt;SQLModel.metadata.tables&lt;/code&gt;, and it runs during class definition, triggered by importing the module. That's the side effect Alembic depends on.&lt;/p&gt;
+&lt;h2 id="seeing-it-happen"&gt;Seeing it happen&lt;/h2&gt;
+&lt;p&gt;You don't have to trust the call path. Registration is a side effect of the &lt;code&gt;class&lt;/code&gt; statement, so a plain REPL lets you watch the registry grow in real time:&lt;/p&gt;
+&lt;pre class="giallo z-code"&gt;&lt;code&gt;&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;&amp;gt;&amp;gt;&amp;gt; from&lt;/span&gt;&lt;span&gt; sqlmodel&lt;/span&gt;&lt;span class="z-keyword"&gt; import&lt;/span&gt;&lt;span&gt; SQLModel, Field&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="z-support"&gt; print&lt;/span&gt;&lt;span&gt;(SQLModel.metadata.tables)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;FacadeDict({})&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword z-storage z-type"&gt;&amp;gt;&amp;gt;&amp;gt; class&lt;/span&gt;&lt;span class="z-entity z-name"&gt; Tip&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class="z-entity"&gt;SQLModel&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;span class="z-variable"&gt; table&lt;/span&gt;&lt;span class="z-keyword"&gt;=&lt;/span&gt;&lt;span class="z-constant"&gt;True&lt;/span&gt;&lt;span&gt;):&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-constant z-support"&gt;...     id&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;span class="z-support"&gt; int&lt;/span&gt;&lt;span class="z-keyword"&gt; |&lt;/span&gt;&lt;span class="z-constant"&gt; None&lt;/span&gt;&lt;span class="z-keyword"&gt; =&lt;/span&gt;&lt;span&gt; Field(&lt;/span&gt;&lt;span class="z-variable"&gt;default&lt;/span&gt;&lt;span class="z-keyword"&gt;=&lt;/span&gt;&lt;span class="z-constant"&gt;None&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;span class="z-variable"&gt; primary_key&lt;/span&gt;&lt;span class="z-keyword"&gt;=&lt;/span&gt;&lt;span class="z-constant"&gt;True&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-constant"&gt;...&lt;/span&gt;&lt;span&gt;     text:&lt;/span&gt;&lt;span class="z-support"&gt; str&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-constant"&gt;...&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="z-support"&gt; print&lt;/span&gt;&lt;span&gt;(SQLModel.metadata.tables)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;FacadeDict({&lt;/span&gt;&lt;span class="z-punctuation z-definition z-string z-string"&gt;'tip'&lt;/span&gt;&lt;span&gt;: Table(&lt;/span&gt;&lt;span class="z-punctuation z-definition z-string z-string"&gt;'tip'&lt;/span&gt;&lt;span&gt;, MetaData(), Column(&lt;/span&gt;&lt;span class="z-punctuation z-definition z-string z-string"&gt;'id'&lt;/span&gt;&lt;span&gt;, Integer(),&lt;/span&gt;&lt;span class="z-variable"&gt; table&lt;/span&gt;&lt;span class="z-keyword"&gt;=&amp;lt;&lt;/span&gt;&lt;span&gt;tip&lt;/span&gt;&lt;span class="z-keyword"&gt;&amp;gt;&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;span class="z-variable"&gt; primary_key&lt;/span&gt;&lt;span class="z-keyword"&gt;=&lt;/span&gt;&lt;span class="z-constant"&gt;True&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;span class="z-variable"&gt; nullable&lt;/span&gt;&lt;span class="z-keyword"&gt;=&lt;/span&gt;&lt;span class="z-constant"&gt;False&lt;/span&gt;&lt;span&gt;), Column(&lt;/span&gt;&lt;span class="z-punctuation z-definition z-string z-string"&gt;'text'&lt;/span&gt;&lt;span&gt;, AutoString(),&lt;/span&gt;&lt;span class="z-variable"&gt; table&lt;/span&gt;&lt;span class="z-keyword"&gt;=&amp;lt;&lt;/span&gt;&lt;span&gt;tip&lt;/span&gt;&lt;span class="z-keyword"&gt;&amp;gt;&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;span class="z-variable"&gt; nullable&lt;/span&gt;&lt;span class="z-keyword"&gt;=&lt;/span&gt;&lt;span class="z-constant"&gt;False&lt;/span&gt;&lt;span&gt;),&lt;/span&gt;&lt;span class="z-variable"&gt; schema&lt;/span&gt;&lt;span class="z-keyword"&gt;=&lt;/span&gt;&lt;span class="z-constant"&gt;None&lt;/span&gt;&lt;span&gt;)})&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;No &lt;code&gt;create_engine&lt;/code&gt;, no &lt;code&gt;create_all&lt;/code&gt;, no import of your models module. Just defining the class populated the shared &lt;code&gt;metadata&lt;/code&gt;. Drop the &lt;code&gt;table=True&lt;/code&gt; and run it again: the dict stays empty, because now &lt;code&gt;Tip&lt;/code&gt; is a SQLModel/Pydantic model rather than a mapped table model.&lt;/p&gt;
+&lt;p&gt;That proves the &lt;em&gt;class statement&lt;/em&gt; does the registering. To tie it back to the opening question, put the same class in a module and let the import fire it:&lt;/p&gt;
+&lt;pre class="giallo z-code"&gt;&lt;code&gt;&lt;span class="giallo-l"&gt;&lt;span class="z-punctuation z-definition z-comment z-comment"&gt;# models.py&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;from&lt;/span&gt;&lt;span&gt; sqlmodel&lt;/span&gt;&lt;span class="z-keyword"&gt; import&lt;/span&gt;&lt;span&gt; SQLModel, Field&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-storage z-type"&gt;class&lt;/span&gt;&lt;span class="z-entity z-name"&gt; Tip&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class="z-entity"&gt;SQLModel&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;span class="z-variable"&gt; table&lt;/span&gt;&lt;span class="z-keyword"&gt;=&lt;/span&gt;&lt;span class="z-constant"&gt;True&lt;/span&gt;&lt;span&gt;):&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-support"&gt;    id&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;span class="z-support"&gt; int&lt;/span&gt;&lt;span class="z-keyword"&gt; |&lt;/span&gt;&lt;span class="z-constant"&gt; None&lt;/span&gt;&lt;span class="z-keyword"&gt; =&lt;/span&gt;&lt;span&gt; Field(&lt;/span&gt;&lt;span class="z-variable"&gt;default&lt;/span&gt;&lt;span class="z-keyword"&gt;=&lt;/span&gt;&lt;span class="z-constant"&gt;None&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;span class="z-variable"&gt; primary_key&lt;/span&gt;&lt;span class="z-keyword"&gt;=&lt;/span&gt;&lt;span class="z-constant"&gt;True&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;    text:&lt;/span&gt;&lt;span class="z-support"&gt; str&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;pre class="giallo z-code"&gt;&lt;code&gt;&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;&amp;gt;&amp;gt;&amp;gt; from&lt;/span&gt;&lt;span&gt; sqlmodel&lt;/span&gt;&lt;span class="z-keyword"&gt; import&lt;/span&gt;&lt;span&gt; SQLModel&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="z-support"&gt; print&lt;/span&gt;&lt;span&gt;(SQLModel.metadata.tables)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;FacadeDict({})&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;&amp;gt;&amp;gt;&amp;gt; import&lt;/span&gt;&lt;span&gt; models&lt;/span&gt;&lt;span class="z-punctuation z-definition z-comment z-comment"&gt;  # the &amp;quot;unused&amp;quot; import&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="z-support"&gt; print&lt;/span&gt;&lt;span&gt;(SQLModel.metadata.tables)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span&gt;FacadeDict({&lt;/span&gt;&lt;span class="z-punctuation z-definition z-string z-string"&gt;'tip'&lt;/span&gt;&lt;span&gt;: Table(&lt;/span&gt;&lt;span class="z-punctuation z-definition z-string z-string"&gt;'tip'&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;span class="z-constant"&gt; ...&lt;/span&gt;&lt;span&gt;)})&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You never touch &lt;code&gt;models.Tip&lt;/code&gt; after importing it, yet the registry filled up. That's the exact &lt;code&gt;env.py&lt;/code&gt; situation: the import runs the module, the module runs the class definition, and the class definition registers the table.&lt;/p&gt;
+&lt;h2 id="is-this-metaprogramming"&gt;Is this metaprogramming?&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;SQLModelMetaclass&lt;/code&gt; inherits from both Pydantic's &lt;code&gt;ModelMetaclass&lt;/code&gt; and SQLAlchemy's &lt;code&gt;DeclarativeMeta&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;This is the same mechanism behind a lot of Python you use daily. If you've ever wondered how a class declaration can acquire behavior you never explicitly wrote, the answer is often a metaclass or &lt;code&gt;__init_subclass__&lt;/code&gt; doing work at definition time.&lt;/p&gt;
+&lt;p&gt;A metaclass is code that runs when a class is defined. Here it inspects a keyword, processes the model's fields, and delegates table-model construction to SQLAlchemy.&lt;/p&gt;
+&lt;p&gt;Your field annotations get read at that moment and turned into &lt;code&gt;Column&lt;/code&gt; objects.&lt;/p&gt;
+&lt;p&gt;The practical payoff: next time autogenerate produces an empty migration or wants to drop all your tables, you'll know the cause is registration order, not Alembic being broken. Something imported the models too late, or not at all, and &lt;code&gt;metadata.tables&lt;/code&gt; was empty when Alembic read it.&lt;/p&gt;
+&lt;h2 id="looking-at-libraries"&gt;Looking at libraries&lt;/h2&gt;
+&lt;p&gt;Reading a library's source to answer "why is this import here" is a great way to learn the library and Python itself. You don't have to understand every line. Follow the call path of a single feature and you'll often see how the pieces fit together.&lt;/p&gt;
+&lt;p&gt;It's also about not taking things at face value. A &lt;code&gt;noqa&lt;/code&gt; means you're deliberately silencing something a linter flagged. Here it was warranted, but only after understanding &lt;em&gt;why&lt;/em&gt; the import exists.&lt;/p&gt;
+&lt;p&gt;AI can follow this call path for you in seconds. That's useful.&lt;/p&gt;
+&lt;p&gt;But the valuable skill isn't memorizing that &lt;code&gt;Table.__new__&lt;/code&gt; calls &lt;code&gt;_add_table&lt;/code&gt;. It's having the instinct to stop when something looks strange and ask: &lt;strong&gt;why is this here?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;As AI writes more of the code, this habit matters now more than ever I think. If you don't understand the code, you can't maintain / improve it over time.&lt;/p&gt;
+&lt;h2 id="keep-reading"&gt;Keep reading&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://belderbos.dev/blog/classmethod-vs-staticmethod-vs-instance-method-python/"&gt;When to use classmethod, staticmethod, or instance method in Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://belderbos.dev/blog/event-sourcing-python-store-events-not-state/"&gt;Event sourcing in Python: store events, not state&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <guid isPermaLink="false">dda453b147382e62c743f93a447d24811d0d0b7b72508496e907dc3e8d4ab199</guid>
+      <pubDate>Fri, 04 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Graham Dumpleton: Phased behaviour in wrapture - Planet Python</title>
+      <link>https://grahamdumpleton.me/posts/2026/09/phased-behaviour-in-wrapture/</link>
+      <description>&lt;p&gt;Most of what a test configures on a patch holds until the test changes it. Retry logic is the classic case where that is not enough: the code under test keeps calling, and the test needs the behaviour to change on its own as it does. Fail twice and then succeed. Hand out a sequence of canned responses. Run the real thing until it breaks and then fail fast. &lt;code&gt;unittest.mock&lt;/code&gt; handles the first two of those with a list passed as &lt;code&gt;side_effect&lt;/code&gt;, consumed one entry per call. wrapture models the same idea as phases, and this post is about what that buys you beyond the list.&lt;/p&gt;
+&lt;h2&gt;The code under test&lt;/h2&gt;
+&lt;p&gt;A client that fetches a URL, and a function that retries on a timeout:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;class Client:
+    def fetch(self, url):
+        if &amp;quot;bad&amp;quot; in url:
+            raise ConnectionError(f&amp;quot;cannot reach {url}&amp;quot;)
+        return {&amp;quot;url&amp;quot;: url, &amp;quot;status&amp;quot;: 200}
+def fetch_with_retry(client, url, attempts=3):
+    for attempt in range(1, attempts + 1):
+        try:
+            return client.fetch(url)
+        except TimeoutError:
+            if attempt == attempts:
+                raise
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With mock the retry test is a &lt;code&gt;side_effect&lt;/code&gt; list, and it works fine:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;with patch.object(Client, &amp;quot;fetch&amp;quot;, side_effect=[TimeoutError(&amp;quot;busy&amp;quot;), TimeoutError(&amp;quot;busy&amp;quot;), {&amp;quot;url&amp;quot;: &amp;quot;/x&amp;quot;, &amp;quot;status&amp;quot;: 200}]):
+    assert fetch_with_retry(Client(), &amp;quot;/x&amp;quot;) == {&amp;quot;url&amp;quot;: &amp;quot;/x&amp;quot;, &amp;quot;status&amp;quot;: 200}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;What the list cannot say is &amp;quot;and then run the real code&amp;quot;. Every entry is a fabricated outcome, so the third call is a canned dictionary rather than the real &lt;code&gt;fetch()&lt;/code&gt;, and the test proves the loop retries but not that the real method is what it eventually reaches.&lt;/p&gt;
+&lt;h2&gt;Phases&lt;/h2&gt;
+&lt;p&gt;In wrapture the behaviour configured on &lt;code&gt;on_call&lt;/code&gt; is phase 0, and &lt;code&gt;then()&lt;/code&gt; adds the phase that takes over from it, with the argument saying when the hand-over happens. Each phase is a complete behaviour of its own with the full vocabulary, and nothing is inherited between them, so a phase with no terminal runs the real operation:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;fetch = wrapture.binding(Client, &amp;quot;fetch&amp;quot;)
+fetch.on_call.raises(TimeoutError(&amp;quot;busy&amp;quot;))
+recovered = fetch.on_call.then(after=2)
+recovered.passes_through()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The first two calls raise, and every call after that is real. Stating &lt;code&gt;passes_through()&lt;/code&gt; on a fresh phase is optional, since that is what an empty phase does anyway, but worth writing when running the real thing is the point of the phase. Recording it shows the hand-over, and the tape marks which outcomes were injected and which were real:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;with wrapture.timeline(fetch) as tape:
+    print(fetch_with_retry(Client(), &amp;quot;/orders&amp;quot;))
+    print(tape.tree())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;{'url': '/orders', 'status': 200}
+__main__:Client.fetch(url='/orders')  !! TimeoutError (injected)
+__main__:Client.fetch(url='/orders')  !! TimeoutError (injected)
+__main__:Client.fetch(url='/orders')  -&amp;gt; {'url': '/orders', 'status': 200}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Each event carries the index of the phase that handled it, so the recording can be filtered by regime, and the binding knows which phase it is in:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;fetch.events.in_phase(0).assert_times(2)
+fetch.events.in_phase(1).assert_once()
+assert fetch.phase == 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;binding.phase&lt;/code&gt; is the index of the phase currently active, and &lt;code&gt;in_phase()&lt;/code&gt; filters the recorded events to those a given phase handled. The two answer different questions, since a phase can be entered and left without handling a call. Phases restart at 0 on every &lt;code&gt;apply()&lt;/code&gt;, so a binding handed to &lt;code&gt;timeline()&lt;/code&gt; starts its script afresh in each test that uses it.&lt;/p&gt;
+&lt;p&gt;The give-up path is the same binding with a bigger count. With &lt;code&gt;then(after=3)&lt;/code&gt; all three attempts raise, &lt;code&gt;fetch_with_retry()&lt;/code&gt; re-raises the last one, and the tape shows three injected failures and no real call.&lt;/p&gt;
+&lt;p&gt;The verbs on a phase return the phase, so a phase can be configured in one chain, &lt;code&gt;then(after=1).validates_args(check).returns(b)&lt;/code&gt;. Holding it in a variable named for what the phase is, and configuring it line by line as with &lt;code&gt;on_call&lt;/code&gt;, usually reads better, and it is the style I would use in a test.&lt;/p&gt;
+&lt;h2&gt;Ending a phase on a condition&lt;/h2&gt;
+&lt;p&gt;A count is one of three ways a phase can end. &lt;code&gt;then(until=fn)&lt;/code&gt; ends the phase once &lt;code&gt;fn(event)&lt;/code&gt; is true for a call it handled. The event is the same one a timeline would record, seen as the caller saw it, so the condition can look at the arguments, the result, or whether the call raised. That is enough to build a circuit breaker: run the real call until one fails, then fail fast without touching the remote at all.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;class CircuitOpen(Exception):
+    pass
+def failed(event):
+    return event.exception is not None
+fetch = wrapture.binding(Client, &amp;quot;fetch&amp;quot;)
+fetch.on_call.passes_through()
+tripped = fetch.on_call.then(until=failed)
+tripped.raises(CircuitOpen(&amp;quot;circuit open&amp;quot;))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Fetch two good URLs, one bad one that the real &lt;code&gt;fetch()&lt;/code&gt; rejects, and then another good one:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;__main__:Client.fetch(url='/a')  -&amp;gt; {'url': '/a', 'status': 200}
+__main__:Client.fetch(url='/b')  -&amp;gt; {'url': '/b', 'status': 200}
+__main__:Client.fetch(url='/bad')  !! ConnectionError
+__main__:Client.fetch(url='/c')  !! CircuitOpen (injected)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;ConnectionError&lt;/code&gt; is real, raised by the real method for a real reason, and the &lt;code&gt;CircuitOpen&lt;/code&gt; after it is the binding's. A &lt;code&gt;side_effect&lt;/code&gt; list has no way to express a phase whose boundary depends on what the real code did.&lt;/p&gt;
+&lt;h2&gt;Sequences&lt;/h2&gt;
+&lt;p&gt;For &amp;quot;return the next value on each call&amp;quot; a phase per value would be tiresome, so &lt;code&gt;returns_from(iterable)&lt;/code&gt; is a terminal that draws successive values, one per call, lazily. A generator or &lt;code&gt;itertools.cycle()&lt;/code&gt; works. When the sequence runs out the phase ends and the call that found it empty is handled by the successor, so a bare &lt;code&gt;then()&lt;/code&gt; after a sequence means &amp;quot;when it is exhausted&amp;quot;. A polling loop is the natural example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;class Job:
+    def status(self):
+        return &amp;quot;done&amp;quot;
+def wait_for(job, polls=5):
+    for _ in range(polls):
+        if job.status() == &amp;quot;done&amp;quot;:
+            return True
+    return False
+status = wrapture.binding(Job, &amp;quot;status&amp;quot;)
+status.on_call.returns_from([&amp;quot;queued&amp;quot;, &amp;quot;running&amp;quot;, &amp;quot;running&amp;quot;])
+settled = status.on_call.then()
+settled.returns(&amp;quot;done&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;__main__:Job.status()  -&amp;gt; 'queued' (injected)
+__main__:Job.status()  -&amp;gt; 'running' (injected)
+__main__:Job.status()  -&amp;gt; 'running' (injected)
+__main__:Job.status()  -&amp;gt; 'done' (injected)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is the closest thing to mock's &lt;code&gt;side_effect&lt;/code&gt; list, and the deliberate difference is that values and exceptions are kept apart. &lt;code&gt;side_effect=[a, b, Err]&lt;/code&gt; becomes &lt;code&gt;returns_from([a, b])&lt;/code&gt; followed by a phase that &lt;code&gt;raises(Err)&lt;/code&gt;, which is more lines for the same three outcomes but each phase says what it is. Running out with no successor is a loud &lt;code&gt;SequenceExhaustedError&lt;/code&gt; at the call site rather than a &lt;code&gt;StopIteration&lt;/code&gt; leaking out of the code under test, and the message says to add a phase with &lt;code&gt;then()&lt;/code&gt; or supply an endless sequence.&lt;/p&gt;
+&lt;p&gt;A known sequence of &amp;quot;random&amp;quot; numbers is another use, making code that jitters or samples deterministic without seeding tricks: &lt;code&gt;binding(random, &amp;quot;random&amp;quot;).on_call.returns_from([0.1, 0.9, 0.5])&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Advancing from outside&lt;/h2&gt;
+&lt;p&gt;The third way a phase ends is that something other than this binding's own calls decides it should. A bare &lt;code&gt;then()&lt;/code&gt; with no condition ends only when the test calls &lt;code&gt;binding.advance()&lt;/code&gt;, which also works whatever the exit condition, so a test can force the next phase early. The simplest use is a test that sits between calls:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;remote = wrapture.binding(Client, &amp;quot;fetch&amp;quot;)
+remote.on_call.raises(ConnectionError(&amp;quot;down&amp;quot;))
+remote.on_call.then().passes_through()
+with remote:
+    client = Client()
+    with pytest.raises(ConnectionError):
+        client.fetch(&amp;quot;/x&amp;quot;)
+    remote.advance()
+    assert client.fetch(&amp;quot;/x&amp;quot;)[&amp;quot;status&amp;quot;] == 200
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The more interesting use is when the trigger lives in a different binding. Here the remote stays down until a health check, itself a binding, reports it healthy, and the health check's own result stage advances the remote:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;class Monitor:
+    def check(self):
+        return &amp;quot;healthy&amp;quot;
+remote = wrapture.binding(Client, &amp;quot;fetch&amp;quot;)
+remote.on_call.raises(ConnectionError(&amp;quot;down&amp;quot;))
+online = remote.on_call.then()
+online.passes_through()
+health = wrapture.binding(Monitor, &amp;quot;check&amp;quot;)
+health.on_call.returns_from([&amp;quot;unhealthy&amp;quot;, &amp;quot;unhealthy&amp;quot;, &amp;quot;healthy&amp;quot;])
+health.on_call.then().returns(&amp;quot;healthy&amp;quot;)
+def note_recovery(result):
+    if result == &amp;quot;healthy&amp;quot;:
+        remote.advance()
+health.on_call.validates_result(note_recovery)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Run code that polls the monitor and tries the client each time round, and the tape shows the two scripts interleaving:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;__main__:Monitor.check()  -&amp;gt; 'unhealthy' (injected)
+__main__:Client.fetch(url='/x')  !! ConnectionError (injected)
+__main__:Monitor.check()  -&amp;gt; 'unhealthy' (injected)
+__main__:Client.fetch(url='/x')  !! ConnectionError (injected)
+__main__:Monitor.check()  -&amp;gt; 'healthy' (injected)
+__main__:Client.fetch(url='/x')  -&amp;gt; {'url': '/x', 'status': 200}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note that a stage such as &lt;code&gt;validates_result()&lt;/code&gt; belongs to the phase it was configured on, which follows from phases inheriting nothing from each other. That is why &lt;code&gt;&amp;quot;healthy&amp;quot;&lt;/code&gt; is the last value of the phase 0 sequence above rather than the value the successor phase returns; if the stage were on phase 0 and the triggering value only ever came from phase 1, the recovery would never be noticed. A stage that should run in every phase is configured in every phase. When the condition is visible in the binding's own calls, &lt;code&gt;then(until=...)&lt;/code&gt; says it more directly than a stage calling &lt;code&gt;advance()&lt;/code&gt;, and is the form to reach for first.&lt;/p&gt;
+&lt;h2&gt;Where phases fit in a test&lt;/h2&gt;
+&lt;p&gt;Phases are for behaviour that must change within one call of the code under test, as it happens with a retry loop, a breaker, or a polling wait. A test that sits between calls does not need them; it reconfigures the binding in place, &lt;code&gt;on_call.returns(...)&lt;/code&gt; again, and carries on. That is why the decorator form deliberately leaves &lt;code&gt;then()&lt;/code&gt; out of its chain: how behaviour changes over time is the test's script, and it is configured in the body through the injected handle, where the phase markers can be given names.&lt;/p&gt;
+&lt;p&gt;The attribute channels have phases too, &lt;code&gt;on_get&lt;/code&gt; in particular has &lt;code&gt;returns_from()&lt;/code&gt;, so a module constant can read one way for two reads and then another, which I will come back to in the next post. And &lt;code&gt;passes_through()&lt;/code&gt; on a base namespace clears phase 0 only; to drop the whole chain and start again, &lt;code&gt;on_call.reset()&lt;/code&gt; is the tool.&lt;/p&gt;
+&lt;h2&gt;What's next&lt;/h2&gt;
+&lt;p&gt;Everything in this series so far has been about calls. The next post is about everything a binding can name that is not a call: attribute reads and writes, a value held in a slot for the duration of a test, the whole content of a settings dict, and what happens item by item as a generator is consumed.&lt;/p&gt;</description>
+      <guid isPermaLink="false">5d167d45f410c8fbd1dabc4858933fab7f387942580921a8cf407516e7874779</guid>
+      <pubDate>Fri, 04 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Jaime Buelta: The Many Challenges in Integrating Information for AI Agents - Planet Python</title>
+      <link>https://wrongsideofmemphis.com/2026/09/03/the-many-challenges-in-integrating-information-for-ai-agents/</link>
+      <description>Recently I&amp;#8217;ve been thinking quite a lot about information availability for agents, and the fact that this is a very difficult and potentially irresoluble problem. Let me try to explain myself. I talked before about a mental model on differentiating between the LLM models and the tools that access those models. I think that now that&amp;#8217;s clearer as we are using more and more agents. We understand that we can use Claude Code with different models (like Sonnet or Opus) that change the capacity of the agent, but not its capabilities. The... &lt;a class="read-more" href="https://wrongsideofmemphis.com/2026/09/03/the-many-challenges-in-integrating-information-for-ai-agents/"&gt;Read More&lt;/a&gt;</description>
+      <guid isPermaLink="false">76a78ebc621460747b5729b6c273bdb908a60f546b369abd5c7dcbb77f47c37f</guid>
+      <pubDate>Thu, 03 Sep 2026 07:12:34 +0000</pubDate>
+    </item>
+    <item>
+      <title>Django Weblog: Django bugfix release issued: 6.1.1 - Planet Python</title>
+      <link>https://www.djangoproject.com/weblog/2026/sep/02/bugfix-releases/</link>
+      <description>&lt;p&gt;Today we've issued the
+&lt;a href="https://docs.djangoproject.com/en/stable/releases/6.1.1/"&gt;6.1.1&lt;/a&gt;
+bugfix release.&lt;/p&gt;
+&lt;p&gt;The release package and checksums are available from
+&lt;a href="http://www.djangoproject.com/download/"&gt;our downloads page&lt;/a&gt;, as well as from the Python Package Index.&lt;/p&gt;
+&lt;p&gt;The PGP key ID used for this release is Jacob Walls: &lt;a href="https://github.com/jacobtylerwalls.gpg"&gt;131403F4D16D8DC7&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">fe521b70d884dc05a68ba3a233e9206bb6fae3141671a0a46e6ac347465bd4cd</guid>
+      <pubDate>Wed, 02 Sep 2026 17:30:00 +0000</pubDate>
+    </item>
     <item>
       <title>Tryton News: Tryton News September 2026 - Planet Python</title>
       <link>https://discuss.tryton.org/t/tryton-news-september-2026/9356</link>

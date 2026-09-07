@@ -5,7 +5,600 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Hardware category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Wed, 02 Sep 2026 14:02:06 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 07 Sep 2026 14:03:21 +0000</lastBuildDate>
+    <item>
+      <title>How To Talk To A Machine Without Anthropomorphising It - Hack a Day</title>
+      <link>https://hackaday.com/2026/09/07/how-to-talk-to-a-machine-without-anthropomorphising-it/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="484" src="https://hackaday.com/wp-content/uploads/2021/08/GithubCopilot.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;LLMs remain a divisive topic in these times. Perhaps we all know someone who&amp;#8217;s become over-infatuated with their new robotic friend, or who believes it has made them a genius. [Emily M. Bender] and [Nanna Inie] have written about how people anthropomorphise the LLMs they interact with, &lt;a href="https://buttondown.com/maiht3k/archive/how-to-talk-about-ai-without-adding-to-the/" target="_blank"&gt;and suggested some language tips to avoid that&lt;/a&gt;. It&amp;#8217;s a couple of months old, but we think Hackaday readers will find it interesting.&lt;/p&gt;
+&lt;p&gt;Their analysis is interesting, because it looks at the way people talk about LLMs and highlights the unconscious anthropomorphism. The LLM is a piece of software not a person, so why does it &amp;#8220;recognise&amp;#8221; when it does &amp;#8220;speech recognition&amp;#8221;, for example. They suggest &amp;#8220;automatic transcription&amp;#8221; instead. Even &amp;#8220;hallucination&amp;#8221; implies cognisance that evidently isn&amp;#8217;t there. They admit that their suggestion of &amp;#8220;undesirable output&amp;#8221; isn&amp;#8217;t entirely appropriate. They&amp;#8217;re on safer ground with &amp;#8220;input&amp;#8221; and &amp;#8220;output&amp;#8221; instead of &amp;#8220;prompt&amp;#8221; and &amp;#8220;response&amp;#8221;.&lt;/p&gt;
+&lt;p&gt;Whatever your views on them, it&amp;#8217;s evident that LLM usage will be a feature of the world for the forseeable future. The language surrounding them is however capable of evolving, and maybe some of the suggestions here are worth taking note of.&lt;/p&gt;
+&lt;p&gt;Grappling with our new electronic overlords? Have a look at our &lt;a href="https://hackaday.com/2026/04/08/ai-for-the-skeptics-pick-your-reasons-to-be-excited/"&gt;&lt;em&gt;AI for Skeptics&lt;/em&gt;&lt;/a&gt; series.&lt;/p&gt;</description>
+      <guid isPermaLink="false">6c74654835192b5578bf36ab27ae778c1e7c272694930f37ff46fb8f0f1dbf46</guid>
+      <pubDate>Mon, 07 Sep 2026 14:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>The First Spacecraft Launched To Orbit From Europe - Hack a Day</title>
+      <link>https://hackaday.com/2026/09/07/the-first-spacecraft-launched-to-orbit-from-europe/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/09/isar-launch-featured.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;The history of European space exploration is a long and distinguished one, with many decades and whole families of launch vehicles. It might therefore come as a surprise that despite all this, it&amp;#8217;s taken until 2026 for a European rocket to be launched into orbit from European soil rather than from somewhere close to the Equator. The German company Isar Aerospace launched one of their Spectrum rockets from Andøya Space in Norway &lt;a href="https://isaraerospace.com/press/history-for-european-spaceflight-isar-aerospace-reaches-orbit-and-deploys-payloads-on-second-flight" target="_blank"&gt;and deployed its CubeSat payloads to orbit&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The five satellites were a selection of projects from the German space agency&amp;#8217;s &lt;a href="https://www.dlr.de/en/ar/topics-missions/space-technologies/space-access/the-dlr-microlauncher-and-payload-competition" target="_blank"&gt;Microlauncher Competition&lt;/a&gt;, which offers the chance of a launch to start-ups and educational institutions. The press release doesn&amp;#8217;t name them, but Wikipedia has the following list: TriSat-S (University of Maribor and SkyLabs); FramSat-1 (NTNU SpaceTeam); Sat1 (TU Wien Space Team); CyBEEsat (TU Berlin); Platform 6 (EnduroSat) and Let It Go (experiment, Dcubed).[46].&lt;/p&gt;
+&lt;p&gt;Interestingly, the company is also working on a space launch facility in Nova Scotia, Canada, to gain access to lower inclination orbits and to provide Canadians with their own launch capability. More is evidently yet to come.&lt;/p&gt;
+&lt;p&gt;We&amp;#8217;ve mentioned Isar before, &lt;a href="https://hackaday.com/2023/11/09/continental-europes-first-spaceport-and-its-above-the-arctic-circle/"&gt;when we reported on the building of the spaceport&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">cefb006544a776528d18af32911a6480170b2e8f9a0a43a1d5290d078c10d7c6</guid>
+      <pubDate>Mon, 07 Sep 2026 11:00:11 +0000</pubDate>
+    </item>
+    <item>
+      <title>Comparing PETG and PCTG Filaments - Hack a Day</title>
+      <link>https://hackaday.com/2026/09/07/comparing-petg-and-pctg-filaments/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="460" src="https://hackaday.com/wp-content/uploads/2026/09/petg_vs_pctg_my_tech_fun_youtube.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;The average 3D printer owner knows a few types of filaments &amp;#8211; PLA, ABS, somewhere in the middle, PETG.  PCTG is another option that can be confusingly similar to PETG. Recently, [Igor Gaspar] of [My Tech Fun] took a poke at both types. He obtained both PETG and PCTG transparent filaments from the same manufacturer to compare them directly.&lt;/p&gt;
+&lt;p&gt;As &lt;a href="https://hackaday.com/2026/09/01/petg-the-pla-filament-alternative-that-just-works/"&gt;we recently detailed&lt;/a&gt; in an article on PET polyesters, PETG is glycol-modified PET, meaning that some of the glycol monomers are replaced by CHDM monomers to create a more flexible and robust material. PCTG is very similar to PETG, except that more than half of the glycol monomers are replaced rather than less than half. This creates a PET-type material that has distinct physical properties from PETG, which might be desirable for some applications.&lt;/p&gt;
+&lt;p&gt;&lt;span id="more-1155405"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;PCTG is more ductile due to the addition of more CHDM, but also requires higher temperatures to print, closer to ASA presets. During testing, it&amp;#8217;s obvious that PCTG is indeed much more flexible, making it potentially a good choice for springs and compliant mechanisms. PCTG is also highly impact-resistant, unlike PETG, and resists higher temperatures much better.&lt;/p&gt;
+&lt;p&gt;Overall, other than the higher printing temperatures, PCTG seems like a solid option for more extreme environments, potentially as an alternative to ASA and similar filaments.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">6d32e95c4e8dc1667198ee5192742e8e7ff5319bca4964ec9465ba5f4305fc84</guid>
+      <pubDate>Mon, 07 Sep 2026 08:00:56 +0000</pubDate>
+    </item>
+    <item>
+      <title>NES Radar Tracks Flights at 9600 Baud - Hack a Day</title>
+      <link>https://hackaday.com/2026/09/06/nes-radar-tracks-flights-at-9600-baud/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/09/NES-radar-feat.png?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;Air traffic visualizers seem to be having a bit of a moment right now, and now that moment has come to the venerable NES thanks to [k6lcm]&amp;#8217;s &lt;a href="https://hackaday.io/project/206501-nes-radar-8-bit-flight-tracking" target="_blank"&gt;NES Radar project&lt;/a&gt;, which is open-source under the &lt;a href="https://github.com/k6lcm/nes-radar" target="_blank"&gt;GPL on GitHub&lt;/a&gt;. In spite of the name, there&amp;#8217;s no Radio Direction &lt;em&gt;or&lt;/em&gt; Range-Finding involved in this project&amp;#8211; no radio at all, in fact, which makes this a bit interesting. It&amp;#8217;s just an NES cartridge and a carefully constructed cable.&lt;/p&gt;
+&lt;p&gt;&lt;span id="more-1155416"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;figure class="wp-caption alignright" id="attachment_1155419" style="width: 250px;"&gt;&lt;a href="https://hackaday.com/wp-content/uploads/2026/09/nes-radar-scope.png" target="_blank"&gt;&lt;img alt="A screenshot of the NES radar scope" class="wp-image-1155419 size-thumbnail" height="234" src="https://hackaday.com/wp-content/uploads/2026/09/nes-radar-scope.png?w=250" width="250" /&gt;&lt;/a&gt;&lt;figcaption class="wp-caption-text" id="caption-attachment-1155419"&gt;It looks like a period game, but it&amp;#8217;s current-day air traffic.&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;The cartridge is a standard ROM cart that holds the software &amp;#8212; no hidden ESP32 or PicoW here, which is what we initially suspected the project would be. So how is it that when you start up the NES with the cartridge inside, you can input an International Civil Aviation Organization (ICAO) code, like, say, KATL, and get a visualization of the traffic? Well, okay, if you put in KATL, you won&amp;#8217;t get &lt;em&gt;all&lt;/em&gt; the traffic, since the software is limited to 8 sprites, and that&amp;#8217;s the world&amp;#8217;s busiest airport. Still, how does it know where those airplanes are?&lt;/p&gt;
+&lt;p&gt;The secret is in the carefully constructed cable mentioned above: this project is using the second controller port on the NES as a serial port, and getting the data that way. A handy Python script on a nearby computer is what &lt;em&gt;actually&lt;/em&gt; fetches aircraft positions. It&amp;#8217;s based &lt;a href="https://github.com/k6lcm/c64u-radar" target="_blank"&gt;on c64u-radar,&lt;/a&gt; also by [k6lcm], which does the same Python server trick but relies on the Commodore 64 Ultimate&amp;#8217;s LAN port to get data rather than using serial. The NES has no such ports available, though, so the controller port it was. We saw&lt;a href="https://hackaday.com/2020/09/26/orbital-tracking-on-the-nes/"&gt; a similar trick&lt;/a&gt; used for satellite tracking on the NES some years ago.&lt;/p&gt;
+&lt;p&gt;If you like the idea of tracking flights, perhaps you&amp;#8217;d like to see it done on a &lt;a href="https://hackaday.com/2023/04/15/real-radar-scope-crt-shows-flights-using-ads-b/"&gt;real radar CRT&lt;/a&gt;, or projected directly &lt;a href="https://hackaday.com/2026/06/04/make-your-ceiling-disappear-with-ads-b-and-short-throw-projector/"&gt;onto the ceiling. &lt;/a&gt;Thanks to ADS-B and free APIs, it seems airplane trackers are everywhere; if an interesting one has come onto your radar, &lt;a href="https://hackaday.com/submit-a-tip/"&gt;please send us a tip. &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Speaking of tips, thanks to [Levi] for putting this one on our scopes!&lt;/p&gt;</description>
+      <guid isPermaLink="false">c0233fe8d5e918eb15e6765e77603e365cb946de49bd217deceeec9b5e67792d</guid>
+      <pubDate>Mon, 07 Sep 2026 05:00:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>How Charged Water Drops Induce Corrosion - Hack a Day</title>
+      <link>https://hackaday.com/2026/09/06/how-charged-water-drops-induce-corrosion/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="404" src="https://hackaday.com/wp-content/uploads/2026/09/charged_water_drops_corrosion_zhongyuan_ni_et_al_nature_2026.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;Generally, we do not look at the gentle patter of raindrops on a surface with much concern, but &lt;a href="https://www.nature.com/articles/s41586-026-10941-6" target="_blank"&gt;according to a study&lt;/a&gt; by [Zhongyuan Ni] et al. in &lt;em&gt;Nature,&lt;/em&gt; we should probably regard these droplets with a little scrutiny for their corrosion potential. What they found is that these drops can gather a significant electric potential as they gently slide down a surface, with over 1 kV measured. By first having droplets charge up on an insulating surface before hitting a target metal surface, they were able to induce significant corrosion.&lt;/p&gt;
+&lt;p&gt;&lt;span id="more-1155379"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Despite the target metal surface being coated with a protective layer, these charged droplets managed to gradually break down the coating, exposing the bare metal. In this example, a Teflon coating was used, with water droplets containing a small amount of dissolved sodium chloride to simulate natural raindrops.&lt;/p&gt;
+&lt;p&gt;It was postulated that this causes dielectric breakdown of the insulating protective coating, as the charged water drop acts as one electrode and the &amp;#8212; often grounded &amp;#8212; metal surface as another electrode. Subsequent investigations on the samples showed that this appears to be indeed the case.&lt;/p&gt;
+&lt;p&gt;A potential defense here would be to discharge any water before it can reach sensitive surfaces, but it&amp;#8217;s not a straightforward problem to solve. As noted in the study&amp;#8217;s conclusion, charged droplets can also be generated in clouds and waves, in addition to the insulating materials demonstrated in the study. It&amp;#8217;s also a phenomenon that can cause issues anywhere charged droplets occur, such as in a wide range of industrial processes.&lt;/p&gt;
+&lt;p&gt;If you&amp;#8217;re interested in the electrical generating properties of falling water, check out &lt;a href="https://hackaday.com/2021/07/22/lord-kelvins-contraption-turns-drips-into-sparks/"&gt;Lord Kelvin&amp;#8217;s Generator&lt;/a&gt;! Hackaday&amp;#8217;s own &lt;a href="https://hackaday.com/2017/03/27/getting-sparks-from-water-with-lord-kelvins-thunderstorm/"&gt;[&lt;/a&gt;Steven Dufresne&lt;a href="https://hackaday.com/2017/03/27/getting-sparks-from-water-with-lord-kelvins-thunderstorm/"&gt;] explored this phenomenon a few years back&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">8e5274c55d0630177d83e2afe8f089141af1bea21b492876ac4d893b361a8368</guid>
+      <pubDate>Mon, 07 Sep 2026 02:00:49 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hackaday Links: September 6, 2026 - Hack a Day</title>
+      <link>https://hackaday.com/2026/09/06/hackaday-links-september-6-2026/</link>
+      <description>&lt;div&gt;&lt;img alt="Hackaday Links Column Banner" class="attachment-large size-large wp-post-image" height="430" src="https://hackaday.com/wp-content/uploads/2014/11/had-links-banner.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;Yesterday, Isar Aerospace secured its place in the history books when the upper stage of their Spectrum rocket put a payload of CubeSats into low Earth orbit (LEO). Not only does this make them the &lt;a href="https://www.esa.int/Enabling_Support/Space_Transportation/Boost/Isar_Aerospace_achieves_first_launch_to_orbit_from_continental_Europe" target="_blank"&gt;first European company to achieve such a feat&lt;/a&gt;, but it also marks the first time a booster departing from continental Europe has reached orbit. Not bad for a second attempt.&lt;/p&gt;
+&lt;p&gt;Standing 28 meters (92 feet) tall, the two-stage Spectrum rocket is just shy of half the size of the SpaceX Falcon 9 and designed to put a maximum of 1,000 kilograms (2,200 pounds) into LEO and 700 kg (1,500 lb) into the Sun-synchronous orbits used by Earth observation satellites. That puts its performance considerably ahead of other commercial launchers such as Rocket Lab&amp;#8217;s Electron. Although the booster is not reusable, Isar Aerospace has stated they&amp;#8217;re targeting a respectable launch cost of €10,000 ($11,700) per kilogram. The German company notes there are &lt;a href="https://isaraerospace.com/press/history-for-european-spaceflight-isar-aerospace-reaches-orbit-and-deploys-payloads-on-second-flight" target="_blank"&gt;several more Spectrum vehicles currently in production&lt;/a&gt;, and when their new factory is operational, they&amp;#8217;ll have the capacity to produce up to 40 of them each year.&lt;/p&gt;
+&lt;p&gt;In other European space news, BepiColombo has now entered what the European Space Agency (ESA) is calling the &amp;#8220;arrival phase&amp;#8221; of its &lt;a href="https://www.esa.int/Science_Exploration/Space_Science/BepiColombo/Latest_updates_BepiColombo_s_arrival_at_Mercury" target="_blank"&gt;nearly decade-long journey to Mercury&lt;/a&gt;. On Thursday, the spacecraft &lt;a href="https://hackaday.com/2018/10/27/travel-to-mercury-on-ion-power/"&gt;jettisoned its ion propulsion module&lt;/a&gt; as it had achieved the necessary trajectory and velocity to be captured by the planet&amp;#8217;s gravitational field when it swoops by in November.&lt;/p&gt;
+&lt;p&gt;&lt;span id="more-1155373"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://hackaday.com/wp-content/uploads/2026/09/links_090626_bepi.jpg" target="_blank"&gt;&lt;img alt="" class="aligncenter size-large wp-image-1155389" height="344" src="https://hackaday.com/wp-content/uploads/2026/09/links_090626_bepi.jpg?w=800" width="800" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Launched in 2018, the BepiColombo mission is actually carrying two separate craft: the ESA&amp;#8217;s Mercury Planetary Orbiter and the Mercury Magnetospheric Orbiter from Japan. After the two separate from each other in December, they will operate independently to study their respective aspects of the solar system&amp;#8217;s innermost planet for the next year, &lt;a href="https://hackaday.com/2019/03/11/engineering-for-the-long-haul-the-nasa-way/"&gt;although, as is often the case for missions like this&lt;/a&gt;, an extension is always possible if things are still going well at that point.&lt;/p&gt;
+&lt;p&gt;On the subject of hardware outliving its original design lifetime, an active community of hackers has done a fantastic job of &lt;a href="https://bridgething.com/" target="_blank"&gt;keeping the Spotify Car Thing up and running&lt;/a&gt; after the company officially pulled the plug on it just two years after its 2022 release. They&amp;#8217;ve got a full Linux distribution running on it featuring a slick UI that can launch apps, check the weather, tap into Home Assistant, and of course, play music. The &lt;a href="https://bridgething.com/appjam/" target="_blank"&gt;community is currently running a contest&lt;/a&gt; with cash prizes to spur on development of new open source software for the liberated Car Thing, and we&amp;#8217;re eager to see what comes of it.&lt;/p&gt;
+&lt;figure class="wp-caption alignright" id="attachment_681881" style="width: 400px;"&gt;&lt;a href="https://hackaday.com/wp-content/uploads/2024/05/carthing_thumb.jpg"&gt;&lt;img alt="" class="size-medium wp-image-681881" height="400" src="https://hackaday.com/wp-content/uploads/2024/05/carthing_thumb.jpg?w=400" width="400" /&gt;&lt;/a&gt;&lt;figcaption class="wp-caption-text" id="caption-attachment-681881"&gt;The Car Thing, back when Spotify still cared.&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;Speaking of keeping things open, the &lt;a href="https://www.fsf.org/blogs/community/2026-bluesky" target="_blank"&gt;Free Software Foundation (FSF) has joined Bluesky&lt;/a&gt; &amp;#8212; but they aren&amp;#8217;t exactly thrilled with it. Being federated and largely comprised of free and open-source software, the FSF admits that Bluesky is the lesser evil when compared to something like X or Facebook. But they still can&amp;#8217;t recommend others join the service, as the actual signup process requires your browser to run non-free JavaScript code.&lt;/p&gt;
+&lt;p&gt;One may wonder why the &lt;a href="https://bsky.app/profile/fsf.org" target="_blank"&gt;FSF would join Bluesky&lt;/a&gt; if they can&amp;#8217;t recommend the service to others, and the answer is simply because they want to get the word out to a wider audience. While the FSF already operates an account on &lt;a href="https://hostux.social/@fsf" target="_blank"&gt;Mastodon&lt;/a&gt;, there&amp;#8217;s a good chance that anyone who&amp;#8217;s &lt;del&gt;willingly&lt;/del&gt; regularly using said platform doesn&amp;#8217;t need any additional convincing when it comes to the evils of proprietary software.&lt;/p&gt;
+&lt;p&gt;This is as good a time as any to point out that Hackaday is on &lt;a href="https://bsky.app/profile/hackadayofficial.bsky.social" target="_blank"&gt;Bluesky&lt;/a&gt; and &lt;a href="https://hackaday.social/@hackaday" target="_blank"&gt;Mastodon&lt;/a&gt; as well, and unlike the FSF, we&amp;#8217;re &lt;em&gt;also&lt;/em&gt; on &lt;a href="https://www.facebook.com/hackaday.io/" target="_blank"&gt;Facebook&lt;/a&gt;, although the automatic sharing of new posts hasn&amp;#8217;t worked for quite some time and honestly we can&amp;#8217;t be bothered to figure out why. For our readers with a particular aversion to grass, we&amp;#8217;ve even got an official IRC channel on &lt;a href="https://libera.chat/" target="_blank"&gt;libera.chat&lt;/a&gt; where you and nearly 50 others can feel superior to the thousands of immoral heathens that have joined our &lt;a href="http://hackaday.com/discord"&gt;Discord&lt;/a&gt; server.&lt;/p&gt;
+&lt;p&gt;Finally, it&amp;#8217;s been 50 years since the introduction of the ColorChecker &amp;#8212; that little card with 24 blocks of colors that&amp;#8217;s placed in the frame of a picture or video to provide a visual reference point. In honor of the milestone, &lt;a href="https://calibrite.com/us/50-years/" target="_blank"&gt;Calibrite has put together a timeline&lt;/a&gt; that walks you through its history, starting with its inception in the 1976 paper “&lt;em&gt;A Color-Rendition Chart&lt;/em&gt;” by C.S. McCamy, H. Marcus, and J.G. Davidson and running up to how the handy tool evolved for the digital age.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://hackaday.com/wp-content/uploads/2026/09/links_090626_colorchecker.jpg" target="_blank"&gt;&lt;img alt="" class="aligncenter size-large wp-image-1155431" height="360" src="https://hackaday.com/wp-content/uploads/2026/09/links_090626_colorchecker.jpg?w=800" width="800" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;There are plenty of facts and trivia about the ColorChecker that you can bring up the next time you want to impress a photographer, and we especially appreciated the breakdown of what each of the original 24 colors was meant to represent.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;See something interesting that you think would be a good fit for our weekly Links column? &lt;a href="https://hackaday.com/submit-a-tip/"&gt;Drop us a line&lt;/a&gt;; we&amp;#8217;d love to hear about it.&lt;/p&gt;</description>
+      <guid isPermaLink="false">4537844d3720a9f0d97aa9f4e4cb1a061a9ec4e392b2fa45c74468422936cf3b</guid>
+      <pubDate>Sun, 06 Sep 2026 23:00:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>Saturn’s South Pole is Apparently Decagon-Shaped - Hack a Day</title>
+      <link>https://hackaday.com/2026/09/06/saturns-south-pole-is-apparently-decagon-shaped/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="351" src="https://hackaday.com/wp-content/uploads/2026/09/saturn_south_pole_decagon_sanchez-lavega_et_al_science_adv_2026.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;figure class="wp-caption alignright" id="attachment_1155375" style="width: 400px;"&gt;&lt;img alt="Saturn's north pole captured by Cassini in 2013. (Credit: NASA/JPL-Caltech/SSI/CICLOPS/Kevin M. Gill)" class="size-medium wp-image-1155375" height="400" src="https://hackaday.com/wp-content/uploads/2026/09/Saturn_-_July_24_2013_48594309686.jpg?w=400" width="400" /&gt;&lt;figcaption class="wp-caption-text" id="caption-attachment-1155375"&gt;Saturn&amp;#8217;s north pole captured by &lt;em&gt;Cassini&lt;/em&gt; in 2013. (Credit: NASA/JPL-Caltech/SSI/CICLOPS/&lt;a href="https://commons.wikimedia.org/wiki/File:Saturn_-_July_24_2013_(48594309686).jpg" target="_blank"&gt;Kevin M. Gill&lt;/a&gt;)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;Although some would argue that the hexagon is the bestagon, astronomers have discovered that Saturn appears to favor the ten-sided decagon on its south pole. This comes as its south pole has recently been confirmed to show a pattern that&amp;#8217;s oddly ten-sided, per a &lt;a href="https://www.science.org/doi/10.1126/sciadv.aee4251" target="_blank"&gt;recent research article&lt;/a&gt; by [Agustín Sánchez-Lavega] et al. in &lt;em&gt;Science Advances.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Because Saturn is a gas giant, this naturally isn&amp;#8217;t some gigantic planet-sized rock formation, but rather an interesting wave phenomenon in this massive gas bubble. The &lt;a href="https://en.wikipedia.org/wiki/Saturn's_hexagon" target="_blank"&gt;hexagon shape&lt;/a&gt; on its north pole had been known about for a while already, so it is perhaps not too surprising to find something similar on its south pole.&lt;/p&gt;
+&lt;p&gt;These shapes are generally the result of standing waves within a &lt;a href="https://en.wikipedia.org/wiki/Polar_vortex" target="_blank"&gt;polar vortex&lt;/a&gt;, through the interaction of waves in Saturn&amp;#8217;s atmosphere. For the north pole hexagon, the formation is driven by an intense eastward jet, but no similar wave had been reported for the planet&amp;#8217;s south pole.&lt;/p&gt;
+&lt;p&gt;While in this paper a decagon shape is identified based on multiple observations, they postulate that it&amp;#8217;s due to a meandering wave in the area rather than a jet as at the other pole. This clearly doesn&amp;#8217;t make this wave pattern as obvious as the one at the north pole, but it provides another fascinating insight into fluid dynamics scaled up to a planetary gas giant.&lt;/p&gt;</description>
+      <guid isPermaLink="false">bab182e5bb7adbe390f4f85dbcf20561c4fc3d3e85780bd33e8c29ad06c751c4</guid>
+      <pubDate>Sun, 06 Sep 2026 20:00:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>avalanche technology - computers are bad</title>
+      <link>https://computer.rip/2026-09-05-avalanche.html</link>
+      <description>&lt;p&gt;One of the downsides of having written here for six years now is that my messy,
+ever-growing text file of topics for future articles contains a bunch of ideas
+that have been there for about six years. Part of the problem is that I just
+have to scroll so far up to even see them now, part of it is that some of them
+are on topics where I do not feel equipped to write a good formal treatment. So
+let's consider this an easy, breezy episode of Computers Are Bad as I knock out
+one of those items.&lt;/p&gt;
+&lt;p&gt;One of these O. G. topics, line three, is &amp;quot;avalanche technology.&amp;quot; I will admit
+that I am a little fuzzy on what this originally meant, but I have a few good
+guesses. First, though, let's just take a step back and talk a little bit about
+the practicalities of the avalanche. For a lot of you, avalanches are probably a
+pretty abstract issue.&lt;/p&gt;
+&lt;p&gt;For me, as well—I snowboard but I'm not that good at it, and the kind of
+mid-tier ski area where you will find me tumbling down the hill (Ski Santa Fe,
+towards Totemoff's)
+manages their slopes to avoid the potential for avalanche as much as possible.
+This requires some expertise in avalanche risks and it's never quite perfect,
+but it's pretty good. Snow that is regularly groomed by machines like
+PistenBullys will become coherently packed such that avalanches can't really
+propagate. The bigger risk on groomed ski slopes generally comes from up above,
+and here in New Mexico our mountains are of such a height that we're usually
+starting down from the very top anyway.&lt;/p&gt;
+&lt;p&gt;Still, avalanches pose a real hazard. The Department of Homeland Security, when
+it can be distracted from terrorizing well-meaning migrants, tells us that
+avalanches claim about 28 lives each year in the United States. Globally, the
+number is much larger, and avalanche fatalities seem to be generally more common
+in Europe. I'm not sure if that reflects European weather, geography, or
+recreation habits more, but it's the way things pan out and means that Northern
+Europe tends to be the center of avalanche technology (as it is in alpine
+technology in general).&lt;/p&gt;
+&lt;p&gt;We tend to associate avalanche hazard most of all with recreation, and that's
+definitely fair: the highest risk of avalanche probably comes about in
+cross-country skiing, where it's fairly common to traverse the lower part of
+slopes that have otherwise received very little disturbance. Most avalanches
+occur during storms, as the snow falls and piles up, which is of course not
+when recreationists are most likely to be present. You can't rely on this,
+though. One of the ways that an avalanche can initiate is when lots of snow is
+piled up on a slope on a nice sunny day—good recreation conditions! Various
+things like water following the ground or stratigraphic layers of different
+types of snow from different storms can create a condition of uneven melting.
+Snow that is under the surface might liquefy faster than snow that is closer
+to the surface. This &amp;quot;detaches&amp;quot; the upper level of snow from the ground, and
+when it happens over a wide area, that upper level of snow can let loose all at
+once. This type of avalanche is relatively rare, but they happen without warning
+in otherwise good weather, so it's much more likely that people will be caught.
+Further complicating the situation, the proximity of people can be a factor in
+initiating these avalanches.&lt;/p&gt;
+&lt;p&gt;Here in the Mountain States, though, avalanche risk often manifests in another
+context: transportation. As Americans, cars and highways are among our most
+esteemed achievements, and decades of engineering accomplishment allows us to
+drive through, over, and even under much of the Rocky Mountains even during the
+winter. Landscape modifications, chemical measures, and the brute force of
+snowplows keep roadways clear—but not the slopes above them. Avalanches
+cascading down onto highways are a major concern in the Mountain States,
+especially Colorado which has the most impressive set of mountains and
+mountainous highways.&lt;/p&gt;
+&lt;h2&gt;Forecasting&lt;/h2&gt;
+&lt;p&gt;Some of the things, then, that we might call &amp;quot;avalanche technology&amp;quot; are the
+techniques used to prevent, mitigate, and warn of potential avalanche. Much of
+the work is institutional. On the recreational front, this falls mostly with
+the US Forest Service's National Avalanche Center and a loose confederation of
+regional organizations such as our own Taos Avalanche Center, here in New
+Mexico. One of the main functions of these organizations is education: posting
+warning signs, spreading awareness, offering training courses and materials,
+and so on. They also tend to employ avalanche specialists, who use a combination
+of meteorology and specialized snow observations to determine when avalanches
+are most likely. This can lead to posting warnings or closing areas entirely.&lt;/p&gt;
+&lt;p&gt;Avalanche specialists in the recreational field are, in this area, joined by a
+substantial cadre of avalanche specialists employed by state Departments of
+Transportation. They apply the same techniques with an eye towards avalanches
+that could affect mountain pass highways. Those highways may be closed in
+extreme circumstances, but in transportation even more than in recreation it is
+common to use, shall we say, &amp;quot;active measures&amp;quot; to prevent avalanches. We will
+discuss this later, but first, let's briefly talk about how avalanche hazards
+are forecast.&lt;/p&gt;
+&lt;p&gt;I am not going to go into much detail here, because I frankly do not know much
+about it, but I do want to touch on a couple of things that are solidly in my
+wheelhouse. One of these is SNOTEL. Forecasting avalanche risk requires a solid
+understanding of the general amount of snowpack in the mountains, which can be
+very tricky to acquire since when snow is heavy getting up there to take
+measurements becomes a very time-consuming and potentially hazardous venture.&lt;/p&gt;
+&lt;p&gt;Avalanche forecasting is just one of many functions served by the SNOTEL or
+Snow Telemetry system, a 1960s-era network of hundreds of sensor sites
+throughout mountainous parts of the United States. SNOTEL was originally
+designed to help with forecasting spring meltwater flows, which is why it falls
+under the aegis of the Department of Agriculture, but as with any good sensor
+network there are now a lot of different stakeholders.&lt;/p&gt;
+&lt;p&gt;The tricky thing about SNOTEL, and remember here that it dates back 60 years,
+is the snow. SNOTEL sites are way up there, inaccessible during winter, so they
+are designed to be installed and serviced during summer and to operate
+autonomously until the next summer. SNOTEL instruments are solar powered, but
+more interesting are the communications arrangements. The initiation of the
+SNOTEL project predates a robust set of earth observation satellites, to say
+nothing of cellular or other digital radio networks. But the whole purpose of
+SNOTEL is to provide snowpack data when the snow is still there, so real-time
+reporting is critical.&lt;/p&gt;
+&lt;p&gt;SNOTEL was thus one of the first applications of meteor scatter, a fascinating
+form of radio communication that will probably get its whole own article one
+day. Here is the summary: SNOTEL data collection sites, in convenient locations
+like towns, transmit a VHF carrier or &amp;quot;pilot&amp;quot; signal up towards the sky.
+Occasionally, but more often than you would think, a meteor enters the Earth's
+atmosphere and burns up, leaving a trail of ionized gas behind it. This ionized
+gas is, if you remember previous discussion of troposcatter, reflective to RF
+energy. Some of the &amp;quot;pilot&amp;quot; signal is thus scattered back down towards earth.
+When a SNOTEL site receives the pilot signal, it knows that a meteor has just
+entered the atmosphere and this scattering is happening, so it quickly transmits
+a data packet towards the sky. Ideally, this data packet is reflected by the
+same meteor trail such that the data collection site can receive it. If this all
+sounds rather stochastic and chancey, it is, but enough meteors enter the
+atmosphere and data packets can be sent quickly enough (and tried multiple
+times) that it works pretty reliably for low-bandwidth telemetry data.&lt;/p&gt;
+&lt;p&gt;Unfortunately, as interesting as meteor scatter is, it's mostly been obsoleted
+by general technological advances in radio communications. SNOTEL was probably
+the largest meteor scatter network in the world&lt;sup class="footnote-ref" id="fnref-1"&gt;&lt;a href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;, but is no longer: all
+SNOTEL sites now use other means of reporting data. The most common is probably
+the generic data collection capability of GOES, NOAA's main fleet of &amp;quot;weather
+satellites.&amp;quot; GOES satellites actually serve many purposes related to earth
+observation, and one of them is telemetry collection from instruments on the
+ground. If you've ever come across a USGS stream gauging station or another
+mysterious hut in the middle of the woods with a cylindrical or conical antenna
+pointed at the sky, it's transmitting data upwards for reception by a GOES
+satellite. The GOES earth segment collects all of the little data packets the
+satellites receive into files which are distributed to the various organizations
+that report data this way. If you are so inclined, you can also receive this
+data yourself as the satellites rebroadcast it in batches, but most users don't
+bother since NOAA will do that part for you.&lt;/p&gt;
+&lt;p&gt;Even that might be fading away: newer SNOTEL sites apparently use the cellular
+network for data reporting, unless it's not possible to get a signal, but that's
+becoming less common over time even in the Colorado mountains. The major benefit
+here is that the cellular network is low latency and very high bandwidth, which
+makes it feasible for example to view cameras installed at the SNOTEL sites.&lt;/p&gt;
+&lt;p&gt;With the data part discussed, let's take a quick second look at the data
+collected. Temperature, humidity, pressure, wind, liquid precipitation are all
+measured as usual, but SNOTEL adds a couple of specialty features. Soil moisture
+and evapotranspiration (basically evaporation rate of water from soil) sensors
+provide more data on how saturated the ground is, an ultrasonic or optical
+instrument pointed down from atop a post measures how deep the snowpack is, and
+a funny looking contraption called a snow pillow takes perhaps the most
+important measurement. The snow pillow is basically a big rubber balloon that
+gets inflated on the ground, and then covered with snow. By measuring the air
+pressure from the snow pillow, the SNOTEL station effectively weighs the
+snowpack, which combined with its height gives the density or water content of
+the snow. This varies widely depending on the specific weather when the snow
+falls, and remember that stratigraphic differences in density are one of the
+factors that's important in the likelihood of a surprise avalanche, so
+collecting this water content information as snow falls allows forecasters to
+remotely estimate whether or not the snow conditions are hazardous.&lt;/p&gt;
+&lt;p&gt;That is, of course, supplemented by good old fashioned techniques like sending
+out avalanche specialists with shovels and meter sticks to take a look at the
+snow themselves. DOTs often have technicians doing a regular tour of mountain
+pass sites, where they curate plastic tubs and boxes of snow from various storms
+so that they can get a hands-on impression of what the different layers under
+the snowpack are like. They also take samples to weigh, perform some tests to
+measure mechanical properties of the snow, there's basically a whole bag of
+tricks, but ultimately there is also a subjective element of how &amp;quot;good&amp;quot; or &amp;quot;bad&amp;quot;
+things look. This is born of experience and is one of many reasons to value our
+state employees.&lt;/p&gt;
+&lt;h2&gt;Mitigation&lt;/h2&gt;
+&lt;p&gt;Within the recreational context, one common approach to mitigation is simply to
+avoid the area. Especially for backcountry skiing areas, avalanche centers might
+post warnings or work with the operator to close the area entirely when
+forecasting shows that conditions are favorable for an avalanche. Warnings might
+be more useful than you think, since besides reducing the number of people in
+the area they should also prime people to recognize particularly risky slopes or
+signs of snow that is becoming unstable. Avalanches can occur without any
+surface signs of instability, but in practice there often are some signs, so of
+course keeping an eye out is better than nothing. Warnings also make people more
+likely to carry safety equipment, discussed later, which improves the chance of
+self-rescue if things really do go wrong.&lt;/p&gt;
+&lt;p&gt;But there are also, shall we say, kinetic options. Many of the methods of modern
+alpinism evolved during the Second World War, and so did a good portion of the
+mitigation equipment. Once snow becomes unstable enough that an avalanche
+&lt;em&gt;could&lt;/em&gt; occur, it is basically waiting for something to set it off. Popular
+media concepts that loud noises will trigger avalanches are, well, fictional,
+but the point stands that people moving around or especially operating vehicles
+can trigger avalanches, as can basically random happenstance. You can mitigate
+the risk of an avalanche by going to unstable areas and intentionally triggering
+them, or at least trying to, basically the same way that a bomb squad might
+handle an unstable explosive by exploding it. Better that it go off when you
+expect it than when you don't.&lt;/p&gt;
+&lt;p&gt;A classic method, still in some use today, is repurposed artillery. State DOTs
+and ski area operators own a surprisingly large inventory of M101 Howitzers, a
+105mm artillery gun that dates more or less to a 1910s German design but was
+widely fielded by the US during the Second World War. The avalanche application
+is simple: when you find a slope with unstable conditions that could pose a
+hazard, you shoot at it. The concussion from the impact, and often from an
+explosive round, puts a lot of pressure on the snow that will likely break it
+loose if it's possible to do so. You just have to make sure you set up outside
+of the resulting avalanche.&lt;/p&gt;
+&lt;p&gt;The main problem with this method, which everyone agrees is a whole lot of fun,
+is that the M101 has not been manufactured since 1953 and, in general, the
+supply of cheap Army-surplus artillery has dried up. The Howitzers are aging
+out, and other methods are replacing them. Some of these are similarly dynamic:
+dropping small improvised bombs from helicopters, for example, which is a very
+common method in Colorado today. Even just hovering a helicopter over a slope
+can sometimes trigger an avalanche, although a bit of dynamite makes this a lot
+more reliable. If you have noticed the surfeit of high-explosives bunkers and
+unexploded ordnance warnings in some parts of the Colorado mountains, well, now
+you know why. It can feel a little bit like a very slow-running war.&lt;/p&gt;
+&lt;p&gt;Even these methods are being replaced by more modern and cost-effective ones,
+though. A French alpine engineering company called MND manufactures a system
+called Gazex, which is a bit like an airport bird canon on steroids. Gazex units
+are pre-installed in avalanche risk areas (by helicopter, for example), and
+then, under remote control, they mix oxygen and a combustible gas and set it
+off in a big tube pointed at the ground. The force created is similar to an
+explosion, but the whole thing is easier to handle (since it uses gas cylinders
+rather than high explosives) and remote control makes everything cheaper for
+the operators. MND recently introduced a new version of the system called
+O'bellx (I assume this reads better in French), which is even more portable,
+albeit comically egg-shaped. This seems to be catching on with ski areas, and
+MND also emphasizes that the portable design and low-impact installation makes
+it suitable for areas like national parks with acute natural preservation
+concerns. Basically, you can remove them at the end of every winter, so that you
+aren't leaving equipment scattered around your beautiful mountains.&lt;/p&gt;
+&lt;p&gt;There are also a number of other mitigation approaches that are less fun, so I
+will devote less attention to them, but you can find them done around here.
+Structures similar to snow fences, built high up on a slope, provide an &amp;quot;anchor&amp;quot;
+for the snow that prevents it coming loose enough for an avalanche. There are
+many variations on this idea, for example using steel cables supporting nets.
+Another approach is to permit the avalanches to start but prevent them from
+reaching areas where they cause harm, either by building wall or dam-like
+structures (I do not believe this is common in the US as I am not aware of any
+examples) or by putting corridors like highways inside of &amp;quot;snow sheds&amp;quot; that are
+sturdy enough to allow the avalanche to simply flow over. This latter method is
+much more common in Europe than here, but you can find some examples on US
+railroads, which are often in more difficult terrain than highways.&lt;/p&gt;
+&lt;h2&gt;Warning&lt;/h2&gt;
+&lt;p&gt;One of the more interesting developments in avalanche technology are warning
+systems. Avalanches wouldn't pose much hazard if people knew that they were
+coming; what makes melt-triggered avalanches so dangerous is that they can be
+very unexpected. One of the methods that avalanche safety courses teach is
+to recognize signs of snow masses that have already started to slide, shift, or
+collapse on themselves. This would indicate that conditions are favorable for
+an avalanche and that disturbing or going below the snow is quite dangerous.
+The usual surface signs are cracks, caused by the snow starting to slide apart,
+but these cracks can be tricky to see even when they are present.&lt;/p&gt;
+&lt;p&gt;Another indication of avalanche potential is subsidence, or the snow surface
+starting to drop in level, or any motion of the snow surface downslope. These
+effects can start minutes or hours before the real avalanche occurs, but they
+are subtle and often slow, so humans are unlikely to notice them. Fortunately,
+machines are well adapted to this task. Several vendors offer radar systems that
+monitor snow slopes for any shifting, and can sound a siren or another alert if
+things start to move. Like earthquake warning, the actual lead time provided by
+these systems is not very well known and could be quite short, but something is
+better than nothing.&lt;/p&gt;
+&lt;p&gt;Other technologies, like LIDAR and acoustics (e.g. geophones), can be applied
+to a similar task. I have even heard of older systems that used thin wires or
+brittle metal bars embedded in the snow, as part of an electrical circuit that
+would break if the snow started to move &lt;sup class="footnote-ref" id="fnref-2"&gt;&lt;a href="#fn-2"&gt;2&lt;/a&gt;&lt;/sup&gt;. Such systems can be quite
+sophisticated, and MND's sales materials suggest things like closing gates on
+highways when an avalanche is detected. The current state of the art in radar
+detection uses pulsed Doppler operation, which can be very sensitive to
+movement in all kinds of directions. All that said, these don't seem to be
+popular in the US. I couldn't readily find any installations in this country.&lt;/p&gt;
+&lt;p&gt;As a final note on this topic, national alerting systems like NAWAS and the
+Emergency Alert System have defined message types for avalanche warnings. In
+practice, these are very rare, as it doesn't usually make sense from a time or
+area perspective to put out an avalanche warning through mass media channels.
+That said, they do happen, usually on the (fortunately rare) occasion that
+forecasters predict a high risk of avalanche in a town or other populated area.
+In that case, the procedure is to evacuate the town, and that's exactly the kind
+of situation that NAWAS/EAS/NWS All Hazards/etc. are intended for.&lt;/p&gt;
+&lt;h2&gt;Rescue&lt;/h2&gt;
+&lt;p&gt;And finally, we reach the topic that I believe led me to put &amp;quot;avalanche
+technology&amp;quot; on the list to begin with: technical aids to rescue. Avalanches are,
+in a certain sense, not that dangerous. They can move at formidable speeds (60+
+miles per hour often reported), but snow is relatively soft and low-density.
+Injury from being crushed or striking against something is certainly a
+possibility, but the bigger hazard of avalanche is usually when you become
+buried.&lt;/p&gt;
+&lt;p&gt;If you are buried in snow, and there are no rescuers or they cannot find you,
+it can be extremely difficult to work your way out and you are likely to
+succumb to some combination of asphyiation, exhaustion, and hypothermia in the process. That
+might sound silly but keep in mind that you have just been buried by an
+avalanche, probably have a variety of minor injuries, have become disoriented,
+etc., and &lt;em&gt;you&lt;/em&gt; try to dig yourself out of feet of snow in that situation. You
+really need someone on the surface to come help you out. That's why standard
+avalanche safety equipment includes a probe and a shovel—a probe for finding
+people (just a metal rod you use to poke under the snow, basically), and a
+shovel for getting to them.&lt;/p&gt;
+&lt;p&gt;The problem is that probing a large area of snow is a very slow process, and
+even if you were right next to someone before an avalanche, you probably don't
+know where they ended up afterwards. This is an area where radio technology can
+be extremely helpful.&lt;/p&gt;
+&lt;p&gt;The concept of avalanche beacons or avalanche transponders dates back to at
+least 1968. Dr. John Lawton was an engineer at an aerospace research lab now
+known as the Calspan Corporation, where he worked on a variety of interesting
+aviation problems ranging from weapons targeting to meteorological research.
+Lawton was quite an aviation enthusiast, making the news in 2013 for celebrating
+his 90th birthday by flying his Cessna Skyhawk over the US-Canada border 90
+times. That's a bit of a peculiar way to entertain yourself, but anyone who is
+still flying themselves around at 90 has clearly found a way to stay vital. His
+lifelong investment in aviation is emphasized by the fact that he started his
+winding cross-border journey at the airport he owned. &lt;/p&gt;
+&lt;p&gt;What is not so well documented is his interest in alpinism, but he must have had
+some affection for the mountains. He did some kind of research work in Europe
+related to triggering avalanches by dropping explosives from light aircraft, and
+whether that put the topic on his mind or something else, he also came up with
+the first commercial avalanche beacon. Commercialized by his company Lawtronics,
+the &amp;quot;Skadi&amp;quot; transmitted a tone at 2.275 kHz. Groups of people traveling in the
+mountains could each carry a Skadi unit, and if anyone was lost in an avalanche,
+any of the other units could be switched to a receive mode and the person
+located by simple amplitude search. That is, walking around the snow until you
+find the spot where the tone comes in the loudest, at which you point you start
+probing and digging.&lt;/p&gt;
+&lt;p&gt;This same method is still used today, although the radio system has been
+standardized at 457 kHz. Modern avalanche rescue systems like the &amp;quot;Barryvox&amp;quot;
+from Mammut or the Black Diamond Recon X are direct descendants of Lawton's
+Skadi device, using 457 kHz and digital direction finding techniques (like the
+use of multiple perpendicular directional antennas to compute a likely heading
+to target) to speed things up and make radiolocation more user friendly. Because
+the 457 kHz system is an international standard, they ought to work about the
+same regardless of manufacturer. That's important in real-world scenarios where
+the people doing the rescuing might be from a whole different group than the one
+affected by the avalanche.&lt;/p&gt;
+&lt;p&gt;Modern avalanche beacons are probably one of the closest real-world
+products to the way that &amp;quot;radio beacons&amp;quot; tend to work in movies and videogames.
+The reality is of course messier, especially if there are multiple victims, but
+in principle a digital avalanche beacon in receive mode can show an arrow on
+screen that you follow until you are standing on top of the buried person. You
+know if you're getting closer when they beep more. Neat.&lt;/p&gt;
+&lt;p&gt;Technological development continues apace, and some newer avalanche beacons also
+support a second protocol called W-Link. W-Link is actually surprisingly poorly
+documented, presumably because it appears to be proprietary to Mammut (the only
+non-Mammut beacons that support it seem to have been joint venture projects with
+Mammut). W-Link is a digital protocol that operates in the ISM band, introducing
+the downside that ISM bands are not internationally standardized. This means
+that US and European-market beacons will always be compatible for conventional
+457 kHz operation, but two beacons with W-Link support may not be able to use
+that protocol if they were sold for different regulatory markets.&lt;/p&gt;
+&lt;p&gt;The upside of W-Link is that the digital protocol lets the beacon send
+significantly more information. This includes a unique serial number for the
+beacon, which allows the receiver to discriminate between pulses being received
+from two or more beacons at the same time—a radical improvement in the ease of
+locating multiple people, as conventional direction finding techniques really
+struggle when you cannot discriminate between multiple targets. You can end up
+with a &amp;quot;swinging needle,&amp;quot; while the W-Link devices are capable of locking to
+a single target at a time. As this implies, you can also determine how many
+people are buried, and ignore beacons that turn out to be unimportant (because
+they are discarded on the surface, or carried by a rescuer, etc).&lt;/p&gt;
+&lt;p&gt;Perhaps the most interesting feature of W-Link is that some W-Link beacons will
+use an accelerometer to detect motion, and report whether or not any motion is
+present. In theory, this allows rescuers to prioritize their efforts by focusing
+on beacons that report motion, meaning that they are carried by people who are
+still alive. These enhanced capabilities of W-Link seem to have led to enough
+controversy that the Wikipedia article devotes much of its length to ethics
+discussions, and manufacturers have put out position papers on their decisions
+to implement or not implement certain W-Link features. The concern is that
+W-Link may give rescuers more information on which to prioritize rescue in a
+discriminatory way, perhaps by searching for victims with (more expensive)
+W-Link beacons before less expensive conventional beacons, or by using knowledge
+of W-Link serial numbers to prioritize the search for specific people.&lt;/p&gt;
+&lt;p&gt;In practice, I think these ethical concerns are more theoretical than actual,
+because penetration of W-Link technology doesn't seem all that high and most
+actual beacons only implement the very most basic features. The ability to
+display the serial numbers of individual beacons, for example, is pretty much
+limited to a USB dongle/software package that Mammut sells to organizations
+like ski patrols that loan out avalanche beacons and need to keep track of their
+inventory, check battery levels, etc. &lt;/p&gt;
+&lt;p&gt;Avalanche beacons are not the only radio-based approach to avalanche rescue.
+Around a decade after Lawton developed Skadi, a Swiss engineer designed a system
+called RECCO. If you have read my articles on &lt;a href="https://computer.rip/2022-07-21-preventing-loss-dot-jpeg.html"&gt;loss&lt;/a&gt; &lt;a href="https://computer.rip/2022-08-22-preventing-loss-dot-jp2.html"&gt;prevention&lt;/a&gt;, I can succinctly explain RECCO by
+saying that it is just RF electronic article surveillance applied to the
+outdoors. If you have not, let's get into a little bit more detail.&lt;/p&gt;
+&lt;div class="beg"&gt;
+&lt;hr /&gt;
+&lt;p&gt;I put a lot of time into writing this, and I hope that you enjoy reading
+it. If you can spare a few dollars, consider &lt;a href="https://ko-fi.com/jbcrawford"&gt;supporting me on
+ko-fi&lt;/a&gt;. You'll receive an occasional extra,
+subscribers-only post, and defray the costs of providing artisanal, hand-built
+world wide web directly from Albuquerque, New Mexico.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;p&gt;If you make an antenna that is a small loop, and then put a nonlinear device
+like a p-n diode in it, you end up with an antenna that behaves asymmetrically
+with regards to the phase of the radio wave passing over it. Intuitively, we can
+say that energy freely flows one way around the antenna, but not the other. The
+energy going that way becomes trapped, and gets re-emitted at at a harmonic
+frequency to the one that excited the device. This general principle is known as
+non-linear junction detection, and it has all kinds of interesting applications
+in fields like technical security, but its most common application is as one of
+the common types of retail anti-theft tagging.&lt;/p&gt;
+&lt;p&gt;RECCO is basically a retail loss prevention system aimed at the ground. RECCO
+tags, called &amp;quot;reflectors&amp;quot; in RECCO parlance, are a simple foil antenna and
+diode, which makes them cheap and durable. They are so cheap, and compact, that
+some brands of alpine gear (especially in Europe) build RECCO tags right into
+products like snow pants and ski boots. Dainese even offers a bicycle helmet
+with one. The RECCO detector emits a powerful and very directional RF field in
+an ISM band, and then monitors for the characteristic harmonics emitted by an
+excited tag.&lt;/p&gt;
+&lt;p&gt;This technology is &lt;em&gt;not&lt;/em&gt; RFID, although it is conceptually similar, and has some
+of the same downsides such as a tendency for tags to be undetectable if they
+fall in the wrong point in the phase of the exciting field. For that reason,
+RECCO recommends that you have two reflectors at different locations on your
+person. The other main downside of RECCO is that it shifts most of the
+complexity into the detector, so they are relatively large and expensive. That's
+not so bad when you consider that detectors only need to be carried by ski
+patrol and SAR organizations. Rescuers basically aim the detector around until
+it picks up a signal, and then walk that way until they are aiming the detector
+straight down. That's where they dig.&lt;/p&gt;
+&lt;p&gt;RECCO has even designed a detector that can be underslung by a helicopter,
+although its 100 meter range will require some sporty flying. The RECCO system
+is generally much more popular in Europe than in the US, but penetration is
+increasing here, and RECCO publishes a &lt;a href="https://recco.com/wp-content/uploads/2025/12/reccodetectorsworldwide20251211.pdf"&gt;list of SAR organizations with detectors&lt;/a&gt; that now includes
+a number of helicopters in the US and many major ski areas.&lt;/p&gt;
+&lt;p&gt;I view RECCO as having a bit of a belt-and-suspenders relationship with
+traditional avalanche beacons. Avalanche beacons are more common, and all
+beacons also function as receivers, so &amp;quot;buddy rescue&amp;quot; by a bystander is far more
+likely with beacon technology. On the other hand, RECCO is usable over a longer
+range (although not &lt;em&gt;radically&lt;/em&gt; longer) and the detectors are more directional
+and potentially faster to use. Most avalanche centers seem to recommend that you
+carry both, although the traditional avalanche beacon is more important.&lt;/p&gt;
+&lt;p&gt;Finally, let's consider a couple of other pieces of avalanche safety equipment,
+which will lead us to consider efficacy.&lt;/p&gt;
+&lt;p&gt;The core avalanche PPE consists of a probe and a shovel, and both are available
+in collapsible form for portability. Besides locating technologies, though, the
+major innovation in avalanche safety is the avalanche airbag. These are
+backpacks that you wear with a parachute-like ripcord. When you pull it, the
+bag inflates into a big airbag behind you. There are two ways this is helpful:
+first, the airbag will tend to float on moving snow, making it less likely that
+you are buried. Second, if you do become buried, you can deflate the airbag to
+leave you with a void in the snow. This gives you more air to breath, and room
+to move, making it more likely that you can dig yourself out.&lt;/p&gt;
+&lt;p&gt;Avalanche airbags remind me a bit of the motorcycle airbags, as far as being
+very cutting-edge but also, you know, kind of questionable when it comes to
+efficacy. Manufacturers of airbags often advertise a 50% reduction in
+fatalities, but we have to take those numbers with a grain of salt.&lt;/p&gt;
+&lt;p&gt;One of the problems with safety technology for extreme risks is that the actual
+risk event just doesn't happen very often. In less abstract terms, people are
+not caught in avalanches all that often, so the total number of people who have
+been caught in an avalanche while wearing an avalanche airbag just isn't that
+big. This limits the confidence we can have in efficacy findings.&lt;/p&gt;
+&lt;p&gt;Well, I tracked down the paper that the 50% number comes from, and it's not
+actually that bad. They identified 424 people caught in severe avalanches,
+roughly half of which had avalanche airbags, and found that the airbags reduced
+mortality by 50% for people who successfully deployed them, and 41% overall
+given that there were various situations where they were not triggered or
+failed. The sample size is not huge, but it's bigger than I expected, and even
+at the bottom of the 95% confidence interval you still see a meaningful
+mortality reduction of around 10%.&lt;/p&gt;
+&lt;p&gt;So, avalanche airbags seem to work, but they do cost around $1,500, so make of
+that what you will. Another interesting number from that paper is actually a bit
+of an aside: of the sample of people considered, 99% had avalanche beacons! A
+basic avalanche beacon can be had for about $250, which is pretty similar to
+cheap satellite messenger or very basic PLB &lt;sup class="footnote-ref" id="fnref-3"&gt;&lt;a href="#fn-3"&gt;3&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;On the other hand, the passive nature of RECCO tags translates to a price
+advantage: a standalone reflector that you can clip to your pack only costs $30,
+which frankly still feels like a ripoff considering the simplicity of the
+design. I wonder if a RECCO detector would pick up enough RF EAS tags sewn into
+your clothing. Or shoplifted. One of the amusing things, though, is that despite
+being the cheap option (or perhaps beacuse of it), RECCO is relatively poorly
+backed by data. The number of actual rescues using RECCO remains small,
+although the development of the helicopter-based detector will probably lead to
+more successful uses.&lt;/p&gt;
+&lt;p&gt;Or, you know, just stay out of the mountains. They may be calling, but you don't
+&lt;em&gt;have&lt;/em&gt; to go.&lt;/p&gt;
+&lt;div class="footnotes"&gt;
+&lt;ol&gt;
+&lt;li id="fn-1"&gt;
+&lt;p&gt;Researching SNOTEL's history starts getting you into military R&amp;amp;D reports
+and formerly classified documents pretty quickly, and it's clear that both the
+US and other militaries have used meteor scatter for communications in the past.
+Possibly they still do today. If I were to place a wager, I'd say that SNOTEL is
+likely smaller than or on par with the military network that its equipment seems
+to have been adapted from. Unfortunately there is very little information in
+public about this military application (one of the reasons to suspect that
+meteor scatter is still relevant in the military context), so I can only
+speculate.&lt;a class="footnote" href="#fnref-1"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn-2"&gt;
+&lt;p&gt;This is at least vaguely similar to a common safety device employed on the
+towers of ski lifts, where a brittle metal bar is placed under the sheaves that
+support the rope. The lift's safety loop is passed through the bar. If the lift
+badly deropes at the tower (that is, the cable falls off of the sheaves), it
+falls on the bar, snapping it. That interrupts the loop of wire that runs from
+the drive end to the opposite end and back, which shuts off the motor and
+releases magnetic brakes.&lt;a class="footnote" href="#fnref-2"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn-3"&gt;
+&lt;p&gt;PLBs, or Portable Locator Beacons, are beacons made specifically for
+detection by the COSPAS-SARSAT satellite constellation. They are probably the
+gold standard in general search and rescue technology, and since they rely on a
+system operated as an international joint venture there are no service fees or
+subscriptions involved. Oddly, though, PLBs are actually pretty expensive.
+Here's the reason: authorities that mandate PLBs in various situations (e.g.
+the Coast Guard) have also specified rather exacting standards for service
+life, waterproofing, shock resistance, etc. This has the counter-intuitive result
+that two-way satellite messengers like Spot X or Garmin InReach can actually be
+cheaper to buy, but you will have to pay a service fee, and they are unlikely
+to survive the kind of &amp;quot;plane crash/sinking boat/car wreck&amp;quot; physical
+abuse that PLBs are tested for. As successive generations of more sophisticated
+COSPAS-SARSAT satellite payloads have launched, the system has also become very
+reliable, and in most circumstances PLBs are more likely to work than other
+types of satellite communicators. What I'm saying is that if you recreate in the
+middle of nowhere, you should consider buying a PLB, even though a good one can
+cost $500. At a five year rated lifespan, that's cheaper than a Spot or InReach
+plan even without the hardware purchase.&lt;a class="footnote" href="#fnref-3"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
+      <guid isPermaLink="false">e24a6f475528ba4153dd5a7a968f25379d26e12a80647d6e66313802a57df480</guid>
+      <pubDate>Sat, 05 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>“I’m Not Dead Yet!” Reverse Polish Notation Calculators You Can Still Buy - Hack a Day</title>
       <link>https://hackaday.com/2026/09/02/im-not-dead-yet-reverse-polish-notation-calculators-you-can-still-buy/</link>

@@ -5,7 +5,316 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Wed, 02 Sep 2026 14:02:06 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 07 Sep 2026 14:03:20 +0000</lastBuildDate>
+    <item>
+      <title>Your Cloud Security Checklist Doesn't Work the Way You Think It Does - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/your-cloud-security-checklist-doesnt.html</link>
+      <description>If managing security across multiple cloud providers wasn't hard enough, each one fails in a different way. For the 2026 Cloud Security Index, Intruder analyzed misconfiguration data from 3,000 organizations across AWS, Azure, and Google Cloud and found that risk profiles across providers have almost nothing in common. Here’s what the data looks like.
+How risk differs across cloud providers</description>
+      <guid isPermaLink="false">2d7076da10e336403d110c714fbc6ec60a38ddb2e12c574dc2a7ff959193a4cc</guid>
+      <pubDate>Mon, 07 Sep 2026 11:45:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Rogue ScreenConnect Clients Spread Four-Stage VBScript Chain to Newly Connected Hosts - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/rogue-screenconnect-clients-spread-four.html</link>
+      <description>Cybersecurity researchers have disclosed details of worm-like activity that abuses ConnectWise ScreenConnect to distribute a malicious Visual Basic Script (VBScript) payload to newly connected systems.
+According to Huntress, three unrelated incidents have been found to use diverse initial access methods, namely a Quick Assist tech-support scam, a phishing-delivered MSI installer, and a fake</description>
+      <guid isPermaLink="false">b35e3d5fe88c724b3d9023e8330b63dc52b95a74e86da3152eee802e6d1b5f07</guid>
+      <pubDate>Mon, 07 Sep 2026 11:36:39 +0000</pubDate>
+    </item>
+    <item>
+      <title>Telerik UI Padding-Oracle Bug Chained to Unauthenticated RCE — Public Exploit Released - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/telerik-ui-padding-oracle-bug-chained.html</link>
+      <description>A TantoSec proof-of-concept turns an AES-CBC "padding oracle" in Telerik UI for ASP.NET AJAX into unauthenticated remote code execution — but only against applications in a specific non-default configuration, and Progress patched the chain in July. There are no confirmed reports of exploitation in the wild.
+Security firm TantoSec has published a working exploit chain targeting vulnerabilities</description>
+      <guid isPermaLink="false">2b75550837bf8ae6e249506ec77712c7d315ef170e82bcd75b648f511d37058f</guid>
+      <pubDate>Mon, 07 Sep 2026 11:20:14 +0000</pubDate>
+    </item>
+    <item>
+      <title>N-able Issues Fourth N-central Hotfix in Five Weeks for Unauthenticated RCE Flaw - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/n-able-issues-fourth-n-central-hotfix.html</link>
+      <description>Every on-premises N-central build below 2026.3.1.14 — including servers updated to Hotfix 3 a day earlier — needs Hotfix 4. N-able's incident notice says the flaw has been exploited in the wild; its release notes say that is unconfirmed.
+N-able has released its&amp;nbsp;fourth hotfix&amp;nbsp;in five weeks for the N-central remote monitoring and management (RMM) platform, this time for a</description>
+      <guid isPermaLink="false">58bff86f25ae1469cce6d332b8915e9df33bdda72298f3cb4e806910c6bdb0e0</guid>
+      <pubDate>Mon, 07 Sep 2026 08:31:12 +0000</pubDate>
+    </item>
+    <item>
+      <title>WRAITH – Browser Hooking and Blind XSS Page Mirroring - Darknet - The Darkside</title>
+      <link>https://www.darknet.org.uk/2026/09/wraith-browser-hooking-and-blind-xss-page-mirroring/</link>
+      <description>WRAITH combines BeEF-style browser hooks with blind-XSS capture and a credentialed Page Mirror. Tested locally, with its limits examined.</description>
+      <guid isPermaLink="false">7b5497cf3a809bd3deeb516aea644a73fe98c4654b5ddc2971d862f644b259ce</guid>
+      <pubDate>Mon, 07 Sep 2026 07:58:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>JSCeal Malware Can Bypass Google Authentication Using Stolen Session Cookies - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/jsceal-malware-can-bypass-google.html</link>
+      <description>Cybersecurity researchers have unpacked JSCeal, a sophisticated compiled V8 JavaScript (JSC) malware with credential harvesting, surveillance, and traffic-interception capabilities.
+"The payloads are protected with javascript-obfuscator, using multiple techniques including RC4-protected strings, control-flow flattening, proxy functions, and operation wrappers," Check Point Research said in a</description>
+      <guid isPermaLink="false">62e773f5f7ac4f4a4b6d4ec99b214c4b3ea7a7d3d6ed76c6b3eeba9894f8bcbf</guid>
+      <pubDate>Mon, 07 Sep 2026 07:53:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Hijack MikroTik Routers Through Internet-Exposed SSH Without Authentication - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/attackers-hijack-mikrotik-routers.html</link>
+      <description>Attackers are exploiting MikroTik routers with their Secure Shell (SSH) remote-access service, which is reachable from the internet, to gain full administrative control without authentication, according to&amp;nbsp;CERT Polska's attack warning, published on September 5.
+Successful attacks date to at least September 2. The Hacker News’s September 6 review of the warning found no victim count or</description>
+      <guid isPermaLink="false">c262b1acbae73151c8c02a16c1119ca0e35b5326596a3c666a9ac4f82860dd47</guid>
+      <pubDate>Sun, 06 Sep 2026 09:32:38 +0000</pubDate>
+    </item>
+    <item>
+      <title>Four REVSTEALER-Linked Modules Disable Windows Update and Defender to Run a Crypto Miner - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/four-revstealer-linked-modules-disable.html</link>
+      <description>Elastic Security Labs has documented four previously unreported programs associated with REVSTEALER, an emerging Windows information stealer, that remain on an infected machine after the stealer deletes itself.
+One of them switches off Windows Update and Microsoft Defender before running a cryptocurrency miner.
+The company named the four programs ProManager, WinUpdate, SoftManager, and</description>
+      <guid isPermaLink="false">0473921b203c65a52e417ba41c8a60e213da907b71199bbd03eed427e25745c9</guid>
+      <pubDate>Sun, 06 Sep 2026 08:34:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>Roundcube -- Multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/e7726f5e-a9d0-11f1-93c7-8447094a420f.html</link>
+      <description/>
+      <guid isPermaLink="false">7e4fde1dceb8c2471f4126a327199fef44713c0875e402f9a0cf16a2aacf5b16</guid>
+      <pubDate>Sun, 06 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Unpatched Magento and Adobe Commerce Zero-Day Exploited to Backdoor Online Stores - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/unpatched-magento-and-adobe-commerce.html</link>
+      <description>Attackers are exploiting a new unpatched vulnerability in Magento Open Source and Adobe Commerce that lets them run malicious code on an online store's server without logging in, Dutch e-commerce security company Sansec said in an&amp;nbsp;advisory published on September 5.
+Sansec, which discovered the flaw and named it StyleSmuggler, said attacks started on September 4. "Sansec is</description>
+      <guid isPermaLink="false">95b25d0d2ebdb5b69c8398558708b06b171f426c70edabe010534435129d507e</guid>
+      <pubDate>Sat, 05 Sep 2026 20:14:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Breached JetBrains Cadence via Unpatched TeamCity, Extracting AWS Credentials - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/attackers-breached-jetbrains-cadence.html</link>
+      <description>JetBrains is urging Cadence users to revoke and rotate all credentials following a security incident last month in which unidentified threat actors exploited a recently disclosed critical vulnerability in TeamCity to breach its own environment.
+"Cadence users should immediately revoke or rotate all credentials and secrets that may have been used to run their Cadence executions," JetBrains said.</description>
+      <guid isPermaLink="false">5f2d3b4a2668a0de71f2155028044847c950588b08bdee244755d7847831fc4c</guid>
+      <pubDate>Sat, 05 Sep 2026 16:52:33 +0000</pubDate>
+    </item>
+    <item>
+      <title>Critical VMware Workstation and Fusion Flaw Lets VM Admins Execute Host Code - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/critical-vmware-workstation-and-fusion.html</link>
+      <description>Broadcom has released security updates for two security flaws impacting VMware Workstation and Fusion, including one critical bug that could result in arbitrary code execution under certain conditions.
+The vulnerability, tracked as CVE-2026-59346 (CVSS score: 9.3), is an integer-overflow vulnerability that a local attacker with elevated privileges can exploit to run arbitrary code.
+"A</description>
+      <guid isPermaLink="false">ab268302869a1d9884edceaa8cf4190334bc644d77efb2d1103954817a490bc6</guid>
+      <pubDate>Sat, 05 Sep 2026 16:05:08 +0000</pubDate>
+    </item>
+    <item>
+      <title>Trezor Says ShipMonk Breach Exposed 67,000 U.S. Customers' Data It Said Was Deleted - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/trezor-says-shipmonk-breach-exposed.html</link>
+      <description>Hardware wallet manufacturer Trezor on Friday disclosed that another 67,000 customers from the U.S. have been impacted in a breach at its shipping provider ShipMonk.
+The exposed information includes customer names, email addresses, phone numbers, shipping addresses, and order numbers between November 2019 and August 2021. The breach does not affect the security of the company's hardware wallets</description>
+      <guid isPermaLink="false">82c06c667ef232a82754f7f0ac33d05e0fdb38b91e4bfc76c0eee0d69715882f</guid>
+      <pubDate>Sat, 05 Sep 2026 14:17:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>Thousands of OpenAI Agents Quietly Turned an Abandoned Wiki Into Their Coordination Channel - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/thousands-of-openai-agents-quietly.html</link>
+      <description>A group of AI safety researchers says a fleet of autonomous agents that identified themselves as OpenAI systems left about 18,000 posts on a dormant 25-year-old German wiki between May and July 2026, using the site as a shared board to pool answers to a timed web task and pass around a way out of their sandbox.
+The activity was concentrated on DSEwiki, a German software developer wiki that runs</description>
+      <guid isPermaLink="false">1105cdff18bea43928038064f40a2dba0888d29d163a4bcfdc27bdc6e879dc47</guid>
+      <pubDate>Sat, 05 Sep 2026 07:55:10 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Exploit PaperCut Flaws to Steal Credentials From Schools and Universities - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/attackers-exploit-papercut-flaws-to.html</link>
+      <description>Threat actors are exploiting the newly disclosed PaperCut flaws to facilitate credential theft in attacks targeting the education sector in the U.S. and Europe.
+The Arctic Wolf Adversary Research Team said it observed attackers exploiting CVE-2026-81578 and CVE-2026-82078 – an authentication bypass and remote code execution chain – to conduct command execution and reconnaissance, as well as</description>
+      <guid isPermaLink="false">336683a628f3470db7f11c1ec26ffa7d80ac4259733b5e7bc74783c988071da0</guid>
+      <pubDate>Sat, 05 Sep 2026 07:31:53 +0000</pubDate>
+    </item>
+    <item>
+      <title>Phishing Campaign Sends Millions of Emails Using Invisible Unicode to Evade Filters - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/phishing-campaign-sends-millions-of.html</link>
+      <description>Microsoft is alerting of a "high-volume phishing campaign" that's using invisible Unicode tag characters to bypass email filters.
+"Instead of using these characters to hide instructions from people while exposing them to AI models, the attacker used them to split financial lure words such as 'funding' to prevent email filters from parsing them," the Microsoft Security Research team said.
+The</description>
+      <guid isPermaLink="false">bc63715d98c7a66d02a8301f6bed8bb0c02bb172412f8a322443a5b9bf8f66d3</guid>
+      <pubDate>Fri, 04 Sep 2026 15:57:15 +0000</pubDate>
+    </item>
+    <item>
+      <title>PostgreSQL Fixes 12-Year-Old Logical Decoding Flaw Enabling Replication-Role Code Execution - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/postgresql-fixes-12-year-old-logical.html</link>
+      <description>PostgreSQL has released updates to address a security flaw that allows an account with the REPLICATION attribute to run arbitrary code as the operating-system user running the database server.
+The flaw, tracked as CVE-2026-6471 (CVSS score: 7.2), has been present since logical decoding was introduced in PostgreSQL 9.4 in 2014. Versions before PostgreSQL 18.6, 17.11, 16.15, 15.19, and 14.24 are</description>
+      <guid isPermaLink="false">d1deae667233a9274144b57f6681bff0f4b24704df1b10c10da034f0af309c0b</guid>
+      <pubDate>Fri, 04 Sep 2026 15:20:19 +0000</pubDate>
+    </item>
+    <item>
+      <title>New Ted Backdoor Hides Inside Victims' Own HAProxy Builds to Intercept Web Traffic - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/new-ted-backdoor-hides-inside-victims.html</link>
+      <description>A previously undocumented Linux toolkit has been found compiled directly into the trojanized HAProxy load balancers of two South Korean organizations, where it intercepted web traffic and served altered pages to selected visitors.
+The attackers named the implant ted in debug strings left in the binary. It is not a HAProxy vulnerability, and installing it requires code execution on the host and</description>
+      <guid isPermaLink="false">31cd7ce92c9a8a5b743feb9a962b979500eb4a35dfaa5bd4f4b7937c54e342a8</guid>
+      <pubDate>Fri, 04 Sep 2026 14:51:13 +0000</pubDate>
+    </item>
+    <item>
+      <title>Over 440,000 Exploit Attempts Target Super Forms and Elementor Pro RCE Flaws - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/over-440000-exploit-attempts-target.html</link>
+      <description>Threat actors are exploiting two critical security flaws in WordPress plugins Super Forms and Elementor Pro, according to findings from Wordfence.
+The vulnerabilities in question are -
+  CVE-2026-14894 (CVSS score: 9.8) - A missing file type validation vulnerability in Super Forms – Drag &amp;amp; Drop Form Builder that allows unauthenticated attackers to upload files of any type, including</description>
+      <guid isPermaLink="false">79204aea9f757f426e0e35fdf33b9fb6a1304e53470828519c017e8eea05fa61</guid>
+      <pubDate>Fri, 04 Sep 2026 08:48:45 +0000</pubDate>
+    </item>
+    <item>
+      <title>Plex Urges Immediate Updates After Patching Multiple Undisclosed Security Flaws - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/plex-urges-immediate-updates-after.html</link>
+      <description>Plex is urging users to update their instances to the latest version following the release of an update that patches multiple security flaws.
+The fixes are available in Plex Media Server 1.43.3 and Plex Desktop 1.115.0. The streaming media service did not elaborate on what those issues are, but said CVE identifiers have been requested for them.
+"We recommend all server owners and Desktop users</description>
+      <guid isPermaLink="false">036241c31e387583f372f8c37deb1d44878fd741578315310e30fc769c0b5fb0</guid>
+      <pubDate>Fri, 04 Sep 2026 07:35:14 +0000</pubDate>
+    </item>
+    <item>
+      <title>Google Releases Chrome Update to Patch Actively Exploited V8 Zero-Day - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/google-releases-chrome-update-to-patch.html</link>
+      <description>Google on Thursday released security updates to patch 12 vulnerabilities, including one that has come under active exploitation in the wild.
+The high-severity vulnerability, tracked as CVE-2026-85046 (CVSS score: 8.8), has been described as a type confusion bug in V8, Chrome's JavaScript and WebAssembly engine.
+"Type confusion in V8 in Google Chrome prior to 152.0.7977.82 allowed a remote</description>
+      <guid isPermaLink="false">1beb9fdcb17f9c8f628d20c8d8d2fbfefb84e78cb388a9cb729e40cb80aa3469</guid>
+      <pubDate>Fri, 04 Sep 2026 07:18:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>GPT-6 Astra Scores 100% on ExploitBench as OpenAI Blocks PoC Exploit Requests - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/gpt-6-astra-scores-100-on-exploitbench.html</link>
+      <description>OpenAI on Thursday officially unveiled GPT‑6 Astra, which it described as the "world's most intelligent and aligned model."
+The development comes days after the artificial intelligence (AI) company said the model had reached the "Critical" cybersecurity capability threshold under its Preparedness Framework.
+"Astra is state-of-the-art on computer use, browsing, software engineering,</description>
+      <guid isPermaLink="false">4ce48d6a36add83cd58fd9aa8df29bc1b758633e02e0a4d9f60faf92bc434271</guid>
+      <pubDate>Fri, 04 Sep 2026 06:47:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>OpenVPN: denial of service - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/25012057-a886-11f1-a836-b42e991fc52e.html</link>
+      <description/>
+      <guid isPermaLink="false">54739ef5b176a3809a3e31f890860356781b46a5f0ecd99eaf2fffa2fc43b226</guid>
+      <pubDate>Fri, 04 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Critical Cisco Nexus 9000 Flaw Lets Unauthenticated Remote Attackers Run Code as Root - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/critical-cisco-nexus-9000-flaw-lets.html</link>
+      <description>Cisco has released patches to address a critical security flaw affecting 10 Silicon One-based Nexus 9000 switches that could allow an unauthenticated, remote attacker to execute code as root, alongside an IOS XR hardening release bundling 7 umbrella CVEs, 2 of which are rated 9.8, with no workaround for any IOS XR version.
+The Nexus vulnerability, tracked as CVE-2026-20212 (CVSS score: 9.8), is</description>
+      <guid isPermaLink="false">729b0a8b0d73403049038635af3ca3f733e1b64146f53c773c6482859e873889</guid>
+      <pubDate>Thu, 03 Sep 2026 15:52:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>BraZetsu Malware Turns Compromised Windows Hosts Into Criminal Marketplace Inventory - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/brazetsu-malware-turns-compromised.html</link>
+      <description>Cybersecurity researchers have disclosed details of a sophisticated Python-based Windows malware framework called BraZetsu that fuels an underground marketplace commercializing access to compromised hosts.
+"Unlike the standard infostealer model, BraZetsu is a comprehensive master toolkit that empowers Initial Access Brokers (IABs) by turning compromised systems into highly valuable commercial</description>
+      <guid isPermaLink="false">cfabb97894fa8b950fe755421ce138d09d206648c532377450720d8b9bce91a0</guid>
+      <pubDate>Thu, 03 Sep 2026 15:26:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>Thomson Reuters Court Software Breach May Have Exposed SSNs and Sealed Data - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/thomson-reuters-court-software-breach.html</link>
+      <description>Thomson Reuters disclosed on Wednesday that an unauthorized party obtained files from C-Track, the court case management platform sold by its West Publishing Corporation unit, in March 2026, affecting courts in 11 U.S. states, the U.S. Virgin Islands, and Ontario, Canada.
+West Publishing said it discovered the activity on June 30, 2026. A subset of court records could contain individuals' names</description>
+      <guid isPermaLink="false">79317dd0593f38631966dcf4a8d134a1b7ea5b5576c3c49b0ead4dea72d077de</guid>
+      <pubDate>Thu, 03 Sep 2026 14:39:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>US Becomes Top Target in RMM Phishing Campaign Spanning 46 Countries - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/us-becomes-top-target-in-rmm-phishing.html</link>
+      <description>An RMM phishing campaign initially associated with Canadian targeting due to its use of Canada Revenue Agency (CRA) tax forms as lures has turned out to be part of a broader campaign spanning 46 countries.
+Around 45% of observed activity was associated with the United States, making it the campaign's top geographic target. ANY.RUN research connected 601 cases to the wider operation, which uses</description>
+      <guid isPermaLink="false">c5dad94934093757b16cf0b8961d4b931a0ef3ae35954e5a91a4ab81680d179a</guid>
+      <pubDate>Thu, 03 Sep 2026 11:58:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Turn Trusted Node.js Runtime Into Malware Delivery Tool in Targeted Attacks - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/attackers-turn-trusted-nodejs-runtime.html</link>
+      <description>Threat actors are leveraging the trusted Node.js JavaScript runtime in multiple cyber attacks as a way to deploy malicious payloads.
+According to a new report published by the Symantec Threat Hunter Team today, the attack method has been put to use in attacks targeting government departments, technology companies, and hotels since February 2026.
+"The technique's appeal is that node.exe (the</description>
+      <guid isPermaLink="false">f59d830cccb41d6fec4f98c319ef38b369a6a33ae0c08ae6ecd638da6c38da7c</guid>
+      <pubDate>Thu, 03 Sep 2026 10:43:01 +0000</pubDate>
+    </item>
+    <item>
+      <title>Shai-Hulud's Reach Just Grew to 469 Credential Locations. Here's What That Means - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/shai-huluds-reach-just-grew-to-469.html</link>
+      <description>In early August, GitGuardian researchers found that a recent Shai-Hulud infostealer worm variant had evolved to scan for credentials across 469 locations across developer environments, Continuous Integration/Continuous Deployment (CI/CD) tooling, cloud configurations, and even AI tool configs.
+Earlier variants of the infostealer worm only checked 189 paths. The jump says a lot. Attackers have</description>
+      <guid isPermaLink="false">8fb40f492d4591e263d0bb8b4e8a0d325901489151a6649de0952e0672e0a067</guid>
+      <pubDate>Thu, 03 Sep 2026 10:36:39 +0000</pubDate>
+    </item>
+    <item>
+      <title>Pegasus Zero-Click Spyware Exploit Infects Serbian Student Movement Member's iPhone - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/pegasus-zero-click-spyware-exploit.html</link>
+      <description>The iPhone belonging to a member of Serbia's student protest movement was infected with NSO Group's Pegasus spyware, according to new findings from the Citizen Lab in collaboration with the SHARE Foundation.
+"Our analysis confirmed that an iMessage zero-click exploit was used to infect the device with NSO Group's Pegasus spyware," the Citizen Lab said. "We found high-confidence indicators of</description>
+      <guid isPermaLink="false">4405fd6b2457b7ff5ffa69bbb52d59438bca1fe2eeb0b82b6d8296cacd7aac98</guid>
+      <pubDate>Thu, 03 Sep 2026 08:43:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>Researcher Releases FalconFlank PoC Showing Privilege Escalation in CrowdStrike Falcon - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/researcher-releases-falconflank-poc.html</link>
+      <description>The security researcher known as Chaotic Eclipse (aka INFINITE NIGHTMARE, MSNightmare, and Nightmare-Eclipse) has dropped a new zero-day dubbed FalconFlank, a proof-of-concept (PoC) for a privilege escalation flaw impacting Crowdstrike Falcon.
+"FalconFlank is a 0-day privilege escalation that abuses the office malicious macros remediation in CrowdStrike Falcon Sensor," the researcher said in</description>
+      <guid isPermaLink="false">79be62c9c31ee5c8b23cb8b218cf42e06b0df076ab589336edd8bc05c240100d</guid>
+      <pubDate>Thu, 03 Sep 2026 06:26:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>CISA Adds Seven Exploited Flaws as Attackers Deploy Reverse Shells and Crypto Miners - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/cisa-adds-seven-exploited-flaws-as.html</link>
+      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Wednesday added seven security flaws to its Known Exploited Vulnerabilities (KEV) catalog after they landed in attackers' crosshairs.
+The vulnerabilities are as follows -
+  CVE-2026-83548 (CVSS score: 10.0) - A server-side request forgery vulnerability in SonicWall SMA 1000 Appliances that could allow a remote unauthenticated</description>
+      <guid isPermaLink="false">836cbb54764dac791bf8fc56c5a6705c0eea017e38bf66db1862b8ab690974d2</guid>
+      <pubDate>Thu, 03 Sep 2026 05:19:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>electron42 -- multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/271556c1-ddbf-4d44-95e6-a731841539b2.html</link>
+      <description/>
+      <guid isPermaLink="false">90bfe13420e39db8bb9604c9ace71352373d1bccf977fbc51e76cc509c9490b6</guid>
+      <pubDate>Thu, 03 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>njs -- heap buffer overflow in XML exclusive canonicalization - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/0bfb082c-a7b6-11f1-a655-3497f65b111b.html</link>
+      <description/>
+      <guid isPermaLink="false">3f71591b43c5e834cb3188b318ab439ddbe52ddffb04733577a35faac57f37fa</guid>
+      <pubDate>Thu, 03 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Google, Anthropic, and OpenAI Unveil Cyber AI Models, Safeguards, and Access Programs - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/google-anthropic-and-openai-unveil.html</link>
+      <description>Google on Wednesday announced Gemini 3.8 Flash Cyber, which it described as its most capable cybersecurity model, and has made it available to a set of trusted defenders via a new initiative called the Fairwind Program.
+"The Fairwind Program gives high-priority defenders (like governments, healthcare providers, and telecommunications services) early access to advanced models that help them</description>
+      <guid isPermaLink="false">786f886a7cd2f73f1fba1aaec6354d29b4d65cdce540cdcbfcedca5f66c4888d</guid>
+      <pubDate>Wed, 02 Sep 2026 18:27:49 +0000</pubDate>
+    </item>
+    <item>
+      <title>Fake Software Installers Disable Windows Update and Weaken Microsoft Defender - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/fake-software-installers-disable.html</link>
+      <description>An active malware campaign is using bogus software-download websites to impersonate trusted vendors and distribute malicious installers.
+"The campaign has targeted users looking to download popular software and has resulted in compromises across multiple organizations and industries, primarily affecting China-based operations of multinational organizations and Chinese-speaking users," Microsoft</description>
+      <guid isPermaLink="false">0beb927fb8413260f248752052dba1a7fb1b4fc20d648dbac9f11810ea786c64</guid>
+      <pubDate>Wed, 02 Sep 2026 16:41:06 +0000</pubDate>
+    </item>
+    <item>
+      <title>Malicious .git Configs Can Make Claude, Codex, Cursor, and Other AI Agents Run Attacker Code - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/malicious-git-configs-can-make-claude.html</link>
+      <description>Manifold Security has disclosed eight security flaws across seven command-line AI coding agents in which a repository's own Git configuration names a command that the agent runs on the developer's machine, four of them still unpatched at publication.
+The command executes as the user, outside the agent's sandbox and without an approval prompt, and exploitation requires the repository to arrive</description>
+      <guid isPermaLink="false">896a75326535ddd55745fcac71d9c5bd0280fadfe9ddd12d53940e974cc709f9</guid>
+      <pubDate>Wed, 02 Sep 2026 14:06:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>Malicious Apache Modules Hijack Brazilian Government Site Traffic to Push Betting Pages - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/malicious-apache-modules-hijack.html</link>
+      <description>A Chinese-speaking cybercrime cluster known as Gambling Goblin has been observed installing malicious Apache modules on compromised web servers run by Brazilian government and educational institutions, and using them to divert visitors to attacker-controlled pages promoting online gambling and sports betting.
+Check Point Research said it has tracked the campaign since mid-2025.
+The modules</description>
+      <guid isPermaLink="false">8d76bed77f42158ecd0650aefb71de1b4792b47341895f14a916005625811b61</guid>
+      <pubDate>Wed, 02 Sep 2026 13:44:16 +0000</pubDate>
+    </item>
     <item>
       <title>BGP Hijack Delivers Malicious Virtualizor Update That Establishes Persistent Root Access - The Hacker News</title>
       <link>https://thehackernews.com/2026/09/bgp-hijack-delivers-malicious.html</link>
@@ -91,6 +400,13 @@ The effort was undertaken on August 31, 2026, by authorities from the U.S., Bulg
       <link>http://www.vuxml.org/freebsd/1ee62c05-a646-11f1-b187-901b0edee044.html</link>
       <description/>
       <guid isPermaLink="false">980a369a50816cebaf476c6210788128b88741824618c819757a3f7b64cfae11</guid>
+      <pubDate>Wed, 02 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>jenkins -- multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/102bc631-a6da-11f1-ba21-00e0edd85c6a.html</link>
+      <description/>
+      <guid isPermaLink="false">882b2a2863d58e81d1397c9fa0fe568bfbe36b86fab0466cb3e53211bf5558bc</guid>
       <pubDate>Wed, 02 Sep 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
@@ -1238,316 +1554,6 @@ The macOS-focused infection chain is designed to deliver a shell script that pro
 "UNC6671 continues to rely on voice phishing (vishing) to target enterprise employees, posing as IT help desk staff facilitating mandatory, urgent security migrations. Significantly, the threat actor often contacts employees via</description>
       <guid isPermaLink="false">a2969744481a22dccafe739907a02b3310237b1b47c4c29d9dd6dcb006edb05b</guid>
       <pubDate>Fri, 07 Aug 2026 18:16:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>New WordPress Pre-Auth XSS Could Lead to PHP Code Execution - Patch ASAP</title>
-      <link>https://thehackernews.com/2026/08/new-wordpress-pre-auth-xss-could-lead.html</link>
-      <description>WordPress has fixed a pre-authentication reflected cross-site scripting (XSS) flaw in its login screen that affects every version of the content management system. pwn.ai demonstrated how the flaw can be chained into PHP code execution on the server when a logged-in administrator interacts with an attacker-controlled page.
-Tracked as&amp;nbsp;CVE-2026-64638&amp;nbsp;(CVSS score: 8.9), the high-severity</description>
-      <guid isPermaLink="false">462bb649a4a1c9358646bd9795cfcbeb26b119c029bff9937a15be2fdf9e6a0d</guid>
-      <pubDate>Fri, 07 Aug 2026 12:56:23 +0000</pubDate>
-    </item>
-    <item>
-      <title>18-Year-Old Linux SCTP Flaw Could Let Local Users Gain Root and Escape Containers</title>
-      <link>https://thehackernews.com/2026/08/18-year-old-linux-sctp-flaw-could-let.html</link>
-      <description>A use-after-free bug in Linux's SCTP networking code can be turned into full root on a host, and Tencent researchers say they used it to escape a container and reach the machine underneath.
-The flaw has existed since 2008. The fix already shipped: stable kernels 7.1.6, 6.18.42, 6.12.101 and 6.6.148, released August 3, close it. Anyone running an older kernel with SCTP reachable should update.</description>
-      <guid isPermaLink="false">9ce4a9f038989adc9e1f622d109c249d8b388d65c498db92055c06713306f7f6</guid>
-      <pubDate>Fri, 07 Aug 2026 11:10:33 +0000</pubDate>
-    </item>
-    <item>
-      <title>New NatJack Attacks Hijack TCP Sessions and Spoof DNS by Manipulating NAT Tables</title>
-      <link>https://thehackernews.com/2026/08/new-natjack-attacks-hijack-tcp-sessions.html</link>
-      <description>Security researcher Malcolm Stagg has disclosed a new attack class called&amp;nbsp;NatJack&amp;nbsp;that manipulates network address translation (NAT) connection state to hijack active TCP sessions, spoof DNS responses, expose mapped ports, and exhaust NAT tables.
-Presented at Black Hat USA 2026, the research found affected behavior across independently developed implementations, including Windows and</description>
-      <guid isPermaLink="false">43ffdf174719e77f65281ec2b100512fd743786442bf486da57c0142ed0626d6</guid>
-      <pubDate>Fri, 07 Aug 2026 10:58:38 +0000</pubDate>
-    </item>
-    <item>
-      <title>Microsoft 365 AitM Phishing Hijacks Accounts to Collect Payroll and Finance Emails</title>
-      <link>https://thehackernews.com/2026/08/microsoft-365-aitm-phishing-hijacks.html</link>
-      <description>Cybersecurity researchers have called attention to an active "widespread email-driven phishing campaign" that employs adversary-in-the-middle (AitM) techniques to take control of Microsoft 365 accounts with an aim to identify key personnel involved in financial workflows and gather related email.
-"The campaign uses residential proxies to disguise malicious sign-ins as ordinary consumer traffic,</description>
-      <guid isPermaLink="false">9cd1d8339343a709f2b0d9d7cd4799b84acae0dc1b626fcf550ab026a7513c1f</guid>
-      <pubDate>Fri, 07 Aug 2026 10:38:27 +0000</pubDate>
-    </item>
-    <item>
-      <title>AI-Assisted HTTP Terminator Finds Novel HTTP Desync Techniques and Apache Zero-Day</title>
-      <link>https://thehackernews.com/2026/08/ai-assisted-http-terminator-finds-novel.html</link>
-      <description>PortSwigger says HTTP Terminator, an artificial intelligence (AI)-assisted research system built by James Kettle, generated and proved new HTTP desynchronization techniques after exploring 30,000 candidate desync vectors.
-PortSwigger said a separate human-guided discovery cascade also exposed a zero-day in Apache Traffic Server. Kettle said HTTP Terminator tested 30,000 websites where</description>
-      <guid isPermaLink="false">6a006763a60438aefd52baf32b13b3c5d6e54ce29c196f99b83256ecfdf6250a</guid>
-      <pubDate>Fri, 07 Aug 2026 10:09:54 +0000</pubDate>
-    </item>
-    <item>
-      <title>Static analyzer for Flutter/Dart AOT snapshots — recovers function names, class hierarchies, call graphs, and behavioral signals from libapp.so without embedding or executing the Dart VM. Supports ARM64 and x86_64, Dart 2.10–3.12.</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vhw5cw/static_analyzer_for_flutterdart_aot_snapshots/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Aggravating-Band4659"&gt; /u/Aggravating-Band4659 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/BroNils/aotopsy"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vhw5cw/static_analyzer_for_flutterdart_aot_snapshots/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">2e4cf1e7ee378d8dd62be5c56c21bbea432dc704ed81fc41fe8dd8d779b588c4</guid>
-      <pubDate>Fri, 07 Aug 2026 09:48:21 +0000</pubDate>
-    </item>
-    <item>
-      <title>Malware Can Abuse Windows Hello for Business Keys for Persistent Entra ID Access</title>
-      <link>https://thehackernews.com/2026/08/malware-can-abuse-windows-hello-for.html</link>
-      <description>Entra ID researcher Dirk-jan Mollema demonstrated that malware already running in a signed-in Windows session can silently use the victim's Windows Hello for Business key to authenticate to Microsoft Entra ID.
-The attacker can then establish longer-term cloud access, register a device it controls, obtain a Primary Refresh Token (PRT), and add further authentication methods where tenant policies</description>
-      <guid isPermaLink="false">37e207e1b355076e034d8bb7a70ba74c14bba41c7d7da452f7d37261c98a3058</guid>
-      <pubDate>Fri, 07 Aug 2026 08:52:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>Claude Code and Gemini CLI Flaws Let a GitHub Issue Reach CI Workflow Secrets</title>
-      <link>https://thehackernews.com/2026/08/claude-code-and-gemini-cli-flaws-let.html</link>
-      <description>A GitHub issue opened by an account with no repository privileges was enough to execute code on the CI runners behind Anthropic's and Google's own coding-agent repositories. On OpenAI's, it was enough to hijack the next agent run.
-Novee Security ran the attack against each vendor's agent in the configuration that the vendor ships by default, and presented the work at Black Hat USA on August 5.</description>
-      <guid isPermaLink="false">008c715ca8aa9750c9b0330951caadf937ff8316f910a275d935eba54e922f7b</guid>
-      <pubDate>Fri, 07 Aug 2026 08:18:35 +0000</pubDate>
-    </item>
-    <item>
-      <title>TeamPCP Linked To Redis Attacks Dating Back To 2020 And Later Supply Chain Campaign</title>
-      <link>https://thehackernews.com/2026/08/teampcp-linked-to-redis-attacks-dating.html</link>
-      <description>A new analysis has uncovered that the threat actor tracked as TeamPCP has been active on the cybercrime scene as far back as 2020, indicating the group has been compromising internet-facing infrastructure for years before training their sights on the software supply chain.
-"The connection is supported by overlapping domains, malware deployment paths, staging techniques, backend infrastructure,</description>
-      <guid isPermaLink="false">b3e75cfc1b71ca1b36fda85491959765241fd4048592a9f9891aa41137e3a733</guid>
-      <pubDate>Fri, 07 Aug 2026 06:50:05 +0000</pubDate>
-    </item>
-    <item>
-      <title>The Binary Hiding in Your Registry: Cracking Windows UCPD's Dynamic Rules</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vhct3j/the_binary_hiding_in_your_registry_cracking/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Psifertex"&gt; /u/Psifertex &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://binary.ninja/2026/08/04/ucpd-dynamic-rules.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vhct3j/the_binary_hiding_in_your_registry_cracking/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">ecc7fbe16ea4ed2b1dfdb60365a9edb3670373f1ae2d4e66e92f3a7607f693e6</guid>
-      <pubDate>Thu, 06 Aug 2026 18:39:32 +0000</pubDate>
-    </item>
-    <item>
-      <title>New Zapscape KVM Flaw Could Let Privileged L1 Guest Code Escape to Linux Hosts</title>
-      <link>https://thehackernews.com/2026/08/new-zapscape-kvm-flaw-could-let.html</link>
-      <description>Zapscape, a new Linux kernel vulnerability, could allow an attacker with kernel privileges inside an L1 guest virtual machine (VM) to escape KVM isolation and execute code on the host. The risk applies when nested virtualization is exposed to untrusted guests.
-The flaw is tracked as&amp;nbsp;CVE-2026-64561&amp;nbsp;and affects KVM/x86's shadow memory management unit (MMU), which manages shadow page</description>
-      <guid isPermaLink="false">26cc7c3f81c254e60f22907fd3d3c8be1b989b425c026a8fac985cb8ff9925d2</guid>
-      <pubDate>Thu, 06 Aug 2026 17:58:30 +0000</pubDate>
-    </item>
-    <item>
-      <title>Cisco Patches 12 SD-WAN and IOS XE Flaws, Including Three 9.9 CVSS Score Bugs</title>
-      <link>https://thehackernews.com/2026/08/cisco-patches-12-sd-wan-and-ios-xe.html</link>
-      <description>Cisco has rolled out updates to address multiple critical security vulnerabilities impacting Catalyst SD-WAN and IOS XE Software as part of a comprehensive internal security review.
-The security issues affect Cisco Catalyst SD-WAN Software, regardless of device configuration, and Cisco IOS XE Software when it is running in autonomous or controller mode.
-"These vulnerabilities were found</description>
-      <guid isPermaLink="false">ca0c0173a06739ed5f780a190c802d4450b537473b25291487b6d6c45fbfccb0</guid>
-      <pubDate>Thu, 06 Aug 2026 17:13:15 +0000</pubDate>
-    </item>
-    <item>
-      <title>New Interrupt Injection Attack Can Bypass Spectre v2 Defenses on Intel and AMD CPUs</title>
-      <link>https://thehackernews.com/2026/08/new-interrupt-injection-attack-can.html</link>
-      <description>An unprivileged Linux program can time a hardware interrupt to land in the gap between a processor sanitizing its branch predictor and the kernel using it, re-poisoning the predictor after the defense has run.
-MIT CSAIL researchers Daniël Trujillo and Mengjia Yan named the technique INTERRUPT INJECTION. On an AMD Zen 2 machine running Linux 6.14 with every default Spectre v2 mitigation on,</description>
-      <guid isPermaLink="false">d85c352604bc5fd0023b3daa9a8eff279364180c94f68fecc9973410ad9d205b</guid>
-      <pubDate>Thu, 06 Aug 2026 16:17:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>Reverse engineered the DualSense PS5 USB protocol from a Raspberry Pi 5 (topology, report map, auth handshake) — write-up + PoC</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vh6bwp/reverse_engineered_the_dualsense_ps5_usb_protocol/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/DESTRUCTION-ITA2"&gt; /u/DESTRUCTION-ITA2 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/ShadowByteOS/dualsense-ps5-usb-research"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vh6bwp/reverse_engineered_the_dualsense_ps5_usb_protocol/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">38e9a1ba4751c98f314301a583e4c61eb479ecb37b42e0caf97753d9295034d3</guid>
-      <pubDate>Thu, 06 Aug 2026 14:47:02 +0000</pubDate>
-    </item>
-    <item>
-      <title>Over 4,400 Rockwell PLCs Exposed Online, 22 Found in Water Attack Cities</title>
-      <link>https://thehackernews.com/2026/08/over-4400-rockwell-plcs-exposed-online.html</link>
-      <description>Forescout found 22 internet-facing Rockwell Automation programmable logic controllers (PLCs) in cities hit by recent cyberattacks on US water utilities. Nineteen used the same mobile carrier network.
-Its August 3 scan counted 4,407 exposed Rockwell controllers worldwide, including 2,844 in the United States, but Forescout could not confirm any were compromised. That figure counts exposed</description>
-      <guid isPermaLink="false">afb2501641e45eb4f9cf3f11055895e6fc014e68d1a2ba5931a6541a963656fb</guid>
-      <pubDate>Thu, 06 Aug 2026 12:16:58 +0000</pubDate>
-    </item>
-    <item>
-      <title>CryptoJS Weak RNG Behind $5.7 Million in Drains Affects Five Crypto Wallet Apps</title>
-      <link>https://thehackernews.com/2026/08/cryptojs-weak-rng-behind-57-million-in.html</link>
-      <description>Coinspect has identified CryptoJS.lib.WordArray.random() as the weak random number generator behind the Ill Bloom wallet drains.
-Introduced in the JavaScript cryptography library 12 years ago, the function supplied weak entropy that affected wallet apps used to generate recovery phrases. Coinspect's on-chain analysis puts the measured theft across two sweeps since late May at a lower bound of</description>
-      <guid isPermaLink="false">b0bcfe553b41da1a2192486902d003228349687faf1abdedc518ed53b2d23a28</guid>
-      <pubDate>Thu, 06 Aug 2026 11:49:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>Apple iCloud Private Relay Can Expose Real IPs Through WebKit Proxy Bypasses</title>
-      <link>https://thehackernews.com/2026/08/webkit-proxy-bypasses-can-expose-real.html</link>
-      <description>Cybersecurity researchers have disclosed a security issue with Apple's iCloud Private Relay tool that can expose a user's real IP address.
-Introduced with iOS 15, iCloud Private Relay employs a dual-hop architecture to ensure users' privacy by routing their Safari web traffic through two relays so that no single third-party, including Apple, can determine where the request is originating from</description>
-      <guid isPermaLink="false">39c1ce43817169149b80a56c280cc6a4148acfaae28a028ba60fa4efab8cbec1</guid>
-      <pubDate>Thu, 06 Aug 2026 11:33:08 +0000</pubDate>
-    </item>
-    <item>
-      <title>AI Recommendation Poisoning: How "Ask AI" Buttons Silently Alter LLM Memory</title>
-      <link>https://thehackernews.com/2026/08/ai-recommendation-poisoning-how-ask-ai.html</link>
-      <description>A new class of prompt injection is spreading across commercial websites. It requires no malware, no stolen credentials, and no zero-day exploit. It abuses a standard feature built into almost every major AI assistant: pre-filled deep links.
-We observed production websites embedding hidden prompt injection payloads inside "Ask AI" buttons on marketing and competitor comparison pages. When a user</description>
-      <guid isPermaLink="false">db0b711951635e6ab6fec7c08892b92df91b7d28aa87a1b39a9dbe4f97868e57</guid>
-      <pubDate>Thu, 06 Aug 2026 11:30:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>The Cipher Behind QSYRUPWD: Reconstructing IBM i Password Hashes</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vh1cjx/the_cipher_behind_qsyrupwd_reconstructing_ibm_i/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/tnavda"&gt; /u/tnavda &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://blog.silentsignal.eu/2026/07/28/the-cipher-behind-qsyrupwd-reconstructing-ibm-i-password-hashes/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vh1cjx/the_cipher_behind_qsyrupwd_reconstructing_ibm_i/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">7f5e1e09e43ef8589b5dd131d76db4cd9a7f812ead90c414eed0bb6cdb36bb08</guid>
-      <pubDate>Thu, 06 Aug 2026 11:17:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Compile khunt Inside Oracle to Turn SQL Injection Into Windows SYSTEM Access</title>
-      <link>https://thehackernews.com/2026/08/attackers-compile-khunt-inside-oracle.html</link>
-      <description>Attackers broke into an organization's Oracle database through a SQL injection flaw in a public-facing web application, then installed a post-exploitation toolkit without writing an executable to disk. They fed Java source code to the database, let Oracle compile it into stored schema objects, and ran commands from inside the database engine.
-Huntress, which tracks the toolkit as khunt,</description>
-      <guid isPermaLink="false">02a898f83cdc62763ce6c3e8609ae545450cefb7eb60552d17e308f0130ec41e</guid>
-      <pubDate>Thu, 06 Aug 2026 09:19:23 +0000</pubDate>
-    </item>
-    <item>
-      <title>AWS, Google, and Vercel Agent Flaws Let Attackers Trigger Tools Without Running the Model</title>
-      <link>https://thehackernews.com/2026/08/aws-google-and-vercel-patch-agent-flaws.html</link>
-      <description>Security flaws in agent infrastructure from Amazon Web Services (AWS), Google, and Vercel let untrusted or forged instructions reach an agent's tools with no check that a model turn had authorized them.
-In several of the attack paths, the model never ran at all, so system prompts, content filters, and model-level guardrails never got a chance to intervene.
-The affected products include Amazon</description>
-      <guid isPermaLink="false">ef3343e6f4b87210a0f743354415c285166a52eff43043b72cfb6a35e40baaaf</guid>
-      <pubDate>Thu, 06 Aug 2026 08:57:30 +0000</pubDate>
-    </item>
-    <item>
-      <title>Chinese-Made Zbtlink Routers Ship With Backdoor That Opens Unauthenticated Root Shells</title>
-      <link>https://thehackernews.com/2026/08/chinese-made-zbtlink-routers-ship-with.html</link>
-      <description>Cybersecurity researchers have disclosed details of a "factory-shipped backdoor" implanted in at least 20 Chinese router models from Zbtlink.
-According to a new report from VulnCheck, the implant appears in all 21 firmware images currently available from Zbtlink that span more than 2 years. The backdoors are designed such that they start automatically and attempt to beacon to Chinese</description>
-      <guid isPermaLink="false">3df3ed2da0ca7f3b8d79fc3b3f24dcaf936cf36cdb8f2f67c82b33c2f4ca7b07</guid>
-      <pubDate>Thu, 06 Aug 2026 08:05:22 +0000</pubDate>
-    </item>
-    <item>
-      <title>Ransom Cartel Creator Gets 16 Years in Prison for Operating Ransomware-as-a-Service</title>
-      <link>https://thehackernews.com/2026/08/ransom-cartel-creator-gets-16-years-in.html</link>
-      <description>A federal judge in Alexandria, Virginia, sentenced Maksim Silnikau to 16 years in prison on August 5 for creating and running Ransom Cartel, the ransomware-as-a-service operation he stood up in 2021.
-Between 2021 and 2023, Ransom Cartel conspirators attacked at least 18 companies, including firms in California, New York and Nebraska, and others abroad, according to the Justice Department.</description>
-      <guid isPermaLink="false">d4c5c0394162d595a5af04b23b2ec76b7847f1547bad74b733e03bdc62270d93</guid>
-      <pubDate>Thu, 06 Aug 2026 07:19:54 +0000</pubDate>
-    </item>
-    <item>
-      <title>CISA Flags TeamCity CVE-2026-63077 RCE Flaw Under Active Exploitation in the Wild</title>
-      <link>https://thehackernews.com/2026/08/cisa-flags-teamcity-cve-2026-63077-rce.html</link>
-      <description>A newly patched security flaw impacting on-premise versions of JetBrains TeamCity has come under active exploitation in the wild, according to the U.S. Cybersecurity and Infrastructure Security Agency (CISA).
-The vulnerability in question is CVE-2026-63077 (CVSS score: 9.8), a case of deserialization of untrusted data that could allow an unauthenticated attacker with access to a TeamCity server</description>
-      <guid isPermaLink="false">f5db1194771c2fe2bf43b7a8d72a575189172f30fd649e9f326b9212dee35637</guid>
-      <pubDate>Thu, 06 Aug 2026 06:51:43 +0000</pubDate>
-    </item>
-    <item>
-      <title>Snowflake Hacker Pleads Guilty Over Breaches Affecting at Least 100 Million People</title>
-      <link>https://thehackernews.com/2026/08/snowflake-hacker-pleads-guilty-over.html</link>
-      <description>Connor Riley Moucka pleaded guilty in Seattle federal court on Wednesday to computer fraud, wire fraud, aggravated identity theft and a related conspiracy over the 2024 breaches of Snowflake customer accounts.
-The intrusions reached at least 165 organizations and exposed records belonging to at least 100 million people. Moucka, 26, of Kitchener, Ontario, personally took at least $495,000 from</description>
-      <guid isPermaLink="false">bcd2e32fd390393a8570fa36725d7d23f76bca9f78ad6f667542aff984e4ca6c</guid>
-      <pubDate>Thu, 06 Aug 2026 06:04:30 +0000</pubDate>
-    </item>
-    <item>
-      <title>Over 250 ClickFix Domains Use Browser Fingerprinting to Hide macOS Malware Lures</title>
-      <link>https://thehackernews.com/2026/08/over-250-clickfix-domains-use-browser.html</link>
-      <description>A macOS ClickFix operation spanning more than 250 front-end domains now fingerprints visitors before deciding whether to show them a malware lure, a change Microsoft Threat Intelligence tracked on infrastructure it had been watching for weeks.
-The server-side gate hides the malicious page from crawlers and sandboxes while presenting selected Mac users with a fake software download. Microsoft</description>
-      <guid isPermaLink="false">2e80fdd6ecd8667dea8ffd12f576444b5530f8e27e77ac2c84e8286eff8c536c</guid>
-      <pubDate>Wed, 05 Aug 2026 18:44:31 +0000</pubDate>
-    </item>
-    <item>
-      <title>OpenAI Disrupts Poipet Scam Network Using ChatGPT Across Multiple Fraud Schemes</title>
-      <link>https://thehackernews.com/2026/08/openai-disrupts-poipet-scam-network.html</link>
-      <description>OpenAI said it disrupted a Cambodia-based scam operation that used its generative artificial intelligence (AI) chatbot ChatGPT to facilitate a wide range of investment, romance, gambling, and law enforcement impersonation schemes.
-To that end, it banned a coordinated network of ChatGPT accounts likely originating from Southeast Asia and operating from the city of Poipet, a region with extensive</description>
-      <guid isPermaLink="false">a10ba3627b51b549d9bf5f8c4159911826188051b718eec894290e82fc366001</guid>
-      <pubDate>Wed, 05 Aug 2026 18:33:47 +0000</pubDate>
-    </item>
-    <item>
-      <title>LockBit string deobfuscation: affine cipher DLL loading reversed with Ghidra</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vgc1dv/lockbit_string_deobfuscation_affine_cipher_dll/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/AldairMaihuiri"&gt; /u/AldairMaihuiri &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://ginomaihuiri.github.io/lockbit-string-deobfuscation"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vgc1dv/lockbit_string_deobfuscation_affine_cipher_dll/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">51bd882f80ae9bbb4f9cc7d3f6d8dfb4c07d07a82a36abca440633ab6aa0cece</guid>
-      <pubDate>Wed, 05 Aug 2026 16:20:17 +0000</pubDate>
-    </item>
-    <item>
-      <title>Poison Claude Sells Discounted Claude Access While Its Operator Sees Every Customer Prompt</title>
-      <link>https://thehackernews.com/2026/08/poison-claude-sells-discounted-claude.html</link>
-      <description>Cybersecurity researchers have discovered more than half-a-dozen services advertisements for illegal access to artificial intelligence (AI) models on underground cybercrime forums and messaging platforms.
-One such service, Poison Claude, claims to offer access to Anthropic's large language models (LLMs), including Opus 4.8, Opus 4.7, Opus 4.6, and Sonnet 4.6.
-"Advertisements for Poison Claude</description>
-      <guid isPermaLink="false">bb800ebdc035c073075b1027bb86302ffd36e78d4dcc5fb63ffedb246f45016c</guid>
-      <pubDate>Wed, 05 Aug 2026 15:36:03 +0000</pubDate>
-    </item>
-    <item>
-      <title>Paperclip AI Flaws Let Attackers Run Host Commands via Malicious Agent Imports</title>
-      <link>https://thehackernews.com/2026/08/paperclip-ai-flaws-let-attackers-run.html</link>
-      <description>Two security flaws in Paperclip could let attackers execute commands on a network server or a developer's computer. Paperclip is an open-source control plane for teams of artificial intelligence (AI) agents, and both paths rely on importing a malicious agent and starting it.
-A third flaw could expose sensitive data and control-plane details through application programming interface (API) routes</description>
-      <guid isPermaLink="false">f73b7f9ded69f6f205f83321e09d9cd6a34e50f3794ea55524ce6529f448f6e9</guid>
-      <pubDate>Wed, 05 Aug 2026 15:14:05 +0000</pubDate>
-    </item>
-    <item>
-      <title>Veeam, Terraform MCP, Django Patch Critical Flaws, Led by CVSS 10.0 Cross-Tenant Bug</title>
-      <link>https://thehackernews.com/2026/08/veeam-terraform-mcp-django-patch.html</link>
-      <description>HashiCorp, Veeam, and the Django Software Foundation have patched 11 vulnerabilities across Terraform MCP Server, Veeam Service Provider Console, and Django.
-The three most serious:
-  An unauthenticated flaw in Veeam's console that hands over a managed agent's credentials, rated 9.5
-  A cross-tenant flaw in HashiCorp's MCP server that lets one user's Terraform token be reused for later users'</description>
-      <guid isPermaLink="false">f5d68be54e7459264d99faab6f8b5b6a6199e74b3419e5148b249bf3e69bccd3</guid>
-      <pubDate>Wed, 05 Aug 2026 14:27:30 +0000</pubDate>
-    </item>
-    <item>
-      <title>Trojanized npm Packages Employ NullReceiver Tactic to Decode C2 IP from Blockchain</title>
-      <link>https://thehackernews.com/2026/08/trojanized-npm-packages-decode-c2-ip.html</link>
-      <description>Cybersecurity researchers have flagged an evolution of the EtherHiding blockchain-based command-and-control (C2) technique that conceals the C2 server IP address inside a made-up destination address of a completely empty Ethereum transfer.
-The new dead drop resolver approach, observed in two trojanized npm packages "bianira-ui" and "fluid-type-ui," has been codenamed NullReceiver by</description>
-      <guid isPermaLink="false">c9a89787fcd9b569645a2105261adcca22da6b578470f8318f0d4c880f5bbb66</guid>
-      <pubDate>Wed, 05 Aug 2026 13:41:27 +0000</pubDate>
-    </item>
-    <item>
-      <title>New OVSwrap Linux Kernel Flaw Lets Local Users Gain Root via Open vSwitch</title>
-      <link>https://thehackernews.com/2026/08/new-ovswrap-linux-kernel-flaw-lets.html</link>
-      <description>A memory corruption flaw in the Linux kernel's Open vSwitch datapath gives ordinary local users a path to root on a broad set of default-configured distributions, and a public exploit ships with pre-built records for roughly 800 kernel builds.
-The vulnerability, tracked as CVE-2026-64531 (CVSS score: 7.8) and codenamed OVSwrap by its discoverer, was disclosed by security researcher Asim</description>
-      <guid isPermaLink="false">d07100e0047460a2a64048bb2ebf1cd18e4b322c7707e4500d170a381a602fa3</guid>
-      <pubDate>Wed, 05 Aug 2026 11:43:27 +0000</pubDate>
-    </item>
-    <item>
-      <title>Kali365 Weaponizes Microsoft Authentication Against US Companies: New Enterprise Risk</title>
-      <link>https://thehackernews.com/2026/08/kali365-weaponizes-microsoft.html</link>
-      <description>Kali365 is turning a legitimate Microsoft login into a gateway to corporate data.
-The phishing kit targets US organizations with attacker-controlled device codes that victims approve on Microsoft's real authentication page. Once access and refresh tokens are issued, attackers may retain access to email, documents, and cloud resources, creating a direct path to data exposure, financial fraud,</description>
-      <guid isPermaLink="false">151b3d525eb522a35e7fb56aa7dc7231d5eb6a95838763ab96fd6c692a4fbfc8</guid>
-      <pubDate>Wed, 05 Aug 2026 11:43:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>Critical Gitea Flaw Let Unauthenticated Attackers Read Server Files via Org-Mode Markup</title>
-      <link>https://thehackernews.com/2026/08/critical-gitea-flaw-let-unauthenticated.html</link>
-      <description>An unauthenticated attacker can read any file the service account can access on Gitea, the self-hosted Git platform, in versions 1.22.1 through 1.27.0. No login, no repository write access. A public repository and crafted Org-mode markup are enough. The flaw is fixed in Gitea 1.27.1.
-The file-read flaw is tracked as CVE-2026-59774, rated Critical with a CVSS score of 9.8, and received its</description>
-      <guid isPermaLink="false">db75fef1f60f1d487a35cbc590b52f7224e27d87372c6c55991e904b756c17a6</guid>
-      <pubDate>Wed, 05 Aug 2026 11:04:23 +0000</pubDate>
-    </item>
-    <item>
-      <title>Leaked n8n API Tokens Exposed Live Instances to Credential Theft</title>
-      <link>https://thehackernews.com/2026/08/leaked-n8n-api-tokens-exposed-live.html</link>
-      <description>GitGuardian researchers found 321 n8n instances accepting API tokens exposed in public GitHub commits and demonstrated four ways attackers could use them to access sensitive data and downstream credentials without exploiting a software vulnerability.
-We scanned public GitHub commits for exposed n8n API tokens and identified 4,576 unique credentials associated with 1,255 hostnames. Of the 896</description>
-      <guid isPermaLink="false">bc4a451223c068276ecd4b498467cef50595a11e5fe90f4601bf8db2f62a2d34</guid>
-      <pubDate>Wed, 05 Aug 2026 10:35:29 +0000</pubDate>
-    </item>
-    <item>
-      <title>Open VSX Removes 77 Malicious Evil Twin Extensions Exfiltrating Developer Data</title>
-      <link>https://thehackernews.com/2026/08/open-vsx-removes-77-malicious-evil-twin.html</link>
-      <description>A cluster of 77 extensions on the Open VSX marketplace has been found to impersonate legitimate developer tools while transmitting information about the systems and development environments on which they were installed.
-The "evil twin" extensions were uploaded to the repository between July 26 and August 1, 2026, according to Manifold Security. The packages have been removed from Open VSX as of</description>
-      <guid isPermaLink="false">a59f82bbe84e3ebdc875e9795ad5d61c8498ffe01ea1e0f25a0e238008a7d4f9</guid>
-      <pubDate>Wed, 05 Aug 2026 09:23:03 +0000</pubDate>
-    </item>
-    <item>
-      <title>Full read and write control of a Daikin VAM heat-recovery ventilation unit over the P1/P2 bus, using an Arduino Uno registered as a genuine BRC301B61-compatible slave controller.</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vg1f8u/full_read_and_write_control_of_a_daikin_vam/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Witty_Initial4890"&gt; /u/Witty_Initial4890 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/scavenrage/Daikin-VAM-P1P2-SlaveController"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vg1f8u/full_read_and_write_control_of_a_daikin_vam/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">439cc0bfb602271d19b825e9778fb011bfd9a6b8827c9d0aae486b271b0733dc</guid>
-      <pubDate>Wed, 05 Aug 2026 08:28:51 +0000</pubDate>
-    </item>
-    <item>
-      <title>Troubleshooting slow PostgreSQL queries</title>
-      <link>https://prefetch.net/blog/2026/06/08/troubleshooting-slow-postgresql-queries/</link>
-      <description>With modern distributed systems performance issues can surface in unexpected ways. When it comes to database servers like PostgreSQL issues can surface as slow pages, API calls timing out, jobs not completing, or users saying that the application is "slow". These issues usually occur at 4AM, so having a good debugging methodology (and lots of coffee) baked into your brain can help with speedy remediation. The hard part is that these problems often look the same from the outside: the site is slow and nobody knows why yet…</description>
-      <guid isPermaLink="false">fa6c5958648a39338a8ac79182f26d15870e175f45b2caee94a2021796fc94e5</guid>
-      <pubDate>Mon, 08 Jun 2026 12:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>
