@@ -5,7 +5,130 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Mon, 07 Sep 2026 14:03:20 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 08 Sep 2026 14:01:37 +0000</lastBuildDate>
+    <item>
+      <title>Graham Dumpleton: Zero-code tracing with wrapture - Planet Python</title>
+      <link>https://grahamdumpleton.me/posts/2026/09/zero-code-tracing-with-wrapture/</link>
+      <description>&lt;p&gt;The &lt;a href="https://grahamdumpleton.me/posts/2026/09/live-tracing-with-wrapture/"&gt;previous post&lt;/a&gt; traced the shop with three bindings and a sink, all applied from the program's own entry point. That is fine when the program is yours. It is less fine when the application is one you inherited and would rather not touch, when someone else owns the deployment, or when you simply do not want observation code living inside the thing being observed. For all of those the entry point edit is one edit too many.&lt;/p&gt;
+&lt;p&gt;The same setup can live in a file next to the project instead, with nothing in the program saying so.&lt;/p&gt;
+&lt;h2&gt;The file&lt;/h2&gt;
+&lt;p&gt;A &lt;code&gt;wrapture.toml&lt;/code&gt; says what to observe and where the events go. For the shop from last time, with the card number redacted as before, that is one &lt;code&gt;[[observe]]&lt;/code&gt; entry per method and one sink:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[[observe]]
+target = &amp;quot;shop:OrderService&amp;quot;
+name = &amp;quot;place&amp;quot;
+redact = [&amp;quot;card&amp;quot;]
+[[observe]]
+target = &amp;quot;shop:Gateway&amp;quot;
+name = &amp;quot;charge&amp;quot;
+redact = [&amp;quot;card&amp;quot;]
+[[observe]]
+target = &amp;quot;shop:Ledger&amp;quot;
+name = &amp;quot;record&amp;quot;
+[[sink]]
+type = &amp;quot;printer&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;target&lt;/code&gt; is always an exact module or &lt;code&gt;module:path&lt;/code&gt;, never a pattern, and the members within it come from &lt;code&gt;name&lt;/code&gt; for exact members or &lt;code&gt;match&lt;/code&gt; for a glob over the target's own immediate members. That is deliberate. A pattern's blast radius is one level of one named container, stated on the line above it, so &lt;code&gt;match = &amp;quot;*&amp;quot;&lt;/code&gt; on &lt;code&gt;shop:OrderService&lt;/code&gt; can never accidentally wrap something in another module.&lt;/p&gt;
+&lt;p&gt;The program itself is &lt;code&gt;main.py&lt;/code&gt;, and it now contains no mention of wrapture at all:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;import orders
+orders.run()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;python -m wrapture&lt;/code&gt; runner applies the config and then runs the program as &lt;code&gt;__main__&lt;/code&gt;, the same &lt;code&gt;-m&lt;/code&gt; convention as pdb, cProfile and coverage:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ python -m wrapture main.py
+shop:OrderService.place(amount=500, card='&amp;lt;redacted&amp;gt;', tenant='acme')
+  shop:Gateway.charge(amount=500, card='&amp;lt;redacted&amp;gt;')
+  shop:Gateway.charge -&amp;gt; {'id': 'ch_500', 'amount': 500} [8us]
+  shop:Ledger.record(entry={'id': 'ch_500', 'amount': 500})
+  shop:Ledger.record -&amp;gt; 'led_ch_500' [7us]
+shop:OrderService.place -&amp;gt; {'id': 'ch_500', 'amount': 500} [285us]
+shop:OrderService.place(amount=250, card='&amp;lt;redacted&amp;gt;', tenant='globex')
+  shop:Gateway.charge(amount=250, card='&amp;lt;redacted&amp;gt;')
+  shop:Gateway.charge !! CardDeclined [6us]
+shop:OrderService.place !! CardDeclined [90us]
+shop:OrderService.place(amount=120, card='&amp;lt;redacted&amp;gt;', tenant='globex')
+  shop:Gateway.charge(amount=120, card='&amp;lt;redacted&amp;gt;')
+  shop:Gateway.charge -&amp;gt; {'id': 'ch_120', 'amount': 120} [4us]
+  shop:Ledger.record(entry={'id': 'ch_120', 'amount': 120})
+  shop:Ledger.record -&amp;gt; 'led_ch_120' [4us]
+shop:OrderService.place -&amp;gt; {'id': 'ch_120', 'amount': 120} [115us]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That is the same trace as before, from a program whose source has not changed. The ordering is what makes it work. The config is applied before the target runs, but applying it imports nothing: each observe entry registers a post-import hook for its target module, and the bindings land at the moment the application itself imports &lt;code&gt;shop&lt;/code&gt;, in the application's own import order. A &lt;code&gt;from shop import OrderService&lt;/code&gt; somewhere in the program still picks up the observed class, because the observation is already in place when that line runs, and the program's import order is never changed by observing it.&lt;/p&gt;
+&lt;h2&gt;Keeping the trace&lt;/h2&gt;
+&lt;p&gt;A printer is for watching. For a program that runs longer than you are willing to sit and look at it, the sink is a file. Swapping the &lt;code&gt;[[sink]]&lt;/code&gt; entry for a JSON Lines one is the only change:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[[sink]]
+type = &amp;quot;jsonlines&amp;quot;
+path = &amp;quot;trace.jsonl&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Each completed event is written as one JSON object per line, when the event closes, so every line carries the outcome and the timing. The declined charge from the second order looks like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-json"&gt;{
+  &amp;quot;seq&amp;quot;: 5,
+  &amp;quot;parent_id&amp;quot;: 4,
+  &amp;quot;depth&amp;quot;: 1,
+  &amp;quot;kind&amp;quot;: &amp;quot;call&amp;quot;,
+  &amp;quot;path&amp;quot;: &amp;quot;shop:Gateway.charge&amp;quot;,
+  &amp;quot;thread_id&amp;quot;: 140704287927360,
+  &amp;quot;thread_name&amp;quot;: &amp;quot;MainThread&amp;quot;,
+  &amp;quot;started&amp;quot;: 1150729.898723529,
+  &amp;quot;duration&amp;quot;: 0.000004197005182504654,
+  &amp;quot;arguments&amp;quot;: {
+    &amp;quot;amount&amp;quot;: 250,
+    &amp;quot;card&amp;quot;: &amp;quot;&amp;lt;redacted&amp;gt;&amp;quot;
+  },
+  &amp;quot;exception&amp;quot;: {
+    &amp;quot;type&amp;quot;: &amp;quot;CardDeclined&amp;quot;,
+    &amp;quot;message&amp;quot;: &amp;quot;card ending 0000 declined&amp;quot;
+  },
+  &amp;quot;trace&amp;quot;: {
+    &amp;quot;w3c&amp;quot;: {
+      &amp;quot;trace_id&amp;quot;: &amp;quot;12cd461196239288a8b50e265b6a0f1a&amp;quot;,
+      &amp;quot;sampled&amp;quot;: true
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;seq&lt;/code&gt; and &lt;code&gt;parent_id&lt;/code&gt; fields are enough to rebuild the tree, and a field that is absent means it was not captured, so a call that returned &lt;code&gt;None&lt;/code&gt; and a call whose result was never recorded stay distinguishable. The format is the one that &lt;code&gt;jq&lt;/code&gt;, pandas and most log tooling read directly, which means the questions I would otherwise have scrolled a terminal to answer become one-liners. Every call to the gateway, with what it was given and what came back:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ jq -c 'select(.path | endswith(&amp;quot;Gateway.charge&amp;quot;)) | {seq, arguments, result, exception}' trace.jsonl
+{&amp;quot;seq&amp;quot;:2,&amp;quot;arguments&amp;quot;:{&amp;quot;amount&amp;quot;:500,&amp;quot;card&amp;quot;:&amp;quot;&amp;lt;redacted&amp;gt;&amp;quot;},&amp;quot;result&amp;quot;:{&amp;quot;id&amp;quot;:&amp;quot;ch_500&amp;quot;,&amp;quot;amount&amp;quot;:500},&amp;quot;exception&amp;quot;:null}
+{&amp;quot;seq&amp;quot;:5,&amp;quot;arguments&amp;quot;:{&amp;quot;amount&amp;quot;:250,&amp;quot;card&amp;quot;:&amp;quot;&amp;lt;redacted&amp;gt;&amp;quot;},&amp;quot;result&amp;quot;:null,&amp;quot;exception&amp;quot;:{&amp;quot;type&amp;quot;:&amp;quot;CardDeclined&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;card ending 0000 declined&amp;quot;}}
+{&amp;quot;seq&amp;quot;:7,&amp;quot;arguments&amp;quot;:{&amp;quot;amount&amp;quot;:120,&amp;quot;card&amp;quot;:&amp;quot;&amp;lt;redacted&amp;gt;&amp;quot;},&amp;quot;result&amp;quot;:{&amp;quot;id&amp;quot;:&amp;quot;ch_120&amp;quot;,&amp;quot;amount&amp;quot;:120},&amp;quot;exception&amp;quot;:null}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And everything that raised, which shows the exception at the gateway and again at the order that let it escape:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ jq -c 'select(.exception) | {path, exception}' trace.jsonl
+{&amp;quot;path&amp;quot;:&amp;quot;shop:Gateway.charge&amp;quot;,&amp;quot;exception&amp;quot;:{&amp;quot;type&amp;quot;:&amp;quot;CardDeclined&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;card ending 0000 declined&amp;quot;}}
+{&amp;quot;path&amp;quot;:&amp;quot;shop:OrderService.place&amp;quot;,&amp;quot;exception&amp;quot;:{&amp;quot;type&amp;quot;:&amp;quot;CardDeclined&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;card ending 0000 declined&amp;quot;}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Two properties make this safe to leave running against something real. The application never waits on the file: lines go onto a bounded queue drained by a background thread, and if the queue fills the line is dropped and counted rather than making the observed call block. And the sink captures values as bounded summaries, so an unserialisable argument becomes a short description rather than an error, and no live object is retained. For a process that runs for days the path can carry a date or time variable and rotate on an interval; the &lt;a href="https://wrapture.readthedocs.io/en/latest/ad-hoc-tracing.html#output-paths-and-rotation"&gt;output paths section&lt;/a&gt; of the documentation has that. The file is also what the exporters read afterwards, so a trace recorded overnight can be rendered for Perfetto the next morning.&lt;/p&gt;
+&lt;h2&gt;No launcher at all&lt;/h2&gt;
+&lt;p&gt;The runner still owns the command line, and sometimes that is not available either. A service manager, a container entry point or a WSGI server starts the process and you do not get to put &lt;code&gt;python -m wrapture&lt;/code&gt; in front of it. For that case the same config can be injected at interpreter startup through &lt;a href="https://github.com/GrahamDumpleton/autowrapt"&gt;autowrapt&lt;/a&gt;, a package of mine from some years ago that exists precisely to run registered code once site initialisation completes. Two opt-ins gate it, both outside wrapture:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ pip install autowrapt
+$ AUTOWRAPT_BOOTSTRAP=wrapture python main.py
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The output is identical to the runner's. Installing autowrapt is what makes interpreter startup do anything at all, and the environment variable names wrapture as the thing to bootstrap. Absent either, the entry in wrapture's package metadata is inert, and wrapture itself has no dependency on autowrapt. Underneath, both doors lead to the same place: the post-import hook machinery in wrapt, which autowrapt was originally built on, is what lets wrapture apply a config to modules that have not been imported yet.&lt;/p&gt;
+&lt;p&gt;The positioning matters here. Injection is a development, staging and break-glass tool. The unwritten rule for autowrapt has always been that it is not installed on production systems in normal circumstances, precisely because of what it enables, and that installation gate is the feature. Production tracing is the code-level path from the previous post, or a config applied deliberately by the application at startup. Two consequences follow from the mechanism. A config that is missing, or that cannot be applied, warns and lets the process start untraced, because an error at bootstrap would be fatal to an interpreter that has not even started, and the environment variable reaches every Python process launched under it, not only the one you meant. And the bootstrap imports no application code, so bindings still land as the application imports its own modules.&lt;/p&gt;
+&lt;h2&gt;Operating a traced process&lt;/h2&gt;
+&lt;p&gt;Once injected, the process is still operable. The bootstrap keeps its record of what was applied on &lt;code&gt;wrapture.bootstrap.applied&lt;/code&gt;, and from a console, a debugger or a signal handler that record answers what is installed and lets you switch it off and on without a restart. Running the shop under &lt;code&gt;python -i&lt;/code&gt; so the interpreter drops to a prompt afterwards:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ AUTOWRAPT_BOOTSTRAP=wrapture python -i main.py
+...
+&amp;gt;&amp;gt;&amp;gt; import wrapture.bootstrap
+&amp;gt;&amp;gt;&amp;gt; applied = wrapture.bootstrap.applied
+&amp;gt;&amp;gt;&amp;gt; print(applied.report())
+sink: Printer()
+applied:
+  shop:OrderService.place
+  shop:Gateway.charge
+  shop:Ledger.record
+&amp;gt;&amp;gt;&amp;gt; applied.suspend()
+&amp;gt;&amp;gt;&amp;gt; import orders; orders.run()
+&amp;gt;&amp;gt;&amp;gt; applied.resume()
+&amp;gt;&amp;gt;&amp;gt; orders.run()
+shop:OrderService.place(amount=500, card='&amp;lt;redacted&amp;gt;', tenant='acme')
+  shop:Gateway.charge(amount=500, card='&amp;lt;redacted&amp;gt;')
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;While suspended, the wrappers stay in place and the calls pass straight through, so the second &lt;code&gt;orders.run()&lt;/code&gt; printed nothing; after &lt;code&gt;resume()&lt;/code&gt; the third printed the full trace again. &lt;code&gt;revert()&lt;/code&gt; takes the whole intervention down, restoring the patched locations. The &lt;a href="https://wrapture.readthedocs.io/en/latest/ad-hoc-tracing.html#configuring-from-a-file"&gt;config section&lt;/a&gt; of the ad-hoc tracing page covers everything the file can say beyond what I have used here, including capturing log messages as events beside the calls, and naming instrumentation that a package ships for a framework.&lt;/p&gt;
+&lt;p&gt;That last one is where this goes next, because the shop is not really a program that runs three orders and exits. It is a web application, and a web application has a unit of work that a plain binding cannot see.&lt;/p&gt;</description>
+      <guid isPermaLink="false">9998affd14a4ca4fcf7364d1c278e0ff0177b4ba9ad85e1ff6e497895b065f9d</guid>
+      <pubDate>Tue, 08 Sep 2026 01:39:22 +0000</pubDate>
+    </item>
     <item>
       <title>Graham Dumpleton: Live tracing with wrapture - Planet Python</title>
       <link>https://grahamdumpleton.me/posts/2026/09/live-tracing-with-wrapture/</link>

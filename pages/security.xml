@@ -5,7 +5,79 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Mon, 07 Sep 2026 14:03:20 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 08 Sep 2026 14:01:37 +0000</lastBuildDate>
+    <item>
+      <title>WeChat Zero-Click Worm Took Over Accounts on iPhone and Android via Incoming Calls - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/wechat-zero-click-worm-took-over.html</link>
+      <description>Researchers at the security firm Calif have built a worm that takes over a WeChat account via an incoming call and&amp;nbsp;demonstrated it spreading&amp;nbsp;among three test phones.
+The person being called does not have to answer or touch their phone for it to work, but the caller must already be one of their WeChat contacts. Calif reported the flaw to Tencent in July and says the company has since</description>
+      <guid isPermaLink="false">958dda7a71200d7ee47c90feff1c4c8fb1894e2b77643cafe1300718fb92a85c</guid>
+      <pubDate>Tue, 08 Sep 2026 11:54:29 +0000</pubDate>
+    </item>
+    <item>
+      <title>What It Took to Reach 1 Billion Build Manifests - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/what-it-took-to-reach-1-billion-build.html</link>
+      <description>In the last six months, Chainguard doubled its output from 500 million to more than 1 billion container build manifests. We also surpassed 3,000 unique container images and 675,000 image versions in our catalog. Those are the headline numbers, but I want to share what's actually behind them. The number itself is less interesting than the system that produced it, and why we had to fundamentally</description>
+      <guid isPermaLink="false">c05c297eb0e0711234694f994403ca0c66ca167045af424faf2a6a5724c3c888</guid>
+      <pubDate>Tue, 08 Sep 2026 11:49:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeIPA Flaw Chain Lets Anonymous Clients Create Reusable Administrator Credentials - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/freeipa-flaw-chain-lets-anonymous.html</link>
+      <description>A flaw in FreeIPA lets a client that has never logged in create a Kerberos identity of its own choosing in the directory and end up in the administrators group, Red Hat says.
+FreeIPA is the system that determines who may log in across a Linux domain and maintains all identities in a 389 Directory Server database accessed via LDAP. The attack needs a second flaw in that database software.
+The</description>
+      <guid isPermaLink="false">05f84b13bf60a2367cba249082e14f01fe08ed116fe22f77f23748084517c93c</guid>
+      <pubDate>Tue, 08 Sep 2026 11:22:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>Adobe Patches Magento Zero-Day Exploited to Deploy Rust Backdoor and PHP Web Shell - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/adobe-patches-magento-zero-day.html</link>
+      <description>Adobe on Monday released security patches to address a maximum-severity flaw impacting Adobe Commerce and Magento Open Source that has come under active exploitation in the wild.
+The vulnerability, now tracked as CVE-2026-75650 (CVSS score: 10.0), has been codenamed StyleSmuggler by Sansec, which discovered zero-day exploitation starting September 4, 2026.
+"This update resolves a critical</description>
+      <guid isPermaLink="false">709313a78c30a3dbda8da9aa03d6c0353e77927380ffc31d4912dd886ac2a8d7</guid>
+      <pubDate>Tue, 08 Sep 2026 09:13:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>BengalSEO Poisons Bing Search Results to Deliver MayaBot and Tech Support Scams - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/bengalseo-poisons-bing-search-results.html</link>
+      <description>Cybersecurity researchers have disclosed details of a sprawling search engine optimization (SEO) poisoning campaign that paves the way for malware deployment and tech support scams.
+The campaign, discovered by the DFIR Report in March 2026, has been codenamed BengalSEO. It has operated out of the Indian state of Rajasthan since at least 2015, driven by two IT service providers named WeConnect</description>
+      <guid isPermaLink="false">49fa7550adbef9db602710a7c354f7415a85d33e8ff026628b81e8b9ad90d000</guid>
+      <pubDate>Tue, 08 Sep 2026 08:43:51 +0000</pubDate>
+    </item>
+    <item>
+      <title>Grindr to Pay £26 Million to Settle U.K. Claims Over HIV Status Data Sharing - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/grindr-to-pay-26-million-to-settle-uk.html</link>
+      <description>Online dating app Grindr has opted to pay £26 million ($35.1 million) to settle a lawsuit in the U.K. over allegations that it shared users' personal information, including their HIV status, with third-parties.
+Grindr, which is the largest LGBTQ+ dating app, was sued in April 2024, accusing it of violating U.K. privacy laws by sharing sensitive data for commercial purposes such as advertising.</description>
+      <guid isPermaLink="false">4f9c46dd15a17e8dcc1b5aad02cfd68743b90cd33a938a9d819b6057056ac7c0</guid>
+      <pubDate>Tue, 08 Sep 2026 07:00:43 +0000</pubDate>
+    </item>
+    <item>
+      <title>Bose Sleepbuds II: Reverse-engineered the full BLE file-transfer protocol (TUMBLE) — audio codec still unidentified - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wa486i/bose_sleepbuds_ii_reverseengineered_the_full_ble/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/xsigurdrifa"&gt; /u/xsigurdrifa &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/chillee151/SleepBuds2Revival"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wa486i/bose_sleepbuds_ii_reverseengineered_the_full_ble/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">a08d0cefe48163233693a3c71161246933d1d5b32f85811e7668b805b287c5c6</guid>
+      <pubDate>Mon, 07 Sep 2026 20:56:46 +0000</pubDate>
+    </item>
+    <item>
+      <title>PEEP Turns Chrome and Edge Into Post-Compromise Backdoors for Host Command Execution - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/peep-turns-chrome-and-edge-into-post.html</link>
+      <description>Cybersecurity researchers have disclosed details of a complex Chromium-based post-exploitation toolkit called PEEP that masquerades as a bookmarks extension for the web browser.
+"Requiring prior administrative or code execution access, its installer injects the extension directly into Chrome/Edge profiles, bypassing Web Store checks and user prompts by forging Chromium's own Secure Preferences</description>
+      <guid isPermaLink="false">c2bc5e1a80b0e0ed6e343595f4bd87a72f80bca45491b25786e992d5b01226a5</guid>
+      <pubDate>Mon, 07 Sep 2026 18:12:09 +0000</pubDate>
+    </item>
+    <item>
+      <title>Fake IT Calls Target Executives in Microsoft 365 Data Theft and Extortion Attacks - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/microsoft-365-attackers-use-help-desk.html</link>
+      <description>Threat hunters have disclosed details of a widespread data theft and extortion threat cluster that's targeting Microsoft 365 and other software-as-a-service (SaaS) offerings through information technology (IT) help desk vishing, adversary-in-the-middle (AitM) token theft, and residential-proxy sign-ins.
+The activity, which mainly singles out directors, vice presidents, and other executive staff</description>
+      <guid isPermaLink="false">e2397ba2ef3151aa57f9c3c085c120b5b8bef04237e5a85ac78dbd3fb775b52f</guid>
+      <pubDate>Mon, 07 Sep 2026 15:51:56 +0000</pubDate>
+    </item>
     <item>
       <title>Your Cloud Security Checklist Doesn't Work the Way You Think It Does - The Hacker News</title>
       <link>https://thehackernews.com/2026/09/your-cloud-security-checklist-doesnt.html</link>
@@ -31,6 +103,13 @@ Security firm TantoSec has published a working exploit chain targeting vulnerabi
       <pubDate>Mon, 07 Sep 2026 11:20:14 +0000</pubDate>
     </item>
     <item>
+      <title>DarkTortilla RAT – Telegram Exfiltration &amp; Payload Extraction - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w9ogyb/darktortilla_rat_telegram_exfiltration_payload/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/StructBreaker"&gt; /u/StructBreaker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/kaandemir993/DarkTortilla-RAT-Telegram-Exfiltration-Payload-Extraction-Analysis"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w9ogyb/darktortilla_rat_telegram_exfiltration_payload/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">a4ae8e699e5547f559159db0b1f4a0ee2d8810f3ad379e655de036914cac18e3</guid>
+      <pubDate>Mon, 07 Sep 2026 10:29:48 +0000</pubDate>
+    </item>
+    <item>
       <title>N-able Issues Fourth N-central Hotfix in Five Weeks for Unauthenticated RCE Flaw - The Hacker News</title>
       <link>https://thehackernews.com/2026/09/n-able-issues-fourth-n-central-hotfix.html</link>
       <description>Every on-premises N-central build below 2026.3.1.14 — including servers updated to Hotfix 3 a day earlier — needs Hotfix 4. N-able's incident notice says the flaw has been exploited in the wild; its release notes say that is unconfirmed.
@@ -52,6 +131,20 @@ N-able has released its&amp;nbsp;fourth hotfix&amp;nbsp;in five weeks for the N-
 "The payloads are protected with javascript-obfuscator, using multiple techniques including RC4-protected strings, control-flow flattening, proxy functions, and operation wrappers," Check Point Research said in a</description>
       <guid isPermaLink="false">62e773f5f7ac4f4a4b6d4ec99b214c4b3ea7a7d3d6ed76c6b3eeba9894f8bcbf</guid>
       <pubDate>Mon, 07 Sep 2026 07:53:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>It took 8 months to reverse engineer this algorithm used in CADO-NFS, a production grade integer factorization library. The paper was dense math and not even AI could help. So I trial and errored my way into a working lattice sieve. - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w923y1/it_took_8_months_to_reverse_engineer_this/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/DataBaeBee"&gt; /u/DataBaeBee &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://leetarxiv.substack.com/p/continued-fractions-and-lattice-sieving"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w923y1/it_took_8_months_to_reverse_engineer_this/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">0acecb84db82d7f694cd5a0d6aa8dc61aebe7cf6c918dead589009ad60a2ad27</guid>
+      <pubDate>Sun, 06 Sep 2026 17:19:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>Tengu, a Mirai-style Linux and IoT botnet - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w8w7fq/tengu_a_miraistyle_linux_and_iot_botnet/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/420ass_slayer69"&gt; /u/420ass_slayer69 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://app.reverser.space/p/duckie/tengu-reverse-engineering-a-mirai-style-linux-iot#0x1083d"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w8w7fq/tengu_a_miraistyle_linux_and_iot_botnet/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">b0f134bfac1d9b410f0f0d667a3dd44770ec35206d21e61530c3c19d29d99d6c</guid>
+      <pubDate>Sun, 06 Sep 2026 13:27:17 +0000</pubDate>
     </item>
     <item>
       <title>Attackers Hijack MikroTik Routers Through Internet-Exposed SSH Without Authentication - The Hacker News</title>
@@ -86,6 +179,13 @@ Sansec, which discovered the flaw and named it StyleSmuggler, said attacks start
       <pubDate>Sat, 05 Sep 2026 20:14:47 +0000</pubDate>
     </item>
     <item>
+      <title>Binary Ninja 6.0: MCP, Binary Similarity, Perf, Migration Wizard, much more - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w86vit/binary_ninja_60_mcp_binary_similarity_perf/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Psifertex"&gt; /u/Psifertex &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://binary.ninja/2026/09/03/binary-ninja-6.0-krypton.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w86vit/binary_ninja_60_mcp_binary_similarity_perf/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">08093ca9490d31e2219827b43b1f2dae0c88955e320b6b17a5531a1b193571fb</guid>
+      <pubDate>Sat, 05 Sep 2026 17:28:30 +0000</pubDate>
+    </item>
+    <item>
       <title>Attackers Breached JetBrains Cadence via Unpatched TeamCity, Extracting AWS Credentials - The Hacker News</title>
       <link>https://thehackernews.com/2026/09/attackers-breached-jetbrains-cadence.html</link>
       <description>JetBrains is urging Cadence users to revoke and rotate all credentials following a security incident last month in which unidentified threat actors exploited a recently disclosed critical vulnerability in TeamCity to breach its own environment.
@@ -111,6 +211,13 @@ The exposed information includes customer names, email addresses, phone numbers,
       <pubDate>Sat, 05 Sep 2026 14:17:02 +0000</pubDate>
     </item>
     <item>
+      <title>FF-16-Web is a browser-based, interactive static pattern discovery tool that finds frequently occurring local 16-bit patterns across the entire file. It can run offline in a web browser. FF-16-Web is hosted on GitHub and it works in the same way like as the CLI and TUI versions. - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w811zm/ff16web_is_a_browserbased_interactive_static/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/HexLasso"&gt; /u/HexLasso &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://hexlasso.github.io/FF-16-Web/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w811zm/ff16web_is_a_browserbased_interactive_static/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">502b992500494ee05675c7214fa1b5a27f2bc5b55e05884a9d35599be721b84a</guid>
+      <pubDate>Sat, 05 Sep 2026 13:39:55 +0000</pubDate>
+    </item>
+    <item>
       <title>Thousands of OpenAI Agents Quietly Turned an Abandoned Wiki Into Their Coordination Channel - The Hacker News</title>
       <link>https://thehackernews.com/2026/09/thousands-of-openai-agents-quietly.html</link>
       <description>A group of AI safety researchers says a fleet of autonomous agents that identified themselves as OpenAI systems left about 18,000 posts on a dormant 25-year-old German wiki between May and July 2026, using the site as a shared board to pool answers to a timed web task and pass around a way out of their sandbox.
@@ -125,6 +232,13 @@ The activity was concentrated on DSEwiki, a German software developer wiki that 
 The Arctic Wolf Adversary Research Team said it observed attackers exploiting CVE-2026-81578 and CVE-2026-82078 – an authentication bypass and remote code execution chain – to conduct command execution and reconnaissance, as well as</description>
       <guid isPermaLink="false">336683a628f3470db7f11c1ec26ffa7d80ac4259733b5e7bc74783c988071da0</guid>
       <pubDate>Sat, 05 Sep 2026 07:31:53 +0000</pubDate>
+    </item>
+    <item>
+      <title>VAXD_VM: Reverse Engineering a Running Windows Program from Outside the VM - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w7n8rk/vaxd_vm_reverse_engineering_a_running_windows/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Bicurico"&gt; /u/Bicurico &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.youtube.com/watch?v=zpP4e8Ytl4k"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w7n8rk/vaxd_vm_reverse_engineering_a_running_windows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">b34cad484264e3794ce52511bea4f2f98c61e6b59d7223fe64a7d594391b7c76</guid>
+      <pubDate>Sat, 05 Sep 2026 01:40:10 +0000</pubDate>
     </item>
     <item>
       <title>Phishing Campaign Sends Millions of Emails Using Invisible Unicode to Evade Filters - The Hacker News</title>
@@ -144,12 +258,26 @@ The flaw, tracked as CVE-2026-6471 (CVSS score: 7.2), has been present since log
       <pubDate>Fri, 04 Sep 2026 15:20:19 +0000</pubDate>
     </item>
     <item>
+      <title>On solving the Jane Street Reverse Engineering Challenge - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w76zvc/on_solving_the_jane_street_reverse_engineering/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/ni5arga"&gt; /u/ni5arga &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://jestoph.com/2026/09/04/jane-street-challenge.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w76zvc/on_solving_the_jane_street_reverse_engineering/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">4324b87b41ad9a981f77da45286e8f416146138a36d930773270bceea01c7215</guid>
+      <pubDate>Fri, 04 Sep 2026 15:07:03 +0000</pubDate>
+    </item>
+    <item>
       <title>New Ted Backdoor Hides Inside Victims' Own HAProxy Builds to Intercept Web Traffic - The Hacker News</title>
       <link>https://thehackernews.com/2026/09/new-ted-backdoor-hides-inside-victims.html</link>
       <description>A previously undocumented Linux toolkit has been found compiled directly into the trojanized HAProxy load balancers of two South Korean organizations, where it intercepted web traffic and served altered pages to selected visitors.
 The attackers named the implant ted in debug strings left in the binary. It is not a HAProxy vulnerability, and installing it requires code execution on the host and</description>
       <guid isPermaLink="false">31cd7ce92c9a8a5b743feb9a962b979500eb4a35dfaa5bd4f4b7937c54e342a8</guid>
       <pubDate>Fri, 04 Sep 2026 14:51:13 +0000</pubDate>
+    </item>
+    <item>
+      <title>The Gentlemen Ransomware Analysis: Go Obfuscated - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w704tk/the_gentlemen_ransomware_analysis_go_obfuscated/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/420ass_slayer69"&gt; /u/420ass_slayer69 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://app.reverser.space/p/duckie/the-gentlemen-ransomware-2026#0x140078b20"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w704tk/the_gentlemen_ransomware_analysis_go_obfuscated/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">aea8d8d08c0039cda6908363e8c4fd7394ead492b0975046b04fc96b94cd176d</guid>
+      <pubDate>Fri, 04 Sep 2026 10:05:26 +0000</pubDate>
     </item>
     <item>
       <title>Over 440,000 Exploit Attempts Target Super Forms and Elementor Pro RCE Flaws - The Hacker News</title>
@@ -186,6 +314,13 @@ The development comes days after the artificial intelligence (AI) company said t
 "Astra is state-of-the-art on computer use, browsing, software engineering,</description>
       <guid isPermaLink="false">4ce48d6a36add83cd58fd9aa8df29bc1b758633e02e0a4d9f60faf92bc434271</guid>
       <pubDate>Fri, 04 Sep 2026 06:47:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>How Forza Horizon 6 Breaks Your IDA - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w6pb7m/how_forza_horizon_6_breaks_your_ida/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Beneficial_Slide_424"&gt; /u/Beneficial_Slide_424 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://iretq.com/how-forza-horizon-6-breaks-your-ida/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w6pb7m/how_forza_horizon_6_breaks_your_ida/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">184e53b8a896455ae9931bb364472f8d109f275c36b986b3040fbc5253b0ce4f</guid>
+      <pubDate>Fri, 04 Sep 2026 00:37:02 +0000</pubDate>
     </item>
     <item>
       <title>OpenVPN: denial of service - FreeBSD VuXML</title>
@@ -1409,151 +1544,6 @@ The use of StormEncryptor marks a shift from the adversary's previous use of Med
 South Korean security firm Genians says it uncovered the</description>
       <guid isPermaLink="false">3cb49abe519483ce3ad88fd06aef4a8ddd9bd26383210327f7041bfcae5002c3</guid>
       <pubDate>Mon, 10 Aug 2026 13:19:58 +0000</pubDate>
-    </item>
-    <item>
-      <title>New Passkey Attacks Can Recover Synced Private Keys or Bypass Phishing-Resistant MFA</title>
-      <link>https://thehackernews.com/2026/08/new-passkey-attacks-can-recover-synced.html</link>
-      <description>Three separate research efforts last week demonstrated ways to defeat passkey protections without breaking the cryptography they rest on.
-Passkeys are designed to replace reusable passwords and resist phishing. The attacks instead reused signed authentication material that Windows had exposed, abused a cloud-synced passkey system from malware already on the victim's machine, and used a&amp;nbsp;</description>
-      <guid isPermaLink="false">d9e77161bf096e6ebc91569c079f5f5cdfe088efd92442d14e6b92cbd7ed33f8</guid>
-      <pubDate>Mon, 10 Aug 2026 12:25:04 +0000</pubDate>
-    </item>
-    <item>
-      <title>TrueConf Server Flaws Exploited to Replace Client Installers with PhantomCore</title>
-      <link>https://thehackernews.com/2026/08/head-mare-exploits-trueconf-flaws-to.html</link>
-      <description>The threat actor known as Head Mare has been observed weaponizing security flaws in unpatched TrueConf servers once again in attacks targeting Russian companies spanning instrumentation, electronics, transport, energy, IT, and software development sectors.
-Russian cybersecurity vendor Kaspersky said it detected the attacks in July 2026.
-The activity involves exploiting a vulnerability chain</description>
-      <guid isPermaLink="false">5e9fbcaaf3586f61ca4e801666eab2428d1c1b032eda2a32bce27759be37214f</guid>
-      <pubDate>Mon, 10 Aug 2026 11:33:41 +0000</pubDate>
-    </item>
-    <item>
-      <title>Solidity Pro VS Code Extensions Steal Crypto Wallets, API Keys, and Credentials</title>
-      <link>https://thehackernews.com/2026/08/solidity-pro-vs-code-extensions-steal.html</link>
-      <description>Cybersecurity researchers have flagged a malicious Microsoft Visual Studio Code (VS Code) extension named Solidity Pro ("solidity-pro") that has been observed delivering a browser wallet and credential stealer.
-The names of the extensions are below -
-  helper-beeps.solidity-pro
-  web3devtoolsx.solidity-pro
-Although neither of the extensions is now available on Open VSX, the GitHub repository</description>
-      <guid isPermaLink="false">6a67a309f6a95dd1cde6a6ef3d982786ac0df7c5850412cd5accacfee27e3eff</guid>
-      <pubDate>Mon, 10 Aug 2026 07:38:23 +0000</pubDate>
-    </item>
-    <item>
-      <title>OpenAI's Next AI Model Astra Shows Cyber Performance Strong Enough to Trigger Pause</title>
-      <link>https://thehackernews.com/2026/08/openais-next-ai-model-astra-shows-cyber.html</link>
-      <description>OpenAI has announced that it's pausing some "internal activities" involving its upcoming artificial intelligence (AI) model Astra after an internal evaluation found it had made significant advancements in agentic coding and cybersecurity.
-In response to the discovery, the AI upstart said it's implementing security controls for higher-capability models and associated activities, such as isolated</description>
-      <guid isPermaLink="false">ab7599f880cf19374fa1bd20c09a11a1bdbebc1763eef75dab8d29d5c9e8a1d1</guid>
-      <pubDate>Mon, 10 Aug 2026 05:50:03 +0000</pubDate>
-    </item>
-    <item>
-      <title>HANDLE Duplication internals : What happens behind the scenes when you call kernelbase! DuplicateHandle( )</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vk51ts/handle_duplication_internals_what_happens_behind/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/_WinAsm"&gt; /u/_WinAsm &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://winware31.blogspot.com/2026/08/duplicating-handles-step-by-step-guide.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vk51ts/handle_duplication_internals_what_happens_behind/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">427f3415187acc972d53f54f267e987f50e5b0e096eaef57713016845308fd89</guid>
-      <pubDate>Sun, 09 Aug 2026 23:47:21 +0000</pubDate>
-    </item>
-    <item>
-      <title>[Tool/Writeup] ALPC-Enumerator: A dynamic, userland C++ tool to enumerate ALPC ports and detect ALPC spoofing</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vjkd8g/toolwriteup_alpcenumerator_a_dynamic_userland_c/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Sphinx_321"&gt; /u/Sphinx_321 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/talha-nazeef-ahmed/ALPC-Enumerator"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vjkd8g/toolwriteup_alpcenumerator_a_dynamic_userland_c/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">7159686e3898fd83898df495a399e14ab33651fa1679b36cce1cf2e648b940c7</guid>
-      <pubDate>Sun, 09 Aug 2026 08:24:22 +0000</pubDate>
-    </item>
-    <item>
-      <title>DEF CON talk: 8 in 10 Banks in Belgium HATE This One Weird eID RCE</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vivabk/def_con_talk_8_in_10_banks_in_belgium_hate_this/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/acorn222"&gt; /u/acorn222 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://amibeingpwned.com/blog/8-in-10-banks-in-belgium"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vivabk/def_con_talk_8_in_10_banks_in_belgium_hate_this/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">890493eec95ba25b0c46ad5e8c5cd3a89b3be22ea6de07551c095d1f910ea129</guid>
-      <pubDate>Sat, 08 Aug 2026 12:53:47 +0000</pubDate>
-    </item>
-    <item>
-      <title>Agent Tesla – APC Injection, Token Manipulation &amp; Payload Extraction</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1viro28/agent_tesla_apc_injection_token_manipulation/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/StructBreaker"&gt; /u/StructBreaker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/kaandemir993/Agent-Tesla-APC-Injection-Token-Manipulation-Registry-Persistence-Analysis"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1viro28/agent_tesla_apc_injection_token_manipulation/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">1dffc0f399d68cc1b391664b2b9276965fa44939a2c0011fc4d0c232139520d1</guid>
-      <pubDate>Sat, 08 Aug 2026 09:37:51 +0000</pubDate>
-    </item>
-    <item>
-      <title>Atlassian Rovo Can Be Tricked Into Sending Jira and Confluence Data to Attackers</title>
-      <link>https://thehackernews.com/2026/08/atlassian-rovo-can-be-tricked-into.html</link>
-      <description>Attacker-controlled instructions can make Atlassian's Rovo assistant collect Jira or Confluence data that a signed-in user can access, then send it to an outside server. Two security firms found that behavior independently, by different routes. Only one of those routes is confirmed closed.
-PromptArmor, an AI security firm, hid the instructions in content Rovo reads. It said an uploaded file was</description>
-      <guid isPermaLink="false">fea9ede2083b0efce4a5fba6a8879bf59eaf278d842691198149865b7096066b</guid>
-      <pubDate>Sat, 08 Aug 2026 08:54:50 +0000</pubDate>
-    </item>
-    <item>
-      <title>New CSS Attacks Can Break Webmail Defenses to Steal Passwords and Tokens</title>
-      <link>https://thehackernews.com/2026/08/new-css-attacks-can-break-webmail.html</link>
-      <description>New research shows content inside an email can escape its message boundary and interfere with the webmail interface.
-Across attack chains spanning Outlook, Gmail, Fastmail, Proton Mail, Yahoo Mail, and AOL Mail, the techniques can capture passwords, take over third-party accounts, leak tokens, hijack trusted UI actions, and manipulate AI tools that read email.
-PortSwigger researcher Gareth</description>
-      <guid isPermaLink="false">1917c477616c0ee323637c71fc1fbde8b5c45fc044f340ce8c37cabc380887fb</guid>
-      <pubDate>Sat, 08 Aug 2026 08:03:57 +0000</pubDate>
-    </item>
-    <item>
-      <title>Metabase Zero-Day Exploited in Wild Allows Admin Access Without Authentication</title>
-      <link>https://thehackernews.com/2026/08/metabase-zero-day-exploited-in-wild.html</link>
-      <description>Metabase has warned that a maximum-severity security flaw impacting its business intelligence and data visualization software package has been exploited in the wild as a zero-day.
-The vulnerability (CVSS score: 10.0), which does not carry a CVE identifier, allows an unauthenticated remote attacker to inject arbitrary SQL into the Metabase application database, enabling them to gain</description>
-      <guid isPermaLink="false">ad987e6acd5c0dccc27c5fc95b46e4f6e59a5de19eeb1eaab6ffa6af3f46c241</guid>
-      <pubDate>Sat, 08 Aug 2026 06:58:31 +0000</pubDate>
-    </item>
-    <item>
-      <title>N-able Issues N-central Hotfix 2 as Attackers Reach Managed Systems and Persist</title>
-      <link>https://thehackernews.com/2026/08/n-central-attackers-reach-managed.html</link>
-      <description>N-able has released a fresh round of hotfixes for N‑central as part of its investigation into ongoing exploitation of a recently disclosed security flaw in the Remote Monitoring and Management (RMM) product.
-"We are proactively expanding protections in response to ongoing monitoring of threat actors as they evolve their attack techniques," the company said.
-"This is not a duplicate of our</description>
-      <guid isPermaLink="false">542b9d7f48bf9f3db614de404873c0686698e76113d66ea92f6cc16f8b4b61b2</guid>
-      <pubDate>Sat, 08 Aug 2026 06:57:43 +0000</pubDate>
-    </item>
-    <item>
-      <title>Progress Kemp LoadMaster Flaw Hits CISA KEV After 792 Reported Exploit Attempts</title>
-      <link>https://thehackernews.com/2026/08/progress-kemp-loadmaster-flaw-hits-cisa.html</link>
-      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Friday added a critical-severity security flaw impacting Progress Kemp LoadMaster to its Known Exploited Vulnerabilities (KEV) catalog, following reports of active exploitation in the wild.
-The vulnerability, tracked as CVE-2026-8037 (CVSS score: 9.6), is a command injection flaw that could be weaponized to achieve arbitrary</description>
-      <guid isPermaLink="false">d0e603e93894dccbc9a80a6c036505aa0ce353a72307e18ea633b70a3bdbff0b</guid>
-      <pubDate>Sat, 08 Aug 2026 06:52:16 +0000</pubDate>
-    </item>
-    <item>
-      <title>LockBit 5.0 Linux Malware Analysis: ChaCha20 + Curve25519 Offline Encryption, strace Evasion &amp; IOCs</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vikrx2/lockbit_50_linux_malware_analysis_chacha20/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Pale_Surround_3924"&gt; /u/Pale_Surround_3924 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://netacoding.com/posts/lockbit5-analysis/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vikrx2/lockbit_50_linux_malware_analysis_chacha20/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">a0e45f2ca637eb87eb056d04a6aced3b657e91883648aec69d4e82b190a6120a</guid>
-      <pubDate>Sat, 08 Aug 2026 03:08:57 +0000</pubDate>
-    </item>
-    <item>
-      <title>Windows tcpip.sys ICMP Timestamp Bug: EnableICMPTimestampRep=0 Registry Bypass &amp; RFC 792 Violation | Kernel RE</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vikcl8/windows_tcpipsys_icmp_timestamp_bug/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Pale_Surround_3924"&gt; /u/Pale_Surround_3924 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://netacoding.com/posts/windows-icmp-timestamp-bugs/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vikcl8/windows_tcpipsys_icmp_timestamp_bug/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">0f09bd731c02db62ee496277b2f7649e7410af105f111a771776dce8e29a3427</guid>
-      <pubDate>Sat, 08 Aug 2026 02:48:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Nearly 800 Malicious npm Packages Deliver Cross-Platform RAT and Infostealer</title>
-      <link>https://thehackernews.com/2026/08/nearly-800-malicious-npm-packages.html</link>
-      <description>A cluster of nearly 800 malicious packages has been published to the npm registry as part of a new campaign designed to deliver cross-platform malware targeting Windows, Mac, and Linux systems.
-"These packages appear to use AI slop squatted, or randomly generated typo-squatting package names, but all of them deliver a powerful RAT and infostealer payload," OpenSourceMalware researcher Paul</description>
-      <guid isPermaLink="false">bd0f818ce1ad128960f03f33b4a365a241e3ac40840695740ddb56a5b79e22d5</guid>
-      <pubDate>Fri, 07 Aug 2026 18:48:17 +0000</pubDate>
-    </item>
-    <item>
-      <title>ClickFix Attacks Deliver macOS Stealer That Can Drain Crypto Wallets</title>
-      <link>https://thehackernews.com/2026/08/clickfix-attacks-deliver-macos-stealer.html</link>
-      <description>ClickFix-style attacks are being used to deliver a Go-based malware capable of stealing cryptocurrency assets, as well as browser-stored passwords, Apple iCloud Keychain data, and cached credentials.
-The macOS-focused infection chain is designed to deliver a shell script that profiles the host and then fetches a macOS malware payload that's compatible with the computer's CPU architecture.
-"</description>
-      <guid isPermaLink="false">ed477481e4a706a8dd43a1bf95feb3cea67b11e903dedd1879b4d3a953210f4e</guid>
-      <pubDate>Fri, 07 Aug 2026 18:29:08 +0000</pubDate>
-    </item>
-    <item>
-      <title>UNC6671 Vishing Attacks Target Personal Phones to Steal SaaS Data</title>
-      <link>https://thehackernews.com/2026/08/unc6671-vishing-attacks-target-personal.html</link>
-      <description>A recent wave of cyber attacks targeting financial services, private equity, and professional services has been attributed to a data extortion group known as UNC6671.
-"UNC6671 continues to rely on voice phishing (vishing) to target enterprise employees, posing as IT help desk staff facilitating mandatory, urgent security migrations. Significantly, the threat actor often contacts employees via</description>
-      <guid isPermaLink="false">a2969744481a22dccafe739907a02b3310237b1b47c4c29d9dd6dcb006edb05b</guid>
-      <pubDate>Fri, 07 Aug 2026 18:16:13 +0000</pubDate>
     </item>
   </channel>
 </rss>
