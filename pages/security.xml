@@ -5,7 +5,130 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 08 Sep 2026 14:01:37 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 09 Sep 2026 14:02:05 +0000</lastBuildDate>
+    <item>
+      <title>DeepSeek Harness Flaw Let AI Agents Disable Their Own File Sandbox Without Approval - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/deepseek-harness-flaw-let-ai-agents.html</link>
+      <description>A flaw in DeepSeek Harness, DeepSeek's open-source tool for running AI coding agents on a developer's machine, let a sandboxed agent turn off its own sandbox with a single command.
+The tool runs an agent's commands inside an operating-system sandbox, so that an agent working on untrusted files cannot write outside its workspace. The agent could remove that limit by calling the tool's own web</description>
+      <guid isPermaLink="false">c07a2d4561cb909c6d54fe41f999209bb8962e53c26a2a2d2eb33f6ab8a0964a</guid>
+      <pubDate>Wed, 09 Sep 2026 11:17:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>Alby Hub Critical Flaw Could Let Attackers Take Over Internet-Exposed Bitcoin Wallets - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/alby-hub-critical-flaw-could-let.html</link>
+      <description>Bitcoin wallet company Alby has&amp;nbsp;warned of a critical flaw&amp;nbsp;in Alby Hub that could have let an attacker take over a wallet and send its funds, but only where the owner had made the Hub reachable from the internet.
+Alby Hub is a self-hosted Lightning wallet, meaning the owner runs it on their own computer or server, and it holds their bitcoin. The flaw affects versions v1.7.0 through</description>
+      <guid isPermaLink="false">5cc753d437bf9e66872075d4f49105281253072f73aae2c31774c8dd103a7ea5</guid>
+      <pubDate>Wed, 09 Sep 2026 10:43:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>U.S. Agencies Accuse China AI Firms of Distilling Claude, GPT, Gemini, and Grok - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/us-agencies-accuse-china-ai-firms-of.html</link>
+      <description>U.S. cybersecurity and intelligence agencies have accused China-based artificial intelligence (AI) companies of conducting "systematic extraction" of proprietary functionalities and capabilities of American frontier models through distillation attacks.
+The activity has been described as occurring at an industrial-scale and one that forms the "core" of their AI development strategy, according to</description>
+      <guid isPermaLink="false">e6719347d5e56dc4c8acff9e33c6b0bbc8dabd4c1588de6d5c5fc707a8b32368</guid>
+      <pubDate>Wed, 09 Sep 2026 09:32:26 +0000</pubDate>
+    </item>
+    <item>
+      <title>Chrome V8 Zero-Day Exploited in the Wild Enables Code Execution Inside Sandbox - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/chrome-v8-zero-day-exploited-in-wild.html</link>
+      <description>Google on Thursday released updates to patch 230 security vulnerabilities, including one that has come under active exploitation in the wild.
+The medium-severity vulnerability, assigned the CVE identifier CVE-2026-87491 (CVSS score: N/A), has been described as an out-of-bounds bug in V8, Chrome's JavaScript and WebAssembly engine.
+"Out-of-bounds write in V8 in Google Chrome prior to</description>
+      <guid isPermaLink="false">2f7efdefcd912806889febdc712257e00352c0281a71a5452166c3930eee80b0</guid>
+      <pubDate>Wed, 09 Sep 2026 09:11:03 +0000</pubDate>
+    </item>
+    <item>
+      <title>New cPanel Flaw Lets a Hosting Account With Mail Privileges Run Code as Root - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/new-cpanel-flaw-lets-hosting-account.html</link>
+      <description>cPanel has patched a flaw that it says lets a single hosting account take control of an entire server. An authenticated account holder with mail-related privileges can create files of their choosing on the server through EmailTrack and, from there, run code as the root user.
+cPanel published the&amp;nbsp;advisory on September 8&amp;nbsp;and says every supported version of cPanel and WHM is affected.</description>
+      <guid isPermaLink="false">4e975bc245494d7e4d0d3801d1753b76b37c69d42b60b27420f2f4d20c4cc6a7</guid>
+      <pubDate>Wed, 09 Sep 2026 08:19:32 +0000</pubDate>
+    </item>
+    <item>
+      <title>F5 BIG-IP APM Malware Injects a PHP Web Shell Into Memory, Evading Disk Scans - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/f5-big-ip-apm-malware-injects-php-web.html</link>
+      <description>Malware linked to break-ins at F5 BIG-IP Access Policy Manager appliances hides a PHP web shell in memory instead of in a file on disk, Sophos said in an&amp;nbsp;analysis published on September 7.
+When Apache loads any of the three appliances' own PHP scripts, the malware adds the web shell to the copy held in memory, so a check of the file on disk can come back clean. Those three scripts are</description>
+      <guid isPermaLink="false">860acdc8b90fddc62e9c937a8c07c729ec4d9a5183ed46b6a9b3493c5b50f983</guid>
+      <pubDate>Wed, 09 Sep 2026 07:36:49 +0000</pubDate>
+    </item>
+    <item>
+      <title>Researcher Drops New Microsoft Defender PoC Showing ShieldBreak Patch Can Be Bypassed - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/researcher-drops-new-microsoft-defender.html</link>
+      <description>The security researcher known as Chaotic Eclipse has dropped a proof-of-concept (PoC) for yet another zero-day in Microsoft Defender.
+The vulnerability, codenamed ShieldCrash, is assessed to be a patch bypass for CVE-2026-69414 (CVSS score: 7.8), also called ShieldBreak, which the researcher reported last month.
+"Microsoft has failed to properly patch ShieldBreak CVE-2026-69414," Chaotic</description>
+      <guid isPermaLink="false">89a309b717035b9ed3a6af32a84e3585a533f0aa0cb2a74508a4f5b28ae37f23</guid>
+      <pubDate>Wed, 09 Sep 2026 06:47:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>SAP Patches CVSS 10.0 Kernel Flaw Enabling Unauthenticated Remote Code Execution - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/sap-patches-cvss-100-kernel-flaw.html</link>
+      <description>SAP has released security updates to address multiple vulnerabilities, including a maximum-severity flaw in SAP Extended Passport (EPP) Processing that could have a severe impact on the confidentiality, integrity, and availability of the application
+The vulnerability, tracked as CVE-2026-44756 (CVSS score: 10.0), has been described as a case of memory corruption. Discovered and reported by SAP</description>
+      <guid isPermaLink="false">c7fd7fced2be6e9ec96e0be98d2f0b6ddbdfe8e8b716a70e3b23db5fcb8b4871</guid>
+      <pubDate>Wed, 09 Sep 2026 06:25:45 +0000</pubDate>
+    </item>
+    <item>
+      <title>Microsoft Patches Record 974 Flaws, Including Two Exploited Windows Zero-Days - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/microsoft-patches-record-974-flaws.html</link>
+      <description>Microsoft on Tuesday broke Patch Tuesday records by addressing an earth-shattering 974 vulnerabilities spanning its software portfolio, including two flaws that it said have been actively exploited in the wild.
+These include 723 flaws in Windows, 111 in Office and Office 2016, 62 in SQL, and 22 in Developer Tools. Of these, over 110 shortcomings have been assigned a critical severity rating.</description>
+      <guid isPermaLink="false">b6f516c75e1df7bdc16336f15fb1c5e57459d5b6b30ae089dae16a9ab59766ee</guid>
+      <pubDate>Wed, 09 Sep 2026 04:41:29 +0000</pubDate>
+    </item>
+    <item>
+      <title>N-able N-central Pre-Auth RCE Flaw Exploited in the Wild - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/n-able-n-central-pre-auth-rce-flaw.html</link>
+      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Tuesday added a maximum-severity security flaw impacting N-able N-central to its Known Exploited Vulnerabilities (KEV) catalog, requiring Federal Civilian Executive Branch (FCEB) agencies to apply the fixes by September 11, 2026.
+The vulnerability in question is CVE-2026-86218 (CVSS score: 10.0), which has been described as a</description>
+      <guid isPermaLink="false">a108aaefbc5e58345acf7eca4f7cffd5ebe3a7fccc1e1799734e9a9bb469064e</guid>
+      <pubDate>Wed, 09 Sep 2026 04:27:51 +0000</pubDate>
+    </item>
+    <item>
+      <title>Reverse engineering a 1994 Philips PM5139 function generator: I used the emulator as a measuring instrument instead of reading the disassembly - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1waxuv7/reverse_engineering_a_1994_philips_pm5139/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Ready-Recording8012"&gt; /u/Ready-Recording8012 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/doctormord/Philips-PM-5139-5138A-5136-Firmware-Project"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1waxuv7/reverse_engineering_a_1994_philips_pm5139/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">1cce920aada89cc67e07566c20c82156db88143e1df6019a9a1be1f261bb2be4</guid>
+      <pubDate>Tue, 08 Sep 2026 19:08:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>Slim Spider Steals Crypto Custody Secrets From Brazilian Financial Institution - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/slim-spider-steals-crypto-custody.html</link>
+      <description>A previously undocumented financially motivated threat actor has been linked to attacks targeting Brazilian financial institutions since at least March 2026.
+Cybersecurity company CrowdStrike is tracking the Brazil-based activity cluster under the name Slim Spider.
+"The adversary demonstrates deep operational knowledge of Brazilian financial infrastructure, including the instant payment</description>
+      <guid isPermaLink="false">262d9f8303059a1220347c0ddd9f79fddb1f1dc82685f69aead132ed30db6f11</guid>
+      <pubDate>Tue, 08 Sep 2026 16:20:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>Liquid Hackers Return 3,400 Bitcoin Taken via Elements Bug, Still Holding $47M in BTC - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/liquid-hackers-return-3400-bitcoin.html</link>
+      <description>Whoever took nearly 4,000 bitcoin from the Liquid Network on Sunday, September 6,&amp;nbsp;returned 3,400 of it&amp;nbsp;the next day, Bitcoin's public record shows. About 598.5 bitcoin has not come back.
+Liquid is a Bitcoin sidechain that holds real bitcoin to back a token called L-BTC. The network is still paused, so holders cannot turn that token back into bitcoin.
+The 3,400 bitcoin was sent to a&amp;</description>
+      <guid isPermaLink="false">3b20e8d45b9c8ac9e1eb03fd082c776cf7b8f5304403493dd10728cdcb8f81c5</guid>
+      <pubDate>Tue, 08 Sep 2026 14:54:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>ChatGPT Flaw Let a Planted Prompt Send a Victim's Gmail Data to Another Account - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/chatgpt-flaw-let-planted-prompt-send.html</link>
+      <description>Check Point Research said in a&amp;nbsp;report published today&amp;nbsp;that a single instruction planted in a ChatGPT conversation could cause ChatGPT to quietly work for an attacker while answering the user's question as usual.
+In the company's proof of concept, that hidden work read data from the user's connected Gmail account and passed it to a second ChatGPT account through a hidden channel</description>
+      <guid isPermaLink="false">fd5799eb81959f8fe74dc461c42ee51ead8ec1e5fba2229caec3ebad41fb70f5</guid>
+      <pubDate>Tue, 08 Sep 2026 14:19:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>Autonomous AI Agents Compromise Thousands of Credentials in Under Six Hours - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/autonomous-ai-agents-compromise.html</link>
+      <description>Threat actors are continuing to leverage artificial intelligence (AI) to streamline their operations, with one financially motivated hacking group employing an autonomous, multi-agent attack framework to carry out a large-scale credential harvesting campaign within six hours.
+Google Threat Intelligence Group (GTIG) said it has observed attackers with diverse motivations targeting proprietary AI</description>
+      <guid isPermaLink="false">cbe894de98bfb9ef0e09a02133ccbce7a12e38201cff9d16c73b9bc4a633de56</guid>
+      <pubDate>Tue, 08 Sep 2026 13:48:16 +0000</pubDate>
+    </item>
     <item>
       <title>WeChat Zero-Click Worm Took Over Accounts on iPhone and Android via Incoming Calls - The Hacker News</title>
       <link>https://thehackernews.com/2026/09/wechat-zero-click-worm-took-over.html</link>
@@ -1435,115 +1558,6 @@ The vulnerability, tracked as CVE-2026-21962 (CVSS score: 10.0), allows an unaut
       <description/>
       <guid isPermaLink="false">a920b4ad0155a003e0bfb338312a14f51772566afb7b0baaa10eb64690718a3f</guid>
       <pubDate>Tue, 25 Aug 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>net/rsync -- multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/fee67ad5-a05e-11f1-ad2b-40b034429ecf.html</link>
-      <description/>
-      <guid isPermaLink="false">cdd5885d2325a978fcca30f03f1244af5c55ce73239ce138bbdb1b7d2fca1abd</guid>
-      <pubDate>Tue, 25 Aug 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>200 Billion Tokens Later: A Month of Letting AI Agents Decompile MW2 - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vxig19/200_billion_tokens_later_a_month_of_letting_ai/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/NXGZ"&gt; /u/NXGZ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://momo5502.com/posts/2026-08-17-mw2-decompilation/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vxig19/200_billion_tokens_later_a_month_of_letting_ai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">b156fae995d449cf4733978a8b5e109884b213485c929b61d868efc7883c5dfe</guid>
-      <pubDate>Mon, 24 Aug 2026 23:00:37 +0000</pubDate>
-    </item>
-    <item>
-      <title>Inside the Falcon How CrowdStrike Catches You - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vxf8gl/inside_the_falcon_how_crowdstrike_catches_you/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Ok-Bed5648"&gt; /u/Ok-Bed5648 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://0xdbgman.github.io/posts/inside-the-falcon-how-crowdstrike-catches-you/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vxf8gl/inside_the_falcon_how_crowdstrike_catches_you/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">a9512f8b21caa5a952bf14a35a1b9fb70c955cb223f4da22e066706032b6289d</guid>
-      <pubDate>Mon, 24 Aug 2026 20:55:50 +0000</pubDate>
-    </item>
-    <item>
-      <title>Deriving an undocumented GPU instruction set by differential bit probing, and measuring instruction latency by fault injection - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vxcp2x/deriving_an_undocumented_gpu_instruction_set_by/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/_sunnypatell_"&gt; /u/_sunnypatell_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/sunnypatell/basalt"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vxcp2x/deriving_an_undocumented_gpu_instruction_set_by/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">b82557d6d18f39dbc12b2789bf3aa15d3297b7a897dd6fd52be595d6f3df5fea</guid>
-      <pubDate>Mon, 24 Aug 2026 19:23:23 +0000</pubDate>
-    </item>
-    <item>
-      <title>Weedhack Malware Spreads via Fake Minecraft Clients and SEO Poisoning - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/weedhack-malware-spreads-via-fake.html</link>
-      <description>Cybersecurity researchers have found that several websites are still actively distributing a malware family known as Weedhack to gamers by masquerading as Minecraft clients.
-McAfee Labs said it detected and blocked more than 6,300 attempts to access malicious sites, adding that it found lookalike gaming websites designed to mimic legitimate projects, including branding, feature lists, FAQs,</description>
-      <guid isPermaLink="false">3934a50ddc99a989b17def51d04ba810e667ff07bbfae11c3a5fd84e134c60c5</guid>
-      <pubDate>Mon, 24 Aug 2026 17:41:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>How bot &amp; fraud detection actually works, layer by layer (browser flags → anti-detect engines → sandbox detection → obfuscation) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vx76n4/how_bot_fraud_detection_actually_works_layer_by/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/trustsigRobert"&gt; /u/trustsigRobert &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://trustsig.eu/blog/how-bot-and-fraud-prevention-works/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vx76n4/how_bot_fraud_detection_actually_works_layer_by/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">927b8b04b51d161619d39690c498b723e04c9b493c6b6fc471ff48d5a353f3ca</guid>
-      <pubDate>Mon, 24 Aug 2026 16:11:09 +0000</pubDate>
-    </item>
-    <item>
-      <title>mod_gnutls -- multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/a7b4cdfc-9f9d-11f1-a655-3497f65b111b.html</link>
-      <description/>
-      <guid isPermaLink="false">8937e85d53a3ad44b32ec384861e1e79912b684b18fbeae834472b2ec14ecd85</guid>
-      <pubDate>Mon, 24 Aug 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>RedLine Stealer – C2 Domains, Defender Bypass &amp; Payload Extraction - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vny7o0/redline_stealer_c2_domains_defender_bypass/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/StructBreaker"&gt; /u/StructBreaker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/kaandemir993/RedLine-Stealer-C2-Defender-Bypass-Payload-Analysis"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vny7o0/redline_stealer_c2_domains_defender_bypass/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">b53f49fa903cb176d1205fd9b5a27e26967b21970ffe87ff3ee3e915a327aae2</guid>
-      <pubDate>Fri, 14 Aug 2026 05:20:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>From P-Code to GNN: extract binary code semantics - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vnr2q7/from_pcode_to_gnn_extract_binary_code_semantics/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/mttd"&gt; /u/mttd &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://blog.quarkslab.com/from-p-code-to-gnn-extract-binary-code-semantics.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vnr2q7/from_pcode_to_gnn_extract_binary_code_semantics/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">d2d004e506d70ab9f1f0b82ac0d33d57ff48e4775d13136b9ae90bb5079df741</guid>
-      <pubDate>Thu, 13 Aug 2026 23:38:35 +0000</pubDate>
-    </item>
-    <item>
-      <title>Live Android application analysis - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vnpedb/live_android_application_analysis/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/toto_fpv"&gt; /u/toto_fpv &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://ismyphonepwned.com/droid2web/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vnpedb/live_android_application_analysis/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">74ce2f72f2e59d8accc7508eaaad88bf54382033d2a48db270bc2c4850c24762</guid>
-      <pubDate>Thu, 13 Aug 2026 22:27:17 +0000</pubDate>
-    </item>
-    <item>
-      <title>I reverse engineered an anti-detect (Stealth) browser to find out exactly how their hooks work. I wrote a detailed breakdown + detector for it. - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vnfumo/i_reverse_engineered_an_antidetect_stealth/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/trustsigRobert"&gt; /u/trustsigRobert &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://trustsig.eu/blog/multilogin-mimic-canvas-webgl-masking/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vnfumo/i_reverse_engineered_an_antidetect_stealth/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">04dcf7dbda76e349973dedf144a73e68c2ac1e3d6e6e0da14b61f85598b74346</guid>
-      <pubDate>Thu, 13 Aug 2026 16:36:23 +0000</pubDate>
-    </item>
-    <item>
-      <title>What happens when a GPU reads memory - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vnfjb2/what_happens_when_a_gpu_reads_memory/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/vitruso"&gt; /u/vitruso &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://blog.doubleword.ai/what-happens-when-a-gpu-reads-memory"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vnfjb2/what_happens_when_a_gpu_reads_memory/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">d63de066ca2e067f50a17784df9d5994e7e5a785a7726df886764fb5c1bf765c</guid>
-      <pubDate>Thu, 13 Aug 2026 16:25:05 +0000</pubDate>
-    </item>
-    <item>
-      <title>Java runtime debugger which analyze java programs just like x64dbg. Supports breakpoints, hooks, local variable debug, runtime class exploring, dump, redefine, and more</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vl84wk/java_runtime_debugger_which_analyze_java_programs/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/REALNHCM"&gt; /u/REALNHCM &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/NHCM-dev/JVMRTDP"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vl84wk/java_runtime_debugger_which_analyze_java_programs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">3f1e4fc8760bfd615b8bff3bae8ad42e19301425539ed9e0d67d239527c4e641</guid>
-      <pubDate>Tue, 11 Aug 2026 05:09:49 +0000</pubDate>
-    </item>
-    <item>
-      <title>China-Linked Hackers Deploy New StormEncryptor Ransomware, Likely via N-central Flaw</title>
-      <link>https://thehackernews.com/2026/08/china-linked-hackers-deploy-new.html</link>
-      <description>Microsoft has disclosed that Storm-1175, a financially motivated threat actor linked to China, has deployed a previously undocumented ransomware strain called StormEncryptor.
-The use of StormEncryptor marks a shift from the adversary's previous use of Medusa ransomware, the Microsoft Threat Intelligence Team said.
-"StormEncryptor is written in C++ and appends the file name extension .encrypted</description>
-      <guid isPermaLink="false">f34414edaa6396fdfcb7cce5f8bf1f7d8268d666c5878b4878afa57fb350dcfe</guid>
-      <pubDate>Mon, 10 Aug 2026 16:38:37 +0000</pubDate>
-    </item>
-    <item>
-      <title>Kimsuky Builds Offline AI Stack to Boost Phishing and Automate Malware Development</title>
-      <link>https://thehackernews.com/2026/08/kimsuky-builds-offline-ai-stack-that.html</link>
-      <description>North Korea's state hackers are no longer content to type prompts into public chatbots. One of the country's main espionage groups has begun running artificial intelligence (AI) offline on its own servers, connecting document-search tools to files in its possession, and collecting the software parts needed to build AI into its malware.
-South Korean security firm Genians says it uncovered the</description>
-      <guid isPermaLink="false">3cb49abe519483ce3ad88fd06aef4a8ddd9bd26383210327f7041bfcae5002c3</guid>
-      <pubDate>Mon, 10 Aug 2026 13:19:58 +0000</pubDate>
     </item>
   </channel>
 </rss>
