@@ -5,7 +5,31 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Misc category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 11 Aug 2026 05:31:46 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 10 Sep 2026 14:01:42 +0000</lastBuildDate>
+    <item>
+      <title>New Apple Watches have ears - And now it's all this</title>
+      <link>https://leancrew.com/all-this/2026/09/new-apple-watches-have-ears/</link>
+      <description>&lt;p&gt;Starting about 45 minutes into &lt;a href="https://www.apple.com/apple-events/"&gt;today’s Apple Event&lt;/a&gt;, during the segment on the new Apple Watch, Ron Huang introduced a couple of features of the Series 12 and Ultra 4 that struck me as both disturbing and possibly illegal. They certainly seem at odds with Apple’s commitment to privacy.&lt;/p&gt;
+&lt;p&gt;First came Live Rewind, a feature that lets you “go back in time” to pick up on something you missed that was said in the past 15 seconds. Here’s how Apple describes it &lt;a href="https://www.apple.com/apple-watch-series-12/"&gt;on the website&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Live Rewind catches what you missed. Did someone say something you couldn’t hear in a loud restaurant or share cooking instructions you didn’t quite catch? Just double-click the Digital Crown, and Live Rewind transcribes what was said in the last 15 seconds. You can ask Siri about the content of the transcript or save it to the new Siri app to revisit later.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In the Event, this was illustrated by a waitress going through the restaurant’s specials too quickly for the diners to remember all of them. One of the diners double-clicks the crown on his watch and reads what she said.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Screenshot of Live Rewind demo" class="ss" src="https://leancrew.com/all-this/images2026/20260909-Screenshot%20of%20Live%20Rewind%20demo.jpg" title="Screenshot of Live Rewind demo" width="100%" /&gt;&lt;/p&gt;
+&lt;p&gt;It seems like your watch will be listening continuously, keeping the last 15 seconds in a buffer, ready to be transcribed when you ask. That’s fine for you, because you know it’s happening, but what about those around you? Did they agree to this? I doubt wait staff will be upset with their spiel being transcribed, but the idea behind Live Rewind seems to be that &lt;em&gt;everyone and everything&lt;/em&gt; near your watch is being recorded for 15 seconds. Surely, some people wouldn’t consent to that if they were asked. Significantly, though, they’re not being asked. I’m sure Apple will argue that there’s no privacy issue because the recordings aren’t being saved. But if there’s a transcription, isn’t that a type of saving?&lt;/p&gt;
+&lt;p&gt;And then there’s the question of legality. A &lt;a href="https://en.wikipedia.org/wiki/Telephone_call_recording_laws"&gt;great variety of law&lt;/a&gt;, both in the United States and across the world, concerns the recording of electronic and in-person conversations. I’m sure Apple has considered this, but I have to think some jurisdictions will frown on Live Rewind. If Apple has to defend it, that’s fine. What’s one more squadron of lawyers to Apple? But if an Apple Watch &lt;em&gt;owner&lt;/em&gt; has to defend a transcription made innocently—made with Apple’s encouragement, in fact—that seems like an unfair burden. Maybe Apple should indemnify all future Watch buyers from privacy-related legal action.&lt;/p&gt;
+&lt;p&gt;Right after Live Rewind, we get the introduction of Siri Recap. From the Series 12 web page:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Siri Recap can summarize your chats to refresh your memory. Siri Recap transforms your conversations into high-level notes, so you can stay focused and present. Each Siri Recap includes a title, a summary, and key points that you can review in the Siri app on your Apple Watch or iPhone. You can turn Siri Recap on or off at any time from Control Center or choose where and when it takes notes, such as only at work or never at night.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Siri Recap does a summary, not a transcription, and it’s not automatic the way Live Rewind is, although it does sound as if you can set it up to always record when you’re at a certain place, so that’s kind of automatic. Apple touted Siri Recap’s privacy with three bullet points:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Screenshot of Siri Recap protections" class="ss" src="https://leancrew.com/all-this/images2026/20260909-Screenshot%20of%20Siri%20Recap%20protections.jpg" title="Screenshot of Siri Recap protections" width="100%" /&gt;&lt;/p&gt;
+&lt;p&gt;I think Apple is slicing the baloney pretty thin when it says audio isn’t recorded. Surely there’s some recording because summaries require context; they can’t be made on the fly. Maybe a transcription is done in near-real time and the summary is drawn from that. If so, the transcription is a type of recording, albeit one that isn’t stored after the summary is made. As for not identifying the speakers, I don’t see how that matters. Old-fashioned audio recordings don’t identify speakers, either, but they’re still intrusions on the speakers’ privacy if they didn’t give consent.&lt;/p&gt;
+&lt;p&gt;Apple has always focused on the privacy of its customers: &lt;em&gt;your&lt;/em&gt; information is encrypted, &lt;em&gt;your&lt;/em&gt; data stays on &lt;em&gt;your&lt;/em&gt; device. It’s following that same pattern here, but the privacy concerns of Live Rewind and Siri Recap aren’t limited to the owners of Apple Watches. Apple now needs think about the privacy of non-customers and be able to explain how that’s being protected, too.&lt;/p&gt;
+&lt;p&gt;And while an argument can be made that textual transcriptions and recaps aren’t &lt;em&gt;as&lt;/em&gt; invasive as saved audio recordings, that doesn’t mean they aren’t invasive at all. That little lock animation Apple’s been using to describe its commitment to privacy has been very effective, but its binary nature doesn’t fit when the products start putting privacy on a sliding scale.&lt;/p&gt;</description>
+      <guid isPermaLink="false">2ae53525332975f5c12d7b1ec030ec26890f465d15726afce9b9d40e166ad059</guid>
+      <pubDate>Thu, 10 Sep 2026 03:42:27 +0000</pubDate>
+    </item>
     <item>
       <title>A two-month calendar on my Desktop</title>
       <link>https://leancrew.com/all-this/2026/08/a-two-month-calendar-on-my-desktop/</link>
