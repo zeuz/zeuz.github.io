@@ -5,7 +5,265 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Thu, 10 Sep 2026 14:01:42 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 11 Sep 2026 14:01:20 +0000</lastBuildDate>
+    <item>
+      <title>Graham Dumpleton: OpenTelemetry export in wrapture - Planet Python</title>
+      <link>https://grahamdumpleton.me/posts/2026/09/opentelemetry-export-in-wrapture/</link>
+      <description>&lt;p&gt;Everything in the last four posts rendered a trace for a person to read or wrote it to a file for later. The other destination is a tracing backend, fed while the application runs, and OpenTelemetry is the one that the ecosystem has converged on. wrapture treats it as a first-class destination rather than something you bolt on: the &lt;code&gt;wrapture.otel&lt;/code&gt; subpackage ships in every wheel, and the &lt;code&gt;otel&lt;/code&gt; extra brings the SDK and the OTLP exporter with it.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ pip install &amp;quot;wrapture[otel]&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A plain install pays nothing for this, since nothing in base wrapture imports the subpackage until a config asks for it.&lt;/p&gt;
+&lt;h2&gt;One table&lt;/h2&gt;
+&lt;p&gt;Export is switched on by a top-level &lt;code&gt;[otel]&lt;/code&gt; table in the same config file the &lt;a href="https://grahamdumpleton.me/posts/2026/09/tracing-flask-with-wrapture/"&gt;Flask shop&lt;/a&gt; has been using. The presence of the table opts in, a service name identifies the process, and each signal's tuning nests beneath it. I shortened the metrics export interval so the demonstration would not have to wait a minute for a data point.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[otel]
+service_name = &amp;quot;webshop&amp;quot;
+[otel.metrics]
+export_interval = 2
+[[instrument]]
+name = &amp;quot;flask&amp;quot;
+ignore_paths = [&amp;quot;/health&amp;quot;]
+[[observe]]
+target = &amp;quot;shop:OrderService&amp;quot;
+name = &amp;quot;place&amp;quot;
+redact = [&amp;quot;card&amp;quot;]
+[[observe]]
+target = &amp;quot;shop:Gateway&amp;quot;
+name = &amp;quot;charge&amp;quot;
+redact = [&amp;quot;card&amp;quot;]
+[[observe]]
+target = &amp;quot;shop:Ledger&amp;quot;
+name = &amp;quot;record&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Where the spans go is decided by the standard OpenTelemetry environment variables, so with a collector listening on the usual port nothing more is needed. For a look without a collector, the console exporters print the spans and metrics to standard output instead, which is what I used here:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ OTEL_TRACES_EXPORTER=console OTEL_METRICS_EXPORTER=console \
+    python -m wrapture -m flask --app webshop run --port 5003
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;One event becomes one span. A request becomes a SERVER span, a call or a block becomes an INTERNAL span beneath it, and the tree the printer drew is the tree the backend receives. For the quote of an item that is not in the catalog, the view's span arrives with error status and the exception recorded on it (trimmed here to the parts that matter; the real output includes the stack trace and the resource attributes):&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-json"&gt;{
+    &amp;quot;name&amp;quot;: &amp;quot;quote&amp;quot;,
+    &amp;quot;context&amp;quot;: {
+        &amp;quot;trace_id&amp;quot;: &amp;quot;0x02f1fd262a7817d4f8b42fb0f6a30db3&amp;quot;,
+        &amp;quot;span_id&amp;quot;: &amp;quot;0x5b94b62db087bbc9&amp;quot;
+    },
+    &amp;quot;kind&amp;quot;: &amp;quot;SpanKind.INTERNAL&amp;quot;,
+    &amp;quot;parent_id&amp;quot;: &amp;quot;0xfba0a55ab3a322f0&amp;quot;,
+    &amp;quot;status&amp;quot;: {
+        &amp;quot;status_code&amp;quot;: &amp;quot;ERROR&amp;quot;,
+        &amp;quot;description&amp;quot;: &amp;quot;KeyError&amp;quot;
+    },
+    &amp;quot;attributes&amp;quot;: {
+        &amp;quot;wrapture.path&amp;quot;: &amp;quot;webshop:quote&amp;quot;,
+        &amp;quot;wrapture.kind&amp;quot;: &amp;quot;call&amp;quot;,
+        &amp;quot;wrapture.arg.item&amp;quot;: &amp;quot;missing&amp;quot;
+    },
+    &amp;quot;events&amp;quot;: [
+        {
+            &amp;quot;name&amp;quot;: &amp;quot;exception&amp;quot;,
+            &amp;quot;attributes&amp;quot;: {
+                &amp;quot;exception.type&amp;quot;: &amp;quot;KeyError&amp;quot;,
+                &amp;quot;exception.message&amp;quot;: &amp;quot;'missing'&amp;quot;,
+                &amp;quot;exception.escaped&amp;quot;: &amp;quot;True&amp;quot;
+            }
+        }
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And the request span it is parented under:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-json"&gt;{
+    &amp;quot;name&amp;quot;: &amp;quot;GET /quote/&amp;lt;item&amp;gt;&amp;quot;,
+    &amp;quot;context&amp;quot;: {
+        &amp;quot;trace_id&amp;quot;: &amp;quot;0x02f1fd262a7817d4f8b42fb0f6a30db3&amp;quot;,
+        &amp;quot;span_id&amp;quot;: &amp;quot;0xfba0a55ab3a322f0&amp;quot;
+    },
+    &amp;quot;kind&amp;quot;: &amp;quot;SpanKind.SERVER&amp;quot;,
+    &amp;quot;parent_id&amp;quot;: null,
+    &amp;quot;status&amp;quot;: {
+        &amp;quot;status_code&amp;quot;: &amp;quot;ERROR&amp;quot;
+    },
+    &amp;quot;attributes&amp;quot;: {
+        &amp;quot;http.request.method&amp;quot;: &amp;quot;GET&amp;quot;,
+        &amp;quot;url.path&amp;quot;: &amp;quot;/quote/missing&amp;quot;,
+        &amp;quot;http.route&amp;quot;: &amp;quot;/quote/&amp;lt;item&amp;gt;&amp;quot;,
+        &amp;quot;http.response.status_code&amp;quot;: 500,
+        &amp;quot;wrapture.data.endpoint&amp;quot;: &amp;quot;quote&amp;quot;,
+        &amp;quot;wrapture.data.remote&amp;quot;: &amp;quot;127.0.0.1&amp;quot;
+    },
+    &amp;quot;events&amp;quot;: [
+        {
+            &amp;quot;name&amp;quot;: &amp;quot;exception&amp;quot;,
+            &amp;quot;attributes&amp;quot;: {
+                &amp;quot;exception.type&amp;quot;: &amp;quot;KeyError&amp;quot;,
+                &amp;quot;exception.message&amp;quot;: &amp;quot;'missing'&amp;quot;,
+                &amp;quot;exception.escaped&amp;quot;: &amp;quot;False&amp;quot;
+            }
+        }
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A few things in there are worth pointing at. The request span is named &lt;code&gt;GET /quote/&amp;lt;item&amp;gt;&lt;/code&gt;, by the route pattern rather than the URL, because the Flask instrumentation annotates the request with its matched route once routing has run, and the exporter reads that as the semantic-convention &lt;code&gt;http.route&lt;/code&gt;. A backend then groups by endpoint rather than seeing every URL as a distinct operation. The captured arguments and anything added with &lt;code&gt;annotate()&lt;/code&gt; become span attributes under &lt;code&gt;wrapture.arg.*&lt;/code&gt; and &lt;code&gt;wrapture.data.*&lt;/code&gt;, with the card number already redacted before it got anywhere near the exporter. And the &lt;code&gt;KeyError&lt;/code&gt; appears on both spans, once as the exception that escaped the view and once as the one noted against the request after Flask caught it, so the request span shows the 500, the error status and the reason together rather than a status with no explanation.&lt;/p&gt;
+&lt;h2&gt;One trace across two processes&lt;/h2&gt;
+&lt;p&gt;A trace within one process is only half of what a tracing backend is for. The &lt;code&gt;trace-propagation&lt;/code&gt; example in the &lt;a href="https://github.com/GrahamDumpleton/wrapture/tree/main/examples"&gt;wrapture repository&lt;/a&gt; is two processes: a client that places orders against a quote service over HTTP, and the service itself, both observed by wrapture and both writing JSON Lines files. Every tree wrapture records carries a W3C trace id, minted at its root, and on the client side an instrumentation for &lt;code&gt;urllib&lt;/code&gt; puts that id into the &lt;code&gt;traceparent&lt;/code&gt; header of each outbound request. On the server side the WSGI middleware parses the header at the boundary, so that process's trees join the client's trace instead of minting their own.&lt;/p&gt;
+&lt;p&gt;The join needs no backend at all. Printing the first eight characters of the trace id from every line of both files, with the file it came from:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;0b2ad016 server.jsonl backend:app
+8f19b8c6 client.jsonl frontend:fetch_quote
+8f19b8c6 client.jsonl frontend:fetch_quote
+8f19b8c6 client.jsonl frontend:fetch_quote
+8f19b8c6 client.jsonl frontend:place_order
+8f19b8c6 client.jsonl urllib.request:OpenerDirector.open
+8f19b8c6 server.jsonl backend:app
+8f19b8c6 server.jsonl backend:quote
+b1a416b0 client.jsonl frontend:fetch_quote
+b1a416b0 client.jsonl frontend:fetch_quote
+b1a416b0 client.jsonl frontend:place_order
+b1a416b0 client.jsonl urllib.request:OpenerDirector.open
+b1a416b0 server.jsonl backend:app
+b1a416b0 server.jsonl backend:quote
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Each order is one id across both files, client half and server half of one distributed trace. The repeated &lt;code&gt;fetch_quote&lt;/code&gt; lines are the two blocks the client marks inside that function, which record under its path, and the lone server-only line at the top is a request that arrived with no &lt;code&gt;traceparent&lt;/code&gt; header, which minted an id of its own at the boundary. The whole public surface the client instrumentation needed for this was &lt;code&gt;wrapture.trace_headers()&lt;/code&gt;, which returns the pairs an outbound message made right now should carry, and is empty when nothing is being recorded, so injecting it is always safe.&lt;/p&gt;
+&lt;p&gt;Switching on &lt;code&gt;[otel]&lt;/code&gt; in both processes changes nothing about the ids. The exporter claims the identity wrapture minted rather than minting one of its own, so the JSON Lines files, the outbound headers and the exported spans all read the same trace id, and the server's request span is created with the arrived identity as a remote parent. In the console output from the same run, the server's &lt;code&gt;GET /quote/widget&lt;/code&gt; span carries the client's trace id and names the client's &lt;code&gt;urllib.open&lt;/code&gt; span as its parent:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-json"&gt;{
+    &amp;quot;name&amp;quot;: &amp;quot;GET /quote/widget&amp;quot;,
+    &amp;quot;context&amp;quot;: {
+        &amp;quot;trace_id&amp;quot;: &amp;quot;0xcdde803e61b96f52e2eb3820c7004df0&amp;quot;,
+        &amp;quot;span_id&amp;quot;: &amp;quot;0x9bb64b3bad9a6848&amp;quot;
+    },
+    &amp;quot;kind&amp;quot;: &amp;quot;SpanKind.SERVER&amp;quot;,
+    &amp;quot;parent_id&amp;quot;: &amp;quot;0x670e42eb0ac7690a&amp;quot;,
+    ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-json"&gt;{
+    &amp;quot;name&amp;quot;: &amp;quot;urllib.open&amp;quot;,
+    &amp;quot;context&amp;quot;: {
+        &amp;quot;trace_id&amp;quot;: &amp;quot;0xcdde803e61b96f52e2eb3820c7004df0&amp;quot;,
+        &amp;quot;span_id&amp;quot;: &amp;quot;0x670e42eb0ac7690a&amp;quot;
+    },
+    &amp;quot;kind&amp;quot;: &amp;quot;SpanKind.INTERNAL&amp;quot;,
+    &amp;quot;parent_id&amp;quot;: &amp;quot;0x0e06d5674120b1db&amp;quot;,
+    ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In a viewer, each order is one distributed trace with the service's request span attached beneath the outbound call that made it. One invariant governs the header handling and it is worth stating because it is the thing that makes this safe to switch on in a service that sits between other people's systems: never break a trace you do not understand. A header wrapture parses but nothing claims is forwarded verbatim, so an upstream product sees this service as a transparent hop, and headers wrapture does not parse are never touched at all.&lt;/p&gt;
+&lt;h2&gt;Metrics for free&lt;/h2&gt;
+&lt;p&gt;The traces signal exports events individually. The metrics signal aggregates the same events instead, and both were on above since the default is all signals. Request durations go into the semantic-convention &lt;code&gt;http.server.request.duration&lt;/code&gt; histogram, attributed by method, route and status code, and observed calls go into a per-path &lt;code&gt;wrapture.call.duration&lt;/code&gt; histogram whose error series split out by exception type. From the same run, the attribute sets on the request histogram's data points were:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-json"&gt;{
+    &amp;quot;http.request.method&amp;quot;: &amp;quot;POST&amp;quot;,
+    &amp;quot;http.route&amp;quot;: &amp;quot;/order&amp;quot;,
+    &amp;quot;http.response.status_code&amp;quot;: 200
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-json"&gt;{
+    &amp;quot;http.request.method&amp;quot;: &amp;quot;GET&amp;quot;,
+    &amp;quot;http.route&amp;quot;: &amp;quot;/quote/&amp;lt;item&amp;gt;&amp;quot;,
+    &amp;quot;http.response.status_code&amp;quot;: 500,
+    &amp;quot;error.type&amp;quot;: &amp;quot;KeyError&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So per-endpoint latency and error rate read straight off the histogram with no code involved. The reason the bound path is safe as a metric attribute where a raw URL would not be is that the config chose the bindings, so the set of values is closed; requests are attributed by route pattern for the same reason, never by URL. The design is the &lt;code&gt;Aggregate&lt;/code&gt; collector from the &lt;a href="https://grahamdumpleton.me/posts/2026/09/finding-slow-code-with-wrapture/"&gt;previous post&lt;/a&gt; with the aggregation handed to the SDK: bounded memory, no values captured, nothing retained.&lt;/p&gt;
+&lt;h2&gt;What it costs&lt;/h2&gt;
+&lt;p&gt;The usual objection to instrumenting Python is the overhead, so this is worth a paragraph. Exporting through wrapture costs about the same as instrumenting with the OpenTelemetry SDK directly, and on a call that raises it costs noticeably less, because the SDK's &lt;code&gt;record_exception&lt;/code&gt; formats the stack trace through &lt;code&gt;traceback.format_exception&lt;/code&gt;, which on current Pythons parses each frame's source to draw caret underlines that no backend renders, and wrapture's sink formats the same frames without them. The design point behind the rest is that the sink does not use the SDK's tracer at all. Everything a span needs is known when its event closes, so the sink builds the finished span at that moment and hands it to the SDK's own processor, skipping the tracer's mutable span object with its validated attribute store and locks, which is where most of the per-span cost used to go. The measured figures, with the methodology, are in the &lt;a href="https://wrapture.readthedocs.io/en/latest/otel-export.html#what-it-costs"&gt;cost section&lt;/a&gt; of the OpenTelemetry export page, and I would rather point there than quote numbers that will be out of date by the time anyone reads this.&lt;/p&gt;
+&lt;h2&gt;The thread from the beginning&lt;/h2&gt;
+&lt;p&gt;When I &lt;a href="https://grahamdumpleton.me/posts/2026/08/introducing-wrapture/"&gt;introduced wrapture&lt;/a&gt; I said there were two interests behind it, correctness in testing and instrumenting programs for tracing, and that underneath they wanted the same thing: a way to see the real calls as they happen. This is where the second one ends up. The three bindings on the shop have not changed since the &lt;a href="https://grahamdumpleton.me/posts/2026/09/unit-testing-with-wrapture/"&gt;first testing post&lt;/a&gt;. In a test they feed a tape and the assertions read off it. In production they feed a backend, with a request as one tree, a trace id that survives crossing to another service, and metrics aggregated from the same events. The only thing that changed along the way is who was listening.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://wrapture.readthedocs.io/en/latest/otel-export.html"&gt;OpenTelemetry export page&lt;/a&gt; has the rest of the table, including sampling, the logs signal and how wrapture's pipelines coexist with an application that already uses the OpenTelemetry API on its own account.&lt;/p&gt;</description>
+      <guid isPermaLink="false">e1910e80ae101ce0752349a1821321361dbb90b7cbb318f683e02f41292131a9</guid>
+      <pubDate>Fri, 11 Sep 2026 01:39:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>Bob Belderbos: Why Learn to Code If AI Can Code? 6 Reasons - Planet Python</title>
+      <link>https://belderbos.dev/blog/why-learn-to-code-if-ai-can-code/</link>
+      <description>&lt;p&gt;Stanford's Chris Piech runs Code in Place, an intro programming class with 17,000 students and over 1,000 teachers. They've run it both before and after Cursor and Claude Code arrived, and enrollment basically doubled. It turns out that more people, not less, want to learn to code now that AI can write it.&lt;/p&gt;
+&lt;span id="continue-reading"&gt;&lt;/span&gt;
+&lt;p&gt;Why learn the thing the machine can now do almost flawlessly? Six reasons out of &lt;a href="https://www.youtube.com/watch?v=g-CD1d0q01I" rel="noopener external" target="_blank"&gt;an interview with him&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="1-syntax-is-the-disposable-half-problem-solving-is-the-durable-one"&gt;1. Syntax is the disposable half; problem-solving is the durable one&lt;/h2&gt;
+&lt;p&gt;Piech splits learning to program into two parts: the syntax (how you tell a computer to do things) and the problem-solving (how you break a big problem into small pieces and set up data to talk to algorithms). AI is very good at syntax. There is less need to memorize it.&lt;/p&gt;
+&lt;p&gt;The half worth building is the one that transfers: problem solving. Decomposition, naming the sub-problems, deciding what data structure the algorithm needs. That is the problem solving part you carry into every language and every tool, including AI. The syntax is disposable; the problem-solving is durable.&lt;/p&gt;
+&lt;h2 id="2-without-foundations-you-can-t-catch-ai-s-bad-decisions"&gt;2. Without foundations, you can't catch AI's bad decisions&lt;/h2&gt;
+&lt;p&gt;Piech says he constantly ships with AI, and he's explicit about why it works for him: he already knows architecture. Strip that away and the model starts making poor structural calls you often only notice later on in the app's lifecycle.&lt;/p&gt;
+&lt;p&gt;I see this all the time working with LLMs: happy path and call it done. The edge cases show up when real users start hitting it, or when you step back from the first prototype and look hard at what you actually built. At that point you really need to understand the architecture underneath.&lt;/p&gt;
+&lt;p&gt;This is the whole argument for keeping fundamentals. AI is &lt;a href="https://belderbos.dev/blog/ai-accelerator-needs-direction/"&gt;an accelerator, not a compass&lt;/a&gt;. It can get you to a solution faster, but it can't tell you if the solution is good.&lt;/p&gt;
+&lt;h2 id="3-outsource-too-much-and-the-muscle-atrophies"&gt;3. Outsource too much and the muscle atrophies&lt;/h2&gt;
+&lt;p&gt;"If you have AI write too much of your code, at what point can you no longer do that valuable piece of the architecture?"&lt;/p&gt;
+&lt;p&gt;And the insidious thing is that this will happen quietly. Using AI is fine, Piech says, as long as you stay self-aware about whether you're growing alongside it or handing away the growth. I made the same case from a different angle in &lt;a href="https://belderbos.dev/blog/ai-skill-atrophy-keep-the-friction/"&gt;Guardrails Protect Your Codebase. What Protects Your Judgment?&lt;/a&gt;: tooling can protect the coding part (e.g. with harnesses), but only making the hard decisions yourself protects your skill and judgment.&lt;/p&gt;
+&lt;h2 id="4-coding-is-the-best-problem-solving-gym-you-have"&gt;4. Coding is the best problem-solving gym you have&lt;/h2&gt;
+&lt;p&gt;Code gives you immediate, falsifiable feedback. Your logic is wrong, the thing breaks, you see it, you iterate, you learn.&lt;/p&gt;
+&lt;p&gt;Apply problem-solving to life and the feedback cycle is much slower: you make a decision, and the consequences show up months later, often entangled in a complex web of other decisions.&lt;/p&gt;
+&lt;p&gt;Coding on the other hand is the rare domain where you can run the loop hundreds of times a week. (&lt;a href="https://pybitesplatform.com" rel="noopener external" target="_blank"&gt;Deliberate practice&lt;/a&gt; is how you get the reps.) That's what trains judgment, and &lt;a href="https://belderbos.dev/blog/thinking-matters-more-than-ever-ai-age/"&gt;judgment is the skill AI can't hand you&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="5-the-high-order-skill-is-knowing-what-s-worth-building"&gt;5. The high-order skill is knowing what's worth building&lt;/h2&gt;
+&lt;p&gt;Piech frames the durable skill as interfacing between what computers can do and what humans actually need. What's the valuable problem? What feature helps a user make progress?&lt;/p&gt;
+&lt;p&gt;It has always been a critical high-order skill. What's changed is that more junior engineers can engage with it now, and if you're a junior his advice is to start on it today. You don't need the senior title first.&lt;/p&gt;
+&lt;p&gt;It's the same reason I keep arguing &lt;a href="https://belderbos.dev/blog/design-over-code/"&gt;design beats code&lt;/a&gt;: I once reduced a 1,069-line AI-built app down to 156 lines because I put design before code.&lt;/p&gt;
+&lt;h2 id="6-you-can-now-learn-faster-than-ever"&gt;6. You can now learn faster than ever&lt;/h2&gt;
+&lt;p&gt;This is the flip side of reason 3: used well, AI can be an extraordinarily powerful tutor.&lt;/p&gt;
+&lt;p&gt;Piech's own move if he were starting today: build a lot of prototypes with Claude Code, then ask it to teach him the most important concepts behind each one, and iterate.&lt;/p&gt;
+&lt;p&gt;Foundations first, then learn to code &lt;em&gt;with&lt;/em&gt; AI, in that order. That's why I'm building a Python Foundations course: the workflow layer around the language, learned by shipping one real tool. More soon.&lt;/p&gt;
+&lt;p&gt;The tool that can erode your skills can also compound them, depending entirely on whether you let it think for you or make it teach you.&lt;/p&gt;
+&lt;p&gt;None of this depends on where AI lands in 2030. Self-driving cars looked close in 2012, and their progress was badly overestimated. It's the last 1% that resists the machine: the odd thing on the highway, the judgment call no one scripted. Coding is no different. Decomposition, judgment, taste, knowing what to build; those turn out to be the most human-dependent parts of the job and the ones that will be most valuable in the AI era.&lt;/p&gt;</description>
+      <guid isPermaLink="false">a4676982207b12d9f678b708282fb303126b5355bffd06ca116d2cdc1713c3ce</guid>
+      <pubDate>Fri, 11 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Talk Python to Me: #562: DuckLake: The Lakehouse That's Just SQL and Parquet - Planet Python</title>
+      <link>https://talkpython.fm/episodes/show/562/ducklake-the-lakehouse-thats-just-sql-and-parquet</link>
+      <description>How many files does your query read before it reads any data? On some data lakes, you go through JSON and metadata files first, just to learn which Parquet files matter. DuckLake asks one SQL question instead. The metadata lives in a real database. The data stays in plain Parquet. That's the entire format.
+&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+Pedro Holanda joined DuckDB in 2018, when it was still a research prototype at CWI. He's the lead DuckLake developer. Guillermo Sanchez Dionis works on DuckLake and the new Quack protocol.
+&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+With Quack as the catalog, DuckLake handles 200 transactions a second under heavy contention. No other open table format comes close.&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Episode sponsors&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;a href='https://talkpython.fm/sixfeetup'&amp;gt;Six Feet Up&amp;lt;/a&amp;gt;&amp;lt;br&amp;gt;
+&amp;lt;a href='https://talkpython.fm/training'&amp;gt;Talk Python Courses&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;h2 class="links-heading mb-4"&amp;gt;Links from the show&amp;lt;/h2&amp;gt;
+&amp;lt;div&amp;gt;&amp;lt;strong&amp;gt;Guests&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Pedro Holanda&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://pedroholanda.org?featured_on=talkpython" target="_blank" &amp;gt;pedroholanda.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Guillermo Sanchez&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.linkedin.com/in/guillermo-s%C3%A1nchez-dionis/?featured_on=talkpython" target="_blank" &amp;gt;linkedin.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;PhD on progressive indexes&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://ir.cwi.nl/pub/31048?featured_on=talkpython" target="_blank" &amp;gt;ir.cwi.nl&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;SQLite&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.sqlite.org?featured_on=talkpython" target="_blank" &amp;gt;www.sqlite.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Litestream&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://litestream.io?featured_on=talkpython" target="_blank" &amp;gt;litestream.io&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;boring hardware&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/episodes/show/531/talk-python-in-production" target="_blank" &amp;gt;talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;DuckDB&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://duckdb.org?featured_on=talkpython" target="_blank" &amp;gt;duckdb.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;episode 491&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/episodes/show/491/duckdb-and-python-ducks-and-snakes-living-together" target="_blank" &amp;gt;talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Iceberg&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://iceberg.apache.org?featured_on=talkpython" target="_blank" &amp;gt;iceberg.apache.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;manifesto&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://ducklake.select/manifesto/?featured_on=talkpython" target="_blank" &amp;gt;ducklake.select&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;DuckLake&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://ducklake.select?featured_on=talkpython" target="_blank" &amp;gt;ducklake.select&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;spec&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://ducklake.select/docs/stable/specification/introduction?featured_on=talkpython" target="_blank" &amp;gt;ducklake.select&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;this diagram&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://blobs.talkpython.fm/ducklake-architecture.png?cache_id=13839f" target="_blank" &amp;gt;blobs.talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Data inlining&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://ducklake.select/2026/04/02/data-inlining-in-ducklake/?featured_on=talkpython" target="_blank" &amp;gt;ducklake.select&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;ducklake-dataframe&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://github.com/pdet/ducklake-dataframe?featured_on=talkpython" target="_blank" &amp;gt;github.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Polars course&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://training.talkpython.fm/courses/polars-for-power-users" target="_blank" &amp;gt;training.talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;CSV parser&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://duckdb.org/2025/04/16/duckdb-csv-pollock-benchmark.html?featured_on=talkpython" target="_blank" &amp;gt;duckdb.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Zero-copy Arrow&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://duckdb.org/2021/12/03/duck-arrow.html?featured_on=talkpython" target="_blank" &amp;gt;duckdb.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;ART index&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://duckdb.org/2022/07/27/art-storage.html?featured_on=talkpython" target="_blank" &amp;gt;duckdb.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;async I/O&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://duckdb.org/2026/07/31/asynchronous-io?featured_on=talkpython" target="_blank" &amp;gt;duckdb.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;v1.0&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://ducklake.select/2026/04/13/ducklake-10/?featured_on=talkpython" target="_blank" &amp;gt;ducklake.select&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Git-like branching&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://ducklake.select/roadmap.html?featured_on=talkpython" target="_blank" &amp;gt;ducklake.select&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Watch this episode on YouTube&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.youtube.com/watch?v=wEKbbY5tPtI" target="_blank" &amp;gt;youtube.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Episode #562 deep-dive&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/episodes/show/562/ducklake-the-lakehouse-thats-just-sql-and-parquet#takeaways-anchor" target="_blank" &amp;gt;talkpython.fm/562&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Episode transcripts&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/episodes/transcript/562/ducklake-the-lakehouse-thats-just-sql-and-parquet" target="_blank" &amp;gt;talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Theme Song: Developer Rap&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;🥁 Served in a Flask 🎸&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/flasksong" target="_blank" &amp;gt;talkpython.fm/flasksong&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;---==  Don't be a stranger  ==---&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;YouTube&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/youtube" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-youtube"&amp;gt;&amp;lt;/i&amp;gt; youtube.com/@talkpython&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Bluesky&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://bsky.app/profile/talkpython.fm" target="_blank" &amp;gt;@talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Mastodon&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://fosstodon.org/web/@talkpython" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-mastodon"&amp;gt;&amp;lt;/i&amp;gt; @talkpython@fosstodon.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;X.com&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://x.com/talkpython" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-twitter"&amp;gt;&amp;lt;/i&amp;gt; @talkpython&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Michael on Bluesky&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://bsky.app/profile/mkennedy.codes?featured_on=talkpython" target="_blank" &amp;gt;@mkennedy.codes&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Michael on Mastodon&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://fosstodon.org/web/@mkennedy" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-mastodon"&amp;gt;&amp;lt;/i&amp;gt; @mkennedy@fosstodon.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Michael on X.com&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://x.com/mkennedy?featured_on=talkpython" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-twitter"&amp;gt;&amp;lt;/i&amp;gt; @mkennedy&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;/div&amp;gt;</description>
+      <guid isPermaLink="false">726c1e3f47e17a34627b05f00d0518447eae2b6a2593dd832bd34d39361d33e6</guid>
+      <pubDate>Thu, 10 Sep 2026 14:59:40 +0000</pubDate>
+    </item>
     <item>
       <title>Hugo van Kemenade: Soft-deprecating re.match() - Planet Python</title>
       <link>https://hugovk.dev/blog/2026/soft-deprecating-re.match/</link>
