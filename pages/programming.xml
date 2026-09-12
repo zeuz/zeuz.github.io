@@ -5,7 +5,99 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Fri, 11 Sep 2026 14:01:20 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2026 14:01:56 +0000</lastBuildDate>
+    <item>
+      <title>Graham Dumpleton: Trying out wrapture - Planet Python</title>
+      <link>https://grahamdumpleton.me/posts/2026/09/trying-out-wrapture/</link>
+      <description>&lt;p&gt;Since &lt;a href="https://grahamdumpleton.me/posts/2026/08/introducing-wrapture/"&gt;introducing wrapture&lt;/a&gt; at the end of August I have been putting out a post every day or so, first working through how it is used in unit tests and then how the same bindings trace a running application. With the last of the tracing posts now done, this is the point where I wanted to stop, take stock, and pull everything together in one place for anyone who wants to try it out.&lt;/p&gt;
+&lt;h2&gt;Where things stand&lt;/h2&gt;
+&lt;p&gt;The short version is that wrapture has been bumped to version 1.0.0b1. That move from alpha to beta is deliberate. I am happy with the APIs as they are and I am not seeing a need to change them, so what the beta series needs now is not more features from me but people using it on real code and reporting back. Reports of it working, or not working, on something I never thought to test, and of what confused you or what you found missing, are what will decide whether anything changes before a release candidate. They go to the &lt;a href="https://github.com/GrahamDumpleton/wrapture/issues"&gt;issue tracker&lt;/a&gt; on GitHub.&lt;/p&gt;
+&lt;p&gt;One area where feedback would be especially useful is the OpenTelemetry export. The events wrapture records are mapped through to spans, attributes and metrics, and the intent was for that mapping to follow the OpenTelemetry &lt;a href="https://opentelemetry.io/docs/concepts/semantic-conventions/"&gt;semantic conventions&lt;/a&gt;. As I explained in the introductory post, the code was written by an AI under my direction rather than by me, so I cannot claim to have checked every attribute against the conventions myself, and can only say I hope the information is being mapped through okay. If you spend your days looking at traces in an OpenTelemetry backend and find that what arrives is not named or shaped the way the conventions say it should be, or the way your backend expects, I would like to hear about it while it is still cheap to change.&lt;/p&gt;
+&lt;p&gt;The companion instrumentation packages have been bumped to 1.0.0b1 at the same time. Until 1.0.0 is final a plain &lt;code&gt;pip install wrapture&lt;/code&gt; picks up the latest pre-release automatically, so there is no need to pin a specific version to try it.&lt;/p&gt;
+&lt;p&gt;The links you need are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/GrahamDumpleton/wrapture"&gt;wrapture&lt;/a&gt; on GitHub, and the &lt;a href="https://wrapture.readthedocs.io/"&gt;documentation&lt;/a&gt; on ReadTheDocs. The &lt;a href="https://wrapture.readthedocs.io/en/latest/getting-started.html"&gt;getting started&lt;/a&gt; page is the place to begin, and if you are coming from &lt;code&gt;unittest.mock&lt;/code&gt; there is a &lt;a href="https://wrapture.readthedocs.io/en/latest/coming-from-mock.html"&gt;comparison page&lt;/a&gt; mapping each mock idiom to its wrapture counterpart.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/GrahamDumpleton/wrapture-instrumentation"&gt;wrapture-instrumentation&lt;/a&gt;, the core collection of packaged instrumentation. It covers the web frameworks Flask, Django, FastAPI, Starlette and aiohttp, the servers uvicorn, werkzeug and &lt;code&gt;wsgiref&lt;/code&gt;, the HTTP clients requests, httpx, urllib3, aiohttp, &lt;code&gt;urllib.request&lt;/code&gt; and &lt;code&gt;http.client&lt;/code&gt;, XML-RPC on both ends, gRPC, SQLAlchemy and &lt;code&gt;sqlite3&lt;/code&gt;, and Jinja2 templates.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/GrahamDumpleton/wrapture-instrumentation-aws"&gt;wrapture-instrumentation-aws&lt;/a&gt;, for the AWS SDK (boto3 and botocore), with every AWS API call recorded as one event.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/GrahamDumpleton/wrapture-instrumentation-postgresql"&gt;wrapture-instrumentation-postgresql&lt;/a&gt;, for the PostgreSQL drivers psycopg, psycopg2 and asyncpg.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/GrahamDumpleton/wrapture-instrumentation-mysql"&gt;wrapture-instrumentation-mysql&lt;/a&gt;, for the MySQL drivers PyMySQL, mysqlclient and aiomysql.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The split between the core collection and the separate packages is that the core package only covers targets which can be exercised in-process, with no backend product or service needed to test against. Anything that needs a real server to test against, which the database and AWS packages do (their test suites run the real thing in a container), lives in a package of its own with its own release cadence. I also plan to have packages for Redis and MongoDB. Beyond that it will depend on what people are interested in seeing instrumentation for, with the only other thing I can see at the moment being the LangChain packages.&lt;/p&gt;
+&lt;h2&gt;The posts so far&lt;/h2&gt;
+&lt;p&gt;The posts are collected on the &lt;a href="https://grahamdumpleton.me/guides/testing-and-tracing-with-wrapture/"&gt;testing and tracing with wrapture&lt;/a&gt; guide page, which is the list that will keep growing, but for the record the reading order is as follows. First the starting point, on what wrapture is, why I built it, and how it was written:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://grahamdumpleton.me/posts/2026/08/introducing-wrapture/"&gt;Introducing wrapture.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Then the unit testing side, where the difference from &lt;code&gt;unittest.mock&lt;/code&gt; is that the real code still runs and everything that flows through it is recorded:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://grahamdumpleton.me/posts/2026/09/unit-testing-with-wrapture/"&gt;Unit testing with wrapture.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://grahamdumpleton.me/posts/2026/09/recording-calls-with-wrapture/"&gt;Recording calls with wrapture.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://grahamdumpleton.me/posts/2026/09/phased-behaviour-in-wrapture/"&gt;Phased behaviour in wrapture.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://grahamdumpleton.me/posts/2026/09/beyond-callables-in-wrapture/"&gt;Beyond callables in wrapture.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And the tracing side, where the same bindings observe a running application instead, from a live call tree in a terminal through to spans in an OpenTelemetry backend:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://grahamdumpleton.me/posts/2026/09/live-tracing-with-wrapture/"&gt;Live tracing with wrapture.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://grahamdumpleton.me/posts/2026/09/zero-code-tracing-with-wrapture/"&gt;Zero-code tracing with wrapture.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://grahamdumpleton.me/posts/2026/09/tracing-flask-with-wrapture/"&gt;Tracing Flask with wrapture.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://grahamdumpleton.me/posts/2026/09/finding-slow-code-with-wrapture/"&gt;Finding slow code with wrapture.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://grahamdumpleton.me/posts/2026/09/opentelemetry-export-in-wrapture/"&gt;OpenTelemetry export in wrapture.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Learning it by doing&lt;/h2&gt;
+&lt;p&gt;Reading about a library only gets you so far, so alongside the posts there is now a &lt;a href="https://github.com/GrahamDumpleton/wrapture-workshops"&gt;wrapture-workshops&lt;/a&gt; repository on GitHub containing 24 workshops you can work through to learn wrapture in an interactive workshop format. Each takes one thing you might want to do with wrapture and walks you through doing it in a live JupyterLab session, with the instructions in a side panel whose actions drive the session and check your work as you go. The early workshops track the blog posts, one per post, and the later ones go into areas the posts have not covered yet, such as using wrapture with pytest properly, converting an existing mock based test suite, async code, patching third party libraries, distributed tracing across two processes, and writing an instrumentation package of your own.&lt;/p&gt;
+&lt;p&gt;You need nothing installed to try them. The workshops can be run in a hosted environment on &lt;a href="https://mybinder.org/v2/gh/GrahamDumpleton/wrapture-workshops/main?urlpath=lab"&gt;mybinder.org&lt;/a&gt;, a free public service that builds the repository into a temporary JupyterLab running in your browser. Building takes a minute or two. A session is discarded when it ends, so finish a workshop in the session you started it in. If you would rather run them locally, the repository README has the steps for doing that under any JupyterLab.&lt;/p&gt;
+&lt;p&gt;Each workshop installs wrapture into a virtual environment of its own inside the workshop directory, the way a project would, so nothing is left behind in the JupyterLab environment. The workshops are pinned to a released version of wrapture, so the documentation may at times describe something newer than what a workshop uses.&lt;/p&gt;
+&lt;h2&gt;Beaten to the punch&lt;/h2&gt;
+&lt;p&gt;My intention was always to write this summary post once the testing and tracing posts were done, but Simon Willison got there first with &lt;a href="https://simonwillison.net/2026/Sep/11/wrapture/"&gt;Don't sleep on wrapture&lt;/a&gt;, which was his second post on wrapture after &lt;a href="https://simonwillison.net/2026/Aug/31/introducing-wrapture/"&gt;covering the initial announcement&lt;/a&gt; back in August. I am not complaining. His reach on social media is a great deal larger than mine, so a lot more people will have seen his summary than would have seen this one, and that has been reflected in the way the number of stars on the GitHub repository jumped after his post went out. The Python Bytes team also featured wrapture on &lt;a href="https://www.youtube.com/live/4AUE4ewgN38?t=844"&gt;episode 494 of their podcast&lt;/a&gt;, which helped as well. Thanks to all of them.&lt;/p&gt;
+&lt;p&gt;Either way, this post still serves a purpose, since it is the one place with all the links, the package list and the workshops together, and it will be the post I point people at when they ask where to start.&lt;/p&gt;
+&lt;h2&gt;A side note on the workshops&lt;/h2&gt;
+&lt;p&gt;I do hope people try the workshops on mybinder, and not only for what they teach about wrapture. I have worked on &lt;a href="https://educates.dev"&gt;Educates&lt;/a&gt; for many years as a way of hosting online interactive workshops, and it remains the platform I would reach for when a workshop needs a full Kubernetes-backed environment. Being able to deliver workshops inside JupyterLab, with instructions in a side panel that drive the session and check what you have done, is something completely new which I only wrote in the past week, as a JupyterLab extension called &lt;a href="https://github.com/GrahamDumpleton/jupyterlab-workshop"&gt;jupyterlab-workshop&lt;/a&gt;. A workshop is nothing more than a directory with a manifest and some Markdown pages, and it runs wherever JupyterLab runs, so mybinder can host it with no container or cluster of my own behind it. I will do some followup posts on that in the coming week or so, since it deserves more than a paragraph at the end of a post about something else.&lt;/p&gt;</description>
+      <guid isPermaLink="false">234e456f912b91372bd16f5362c5d0b5a4bbf0de598306288bd977f4bd9daaa2</guid>
+      <pubDate>Sat, 12 Sep 2026 07:39:22 +0000</pubDate>
+    </item>
+    <item>
+      <title>Mike C. Fletcher: Hardware Accelerated Video Capture for PyOpenGL - Planet Python</title>
+      <link>http://blog.vrplumber.com/b/2026/09/11/hardware-accelerated-video-capture-for-pyopengl/</link>
+      <description>&lt;p&gt;The &lt;a href="https://github.com/mcfletch/pyopengl-video"&gt;pyopengl-video&lt;/a&gt; library is a small hack that lets you pass FrameBufferObjects (FBOs) directly to the local platform video encoding library (or allows you to use your existing video buffer as an FBO, depending on the platform). The purpose of the library is to allow an off-screen renderer to generate h264 in mp4 video previews of that off-screen rendering. I find that useful to allow an agent to capture e.g. gameplay demos or the like so that you can see what it is working on while you are not at your desk.&lt;/p&gt;
+&lt;p&gt;On Linux with nVidia uses NVENC. For linux with Intel or AMD uses vaapi. Windows uses D3D11 and COM.  Requires PyOpenGL 4.0.0a5 or above. So far no OS-X solution.&lt;/p&gt;</description>
+      <guid isPermaLink="false">33be842f7a25794b4d7b621c4716a2b72b73a60ca82dc1e7699660302325577a</guid>
+      <pubDate>Sat, 12 Sep 2026 01:05:15 +0000</pubDate>
+    </item>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: Newsprint: Turning e-mail newsletters into a personal PDF - Planet Python</title>
+      <link>https://lernerpython.com/2026/09/11/newsprint-turning-e-mail-newsletters-into-a-personal-pdf/</link>
+      <description>&lt;p class="wp-block-paragraph"&gt;I really enjoy reading e-mail newsletters. They&amp;#8217;re clever, informative, and funny, and provide me with lots of food for thought — as well as professional information that is crucial to my work.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The thing is, I don&amp;#8217;t have time to read them during the week. And on Saturday, when I do have time, I don&amp;#8217;t use my computer. So I have a funny way of reading them:&lt;/p&gt;
+&lt;ol class="wp-block-list"&gt;
+&lt;li&gt;When a newsletter arrives, a filter automatically moves it into my &amp;#8220;toprint&amp;#8221; folder.&lt;/li&gt;
+&lt;li&gt;My very favorite newsletters are not only moved into &amp;#8220;toprint&amp;#8221;, but also get stars.&lt;/li&gt;
+&lt;li&gt;On Friday afternoon, I go to my &amp;#8220;toprint&amp;#8221; folder, scoop up all of the starred newsletters, and print them out &amp;#8212; 4 pages/side, and double sided. I then choose a number of the unstarred newsletters, and print them, too.&lt;/li&gt;
+&lt;li&gt;Saturday morning, I get up super early (typically about 4:30 a.m.) and spend several hours reading through what I collected during the week.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p class="wp-block-paragraph"&gt;I&amp;#8217;ve been doing this for a few years, and like this system. But I don&amp;#8217;t relish the idea of using so much paper, and I increasingly saw examples of a page that didn&amp;#8217;t have to be printed, because it contained nothing more than the newsletter&amp;#8217;s subscription information or self promotion. No reason to keep or print that. Plus, I don&amp;#8217;t need all of the promotional images. Plus, sometimes my computer (or I) will fail to print the articles 4x/page, and the results are quite annoying.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Also? Why am I spending so much time on this, going through each message and printing it? Can&amp;#8217;t my computer grab all of the starred messages and print them?&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;That was the genesis of &lt;em&gt;&lt;a href="https://pypi.org/project/newsprint/"&gt;newsprint&lt;/a&gt;&lt;/em&gt;, a new Python package that does all of this for me:&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;I run &lt;em&gt;newsprint&lt;/em&gt; from the command line. It takes all of the starred messages in my &lt;em&gt;toprint&lt;/em&gt; folder, and creates a PDF file from them, 4 pages/side.&lt;/li&gt;
+&lt;li&gt;Along the way, it strips out all of the promotional, subscribe/unsubscribe stuff.&lt;/li&gt;
+&lt;li&gt;It removes images, unless it thinks that the images are useful and pertinent to the story. And if the image is very dark (like a dark-mode data plot), it reverses the colors.&lt;/li&gt;
+&lt;li&gt;It puts footers at the bottom of each cell, indicating what newsletter this is and what page we&amp;#8217;re on for that newsletter, as well as the overall newsletter.&lt;/li&gt;
+&lt;li&gt;It creates a table of contents&lt;/li&gt;
+&lt;li&gt;With a Claude API key, it&amp;#8217;ll summarize the entire set of newsletters, telling you what topics appeared across all of them&lt;/li&gt;
+&lt;li&gt;You can optionally ask for Claude to create a second, personal summary page. For example, I ask it to tell me if there are any topics with public data sets that might be appropriate for my Bamboo Weekly newsletter.&lt;/li&gt;
+&lt;li&gt;You can choose from the unstarred messages in your inbox, and have them added to the PDF output.&lt;/li&gt;
+&lt;li&gt;You can choose different paper sizes and orientation.&lt;/li&gt;
+&lt;li&gt;Starred messages are deleted (&amp;#8220;retired&amp;#8221; in the package&amp;#8217;s language) after they have been put into a newsletter. But they&amp;#8217;re also recorded — so if you made a mistake, you can unretire them &lt;/li&gt;
+&lt;li&gt;Everything is configurable from the command line and via a config file. Run &lt;em&gt;newsprint &amp;#8211;setup&lt;/em&gt; to create the config file for the first time.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="wp-block-paragraph"&gt;Newsprint has already saved me lots of time and paper, and makes my Saturday-morning reading more enjoyable. I&amp;#8217;m still iterating and improving on it; if you have suggestions, please send them my way!&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Meanwhile, check it out on PyPI: &lt;a href="https://pypi.org/project/newsprint/"&gt;https://pypi.org/project/newsprint/&lt;/a&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;/p&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/09/11/newsprint-turning-e-mail-newsletters-into-a-personal-pdf/"&gt;Newsprint: Turning e-mail newsletters into a personal PDF&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">e3338bc23edaf7aeef9e3cc7fdfdf61297b3803f995dbdbb9c5ffb0f6f7f2cab</guid>
+      <pubDate>Fri, 11 Sep 2026 15:03:23 +0000</pubDate>
+    </item>
     <item>
       <title>Graham Dumpleton: OpenTelemetry export in wrapture - Planet Python</title>
       <link>https://grahamdumpleton.me/posts/2026/09/opentelemetry-export-in-wrapture/</link>

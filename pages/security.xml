@@ -5,7 +5,68 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Fri, 11 Sep 2026 14:01:20 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2026 14:01:56 +0000</lastBuildDate>
+    <item>
+      <title>When the Whole Company Adopts AI: What It Does to Your SOC - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/when-whole-company-adopts-ai-what-it.html</link>
+      <description>Over the past year, we watched a new class of alert appear in enterprise security operations centers and grow faster than anything else in the stream: alerts that were triggered by AI tools and agents. Not attacks against AI, but the ordinary, everyday footprint of an organization using it, from developers running coding agents and non-technical staff signing consumer AI tools into corporate</description>
+      <guid isPermaLink="false">0c2d3e8e08be6981e419dcefe957db0210dd4c261ab6d1663c3b95c50e1fe639</guid>
+      <pubDate>Sat, 12 Sep 2026 10:24:44 +0000</pubDate>
+    </item>
+    <item>
+      <title>OpenAI Agents Linked to RubyGems Campaign That Gained RCE on RubyDoc Servers - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/openai-agents-linked-to-rubygems.html</link>
+      <description>The "major malicious attack" that targeted RubyGems in May 2026 was the work of a swarm of OpenAI agents, according to a new report published by researchers Spencer Kitts, Thomas Larsen, and Sydney Von Arx.
+On May 12, Maciej Mensfeld, senior product manager for software supply chain security at Mend.io, disclosed details of a coordinated cyber attack that targeted the package manager for the</description>
+      <guid isPermaLink="false">fff91780f534c58d32265b23d7135b39b7b162272fe322a3d56197bde0af46be</guid>
+      <pubDate>Sat, 12 Sep 2026 09:07:56 +0000</pubDate>
+    </item>
+    <item>
+      <title>GitLab CVSS 10 File-Read Flaw Draws In-the-Wild Probes After Disclosure - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/gitlab-cvss-10-file-read-flaw-draws-in.html</link>
+      <description>GitLab has released patches to address multiple flaws, including a maximum-severity security vulnerability that has witnessed in-the-wild probes within hours of public disclosure.
+The vulnerability in question is CVE-2026-85706 (CVSS score: 10.0), a path traversal issue in the repository commits API that could allow an unauthenticated user to read arbitrary files from the GitLab server under</description>
+      <guid isPermaLink="false">f86da62be9570c87601a9ecc9660242d075637eb08c341fdb12e50321b87171e</guid>
+      <pubDate>Fri, 11 Sep 2026 16:30:18 +0000</pubDate>
+    </item>
+    <item>
+      <title>Anthropic Says Seven China-Based AI Labs Ran Industrial-Scale Claude Distillation Attacks - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/anthropic-says-seven-china-based-ai.html</link>
+      <description>Anthropic on Thursday said it identified and disrupted industrial-scale illicit distillation attacks against Claude from seven labs based in China, including Alibaba, Moonshot, DeepSeek, Z.ai (aka Zhipu), and MiniMax.
+Knowledge distillation by itself is a legitimate training method. It refers to a machine learning technique where a large, powerful AI model assumes the role of a "teacher" to</description>
+      <guid isPermaLink="false">0afc602fc8b0e82a0e0e045f5e93d3cccca6d589b924b16843459856322211ac</guid>
+      <pubDate>Fri, 11 Sep 2026 16:15:29 +0000</pubDate>
+    </item>
+    <item>
+      <title>Inside Claude's Android app: Finding the Internal Settings - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wdkjfr/inside_claudes_android_app_finding_the_internal/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/InsertFunnyUser-name"&gt; /u/InsertFunnyUser-name &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://nima-ahmadi.github.io/posts/claude-android-internal-settings/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wdkjfr/inside_claudes_android_app_finding_the_internal/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">9880b5b8717a6cb486f77950d116f3d7e5d407cfd8386c0ad9f41e36f420dcb0</guid>
+      <pubDate>Fri, 11 Sep 2026 16:07:51 +0000</pubDate>
+    </item>
+    <item>
+      <title>Roots From Kilometers Away: our Ubiquiti airMAX research is on tour - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wdkg3u/roots_from_kilometers_away_our_ubiquiti_airmax/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/MagicianComplete7411"&gt; /u/MagicianComplete7411 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.youtube.com/live/APL4UJGasj0?si=vm-RVpvsA4fWtXui&amp;amp;t=22502"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wdkg3u/roots_from_kilometers_away_our_ubiquiti_airmax/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">2e48856ef9e23765e4f8b03b3b86e97aedc2bff79715e8a8bf1fa38319e15d83</guid>
+      <pubDate>Fri, 11 Sep 2026 16:04:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>Claude Used to Automate Exploitation and Data Theft Across Multiple Victims - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/claude-used-to-automate-exploitation.html</link>
+      <description>Anthropic has warned that cybercriminals and state-sponsored hackers alike are using its Claude models for cyber attacks, weapons design, propaganda, and mass surveillance between December 2025 and August 2026.
+The threat actors, which the artificial intelligence (AI) company has branded Generative Threat Groups (GTGs), span state-sponsored groups, financially motivated criminals, commercial</description>
+      <guid isPermaLink="false">2d842a128e9774515731a807a06043bee383b1b1bc4d3f5f33982a581935b3b2</guid>
+      <pubDate>Fri, 11 Sep 2026 14:29:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>Russian State-Sponsored Hackers Use Claude to Rebuild Malware After Detection - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/russian-state-sponsored-hackers-use.html</link>
+      <description>Anthropic on Thursday revealed it disrupted a campaign mounted by a Russian state-sponsored threat actor that abused Claude for developing an AI-assisted workflow to get ahead of the detection curve.
+The operation has been attributed to a cyber espionage group it calls GTG-20006 (where "GTG" stands for Generative Threat Group), which aligns with broader reporting linking the cluster to Midnight</description>
+      <guid isPermaLink="false">71ef9b4c6a23a8427a0c55279f7a2e8b14ef0c9c19d9ddc0e6a870bdc17d6211</guid>
+      <pubDate>Fri, 11 Sep 2026 14:10:20 +0000</pubDate>
+    </item>
     <item>
       <title>I built a free AI assistant that explains decompiled functions inside Ghidra - Reverse Engineering</title>
       <link>https://www.reddit.com/r/ReverseEngineering/comments/1wddzlm/i_built_a_free_ai_assistant_that_explains/</link>
@@ -53,6 +114,34 @@ The software development company said PaperCut NG/MF versions 26.0.5, 25.0.13 an
 The attacks leverage CVE-2026-20079 (CVSS score: 10.0), an authentication bypass vulnerability in the web interface of FMC software that could allow an unauthenticated, remote attacker to bypass</description>
       <guid isPermaLink="false">4e63b0723b367c7c2e39100b6427464759a7d10d5711cc0153af518beaf15e9d</guid>
       <pubDate>Fri, 11 Sep 2026 06:19:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeIPA -- multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/9736fef3-ada6-11f1-a655-3497f65b111b.html</link>
+      <description/>
+      <guid isPermaLink="false">f0d12da8c55e672905ee5cd3e2ef936b0930bcb736090e4a0e6a538e903a4710</guid>
+      <pubDate>Fri, 11 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>immich -- locked assets remain accessible through shared albums and links - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/fcc6917b-adbc-11f1-a655-3497f65b111b.html</link>
+      <description/>
+      <guid isPermaLink="false">d8b166c364e49b77cd28592a3fea735e80e595ab9f167990f4cef6dd6397edd0</guid>
+      <pubDate>Fri, 11 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>immich -- open redirect and reflected XSS in maintenance endpoint - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/fcc6baaa-adbc-11f1-a655-3497f65b111b.html</link>
+      <description/>
+      <guid isPermaLink="false">a21def3cbb96ab2d7df6cddbc75bb1be169deaf337dfde081f6a4308f12ec3ca</guid>
+      <pubDate>Fri, 11 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>redpanda-connect -- memory exhaustion via oversized AMQP frames - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/5d69ee28-adb9-11f1-9d0e-4c526214c986.html</link>
+      <description/>
+      <guid isPermaLink="false">bfe8978939a9b4ae795a02f6139339f521cbbc4ee7b434302ecc45f2c5095eb4</guid>
+      <pubDate>Fri, 11 Sep 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Windows Internals Explained - Reverse Engineering</title>
@@ -1468,101 +1557,6 @@ The activity has been attributed to a Chinese state-sponsored group known as QTF
 Group-IB, in a new analysis published today, described the cyber espionage actor as among the most active Iranian APT groups in 2026. Nimbus Manticore (aka</description>
       <guid isPermaLink="false">e9e47c1505c3786322efdde94a1b039b8664ee4366059fba5db71a73a1e9a605</guid>
       <pubDate>Wed, 26 Aug 2026 15:35:05 +0000</pubDate>
-    </item>
-    <item>
-      <title>NovaCookies Campaigns Abuse Genuine Docusign Notifications to Steal Microsoft 365 Sessions - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/novacookies-campaigns-abuse-genuine.html</link>
-      <description>Cybersecurity researchers have disclosed details of a new adversary-in-the-middle (AitM) phishing toolkit called NovaCookies that's used as a proxy to redirect Microsoft 365 sign-ins, while capturing authenticated sessions in the process.
-In a report shared with The Hacker News ahead of publication, Island characterized the $320/month service as a subscription-based phishing platform that</description>
-      <guid isPermaLink="false">2ebaeb4b7cbb103acfbc9dec1e186c1014cc1491bfbb6b5dd06aa56bb3b332a4</guid>
-      <pubDate>Wed, 26 Aug 2026 13:44:31 +0000</pubDate>
-    </item>
-    <item>
-      <title>CISA Red Team Compromised Two Critical Infrastructure Orgs, One Detected Nothing - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/cisa-red-team-compromised-two-critical.html</link>
-      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has published the results of two red team assessments it conducted simultaneously against two critical infrastructure organizations, using what it described as similar tradecraft while recording sharply different defensive outcomes.
-Both organizations were fully compromised at the domain level, and in both, the red team also</description>
-      <guid isPermaLink="false">12db486c1dfdc5367c7ab27288367e05d96da990610c5a33b4dc85a69766aa8f</guid>
-      <pubDate>Wed, 26 Aug 2026 13:07:02 +0000</pubDate>
-    </item>
-    <item>
-      <title>Unpatched Kaltura mwEmbed Flaws Could Let Remote Attackers Read Files and Run Code - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/unpatched-kaltura-mwembed-flaws-could.html</link>
-      <description>The CERT Coordination Center (CERT/CC) has disclosed two unpatched vulnerabilities in Kaltura's HTML5 video player library that allow a remote, unauthenticated attacker to read arbitrary files from a server and execute code on it.
-The flaws, tracked as CVE-2026-19913 and CVE-2026-19912, both stem from the same unsafe deserialization in the mwEmbedLoader.php endpoint of the mwEmbed player</description>
-      <guid isPermaLink="false">0bed38f0cb397725b366a1858e54c9369089e7034869643d006112ee961a5625</guid>
-      <pubDate>Wed, 26 Aug 2026 11:55:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Imagine the SOC Without a Queue: From Alert Backlog to AI Hypothesis Engine - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/imagine-soc-without-queue-from-alert.html</link>
-      <description>The SOC we've always known was built around a model that guarantees most of the alert queue will never receive analyst review. There's never time. In a traditional SOC, the typical progression follows a well-known pattern: an alert arrives; a detection engine assigns a severity score. The issue then waits for a human to decide if it should escalate to an investigation.
-Given the volume of</description>
-      <guid isPermaLink="false">92f4cf46c924fb674b5ba0d672ae59492c6ac10f01784c85f86296229b900146</guid>
-      <pubDate>Wed, 26 Aug 2026 11:36:49 +0000</pubDate>
-    </item>
-    <item>
-      <title>Claude Opus 4.6 Bypasses Gym Booking Limit, Cancels Other Users' Reservations in Tests - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/claude-opus-46-bypasses-gym-booking.html</link>
-      <description>Aikido Security has published research that recreates the Australian gym-booking incident in a synthetic environment, finding that Claude Opus 4.6, running on the OpenClaw agent harness, exploited a client-side-only booking restriction in 9 of 10 runs.
-The original incident was first reported by ABC News on August 10, based on chat logs and screenshots the user supplied. He had asked an</description>
-      <guid isPermaLink="false">4cc7e7338c8935821518ad23c0c48d6c9aa51b30bcff7544e6d40f0bccae2e66</guid>
-      <pubDate>Wed, 26 Aug 2026 10:27:23 +0000</pubDate>
-    </item>
-    <item>
-      <title>MmMapIoSpace Returns NULL: Tracing the Real Kernel Mechanism Through ntoskrnl - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vyt6ba/mmmapiospace_returns_null_tracing_the_real_kernel/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Important_Map6928"&gt; /u/Important_Map6928 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://sibouzitoun.tech/articles/mmmapiospace-returns-null-tracing-the-real-kernel-mechanism-through-ntoskrnlexe/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vyt6ba/mmmapiospace_returns_null_tracing_the_real_kernel/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">b6b79a72cbce6a4df4dcf9af43313affcfd5e55e15fcb8fe14e044661ca86044</guid>
-      <pubDate>Wed, 26 Aug 2026 10:25:07 +0000</pubDate>
-    </item>
-    <item>
-      <title>OpenAI Bans Russian ChatGPT Accounts Used to Run Influence Operation - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/openai-bans-russian-chatgpt-accounts.html</link>
-      <description>OpenAI on Tuesday said it banned a cluster of Russian ChatGPT accounts that used VPNs to bypass access restrictions and run an influence operation, which relied on its artificial intelligence (AI) tool to generate social media posts and comments that were shared on Substack, Telegram, X, Facebook and LinkedIn.
-The accounts "were being used to promote the International Burke Institute (IBI), a</description>
-      <guid isPermaLink="false">89ee3583d4c0bd016790e6a1043ec4eddcf1b97c8d5149dd320c35d13e2a6ddf</guid>
-      <pubDate>Wed, 26 Aug 2026 09:38:45 +0000</pubDate>
-    </item>
-    <item>
-      <title>INTERPOL Operation Jackal IV Arrests 58, Identifies 263 in Global Cyber Fraud Crackdown - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/interpol-operation-jackal-iv-arrests-58.html</link>
-      <description>An eight-month INTERPOL operation targeting West African organized crime groups has led to arrests of 58 people and the identification of 263 suspects.
-"The operation, which brought together 22 countries from six continents, is a response to the escalating global threat posed by West African criminal networks – such as the Black Axe and other similar groups," INTERPOL said.
-"These groups are</description>
-      <guid isPermaLink="false">0738f94e5da062fdafb3e9d33e8b5a4f6812eb720400664371c4b9fe75654a0e</guid>
-      <pubDate>Wed, 26 Aug 2026 07:54:12 +0000</pubDate>
-    </item>
-    <item>
-      <title>New SLEEPWALKER Backdoor Waits for One Crafted Packet, Then Runs Its Own Bytecode - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/newly-sleepwalker-backdoor-waits-for.html</link>
-      <description>An independent malware researcher has documented a previously unreported Windows backdoor, dubbed SLEEPWALKER, that stays inert in memory until a specifically crafted network packet reaches the machine and then runs commands written in a 23-instruction language of its own design.
-The sample is an unsigned 64-bit Windows dynamic-link library (DLL) of 59,904 bytes, built to be side-loaded into&amp;</description>
-      <guid isPermaLink="false">6b128155cd5b33e239b34934b9719790799ced96f2b8a5dd1e8ee2fd9fffde6b</guid>
-      <pubDate>Wed, 26 Aug 2026 07:12:55 +0000</pubDate>
-    </item>
-    <item>
-      <title>Critical Gitea RCE Actively Exploited as Reported Attack Drops Miner-Like Payload - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/critical-gitea-rce-actively-exploited.html</link>
-      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Tuesday warned of active exploitation efforts targeting a recently patched critical security flaw impacting Gitea.
-The vulnerability in question is CVE-2026-60004 (CVSS score: 9.8), a case of remote code execution that allows an attacker with ordinary write access to a repository to execute arbitrary shell commands as the</description>
-      <guid isPermaLink="false">34b2d7555acc1ead8167f72d49658ad71aa8f67d8936f715bda2459e5b92097a</guid>
-      <pubDate>Wed, 26 Aug 2026 06:27:07 +0000</pubDate>
-    </item>
-    <item>
-      <title>Fake Apple Support AI Calls Target Stolen-Device Owners for Passcodes and 2FA Codes - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/fake-apple-support-ai-calls-target.html</link>
-      <description>Cybersecurity researchers have disclosed details of a phishing-as-a-service (PhaaS) platform built to strip Apple's Activation Lock from stolen devices, using rented AI voice agents that call theft victims posing as Apple Support and ask for their device passcode.
-SOCRadar Threat Research Unit (STRU) said the platform, which it tracks as AnonyMousKIT, is credit-metered and drives lures across</description>
-      <guid isPermaLink="false">f67b06345fbed90aca61d49cb2fa61d65c7f2432115fe6a884432bd019d0b649</guid>
-      <pubDate>Wed, 26 Aug 2026 05:47:28 +0000</pubDate>
-    </item>
-    <item>
-      <title>Newly discovered vulnerable Driver. - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vyls5g/newly_discovered_vulnerable_driver/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/TradeZealousideal323"&gt; /u/TradeZealousideal323 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/ioallocate/imMapper"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vyls5g/newly_discovered_vulnerable_driver/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">893fd09dd5338d0af0d532392dfda7bfef8e1d144ee12aac5018594791213d2d</guid>
-      <pubDate>Wed, 26 Aug 2026 03:38:33 +0000</pubDate>
     </item>
   </channel>
 </rss>
