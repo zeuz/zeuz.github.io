@@ -5,7 +5,66 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sat, 12 Sep 2026 14:01:56 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 13 Sep 2026 14:01:12 +0000</lastBuildDate>
+    <item>
+      <title>Burnout Revenge turns 21 this year. Still my favorite game ever. So i've did working recompilation - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wf3xma/burnout_revenge_turns_21_this_year_still_my/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/BasketAnxious45"&gt; /u/BasketAnxious45 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/shipa-2/Xerenge"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wf3xma/burnout_revenge_turns_21_this_year_still_my/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">ffb8ec65219b0682ac883ea3bae06b77ce785b4a0ea85e1a4352e26ba774fe06</guid>
+      <pubDate>Sun, 13 Sep 2026 10:20:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Use Passkey Phishing to Hijack Microsoft Cloud Accounts and Exfiltrate Data - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/attackers-use-passkey-phishing-to.html</link>
+      <description>Microsoft has disclosed details of two campaigns in which threat actors are abusing third-party email delivery infrastructure to blast financial fraud scam messages and using passkey-themed social engineering to breach cloud environments.
+The first campaign, per the tech giant, involved sending over a million scam emails between August 3 and 5, 2026, by masquerading as chief executive officers</description>
+      <guid isPermaLink="false">dfa28e1d6151eff0fde8d3fedb993313b7e216197a7293c7d7898830f9b07da6</guid>
+      <pubDate>Sun, 13 Sep 2026 10:11:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>GitHub - grm2ngo/turnstile: Cloudflare Turnstile — measured research notes: the 2-POST chain, the per-fetch build pool, the capture protocol, and the FO1 bag-binding mechanism (per-draw execution/nonce binding) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wf0ddl/github_grm2ngoturnstile_cloudflare_turnstile/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Independent_Fan_232"&gt; /u/Independent_Fan_232 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/grm2ngo/turnstile"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wf0ddl/github_grm2ngoturnstile_cloudflare_turnstile/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">d13ffb785301739d51c70ebac22326611d0e8f6bd2d1a0694c62474a768480ff</guid>
+      <pubDate>Sun, 13 Sep 2026 06:51:46 +0000</pubDate>
+    </item>
+    <item>
+      <title>Locating Flutter's TLS certificate verifier in a stripped libflutter.so, tested across 13 apps and 9 engine versions - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wexq29/locating_flutters_tls_certificate_verifier_in_a/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/magixer"&gt; /u/magixer &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://crossfyre.io/publications/blog/finding-flutters-certificate-verifier"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wexq29/locating_flutters_tls_certificate_verifier_in_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">59aa72e2afb1f257985a7669fc1ae1c53630375170d41de7a460a9192a343cc1</guid>
+      <pubDate>Sun, 13 Sep 2026 04:25:44 +0000</pubDate>
+    </item>
+    <item>
+      <title>GitHub - mein-0/LolModapi: MSI Dragon Center 2.0.155.0 LPE - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wekt7q/github_mein0lolmodapi_msi_dragon_center_201550_lpe/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/nanaynunay"&gt; /u/nanaynunay &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/mein-0/LolModapi"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wekt7q/github_mein0lolmodapi_msi_dragon_center_201550_lpe/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">1dc20213c66d73eb8b0bcb1125f7a32add2b459785daeb87fd54e5ead1957050</guid>
+      <pubDate>Sat, 12 Sep 2026 18:52:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>Microcode in Intel's 8087 floating-point chip: the scale instruction - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wejv8y/microcode_in_intels_8087_floatingpoint_chip_the/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/tnavda"&gt; /u/tnavda &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.righto.com/2026/09/8087-microcode-reverse-engineering-fscale.html?m=1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wejv8y/microcode_in_intels_8087_floatingpoint_chip_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">29e1e1d67455909274dd53e8602eae2f33f5e90877aa00f0a37da0f618462704</guid>
+      <pubDate>Sat, 12 Sep 2026 18:16:10 +0000</pubDate>
+    </item>
+    <item>
+      <title>CISA Adds 5 Actively Exploited Artifactory, ScreenConnect, and RouterOS Flaws to KEV - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/cisa-adds-5-actively-exploited.html</link>
+      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has added five security flaws impacting JFrog Artifactory, ConnectWise ScreenConnect, and MikroTik RouterOS to its Known Exploited Vulnerabilities (KEV) catalog, following reports of active exploitation in the wild.
+Details of the vulnerabilities are as follows -
+  CVE-2026-42016 (CVSS score: 8.1) - An incorrect authorization</description>
+      <guid isPermaLink="false">dd09d5768213fa546c0ec3afa9d08054ff0fa56ad928781e1be77c39460043f4</guid>
+      <pubDate>Sat, 12 Sep 2026 15:54:45 +0000</pubDate>
+    </item>
+    <item>
+      <title>Beltdown2: Escaping the Cursor CLI sandbox - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wefn5t/beltdown2_escaping_the_cursor_cli_sandbox/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/natcoba"&gt; /u/natcoba &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.accomplish.ai/blog/beltdown2-escaping-the-cursor-cli-sandbox/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wefn5t/beltdown2_escaping_the_cursor_cli_sandbox/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">ff789306bf9f80178e25ae990c067a10a369e0157f06ba2c9196e2b63a38ff89</guid>
+      <pubDate>Sat, 12 Sep 2026 15:32:15 +0000</pubDate>
+    </item>
     <item>
       <title>When the Whole Company Adopts AI: What It Does to Your SOC - The Hacker News</title>
       <link>https://thehackernews.com/2026/09/when-whole-company-adopts-ai-what-it.html</link>
@@ -360,6 +419,13 @@ The vulnerability in question is CVE-2026-86218 (CVSS score: 10.0), which has be
       <link>http://www.vuxml.org/freebsd/6a6ddb1d-ac6b-11f1-982d-3c7c3fba4204.html</link>
       <description/>
       <guid isPermaLink="false">d99a1bf7201c289cd47076112f8c226b9288494036f349a58ce3b4a85a36a1de</guid>
+      <pubDate>Wed, 09 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>yt-dlp: Improper Neutralization of Special Elements - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/cd5bfb7d-ac34-11f1-9b94-901b0e13f1a0.html</link>
+      <description/>
+      <guid isPermaLink="false">8d841c52460c36247cbdccfbd9c63b63c407cd8723cfc1806f9d8e9157544404</guid>
       <pubDate>Wed, 09 Sep 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
@@ -1490,73 +1556,6 @@ GoCaracal provides operators with remote shell access and payload execution, whi
 Dubbed GPUThor, the attack was developed by researchers at the University of Toronto, who hammered four DRAM</description>
       <guid isPermaLink="false">cfc1b1c1cceaac4d514c3171d183353af1d3cb6d677f3c02ba05b14beaa5f1ef</guid>
       <pubDate>Thu, 27 Aug 2026 08:13:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>HexWalk 2.2.0 Hex analyzer new release, added multi-encoding support: ASCII, UTF8, UTF16, Latin1... works both on Windows, Linux and MacOs, give it a try! - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vzn44u/hexwalk_220_hex_analyzer_new_release_added/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/gcarmix1"&gt; /u/gcarmix1 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/gcarmix/hexwalk"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vzn44u/hexwalk_220_hex_analyzer_new_release_added/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">a7341e673cf924367ae99017b926417ba05159fcbfed9919bc0c3432ca542f27</guid>
-      <pubDate>Thu, 27 Aug 2026 07:28:45 +0000</pubDate>
-    </item>
-    <item>
-      <title>CISA Adds Six Exploited Flaws to KEV, Including NetScaler, Linux, and SQL Server Bugs - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/cisa-adds-six-exploited-flaws-to-kev.html</link>
-      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Wednesday added six flaws to its Known Exploited Vulnerabilities (KEV) catalog, including a high-severity security vulnerability impacting Citrix NetScaler ADC and NetScaler Gateway, citing evidence of active exploitation.
-The vulnerabilities are listed below -
-  CVE-2019-1068 - A remote code execution vulnerability in&amp;nbsp;</description>
-      <guid isPermaLink="false">0802721c638e7e6b489739f2362a5898ecce1888bf1ba1e005613db7acf304fc</guid>
-      <pubDate>Thu, 27 Aug 2026 07:05:28 +0000</pubDate>
-    </item>
-    <item>
-      <title>PHP Composer -- Multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/db135cd1-a232-11f1-85ed-10ffe07f9334.html</link>
-      <description/>
-      <guid isPermaLink="false">367d31531cffcc00f1cceba20cf4163c45f464b95ed8be461536c35f62b5744e</guid>
-      <pubDate>Thu, 27 Aug 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>NSD -- multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/a711b018-a24b-11f1-81e6-3c7c3fba4204.html</link>
-      <description/>
-      <guid isPermaLink="false">e86831b0663582fe549b20dc7e0b2301abaafff7f2073e7a636d4c451f27b32f</guid>
-      <pubDate>Thu, 27 Aug 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>drakoarmy/datadome-rs: High-end Rust DataDome deobfuscator &amp; solver with VM disassembly — all 3 challenge types (tags, interstitial, slider). - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vzcww2/drakoarmydatadomers_highend_rust_datadome/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/alex_pushing40"&gt; /u/alex_pushing40 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/drakoarmy/datadome-rs"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vzcww2/drakoarmydatadomers_highend_rust_datadome/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">bb835ae5750c6af30bf9665eba8820d92c39962c573a5cc3cdaf287b9e921e7b</guid>
-      <pubDate>Wed, 26 Aug 2026 23:08:59 +0000</pubDate>
-    </item>
-    <item>
-      <title>csca-masterlist-tools - extract CSCA certs from ICAO passport Master Lists, with an OpenSSL fallback for the six that strict ASN.1 parsers reject - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vz6wwn/cscamasterlisttools_extract_csca_certs_from_icao/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Eginnn"&gt; /u/Eginnn &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/Eginn-33/csca-masterlist-tools"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vz6wwn/cscamasterlisttools_extract_csca_certs_from_icao/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">24acc0b7394cfca91624ff9bfc517d8ecfc09b06df59c9083e59ef7a950b5736</guid>
-      <pubDate>Wed, 26 Aug 2026 19:21:58 +0000</pubDate>
-    </item>
-    <item>
-      <title>FBI Disrupts China-Linked QTFY Infrastructure Used to Steal Data From U.S. Organizations - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/fbi-disrupts-china-linked-qtfy.html</link>
-      <description>The U.S. Department of Justice (DoJ) on Wednesday announced the disruption of two hacking platforms named QScan and QTRouter operated by Chinese threat actors to target critical infrastructure and other sensitive networks in the country.
-The activity has been attributed to a Chinese state-sponsored group known as QTFY, employed by Nanjing Xinjiuwei Network Technology Company (南京鑫玖维网络科技有限公司).&amp;</description>
-      <guid isPermaLink="false">7de0afeff7180a5c0a1f32daaee45b0fd3627af58a7443dcddc62d6b043c23a0</guid>
-      <pubDate>Wed, 26 Aug 2026 16:42:03 +0000</pubDate>
-    </item>
-    <item>
-      <title>binviz – a binary visualiser with calibrated thresholds instead of magic numbers - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vz1ofo/binviz_a_binary_visualiser_with_calibrated/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Low-Web7052"&gt; /u/Low-Web7052 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/karankantaria/binviz"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vz1ofo/binviz_a_binary_visualiser_with_calibrated/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">8c7bfa8940261facb28a157ae2b38358a95b3fc8eb9a9771545c19d92e0aa9a5</guid>
-      <pubDate>Wed, 26 Aug 2026 16:17:42 +0000</pubDate>
-    </item>
-    <item>
-      <title>Nimbus Manticore Expands Toolset With TWOSTROKE-Like Backdoor and SSH Tunneler - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/nimbus-manticore-expands-toolset-with.html</link>
-      <description>Cybersecurity researchers have discovered additional infrastructure and previously undocumented malware associated with Nimbus Manticore, an Iranian state-sponsored hacking group affiliated with the Islamic Revolutionary Guard Corps (IRGC).
-Group-IB, in a new analysis published today, described the cyber espionage actor as among the most active Iranian APT groups in 2026. Nimbus Manticore (aka</description>
-      <guid isPermaLink="false">e9e47c1505c3786322efdde94a1b039b8664ee4366059fba5db71a73a1e9a605</guid>
-      <pubDate>Wed, 26 Aug 2026 15:35:05 +0000</pubDate>
     </item>
   </channel>
 </rss>
