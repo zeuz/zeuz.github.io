@@ -5,7 +5,165 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Hardware category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sun, 13 Sep 2026 14:01:12 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 14 Sep 2026 14:00:42 +0000</lastBuildDate>
+    <item>
+      <title>Rosy Retrocomputing - Hack a Day</title>
+      <link>https://hackaday.com/2026/09/14/rosy-retrocomputing/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="484" src="https://hackaday.com/wp-content/uploads/2026/08/RetroComputing_Big_notext.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;Most of us are guilty of romanticizing the past. Do you long to be the captain of a tall ship? Just as long as you don&amp;#8217;t mind weevils in your food, vitamin deficiencies, and death from an infection when there were no antibiotics. Want to be a medieval knight? Even worse. But surely, retrocomputing is as fun as we remember, right? Turn your computer on, and it comes up with BASIC! Ready for you to write your own programs. None of this GUI foolishness. Of course, this is just another example of rosy retrospection.&lt;/p&gt;
+&lt;p&gt;Even if you like BASIC or a similar language today, things have changed. You have a nice text editor, a fast computer, debugging tools, along with things like named functions, no line numbers, and modern control structures. None of those things were very common in the 1980s. At least, not on a hobby-grade computer.&lt;/p&gt;
+&lt;p&gt;Why am I thinking about this? Well, the &lt;a href="https://hackaday.com/2026/08/18/announcing-the-2026-hackaday-retrocomputing-challenge/"&gt;Hackaday Retrocomputing Challenge&lt;/a&gt; is on, and it occurred to me that I wanted to work with some young students in glorious MBASIC on a &lt;a href="https://hackaday.com/2018/07/28/the-4-z80-single-board-computer-evolved/"&gt;CP/M machine I built and modified from a Hackaday project&lt;/a&gt;. Perfect, right? Many of us started that way, so why shouldn&amp;#8217;t they?&lt;/p&gt;
+&lt;p&gt;But it quickly got old. Even a simple program gets bogged down with GOTOs and GOSUBs to mysterious line numbers. It made me remember the time back in the early 1980s, or maybe even the late 1970s, that I wrote &lt;a href="https://github.com/wd5gnr/lblbasic" target="_blank"&gt;a BASIC preprocessor&lt;/a&gt; to scan BASIC with no line numbers and produce proper source, converting labels to line numbers in two passes.&lt;/p&gt;
+&lt;p&gt;&lt;span id="more-1160739"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Of course, that code is long gone or, at least, on a floppy I haven&amp;#8217;t tried to read in a few decades. I decided to take another crack at it six years ago, but I still didn&amp;#8217;t make it much more robust. For example:&lt;/p&gt;
+&lt;pre&gt;PRINT: X=X+10&lt;/pre&gt;
+&lt;p&gt;Is that two statements? Or a label? Hard to tell. My 2020 version used awk. Awk is great for this kind of thing because of the regular expressions and the input loop. But it still has some issues with things like comments and strings. Consider the code below.&lt;/p&gt;
+&lt;pre&gt;PRINT "HELLO: IS IT ME YOU'RE LOOKING FOR?"&lt;/pre&gt;
+&lt;p&gt;This would probably have made my awk preprocessor chew the string up and create a bogus label named HELLO.&lt;/p&gt;
+&lt;h2&gt;History of Preprocessors&lt;/h2&gt;
+&lt;p&gt;Preprocessing one language to another is nothing new. RATFOR and RATFIV by Brian Kernighan converted modern constructs to conventional FORTRAN IV. Even C++ started out as a program that emitted C code.&lt;/p&gt;
+&lt;p&gt;So the idea is good, but there are dozens of corner cases. As I anticipated having another go at the idea for BASIC, I realized my earlier versions had some design choices that made it harder than it should have been. So I started from scratch.&lt;/p&gt;
+&lt;figure class="wp-caption alignright" id="attachment_1160886" style="width: 400px;"&gt;&lt;a href="https://hackaday.com/wp-content/uploads/2026/09/bas.png"&gt;&lt;img alt="" class="size-medium wp-image-1160886" height="297" src="https://hackaday.com/wp-content/uploads/2026/09/bas.png?w=400" width="400" /&gt;&lt;/a&gt;&lt;figcaption class="wp-caption-text" id="caption-attachment-1160886"&gt;BASIC as it was (courtesy of &lt;a href="https://hackaday.com/2023/08/23/linux-fu-the-old-school-terminal/"&gt;Cool-Retro-Terminal&lt;/a&gt;)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;First, I gave up the idea of just having labels as you might in other languages. Instead, they&amp;#8217;d be part of a comment and hard to mistake. This makes for easier parsing and also allows you to keep them around for reference. I also gave up on having labels magically expand. You need a way to make them unique, too. Here&amp;#8217;s what I settled on:&lt;/p&gt;
+&lt;pre&gt;':TOPLABEL
+GOTO @TOPLABEL&lt;/pre&gt;
+&lt;p&gt;The plan was to go through the source once to assign line numbers. When a label occurs, it adds to the symbol table. Then a second pass actually writes output, replacing @TOPLABEL with the value from the symbol table. Of course, you still want this line to not trigger a label expansion:&lt;/p&gt;
+&lt;pre&gt;PRINT "Send messages to @JTKIRK"&lt;/pre&gt;
+&lt;p&gt;I decided to keep going in awk, but my eventual goal was to rewrite the whole thing in BASIC using the same syntax. Then you could convert the translator itself using the awk version once and then run it on an old computer using BASIC, even if you wanted to retranslate the translator itself. Perverse, huh? But that allows you to keep that authentic development experience. You don&amp;#8217;t have to jump over to a PC to process your code, unless you just want to.&lt;/p&gt;
+&lt;h2&gt;Awk as in Awkward&lt;/h2&gt;
+&lt;p&gt;So I decided to do a better job on the awk part with this new scheme. At some point, though, you lose some of the advantages. Then feature creep set in.&lt;/p&gt;
+&lt;p&gt;I suppose I was subconsciously remembering RATFOR. I decided to add a small number of modern control structures. Again, I wanted something easy to pick out of the source file, so I went with this:&lt;/p&gt;
+&lt;p&gt;IF X=0 THEN!&lt;br /&gt;
+   PRINT &amp;quot;There is no X!&amp;quot;&lt;br /&gt;
+   X=10&lt;br /&gt;
+ENDIF!&lt;/p&gt;
+&lt;p&gt;There&amp;#8217;s also WHILE!, DO!, EXIT!, and CONTINUE!&lt;/p&gt;
+&lt;p&gt;Of course, it didn&amp;#8217;t end there. I decided to add a way to include or exclude parts of the source (sort of like #if in C but simpler), along with source code inclusion and a few other neat options such as numeric constants, conditional source blocks, compile-time errors, and even a small numeric stack with PUSH! and POP!.&lt;/p&gt;
+&lt;p&gt;The source code inclusion can be made to work with awk, but it is ugly. I decided it was better to proceed with another language, but since I didn&amp;#8217;t feel like starting over, I just had an LLM convert my awk to Python, which it did with no trouble at all. I then did a little more feature development in Python, but I made sure not to use those new features in the translator itself so the awk version could still process an input file.&lt;/p&gt;
+&lt;p&gt;So while the original plan was to develop and test in awk and then implement similar code in MBASIC, I now had three versions: a frozen awk script, a Python version, and an MBASIC version.&lt;/p&gt;
+&lt;p&gt;This was getting a bit much to test. I had the LLM cook up some documentation, additional comments, and tests. It was especially nice to verify that all three versions &amp;#8212; awk, Python, and BASIC &amp;#8212; did the same things for their common features. The LLM was good at running tests and finding corner cases. It would even run tests in a RunCPM session on the MBASIC version.&lt;/p&gt;
+&lt;h2&gt;BASIC&lt;/h2&gt;
+&lt;p&gt;As you might expect, the BASIC version is a little more convoluted. However, the use of labels and control structures makes it much easier to write, read, and maintain.&lt;/p&gt;
+&lt;p&gt;Writing the translator in MBASIC imposed some very old-fashioned constraints. There are no dictionaries or dynamic lists, so labels and block state live in fixed-size arrays. Included files require an explicitly managed stack, and parsing strings and comments has to be done character by character. It is not as compact as the Python version, but it is ordinary MBASIC and can run on the target CP/M machine. The limitations also influenced some features that would have been feasible in Python but are nearly impossible in an MBASIC program.&lt;/p&gt;
+&lt;p&gt;Better yet, &lt;code&gt;lblbasic.bal&lt;/code&gt; stays within the subset the original awk translator understood. That provides a bootstrap path: awk produces the first lblbas.bas, after which the MBASIC translator can process its own BAL source.&lt;/p&gt;
+&lt;h2&gt;A Few Samples&lt;/h2&gt;
+&lt;p&gt;One project I had in mind was to drive an LED display module. I wrote a library and then wrote the test program below. It doesn&amp;#8217;t matter, but I used &lt;code&gt;.bal&lt;/code&gt; as a file extension.&lt;/p&gt;
+&lt;p&gt;REM TM1637 TEST &amp;#8211; PORT 3, BIT 2=DIO, BIT 3=CLK&lt;br /&gt;
+REM Uses the TM1637.BAL library with LBLBASIC&lt;/p&gt;
+&lt;p&gt;STACK! 8 &amp;#039; Required by the library&lt;/p&gt;
+&lt;p&gt;&amp;#039; Confirm that the library preserves I while initializing its data table.&lt;br /&gt;
+I=3141&lt;br /&gt;
+gosub @init&lt;br /&gt;
+print &amp;quot;I is now:&amp;quot;;I&lt;br /&gt;
+PRINT &amp;quot;Starting number: &amp;quot;;&lt;br /&gt;
+INPUT CT&lt;br /&gt;
+PRINT &amp;quot;1-Up, 0-Down: &amp;quot;;&lt;br /&gt;
+INPUT UD&lt;br /&gt;
+OFFSET=-1&lt;br /&gt;
+IF UD&amp;lt;&amp;gt;0 THEN OFFSET=1&lt;br /&gt;
+&amp;#039;:CDLOOP&lt;br /&gt;
+WHILE! CT&amp;gt;=0 and CT&amp;lt;=9999&lt;br /&gt;
+    NUM=CT&lt;br /&gt;
+    GOSUB @sendnum4&lt;br /&gt;
+    CT=CT+OFFSET&lt;br /&gt;
+WEND!&lt;br /&gt;
+CT=0&lt;br /&gt;
+IF OFFSET=-1 THEN CT=9999&lt;br /&gt;
+GOTO @CDLOOP&lt;br /&gt;
+END&lt;/p&gt;
+&lt;p&gt;&amp;#039; Include the library after the main program.&lt;br /&gt;
+&amp;#039;INCLUDE! TM1637.BAL&lt;/p&gt;
+&lt;p&gt;The BASIC code, including a few lines of the library, is much harder to read:&lt;/p&gt;
+&lt;p&gt;10 DIM LBLBSTACK#(8):LBLBSP=0&lt;br /&gt;
+20 I=3141&lt;br /&gt;
+30 gosub 230&lt;br /&gt;
+40 print &amp;quot;I is now:&amp;quot;;I&lt;br /&gt;
+50 PRINT &amp;quot;Starting number: &amp;quot;;&lt;br /&gt;
+60 INPUT CT&lt;br /&gt;
+70 PRINT &amp;quot;1-Up, 0-Down: &amp;quot;;&lt;br /&gt;
+80 INPUT UD&lt;br /&gt;
+90 OFFSET=-1&lt;br /&gt;
+100 IF UD&amp;lt;&amp;gt;0 THEN OFFSET=1&lt;br /&gt;
+110 &amp;#039;:CDLOOP&lt;br /&gt;
+120 IF CT&amp;gt;=0 and CT&amp;lt;=9999 THEN 140&lt;br /&gt;
+130 GOTO 180&lt;br /&gt;
+140 NUM=CT&lt;br /&gt;
+150 GOSUB 330&lt;br /&gt;
+160 CT=CT+OFFSET&lt;br /&gt;
+170 GOTO 120&lt;br /&gt;
+180 CT=0&lt;br /&gt;
+190 IF OFFSET=-1 THEN CT=9999&lt;br /&gt;
+200 GOTO 120&lt;br /&gt;
+210 END&lt;br /&gt;
+220 &amp;#039;:init&lt;br /&gt;
+230 IF LBLBSP+1&amp;gt;64 THEN PRINT &amp;quot;BAL stack overflow&amp;quot;:STOP&lt;br /&gt;
+240 LBLBSTACK#(LBLBSP+1)=I:LBLBSP=LBLBSP+1&lt;br /&gt;
+250 DIM D(9)&lt;br /&gt;
+260 FOR I=0 to 9: READ D(I): NEXT I&lt;br /&gt;
+270 DATA 63,6,91,79,102,109,125,7,127,111&lt;br /&gt;
+280 X=12:OUT 3,X&lt;br /&gt;
+290 IF LBLBSP&amp;lt;1 THEN PRINT &amp;quot;BAL stack underflow&amp;quot;:STOP&lt;br /&gt;
+300 I=LBLBSTACK#(LBLBSP):LBLBSP=LBLBSP-1&lt;br /&gt;
+310 return&lt;br /&gt;
+320 &amp;#039;:sendnum4&lt;br /&gt;
+330 GOSUB 500&lt;br /&gt;
+340 B=64:GOSUB 610&lt;/p&gt;
+&lt;figure class="wp-caption alignright" id="attachment_1160887" style="width: 400px;"&gt;&lt;a href="https://hackaday.com/wp-content/uploads/2026/09/hilo.png"&gt;&lt;img alt="" class="size-medium wp-image-1160887" height="298" src="https://hackaday.com/wp-content/uploads/2026/09/hilo.png?w=400" width="400" /&gt;&lt;/a&gt;&lt;figcaption class="wp-caption-text" id="caption-attachment-1160887"&gt;One of the HILO games running.&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;If you haven&amp;#8217;t used the &lt;a href="https://hackaday.com/2023/04/02/printing-a-brutalist-kitchen-timer/"&gt;TM1637&lt;/a&gt; before, it uses a serial protocol with a clock and data line and is very forgiving of timing. The display update speed is quite slow, partly because MBASIC isn&amp;#8217;t that speedy and partly because the Z80 chip communicates to the outside world via another microcontroller talking over an I2C bus. But non-BAL code would be just as slow on the same computer. You&amp;#8217;ll notice, though, that I took all the delays out and the code and it still works fine.&lt;/p&gt;
+&lt;p&gt;The bigger sample, though, is &lt;a href="https://github.com/wd5gnr/lblbasic/blob/main/sample/hilo.bal" target="_blank"&gt;HILO.BAL&lt;/a&gt;. This lets you set a few compile-time constants that let you select what parts of the program get built. It also makes good use of the control loops. Of course, if you really want to dig in, lblbasic.bal uses quite a bit of the awk-compatible syntax and is a substantial program: around 1300 source lines of BAL which generate nearly 900 lines of regular BASIC due to comment and white-space stripping.&lt;/p&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Does this turn MBASIC into a modern language? Of course not. The generated program still has line numbers, the machine is still tiny, and the implementation makes compromises that would horrify anyone writing a real compiler. But it removes enough friction that programming the old machine becomes enjoyable again, especially with WordStar as an editor.&lt;/p&gt;
+&lt;p&gt;More importantly, the translator can live on the machine it targets. The awk prototype can translate &lt;code&gt;lblbasic.bal&lt;/code&gt; once, producing ordinary MBASIC. From then on, the CP/M machine can translate BAL programs &amp;#8212; including the translator itself &amp;#8212; without help from Python or a modern computer.&lt;/p&gt;
+&lt;p&gt;So perhaps the lesson isn’t that retrocomputing was better than we remember. It’s that, with a little strategic cheating, it can be almost as much fun as we remember.&lt;/p&gt;</description>
+      <guid isPermaLink="false">7c2e1ac200b7bc69135e3d83df83904e2dd7965e8c8572061c02753660d05a20</guid>
+      <pubDate>Mon, 14 Sep 2026 14:00:44 +0000</pubDate>
+    </item>
+    <item>
+      <title>It’s The Speech Synthesiser You Wanted, For The Computer You Had - Hack a Day</title>
+      <link>https://hackaday.com/2026/09/14/its-the-speech-synthesiser-you-wanted-for-the-computer-you-had/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/09/apple-2-dectalk-featured.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;If you had an 8-bit computer in the 1980s and bought a speech synthesiser for it, what you got was invariably an alophone-based synthesiser using the SP0256 or similar. You definitely couldn&amp;#8217;t afford DEC&amp;#8217;s DECtalk, a high-end standalone speech synthesiser made famous to the masses as the unit used by Stephen Hawking. But now those two worlds can come together, thanks to [Michael Wessel], whose Perfect Paul ][ is &lt;a href="https://github.com/lambdamikel/perfect-paul-ii" target="_blank"&gt;a drop-in DECtalk emulator card for the Apple ][&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The PCB includes an RP2040-based Raspberry Pi Zero, plus an I2S DAC and amplifier, speaker, and bus-interface logic. It appears at a set of memory addresses, and interfacing to it is as simple as POKEing DECtalk commands to those addresses. Looking at it, we are guessing this would be easy to bring to other 8-bit era machines.&lt;/p&gt;
+&lt;p&gt;You can see and hear it sing in the video below the break, and it certainly has the feel of the real thing. We can say with certainty that this would have been a sensation had it appeared back in the early 1980s. This one may be a modern reproduction, but it&amp;#8217;s not the first time DECtalk has appeared here; &lt;a href="https://hackaday.com/2019/06/11/vintage-speech-synthesizer-croons-the-oldies/"&gt;we&amp;#8217;ve even brought you a real one&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;span id="more-1161027"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">c736d824d355a25615f5e63412b960915c27d47efb3e842fe96271ac65d193fb</guid>
+      <pubDate>Mon, 14 Sep 2026 11:00:12 +0000</pubDate>
+    </item>
+    <item>
+      <title>CircuitPython Goes Turbo With Precompiled Functions - Hack a Day</title>
+      <link>https://hackaday.com/2026/09/14/circuitpython-goes-turbo-with-precompiled-functions/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/09/circuitpython_mandelbrot-feather-rp2040-dvi-source-10.100s.png?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;It would not be at all original to declare that Python is the new BASIC. Like BASIC, it has been the first programming language for a whole generation of coders, and its main advantage is that it&amp;#8217;s quick and easy to write in. Like BASIC it is an interpreted language, and thus rather slow to execute.&lt;/p&gt;
+&lt;p&gt;Thus while CircuitPython can be very useful for beginners and quick projects, it hits the limitations of the hardware far sooner than it needs to &amp;#8212; unless you can pre-compile critical parts of the code, which you now can, thanks to &lt;a href="https://github.com/mikeysklar/turbo" target="_blank"&gt;CircuitPython Turbo &lt;/a&gt;by [Mikey Sklar] with some help from Anthropic&amp;#8217;s Claude LLM.&lt;/p&gt;
+&lt;p&gt;Now if that sounds a lot like MicroPython&amp;#8217;s &amp;#8216;Viper&amp;#8217; and machine-code compiler, that&amp;#8217;s because it is. CircuitPython is a fork of MicroPython with some handy extras on Adafruit boards, but Viper wasn&amp;#8217;t one of them until now. Before the Turbo version, CircuitPython only ran in interpreted mode.&lt;/p&gt;
+&lt;p&gt;Like MicroPython, using CircuitPython Turbo you can flag sections to run as &amp;#8216;native&amp;#8217;, where instructions are compiled but values stay as python objects, which gets you about a 3X speedup. A little more rewriting to declare your variables and pointers and you can use &amp;#8216;viper&amp;#8217; mode, which can &amp;#8212; depending on what you&amp;#8217;re up to &amp;#8212; result in a 20x to 70x speedup. In &lt;a href="https://learn.adafruit.com/circuitpython-turbo?view=all" target="_blank"&gt;Adafruit&amp;#8217;s documentation&lt;/a&gt;, they demonstrate a Metro RP2040 calculating the Mandelbrot set 3x faster in Native and 19.7 times faster with Viper than normal Python bytecode.&lt;/p&gt;
+&lt;p&gt;The one thing that we miss from BASIC that CircuitPython Turbo doesn&amp;#8217;t give is inline assembly&amp;#8211; though interestingly enough, that &lt;em&gt;is&lt;/em&gt; in the upstream MicroPython implementation, so perhaps its day will come here too. Not every job is suited to the use of Python on microcontrollers, but we&amp;#8217;ve seen it used for everything &lt;a href="https://hackaday.com/2023/11/06/open-brain-surgery-for-ebikes-and-escooters/"&gt;from e-bikes&lt;/a&gt; to a &lt;a href="https://hackaday.com/2022/02/20/winamp-reborn-with-the-adafruit-pyportal/"&gt;Winamp-inspired music player.&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">db55092d5c2b9ae2abbeaf9e4063267cd5d6506a8c61f871b42fdb56effe843f</guid>
+      <pubDate>Mon, 14 Sep 2026 08:00:18 +0000</pubDate>
+    </item>
+    <item>
+      <title>Re-creating NASA’s Heat Shield Problem - Hack a Day</title>
+      <link>https://hackaday.com/2026/09/13/re-creating-nasas-heat-shield-problem/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="473" src="https://hackaday.com/wp-content/uploads/2026/09/heat_shield_test_polymatt_youtube.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;&lt;img alt="" class="size-medium wp-image-1160992 alignright" height="400" src="https://hackaday.com/wp-content/uploads/2026/09/heat_shield_test_coupon_polymatt_youtube.jpg?w=387" width="387" /&gt;After the Orion capsule of the Artemis I lunar mission returned to Earth, it was found that massive chunks of its heatshield had been ripped off, posing a serious risk to any future missions. In a recent video in which [polymatt] takes a break from repairing old laptop shells and the like, he tries to &lt;a href="https://www.youtube.com/watch?v=9kU6V6sayL0" target="_blank"&gt;recreate the Orion&amp;#8217;s heatshield&lt;/a&gt; using a variety of methods and materials.&lt;/p&gt;
+&lt;p&gt;For this test a number of samples were created, each using the same kind of segmented structure as the larger Orion heatshield. The filler was created from the published materials for the heat shield by NASA, requiring just serious mixing.&lt;/p&gt;
+&lt;p&gt;The resulting samples were then cured with thermocouples inserted, before they got blasted with the heat from a propane torch, trying to simulate the various re-entry patterns.&lt;/p&gt;
+&lt;p&gt;Perhaps unsurprisingly, the results matched the findings by NASA for why the Orion&amp;#8217;s heat shield had failed, being the build-up of gases due to the sustained pyrolysis processes that eventually fractured the material. Despite some experimental flaws that injected residual heat from the copper structure, this still seems to be a pretty good setup to test ablative heat shields in DIY lab conditions.&lt;/p&gt;
+&lt;p&gt;&lt;span id="more-1160843"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">4d3b9f51801385e449db495be5157d916faf7deb59cca34550b6ff01ae6c2969</guid>
+      <pubDate>Mon, 14 Sep 2026 02:00:14 +0000</pubDate>
+    </item>
+    <item>
+      <title>Rusting an E-scooter (In a Good Way) - Hack a Day</title>
+      <link>https://hackaday.com/2026/09/13/rusting-an-e-scooter-in-a-good-way/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/09/can.png?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;It is a classic Hackaday situation. You have an Egret GT E-scooter. It has a screen that shows the usual dash stats, but that led to an annoyance. You could accidentally enter firmware update mode and, from there, enter operational mode without the security PIN. [Ben] couldn&amp;#8217;t let that stand, so he reverse-engineered the protocol and &lt;a href="https://bensimms.moe/reverse-engineering-scooter/" target="_blank"&gt;rewrote the firmware in Rust&lt;/a&gt;. As he put it, &amp;#8220;&amp;#8230; because I have to break&amp;#8230; everything I own&amp;#8230;&amp;#8221; We get it.&lt;/p&gt;
+&lt;p&gt;The mobile app was useful for some basic info, since sniffing Bluetooth is fairly easy and analyzing mobile code is, more or less, straightforward. Analysis revealed some data that doesn&amp;#8217;t show on the display and that several things are sent back to home base tagged with the scooter&amp;#8217;s unique ID &amp;#8212; another reason to gut the existing firmware.&lt;/p&gt;
+&lt;p&gt;&lt;span id="more-1160977"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Internally, the scooter uses the CAN Bus, so out came the oscilloscope and a homebrew CAN decoder.  Surprisingly, the CAN bus is accessible on the USB-C port&amp;#8217;s data pins. Officially, the port is only for charging phones, so you have to wonder what your phone makes of the alien signals on the data pins when it is charging.&lt;/p&gt;
+&lt;p&gt;Firmware updates actually come in at least three flavors: display, input panel, and main controller. Reverse engineering the firmware update process was crucial to installing the new firmware.&lt;/p&gt;
+&lt;p&gt;If you own a similar scooter, this post is a goldmine. If you don&amp;#8217;t, it is still a very detailed breakdown of a reverse-engineering workflow, and you can apply many of the tools and techniques to your next project.&lt;/p&gt;
+&lt;p&gt;Of course, another option is to just keep the scooter and &lt;a href="https://hackaday.com/2019/03/19/retired-rideshare-scooter-skips-the-reverse-engineering-to-ride-again/"&gt;replace the brains&lt;/a&gt;. If you want to learn more about reverse engineering, there are literally dozens of &lt;a href="https://hackaday.com/2017/02/13/dummies-guide-to-reverse-engineering/"&gt;Hackaday posts&lt;/a&gt; to help you get started.&lt;/p&gt;</description>
+      <guid isPermaLink="false">24d31e6e38794e2577d17697080cb949376b069d68ef2d7581a13fc4303be973</guid>
+      <pubDate>Sun, 13 Sep 2026 20:00:03 +0000</pubDate>
+    </item>
     <item>
       <title>Keeping Time on Tumbling Icosahedra - Hack a Day</title>
       <link>https://hackaday.com/2026/09/13/keeping-time-on-tumbling-icosahedra/</link>

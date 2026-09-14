@@ -5,7 +5,52 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sun, 13 Sep 2026 14:01:12 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 14 Sep 2026 14:00:42 +0000</lastBuildDate>
+    <item>
+      <title>AI Changed the Exposure Problem. Validation Needs to Change With It. - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/ai-changed-exposure-problem-validation.html</link>
+      <description>There's a lot of noise around AI and cybersecurity right now. What’s actually important is far simpler, if often lost in the hubbub. Vulnerability discovery is getting faster and happening at a much greater scale, while defenders still have to work out which findings actually deserve their action.
+In the first half of 2026, a whopping 35,853 CVEs were published, roughly 49% more than in the</description>
+      <guid isPermaLink="false">ce9a5cef77cc9cde864b77ede61fa493070a0f8a195afbd527063d9269d15802</guid>
+      <pubDate>Mon, 14 Sep 2026 11:58:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>The Harness Matters: Cutting AI Reverse-Engineering Tokens by 33% - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wg0fvk/the_harness_matters_cutting_ai_reverseengineering/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/420ass_slayer69"&gt; /u/420ass_slayer69 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://reverser.space/blog/the-harness-matters-ai-reverse-engineering/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wg0fvk/the_harness_matters_cutting_ai_reverseengineering/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">6a30b9883fbac3da476b71e3410531161afb9a5bed491e0f4a8e75ba2278b48d</guid>
+      <pubDate>Mon, 14 Sep 2026 11:11:10 +0000</pubDate>
+    </item>
+    <item>
+      <title>StealC Stealer – RuntimeBroker Hollowing, C2 Extraction &amp; Payload Extraction - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wfwpk9/stealc_stealer_runtimebroker_hollowing_c2/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/StructBreaker"&gt; /u/StructBreaker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/kaandemir993/StealC-Stealer-RuntimeBroker-Hollowing-C2-Extraction-Payload-Extraction-Analysis"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wfwpk9/stealc_stealer_runtimebroker_hollowing_c2/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">5c453204143a157170b03dfd73902bb9caeb1208b5585d8dc3ad4fcf9ce3cd30</guid>
+      <pubDate>Mon, 14 Sep 2026 07:31:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>Malicious Twitch Browser Extension Leaks OAuth Tokens From Nearly 31,000 Users - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/malicious-twitch-browser-extension.html</link>
+      <description>A malicious cross-store Twitch browser extension has leaked OAuth tokens associated with nearly 31,000 users to proxy servers operated by a Russian commercial bot service.
+The extension, named "Twitch Enhanced Viewer | JeetBot," lists HISHIMIRO/jeetbot.cc as its developer and has the following identifiers on the Google Chrome Web Store and Mozilla Firefox Add-Ons store -
+  Chrome -</description>
+      <guid isPermaLink="false">2ad44ead9efa5114ecd6723436e2005b853966eb0ab867914204727dc5e567d4</guid>
+      <pubDate>Mon, 14 Sep 2026 07:24:39 +0000</pubDate>
+    </item>
+    <item>
+      <title>Traced SetWindowDisplayAffinity from win32k to dwm.exe — detecting anti-capture windows via CWindowContext::HasProtectedContent (Win10/11) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wfwhu2/traced_setwindowdisplayaffinity_from_win32k_to/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/HawkeyeLab"&gt; /u/HawkeyeLab &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://hawkeye-leo.github.io/hawkeye/research/capture/01-display-affinity/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wfwhu2/traced_setwindowdisplayaffinity_from_win32k_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">20f333c6dd41ab46ba665d0b29b60f4886b4bbe5baddced358a2adf8cf5fe389</guid>
+      <pubDate>Mon, 14 Sep 2026 07:18:33 +0000</pubDate>
+    </item>
+    <item>
+      <title>Super Trouper: A new MCP server in Golang to give coding agents a Frida interface - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wf8wpo/super_trouper_a_new_mcp_server_in_golang_to_give/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/neathack"&gt; /u/neathack &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/crissyfield/super-trouper"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wf8wpo/super_trouper_a_new_mcp_server_in_golang_to_give/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">ca7c3f3bd18e696ae426c02e9789fd0473d13733837979b5629903e0192ab7d0</guid>
+      <pubDate>Sun, 13 Sep 2026 14:17:58 +0000</pubDate>
+    </item>
     <item>
       <title>Burnout Revenge turns 21 this year. Still my favorite game ever. So i've did working recompilation - Reverse Engineering</title>
       <link>https://www.reddit.com/r/ReverseEngineering/comments/1wf3xma/burnout_revenge_turns_21_this_year_still_my/</link>
@@ -34,6 +79,20 @@ The first campaign, per the tech giant, involved sending over a million scam ema
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/magixer"&gt; /u/magixer &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://crossfyre.io/publications/blog/finding-flutters-certificate-verifier"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wexq29/locating_flutters_tls_certificate_verifier_in_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">59aa72e2afb1f257985a7669fc1ae1c53630375170d41de7a460a9192a343cc1</guid>
       <pubDate>Sun, 13 Sep 2026 04:25:44 +0000</pubDate>
+    </item>
+    <item>
+      <title>Gitlab -- vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/7fd351d1-af26-11f1-a883-2cf05da270f3.html</link>
+      <description/>
+      <guid isPermaLink="false">54b6835de8257cd9b0aa8220ea1c9e8d4c77e31a5a42a36c52492cb3759a783b</guid>
+      <pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>znc -- multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/b7ae786a-af80-11f1-9800-641c67a117d8.html</link>
+      <description/>
+      <guid isPermaLink="false">7c5d5adb005ee9091aa072745ff82c33d7e5a6603dbcdd8635432dbef0a919a7</guid>
+      <pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>GitHub - mein-0/LolModapi: MSI Dragon Center 2.0.155.0 LPE - Reverse Engineering</title>
@@ -1492,70 +1551,6 @@ Vercel has released security patches for two critical-severity vulnerabilities i
 The Windows path traversal, tracked as&amp;nbsp;CVE-2026-75604&amp;</description>
       <guid isPermaLink="false">4ec948fcbb64d20d9c4db9ba9671b090e78b2e8d111b74f600bcb65e82df0e34</guid>
       <pubDate>Thu, 27 Aug 2026 15:13:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Amazon Kiro Prompt Injection Can Exfiltrate Sensitive Data Through Kiro Powers - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/amazon-kiro-prompt-injection-can.html</link>
-      <description>Cybersecurity researchers have disclosed details of a vulnerability in Amazon Kiro, an artificial intelligence (AI)-powered, agentic integrated development environment (IDE), that could facilitate data exfiltration via prompt injection and Kiro Powers.
-The security flaw, which does not have a CVE identifier, works against Kiro IDE 0.7.45 on Windows, according to Mindgard. The latest version of</description>
-      <guid isPermaLink="false">d986308abf62062ab7df0cdae8bc4b6c0eade1694c2a052727912e8142dbd8a9</guid>
-      <pubDate>Thu, 27 Aug 2026 13:39:56 +0000</pubDate>
-    </item>
-    <item>
-      <title>From Squashfs to Root Shell: A Full AArch64 Rehost Story for a Zyxel Enterprise AP - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vztlsr/from_squashfs_to_root_shell_a_full_aarch64_rehost/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/TheReedemer69"&gt; /u/TheReedemer69 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/minanagehsalalma/zyxel-wax650s-research-notebook-public"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vztlsr/from_squashfs_to_root_shell_a_full_aarch64_rehost/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">d95362a96ddab7ef5b8ff7d3affc708c0d091bcba9e53a6f140024a78e4b5062</guid>
-      <pubDate>Thu, 27 Aug 2026 13:12:28 +0000</pubDate>
-    </item>
-    <item>
-      <title>Learn How to Build Security Operations Ready for AI-Powered Attacks - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/learn-how-to-build-security-operations.html</link>
-      <description>Security teams have spent years trying to detect threats faster. AI is changing the harder part: how much time defenders have left to act.
-Advanced AI models can now help attackers discover vulnerabilities, generate exploit code, and move through weaknesses faster than traditional security processes were built to handle.
-The challenge is no longer just finding another vulnerability or</description>
-      <guid isPermaLink="false">e82d3817c98f2190f48ba2520d82309b3a1001b77936805574964f63687323e8</guid>
-      <pubDate>Thu, 27 Aug 2026 11:56:30 +0000</pubDate>
-    </item>
-    <item>
-      <title>Alleged TeamPCP Hackers Charged in Australia Over Major Supply Chain Attacks - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/alleged-teampcp-hackers-charged-in.html</link>
-      <description>The Australian Federal Police (AFP) has charged two Western Australian men with a combined total of 14 offences over their alleged role in TeamPCP, the cybercrime group behind the March 2026 compromise of the open-source security scanners Trivy and Checkmarx KICS and the AI gateway LiteLLM.
-Louis Michael Gaebler, 23, and Ruben Ian Thomson, 21, appeared in Perth Magistrates Court on August 27,</description>
-      <guid isPermaLink="false">086ab85c0a9896edcb1e463e442383bc2c9c44537db865dcdb30968e17c54435</guid>
-      <pubDate>Thu, 27 Aug 2026 11:56:26 +0000</pubDate>
-    </item>
-    <item>
-      <title>What the Data Says About AI in Security Operations in 2026 - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/what-data-says-about-ai-in-security.html</link>
-      <description>AI is officially mainstream in security operations. According to Prophet Security's State of AI in Security Operations 2026 report (produced from ViB’s survey of 250+ cybersecurity pros), 40% of security teams now use AI daily. Another 56% are currently testing it out, and only 4% have no plans to adopt it.
-For the teams already using AI, what is actually changing? Here are the ten biggest</description>
-      <guid isPermaLink="false">3e5ef371e873f02cb2e795ff50f3035876bf36b1fe8e0fb5bc3149f0ed0c6805</guid>
-      <pubDate>Thu, 27 Aug 2026 11:30:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Spark RAT Targets Cambodia, Abuses Vulnerable OPSWAT Driver to Disable Security Tools - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/spark-rat-targets-cambodia-abuses.html</link>
-      <description>Individuals and organizations in Cambodia have emerged as the target of a new campaign that delivers an open-source remote access trojan (RAT) called Spark RAT.
-"The samples employ diverse lure themes, suggesting an effort to appeal to a broad range of potential victims. These include government notices, public health materials, real estate-related content, and other topics," Acronis Threat</description>
-      <guid isPermaLink="false">8dbd0c8885b89c43c7d9c2ecb4900ed95033e8aade4736f03c301661bd51a70d</guid>
-      <pubDate>Thu, 27 Aug 2026 11:00:57 +0000</pubDate>
-    </item>
-    <item>
-      <title>GoCaracal Malware Uses Ethereum Smart Contract to Fetch Replacement C2 Address - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/gocaracal-malware-uses-ethereum-smart.html</link>
-      <description>Threat actors linked by Arctic Wolf to Dark Caracal with medium confidence deployed a previously undocumented Go-based malware framework, GoCaracal, during a June 2026 intrusion at an unnamed communications organization in Venezuela.
-GoCaracal provides operators with remote shell access and payload execution, while the extended profile adds browser data theft, keylogging, remote desktop control</description>
-      <guid isPermaLink="false">983da53d6bf03478127861079f0c4fd9fd641f39839168753f9ab748c907631f</guid>
-      <pubDate>Thu, 27 Aug 2026 09:33:38 +0000</pubDate>
-    </item>
-    <item>
-      <title>New GPUThor Rowhammer Defeats ECC on NVIDIA RTX A6000 to Gain Host Root Access - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/gputhor-rowhammer-defeats-ecc-on-nvidia.html</link>
-      <description>Academic researchers have disclosed a Rowhammer attack impacting NVIDIA workstation GPUs with GDDR6 memory that defeats error correction codes (ECC), the mitigation NVIDIA recommends against GPU Rowhammer, and enables denial-of-service (DoS) and privilege escalation to a root shell.
-Dubbed GPUThor, the attack was developed by researchers at the University of Toronto, who hammered four DRAM</description>
-      <guid isPermaLink="false">cfc1b1c1cceaac4d514c3171d183353af1d3cb6d677f3c02ba05b14beaa5f1ef</guid>
-      <pubDate>Thu, 27 Aug 2026 08:13:11 +0000</pubDate>
     </item>
   </channel>
 </rss>
