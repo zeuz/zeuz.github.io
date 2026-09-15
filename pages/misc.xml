@@ -5,7 +5,31 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Misc category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Thu, 10 Sep 2026 14:01:42 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 15 Sep 2026 14:01:34 +0000</lastBuildDate>
+    <item>
+      <title>Apple drawings - And now it's all this</title>
+      <link>https://leancrew.com/all-this/2026/09/apple-drawings/</link>
+      <description>&lt;p&gt;Everyone’s favorite Apple archivist, Stephen Hackett, wrote &lt;a href="https://512pixels.net/2026/09/apple-dimensional-drawings/"&gt;a short post&lt;/a&gt; last week in which he linked to Apple’s page with &lt;a href="https://developer.apple.com/accessories/dimensional-drawings/"&gt;dimensional drawings&lt;/a&gt; of its products. He included this drawing of the iPhone 17 Pro:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://leancrew.com/all-this/images2026/20260914-Apple%20iPhone%2017%20Pro%20300%20dpi.png"&gt;&lt;img alt="Apple iPhone 17 Pro drawing" class="ss" src="https://leancrew.com/all-this/images2026/20260914-Apple%20iPhone%2017%20Pro%20drawing.png" title="Apple iPhone 17 Pro drawing" width="100%" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;You can click on it to see a 300 dpi version. The Apple page linked above will give you infinite-resolution PDFs.&lt;/p&gt;
+&lt;p&gt;When I zoomed in on Stephen’s page, I was initially confused, but then I realized what seemed odd to me. You see, I’ve spent an awful lot of the past 40 years looking at engineering drawings, and I can’t think of any that looked like this. That’s because the drawings I’m used to are for making the depicted product, but the drawings Apple’s offering up here aren’t for that.&lt;sup id="fnref:secret"&gt;&lt;a href="#fn:secret" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt; These are for &lt;em&gt;others&lt;/em&gt;—not Apple and not its suppliers—to use for making cases and other accessories. I figured it was worth a quick post on what makes a drawing like the one above so different from what I’m used to.&lt;/p&gt;
+&lt;p&gt;First off, there are so many dimensions. Drawings of full products are typically called &lt;em&gt;assembly drawings&lt;/em&gt;, and they have almost no dimensions. What they do is show how the various component pieces (subassemblies) are put together. The subassemblies have their own drawings that show how they are put together from their components, which are themselves typically subassemblies. Eventually, you get down to the individual part drawings, which depict a single piece of metal or glass or plastic. At each level in this hierarchy, the drawings tend to include only the dimensions necessary to build the object depicted. You don’t include the length and diameter of a screw on an assembly drawing; you simply call out its part number (which is also its drawing number).&lt;/p&gt;
+&lt;p&gt;Speaking of drawing numbers, if you look in the title block you’ll see that there is no drawing number. Design drawings always have these. They also have the names or initials of the draftsmen and checkers and, usually, a list of revisions. These public drawings don’t reveal any of that internal information.&lt;/p&gt;
+&lt;p&gt;There are names for many of the items and dimensions: product length, display active area, volume button, rear sensor, etc. These are not common in design drawings because they tend to be of no value to those doing the manufacturing. You don’t need to know what this hole is for; just make it this big and put it here.&lt;/p&gt;
+&lt;p&gt;Which leads us to tolerances, which are absent. Dimensions and positions are given to the nearest hundredth of a millimeter and there is no give or take. To the outside world, Apple’s dimensions are absolute and invariable. Inside Apple and its suppliers, people know better.&lt;/p&gt;
+&lt;p&gt;Also absent is any specification of material, other than a few generic mentions of glass. While assembly drawings don’t usually include materials, parts drawings always refer to material specs, usually included in another company document.&lt;/p&gt;
+&lt;p&gt;The last thing I’ll mention is the Notes section in the upper left corner. It has instructions clearly meant for people outside of Apple and making accessories. If I’d zoomed in on this section first, I probably wouldn’t have been even momentarily confused.&lt;/p&gt;
+&lt;div class="footnotes"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:secret"&gt;
+&lt;p&gt;Obviously. Apple isn’t going to post its design drawings; they’re among its most tightly controlled proprietary documents. Even for a company that considers everything a secret, the design drawings are &lt;em&gt;really&lt;/em&gt; secret. &lt;a href="#fnref:secret" rev="footnote"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
+      <guid isPermaLink="false">1b582dcc6a554bbd751cd916c2c5178d55465eabf8233481367f189ab9697597</guid>
+      <pubDate>Tue, 15 Sep 2026 01:09:55 +0000</pubDate>
+    </item>
     <item>
       <title>New Apple Watches have ears - And now it's all this</title>
       <link>https://leancrew.com/all-this/2026/09/new-apple-watches-have-ears/</link>

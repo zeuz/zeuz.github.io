@@ -5,7 +5,140 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Mon, 14 Sep 2026 14:00:42 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 15 Sep 2026 14:01:33 +0000</lastBuildDate>
+    <item>
+      <title>Escaping the OpenAI Codex sandbox, twice - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wh0ukg/escaping_the_openai_codex_sandbox_twice/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/natcoba"&gt; /u/natcoba &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://accomplish.ai/blog/escaping-the-openai-codex-sandbox-twice/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wh0ukg/escaping_the_openai_codex_sandbox_twice/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">3e51a4ac437576f9a1792d200a9233d219ebd0671b2764acc971a758687e8287</guid>
+      <pubDate>Tue, 15 Sep 2026 13:45:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>Human Attacker Exploits Marimo RCE, Reaches SSH Bastion in Eight Seconds - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/human-attacker-exploits-marimo-rce.html</link>
+      <description>With artificial intelligence (AI) shrinking the window between vulnerability discovery and exploitation and lowering the barrier to entry for bad actors, new findings from Sysdig show that skilled human operators can move just as swiftly after gaining initial access.
+In one instance highlighted by the cloud security company, the threat actor pivoted from a vulnerable Marimo notebook to an SSH</description>
+      <guid isPermaLink="false">8055e406fb5ba5fa5d33aa5ef26149398348afbcbc9dcbbf41080019b3530518</guid>
+      <pubDate>Tue, 15 Sep 2026 11:52:28 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attack Chains, Not Just Attack Surfaces: Why Testing Individual Techniques Misses the Point - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/attack-chains-not-just-attack-surfaces.html</link>
+      <description>Introduction
+Security teams have gotten pretty good at testing against what can hurt them. Can this EDR agent catch this payload? Will my organization fail the phishing simulation? Does this SIEM rule fire on this particular technique? And, in more mature organizations, this testing happens continuously rather than as a one-off exercise.
+But no matter how much you validate against these</description>
+      <guid isPermaLink="false">2509643d4ddd25476ccb928cf5f13bb1fddb6c599db50597d0db87ecaf4c8286</guid>
+      <pubDate>Tue, 15 Sep 2026 11:26:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>Mass-Scanning Campaign Exploits Vite Flaw to Extract Cloud Credentials From Exposed Dev Servers - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/mass-scanning-campaign-exploits-vite.html</link>
+      <description>Cybersecurity researchers have disclosed details of a mass-scanning campaign that has targeted Vite deployments siphon sensitive data.
+The first is an automated effort aimed at internet-exposed Vite development servers that's designed to steal cloud credentials, configurations from Amazon Web Services (AWS) and Microsoft Azure instances, and infrastructure state files, per F5 Labs.
+The</description>
+      <guid isPermaLink="false">ecdb07a3591be531ff094f693cd1df4f85874319e9183722a5ce4523bee0bea4</guid>
+      <pubDate>Tue, 15 Sep 2026 11:12:32 +0000</pubDate>
+    </item>
+    <item>
+      <title>ALPC-Enumerator: digging out Windows ALPC ports that normal handle-based enumeration misses - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wgwx1c/alpcenumerator_digging_out_windows_alpc_ports/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/SPHlNX_321"&gt; /u/SPHlNX_321 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/talha-nazeef-ahmed/ALPC-Enumerator"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wgwx1c/alpcenumerator_digging_out_windows_alpc_ports/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">d77cd17d639bb7fb449621334db98d923d17b3efaa5e03f48bd5faa3cbd645f8</guid>
+      <pubDate>Tue, 15 Sep 2026 10:47:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>LiteSpeed Enterprise Flaw Could Let One Hosting Account Gain Root Access on a Shared Server - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/litespeed-enterprise-flaw-could-let-one.html</link>
+      <description>A critical vulnerability in LiteSpeed Web Server Enterprise could let a low-privilege website user gain root access on a shared-hosting server, cPanel warned in an&amp;nbsp;advisory published on September 14.
+On such servers, many customers' sites run on a single machine, and an attacker with one of those hosting accounts could exploit the flaw to access or alter other sites and the server itself,</description>
+      <guid isPermaLink="false">12720c33ad7a1e803f04ec68bd66c6b310d8274f926f2d6f0788c70ef5053613</guid>
+      <pubDate>Tue, 15 Sep 2026 06:52:16 +0000</pubDate>
+    </item>
+    <item>
+      <title>Cisco Secure Email Gateway Flaw Exploited in the Wild, Enables Root Command Execution - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/cisco-secure-email-gateway-flaw.html</link>
+      <description>Cisco has warned that a new critical vulnerability impacting AsyncOS Software for Cisco Secure Email Gateway has come under active exploitation in the wild.
+The vulnerability, tracked as CVE-2026-76461, carries a CVSS score of 9.8 out of a maximum of 10.0. It has been described as a case of insufficient validation in the email parsing logic that could allow an unauthenticated, remote attacker</description>
+      <guid isPermaLink="false">6e31caa4edbe3a13ae960a224b0039719cbcb976f1e3609055363e42405554ed</guid>
+      <pubDate>Tue, 15 Sep 2026 06:11:11 +0000</pubDate>
+    </item>
+    <item>
+      <title>China-Linked Hackers Exploit Chrome-Windows Zero-Day Chain to Deploy GRIMWEDGE - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/china-linked-hackers-exploit-chrome.html</link>
+      <description>A Chinese threat actor has been attributed to a spear-phishing campaign that exploits recently patched security flaws in Google Chrome and Microsoft Windows to deliver a malicious JavaScript backdoor called GRIMWEDGE.
+Volexity, which is tracking the threat cluster under the moniker UTA0560, said the activity targeted multiple non-governmental organizations (NGOs) on September 1, 2026.
+"The</description>
+      <guid isPermaLink="false">e222557c0b41387720e17363ec2abf05eb49b1d7cc06f17b615f256a0394ec23</guid>
+      <pubDate>Tue, 15 Sep 2026 05:31:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>Reverse Engineering Halo: Infinite Theater Films - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wgp7s3/reverse_engineering_halo_infinite_theater_films/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/simbleau"&gt; /u/simbleau &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://spencer.imbleau.com/blog/ai/rust/2026/09/14/halo-infinite-theater-format-astra.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wgp7s3/reverse_engineering_halo_infinite_theater_films/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">c4ecedce12ca3c5d69cbc510c05eeec305d237349df16a831efcfde6a2385a11</guid>
+      <pubDate>Tue, 15 Sep 2026 03:42:39 +0000</pubDate>
+    </item>
+    <item>
+      <title>CoD:MW2 (2009) runtime reimplemented in Rust is open source - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wghurx/codmw2_2009_runtime_reimplemented_in_rust_is_open/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/77daa"&gt; /u/77daa &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/vladtrc/iw4L"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wghurx/codmw2_2009_runtime_reimplemented_in_rust_is_open/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">5b0ff3090339d8681c311256f33f2946c4165531661e88bffafce45849a54fb7</guid>
+      <pubDate>Mon, 14 Sep 2026 22:12:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>whitelist-bypass – WebRTC Tunnels Through Video-Calling Platforms - Darknet - The Darkside</title>
+      <link>https://www.darknet.org.uk/2026/09/whitelist-bypass-webrtc-tunnels-through-video-calling-platforms/</link>
+      <description>whitelist-bypass tunnels traffic through commercial video calls, for networks that allow only approved domains. How its two tunnels work, and the claim to verify.</description>
+      <guid isPermaLink="false">ea67236973f1e6485d3cfc3d363189be3d3edd24a1ab91cd1305cc33b1d3a4f3</guid>
+      <pubDate>Mon, 14 Sep 2026 19:53:26 +0000</pubDate>
+    </item>
+    <item>
+      <title>New DDRop Attack Breaks Intel TDX and AMD SEV-SNP Confidential Computing - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/new-ddrop-attack-breaks-intel-tdx-and.html</link>
+      <description>Researchers have disclosed a new hardware attack, called DDRop, that breaks the memory protection in Intel and AMD confidential computing by silently dropping writes to a server's memory, so the processor keeps reading old encrypted data as if it were current.
+The attack requires an attacker who already controls the server's software and can briefly access the machine to insert a small circuit</description>
+      <guid isPermaLink="false">6e02955cd305ddaa7265ab169f20a7c9a99f7eb82cada6b9fbea0cfa9050aa1d</guid>
+      <pubDate>Mon, 14 Sep 2026 18:02:13 +0000</pubDate>
+    </item>
+    <item>
+      <title>3BB Attacker Used MeshCentral Backdoor for Root Access, Targeted Subscriber Credentials - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/3bb-attacker-used-meshcentral-backdoor.html</link>
+      <description>An attacker was operating inside the network of 3BB, one of Thailand's largest broadband providers, and maintained remote control of internal machines using a legitimate management tool called MeshCentral, threat intelligence firm Hunt.io said.
+The company uncovered the intrusion by examining a server the attacker had left open on the internet, which held the attacker's own tools and a list of</description>
+      <guid isPermaLink="false">783dc3c818860042ae211baa95255cb04f9e016eaf19e5aa0d58fbcabb4f09e2</guid>
+      <pubDate>Mon, 14 Sep 2026 18:01:49 +0000</pubDate>
+    </item>
+    <item>
+      <title>Telegram Desktop Flaw Lets Hidden JavaScript Exfiltrate Messages From HTML Exports - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/telegram-desktop-flaw-lets-hidden.html</link>
+      <description>A flaw in Telegram Desktop let a bot's message plant hidden JavaScript inside chats that users exported to HTML files, security researchers at ExPatch said in a&amp;nbsp;writeup&amp;nbsp;published on September 12.
+In Telegram, the message looked ordinary, with a link button, and the script ran only when someone opened the export file in a web browser. It could then copy every message in that file to</description>
+      <guid isPermaLink="false">350f973bd5a9e45deeecc3d46355e6aa246846126852e2c2a15bb300d459c808</guid>
+      <pubDate>Mon, 14 Sep 2026 17:58:16 +0000</pubDate>
+    </item>
+    <item>
+      <title>Red Heron Exploits Gitea RCE to Compromise 13 Organizations Across Six Countries - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/red-heron-exploits-gitea-rce-to.html</link>
+      <description>A suspected Chinese threat actor tracked as Red Heron has been attributed to the rapid exploitation of a recently disclosed security vulnerability in Gitea to compromise internet-facing instances as part of a multi-national campaign.
+"Red Heron scanned 1,386 Gitea instances across seven countries and maintained a separate dataset of 477 Taiwan-based systems," Acronis Threat Research Unit (TRU)</description>
+      <guid isPermaLink="false">1696647e2110908a133ccd1dd05c8f8884d0efb259c376892ecc3160336cf94f</guid>
+      <pubDate>Mon, 14 Sep 2026 16:56:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>WordPress Adds Automated Plugin Reviews to Block High-Risk Updates Before Distribution - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/wordpress-adds-automated-plugin-reviews.html</link>
+      <description>WordPress has announced it's launching an automated security review for every release of a plugin before it's distributed through the WordPress.org update API so as to analyze it for potential security issues and ensure there are no risks involved.
+"New plugins are reviewed before they enter the directory, but updates ship continuously after that," David Perez, WordPress Official Plugin</description>
+      <guid isPermaLink="false">13b5e4baec48d20693776de17607f1a09aa98a56619cb4e28c3e1cc7db94ce74</guid>
+      <pubDate>Mon, 14 Sep 2026 16:00:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>Technical Analysis of Suno internals post-September 26 and a working tool to assist with curation - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wg66rt/technical_analysis_of_suno_internals/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/SolidAlternative1646"&gt; /u/SolidAlternative1646 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/ArcticWinterSturm/GenMusicAssist"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wg66rt/technical_analysis_of_suno_internals/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">2ffc983ed6fb022968f5b2157153a3433ca28edc7bc4f2ae592de200fc655ed0</guid>
+      <pubDate>Mon, 14 Sep 2026 15:13:29 +0000</pubDate>
+    </item>
     <item>
       <title>AI Changed the Exposure Problem. Validation Needs to Change With It. - The Hacker News</title>
       <link>https://thehackernews.com/2026/09/ai-changed-exposure-problem-validation.html</link>
@@ -43,6 +176,20 @@ The extension, named "Twitch Enhanced Viewer | JeetBot," lists HISHIMIRO/jeetbot
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/HawkeyeLab"&gt; /u/HawkeyeLab &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://hawkeye-leo.github.io/hawkeye/research/capture/01-display-affinity/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wfwhu2/traced_setwindowdisplayaffinity_from_win32k_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">20f333c6dd41ab46ba665d0b29b60f4886b4bbe5baddced358a2adf8cf5fe389</guid>
       <pubDate>Mon, 14 Sep 2026 07:18:33 +0000</pubDate>
+    </item>
+    <item>
+      <title>cjose: Heap-based Buffer Overflow - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/35b3a492-b05a-11f1-9369-b42e991fc52e.html</link>
+      <description/>
+      <guid isPermaLink="false">839c532f2ef6b0fe71b71203cc7db7f42c82a008deb4832593509a813adb27f1</guid>
+      <pubDate>Mon, 14 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>cjose: Use of Hard-coded Cryptographic Key - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/3a38fdda-b05a-11f1-9369-b42e991fc52e.html</link>
+      <description/>
+      <guid isPermaLink="false">621710b777ddb282e9cf7635826fa0b9aa773626dbb3d3c5e3eb3cf5618bc4fb</guid>
+      <pubDate>Mon, 14 Sep 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Super Trouper: A new MCP server in Golang to give coding agents a Frida interface - Reverse Engineering</title>
@@ -92,6 +239,13 @@ The first campaign, per the tech giant, involved sending over a million scam ema
       <link>http://www.vuxml.org/freebsd/b7ae786a-af80-11f1-9800-641c67a117d8.html</link>
       <description/>
       <guid isPermaLink="false">7c5d5adb005ee9091aa072745ff82c33d7e5a6603dbcdd8635432dbef0a919a7</guid>
+      <pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Gitea -- multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/fac18f5f-afc2-11f1-8266-3c7c3fba4204.html</link>
+      <description/>
+      <guid isPermaLink="false">57b70018d2470d0ad1954efcdafa3608ba8d6e2ffae5e0c35b8ee533231a9744</guid>
       <pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
@@ -346,6 +500,13 @@ The AI company said the incident dates back to January 2026 and involved an earl
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Other-Income-5085"&gt; /u/Other-Income-5085 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/416rehman/razer-lycosa-kernel-lpe-BYOVD-Vulnerability-PoC"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wc5k75/razer_lycosasys_analysis_kernel_memory_disclosure/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">9baf11da990e30f2b5e78916c29480c29c24b3d5344a9115e6f7a1d176687a11</guid>
       <pubDate>Thu, 10 Sep 2026 02:01:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>strongSwan -- multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/e627950e-ad4f-11f1-8656-000af7b98cf6.html</link>
+      <description/>
+      <guid isPermaLink="false">ed0fb6c5b4928e09f389044e54eb856776ce2382cb32f3c6c117efb0fc2e4d7d</guid>
+      <pubDate>Thu, 10 Sep 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Reverse engineering the 2008 LogiCola, a logic drill program - Reverse Engineering</title>
@@ -1390,167 +1551,6 @@ Affected versions are &amp;lt; 0.6.2 and &amp;gt;=</description>
 "This vulnerability gives an unauthenticated attacker remote control over PaperCut's trusted configuration, which could be used to execute arbitrary Java code inside the application's</description>
       <guid isPermaLink="false">d1a653cc22e392f4ab37f7ba5dd38c1580df60b0b6b055492c77569711b86ce4</guid>
       <pubDate>Fri, 28 Aug 2026 17:12:15 +0000</pubDate>
-    </item>
-    <item>
-      <title>Android 17 Adds OS-Wide ECH to Hide Website Visits From Network Providers - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/android-17-adds-os-wide-ech-to-hide.html</link>
-      <description>Google on Thursday announced new network security protections in Android 17 to bolster connection privacy, address cellular vulnerabilities, and safeguard the privacy of users' home networks.
-Topping the list is support for Encrypted Client Hello (ECH), a privacy standard that prevents networks from eavesdropping on which websites a user is visiting.
-"This new privacy standard works in tandem</description>
-      <guid isPermaLink="false">ae8050f949e06ec7e83c17a6c697494373cb01e584c2de30d679e6104b94f2b1</guid>
-      <pubDate>Fri, 28 Aug 2026 16:20:46 +0000</pubDate>
-    </item>
-    <item>
-      <title>ownCloud Flaw Exploited to Steal Nuclear Records From Philippine Research Body - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/snowflake-github-actions-flaw-lets.html</link>
-      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Thursday added a critical security flaw impacting ownCloud to its Known Exploited Vulnerabilities (KEV) catalog following reports that a Chinese-speaking threat actor weaponized the vulnerability to target a nuclear research body in the Philippines.
-The vulnerability, tracked as CVE-2023-49105 (CVSS score: 9.8), is a case of</description>
-      <guid isPermaLink="false">829e3c3bcc6fbebbef5d9ce8ff32bdb93739e79622c1804fec3b12bd476895f7</guid>
-      <pubDate>Fri, 28 Aug 2026 15:56:55 +0000</pubDate>
-    </item>
-    <item>
-      <title>19 Chrome and Edge Extensions Found With Wallet-Stealing and Crypto-Draining Code - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/19-chrome-and-edge-extensions-found.html</link>
-      <description>Cybersecurity researchers have discovered a cluster of 18 Google Chrome and one Microsoft Edge extensions that were published over the last six months and harbored wallet secret stealing and cryptocurrency draining capabilities.
-The extensions, per Socket security researcher Karlo Zanki, share similarities in code and tradecraft, with evidence indicating that the campaign may have been active</description>
-      <guid isPermaLink="false">a08dfdd0979227bd01c0dc01e46b930d3bc09f8ab0d662e3b97b176e682bcda1</guid>
-      <pubDate>Fri, 28 Aug 2026 15:27:26 +0000</pubDate>
-    </item>
-    <item>
-      <title>Identifying golden-section search in EVM bytecode from a hardcoded constant - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w0qdho/identifying_goldensection_search_in_evm_bytecode/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/H3rnst"&gt; /u/H3rnst &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://devilsintheopcodes.substack.com/p/mev-arbitrage-optimal-trade-size"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w0qdho/identifying_goldensection_search_in_evm_bytecode/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">c1dc904c52e0d833531f3d48c324c08e57358e9a36503a5366f680fd48524d3a</guid>
-      <pubDate>Fri, 28 Aug 2026 13:18:30 +0000</pubDate>
-    </item>
-    <item>
-      <title>Interactive pattern discovery in binaries (FF-16-TUI) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w0pwwp/interactive_pattern_discovery_in_binaries_ff16tui/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/HexLasso"&gt; /u/HexLasso &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/HexLasso/FF-16-TUI"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w0pwwp/interactive_pattern_discovery_in_binaries_ff16tui/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">ad3e0497b6339ac05140134a7474217406ccd01ec475a72eb689184ef4e4bd10</guid>
-      <pubDate>Fri, 28 Aug 2026 12:59:32 +0000</pubDate>
-    </item>
-    <item>
-      <title>Two Unitree G1 EDU Humanoid Robot Flaws Enable Root RCE, One Starts Over Bluetooth - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/two-unitree-g1-edu-humanoid-robot-flaws.html</link>
-      <description>Security researcher Olivier Laflamme has disclosed two independent root remote code execution (RCE) chains affecting the Unitree G1 EDU, including a Bluetooth Low Energy (BLE) path that can reach root on the robot's Locomotion PC.
-The flaws are tracked as&amp;nbsp;CVE-2026-76639&amp;nbsp;and&amp;nbsp;CVE-2026-76640, with the first involving a network-adjacent path through chat_go and bashrunner and the</description>
-      <guid isPermaLink="false">71935d470414f85bb7af7e5c5338617e8cc347387ba74b710675ed21093701e1</guid>
-      <pubDate>Fri, 28 Aug 2026 12:07:24 +0000</pubDate>
-    </item>
-    <item>
-      <title>Three CVSS 10.0 ServiceNow Flaws Could Let Unauthenticated Attackers Execute Code and SQL - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/three-cvss-100-servicenow-flaws-could.html</link>
-      <description>ServiceNow has released patches for four security flaws impacting the ServiceNow AI Platform, three of them rated 10.0 on the CVSS scoring system and exploitable, in certain circumstances, by an unauthenticated attacker.
-The company said it deployed a security update to hosted instances and provided the update to its partners and self-hosted customers, which leaves organizations that run their</description>
-      <guid isPermaLink="false">3afbe0d05465fb231b47f699358a63b9e3927021e1b39a55b670754447c3fb8e</guid>
-      <pubDate>Fri, 28 Aug 2026 11:20:32 +0000</pubDate>
-    </item>
-    <item>
-      <title>China-Made ZBT Routers Ship With Two Implants Giving Unauthenticated Attackers Root Access - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/china-made-zbt-routers-ship-with-two.html</link>
-      <description>VulnCheck has disclosed two previously undocumented factory implants in firmware for routers built by Shenzhen Zhibotong Electronics (ZBT), each of which gives an unauthenticated remote attacker the ability to run commands as root on affected devices.
-The implants, named SPEAKINGSTONE and DARKLANTERN by the company's zero-day research team, are tracked as CVE-2026-74232 and CVE-2026-74233.</description>
-      <guid isPermaLink="false">a7ca13ebc5adb174dd16151824d9a32f4d520f7acf6f085c61cb82f375c0d97f</guid>
-      <pubDate>Fri, 28 Aug 2026 10:58:29 +0000</pubDate>
-    </item>
-    <item>
-      <title>Critical cPanel Flaw Could Let One Hosting Customer Take Root Control of a Whole Server - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/critical-cpanel-flaw-could-let-one.html</link>
-      <description>cPanel has released patches for a security flaw affecting domain parking and addon domain functionality in cPanel and WebHost Manager (WHM), which could allow code execution as the root user.
-The vulnerability, assigned the CVE identifier CVE-2026-65643, impacts all supported versions of cPanel &amp;amp; WHM.
-cPanel described the issue as a critical security vulnerability and said that an</description>
-      <guid isPermaLink="false">99fb8ec92adf42986254218f4a846142fc41583de1727582c600e59ad55145e9</guid>
-      <pubDate>Fri, 28 Aug 2026 09:45:15 +0000</pubDate>
-    </item>
-    <item>
-      <title>PaperCut Zero-Day Exploited in Attacks, Affecting All NG and MF Versions - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/papercut-zero-day-exploited-in-attacks.html</link>
-      <description>PaperCut has alerted customers that bad actors are actively exploiting a vulnerability impacting all versions of its PaperCut NG and PaperCut MF print management software in zero-day attacks.
-The company has released an emergency patch for v25 and v26 to address the issue. It said it's "aware of confirmed customer incidents and is treating this matter with the highest priority." An</description>
-      <guid isPermaLink="false">2485cf37fe39fe76b7bb91f0203a59ca1e66911179213aa24a3bddee5fabeb6e</guid>
-      <pubDate>Fri, 28 Aug 2026 08:25:36 +0000</pubDate>
-    </item>
-    <item>
-      <title>APT28-Linked HOOKEDGE Backdoor Targets European Government and Diplomatic Organizations - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/apt28-linked-hookedge-backdoor-targets.html</link>
-      <description>Cybersecurity researchers have flagged a fresh set of campaigns targeting government and diplomatic organizations in Romania, Spain, and Türkiye between late September 2025 and early April 2026.
-These campaigns, per Recorded Future Insikt Group, have led to the deployment of a previously undocumented backdoor dubbed HOOKEDGE, a lightweight Windows batch script that's distributed via</description>
-      <guid isPermaLink="false">a17de877fef33137e21cea0cd0e196fc7af461c590d45210d3029bd9a4cfd177</guid>
-      <pubDate>Fri, 28 Aug 2026 08:20:59 +0000</pubDate>
-    </item>
-    <item>
-      <title>AI IR Overlay – Incident Response Specification for AI Agents - Darknet - The Darkside</title>
-      <link>https://www.darknet.org.uk/2026/08/ai-ir-overlay-incident-response-specification-for-ai-agents/</link>
-      <description>AI IR Overlay specifies containment for agents using valid credentials, with a working kill-switch contract and an admitted gap when no SOC is staffed.</description>
-      <guid isPermaLink="false">611211c522219469546dd0cb31197936dd63198bfb633f1c74e0dd77113cf4d6</guid>
-      <pubDate>Fri, 28 Aug 2026 06:35:05 +0000</pubDate>
-    </item>
-    <item>
-      <title>Needed a lightweight PE parser for a reverse engineering project. readpe parses PE/PE32+ files without dependencies: - DOS header validation - PE signature check - Section headers - Import directory parsing Built in C with no external libs. Use - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w0bnql/needed_a_lightweight_pe_parser_for_a_reverse/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Limp-Impact6334"&gt; /u/Limp-Impact6334 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/DaviAlcanfor/readpe"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w0bnql/needed_a_lightweight_pe_parser_for_a_reverse/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">db944c19799a5754bb9bf56cff1abec13a3e843009c0fb216972d369345a1d68</guid>
-      <pubDate>Fri, 28 Aug 2026 00:36:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>Gitlab -- Vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/161b1c49-a29b-11f1-a883-2cf05da270f3.html</link>
-      <description/>
-      <guid isPermaLink="false">5619008880a3d2675ea17739cb4c03f67986bc67dd99a7494dbb869a2507daca</guid>
-      <pubDate>Fri, 28 Aug 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Elixir -- Denial of service via uncontrolled recursion in charlist conversion - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/2ab3c852-d10a-4d68-be6b-80619116c33a.html</link>
-      <description/>
-      <guid isPermaLink="false">cda5f1e2b3e4848265b1461ec9b52e783354380efc58d1a4a56f9b9cb03cc5e8</guid>
-      <pubDate>Fri, 28 Aug 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>phpBB -- multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/4d06b948-a323-11f1-a655-3497f65b111b.html</link>
-      <description/>
-      <guid isPermaLink="false">95656f9a1d35fee34ba008ebbbf8ed839236625f4b80210d4284f53f88aa010a</guid>
-      <pubDate>Fri, 28 Aug 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>untauri: extract the brotli-packed HTML/CSS/JS frontend out of a compiled Tauri (Rust) binary - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w0772t/untauri_extract_the_brotlipacked_htmlcssjs/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Imaginary_Heat_2235"&gt; /u/Imaginary_Heat_2235 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/hbofz/untauri"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w0772t/untauri_extract_the_brotlipacked_htmlcssjs/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">4844e9e7c08b3b30e951e624bf3f65bd0b76170a979680af27dc46e2d99ce43d</guid>
-      <pubDate>Thu, 27 Aug 2026 21:31:59 +0000</pubDate>
-    </item>
-    <item>
-      <title>UniBLEed: Unauthenticated Root RCE on Any Unitree G1 Humanoid Robot Within Bluetooth Range - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w05z1p/unibleed_unauthenticated_root_rce_on_any_unitree/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/WiseTuna"&gt; /u/WiseTuna &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://boschko.ca/g1-ble-rce/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w05z1p/unibleed_unauthenticated_root_rce_on_any_unitree/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">a1c7bebb3c3e7a886bdcb3a52b58824ea821eed7fa163ef671dd6620e6cc7dde</guid>
-      <pubDate>Thu, 27 Aug 2026 20:45:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>OpenAI Says Reward Hacking Drove AI Agents to Exploit Zero-Days and Breach Hugging Face - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/openai-says-reward-hacking-drove-ai.html</link>
-      <description>OpenAI on Wednesday revealed that reward hacking was a key driver behind the artificial intelligence (AI)-powered hack of Hugging Face last month, adding that it found evidence of misaligned behavior as early as late May.
-The incident, the company said, took place during cybersecurity evaluations of several OpenAI models, and that it was mainly fueled by what it described as a "highly capable</description>
-      <guid isPermaLink="false">33359928f249fa956637e2cfd268305efeb6268b1487f8a7d42f52fb2d87b00d</guid>
-      <pubDate>Thu, 27 Aug 2026 18:36:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>PHANTOMPULSE RAT analysis: on-chain C2 resolution, sinkhole vectors, and REF6598 intrusion set TTPs - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1vzwwy4/phantompulse_rat_analysis_onchain_c2_resolution/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/AvenueJay"&gt; /u/AvenueJay &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.elastic.co/security-labs/threat-command/embedding-security-in-llm-workflows"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1vzwwy4/phantompulse_rat_analysis_onchain_c2_resolution/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">39239401dee13f3581a63baaf6e84882d2b39460d3883deb1ba2f3dcb4e9b3dc</guid>
-      <pubDate>Thu, 27 Aug 2026 15:18:44 +0000</pubDate>
-    </item>
-    <item>
-      <title>Next.js Patches Critical AVIF and Windows Flaws Enabling Unauthenticated RCE - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/nextjs-patches-critical-avif-and.html</link>
-      <description>Credit:&amp;nbsp;Hacktron
-Vercel has released security patches for two critical-severity vulnerabilities in the Next.js web framework, both of which allow unauthenticated remote code execution, one exploitable via specially crafted AVIF image files and the other through a path traversal flaw affecting servers that use a Windows filesystem.
-The Windows path traversal, tracked as&amp;nbsp;CVE-2026-75604&amp;</description>
-      <guid isPermaLink="false">4ec948fcbb64d20d9c4db9ba9671b090e78b2e8d111b74f600bcb65e82df0e34</guid>
-      <pubDate>Thu, 27 Aug 2026 15:13:00 +0000</pubDate>
     </item>
   </channel>
 </rss>
