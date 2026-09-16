@@ -5,7 +5,82 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 15 Sep 2026 14:01:33 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 16 Sep 2026 14:02:12 +0000</lastBuildDate>
+    <item>
+      <title>N0va Phishkit Targets US and EU Businesses: A New Challenge for Identity Security - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/n0va-phishkit-targets-us-and-eu.html</link>
+      <description>N0va is targeting organizations across North America and Europe with phishing campaigns that impersonate trusted services and abuse legitimate authentication flows. Successful attacks can give threat actors access to valid accounts without relying on obvious malware activity.
+From there, a single compromised identity can open the door to sensitive data, business systems, and additional cloud</description>
+      <guid isPermaLink="false">350e1c8f1758a06ca515c23ce199edb813340ffb5f9988ee14cb816aba72a902</guid>
+      <pubDate>Wed, 16 Sep 2026 11:58:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Google Patches Pixel Modem Flaw Amid Signs of Limited Targeted Exploitation - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/google-patches-pixel-modem-flaw-amid.html</link>
+      <description>Google has disclosed that a high-severity security flaw in its Pixel Cellular Modem has come under exploitation in the wild.
+The vulnerability, tracked as CVE-2026-58704 (CVSS score: 8.0), is a privilege escalation flaw.
+"In Cellular Modem, there is a possible permission bypass due to a logic error in the code," according to a description of the bug in the NIST National Vulnerability Database</description>
+      <guid isPermaLink="false">0e121f13129a70fa831e76c2819eee429deae478dca5da9ff79c48c695f43330</guid>
+      <pubDate>Wed, 16 Sep 2026 11:15:58 +0000</pubDate>
+    </item>
+    <item>
+      <title>Acronis cPanel Backup Plugin Vulnerability Exploited in Targeted Attacks - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/acronis-cpanel-backup-plugin.html</link>
+      <description>Acronis has warned that a high-severity security flaw in its Backup plugin for cPanel and Web Host Manager (WHM) deployments has been exploited in the wild.
+The vulnerability, tracked as CVE-2026-87886 (CVSS score: 7.8), is described as a case of local privilege escalation due to insecure file permissions. It affects the following versions -
+  Acronis Backup plugin for cPanel &amp;amp; WHM (Linux</description>
+      <guid isPermaLink="false">f807bebaf4d77339c28beccf93cd9dec7be1a97e6e47318b697ed80fd045ff01</guid>
+      <pubDate>Wed, 16 Sep 2026 11:08:54 +0000</pubDate>
+    </item>
+    <item>
+      <title>Help Needed: Missing global perspective/rotation matrix data when converting UMK3 iOS .meshset files to .obj - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1whqcps/help_needed_missing_global_perspectiverotation/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Commercial-Mix6381"&gt; /u/Commercial-Mix6381 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/MaryNCRT/Ultimate-Mortal-Kombat-3-iOS-Recomp"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1whqcps/help_needed_missing_global_perspectiverotation/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">468b107ece84c23ea243ce472ae9e4b3a34dc5d5459b590ffc0a24d26166abb3</guid>
+      <pubDate>Wed, 16 Sep 2026 07:31:28 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Exploit WooCommerce Wholesale Lead Capture Flaw to Plant PHP Web Shells - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/attackers-exploit-woocommerce-wholesale.html</link>
+      <description>Threat actors are exploiting a critical security flaw in WooCommerce Wholesale Lead Capture, a premium WordPress plugin that has more than 6,000 active installs.
+"This vulnerability can be leveraged by unauthenticated attackers to upload arbitrary files, including PHP backdoors, and achieve remote code execution," Wordfence said.
+The WordPress security company said it has blocked over</description>
+      <guid isPermaLink="false">aef0a6f4f914158228e55d9b4b538210976ded2a4c5905d8ded31bf05a753be0</guid>
+      <pubDate>Wed, 16 Sep 2026 05:48:28 +0000</pubDate>
+    </item>
+    <item>
+      <title>Active Exploitation Attempts Target WSO2 API Manager JWT Bypass With Forged Admin Tokens - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/active-exploitation-attempts-target.html</link>
+      <description>A critical security flaw in WSO2 API Manager has come under active exploitation in the wild, according to findings from watchTowr.
+The vulnerability, tracked as CVE-2026-5430 (CVSS score: 9.8/10.0), is a case of improper verification of a cryptographic signature that could result in account takeover. Hacktron Team has been credited with discovering and reporting the flaw.
+"JWT authentication</description>
+      <guid isPermaLink="false">8460571f8a0b2f3531541881211d59e2c88d4e9861925bbd39a1be51f77e8555</guid>
+      <pubDate>Wed, 16 Sep 2026 05:18:06 +0000</pubDate>
+    </item>
+    <item>
+      <title>KREMLIN Banking Malware Hijacks Chrome and Edge to Steal Credentials and Session Tokens - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/kremlin-banking-malware-hijacks-chrome.html</link>
+      <description>Cybersecurity researchers have shed light on a previously undocumented Brazilian banking malware operation that delivers a toolkit called KREMLIN.
+Elastic Security Labs is tracking the activity under the moniker REF9334. Active since at least May 2025, the threat actor has used lures that impersonate a dozen Brazilian banks and install a malicious browser extension on Google Chrome and</description>
+      <guid isPermaLink="false">24f58ea9d654c4c00a7481cb83fa0914d6e41570bfa5bb193c3670491335113c</guid>
+      <pubDate>Tue, 15 Sep 2026 18:54:14 +0000</pubDate>
+    </item>
+    <item>
+      <title>Iranian Hackers Use Telegram-Controlled Malware to Spy on Dissidents and Journalists - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/iranian-hackers-use-telegram-controlled.html</link>
+      <description>Cybersecurity agencies in the United States, the United Kingdom, and the Netherlands have detailed a Windows malware that they say Iran's intelligence service uses to spy on dissidents, journalists, and activists around the world.
+The malware is controlled via the Telegram messaging app and can copy a target's emails and chat messages, take screenshots, and activate the microphone to record</description>
+      <guid isPermaLink="false">cef9eec0fea809da7523281b8987e95892e1e47e1bd04d8c5255e5e1e22c8806</guid>
+      <pubDate>Tue, 15 Sep 2026 16:29:51 +0000</pubDate>
+    </item>
+    <item>
+      <title>BambooToken Malware Uses MQTT to Control Windows and Linux Systems - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/bambootoken-malware-uses-mqtt-to.html</link>
+      <description>Cybersecurity researchers have disclosed details of a multi-platform campaign that uses the Message Queueing Telemetry Transport (MQTT) protocol as a communication channel to control Windows and Linux systems.
+The emerging malware family, codenamed BambooToken, is assessed to be active since at least February 2023 and put to use in attacks targeting organizations across Asia and South America.</description>
+      <guid isPermaLink="false">b5959d7dee84a9d692240afd4910d7570daec37211366f7f2117f03065776976</guid>
+      <pubDate>Tue, 15 Sep 2026 15:23:19 +0000</pubDate>
+    </item>
     <item>
       <title>Escaping the OpenAI Codex sandbox, twice - Reverse Engineering</title>
       <link>https://www.reddit.com/r/ReverseEngineering/comments/1wh0ukg/escaping_the_openai_codex_sandbox_twice/</link>
@@ -1481,76 +1556,6 @@ Last week, the DoJ said the National Aeronautics and Space Administration, Feder
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/talruum_"&gt; /u/talruum_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/andrezaiats/zamphenom"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w2k057/reverseengineered_a_guitar_amps_dsp_firmware_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">2d03dc803bd0f214e2483c0d476b9d7d28c5d5dc6d9a782f7f8f4f8537559239</guid>
       <pubDate>Sun, 30 Aug 2026 15:06:28 +0000</pubDate>
-    </item>
-    <item>
-      <title>Reconstructing Angry Birds 1.4.2's ARMv7 native runtime for AArch64 Android - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w2jgda/reconstructing_angry_birds_142s_armv7_native/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/WhiteMsf"&gt; /u/WhiteMsf &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/WhiteMsf/angry-birds-arm64"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w2jgda/reconstructing_angry_birds_142s_armv7_native/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">102f355008b84ca02c9bf734b6fc875281b214108a866b5ab7648b06d91c062d</guid>
-      <pubDate>Sun, 30 Aug 2026 14:44:44 +0000</pubDate>
-    </item>
-    <item>
-      <title>Reverse Engineering Unknown File Formats with ImHex - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w2cixp/reverse_engineering_unknown_file_formats_with/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/WerWolv"&gt; /u/WerWolv &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://werwolv.net/posts/file_format_reverse_engineering/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w2cixp/reverse_engineering_unknown_file_formats_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">574c3dde03cc38f50b9c6468f904b69fa8e8ed512ffde5ba9c26eef50cea772c</guid>
-      <pubDate>Sun, 30 Aug 2026 09:05:25 +0000</pubDate>
-    </item>
-    <item>
-      <title>TerminalFix Uses Fake Cloudflare CAPTCHAs to Deploy Reverse-Tunnel Backdoor - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/terminalfix-uses-fake-cloudflare.html</link>
-      <description>Microsoft has disclosed details of a new ClickFix variant, dubbed TerminalFix, that aims to trick users into running a malicious command in Windows Terminal or PowerShell.
-"While traditional ClickFix campaigns direct victims to the Windows Run dialog, TerminalFix campaigns apply the same technique but direct users to Windows Terminal or PowerShell instead, increasing the likelihood that complex</description>
-      <guid isPermaLink="false">391cfb953f250ddf3e46dccd800eadde6623e521aef9c5892ca2ee6598d6cc7c</guid>
-      <pubDate>Sun, 30 Aug 2026 07:36:33 +0000</pubDate>
-    </item>
-    <item>
-      <title>Five Critical WordPress Plugin and Theme Flaws Enable Site Takeover or RCE - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/five-critical-wordpress-plugin-and.html</link>
-      <description>Multiple critical security flaws have been disclosed in WordPress plugins and themes, including WPMU DEV Dashboard, Avada, TranslatePress, Pods, and GiveWP, that could lead to authentication bypass, account takeover, and arbitrary code execution.
-The vulnerabilities, according to Wordfence and Patchstack, are listed below -
-  CVE-2026-76581 (CVSS score: 9.8) - An authentication bypass flaw in</description>
-      <guid isPermaLink="false">9e56e27342205cdecdd8814e8d710bf7a3bb09aba1d78e81d35ce8b0f7256302</guid>
-      <pubDate>Sat, 29 Aug 2026 16:25:03 +0000</pubDate>
-    </item>
-    <item>
-      <title>net-p2p/c-lightning -- unknown vulnerability - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/d2e1db41-f7a7-45e9-ace3-b94038416545.html</link>
-      <description/>
-      <guid isPermaLink="false">368edf7e015439481996364a5c9e99a1830db4de8110fde9f938f9d6a3a3c13d</guid>
-      <pubDate>Sat, 29 Aug 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Berlin Refuses to Pay Hackers Who Stole Data From the City's State Network - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/berlin-refuses-to-pay-hackers-who-stole.html</link>
-      <description>Berlin's state government has confirmed that it is the target of an extortion attempt following the August compromise of the city's state administrative network, and said it will not meet the extortionists' demands.
-The same statement disclosed that forensic work had found further data outflows in the portfolio of the Senate Department for Mobility, Transport, Climate Protection and Environment</description>
-      <guid isPermaLink="false">387779dd069ae9e03045dd9d7f7205afd6bf2407fc89e086d43d6c17077997e7</guid>
-      <pubDate>Fri, 28 Aug 2026 21:30:52 +0000</pubDate>
-    </item>
-    <item>
-      <title>RE: CVX Decomp - Disabling the fog and motion blur effects on PS2 - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w12uii/re_cvx_decomp_disabling_the_fog_and_motion_blur/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/MrFroz1995"&gt; /u/MrFroz1995 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.youtube.com/watch?v=D86W7VNyqPY"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w12uii/re_cvx_decomp_disabling_the_fog_and_motion_blur/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">eed7532c5970354a4a6e18b7e1ddcdef8350a947e575a91f7013df43b7ea356b</guid>
-      <pubDate>Fri, 28 Aug 2026 21:05:54 +0000</pubDate>
-    </item>
-    <item>
-      <title>Cosmos EVM Flaw Exploited After Cosmos Labs Knew Every Blockchain Running It Was Vulnerable - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/cosmos-evm-flaw-exploited-after-cosmos.html</link>
-      <description>Cosmos Labs has warned that a critical balance-handling flaw in the shared Cosmos EVM module was exploited to drain funds from six blockchains between August 20 and August 25, 2026.
-The vulnerability, designated GHSA-7g4w-cg88-2cq2, is rated Critical by Cosmos Labs and was published without a CVE identifier, a weakness classification, or a CVSS score.
-Affected versions are &amp;lt; 0.6.2 and &amp;gt;=</description>
-      <guid isPermaLink="false">a7bcc63445a4e6277f9454bcf51544fbfd4bb190b8d77020c519fc94642e8384</guid>
-      <pubDate>Fri, 28 Aug 2026 20:38:47 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Chain Two PaperCut Flaws to Execute Code Without Authentication - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/attackers-chain-two-papercut-flaws-to.html</link>
-      <description>Malicious actors are exploiting a newly patched security flaw in PaperCut NG and MF to execute arbitrary code on susceptible instances, as the company released a fresh emergency fix with additional hardening.
-"This vulnerability gives an unauthenticated attacker remote control over PaperCut's trusted configuration, which could be used to execute arbitrary Java code inside the application's</description>
-      <guid isPermaLink="false">d1a653cc22e392f4ab37f7ba5dd38c1580df60b0b6b055492c77569711b86ce4</guid>
-      <pubDate>Fri, 28 Aug 2026 17:12:15 +0000</pubDate>
     </item>
   </channel>
 </rss>

@@ -5,7 +5,235 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 15 Sep 2026 14:01:33 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 16 Sep 2026 14:02:12 +0000</lastBuildDate>
+    <item>
+      <title>Speed Matters: fastlogging-rs - Planet Python</title>
+      <link>https://brmmm3.github.io/posts/2026/09/16/fastlogging-rs/</link>
+      <description>&lt;h1 id="fastlogging-rs-high-performance-logging-for-many-different-programming-languages"&gt;fastlogging-rs: High-Performance Logging for many different Programming Languages&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Logging is often the hidden bottleneck in your application.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Every &lt;code class="language-plaintext highlighter-rouge"&gt;log.info(...)&lt;/code&gt; call can block your hot path, serialize your threads, and slow down your I/O-bound workloads.
+That’s why I created &lt;strong&gt;fastlogging-rs&lt;/strong&gt;: a Rust-powered logging framework that is extremely fast, thread-safe,
+and available with a similar API in &lt;strong&gt;8 different programming languages&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;My first release, 0.8.1, is available with the following features:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Initial release of the Rust core (&lt;code class="language-plaintext highlighter-rouge"&gt;fastlogging&lt;/code&gt; crate) with bindings for Python, C, C++, Go, Java (FFM and JNI) and C#&lt;/li&gt;
+  &lt;li&gt;Non-blocking, asynchronous logging — writers run in background threads&lt;/li&gt;
+  &lt;li&gt;Optional file rotation and compression&lt;/li&gt;
+  &lt;li&gt;Optional AES encryption for network logging&lt;/li&gt;
+  &lt;li&gt;Configuration via API or configuration file (JSON, XML, YAML)&lt;/li&gt;
+  &lt;li&gt;Automatic forwarding of log messages from sub processes to the main process&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="why-fastlogging-rs"&gt;Why fastlogging-rs?&lt;/h2&gt;
+&lt;p&gt;Because speed matters…&lt;/p&gt;
+&lt;h3 id="-significant-performance-improvements"&gt;🚀 Significant Performance Improvements&lt;/h3&gt;
+&lt;p&gt;Compared to Python’s built-in &lt;code class="language-plaintext highlighter-rouge"&gt;logging&lt;/code&gt; module:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Writing to a file&lt;/strong&gt; is up to &lt;strong&gt;147× faster&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Rotating file logging&lt;/strong&gt; is up to &lt;strong&gt;207× faster&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Even compared to &lt;strong&gt;Apache Log4j&lt;/strong&gt;, fastlogging-rs is up to &lt;strong&gt;9× faster&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When your application logs millions of messages, these speedups can turn minutes into seconds.&lt;/p&gt;
+&lt;h3 id="benchmarks-results-for-writing-to-a-file"&gt;Benchmarks results for writing to a file&lt;/h3&gt;
+    &lt;img alt="fastlogging-rs file benchmark" src="https://raw.githubusercontent.com/brmmm3/fastlogging-rs/master/docs/benchmarks/short-noexc-file.svg" width="48%" /&gt;
+    fastlogging-rs file writer benchmark
+    &lt;img alt="fastlogging-rs rotating file benchmark" src="https://raw.githubusercontent.com/brmmm3/fastlogging-rs/master/docs/benchmarks/short-noexc-rotate.svg" width="48%" /&gt;
+    fastlogging-rs rotating file writer benchmark
+&lt;h3 id="-one-framework-8-languages"&gt;🌍 One Framework, 8 Languages&lt;/h3&gt;
+&lt;p&gt;&lt;code class="language-plaintext highlighter-rouge"&gt;fastlogging-rs&lt;/code&gt; is written in Rust and comes with thin wrappers for your favorite programming language. All bindings share a similar API,
+so you can use the same logging concepts across your whole stack:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Language&lt;/th&gt;
+      &lt;th&gt;Binding&lt;/th&gt;
+      &lt;th&gt;Layer&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Rust&lt;/td&gt;
+      &lt;td&gt;&lt;code class="language-plaintext highlighter-rouge"&gt;fastlogging&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Native core&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Python&lt;/td&gt;
+      &lt;td&gt;&lt;code class="language-plaintext highlighter-rouge"&gt;pyfastlogging&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;pyo3 (&amp;gt;= 3.10)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;C&lt;/td&gt;
+      &lt;td&gt;&lt;code class="language-plaintext highlighter-rouge"&gt;cfastlogging&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;FFI (cbindgen header)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;C++&lt;/td&gt;
+      &lt;td&gt;&lt;code class="language-plaintext highlighter-rouge"&gt;cxxfastlogging&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;type-safe &lt;code class="language-plaintext highlighter-rouge"&gt;cxx&lt;/code&gt; bridge&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;C++&lt;/td&gt;
+      &lt;td&gt;&lt;code class="language-plaintext highlighter-rouge"&gt;cppfastlogging&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;C++17 RAII over the C ABI&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Go&lt;/td&gt;
+      &lt;td&gt;&lt;code class="language-plaintext highlighter-rouge"&gt;gofastlogging&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;cgo wrapper&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Java&lt;/td&gt;
+      &lt;td&gt;&lt;code class="language-plaintext highlighter-rouge"&gt;jfastlogging-ffm&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Foreign Function &amp;amp; Memory API&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Java&lt;/td&gt;
+      &lt;td&gt;&lt;code class="language-plaintext highlighter-rouge"&gt;jfastlogging-jni&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Java Native Interface&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;C#&lt;/td&gt;
+      &lt;td&gt;&lt;code class="language-plaintext highlighter-rouge"&gt;csharpfastlogging&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;P/Invoke&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id="-non-blocking-architecture"&gt;⚡ Non-Blocking Architecture&lt;/h3&gt;
+&lt;p&gt;Logging calls are &lt;strong&gt;non-blocking&lt;/strong&gt;: each call performs a cheap level check (a single integer comparison, no lock)
+and hands the message to a channel. A background &lt;code class="language-plaintext highlighter-rouge"&gt;LoggingThread&lt;/code&gt; drains that channel and dispatches to each
+writer’s own thread. The speed of your writers never slows down your application — as long as the queue
+doesn’t run full.&lt;/p&gt;
+&lt;h3 id="-rich-feature-set"&gt;🔧 Rich Feature Set&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Thread-safe logging calls&lt;/li&gt;
+  &lt;li&gt;Multiple writers (sinks) per logger: console, file, network, syslog, callback&lt;/li&gt;
+  &lt;li&gt;Optional file rotation and compression&lt;/li&gt;
+  &lt;li&gt;Optional AES encryption for network logging&lt;/li&gt;
+  &lt;li&gt;Configuration via API or configuration file (JSON, XML, YAML)&lt;/li&gt;
+  &lt;li&gt;Automatic forwarding of log messages from sub processes to the main process&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="installation"&gt;Installation&lt;/h2&gt;
+&lt;h3 id="rust"&gt;Rust&lt;/h3&gt;
+&lt;div class="language-bash highlighter-rouge"&gt;&lt;div class="highlight"&gt;&lt;pre class="highlight"&gt;&lt;code&gt;cargo add fastlogging
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id="python"&gt;Python&lt;/h3&gt;
+&lt;div class="language-bash highlighter-rouge"&gt;&lt;div class="highlight"&gt;&lt;pre class="highlight"&gt;&lt;code&gt;pip &lt;span class="nb"&gt;install &lt;/span&gt;pyfastlogging
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id="usage-examples"&gt;Usage Examples&lt;/h2&gt;
+&lt;h3 id="rust-1"&gt;Rust&lt;/h3&gt;
+&lt;div class="language-rust highlighter-rouge"&gt;&lt;div class="highlight"&gt;&lt;pre class="highlight"&gt;&lt;code&gt;&lt;span class="k"&gt;use&lt;/span&gt; &lt;span class="nn"&gt;fastlogging&lt;/span&gt;&lt;span class="p"&gt;::{&lt;/span&gt;&lt;span class="n"&gt;logging_new_default&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;LoggingError&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="k"&gt;fn&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="k"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;Result&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;LoggingError&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="k"&gt;mut&lt;/span&gt; &lt;span class="k"&gt;log&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nf"&gt;logging_new_default&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;log&lt;/span&gt;&lt;span class="nf"&gt;.info&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"Hello, fastlogging!"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;log&lt;/span&gt;&lt;span class="nf"&gt;.shutdown&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;false&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nf"&gt;Ok&lt;/span&gt;&lt;span class="p"&gt;(())&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id="python-1"&gt;Python&lt;/h3&gt;
+&lt;div class="language-python highlighter-rouge"&gt;&lt;div class="highlight"&gt;&lt;pre class="highlight"&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;fastlogging&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Logging&lt;/span&gt;
+&lt;span class="n"&gt;log&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Logging&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"Hello, fastlogging!"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shutdown&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id="python-with-a-colored-console-writer"&gt;Python with a colored console writer&lt;/h3&gt;
+&lt;div class="language-python highlighter-rouge"&gt;&lt;div class="highlight"&gt;&lt;pre class="highlight"&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pyfastlogging&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TRACE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Logging&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ConsoleWriterConfig&lt;/span&gt;
+&lt;span class="n"&gt;logger&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Logging&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;TRACE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;"main"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;ConsoleWriterConfig&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TRACE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)],&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;logger&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;trace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"Trace Message"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;logger&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"Debug Message"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;logger&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"Info Message"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;logger&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shutdown&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id="benchmark-results"&gt;Benchmark Results&lt;/h2&gt;
+&lt;h3 id="writing-to-a-file"&gt;Writing to a file&lt;/h3&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Framework&lt;/th&gt;
+      &lt;th&gt;Time&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Python logging&lt;/td&gt;
+      &lt;td&gt;29.37s&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;log4j&lt;/td&gt;
+      &lt;td&gt;1.48s&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;fastlogging-rs&lt;/td&gt;
+      &lt;td&gt;0.2s&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id="rotating-file-logging"&gt;Rotating file logging&lt;/h3&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Framework&lt;/th&gt;
+      &lt;th&gt;Time&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Python logging&lt;/td&gt;
+      &lt;td&gt;35.24s&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;log4j&lt;/td&gt;
+      &lt;td&gt;1.56s&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;fastlogging-rs&lt;/td&gt;
+      &lt;td&gt;0.17s&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;For detailed benchmark data and methodology, see the benchmark documentation:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/brmmm3/fastlogging-rs/blob/master/docs/benchmarks/index.html"&gt;https://github.com/brmmm3/fastlogging-rs/blob/master/docs/benchmarks/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;You can also explore the full benchmark results with interactive charts and tables:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://brmmm3.github.io/fastlogging-rs/"&gt;https://brmmm3.github.io/fastlogging-rs/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="get-started"&gt;Get Started&lt;/h2&gt;
+&lt;p&gt;If your application spends time logging, fastlogging-rs can provide substantial performance improvements
+with minimal code changes — in whichever language you happen to be writing.&lt;/p&gt;
+&lt;p&gt;The API is intentionally familiar, making migration from &lt;code class="language-plaintext highlighter-rouge"&gt;logging&lt;/code&gt;, &lt;code class="language-plaintext highlighter-rouge"&gt;log4j&lt;/code&gt;, or your current framework
+straightforward while unlocking significantly faster execution.&lt;/p&gt;
+&lt;p&gt;Source code, documentation, and issue tracker:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/brmmm3/fastlogging-rs"&gt;https://github.com/brmmm3/fastlogging-rs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Licensed under the MIT or Apache-2.0 License.&lt;/p&gt;</description>
+      <guid isPermaLink="false">b9a3feffe4a07b7b58bf1cc45d9bf73b0e8a50b3a758090912efe933d56429c0</guid>
+      <pubDate>Wed, 16 Sep 2026 07:40:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: Python += calls __add__ and rebinds to a new object - Planet Python</title>
+      <link>https://lernerpython.com/2026/09/15/python-calls-add-and-rebinds-to-a-new-object/</link>
+      <description>&lt;img alt="Python += calls __add__ and rebinds to a new object" class="wp-image-17713" height="948" src="https://lernerpython.com/wp-content/uploads/2026/09/2026-09-15.png" width="1369" /&gt;
+&lt;p class="wp-block-paragraph"&gt;If you invoke +=, Python can use __add__.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;MyClass implements __add__ (calling print for debugging):&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;m1 = MyClass(10)
+m2 = MyClass(20)
+m1 += m2  # prints "Now in MyClass.__add__"&lt;/code&gt;&lt;/pre&gt;
+&lt;p class="wp-block-paragraph"&gt;m1 now refers to a new object, and its repr is:&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;MyClass instance, vars(self)={&amp;#8216;x&amp;#8217;: 30}&lt;/p&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/09/15/python-calls-add-and-rebinds-to-a-new-object/"&gt;Python += calls __add__ and rebinds to a new object&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">14f11b12e2738c101d3ef6b37a3a7edf9a73ce90e70105b49d63d5d20a32c349</guid>
+      <pubDate>Tue, 15 Sep 2026 06:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: Python in operator: How __contains__ speeds up membership tests - Planet Python</title>
+      <link>https://lernerpython.com/2026/09/14/python-in-operator-how-contains-speeds-up-membership-tests/</link>
+      <description>&lt;img alt="Python in operator: How __contains__ speeds up membership tests" class="wp-image-17710" height="1358" src="https://lernerpython.com/wp-content/uploads/2026/09/2026-09-14.png" width="1973" /&gt;
+&lt;p class="wp-block-paragraph"&gt;How does the &amp;#8220;in&amp;#8221; operator work in Python?&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&amp;#8211; If an object defines __contains__, then its (boolean) result is returned (coerced to bool).&lt;br /&gt;&amp;#8211; If not, then Python iterates over it with __iter__&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Can you find and return a result faster than __iter__? Then define __contains__.&lt;/p&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/09/14/python-in-operator-how-contains-speeds-up-membership-tests/"&gt;Python in operator: How __contains__ speeds up membership tests&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">fedaaacf23a17b034b8d8a2787f0698f45acbef91ec5667e900cbf15a1e4283b</guid>
+      <pubDate>Mon, 14 Sep 2026 06:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Graham Dumpleton: Hands-on learning in the age of AI - Planet Python</title>
       <link>https://grahamdumpleton.me/posts/2026/09/hands-on-learning-in-the-age-of-ai/</link>
@@ -527,6 +755,22 @@ closed models as well, to keep up with others who do.&lt;/p&gt;
       <pubDate>Fri, 11 Sep 2026 15:03:23 +0000</pubDate>
     </item>
     <item>
+      <title>LernerPython blog, from Reuven Lerner: Python | operator: Bitwise or and dict merging with __or__ - Planet Python</title>
+      <link>https://lernerpython.com/2026/09/11/python-operator-bitwise-or-and-dict-merging-with-or/</link>
+      <description>&lt;img alt="Python | operator: Bitwise or and dict merging with __or__" class="wp-image-17707" height="1032" src="https://lernerpython.com/wp-content/uploads/2026/09/2026-09-11.png" width="1658" /&gt;
+&lt;p class="wp-block-paragraph"&gt;In Python, we use &amp;#8220;or&amp;#8221; for conditions. | is bitwise (not boolean) &amp;#8220;or&amp;#8221;:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;x = 10 # 0b1010
+y = 13 # 0b1101&lt;/code&gt;&lt;/pre&gt;
+&lt;p class="wp-block-paragraph"&gt;x | y  # 15, or 0b1111&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;| runs __or__. On dicts, | combines. &lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;d1 = {'a':10, 'b':2}
+d2 = {'b':10, 'c':30}
+d1 | d2  # {'a': 10, 'b': 10, 'c': 30}, right side wins&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/09/11/python-operator-bitwise-or-and-dict-merging-with-or/"&gt;Python | operator: Bitwise or and dict merging with __or__&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">b66c38f05c991992a0e550c184d61d5e254dc402bec4b948e8a3a32ca475e867</guid>
+      <pubDate>Fri, 11 Sep 2026 06:00:00 +0000</pubDate>
+    </item>
+    <item>
       <title>Graham Dumpleton: OpenTelemetry export in wrapture - Planet Python</title>
       <link>https://grahamdumpleton.me/posts/2026/09/opentelemetry-export-in-wrapture/</link>
       <description>&lt;p&gt;Everything in the last four posts rendered a trace for a person to read or wrote it to a file for later. The other destination is a tracing backend, fed while the application runs, and OpenTelemetry is the one that the ecosystem has converged on. wrapture treats it as a first-class destination rather than something you bolt on: the &lt;code&gt;wrapture.otel&lt;/code&gt; subpackage ships in every wheel, and the &lt;code&gt;otel&lt;/code&gt; extra brings the SDK and the OTLP exporter with it.&lt;/p&gt;
@@ -925,6 +1169,24 @@ BY-NC-SA 2.0&lt;/a&gt;
 &lt;a href="https://www.flickr.com/photos/hugovk/26955055864/"&gt;Hugo van Kemenade&lt;/a&gt;).&lt;/small&gt;&lt;/p&gt;</description>
       <guid isPermaLink="false">459a133c2acde7dc7994db8065961a98d9402e7d1b84cdbd868202ccb9feb7ae</guid>
       <pubDate>Thu, 10 Sep 2026 08:08:01 +0000</pubDate>
+    </item>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: Python `__mod__`: Modulo for numbers, interpolation for str - Planet Python</title>
+      <link>https://lernerpython.com/2026/09/10/python-mod-modulo-for-numbers-interpolation-for-str/</link>
+      <description>&lt;img alt="Python `__mod__`: Modulo for numbers, interpolation for str" class="wp-image-17705" height="730" src="https://lernerpython.com/wp-content/uploads/2026/09/2026-09-10.png" width="1287" /&gt;
+&lt;p class="wp-block-paragraph"&gt;The % in Python, on numbers, is modulo:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;x = 10
+y = 3
+x % y          # 1
+x.__mod__(y)   # same thing, 1&lt;/code&gt;&lt;/pre&gt;
+&lt;p class="wp-block-paragraph"&gt;But str uses __mod__ for interpolation:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;s = 'Hi, %d'
+s % y        # 'Hi, 3'
+s.__mod__(y) # Same thing, 'Hi, 3'&lt;/code&gt;&lt;/pre&gt;
+&lt;p class="wp-block-paragraph"&gt;Same operator, same magic method — but totally different.&lt;/p&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/09/10/python-mod-modulo-for-numbers-interpolation-for-str/"&gt;Python `__mod__`: Modulo for numbers, interpolation for str&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">729f8176b1b35b37b8aac0954d765803aec5630d55ab4a5aee5614d9fa678441</guid>
+      <pubDate>Thu, 10 Sep 2026 06:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Graham Dumpleton: Finding slow code with wrapture - Planet Python</title>
