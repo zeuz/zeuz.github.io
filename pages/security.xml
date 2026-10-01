@@ -5,7 +5,239 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Wed, 16 Sep 2026 14:02:12 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 01 Oct 2026 14:01:21 +0000</lastBuildDate>
+    <item>
+      <title>Reverse Engineering NovaLogic's Comanche [1992] Terrain Maps - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wuzm2k/reverse_engineering_novalogics_comanche_1992/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/alberto-m-dev"&gt; /u/alberto-m-dev &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://pikuma.com/blog/comanche-maps-reverse-engineering"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wuzm2k/reverse_engineering_novalogics_comanche_1992/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">4657cdbbaf5dd21d0875303f2bf29a7c29ed47fc3e5fcaf6ff828a734917630e</guid>
+      <pubDate>Thu, 01 Oct 2026 13:35:34 +0000</pubDate>
+    </item>
+    <item>
+      <title>OpenAI Disrupts Reasoning Extraction Campaign Linked to Moonshot AI Associates - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/openai-disrupts-reasoning-extraction.html</link>
+      <description>OpenAI on Wednesday said it identified and disrupted a coordinated distillation campaign that was designed to illicitly extract protected reasoning from its artificial intelligence (AI) models.
+A "core cluster of the activity," going back to the first week of July, has been attributed to individuals associated with Moonshot AI, a Chinese AI company based in Beijing. It did not cite any</description>
+      <guid isPermaLink="false">68c121ca0e1b2dadbcca255b7e749cf66c766a20af04c47098d05f1e0e78f392</guid>
+      <pubDate>Thu, 01 Oct 2026 10:42:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>Google Rolls Out Gemini 4 Argon to Trusted Cyber Defenders, Plans Guardrail-Free Version - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/google-rolls-out-gemini-4-argon-to.html</link>
+      <description>Google on Wednesday announced its latest frontier artificial intelligence (AI) model, Gemini 4 Argon, that it said is being rolled out to a set of trusted cyber defenders through its Fairwind Program.
+"It delivers frontier performance in complex workflows across real-world software engineering, enterprise knowledge work like legal and finance, and cybersecurity defense," Koray Kavukcuoglu,</description>
+      <guid isPermaLink="false">fe05d7347bddde81bfd30a483d9614f7e47437299573950da81a61395fcad0e6</guid>
+      <pubDate>Thu, 01 Oct 2026 07:49:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>Apple CoreGraphics PoC Emerges as WhatsApp PDF Checks Hint at Possible Delivery Path - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/apple-coregraphics-poc-emerges-as.html</link>
+      <description>Security researchers have published the first public proof-of-concept for CVE-2026-86950, an Apple CoreGraphics flaw Apple says may have been used in attacks against specific targeted individuals.
+The trigger is a malicious PDF with a crafted embedded font that crashes unpatched iPhones and Macs. The code causes a crash, not an execution error. Turning the memory corruption into a working</description>
+      <guid isPermaLink="false">878c6c9e3d901c99489266d5ca8e68367bb722b734cd1c69793fd788fe3b6af2</guid>
+      <pubDate>Thu, 01 Oct 2026 05:54:41 +0000</pubDate>
+    </item>
+    <item>
+      <title>Bitget Confirms Third-Party Zero-Day Behind $387.5 Million Cryptocurrency Theft - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/bitget-confirms-third-party-zero-day.html</link>
+      <description>Cryptocurrency exchange Bitget on Wednesday confirmed that attackers who stole $387.5 million last week exploited a zero-day flaw in third-party security products, citing ongoing investigation findings from SlowMist.
+"Their investigation identified malicious activity involving third-party security products, including a zero-day vulnerability, and recovered a customized tool used by the attacker</description>
+      <guid isPermaLink="false">e6751c64dd3ae166d70c3b1d27713449f7c0cd4e772878ae1261932c7ef89a50</guid>
+      <pubDate>Thu, 01 Oct 2026 05:21:10 +0000</pubDate>
+    </item>
+    <item>
+      <title>MetaMask Security Incident Prompts Exit of Affected Ethereum Validators - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/metamask-security-incident-prompts-exit.html</link>
+      <description>MetaMask on Thursday said it's responding to what it described as an "ongoing security incident" impacting part of its infrastructure.
+"We are actively addressing and remediating the issue internally, in coordination with external partners and security advisors," the software cryptocurrency wallet maker said. "At this time, we have identified no immediate threat to MetaMask wallets."
+MetaMask</description>
+      <guid isPermaLink="false">153d36964e9f5db075951761cbd75d3238f2d1defaea229f6ccd53c64ba0b1a4</guid>
+      <pubDate>Thu, 01 Oct 2026 05:10:09 +0000</pubDate>
+    </item>
+    <item>
+      <title>Citrix NetScaler Post-Exploitation Payload Creates Superuser, Maps Web Shell to CSS-Like URLs - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/citrix-netscaler-post-exploitation.html</link>
+      <description>Threat actors have been observed exploiting a critical pre-authentication command injection vulnerability in Citrix NetScaler ADC and NetScaler Gateway to drop web shells and attempt theft of configuration data.
+LevelBlue's Threat Hunt Operations &amp;amp; Research (THOR) team, which analyzed the exploitation activity across multiple customer environments, said it identified malicious NetScaler</description>
+      <guid isPermaLink="false">2570d358e27630050fee71f941ea6b820bb0b7bff94e1261a15b08a52b8f6b74</guid>
+      <pubDate>Thu, 01 Oct 2026 04:35:34 +0000</pubDate>
+    </item>
+    <item>
+      <title>BitBlt capture in DWM: suppressing the readback flag (g_pComposition+0x196A) bypasses DisplayAffinity and visual hiding — Part 3 - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wul6zf/bitblt_capture_in_dwm_suppressing_the_readback/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/HawkeyeLab"&gt; /u/HawkeyeLab &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://hawkeye-leo.github.io/hawkeye/research/capture/03-readback-mode/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wul6zf/bitblt_capture_in_dwm_suppressing_the_readback/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">02e7bd0f8a3fb55046ad90e31559f450b0ebf79c1d35fda54931602910a72470</guid>
+      <pubDate>Thu, 01 Oct 2026 00:18:46 +0000</pubDate>
+    </item>
+    <item>
+      <title>HANDLE Duplication internals : What happens behind the scenes when you call kernelbase! DuplicateHandle( ) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wuklnp/handle_duplication_internals_what_happens_behind/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/_WinAsm"&gt; /u/_WinAsm &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://winware31.blogspot.com/2026/08/duplicating-handles-step-by-step-guide.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wuklnp/handle_duplication_internals_what_happens_behind/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">d0a13532640d6e7703f5aa4f94618eec66ec1564b051c0d9cef44f2d8824d717</guid>
+      <pubDate>Wed, 30 Sep 2026 23:51:33 +0000</pubDate>
+    </item>
+    <item>
+      <title>Wow64 implementation details: How is Wow64 implemented in Windows 11 25H2 - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wuklah/wow64_implementation_details_how_is_wow64/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/_WinAsm"&gt; /u/_WinAsm &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://winware31.blogspot.com/2026/06/wow64-implementation-details.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wuklah/wow64_implementation_details_how_is_wow64/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">45c9a6ee70babdcc3246f636be0900ec84ee34422ef0bf82428b6babae3429d3</guid>
+      <pubDate>Wed, 30 Sep 2026 23:51:06 +0000</pubDate>
+    </item>
+    <item>
+      <title>Deep dive into the object creation flow in Windows - PART 4: Handle table internals. - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wukl41/deep_dive_into_the_object_creation_flow_in/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/_WinAsm"&gt; /u/_WinAsm &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://winware31.blogspot.com/2026/05/deep-dive-into-object-creation-flow-in_01568126117.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wukl41/deep_dive_into_the_object_creation_flow_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">2fa5f13041cbdf0247b35b863be72dc298ec3babab6f1014c18049f0527ad86d</guid>
+      <pubDate>Wed, 30 Sep 2026 23:50:50 +0000</pubDate>
+    </item>
+    <item>
+      <title>Deep dive into the object creation flow in Windows - PART 3: Post-initialization and Name Lookup - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wukktq/deep_dive_into_the_object_creation_flow_in/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/_WinAsm"&gt; /u/_WinAsm &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://winware31.blogspot.com/2026/05/deep-dive-into-object-creation-flow-in_0798478475.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wukktq/deep_dive_into_the_object_creation_flow_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">ee7c08d516ac77aef494d2361e1944acb6fcb9795913865f49e1a9af6cb4d873</guid>
+      <pubDate>Wed, 30 Sep 2026 23:50:29 +0000</pubDate>
+    </item>
+    <item>
+      <title>Deepdive into the object creation flow in Windows -PART 2 : access check internals - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wukknc/deepdive_into_the_object_creation_flow_in_windows/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/_WinAsm"&gt; /u/_WinAsm &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://winware31.blogspot.com/2026/05/deep-dive-into-object-creation-flow-in.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wukknc/deepdive_into_the_object_creation_flow_in_windows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">ea98ea6b2d2243704ef567046958057418b2806a7bd3fffe3e9824956a363fe7</guid>
+      <pubDate>Wed, 30 Sep 2026 23:50:15 +0000</pubDate>
+    </item>
+    <item>
+      <title>Deep dive into the object creation flow in Windows -PART1 : Allocation and Pre-Initialization - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wukk8o/deep_dive_into_the_object_creation_flow_in/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/_WinAsm"&gt; /u/_WinAsm &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://winware31.blogspot.com/2026/04/deep-dive-into-object-creation-flow-in.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wukk8o/deep_dive_into_the_object_creation_flow_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">cdb371aa6572c6175d56200f228e7890b794882c2cbee3f498c43a51577a759e</guid>
+      <pubDate>Wed, 30 Sep 2026 23:49:44 +0000</pubDate>
+    </item>
+    <item>
+      <title>Loading windows PE .dlls on linux - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wuj1jb/loading_windows_pe_dlls_on_linux/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/0lach"&gt; /u/0lach &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://delta.rocks/blog/lach-stuff/champagne"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wuj1jb/loading_windows_pe_dlls_on_linux/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">6f63409fd480a9ae30b19b0ac960d45eb103c36ea879ce809e9e95630bfc758f</guid>
+      <pubDate>Wed, 30 Sep 2026 22:39:46 +0000</pubDate>
+    </item>
+    <item>
+      <title>ASM BOTS: Core War where every warrior is raw 8086 machine code you can ndisasm, with an in-browser debugger (step back 256, watches, trace). Open source, MIT - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wuiwuf/asm_bots_core_war_where_every_warrior_is_raw_8086/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/pedramamini"&gt; /u/pedramamini &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/pedramamini/asmbots.io"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wuiwuf/asm_bots_core_war_where_every_warrior_is_raw_8086/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">87424c68680708b2620ba23dc55dd803e6d2d2f993df5df7e5452a5b0d2e3051</guid>
+      <pubDate>Wed, 30 Sep 2026 22:33:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>Gigabyte kernel driver LPE - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wue3of/gigabyte_kernel_driver_lpe/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/nanaynunay"&gt; /u/nanaynunay &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/mein-0/gvcidrv64/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wue3of/gigabyte_kernel_driver_lpe/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">8134f99499d7a3f03e15f1ea941820816d31b063c32d68fbbd475433efd84c81</guid>
+      <pubDate>Wed, 30 Sep 2026 19:19:44 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Exploit Zimbra Flaw to Deploy Web Shells and Harvest Authentication Secrets - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/attackers-exploit-zimbra-flaw-to-deploy.html</link>
+      <description>Threat actors have weaponized a now-patched security flaw in Zimbra Collaboration Suite (ZCS) to deploy web shells and access mailbox data, according to findings from the Microsoft Security Research team.
+The attack exploits CVE-2026-73570 (CVSS score: 8.9), an unauthenticated operating system command injection flaw that can lead to remote code execution when Simple Network Management Protocol</description>
+      <guid isPermaLink="false">f441da403eebf2e70fc0a27bab9c1ca80baeec7350b798888629985df3d367b8</guid>
+      <pubDate>Wed, 30 Sep 2026 16:46:29 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Abuse MSP360 to Deploy ScreenConnect in Dual-RMM Phishing Attacks - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/attackers-abuse-msp360-to-deploy.html</link>
+      <description>Microsoft has warned of phishing campaigns distributing an installer for the MSP360 Remote Monitoring and Management (RMM) software under the guise of meeting invitations, PDF-themed lures, software update prompts, and other social-engineering content.
+"Once executed, the legitimate MSP360 installer, distributed under a deceptive file name established remote management access on affected</description>
+      <guid isPermaLink="false">86d8c2200b287c98276c589604fe70bc5b8988f2453f5e22e8d592b966cb9746</guid>
+      <pubDate>Wed, 30 Sep 2026 16:32:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>Cisco Warns of Attackers Exploiting Critical Authentication Bypass in SD-WAN Manager - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/cisco-warns-of-attackers-exploiting.html</link>
+      <description>Attackers are exploiting a new critical zero-day flaw in Cisco Catalyst SD-WAN Manager, the system companies use to manage their Cisco SD-WAN networks, Cisco said in an&amp;nbsp;advisory&amp;nbsp;on September 30.
+The flaw, CVE-2026-76504, could allow a remote attacker with no login access to use the Manager's API as the admin user. Fixed releases are available, and there is no workaround. It carries a</description>
+      <guid isPermaLink="false">d53a660ea5c57c936bf467abefe0e56094ae2b1327ede03839154d7fcbf359b5</guid>
+      <pubDate>Wed, 30 Sep 2026 15:24:54 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Abuse ChatGPT Custom GPTs to Deliver RAT via ClickFix Lures - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/attackers-abuse-chatgpt-custom-gpts-to.html</link>
+      <description>Threat actors are abusing ChatGPT Custom GPTs to disguise them as legitimate product offerings and direct unsuspecting victims to malicious sites that employ ClickFix lures to deliver malware.
+Huntress, which observed the activity in late September 2026, said it marks the abuse of yet another feature in trusted artificial intelligence (AI) platforms. Prior campaigns have weaponized shared</description>
+      <guid isPermaLink="false">d78ba279c2858c4d14e48b7ae63b496de593637b7544bfba352efaa6e90d7fb1</guid>
+      <pubDate>Wed, 30 Sep 2026 15:00:15 +0000</pubDate>
+    </item>
+    <item>
+      <title>AI Coding Agents Exposed 13,000 Internal Images, Including Billing Records, on GitHub - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/ai-coding-agents-exposed-13000-internal.html</link>
+      <description>AI coding agents asked to share screenshots of code changes for review have put internal company images in public GitHub repositories, security company Glow said.
+Its researchers found more than 13,000 internal images from developers at over 300 organizations, including customer billing records and screens of features not yet released. In most cases, they sat under developers' personal accounts</description>
+      <guid isPermaLink="false">1466f5e1b4951287c8b85f8d5899683c904ed28a1c28f88f3da9d179d0673c4b</guid>
+      <pubDate>Wed, 30 Sep 2026 11:30:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>US-Focused CSuite Phishing Steals Microsoft 365 Sessions and Deploys RMM Tools for Remote Access - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/us-focused-csuite-phishing-steals.html</link>
+      <description>ANY.RUN researchers traced a US-focused CSuite phishing campaign across 351 sandbox analyses, with 51% of submissions coming from the United States. Technology, manufacturing, government, and consulting organizations showed the highest exposure.
+By combining Microsoft 365 session theft with remote-access tool deployment, CSuite can turn a phishing incident into broader account compromise, fraud</description>
+      <guid isPermaLink="false">948b0e849caeba04043f235d16e23f57e629db636d2b55943c1189ffd21a71a2</guid>
+      <pubDate>Wed, 30 Sep 2026 10:45:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>OpenSSL Fixes High-Severity DTLS Flaw That Can Leak Heap Memory Unencrypted - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/openssl-fixes-high-severity-dtls-flaw.html</link>
+      <description>A High-severity OpenSSL flaw can leak heap memory to the other side of a DTLS connection or crash the program,&amp;nbsp;OpenSSL said&amp;nbsp;on September 29 as it released fixes.
+DTLS, the TLS variant used for UDP traffic, resends a handshake message if no reply arrives before the timer expires. The leak or crash can happen when such a resend starts while a larger handshake message is stuck part-way</description>
+      <guid isPermaLink="false">4d53da0995c402c17975da6806465249522a7b9c718cd16d52cbaddd57d17839</guid>
+      <pubDate>Wed, 30 Sep 2026 08:09:28 +0000</pubDate>
+    </item>
+    <item>
+      <title>Citrix NetScaler CVE-2026-88772 Exploit Details Show Pre-Auth Path to Shellcode Execution - The Hacker News</title>
+      <link>https://thehackernews.com/2026/09/citrix-netscaler-cve-2026-88772-exploit.html</link>
+      <description>Cybersecurity researchers have disclosed technical details of a recently patched critical security flaw in Citrix NetScaler ADC and Gateway that has come under active exploitation in the wild.
+The vulnerability, tracked as CVE-2026-88772 (CVSS score: 9.5), has been described as a memory overflow bug in the Datagram Transport Layer Security (DTLS) protocol handling that's rooted in the NetScaler</description>
+      <guid isPermaLink="false">7b86377892a5451257dd05978cec59744f64aeeb3d4ddc58fdf2dfb532b2d677</guid>
+      <pubDate>Wed, 30 Sep 2026 05:30:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Heap out-of-bounds access in semop(2) - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/6ef25129-bccc-11f1-906f-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">38dfcba4dd3f40865d8124e8d33812420a4755fee5ff2c5b403e648f7991935c</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- IPv6 UDP sendto(2) bypasses jail loopback restriction - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/6d92b2a3-bcce-11f1-906f-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">62cadd72a7ee7f0f5ef7bdf3bae77429be2af775b576be49c70ac74712152a13</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Memory safety bugs in kqueue copy-on-fork implementation - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/d725b228-bccc-11f1-906f-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">562176b588a40df5cc79346332375c165039eadc3cc3048a27d85159e8fa1401</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Multiple jail filesystem root escapes - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/1fe3495b-bccd-11f1-906f-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">68dfe77e7f9d045ae8f46a2e079af0845cab81b45ed5c27fd90ee5f8de886e5b</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Remote DoS via receive-side kernel TLS - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/36c2abd8-bcce-11f1-906f-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">e0761c414e71251d4fe5f9f4911aa5a7b535aadd484a9e5db7690989e98066a1</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>OpenSSL -- Multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/0d183075-bcb5-11f1-b09d-8447094a420f.html</link>
+      <description/>
+      <guid isPermaLink="false">fa298ff136124973403545f56831431c9b33d837b6215523fb1dce49ecec5fc6</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>N0va Phishkit Targets US and EU Businesses: A New Challenge for Identity Security - The Hacker News</title>
       <link>https://thehackernews.com/2026/09/n0va-phishkit-targets-us-and-eu.html</link>
@@ -1325,237 +1557,6 @@ Google Threat Intelligence Group (GTIG) and Mandiant teams described the threat 
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/StructBreaker"&gt; /u/StructBreaker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/kaandemir993/Lumma-Stealer-dllhost-Hollowing-C2-Domains-Payload-Extraction-Analysis"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w4f0qx/lumma_stealer_dllhostexe_hollowing_c2_domains/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">3c9efa64e7290faead773bf6af450fdcc36e537c243ad23b8d47bc72615aaf7a</guid>
       <pubDate>Tue, 01 Sep 2026 15:19:38 +0000</pubDate>
-    </item>
-    <item>
-      <title>Reverse-engineered Granny.dll (v1.2b) from 2000s for Sacred Gold RPG game. - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w4ehub/reverseengineered_grannydll_v12b_from_2000s_for/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/zebrzysty"&gt; /u/zebrzysty &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/karolak6612/open-grn"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w4ehub/reverseengineered_grannydll_v12b_from_2000s_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">7786672a751146222e5b0492bb8ac4bf38d09cf8e18479bc23d63201dce8bde2</guid>
-      <pubDate>Tue, 01 Sep 2026 15:01:16 +0000</pubDate>
-    </item>
-    <item>
-      <title>13 Malicious Packagist Packages Target Unpatched iPhones to Steal Crypto Wallet Seeds - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/13-malicious-packagist-packages-target.html</link>
-      <description>Cybersecurity researchers have identified a set of 13 malicious Composer theme packages on Packagist that are designed to inject JavaScript into Vietnamese movie and comic streaming sites that install those libraries and initiate the deployment of spyware aimed at unpatched iOS devices.
-"The injected code runs two operations against a site's visitors: a mobile ad-fraud and gambling-redirect</description>
-      <guid isPermaLink="false">0234d2696711adcad37424e412a70a22ec85b07c5c027b07bf47e158a7f08695</guid>
-      <pubDate>Tue, 01 Sep 2026 14:07:20 +0000</pubDate>
-    </item>
-    <item>
-      <title>Iranian Hackers Pose as Recruiters to Deliver Cross-Platform RATs Through Coding Tests - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/iranian-hackers-pose-as-recruiters-to.html</link>
-      <description>The Iranian Nimbus Manticore hacking group has been attributed to two previously undocumented malware families that highlight the continued evolution of its toolset and likely expand its targeting footprint to infect Linux and Apple macOS systems using cross-platform remote access trojans (RATs) developed using Node.js and JavaScript.
-Russian cybersecurity company Kaspersky is tracking the</description>
-      <guid isPermaLink="false">e070f5044982d659cef6c8237c3daf274c98ab4f1d391fda00eb9f597273c857</guid>
-      <pubDate>Tue, 01 Sep 2026 13:08:58 +0000</pubDate>
-    </item>
-    <item>
-      <title>Threat Actors Don’t Want Better Attacks. They Want Repeatable Ones - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/threat-actors-dont-want-better-attacks.html</link>
-      <description>The most common way into a company last year was to ask.
-A web page tells the visitor to prove they are not a robot. While they read the instructions, it quietly places a command on their clipboard. Then it talks them through opening a terminal and pasting it in. The technique is called ClickFix, and it was the most common initial access method Microsoft’s team observed last year, accounting</description>
-      <guid isPermaLink="false">fbd5fa14096242006b42526a0114dd5c9ac66b978a8de6be1e76465b122d4897</guid>
-      <pubDate>Tue, 01 Sep 2026 11:30:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Windows internals walkthrough: PE files and manual module mapping. Parsing IMAGE_DOS_HEADER / IMAGE_NT_HEADERS64, walking sections to locate .text, comparing disk vs memory layouts, and page alignment via VirtualProtect. Verifying with Cheat Engine. Looking for honest feedback! (might be boring) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w481pp/windows_internals_walkthrough_pe_files_and_manual/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Even-Outlandishness7"&gt; /u/Even-Outlandishness7 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.youtube.com/watch?v=9LzhGfc_VTA"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w481pp/windows_internals_walkthrough_pe_files_and_manual/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">2de68deaa353942a2e63caaf7d0260331fe52b5c82b719a63cc8aa1234c60e68</guid>
-      <pubDate>Tue, 01 Sep 2026 10:31:27 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Steal METR API Key and Consume AI Credits Worth About $600,000 - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/attackers-steal-metr-api-key-and.html</link>
-      <description>METR (short for Model Evaluation and Threat Research and pronounced "Meter"), a research non-profit that evaluates frontier artificial intelligence (AI) models for their ability to carry out long-horizon, agentic tasks, disclosed that it suffered "two notable security incidents" where external actors attempted to gain unauthorized access to its systems.
-No sensitive information is believed to</description>
-      <guid isPermaLink="false">a90472fb7fa5e3854605f01756c2a92e5620b9daf72993b543dec501791da172</guid>
-      <pubDate>Tue, 01 Sep 2026 09:05:30 +0000</pubDate>
-    </item>
-    <item>
-      <title>Russia-Aligned UAC-0099 Plants Nuclear Weapon Prompt in Malware to Disrupt AI Analysis - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/russia-aligned-uac-0099-plants-nuclear.html</link>
-      <description>Cybersecurity researchers have disclosed a new technique dubbed GuardBreaker that's been put to use by a Russia-aligned threat actor known as UAC-0099 against a target in Ukraine with an aim to interfere with artificial intelligence (AI)-assisted analysis.
-The idea, ESET said in a series of posts on X, is to deliberately trip a large language model's (LLM) safety mechanisms and prevent its</description>
-      <guid isPermaLink="false">b2edb3abc9248dd1c43d4fb6c62dc21579c9aa1d69ca5befa8709cca1c067588</guid>
-      <pubDate>Tue, 01 Sep 2026 08:26:24 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Exploit Critical Langflow and Rails Flaws in Credential-Probing and C2 Activity - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/attackers-exploit-critical-langflow-and.html</link>
-      <description>Threat actors are exploiting two critical flaws impacting Langflow and Ruby on Rails, according to new findings from VulnCheck.
-The vulnerabilities in question are listed below -
-  CVE-2026-0768 (CVSS score: 9.8) - A lack of proper validation of a user-supplied input vulnerability that could be exploited to execute arbitrary Python code in the context of the root user.
-  CVE-2026-66066 aka</description>
-      <guid isPermaLink="false">ad87a0f68a0d5b9bff50d1af21fa2a4a11f5f0df242db2c55867795b4902b7cf</guid>
-      <pubDate>Tue, 01 Sep 2026 07:22:30 +0000</pubDate>
-    </item>
-    <item>
-      <title>Don’t Let Abliteration Abliterate Your Bug Hunting: Discovering Verdict Bias in Uncensored Models - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w42aby/dont_let_abliteration_abliterate_your_bug_hunting/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/onlinereadme"&gt; /u/onlinereadme &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://clearbluejar.github.io/posts/does-abliteration-skew-your-bug-hunting/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w42aby/dont_let_abliteration_abliterate_your_bug_hunting/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">a0b9b3278ead70224ab96be6f7a93cf0cfb66e01ee4e0b8a9905860c114683de</guid>
-      <pubDate>Tue, 01 Sep 2026 05:09:01 +0000</pubDate>
-    </item>
-    <item>
-      <title>Erlang/OTP -- multiple vulnerabilities in inets, stdlib, snmp and eldap - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/e9dfc357-a63f-11f1-9195-4c526214c986.html</link>
-      <description/>
-      <guid isPermaLink="false">ed22acba63fec531854bdb48395767963eae5a9377d3d428728541f2417a785c</guid>
-      <pubDate>Tue, 01 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Erlang/OTP -- remote crash via gen_tcp with {packet,4} - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/62b56853-a609-11f1-9195-4c526214c986.html</link>
-      <description/>
-      <guid isPermaLink="false">ac2757a304f80d9e13319354b5ff672b58dce998da5f89697813ccd05d8fa753</guid>
-      <pubDate>Tue, 01 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>expat2 -- Inefficient Algorithmic Complexity - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/88917664-a65c-11f1-a49c-00a0980083d7.html</link>
-      <description/>
-      <guid isPermaLink="false">9fb919a11d37c1851bcb9788e7fe8fb8c3a7cbceedfe50f34bf8c1837e2971d7</guid>
-      <pubDate>Tue, 01 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>expat2 -- Out-of-bounds Read - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/11ab3b16-a65d-11f1-a49c-00a0980083d7.html</link>
-      <description/>
-      <guid isPermaLink="false">27c4e52c681255bd898ea5a0a36687380cd1d928696b2c482c739bdfb0a8c611</guid>
-      <pubDate>Tue, 01 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>giflib -- Buffer Overflow vulnerability - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/f55676d9-a65f-11f1-a49c-00a0980083d7.html</link>
-      <description/>
-      <guid isPermaLink="false">0df700f749017aad396dbfd7898ea20dc321c68a4803f0cd5489c354fce561a2</guid>
-      <pubDate>Tue, 01 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Turned a $15 eBay "smart NIC" nobody could get working into a real 10GbE card (no vendor firmware, fully reversible) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w3rads/turned_a_15_ebay_smart_nic_nobody_could_get/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Shiny1712"&gt; /u/Shiny1712 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/nicologiuliani6/cavium-cn6640-snic10e-octeon-ii-nic"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w3rads/turned_a_15_ebay_smart_nic_nobody_could_get/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">08739001677117a8b964d3821454bfdca755c75595af55a5df511b4e56a0cdd1</guid>
-      <pubDate>Mon, 31 Aug 2026 21:16:16 +0000</pubDate>
-    </item>
-    <item>
-      <title>Analysis of a Signed Silver Fox Group AV/EDR Killer Kernel Driver - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w3mreg/analysis_of_a_signed_silver_fox_group_avedr/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/420ass_slayer69"&gt; /u/420ass_slayer69 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://app.reverser.space/p/duckie/silver-fox-group-rootkit-2026#0x140001450"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w3mreg/analysis_of_a_signed_silver_fox_group_avedr/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">19745ecf036d2772a76227b5584c90fc44fd5281278c6870995bd3176f71b293</guid>
-      <pubDate>Mon, 31 Aug 2026 18:40:41 +0000</pubDate>
-    </item>
-    <item>
-      <title>North Korean Job Fraud Expands Beyond IT Into Healthcare and Sales - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/north-korean-job-fraud-expands-beyond.html</link>
-      <description>Threat actors with ties to the Democratic People's Republic of Korea (aka DPRK or North Korea) have been observed seeking job opportunities beyond the information technology (IT) sector, with recent investigations identifying suspected workers employed in sales and marketing and the medical profession.
-The ongoing insider threat is part of what has been described as the IT worker scheme,</description>
-      <guid isPermaLink="false">0ef2ac856222ffdbd8c201504cf0964637e6436ca04db3b6f2e99f116c119974</guid>
-      <pubDate>Mon, 31 Aug 2026 17:24:28 +0000</pubDate>
-    </item>
-    <item>
-      <title>Undocumented Atari Slapstic 137412-103 driven by 68010 prefetch (Marble Madness) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w3i01e/undocumented_atari_slapstic_137412103_driven_by/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Glittering_String405"&gt; /u/Glittering_String405 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://magno73.github.io/marble-love/slapstic/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w3i01e/undocumented_atari_slapstic_137412103_driven_by/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">ac96b72f9ce907fd1e63069431a9dc0e94b487dada569ef805e6a81a359f8a30</guid>
-      <pubDate>Mon, 31 Aug 2026 15:59:46 +0000</pubDate>
-    </item>
-    <item>
-      <title>Found a full Linusware 1.2 source code reconstruction on GitHub. - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w3e6ro/found_a_full_linusware_12_source_code/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/IndependenceBig2223"&gt; /u/IndependenceBig2223 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/tekkenbugattii/LinusWare-Source-Code"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w3e6ro/found_a_full_linusware_12_source_code/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">2808174cb1cf784176a4afcfdd147c127b4cac80d4cfa653e567f34e40c5adb5</guid>
-      <pubDate>Mon, 31 Aug 2026 13:41:51 +0000</pubDate>
-    </item>
-    <item>
-      <title>ValleyRAT Backdoor Hides in Signed Adware That Users Add to Antivirus Exclusions - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/valleyrat-backdoor-hides-in-signed.html</link>
-      <description>The threat actor known as Silver Fox has been observed distributing the ValleyRAT backdoor disguised as a signed Chinese adware application, running the malware under a trusted process to slip past users who add such software to their antivirus exclusions.
-Russian cybersecurity vendor Kaspersky said the attackers built the disguise around QN Wallpaper, a genuine Chinese desktop-wallpaper tool</description>
-      <guid isPermaLink="false">5208e337921a2ec080a243bfdb985b18dd6a78d9c182a79b51c42c4565a6d607</guid>
-      <pubDate>Mon, 31 Aug 2026 12:14:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>(DEFCON) How much of our Bluetooth firmware reverse engineering work can now be automated with LLMs? - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w3bhk3/defcon_how_much_of_our_bluetooth_firmware_reverse/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Bluetooth4Breakfast"&gt; /u/Bluetooth4Breakfast &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://darkmentor.com/publication/2026-08-defcon/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w3bhk3/defcon_how_much_of_our_bluetooth_firmware_reverse/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">fd76f39e5f74da1d6786f3e0bf5a45ae74f331f252d1201534b519435375e6da</guid>
-      <pubDate>Mon, 31 Aug 2026 11:51:17 +0000</pubDate>
-    </item>
-    <item>
-      <title>Aurora Ransomware Operators Use Cursor AI in Attacks Against 10 Targets - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/aurora-ransomware-operators-use-cursor.html</link>
-      <description>Threat actors associated with Aurora (aka Aur0ra) ransomware have been observed using SpaceX's artificial intelligence (AI)-powered coding assistant Cursor to break into target networks, according to findings from CloudSEK and Gambit Security.
-The two independent analyses are based on exposed infrastructure associated with the Russian-speaking cybercrime group, leading to the discovery of its</description>
-      <guid isPermaLink="false">35ce103fbba8ba013d1ea41ea9ed4526a74e220beb8cba70eb45f30b3bb5dca9</guid>
-      <pubDate>Mon, 31 Aug 2026 11:47:24 +0000</pubDate>
-    </item>
-    <item>
-      <title>Securing Claude Code: The New Compliance API, Local Visibility, and Identity Governance - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/securing-claude-code-new-compliance-api.html</link>
-      <description>Claude Code reads files, runs shell commands, invokes MCP tools, and acts through the credentials available on a developer’s machine. Anthropic’s new Compliance API endpoints give security teams their clearest view yet into that activity. They also expose a larger problem: activity logs alone cannot tell you whether an agent’s access is legitimate.
-AI has moved from the browser tab to the</description>
-      <guid isPermaLink="false">e0266283f0d4b05042fa9db8d75621de3fdfc7a9602a05ceeb9222fe2f8a42f5</guid>
-      <pubDate>Mon, 31 Aug 2026 11:31:47 +0000</pubDate>
-    </item>
-    <item>
-      <title>China-Linked Fire Ant Hijacks Cisco Routers to Steal Credentials and Blind Security Logs - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/china-linked-fire-ant-hijacks-cisco.html</link>
-      <description>A China-nexus cyber espionage actor tracked as Fire Ant has expanded a long-running campaign beyond VMware hypervisors to compromise Cisco IOS XR routers, Terminal Access Controller Access-Control System (TACACS) servers, and Linux management hosts used to route, authenticate, and manage high-value networks.
-Sygnia, the incident response firm that investigated the intrusion, said the actor</description>
-      <guid isPermaLink="false">075b9bb7c18ca7454401b0e1688d4ddb9537eaf3eaa2a5e534d28bf36140687b</guid>
-      <pubDate>Mon, 31 Aug 2026 09:04:55 +0000</pubDate>
-    </item>
-    <item>
-      <title>DoJ Corrects China Hacking Claim, Says U.S. Agencies Were Targets, Not Victims - The Hacker News</title>
-      <link>https://thehackernews.com/2026/08/doj-corrects-china-hacking-claim-says.html</link>
-      <description>The U.S. Department of Justice (DoJ) on Friday corrected a previously issued press statement that several of its agencies were victims of attacks carried out by Chinese threat actors, instead now pointing out that they were among those targeted.
-Last week, the DoJ said the National Aeronautics and Space Administration, Federal Reserve, Department of Energy, Department of Justice, Department</description>
-      <guid isPermaLink="false">9c4aff24795366cb485d28672a101af37009499c58e592415ad87d827c5f2b37</guid>
-      <pubDate>Mon, 31 Aug 2026 07:56:53 +0000</pubDate>
-    </item>
-    <item>
-      <title>Praetorian – Offensive Security Tools Built Around Portable Go Workflows - Darknet - The Darkside</title>
-      <link>https://www.darknet.org.uk/2026/08/praetorian-offensive-security-go-tools/</link>
-      <description>Praetorian's Go security tools consolidate established offensive workflows, with portable binaries, direct pipelines and a partial shared SDK.</description>
-      <guid isPermaLink="false">5d41903c6d318aa301ce4c72977ca417b93dbd6a08244917f4bd045131faf9b6</guid>
-      <pubDate>Mon, 31 Aug 2026 07:40:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>No-open exploit for code execution on the Wyze WLPA19CV2 LED bulb - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w34j4y/noopen_exploit_for_code_execution_on_the_wyze/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/nickfromstatefarm"&gt; /u/nickfromstatefarm &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/nickdaria/wyze-bulb-color-pwned"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w34j4y/noopen_exploit_for_code_execution_on_the_wyze/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">689dadb0b4ed2b5f4e00d93b0a22268d4c433647f4ab9c9dc476ed1c9a972017</guid>
-      <pubDate>Mon, 31 Aug 2026 05:34:50 +0000</pubDate>
-    </item>
-    <item>
-      <title>chromium -- security fixes - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/16cb13dc-a55d-11f1-bf98-a8a1599412c6.html</link>
-      <description/>
-      <guid isPermaLink="false">e987bf42e8235c78497e1fe74d0c1d1ee9c0717add08e805f30820e961f9dd88</guid>
-      <pubDate>Mon, 31 Aug 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Keycloak -- multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/2eb1927c-a57b-11f1-9b1f-3c7c3fba4204.html</link>
-      <description/>
-      <guid isPermaLink="false">2ffe6ab7078e178538e47f44858cd4bf30d6ea990081293933c518bca7ddb58e</guid>
-      <pubDate>Mon, 31 Aug 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>security/sudo-rs -- sudoedit could circumvent /etc/sudoers restrictions - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/c0acdbac-a524-11f1-8039-589cfc103809.html</link>
-      <description/>
-      <guid isPermaLink="false">d1f560a40046da6eef229be3b0095055af9783e63e10b5760fb6a9e2f44de1fa</guid>
-      <pubDate>Mon, 31 Aug 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Reverse-engineered a guitar amp's DSP firmware to run it as an instruction-level emulator (open source, GPLv3) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w2k057/reverseengineered_a_guitar_amps_dsp_firmware_to/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/talruum_"&gt; /u/talruum_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/andrezaiats/zamphenom"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w2k057/reverseengineered_a_guitar_amps_dsp_firmware_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">2d03dc803bd0f214e2483c0d476b9d7d28c5d5dc6d9a782f7f8f4f8537559239</guid>
-      <pubDate>Sun, 30 Aug 2026 15:06:28 +0000</pubDate>
     </item>
   </channel>
 </rss>

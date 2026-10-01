@@ -5,7 +5,628 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Wed, 16 Sep 2026 14:02:12 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 01 Oct 2026 14:01:21 +0000</lastBuildDate>
+    <item>
+      <title>Python Insider: Python 3.10.22, 3.11.17, 3.12.15, 3.13.16 and 3.14.8 are now available! - Planet Python</title>
+      <link>https://blog.python.org/2026/10/python-31022-31117/</link>
+      <description>Security updates across Python 3.10–3.14, the final maintenance release of 3.13, and a farewell to Python 3.10.</description>
+      <guid isPermaLink="false">18c7de02fb165b71f00020bddd2c7e982e4adced73bc515c921f2294308a811b</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Graham Dumpleton: Getting to know Tachyon - Planet Python</title>
+      <link>https://grahamdumpleton.me/posts/2026/10/getting-to-know-tachyon/</link>
+      <description>&lt;p&gt;Python 3.15 ships with a new profiler. It is called Tachyon, it lives in the standard library as the &lt;code&gt;profiling.sampling&lt;/code&gt; module, and unlike cProfile it is a sampling profiler rather than a tracing one. I now have a set of hands-on workshops for it, which you can find at &lt;a href="https://github.com/GrahamDumpleton/tachyon-workshops"&gt;github.com/GrahamDumpleton/tachyon-workshops&lt;/a&gt; or on the &lt;a href="https://grahamdumpleton.me/workshops/tachyon/"&gt;workshops page&lt;/a&gt; of this site, and they have reached the point where I am happy for other people to do them. That said, they were not written for other people in the first place. They were written so I could learn Tachyon myself, and the reason I wanted to learn it had little to do with profiling as such.&lt;/p&gt;
+&lt;h2&gt;Why I wrote them&lt;/h2&gt;
+&lt;p&gt;For the past while I have been working on &lt;a href="https://github.com/GrahamDumpleton/wrapture"&gt;wrapture&lt;/a&gt;, a library built on top of wrapt for attaching bindings to arbitrary call sites in a Python program without modifying the code being observed, then doing something useful with what flows through those call sites, such as recording calls or exporting traces. Everything wrapture does happens from inside the process. It wraps functions, and when they are called it is there in the call path to see the arguments, the return value, the exception, and the time taken.&lt;/p&gt;
+&lt;p&gt;So when a profiler landed in the standard library the obvious question was whether wrapture could make use of it. Could Tachyon be offered as part of wrapture's tracing, so that a binding on a call site could also tell you what the program was doing underneath that call? Could the two share anything at all? I did not know, and reading the Tachyon documentation was not going to tell me, because the documentation describes what each option does and not what you would want it for. The only way I was going to get a real answer was to use every part of the profiler on real programs, and the way I have been doing that lately is to have workshops written for the thing I want to learn and then do the workshops.&lt;/p&gt;
+&lt;h2&gt;Working from the outside&lt;/h2&gt;
+&lt;p&gt;A sampling profiler does not instrument your program. Tachyon runs as a separate process, reads the call stack of the target process from the outside, a thousand times a second by default, and counts what it finds. The program runs at full speed and never knows it is being watched. The counts are then an estimate of where time went: a function that appears in half the samples took about half the time. cProfile, which in 3.15 has moved to &lt;code&gt;profiling.tracing&lt;/code&gt;, does the opposite. It hooks every function call and return, so the counts are exact, but a program made of millions of small calls can run several times slower under it.&lt;/p&gt;
+&lt;p&gt;One of the early workshops puts the same program under both and the difference is stark enough that it answers the question of which to reach for most of the time. The other consequence of working from the outside is that the profiler needs permission to read another process's memory. Linux lets a user do that to processes they started themselves. macOS and Windows do not without root or administrator rights, which is why the workshops only run on Linux, and why on a Mac the way to run them is in a container. More on that below.&lt;/p&gt;
+&lt;h2&gt;Where that leaves wrapture&lt;/h2&gt;
+&lt;p&gt;My first impression, having now been through all of it, is that the two do not fit together. Tachyon works by looking in at a process from outside. wrapture works by being inside the process, in the call path. I have found nothing to suggest Tachyon can be driven from within the process it is profiling in the way wrapture would need, and nothing in the way it reads a process that a binding on a call site could hook into. The models are different enough that I cannot see a way of marrying them, at least not with what is in 3.15.&lt;/p&gt;
+&lt;p&gt;That is a perfectly good answer. I would rather know it now than have spent time trying to bolt one onto the other, and the reasoning behind it is grounded in having used every mode of the profiler rather than guessed from a page of options. If that changes in a later release, or if someone knows something about Tachyon's internals that I missed, I would like to hear about it. For now the question is parked, not closed.&lt;/p&gt;
+&lt;h2&gt;Learning by having the lesson written&lt;/h2&gt;
+&lt;p&gt;What surprised me was how much better this worked as a way of learning than reading the documentation would have. I did not write the workshops by hand. I described what I wanted each one to teach, had an AI build it, then did the workshop. The useful part was not that the AI knew Tachyon, since the documentation knew Tachyon just as well. It was that the AI kept filling in the context the documentation leaves out: why wall-clock time and CPU time disagree and what that disagreement tells you about the fix, why a view of which thread holds the GIL exists at all, why you would record a profile in the binary format and look at it later rather than looking at it now. Each feature came with a small program written to show it, which had the problem the feature was there to find, and that is what made the feature stick.&lt;/p&gt;
+&lt;p&gt;This is a different way to use an AI for learning than asking it questions. Asking questions gets you answers at the level of the question. Asking for the lesson to be built gets you something you then have to work through with your own hands, and if the lesson is wrong you find out when the check at the end of a step does not pass. It is also, I have noticed, far closer to how I actually learned things in the first place, which was by having to teach them.&lt;/p&gt;
+&lt;h2&gt;What the workshops cover&lt;/h2&gt;
+&lt;p&gt;There are two collections, with a catalog in the repository so that one URL offers both.&lt;/p&gt;
+&lt;p&gt;The first, &amp;quot;Profiling with Tachyon&amp;quot;, is fourteen workshops and a little under four hours in total. It starts with running the profiler on a small report generator and reading the table it prints, so that you know what a sample is and why time is samples multiplied by an interval. It then puts a program under both the tracer and the sampler, and looks at how the profiler reads a process from outside and what that needs permission for. From there it moves through the pictures the profiler produces: the interactive flame graph, the heatmap that paints sample counts onto the source so a single expensive line stands out, and recording in the binary format to replay later as a table, a flame graph, a heatmap, a Firefox Profiler file, JSON lines or a pstats file. The next group is about choosing what to measure, with workshops on wall-clock against CPU time, threads and the GIL, the cost of exceptions, and async code profiled as tasks and awaits rather than as the event loop's stack. The last group looks closer, at the markers for native code and the garbage collector, at opcode-level profiling in the heatmap, at differential flame graphs for telling whether a fix worked, and at the live terminal view that watches one process like &lt;code&gt;top&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The second, &amp;quot;Tachyon on real applications&amp;quot;, is seven workshops and a little over two hours. Each one runs a realistic program in one terminal and drives it from a second, with the profiler between them. There is a Flask application under load, then a slow endpoint found with the flame graph, pinned to a line with the heatmap, fixed, and proven fixed with a second recording. There is a Starlette service under uvicorn whose searches stall when articles are read, including a fix with a thread that does not work and why, and one with a process pool that does. There are worker processes, both a process pool and gunicorn with three workers, profiled with &lt;code&gt;--subprocesses&lt;/code&gt;. There is a pytest suite with the profiler wrapped around it, attaching to a server that was started without the profiler, and finally a profile recorded in production, carried back and compared in a notebook with a table and a chart.&lt;/p&gt;
+&lt;p&gt;Every workshop ships the program it profiles, and the flame graphs and heatmaps open in JupyterLab in a tab beside the code, so you are reading the picture and the source together rather than switching between a browser and an editor.&lt;/p&gt;
+&lt;h2&gt;Running them&lt;/h2&gt;
+&lt;p&gt;The workshops are built on &lt;a href="https://github.com/GrahamDumpleton/jupyterlab-workshop"&gt;jupyterlab-workshop&lt;/a&gt;, a JupyterLab extension that shows the instructions in a side panel with clickable actions that drive the session, opening files, running commands in a terminal and running cells in a notebook, and checks what you have done as you go.&lt;/p&gt;
+&lt;p&gt;The easiest way to start is the Binder button in the repository README, which builds the repository into a temporary JupyterLab on &lt;a href="https://mybinder.org"&gt;mybinder.org&lt;/a&gt; with nothing to install and no account needed. The session is thrown away when you are done, so finish a workshop in the session you started it in, and shut the session down from the Finish dialog or the File menu rather than just closing the tab, so the resources go back for other people. The Codespaces button does the same in a container tied to your GitHub account, which persists until you delete it and uses your account's monthly allowance.&lt;/p&gt;
+&lt;p&gt;If you want to run them on your own machine and that machine is a Mac, the Linux requirement means a container. The repository carries a Dockerfile for it, with Python 3.15, JupyterLab, the extension and a non-root user, and the checkout is mounted so everything the workshops write ends up in your checkout:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/GrahamDumpleton/tachyon-workshops
+cd tachyon-workshops
+docker build -t tachyon-workshops -f container/Dockerfile .
+docker run --rm --init -it -p 127.0.0.1:8888:8888 -e JUPYTER_TOKEN=tachyon \
+    -v &amp;quot;$PWD&amp;quot;:/home/learner/tachyon-workshops tachyon-workshops
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then open &lt;code&gt;http://127.0.0.1:8888/?token=tachyon&lt;/code&gt;. On Linux with Python 3.15 and &lt;a href="https://docs.astral.sh/uv/"&gt;uv&lt;/a&gt; you can skip the clone entirely and launch the extension on the catalog directly, with a directory of your own to keep the workshops in:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;uvx --python 3.15 --from &amp;quot;jupyterlab-workshop[lab]&amp;quot; jupyter-workshop launch \
+    --root ~/training --catalog https://raw.githubusercontent.com/GrahamDumpleton/tachyon-workshops/main/catalog.json
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Python 3.15 is named because each workshop builds its own environment from the Python that JupyterLab runs on, and the profiler and the program it profiles must be the same Python. If you already have the extension installed somewhere, you can also just subscribe to the catalog from the workshop browser and the collections are offered there.&lt;/p&gt;
+&lt;h2&gt;What's next&lt;/h2&gt;
+&lt;p&gt;Whether Tachyon ends up having anything to do with wrapture, I know a good deal more about it than I did, and I have something to show for the time that other people can use. If you do the workshops and find a step that is unclear, or one that does not work for you, the &lt;a href="https://github.com/GrahamDumpleton/tachyon-workshops/issues"&gt;issue tracker&lt;/a&gt; is the place to say so. Fingers crossed they are as useful a way into Tachyon for you as writing them was for me.&lt;/p&gt;</description>
+      <guid isPermaLink="false">0a44a4551d312267f8768e8fa4e169c43d12da8d7b517ed947e7ddb467425ab1</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Insider: PEP 827: Type Manipulation (Python Language Summit 2026) - Planet Python</title>
+      <link>https://blog.python.org/2026/09/language-summit-2026-pep-827-type-manipulation/</link>
+      <description>Michael J. Sullivan presents PEP 827 and discusses a key design decision: how to store type annotations?</description>
+      <guid isPermaLink="false">de1727d683b38afe14f839481ab0c43392ba7ade7fa7724517f6abe8a51af0da</guid>
+      <pubDate>Wed, 30 Sep 2026 12:00:09 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Insider: Free-Threaded Python Post-Era (Python Language Summit 2026) - Planet Python</title>
+      <link>https://blog.python.org/2026/09/language-summit-2026-free-threading-post-era/</link>
+      <description>Tobias Wrigstad, Fridtjof Stoldt, and Donghee Na propose a safe and performant, high-level concurrency model for free-threaded Python</description>
+      <guid isPermaLink="false">f11448153f873190c7a41fefb9d54ec4855c1842b6c4313bb9a145eb8bff57c9</guid>
+      <pubDate>Wed, 30 Sep 2026 12:00:08 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Insider: Spicycrab (Python Language Summit 2026) - Planet Python</title>
+      <link>https://blog.python.org/2026/09/language-summit-2026-spicycrab/</link>
+      <description>Kushal Das shows off Spicycrab, a Python-to-Rust transpiler for Python users who need performance without learning Rust or leaving Python</description>
+      <guid isPermaLink="false">7eadf244ebc653d9082d6bada02f30d12e90f7fa1f510a7450d8fdfd758e4ed3</guid>
+      <pubDate>Wed, 30 Sep 2026 12:00:06 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Insider: Rust for CPython (Python Language Summit 2026) - Planet Python</title>
+      <link>https://blog.python.org/2026/09/language-summit-2026-rust-for-cpython/</link>
+      <description>David Hewitt shares a status update, first module, and potential acceptance criteria for the Rust for CPython project</description>
+      <guid isPermaLink="false">d0518b638a8e50591551c455db5d551b8bd660b20317b2a88640022b6d3a547b</guid>
+      <pubDate>Wed, 30 Sep 2026 12:00:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Insider: Memory Snapshots for CPython (Python Language Summit 2026) - Planet Python</title>
+      <link>https://blog.python.org/2026/09/language-summit-2026-memory-snapshots/</link>
+      <description>Hood Chatham proposes memory snapshots and an initialization phase for speedier Python startups</description>
+      <guid isPermaLink="false">d67904c3b76147e3b11269b90961becbcf9468e4b3db15401bec9d0a3e39dd8a</guid>
+      <pubDate>Wed, 30 Sep 2026 12:00:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Insider: Memory Buffer Protocol (Python Language Summit 2026) - Planet Python</title>
+      <link>https://blog.python.org/2026/09/language-summit-2026-memory-buffer-protocol/</link>
+      <description>Nathan Goldbaum proposes safe concurrent access through buffer leases and custom data types for the Python Buffer Protocol.</description>
+      <guid isPermaLink="false">e54df4801bcee5297fd68e0a04f37b601cf6c97b8da39faac2b39b69a885dc56</guid>
+      <pubDate>Wed, 30 Sep 2026 12:00:03 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Insider: Garbage Collection: Generational? Incremental? Both! (Python Language Summit 2026) - Planet Python</title>
+      <link>https://blog.python.org/2026/09/language-summit-2026-garbage-collection-generational-incremental-both/</link>
+      <description>Mark Shannon proposes a future garbage collection strategy for Python following the revert of the incremental garbage collector in Python 3.14</description>
+      <guid isPermaLink="false">5ff5d727ed4a60b5e29e117304a4c7254e721b8a05e96a95c57a1d6e2d44ba85</guid>
+      <pubDate>Wed, 30 Sep 2026 12:00:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Insider: One namespace to namespace them all (Python Language Summit 2026) - Planet Python</title>
+      <link>https://blog.python.org/2026/09/language-summit-2026-namespaces/</link>
+      <description>Pablo Galindo Salgado proposes a top-level `std` namespace for the Python standard library to prevent module shadowing and free up module names.</description>
+      <guid isPermaLink="false">6ca35c0d79d694cdc0657ed46302fcf7a7d849636d4ca845879256edd23dac4b</guid>
+      <pubDate>Wed, 30 Sep 2026 12:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python GUIs: Changing Ticks in PyQtGraph Objects to Strings — How to replace numeric axis ticks with custom labels like month names or dates in PyQtGraph - Planet Python</title>
+      <link>https://www.pythonguis.com/faq/changing-ticks-in-pyqtgraph-objects-to-strings/</link>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;How do I replace the numeric tick labels on a PyQtGraph axis with custom strings, like month names or category labels?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;When you're plotting data in PyQtGraph, the axes default to showing numeric tick values. That's fine for a lot of use cases, but sometimes your x-axis represents something more meaningful &amp;mdash; like months of the year, days of the week, or category names. In those situations, you want to replace those numbers with readable string labels.&lt;/p&gt;
+&lt;p&gt;In this tutorial, you'll learn how to customize the tick labels on a PyQtGraph axis so they display strings instead of numbers.&lt;/p&gt;
+&lt;h2 id="how-axis-ticks-work-in-pyqtgraph"&gt;How axis ticks work in PyQtGraph&lt;/h2&gt;
+&lt;p&gt;PyQtGraph plots data using numeric values on both axes. When your x-axis data represents categories &amp;mdash; like months &amp;mdash; you typically use integers (1, 2, 3, ...) as placeholders and then map those integers to human-readable labels.&lt;/p&gt;
+&lt;p&gt;To do this, you need to:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create a list of &lt;strong&gt;2-tuples&lt;/strong&gt;, where each tuple pairs a numeric tick position with a string label.&lt;/li&gt;
+&lt;li&gt;Get the axis object from the plot widget.&lt;/li&gt;
+&lt;li&gt;Call &lt;code&gt;.setTicks()&lt;/code&gt; on that axis, passing your labels wrapped in a list.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Let's walk through a complete example.&lt;/p&gt;
+&lt;h2 id="setting-up-the-plot"&gt;Setting up the plot&lt;/h2&gt;
+&lt;p&gt;We'll create a simple line plot showing temperature values across 10 months. The x-axis will use integers from 1 to 10 to represent months, and we'll replace those numbers with actual month names.&lt;/p&gt;
+&lt;p&gt;First, we generate the tick labels using Python's &lt;code&gt;datetime&lt;/code&gt; module:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;import datetime
+months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+month_labels = [
+    (m, datetime.date(2020, m, 1).strftime("%B"))
+    for m in months
+]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;This gives us a list like:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;[(1, "January"), (2, "February"), (3, "March"), ...]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Each tuple maps a position on the x-axis (the integer) to a label (the month name). The &lt;code&gt;strftime("%B")&lt;/code&gt; call converts a date into its full month name.&lt;/p&gt;
+&lt;h2 id="applying-the-tick-labels-to-the-axis"&gt;Applying the tick labels to the axis&lt;/h2&gt;
+&lt;p&gt;Once you have your list of label tuples, you apply them to the bottom axis of the plot widget:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;ax = self.graphWidget.getAxis("bottom")
+ax.setTicks([month_labels])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Notice that &lt;code&gt;month_labels&lt;/code&gt; is passed &lt;strong&gt;inside another list&lt;/strong&gt; &amp;mdash; so you're calling &lt;code&gt;ax.setTicks([month_labels])&lt;/code&gt;, not &lt;code&gt;ax.setTicks(month_labels)&lt;/code&gt;. This is because &lt;code&gt;setTicks()&lt;/code&gt; accepts a list of tick levels (for major ticks, minor ticks, etc.). By passing a single list inside the outer list, you're setting the major tick labels.&lt;/p&gt;
+&lt;h2 id="complete-working-example"&gt;Complete working example&lt;/h2&gt;
+&lt;p&gt;Here's the full application. You can copy and run this directly. If you're new to PyQtGraph, you may want to first read our &lt;a href="https://www.pythonguis.com/tutorials/plotting-pyqtgraph/"&gt;introduction to plotting with PyQtGraph&lt;/a&gt; to understand the basics.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;from PyQt6 import QtWidgets
+from pyqtgraph import PlotWidget
+import pyqtgraph as pg
+import sys
+import datetime
+class MainWindow(QtWidgets.QMainWindow):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.graphWidget = pg.PlotWidget()
+        self.setCentralWidget(self.graphWidget)
+        months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        temperature = [30, 32, 34, 32, 33, 31, 29, 32, 35, 45]
+        self.graphWidget.setBackground("w")
+        pen = pg.mkPen(color=(255, 0, 0))
+        # Create a list of (tick_value, tick_label) tuples.
+        month_labels = [
+            (m, datetime.date(2020, m, 1).strftime("%B"))
+            for m in months
+        ]
+        self.graphWidget.plot(months, temperature, pen=pen)
+        # Get the bottom axis and apply our custom tick labels.
+        ax = self.graphWidget.getAxis("bottom")
+        ax.setTicks([month_labels])
+app = QtWidgets.QApplication(sys.argv)
+main_window = MainWindow()
+main_window.show()
+sys.exit(app.exec())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Running this produces a plot where the x-axis displays month names instead of numbers:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Plot with month name tick labels on the x-axis" height="518" src="https://www.pythonguis.com/static/faq/changing-ticks-in-pyqtgraph-objects-to-strings/mbF7d6Ak4pVGmD44h9ycqPmDiV5.png" width="641" /&gt;&lt;/p&gt;
+&lt;h2 id="using-any-string-labels"&gt;Using any string labels&lt;/h2&gt;
+&lt;p&gt;This approach works with any strings, not just month names. If you wanted to label the x-axis with arbitrary category names, you'd follow the same pattern:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;labels = [
+    (0, "Apples"),
+    (1, "Oranges"),
+    (2, "Bananas"),
+    (3, "Grapes"),
+]
+ax = self.graphWidget.getAxis("bottom")
+ax.setTicks([labels])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;As long as you match each label string to the correct numeric position used in your data, the ticks will line up with your plot points.&lt;/p&gt;
+&lt;p&gt;If you want to plot time series data specifically, take a look at &lt;a href="https://www.pythonguis.com/faq/plotting-time-series-data-with-pyqtgraph/"&gt;plotting time series data with PyQtGraph&lt;/a&gt; for a more detailed approach. You can also &lt;a href="https://www.pythonguis.com/tutorials/embed-pyqtgraph-custom-widgets-qt-app/"&gt;embed PyQtGraph into a larger custom widget&lt;/a&gt; for more complex applications, or combine it with &lt;a href="https://www.pythonguis.com/tutorials/plotting-matplotlib/"&gt;Matplotlib plotting&lt;/a&gt; if you need additional chart types.&lt;/p&gt;
+            &lt;p&gt;For an in-depth guide to building Python GUIs with PyQt6 see my book, &lt;a href="https://www.pythonguis.com/pyqt6-book/"&gt;Create GUI Applications with Python &amp;amp; Qt6.&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">dbcbba6bf5de16d7d304f0e07a21a7c7abeec82f555b0e3d280497d52d996f08</guid>
+      <pubDate>Wed, 30 Sep 2026 06:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Armin Ronacher: Deser: Rethinking Rust Serialization - Planet Python</title>
+      <link>https://lucumr.pocoo.org/2026/9/29/deser/</link>
+      <description>&lt;p&gt;&lt;a href="https://serde.rs/"&gt;Serde&lt;/a&gt; is an amazing serialization library for Rust and it
+has been a huge reason why I felt productive with it for years.  However already
+while at Sentry I got quite frustrated with some of the limitations with it but
+actually replacing Serde is tricky because of the might that it has in the
+ecosystem.  Also because it&amp;#8217;s quite hard to actually do better without also
+making some potentially painful compromises.&lt;/p&gt;
+&lt;p&gt;Here are three examples of Serde corner cases that show poor interactions of
+Serde features or unexpected limitations:&lt;/p&gt;
+A number that is a map
+&lt;p&gt;An internally tagged enum, with &lt;code&gt;serde_json&lt;/code&gt;&amp;#8216;s &lt;code&gt;arbitrary_precision&lt;/code&gt; feature
+turned on:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#[derive(Deserialize)]&lt;/span&gt;
+&lt;span class="cp"&gt;#[serde(tag = &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;)]&lt;/span&gt;
+&lt;span class="k"&gt;enum&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;Shape&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;Circle&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;radius&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;f64&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;serde_json&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;from_str&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Shape&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r#&amp;quot;{&amp;quot;type&amp;quot;: &amp;quot;Circle&amp;quot;, &amp;quot;radius&amp;quot;: 1.5}&amp;quot;#&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;// error: invalid type: map, expected f64&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Serde&amp;#8217;s data model has no place for arbitrary precision numbers, so &lt;code&gt;serde_json&lt;/code&gt;
+uses in-band signalling with a map with a magic key.  The enum has to buffer the
+fields until it has seen the tag, and the buffer does not know about the magic
+key.  Because Cargo features are unified, it&amp;#8217;s enough for any crate in your
+dependency graph to turn the feature on.&lt;/p&gt;
+Flattening breaks integer keys
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#[derive(Deserialize)]&lt;/span&gt;
+&lt;span class="k"&gt;struct&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;Stats&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;scores&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;HashMap&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;u32&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;u32&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="cp"&gt;#[derive(Deserialize)]&lt;/span&gt;
+&lt;span class="k"&gt;struct&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;Report&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;String&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;#[serde(flatten)]&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;stats&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;Stats&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;serde_json&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;from_str&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Report&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r#&amp;quot;{&amp;quot;name&amp;quot;: &amp;quot;x&amp;quot;, &amp;quot;scores&amp;quot;: {&amp;quot;42&amp;quot;: 23}}&amp;quot;#&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;// error: invalid type: string &amp;quot;42&amp;quot;, expected u32 at line 1 column 35&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;Stats&lt;/code&gt; on its own parses &lt;code&gt;{&amp;quot;scores&amp;quot;: {&amp;quot;42&amp;quot;: 23}}&lt;/code&gt; just fine.  JSON keys are
+always strings, and &lt;code&gt;serde_json&lt;/code&gt; only turns them into integers if the type asks
+for one.  However once &lt;code&gt;flatten&lt;/code&gt; buffers the value, &lt;code&gt;&amp;quot;42&amp;quot;&lt;/code&gt; is just a string.
+The error also points at the end of the document rather than at the key.&lt;/p&gt;
+Adapters do not compose
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;fn&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;from_hex&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;'&lt;/span&gt;&lt;span class="na"&gt;de&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;Deserializer&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;'&lt;/span&gt;&lt;span class="na"&gt;de&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;D&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;Result&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;u32&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Error&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;..&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="cp"&gt;#[derive(Deserialize)]&lt;/span&gt;
+&lt;span class="k"&gt;struct&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;Theme&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;#[serde(deserialize_with = &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;from_hex&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;)]&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;primary&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;u32&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;#[serde(deserialize_with = &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;from_hex&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;)]&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;accent&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;Option&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;u32&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="c1"&gt;//error[E0308]: `?` operator has incompatible types&lt;/span&gt;
+&lt;span class="c1"&gt;//  |&lt;/span&gt;
+&lt;span class="c1"&gt;//  |     #[serde(deserialize_with = &amp;quot;from_hex&amp;quot;)]&lt;/span&gt;
+&lt;span class="c1"&gt;//  |                                ^^^^^^^^^^ expected `Option&amp;lt;u32&amp;gt;`, found `u32`&lt;/span&gt;
+&lt;span class="c1"&gt;//  |&lt;/span&gt;
+&lt;span class="c1"&gt;//help: try wrapping the expression in `Some`&lt;/span&gt;
+&lt;span class="c1"&gt;//  |&lt;/span&gt;
+&lt;span class="c1"&gt;//  |     #[serde(deserialize_with = Some(&amp;quot;from_hex&amp;quot;))]&lt;/span&gt;
+&lt;span class="c1"&gt;//  |                                +++++          +&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;A function cannot be passed as a type parameter, so there is no way to apply
+&lt;code&gt;from_hex&lt;/code&gt; to the inside of an &lt;code&gt;Option&lt;/code&gt;, a &lt;code&gt;Vec&lt;/code&gt; or a map.  You write another
+function for every wrapper, and once you have &lt;code&gt;from_opt_hex&lt;/code&gt; the field is no
+longer optional unless you also remember to add &lt;code&gt;#[serde(default)]&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;None of these are bugs that are easy to fix in Serde.  They fall out of its
+design, and that design is protected by Serde&amp;#8217;s stability guarantees.&lt;/p&gt;
+&lt;p&gt;Back in 2022 I started an experiment called
+&lt;a href="https://github.com/mitsuhiko/deser"&gt;Deser&lt;/a&gt;.  It&amp;#8217;s a serialization library for
+Rust that takes the user experience of &lt;a href="https://serde.rs/"&gt;Serde&lt;/a&gt; and puts it on
+top of a completely different architecture inspired by
+&lt;a href="https://github.com/dtolnay/miniserde"&gt;miniserde&lt;/a&gt;.  I never really finished it
+and it sat around for a few years.  I picked it back up, and it has now reached
+a point where I think it&amp;#8217;s worth looking at.  Even just to inspire others to
+see if they want to explore the space.&lt;/p&gt;
+&lt;h2&gt;The Name And Idea&lt;/h2&gt;
+&lt;p&gt;The name is Serde with its two halves swapped.  Deser is Serde but the other way
+around.  In Serde, a type drives the deserialization process: a &lt;code&gt;Deserialize&lt;/code&gt;
+impl asks the deserializer for the kind of value it expects, the format calls
+back into a visitor.  Every nested value is handled by recursion which makes
+Serde deserialization inherently grow the stack with each level of nesting.&lt;/p&gt;
+&lt;p&gt;Deser on the other hand turns this around and the format tells the type of the
+next value and pushes events into a sink.  When a sink hits the start of a
+nested value, it doesn&amp;#8217;t call into it but hands back a new sink to a driver,
+which keeps all state on the heap (in fact, in an arena).  On the way out,
+emitters return their nested values instead of recursing into them.&lt;/p&gt;
+&lt;p&gt;That also means that Deser cannot support formats like protobuf that are not
+self describing.  They are in fact quite intentionally left out of the design
+entirely.  Which is one way to say: if you want to &amp;#8220;fix&amp;#8221; Serde, you need to
+make some other compromises.&lt;/p&gt;
+&lt;p&gt;Most of the reasons for Deser&amp;#8217;s ideas go back to &lt;a href="https://github.com/getsentry/relay"&gt;Sentry
+Relay&lt;/a&gt;, which processes enormous amounts of
+untrusted JSON.  Over the years when I was at Sentry we ran into the same set of
+problems again and again, and many of them are not really bugs in Serde but
+consequences of its design.  Serde&amp;#8217;s stability guarantees mean that a lot of
+them cannot be fixed without breaking every format and every hand written
+implementation.  Most of these problems come from three decisions:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;One set of traits for all formats.&lt;/strong&gt;  Serde serves both self describing
+formats (JSON, YAML, TOML, …) and formats where the reader has to know the
+type upfront (postcard, bincode, protobuf, …).  That is incredibly useful,
+but it means that some features only work with some formats, and you find out
+at runtime.  In case of Serde it also has some odd wrinkles where a derived
+struct quietly accepts an array in place of an object in JSON for instance.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;A fixed data model that loses information when buffering.&lt;/strong&gt;  Internally
+tagged enums, untagged enums and &lt;code&gt;flatten&lt;/code&gt; need to buffer values before
+they know what to do with them.  The buffer can&amp;#8217;t hold everything the format
+knew, errors lose their location and extensions to the ecosystem rely on
+in-band signalling to express things such as arbitrary precision numbers.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Recursion on the call stack.&lt;/strong&gt;  Every level of nesting uses stack space.
+Formats protect against this with a recursion limit, but the moment you go
+through a code path that doesn&amp;#8217;t have one (writing, dynamic values), deeply
+nested data can take down your process.  It also means that a
+deserialization cannot be paused while you wait for more input.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Many of the corresponding Serde issues have been open for years, and I wrote
+about &lt;a href="https://lucumr.pocoo.org/2021/11/14/abusing-serde/"&gt;abusing Serde&lt;/a&gt; before.  People have tried
+different angles on this over the years.  Some went minimal and dropped most
+features to get fast compiles and no recursion.  dtolnay&amp;#8217;s own
+&lt;a href="https://github.com/dtolnay/miniserde"&gt;miniserde&lt;/a&gt; is the best example of that,
+and deser&amp;#8217;s trait design was originally modelled after it.  Other recent
+attempts went for runtime reflection, or for a new data model with a focus on
+binary formats.&lt;/p&gt;
+&lt;p&gt;If you want to read up on all of the collected challenges with Serde&amp;#8217;s design,
+I maintain &lt;a href="https://github.com/mitsuhiko/deser/blob/main/SERDE.md"&gt;a lengthy list here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Dethroning Serde&lt;/h2&gt;
+&lt;p&gt;First of all I don&amp;#8217;t think it&amp;#8217;s likely that one can replace Serde.  &lt;a href="https://smallcultfollowing.com/babysteps/blog/2022/04/17/coherence-and-crate-level-where-clauses/"&gt;The orphan
+rule&lt;/a&gt;
+entrenches Serde incredibly well in the ecosystem.  But some things are within
+the reach of a crate author&amp;#8217;s control.  In case of Deser it&amp;#8217;s completeness.&lt;/p&gt;
+&lt;p&gt;Deser today implements all important self describing formats from YAML, JSON,
+TOML, CBOR, JSON5 and the likes, but also XML and plist to really close the gap.
+XML in particular is something Serde has declined to support, and it shows
+(more on that below).  At the very least format support should not be the
+reason not to use Deser.&lt;/p&gt;
+&lt;p&gt;The second problem usually is that actually solving Serde&amp;#8217;s issues comes at a
+significant cost in compile time and/or runtime performance.  Deser is no
+different.  While Deser&amp;#8217;s compile times are a bit better than Serde&amp;#8217;s, the
+binary bloat is quite a bit worse and the runtime performance is mixed.  It&amp;#8217;s
+roughly comparable if you look at the numbers but depending on the format
+structure you are losing significantly from some of the tradeoffs.&lt;/p&gt;
+&lt;p&gt;That said, it&amp;#8217;s now in a state where it&amp;#8217;s at least in principle a drop-in
+replacement where the tradeoffs might work well for users.&lt;/p&gt;
+&lt;h2&gt;Deser&amp;#8217;s Design&lt;/h2&gt;
+&lt;p&gt;Deser does not try to be significantly different than Serde on the surface
+level.  For most uses you derive &lt;code&gt;Serialize&lt;/code&gt; and &lt;code&gt;Deserialize&lt;/code&gt; and then start
+using it with your format implementing crate of choice.  Most attributes are
+very similar, though they are taking Rust expressions instead of strings.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;use&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;deser&lt;/span&gt;&lt;span class="p"&gt;::{&lt;/span&gt;&lt;span class="n"&gt;Serialize&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Deserialize&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="cp"&gt;#[derive(Debug, Serialize, Deserialize)]&lt;/span&gt;
+&lt;span class="cp"&gt;#[deser(rename_all = &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;camelCase&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;)]&lt;/span&gt;
+&lt;span class="k"&gt;pub&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;struct&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;Account&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;u64&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;account_holder&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;String&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;#[deser(default)]&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;is_deactivated&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;bool&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="kd"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;account&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;Account&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;deser_json&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;from_str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The difference in the design would become more apparent if you implement a
+serializer or deserializer yourself.  Instead of visitors that call into each
+other recursively, deserializing a type creates a
+&lt;em&gt;sink&lt;/em&gt; which receives events that are directly emitted by the parser, and
+&lt;em&gt;serializing produces emitters&lt;/em&gt; that hand out values.  Nested sinks and emitters
+are handed back to a driver, which keeps them on the heap.  This design, which is
+entirely stolen from miniserde, gives some interesting consequences:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;No stack overflows.&lt;/strong&gt;  You can arbitrarily nest structures without issues.
+For untrusted input you set limits with a layer, and you pick the number
+that you are comfortable with, which is independent of your stack space.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Suspendable.&lt;/strong&gt;  Because the state lives in the driver, a deserialization
+can be fed input as it arrives.  It&amp;#8217;s also &lt;code&gt;Send&lt;/code&gt;, so it can move between
+threads while you wait on IO which makes it much nicer to use with tokio.
+Formats like JSON, CBOR and MessagePack can be parsed as a stream if you
+so desire.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;An extensible data model.&lt;/strong&gt;  The core data model is small and made of atoms,
+maps and sequences.  For all else, there are extension values (&lt;code&gt;DateTime&lt;/code&gt;,
+&lt;code&gt;Uuid&lt;/code&gt;, etc.) that also all carry a fallback for formats that don&amp;#8217;t understand
+them.  Unlike Serde this means it does not rely on in-band signalling of
+objects with magic keys to smuggle values through.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Lossless buffering.&lt;/strong&gt;  When a value has to be buffered (for instance because
+the tag of an internally tagged enum comes last), Deser records the events
+together with everything the format knew about them.  Protocol specific
+extension types or error locations all survive.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Layers&lt;/strong&gt; are a middleware system that sit between the format and your types
+and can track things like paths, enforce safety limits, rename keys or redact
+values without having to touch specific code paths.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Native flattening&lt;/strong&gt; that doesn&amp;#8217;t buffer at all.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;On top of that are a lot of things that I just wanted to have:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Allow enum tags to be of any type, not just strings&lt;/li&gt;
+&lt;li&gt;Adapters that compose (&lt;code&gt;as = Option&amp;lt;Vec&amp;lt;DisplayFromStr&amp;gt;&amp;gt;&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Enabling validation as an adapter&lt;/li&gt;
+&lt;li&gt;derive attributes that are real Rust expressions instead of strings&lt;/li&gt;
+&lt;li&gt;bytes as a core functionality in the data model&lt;/li&gt;
+&lt;li&gt;duplicate keys rejected by default and errors that point at the problem&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here is a small configuration type that shows a few of these together:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;use&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;deser&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;adapters&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;DisplayFromStr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;use&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;deser&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;de&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Recording&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;use&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;deser&lt;/span&gt;&lt;span class="p"&gt;::{&lt;/span&gt;&lt;span class="n"&gt;Deserialize&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Serialize&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="k"&gt;use&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;deser_encoding&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Hex&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;use&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;deser_validate&lt;/span&gt;&lt;span class="p"&gt;::{&lt;/span&gt;&lt;span class="n"&gt;Check&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;NonEmpty&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Range&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="k"&gt;use&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ipnet&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;IpNet&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="cp"&gt;#[derive(Debug, Serialize, Deserialize)]&lt;/span&gt;
+&lt;span class="k"&gt;pub&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;struct&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;Config&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;// at least one 256-bit key, each written as hex&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;#[deser(as = Check&amp;lt;NonEmpty, Vec&amp;lt;Hex&amp;gt;&amp;gt;)]&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;secret_keys&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;Vec&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;u8&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;32&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;// `IpNet` knows nothing about deser, but has `FromStr` and `Display`&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;#[deser(as = Option&amp;lt;Vec&amp;lt;DisplayFromStr&amp;gt;&amp;gt;)]&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;allowed_networks&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;Option&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;Vec&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;IpNet&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;listeners&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;Vec&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Listener&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="cp"&gt;#[derive(Debug, Serialize, Deserialize)]&lt;/span&gt;
+&lt;span class="cp"&gt;#[deser(tag = &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;, rename_all = &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;snake_case&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;)]&lt;/span&gt;
+&lt;span class="k"&gt;pub&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;enum&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;Listener&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;Unix&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;PathBuf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;Tcp&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;IpAddr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="cp"&gt;#[deser(as = Check&amp;lt;Range&amp;lt;1, 65535&amp;gt;&amp;gt;)]&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;u16&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;// types this version does not know are kept and written back&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;#[deser(other)]&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;Other&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="cp"&gt;#[deser(tag)]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;String&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Recording&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Adapters are types, so &lt;code&gt;Hex&lt;/code&gt; can go inside a &lt;code&gt;Vec&lt;/code&gt;, and &lt;code&gt;DisplayFromStr&lt;/code&gt; inside
+a &lt;code&gt;Vec&lt;/code&gt; inside an &lt;code&gt;Option&lt;/code&gt;.  Validators are adapters too, so
+&lt;code&gt;Check&amp;lt;NonEmpty, Vec&amp;lt;Hex&amp;gt;&amp;gt;&lt;/code&gt; decodes the keys and then checks that there is at
+least one.  The catch-all variant keeps the tag and a recording of everything
+else in case someone wants to process it later.&lt;/p&gt;
+&lt;p&gt;Errors are something I care a lot about, so here is what happens when a value
+is wrong:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;secret_keys&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;allowed_networks&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;10.0.0.0/8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;fd00::/8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="k"&gt;[[listeners]]&lt;/span&gt;
+&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;unix&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/run/app.sock&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;[[listeners]]&lt;/span&gt;
+&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;tcp&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;[[listeners]]&lt;/span&gt;
+&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;quic&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;::1&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;alpn&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;h3&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;Config&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;deser_toml&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Deserializer&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;from_str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;input&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;deserialize_with&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;push_layer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PathLayer&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="p"&gt;()))&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Note that here the tag of the internally tagged enum comes last which means that
+the values have to be buffered until the tag is known.  In Serde this is tricky
+and we would lose the location if we used some tricks to add it.  With Deser
+however, with the path layer enabled Deser you where in the structure the
+problem is:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Unexpected: invalid value: must be between 1 and 65535 at line 10 column 8 (path: listeners[1].port)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Deser Meta Data&lt;/h2&gt;
+&lt;p&gt;Deser really wants to be extensible, and XML is a more extreme example of the
+differences between Deser and Serde.  Here is an Atom entry that mixes in Dublin
+Core for the authors:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;use&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;chrono&lt;/span&gt;&lt;span class="p"&gt;::{&lt;/span&gt;&lt;span class="n"&gt;DateTime&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Utc&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="k"&gt;use&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;deser&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Deserialize&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;use&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;deser_value&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Value&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;use&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;deser_xml&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;DeserializerConfig&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;deser_xml&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;namespace&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;atom&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.w3.org/2005/Atom&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;dc&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://purl.org/dc/elements/1.1/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="cp"&gt;#[derive(Debug, Deserialize)]&lt;/span&gt;
+&lt;span class="k"&gt;struct&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;Entry&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;#[deser(rename = atom!(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;title&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;))]&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;String&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;#[deser(rename = dc!(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;creator&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;))]&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;creators&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;Vec&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;String&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;#[deser(rename = atom!(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;updated&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;))]&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;updated&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;DateTime&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Utc&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="c1"&gt;// entries we understand, and everything else is kept as it is&lt;/span&gt;
+&lt;span class="cp"&gt;#[derive(Debug, Deserialize)]&lt;/span&gt;
+&lt;span class="cp"&gt;#[deser(untagged)]&lt;/span&gt;
+&lt;span class="k"&gt;enum&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;Item&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;Entry&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Entry&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;Other&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Value&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="kd"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;Item&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;DeserializerConfig&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;resolve_namespaces&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r#&amp;quot;&lt;/span&gt;
+&lt;span class="s"&gt;        &amp;lt;entry xmlns=&amp;quot;http://www.w3.org/2005/Atom&amp;quot;&lt;/span&gt;
+&lt;span class="s"&gt;               xmlns:d=&amp;quot;http://purl.org/dc/elements/1.1/&amp;quot;&amp;gt;&lt;/span&gt;
+&lt;span class="s"&gt;          &amp;lt;title&amp;gt;Deser&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class="s"&gt;          &amp;lt;d:creator&amp;gt;John&amp;lt;/d:creator&amp;gt;&lt;/span&gt;
+&lt;span class="s"&gt;          &amp;lt;updated&amp;gt;2026-09-29T21:00:00Z&amp;lt;/updated&amp;gt;&lt;/span&gt;
+&lt;span class="s"&gt;          &amp;lt;d:creator&amp;gt;Jane&amp;lt;/d:creator&amp;gt;&lt;/span&gt;
+&lt;span class="s"&gt;        &amp;lt;/entry&amp;gt;&lt;/span&gt;
+&lt;span class="s"&gt;    &amp;quot;#&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;XML uses namespaces which means that names need to be matched by their namespace,
+not by the prefix the document happens to use.  Here the document says &lt;code&gt;d:&lt;/code&gt; and
+the type says &lt;code&gt;dc!&lt;/code&gt;.  &lt;code&gt;atom!(&amp;quot;title&amp;quot;)&lt;/code&gt; is just the string
+&lt;code&gt;{http://www.w3.org/2005/Atom}title&lt;/code&gt;, which works because attributes are
+expressions.  The two creators are collected into one &lt;code&gt;Vec&lt;/code&gt; even though there is
+another element between them, and the text of &lt;code&gt;updated&lt;/code&gt; goes straight into a
+&lt;code&gt;chrono&lt;/code&gt; datetime.  Because the enum is untagged, the entry has to be buffered
+before a variant is picked, and deser&amp;#8217;s buffer keeps both creators.  So the
+result is an &lt;code&gt;Entry&lt;/code&gt; with John and Jane.&lt;/p&gt;
+&lt;p&gt;quick-xml, the most popular XML crate for Serde, drops the prefixes and ignores
+namespaces entirely, so a &lt;code&gt;&amp;lt;x:title&amp;gt;&lt;/code&gt; from some other namespace is happily
+accepted as the title of the entry.  The split list part though is considerably
+worse.  A plain &lt;code&gt;Entry&lt;/code&gt; fails with a duplicate field error for &lt;code&gt;creator&lt;/code&gt;, unless
+you turn on the &lt;code&gt;overlapped-lists&lt;/code&gt; feature (which, remember, is a global
+additive flag that any crate could set).  That feature makes quick-xml read
+ahead to the end of the element and buffer everything in between, without a
+limit unless you set one.&lt;/p&gt;
+&lt;p&gt;But the feature only helps when quick-xml is hooked up to the struct directly
+and no buffering is taking place.  Wrap the struct in the untagged enum and
+Serde buffers the entry itself.  Read from that buffer, &lt;code&gt;Entry&lt;/code&gt; sees &lt;code&gt;creator&lt;/code&gt;
+twice and fails again.  The fallback is a map, which keeps only the last
+&lt;code&gt;creator&lt;/code&gt;, and there is no error.  With or without the feature you get this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Other&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;creator&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$text&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Jane&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;title&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$text&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Deser&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;..&lt;/span&gt;&lt;span class="p"&gt;.})&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Notice how John is gone.&lt;/p&gt;
+&lt;p&gt;Format specific extension types such as TOML datetimes are another case.  TOML
+has them natively, Serde&amp;#8217;s data model does not, so the &lt;code&gt;toml&lt;/code&gt; crate passes them
+on as a map with a magic key.  In Deser a datetime is an extension value, which
+formats that know it keep and all others write as a string:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;Value&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;deser_toml&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;from_str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;released = 2026-09-29T21:00:00+02:00&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;deser_json&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;to_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="c1"&gt;// {&amp;quot;released&amp;quot;:&amp;quot;2026-09-29T21:00:00+02:00&amp;quot;}&lt;/span&gt;
+&lt;span class="n"&gt;deser_toml&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;to_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="c1"&gt;// released = 2026-09-29T21:00:00+02:00&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The same with &lt;code&gt;serde_json::Value&lt;/code&gt; gives you
+&lt;code&gt;{&amp;quot;released&amp;quot;:{&amp;quot;$__toml_private_datetime&amp;quot;:&amp;quot;2026-09-29T21:00:00+02:00&amp;quot;}}&lt;/code&gt;, and
+reading the value into a &lt;code&gt;chrono::DateTime&lt;/code&gt; fails outright with &lt;code&gt;invalid type: map, expected an RFC 3339 formatted date and time string&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;The Cost&lt;/h2&gt;
+&lt;p&gt;So now that you know Deser is at least in theory cool, at what cost?&lt;/p&gt;
+&lt;p&gt;It is not free.  The design relies on dynamic dispatch and on sinks and emitters
+that live on the heap, and that has considerable runtime overhead.  In my own
+measurements for JSON, Deser reads somewhere between 33% faster and 60% slower
+than &lt;code&gt;serde_json depending&lt;/code&gt; on the data.  On average it&amp;#8217;s about 10% slower for
+reading.  Writes are between three times as fast and 70% slower and a wash on
+average.  For YAML and TOML it&amp;#8217;s noticeably faster than the Serde based crates,
+but that is more about the format implementations than the architecture.&lt;/p&gt;
+&lt;p&gt;Compile times slightly are better, but not dramatically so.  Because it doesn&amp;#8217;t
+monomorphize everything, release builds of derived code are about 2.3 times as
+fast as with Serde and that get a tiny bit better in practice for your own code
+as less recompilation is necessary.&lt;/p&gt;
+&lt;p&gt;To make Deser&amp;#8217;s design work at all, it also uses &lt;code&gt;unsafe&lt;/code&gt; internally.  Most of
+this is to keep the chain of borrowed sinks on the heap.  I feel like this is
+fine in the days of Miri and agents, but I know it makes some folks uneasy.&lt;/p&gt;
+&lt;p&gt;And well, the biggest cost is that it&amp;#8217;s just not Serde.&lt;/p&gt;
+&lt;h2&gt;How Much Is There?&lt;/h2&gt;
+&lt;p&gt;Quite a lot actually which might be surprising.  In addition to the core
+there is support for &lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-derive"&gt;derive&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It supports all flavorts of JSON you can think of:
+&lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-json"&gt;JSON&lt;/a&gt;,
+&lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-jsonc"&gt;JSONC&lt;/a&gt;,
+&lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-json5"&gt;JSON5&lt;/a&gt; and
+&lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-hj"&gt;HJSON&lt;/a&gt;.  (Fun fact here:
+they are all generated out of &lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-template-json"&gt;one shared parser template&lt;/a&gt;)
+For binary handling it supports
+&lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-cbor"&gt;CBOR&lt;/a&gt; and
+&lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-msgpack"&gt;MessagePack&lt;/a&gt;.
+Additionally it does
+&lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-yaml"&gt;YAML&lt;/a&gt; 1.1 and 1.2,
+&lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-toml"&gt;TOML&lt;/a&gt;,
+&lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-xml"&gt;XML&lt;/a&gt; and all three
+flavors of Apple&amp;#8217;s &lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-plist"&gt;plist&lt;/a&gt;
+as well as &lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-csv"&gt;CSV/TSV&lt;/a&gt;,
+&lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-urlencoded"&gt;urlencoded data&lt;/a&gt; and
+&lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-env"&gt;environment variables&lt;/a&gt;.
+For more crazy contraptions you can
+&lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-path"&gt;attach path info&lt;/a&gt; or
+&lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-location"&gt;capture location data&lt;/a&gt;
+as well as support for
+&lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-debug"&gt;debug printing&lt;/a&gt;.
+You can perform &lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-validate"&gt;validation&lt;/a&gt;
+as you parse, opt into different
+&lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-encoding"&gt;binary encodings&lt;/a&gt;
+in addition to base64, you can
+&lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-serde"&gt;bridge to serde&lt;/a&gt; or
+capture
+&lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-value"&gt;dynamic values&lt;/a&gt;,
+&lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-transcode"&gt;transcode&lt;/a&gt;
+between formats or hook it up with
+&lt;a href="https://github.com/mitsuhiko/deser/tree/main/deser-tokio"&gt;tokio&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For documentation see &lt;a href="https://docs.rs/deser/latest/deser/"&gt;docs.rs/deser&lt;/a&gt;
+and the code itself is &lt;a href="https://github.com/mitsuhiko/deser"&gt;on GitHub&lt;/a&gt; alongside
+&lt;a href="https://github.com/mitsuhiko/deser/tree/main/examples"&gt;many examples&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">5b622b92adbebd73b684813cfc37335424f08549e20a3c4b75c1f8d9482c50a1</guid>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: Pandas dropna with thresh: Drop only rows with too many NaN values - Planet Python</title>
+      <link>https://lernerpython.com/2026/09/27/pandas-dropna-with-thresh-drop-only-rows-with-too-many-nan-values/</link>
+      <description>&lt;img alt="Pandas dropna with thresh: Drop only rows with too many NaN values" class="wp-image-17827" height="1377" src="https://lernerpython.com/wp-content/uploads/2026/09/2026-09-27.png" width="1593" /&gt;
+&lt;p class="wp-block-paragraph"&gt;You can remove NaN from a Python Pandas data frame with dropna, but be careful: It removes rows with even one NaN, which can be overkill.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Pass &amp;#8220;thresh&amp;#8221; to allow some rows to remain, even if they contain NaN:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;df.dropna(thresh=2)  # keeps rows with 2 or more non-NaN values&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/09/27/pandas-dropna-with-thresh-drop-only-rows-with-too-many-nan-values/"&gt;Pandas dropna with thresh: Drop only rows with too many NaN values&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">75a2a68b5ad5dbae51997c10134bed46db0690311b0917de41b37bcc567b9cfe</guid>
+      <pubDate>Sun, 27 Sep 2026 06:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Speed Matters: fastlogging-rs - Planet Python</title>
       <link>https://brmmm3.github.io/posts/2026/09/16/fastlogging-rs/</link>
