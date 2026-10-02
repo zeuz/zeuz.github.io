@@ -5,7 +5,55 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Thu, 01 Oct 2026 14:01:21 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 14:00:37 +0000</lastBuildDate>
+    <item>
+      <title>Talk Python to Me: #565: Tachyon, Python 3.15's Built-in Sampling Profiler - Planet Python</title>
+      <link>https://talkpython.fm/episodes/show/565/tachyon-python-3.15s-built-in-sampling-profiler</link>
+      <description>Do you know what's actually slow in your Python app? Or are you guessing? Until now, profiling Python meant a tracing profiler that made your code 2 to 3 times slower. Or a third-party tool that broke with every new release. Python 3.15 fixes that. It ships Tachyon, a sampling profiler built into the standard library. It attaches to live production apps with almost zero overhead. My guests are Pablo Galindo Salgado, CPython core developer and Steering Council member, and László Kiss Kollár from Bloomberg's Python infrastructure team. Their first prototype ran at two samples a second. Now it does over a million hz. And it lands in Python 3.15 this October.&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Episode sponsors&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;a href='https://talkpython.fm/sentry'&amp;gt;Sentry Error Monitoring, Code talkpython26&amp;lt;/a&amp;gt;&amp;lt;br&amp;gt;
+&amp;lt;a href='https://talkpython.fm/devopsbook'&amp;gt;Python in Production&amp;lt;/a&amp;gt;&amp;lt;br&amp;gt;
+&amp;lt;a href='https://talkpython.fm/training'&amp;gt;Talk Python Courses&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;h2 class="links-heading mb-4"&amp;gt;Links from the show&amp;lt;/h2&amp;gt;
+&amp;lt;div&amp;gt;&amp;lt;strong&amp;gt;Guests&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;László Kiss Kollár&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.linkedin.com/in/lkollar/?featured_on=talkpython" target="_blank" &amp;gt;linkedin.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Pablo Galindo Salgado&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;3.11&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/episodes/show/388/python-3.11-is-here-and-its-fast" target="_blank" &amp;gt;talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Memray&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/episodes/show/425/memray-the-endgame-python-memory-profiler" target="_blank" &amp;gt;talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;PyStack&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/episodes/show/419/debugging-python-in-production-with-pystack" target="_blank" &amp;gt;talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;profile and cProfile&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://docs.python.org/3/library/profile.html?featured_on=talkpython" target="_blank" &amp;gt;docs.python.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;py-spy&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://github.com/benfred/py-spy?featured_on=talkpython" target="_blank" &amp;gt;github.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Austin&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://github.com/P403n1x87/austin?featured_on=talkpython" target="_blank" &amp;gt;github.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;PEP 799&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://peps.python.org/pep-0799/?featured_on=talkpython" target="_blank" &amp;gt;peps.python.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;PEP 768&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://peps.python.org/pep-0768/?featured_on=talkpython" target="_blank" &amp;gt;peps.python.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;PyCon US 2026 talk&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://us.pycon.org/2026/schedule/presentation/31?featured_on=talkpython" target="_blank" &amp;gt;us.pycon.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;The docs&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://docs.python.org/3.15/library/profiling.sampling.html?featured_on=talkpython" target="_blank" &amp;gt;docs.python.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Backport to 3.14&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://github.com/pythonbackport/python-profiling?featured_on=talkpython" target="_blank" &amp;gt;github.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Watch this episode on YouTube&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.youtube.com/watch?v=yZdfOf8kQo4" target="_blank" &amp;gt;youtube.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Episode #565 deep-dive&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/episodes/show/565/tachyon-python-3.15s-built-in-sampling-profiler#takeaways-anchor" target="_blank" &amp;gt;talkpython.fm/565&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Episode transcripts&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/episodes/transcript/565/tachyon-python-3.15s-built-in-sampling-profiler" target="_blank" &amp;gt;talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Theme Song: Developer Rap&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;🥁 Served in a Flask 🎸&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/flasksong" target="_blank" &amp;gt;talkpython.fm/flasksong&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;---==  Don't be a stranger  ==---&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;YouTube&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/youtube" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-youtube"&amp;gt;&amp;lt;/i&amp;gt; youtube.com/@talkpython&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Bluesky&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://bsky.app/profile/talkpython.fm" target="_blank" &amp;gt;@talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Mastodon&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://fosstodon.org/web/@talkpython" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-mastodon"&amp;gt;&amp;lt;/i&amp;gt; @talkpython@fosstodon.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;X.com&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://x.com/talkpython" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-twitter"&amp;gt;&amp;lt;/i&amp;gt; @talkpython&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Michael on Bluesky&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://bsky.app/profile/mkennedy.codes?featured_on=talkpython" target="_blank" &amp;gt;@mkennedy.codes&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Michael on Mastodon&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://fosstodon.org/web/@mkennedy" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-mastodon"&amp;gt;&amp;lt;/i&amp;gt; @mkennedy@fosstodon.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Michael on X.com&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://x.com/mkennedy?featured_on=talkpython" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-twitter"&amp;gt;&amp;lt;/i&amp;gt; @mkennedy&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;/div&amp;gt;</description>
+      <guid isPermaLink="false">c1b4adf99500dcd80827099ea4e23529a33f769974ab5a1b97f4cd1e1a3ee1c8</guid>
+      <pubDate>Fri, 02 Oct 2026 00:09:20 +0000</pubDate>
+    </item>
     <item>
       <title>Python Insider: Python 3.10.22, 3.11.17, 3.12.15, 3.13.16 and 3.14.8 are now available! - Planet Python</title>
       <link>https://blog.python.org/2026/10/python-31022-31117/</link>
@@ -53,6 +101,123 @@ docker run --rm --init -it -p 127.0.0.1:8888:8888 -e JUPYTER_TOKEN=tachyon \
 &lt;p&gt;Whether Tachyon ends up having anything to do with wrapture, I know a good deal more about it than I did, and I have something to show for the time that other people can use. If you do the workshops and find a step that is unclear, or one that does not work for you, the &lt;a href="https://github.com/GrahamDumpleton/tachyon-workshops/issues"&gt;issue tracker&lt;/a&gt; is the place to say so. Fingers crossed they are as useful a way into Tachyon for you as writing them was for me.&lt;/p&gt;</description>
       <guid isPermaLink="false">0a44a4551d312267f8768e8fa4e169c43d12da8d7b517ed947e7ddb467425ab1</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>"Michiel's Blog": Monitoring my Samsung smart washing machine without a cloud - Planet Python</title>
+      <link>https://tildeweb.nl/~michiel/samsung-monitoring-my-washer-without-a-cloud.html</link>
+      <description>&lt;p&gt;Two weeks ago I gave a talk at
+&lt;a href="https://pythonleiden.nl/meeting-2026-09-17.html"&gt;Python Leiden&lt;/a&gt; on how I
+monitor my Samsung Smart washer without using Samsung SmartThings.&lt;/p&gt;
+&lt;p&gt;As Samsung announced
+&lt;a href="https://hackaday.com/2026/07/28/samsungs-smartthings-api-terminates-free-access/"&gt;using their SmartThings API will start costing USD 5 per month starting October&lt;/a&gt;,
+and today is the last day of September, I thought it would be appropriate to
+write a blog post based on my talk now.&lt;/p&gt;
+&lt;h2&gt;I have a Samsung washing machine&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="My washing machine" class="small" src="https://tildeweb.nl/~michiel/tags/python/images/samsung-washer.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;I bought it in May 2021 for 450 euros. It plays &lt;em&gt;Die Forelle&lt;/em&gt; whenever the wash
+is finished. But it&amp;rsquo;s in my garage, so I can&amp;rsquo;t hear it when I&amp;rsquo;m in my living
+room or home office. Also, it is &amp;ldquo;smart&amp;rdquo;. It calculates how long the cycle is
+going to take, depending on the load and I think also depending on how dirty
+the water is. This means that if you start a cycle, it tells you that it&amp;rsquo;s done
+in 90 minutes, and if you&amp;rsquo;d come back 90 minutes later it might still need 30
+minutes, or it might be that it&amp;rsquo;s already done for 15.&lt;/p&gt;
+&lt;p&gt;It can send you notifications via the SmartThings app. This app requires a
+whole bunch of permissions, and takes up a whopping 857MB on my iPhone. It gets
+the data from the SmartThings cloud. So my washer talks to SmartThings, tells
+when it thinks the wash is done, and my phone talks to the same cloud if I open
+the app to see how the laundry is going and to send me notifications when it&amp;rsquo;s
+done. I don&amp;rsquo;t really like this much.&lt;/p&gt;
+&lt;p&gt;Samsung has just sent an update to some of their smart fridges
+&lt;a href="https://shattered.io/samsung-bespoke-ai-fridge-smartthings-update-bricked-2026/"&gt;bricking them for a couple of days&lt;/a&gt;.
+I don&amp;rsquo;t like that much either.&lt;/p&gt;
+&lt;h2&gt;But you could use Home Assistant!&lt;/h2&gt;
+&lt;p&gt;Yeah I know, &lt;a href="https://www.home-assistant.io/"&gt;Home Assistant&lt;/a&gt;. Every tinkerer&amp;rsquo;s
+favorite platform for home automation. Which you can install on a Raspberry Pi
+or on their own bespoke hardware. Indeed, it has a
+&lt;a href="https://www.home-assistant.io/integrations/smartthings/"&gt;SmartThings integration&lt;/a&gt;.
+Unfortunately, this still works via Samsung&amp;rsquo;s cloud. So my washer still needs
+to talk to SmartThings, and my Home Assistant server would need to get its data
+from the Samsung Cloud. Moreover, Samsung decided to start asking money for the
+cloud access: 5 USD per month. As you see, it&amp;rsquo;s quite a popular integration
+too, with over 10% of Home Assistant users having this installed.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="SmartThings warning Home Assistant" src="https://tildeweb.nl/~michiel/tags/python/images/home-assistant.png" /&gt;&lt;/p&gt;
+&lt;p&gt;So if we calculate quickly, if I&amp;rsquo;d have paid 5 USD a month since I had this
+washer, it would have cost me €450 for the washer plus $320 for cloud access!
+That seems a little out of balance.&lt;/p&gt;
+&lt;h2&gt;So what is my goal, anyway?&lt;/h2&gt;
+&lt;p&gt;I would like to see when the wash is &lt;em&gt;going to be ready&lt;/em&gt;. I&amp;rsquo;d want to have a
+small display that I can place in my living room that can show what is on the
+display of the washing machine, how many minutes are left. This way I can
+quickly estimate if I run an errand &lt;em&gt;now&lt;/em&gt; or I&amp;rsquo;d wait until the wash is ready,
+first. I&amp;rsquo;d not want to use their app for this, nor their cloud.&lt;/p&gt;
+&lt;h2&gt;My approach&lt;/h2&gt;
+&lt;p&gt;I checked if there is any possibility for local access. I remembered when I
+read about the announcement of the Matter protocol, which would allow
+interoperability, and Samsung being one of the backers of this protocol, and me
+being happy about the fact that I bought a Samsung washer. Silly me.&lt;/p&gt;
+&lt;p&gt;It turns out Samsung indeed
+&lt;a href="https://news.samsung.com/global/samsung-electronics-launches-matter-functionality-ushering-a-new-era-of-interoperability"&gt;delivered Matter support&lt;/a&gt;.
+What they made is a feature where if you&amp;rsquo;d have a Matter lightbulb (or washer),
+you can control that from their SmartThings platform. But it &lt;em&gt;does not work the
+other way around!&lt;/em&gt; My smart washer does not expose itself as a Matter device on
+the network. It does not expose &lt;em&gt;any&lt;/em&gt; services on the network. Trust me, I used
+Wireshark!&lt;/p&gt;
+&lt;p&gt;This as opposed to my Brother printer, for instance, which has an open website
+and even an endpoint that exposes data as a .csv, which will happily show off
+how low the toner is, how many prints it made in its lifetime or even how many
+paper jams it had (a not insignificant amount).&lt;/p&gt;
+&lt;p&gt;Samsung &lt;em&gt;could&lt;/em&gt; very easily have built something like that. But they don&amp;rsquo;t.
+Because they want me in their SmartThings ecosystem, sending my personal data,
+and possibly fetching my money, too.&lt;/p&gt;
+&lt;p&gt;So I decided to take an alternate approach: put a camera in front of the
+machine, take a picture, read it with computer vision, parse it and make it
+available over an HTTP endpoint on my local network. This turned out not to be
+so easy. Originally I was planning to use a Raspberry Pi that I still had lying
+around (who doesn&amp;rsquo;t have one?) with an old Logitech 720P webcam. But the webcam
+has a fixed focus distance, and a rather low resolution. It did not turn out
+well.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Low res" class="small" src="https://tildeweb.nl/~michiel/tags/python/images/washer-lowres.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Then I decided to shell out for the
+&lt;a href="https://www.raspberrypi.com/products/camera-module-3/"&gt;Raspberry Pi Camera Module 3&lt;/a&gt;
+which is the version that has autofocus. It is around 35 euros. And while it
+works well, only after I installed it I realized I could probably just as well
+have used an old Android phone with shattered screen. Because those also have
+decent cameras plus autofocus.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Higher res" class="small" src="https://tildeweb.nl/~michiel/tags/python/images/washer-higherres.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;And then I breadboarded together a Raspberry Pi Pico plus a 1602 LCD plus a
+buzzer, a few LEDs, and a push button. The Pico is a small programmable
+microcontroller that is great for things like this. It is low cost, runs
+MicroPython if you want, so what&amp;rsquo;s not to like? This display connects to wifi,
+gets the state of the washer and shows it on the screen. If there is no wash,
+it just acts as a clock. Pretty practical and I like it.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Pico with display" class="small" src="https://tildeweb.nl/~michiel/tags/python/images/pico.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;I needed the buzzer just so it could play &lt;em&gt;Die Forelle&lt;/em&gt; when the laundry is
+ready ;-)&lt;/p&gt;
+&lt;h2&gt;My thoughts&lt;/h2&gt;
+&lt;p&gt;It would have been so much better if Samsung would have exposed this data on my
+wifi network!&lt;/p&gt;
+&lt;p&gt;Please note that this integration only allows me to read out the state of the
+washer, I can&amp;rsquo;t remote pause or add bubbles or whatever other features that are
+available via their app and that I would not ever use.&lt;/p&gt;
+&lt;p&gt;One of my coworkers explained he has a similar washing machine and he hooked it
+up to Home Assistant by simply connecting it to a smart plug that exposes the
+current draw. When there is no more current draw, he knows the washer is ready.
+This works, but my problem is that it does not help me with the question when
+the wash is &lt;em&gt;going to be&lt;/em&gt; ready.&lt;/p&gt;
+&lt;p&gt;Because I now have the data, I could make a nice graph that shows the washing
+machine during its cycle adjusting the &lt;em&gt;ETA&lt;/em&gt; a couple of times. Here&amp;rsquo;s an
+example of where it ended earlier than originally planned. But it can also end
+much later!&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Washer countdown graph" src="https://tildeweb.nl/~michiel/tags/python/images/washer-countdown.png" /&gt;&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;d still like to print a 3D case for the display. And I thought that it might
+be nice if I&amp;rsquo;d actually expose a Matter service on my Pi, so one could
+integrate it in Home Assistant after all. However, I currently do not run Home
+Assistant myself and also as far as I could see there is no great Python
+library that I could use for this.&lt;/p&gt;
+&lt;p&gt;All in all, it was a fun project!&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href="https://news.ycombinator.com/item?id=49927140"&gt;Discussion on Hacker News&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">a36e0852bf6ae22c49f067399c3af7c42d3d6b96aa1857d6db3e517a90ea4934</guid>
+      <pubDate>Wed, 30 Sep 2026 20:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Python Insider: PEP 827: Type Manipulation (Python Language Summit 2026) - Planet Python</title>

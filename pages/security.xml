@@ -5,7 +5,70 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Thu, 01 Oct 2026 14:01:21 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 14:00:37 +0000</lastBuildDate>
+    <item>
+      <title>OpenAI Parts Ways With Three Safety Researchers Over Sensitive Information Mishandling - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/openai-parts-ways-with-three-safety.html</link>
+      <description>OpenAI has parted ways with three members of its safety team after they leaked private information in violation of company policies, The Wall Street Journal reported.
+"We have parted ways with three individuals for violating our policies on accessing and handling sensitive company information," a spokesperson for the company was quoted as saying. "Our investigation confirmed that these</description>
+      <guid isPermaLink="false">64343c18d03e79c246e7ae5e76343cce62c0abc78421ce9099689b11f8eebd20</guid>
+      <pubDate>Fri, 02 Oct 2026 12:23:15 +0000</pubDate>
+    </item>
+    <item>
+      <title>Android 17 Advanced Protection Locks Accessibility Services to Verified Accessibility Tools - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/android-17-advanced-protection-locks.html</link>
+      <description>Google has announced a new security measure that limits access to Android's accessibility services to verified applications classified as Accessibility Tools when Advanced Protection is enabled.
+With malicious Android applications abusing the API serving as the main conduit for malware and financial fraud, the tech giant said the move would block a major attack pathway. Advanced Protection is a</description>
+      <guid isPermaLink="false">a61a68c84b8462433b2fefd8aee3d68f3586f7924b7a0e2e54e21ce743fbf85c</guid>
+      <pubDate>Fri, 02 Oct 2026 08:01:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>Critical FortiMail Zero-Day Flaw Exploited in Attacks Allows Unauthenticated Arbitrary File Writes - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/critical-fortimail-zero-day-flaw.html</link>
+      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA), on Thursday, added a critical security flaw impacting Fortinet FortiMail to its Known Exploited Vulnerabilities (KEV) catalog, following reports of active exploitation.
+The vulnerability, tracked as CVE-2026-104286 (CVSS score: 9.8), allows unauthenticated attackers to write arbitrary files on the underlying system.
+"An improper</description>
+      <guid isPermaLink="false">e8802ea719f9e1ceb0e0f54ffa7a814ea667afdab1f2c01a29749b90ac22f0de</guid>
+      <pubDate>Fri, 02 Oct 2026 05:49:50 +0000</pubDate>
+    </item>
+    <item>
+      <title>Silent Hill (PS1, US v1.1) decompilation fork: 100% of code matched, nearly all data moved into C - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wvjb6z/silent_hill_ps1_us_v11_decompilation_fork_100_of/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/theswifter01"&gt; /u/theswifter01 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/astelmach20/silent-hill-decomp"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wvjb6z/silent_hill_ps1_us_v11_decompilation_fork_100_of/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">403ee42c056309a362d8438510dcf68a7bf606cc7c70805ce35da5f142fe9654</guid>
+      <pubDate>Fri, 02 Oct 2026 03:20:46 +0000</pubDate>
+    </item>
+    <item>
+      <title>I built an MCP server that lets AI agents debug and inspect running Windows programs (memory scan, breakpoints, disassembly) – Cortex 1.0, open source - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wv8e4o/i_built_an_mcp_server_that_lets_ai_agents_debug/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/RevolutionaryTone757"&gt; /u/RevolutionaryTone757 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/PdB333/cortex/releases/tag/v1.0.0"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wv8e4o/i_built_an_mcp_server_that_lets_ai_agents_debug/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">00048ec60279071c10feb1f8e078ae250879cdb74e7df764d3551f6307f173f1</guid>
+      <pubDate>Thu, 01 Oct 2026 19:11:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>Police Arrest 16-Year-Old Suspected of Running KillSec, Seize Ransomware Leak Site and Servers - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/police-arrest-16-year-old-suspected-of.html</link>
+      <description>Police in Spain have arrested a 16-year-old whom investigators suspect of running the KillSec ransomware group. KillSec is accused of stealing data from organizations and threatening to publish it on its leak site unless they paid.
+The 16-year-old was one of 3 people arrested on September 30, when police also took control of that site.
+Investigators identified him as KillSec's suspected</description>
+      <guid isPermaLink="false">a579ab03fb8ae6ccda27dd511495d8aefd9cdbebe2ded14180c5d3398fab56a3</guid>
+      <pubDate>Thu, 01 Oct 2026 16:55:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>WordPress Backdoor Rebuilds Itself After Cleanup Using Files, Database, and Shared Memory - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/wordpress-backdoor-rebuilds-itself.html</link>
+      <description>Cybersecurity researchers have shed light on a WordPress compromise in which threat actors deployed multiple persistence mechanisms to ensure that the final payload kept returning without having to infect the site again.
+The backdoor has been codenamed SC after the "SC_" markers present in the injected content. Sucuri has described the malware as a "self-healing mesh" that's</description>
+      <guid isPermaLink="false">d352def2814b09a1c5268f56df17135ef41c9931748b9e5d40f05d06464d8b25</guid>
+      <pubDate>Thu, 01 Oct 2026 14:37:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>Trace-assisted VMProtect devirtualization research - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wv0qcp/traceassisted_vmprotect_devirtualization_research/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/CiupiXs"&gt; /u/CiupiXs &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/Rasetsuu/vmp-devirt"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wv0qcp/traceassisted_vmprotect_devirtualization_research/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">1ee120e2150d8e70eb17043da9af8113502560eaaec13813aa4cfefef215dabc</guid>
+      <pubDate>Thu, 01 Oct 2026 14:21:30 +0000</pubDate>
+    </item>
     <item>
       <title>Reverse Engineering NovaLogic's Comanche [1992] Terrain Maps - Reverse Engineering</title>
       <link>https://www.reddit.com/r/ReverseEngineering/comments/1wuzm2k/reverse_engineering_novalogics_comanche_1992/</link>
@@ -1496,67 +1559,6 @@ The exploit targets&amp;nbsp;CVE-2021-31886, a stack-based buffer overflow in th
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/HexLasso"&gt; /u/HexLasso &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/HexLasso/FF-16"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w53n8x/static_pattern_discovery_tool_to_locate/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">451dc9ba18752aa26971a0b291e80a3c3fa440e3bdcb8e9c4f55f699a43e96fb</guid>
       <pubDate>Wed, 02 Sep 2026 07:42:34 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Exploit Critical Switchvox Flaw to Deploy Reverse Shells Without Credentials - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/attackers-exploit-critical-switchvox.html</link>
-      <description>Threat actors are exploiting a severe security vulnerability in Sangoma Switchvox, an enterprise VoIP platform, that could allow unauthenticated remote code execution.
-The vulnerability in question is CVE-2026-9586 (CVSS score: 9.3), a critical unauthenticated SQL injection vulnerability in Sangoma Switchvox SMB Edition 8.3 (104997) that can allow attackers to remotely execute arbitrary code as</description>
-      <guid isPermaLink="false">48c34cc93caa5988666772e03d1d472cfc31205984ff1e31e11b0a7cd5e3376c</guid>
-      <pubDate>Wed, 02 Sep 2026 07:08:50 +0000</pubDate>
-    </item>
-    <item>
-      <title>Authorities Turn Sality's P2P Network Against Itself, Cutting Off New Malware Payloads - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/authorities-turn-salitys-p2p-network.html</link>
-      <description>The U.S. Department of Justice (DoJ) on Tuesday announced the takedown of a long-standing peer-to-peer (P2P) botnet known as Sality as part of a coordinated law enforcement operation.
-The effort was undertaken on August 31, 2026, by authorities from the U.S., Bulgaria, Hungary, and Romania, in collaboration with private industry partners CrowdStrike and the Shadowserver Foundation. To that</description>
-      <guid isPermaLink="false">9fd0a9b5b8e4a8c813be144c81789f941a5314628f1b9b19b283df394a572c40</guid>
-      <pubDate>Wed, 02 Sep 2026 06:56:30 +0000</pubDate>
-    </item>
-    <item>
-      <title>chromium -- security fixes - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/19d0eaf5-a698-11f1-bf98-a8a1599412c6.html</link>
-      <description/>
-      <guid isPermaLink="false">7aa4b1a71d5d62369c17f3023b25d3ccf76679de83ea9d70553923106b500052</guid>
-      <pubDate>Wed, 02 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>py-strawberry-graphql -- Incorrect authorization - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/1ee62c05-a646-11f1-b187-901b0edee044.html</link>
-      <description/>
-      <guid isPermaLink="false">980a369a50816cebaf476c6210788128b88741824618c819757a3f7b64cfae11</guid>
-      <pubDate>Wed, 02 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>jenkins -- multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/102bc631-a6da-11f1-ba21-00e0edd85c6a.html</link>
-      <description/>
-      <guid isPermaLink="false">882b2a2863d58e81d1397c9fa0fe568bfbe36b86fab0466cb3e53211bf5558bc</guid>
-      <pubDate>Wed, 02 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Exploit Critical JFrog Artifactory Flaw to Mint Admin Tokens Days After Disclosure - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/attackers-exploit-critical-jfrog.html</link>
-      <description>Threat actors are exploiting a newly patched critical security flaw impacting JFrog Artifactory merely days after public disclosure, according to watchTowr.
-The vulnerability in question is CVE-2026-82329 (CVSS score: 9.8), a case of authentication bypass that could lead to administrative access in Artifactory.
-"JFrog Artifactory contains an authentication weakness that, under default</description>
-      <guid isPermaLink="false">805fe0c0c256db4892d8479ddf2975317e046547aab71f26f8cb22a638a759cb</guid>
-      <pubDate>Tue, 01 Sep 2026 17:53:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>Breeze Comet Executes Hundreds of Fraudulent Transactions via Brazilian Payment Systems - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/breeze-comet-executes-hundreds-of.html</link>
-      <description>Brazilian financial services, retail, and e-commerce organizations have become the target of a financially motivated threat actor dubbed Breeze Comet (formerly UNC5669) since 2024.
-Google Threat Intelligence Group (GTIG) and Mandiant teams described the threat actor as "specializing in manipulating payment systems and banking software in Brazil to conduct fraudulent transfers." The adversary</description>
-      <guid isPermaLink="false">b86534c3ec1e1543bed0b90d58982463c08b03d3d8975a7336f3a9d0704f6448</guid>
-      <pubDate>Tue, 01 Sep 2026 17:19:24 +0000</pubDate>
-    </item>
-    <item>
-      <title>Lumma Stealer – dllhost.exe Hollowing, C2 Domains &amp; Payload Extraction - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w4f0qx/lumma_stealer_dllhostexe_hollowing_c2_domains/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/StructBreaker"&gt; /u/StructBreaker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/kaandemir993/Lumma-Stealer-dllhost-Hollowing-C2-Domains-Payload-Extraction-Analysis"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w4f0qx/lumma_stealer_dllhostexe_hollowing_c2_domains/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">3c9efa64e7290faead773bf6af450fdcc36e537c243ad23b8d47bc72615aaf7a</guid>
-      <pubDate>Tue, 01 Sep 2026 15:19:38 +0000</pubDate>
     </item>
   </channel>
 </rss>
