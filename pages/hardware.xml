@@ -5,7 +5,56 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Hardware category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Fri, 02 Oct 2026 14:00:37 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 03 Oct 2026 14:00:34 +0000</lastBuildDate>
+    <item>
+      <title>Own The OSD Chip In Your Cheap Composite Monitor - Hack a Day</title>
+      <link>https://hackaday.com/2026/10/03/own-the-osd-chip-in-your-cheap-composite-monitor/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/10/osd-monitor-featured.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;[Ogrinz Labs] has built a Robbie the Robot suit, which is super-cool, but has a huge flaw. When inside the suit, he&amp;#8217;s too tall to do what the original Robbie actor did, which was to look through the &amp;#8220;mouth&amp;#8221; grille. He solved this with an inexpensive automotive reversing camera, but then realised its monitor had a built-in on-screen-display chip. After a lot of work, he&amp;#8217;s published &lt;a href="https://github.com/mogrinz/AMT630A" target="_blank"&gt;a GitHub repository&lt;/a&gt; that allows access to this thing for custom on-screen graphics.&lt;/p&gt;
+&lt;p&gt;The chip in question is an AMT630A, which contains video switching hardware, a graphics system for the on-screen-display, and an 8052 microcontroller core. He didn&amp;#8217;t manage to get into the 8052&amp;#8217;s brain, but the video below details the long path towards controlling it through an I2C port with an ESP32. The software is available as an Arduino library. His intention is to use it as a display for navigational sensor data to aid in maneuvering Robbie.&lt;/p&gt;
+&lt;p&gt;Given the status of Robbie as a sci-fi movie icon, it should come as no surprise that &lt;a href="https://hackaday.com/2026/06/09/print-your-own-robby-the-robot/"&gt;we&amp;#8217;ve featured this suit before&lt;/a&gt;,&lt;/p&gt;
+&lt;p&gt;&lt;span id="more-1169713"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">5a5aefa0b2447bff15f983bfe26d2202b65f66a8cb31401102bf6db34cbbf43a</guid>
+      <pubDate>Sat, 03 Oct 2026 11:00:21 +0000</pubDate>
+    </item>
+    <item>
+      <title>That’s No Moon… That’s an Exoplanet! - Hack a Day</title>
+      <link>https://hackaday.com/2026/10/03/thats-no-moon-thats-an-exoplanet/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="479" src="https://hackaday.com/wp-content/uploads/2026/10/orbit.png?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;It wasn&amp;#8217;t that long ago that a science teacher would have told students that there was no evidence of planets around other star systems. Even more recently, they might have said that while we&amp;#8217;ve seen evidence of extra-solar planets, we would never be able to see them directly. But that&amp;#8217;s all changed. [Jason Wang] has &lt;a href="https://jasonwang.space/orbits.html" target="_blank"&gt;several videos&lt;/a&gt; that use images taken over years to visualize the orbit of several large exoplanets.&lt;/p&gt;
+&lt;p&gt;Of course, some extrapolation is involved. According to [Jason]:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;We unfortunately do not have the luxury of watching these planets every night and record them. However, these planets move slowly, with orbital periods at least decades long, and predictably following Kepler&amp;#8217;s laws. We can use a technique called motion interpolation to reconstruct what the image should look like using images taken before and after the date we are interested in. Motion interpolation is a technique commonly found in video editing and in modern TVs.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;You have to be a patient photographer, apparently. One video has 30 images taken over 17 years, for example. Another has 10 images from the Keck Observatory taken over 12 years.&lt;/p&gt;
+&lt;p&gt;The work has fed scientific papers &lt;a href="https://arxiv.org/abs/2210.14213" target="_blank"&gt;like this one&lt;/a&gt; or &lt;a href="https://arxiv.org/abs/1607.05272" target="_blank"&gt;this one&lt;/a&gt;. While it might be more fun to see these star systems from the bridge of your favorite starship, this is probably as close as you are going to get.&lt;/p&gt;
+&lt;p&gt;We find both the prospect of &lt;a href="https://hackaday.com/2024/02/29/nasa-found-another-super-earth-with-tantalizing-possibilities/"&gt;exoplanets&lt;/a&gt; and the &lt;a href="https://hackaday.com/2023/10/02/the-path-to-profiling-extraterrestrial-atmospheres-with-astrophotonics/"&gt;technology used to find them&lt;/a&gt; exciting&lt;/p&gt;</description>
+      <guid isPermaLink="false">bfe8cb8c84f3a4f8b4da0c16cf8201cf85eab967a18e3a5c7e0856a9a228dca7</guid>
+      <pubDate>Sat, 03 Oct 2026 08:00:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>Is This The Smallest Internet Radio? - Hack a Day</title>
+      <link>https://hackaday.com/2026/10/02/is-this-the-smallest-internet-radio/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/10/tiny-internet-radio-featured.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;Internet radios have been a thing in some form for the last quarter century, and the advent of cheap networked microcontrollers has made them easier than ever to build. But just how small can one be made? [Milen] has made one that&amp;#8217;s about as small as we&amp;#8217;ve seen, and put it up on &lt;a href="https://www.instructables.com/The-Smallest-Internet-Radio" target="_blank"&gt;Instructables&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The hardware recipe is straightforward enough; take a microcontroller, connect it to the internet, and have your internet radio software squirt its output to a DAC. In this case the microcontroller is an ESP32-C£ on a very small dev board, and clipped to that is a custom PCB with a PCM5102A I2S DAC and an amplifier. The whole thing is tiny, small enough in fact that the two connectors are significant in size compared to it.&lt;/p&gt;
+&lt;p&gt;Whether or not it&amp;#8217;s a practical device for listening remains to be seen, but it&amp;#8217;s certainly tiny. But the question is, could it be made smaller? Perhaps eschewing the connectors would be an easy win, and in return for a loss in quality the ESP has a built-in DAC that&amp;#8217;s not intended for audio but can be used. If you have any bright ideas, we&amp;#8217;d be interested to hear them.&lt;/p&gt;
+&lt;p&gt;We&amp;#8217;ve seen plenty of internet radios over the years, and for some reason &lt;a href="https://hackaday.com/2024/02/25/internet-radio-built-in-charming-cassette-like-form-factor/"&gt;this cassette-shaped one&lt;/a&gt; appeals to us.&lt;/p&gt;</description>
+      <guid isPermaLink="false">61dfb951e48df294619e16039d715c99b5fd8198be9729fda87922c5260aa45c</guid>
+      <pubDate>Sat, 03 Oct 2026 05:00:39 +0000</pubDate>
+    </item>
+    <item>
+      <title>2026 Retrocomputing Challenge: A Homebrew Computer In Only Three ICs - Hack a Day</title>
+      <link>https://hackaday.com/2026/10/02/2026-retrocomputing-challenge-a-homebrew-computer-in-only-three-ics2026-retrocomputing-challenge-a-homebrew-computer-in-only-3-ics/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/10/68k-MBC-feat.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;Homebrew computers don&amp;#8217;t have to be retrocomputers, but [Just4Fun]&amp;#8217;s all-through-hole,&lt;a href="https://hackaday.io/project/177988-68k-mbc-a-3-ics-68008-homebrew-computer" target="_blank"&gt; 68008-based &amp;#8220;68k-MBC&amp;#8221; &lt;/a&gt;certainly qualifies, so it is a worthy entry in our ongoing contest. While there are both &amp;#8220;full&amp;#8221; and &amp;#8220;lite&amp;#8221; hardware configurations, the three-IC &amp;#8220;lite&amp;#8221; configuration is what first caught our eye. Yes, three: the 68008, an SRAM chip, and a PIC microcontroller that acts as the ROM.&lt;/p&gt;
+&lt;p&gt;Software is provided by the suitably-retro CP/M68K, or standalone executables, which run on both hardware configurations.&lt;/p&gt;
+&lt;figure class="wp-caption alignright" id="attachment_1169679" style="width: 250px;"&gt;&lt;a href="https://hackaday.com/wp-content/uploads/2026/10/68k-MBC-thumb-e1790957933445.jpg"&gt;&lt;img alt="" class="size-thumbnail wp-image-1169679" height="250" src="https://hackaday.com/wp-content/uploads/2026/10/68k-MBC-thumb-e1790957933445.jpg?w=250" width="250" /&gt;&lt;/a&gt;&lt;figcaption class="wp-caption-text" id="caption-attachment-1169679"&gt;There are four lights, but three chips in the &amp;#8220;lite&amp;#8221; version of the build.&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;The &amp;#8220;lite&amp;#8221; option restricts you to a maximum of 512 KB of RAM and a single serial port, but it looks like you still get I2C and the option to plug in an SD &amp;#8220;hard drive&amp;#8221; or RTC module however you configure the machine. Through the serial port, you can of course connect a terminal of you choice, or even use a thermal printer. The &amp;#8220;full&amp;#8221; version has two serial ports, if you want to do both. [Just4Fun] also has a parallel adapter lets you plug in printers with that interface as well. The demo video is below, but be warned that the text-to-speech narration won&amp;#8217;t be to everyone&amp;#8217;s liking.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://hackaday.com/2020/07/19/this-68k-board-is-about-as-simple-as-it-gets/"&gt;We&amp;#8217;ve featured&lt;/a&gt; other &lt;a href="https://hackaday.com/2017/02/27/an-old-68000-sbc-is-new-again/"&gt;single-board-computers&lt;/a&gt; using the 68k before, but this one is a worthy contender in our contest, not least for the impressively low chip count. &lt;a href="https://hackaday.io/contest/206399-retrocomputing-contest" target="_blank"&gt;This contest&lt;/a&gt; has gotten oodles of entries, but there&amp;#8217;s still time for yours: entries close October 27th.&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;div class="widget_text widget widget_custom_html amr_widget" id="sidebar-mobile-1"&gt;&lt;div class="textwidget custom-html-widget"&gt;&lt;div style="text-align: center; font-size: 24px; font-weight: 300; margin: 12px 0;"&gt; 
+&lt;a href="https://hackaday.io/contest/206399-retrocomputing-contest" rel="noopener" target="_blank"&gt;&lt;img alt="2026 Hackaday Retrocomputing Contest" src="https://hackaday.com/wp-content/uploads/2026/08/RetroComputing_728x90.jpg" style="width: auto; height: 99px;" /&gt;&lt;/a&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span id="more-1169670"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">9a1fca1e88efe659dd08f98f8a96d88cf12e117ea786e6fca7a601c1731dbaf5</guid>
+      <pubDate>Fri, 02 Oct 2026 20:00:59 +0000</pubDate>
+    </item>
     <item>
       <title>Teardown of an USB-C Cable with integrated LCD - Hack a Day</title>
       <link>https://hackaday.com/2026/10/02/teardown-of-an-usb-c-cable-with-integrated-lcd/</link>

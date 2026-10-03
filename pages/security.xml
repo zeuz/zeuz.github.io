@@ -5,7 +5,75 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Fri, 02 Oct 2026 14:00:37 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 03 Oct 2026 14:00:34 +0000</lastBuildDate>
+    <item>
+      <title>Pre-installed C2 loader on cheap Android projectors - deploys proxy/ad-fraud botnets, can run arbitrary code (Technical analysis) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wwmw15/preinstalled_c2_loader_on_cheap_android/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/DerErbsenzaehler"&gt; /u/DerErbsenzaehler &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/Kavan00/Android-Projector-C2-Malware"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wwmw15/preinstalled_c2_loader_on_cheap_android/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">b73406886a92daacebace771d88f607057066f2b939f192d7f34b9c02cbd98f3</guid>
+      <pubDate>Sat, 03 Oct 2026 13:09:58 +0000</pubDate>
+    </item>
+    <item>
+      <title>History of Windows symbols all the way to 1.0 from 1985 - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1ww59x0/history_of_windows_symbols_all_the_way_to_10_from/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/PoweredBySorse"&gt; /u/PoweredBySorse &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/WindowsTracking"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1ww59x0/history_of_windows_symbols_all_the_way_to_10_from/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">73a5c50b94b87311d4c9bac2d4506457d925097ab7d1adac2f379538aa95f6bf</guid>
+      <pubDate>Fri, 02 Oct 2026 21:08:19 +0000</pubDate>
+    </item>
+    <item>
+      <title>Super Trouper v0.4.0 — more Frida tools for iOS app reverse engineering - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1ww25ox/super_trouper_v040_more_frida_tools_for_ios_app/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/neathack"&gt; /u/neathack &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/crissyfield/super-trouper"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1ww25ox/super_trouper_v040_more_frida_tools_for_ios_app/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">2113e2dc9cc86f4b0255db7c3f0a7afb3b5f46457355b174ec24428454e6b311</guid>
+      <pubDate>Fri, 02 Oct 2026 19:01:43 +0000</pubDate>
+    </item>
+    <item>
+      <title>I built dex2jvm: a DEX → JVM bytecode converter designed for actual HotSpot execution - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1ww1hx8/i_built_dex2jvm_a_dex_jvm_bytecode_converter/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/kksimp"&gt; /u/kksimp &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/kksimp/dex2jvm"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1ww1hx8/i_built_dex2jvm_a_dex_jvm_bytecode_converter/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">de5657d25d31c34f272d4ffdb0397832c721465bcab38448a49d42085d5a38d1</guid>
+      <pubDate>Fri, 02 Oct 2026 18:36:09 +0000</pubDate>
+    </item>
+    <item>
+      <title>GitLab Patches Critical 9.9 AI Gateway Flaw Allowing Command Execution on Self-Hosted Servers - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/gitlab-patches-critical-self-hosted-ai.html</link>
+      <description>A critical flaw in GitLab's AI Gateway could let a logged-in user with Duo Agent Platform access run commands on the gateway under certain conditions, GitLab&amp;nbsp;said in an advisory.
+The gateway is the service that connects a GitLab instance to AI models, and only organizations that host their own gateway need to act. The flaw is fixed in gateway versions 19.2.4, 19.3.2, and 19.4.1.
+The flaw</description>
+      <guid isPermaLink="false">b3c5cf70d28d771347421ec308a036011489a4525445e2297acfac273954f6a8</guid>
+      <pubDate>Fri, 02 Oct 2026 17:33:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>Antino Backdoor Uses Outlook and OneDrive for C2 in China-Nexus Espionage Campaign - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/antino-backdoor-uses-outlook-and.html</link>
+      <description>Government and policy organizations across Asia have become the target of a new campaign orchestrated by a China-nexus threat actor.
+The activity, which has targeted government and policy organizations in Taiwan, India, the Philippines, Cambodia, Pakistan, Thailand, and Myanmar, involves the deployment of a previously undocumented backdoor codenamed Antino. Cisco Talos is tracking the cluster</description>
+      <guid isPermaLink="false">6dfc9b65ce60c6e1bdca951a8be3c7f79737dda16191a47dc967e51f31ab8ae0</guid>
+      <pubDate>Fri, 02 Oct 2026 17:33:16 +0000</pubDate>
+    </item>
+    <item>
+      <title>NativePe: libpeconv ported to Delphi (PE loader, dumper, import rebuild, Win32/Win64) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wvzt04/nativepe_libpeconv_ported_to_delphi_pe_loader/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/kargira"&gt; /u/kargira &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/habanada/NativePe"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wvzt04/nativepe_libpeconv_ported_to_delphi_pe_loader/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">cf721639a253029d4db9e7e1ca23f2da68237615fd2e9d4f552a85a70a443243</guid>
+      <pubDate>Fri, 02 Oct 2026 17:29:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>Dell CSM Flaws Enable Unauthenticated Admin Access and Root on Kubernetes Nodes - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/dell-csm-flaws-enable-unauthenticated.html</link>
+      <description>Dell has released security updates to address multiple critical security flaws in Dell Container Storage Modules (CSM) that could be exploited by bad actors to take over susceptible systems.
+The vulnerabilities are listed below -
+  CVE-2026-63688 (CVSS score: 10.0) - A missing authentication for critical function vulnerability in the csm-authorization-storage gRPC server that an</description>
+      <guid isPermaLink="false">1f48c9bd6de1e789ac5f2d168a584c66ce5a14564e0b5650a3b2e5b74f85b1bf</guid>
+      <pubDate>Fri, 02 Oct 2026 17:02:12 +0000</pubDate>
+    </item>
+    <item>
+      <title>IDA Pro 9.5 Beta (with Dalvik, TriCore, Hexagon decompilers) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wvv879/ida_pro_95_beta_with_dalvik_tricore_hexagon/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/KindOne"&gt; /u/KindOne &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://docs.hex-rays.com/release-notes/9_5beta"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wvv879/ida_pro_95_beta_with_dalvik_tricore_hexagon/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">2abf98cd7b0d2f843753710770c4983370e90e71be183f8040b9b36a95034cf6</guid>
+      <pubDate>Fri, 02 Oct 2026 14:27:09 +0000</pubDate>
+    </item>
     <item>
       <title>OpenAI Parts Ways With Three Safety Researchers Over Sensitive Information Mishandling - The Hacker News</title>
       <link>https://thehackernews.com/2026/10/openai-parts-ways-with-three-safety.html</link>
@@ -37,6 +105,13 @@ The vulnerability, tracked as CVE-2026-104286 (CVSS score: 9.8), allows unauthen
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/theswifter01"&gt; /u/theswifter01 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/astelmach20/silent-hill-decomp"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wvjb6z/silent_hill_ps1_us_v11_decompilation_fork_100_of/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">403ee42c056309a362d8438510dcf68a7bf606cc7c70805ce35da5f142fe9654</guid>
       <pubDate>Fri, 02 Oct 2026 03:20:46 +0000</pubDate>
+    </item>
+    <item>
+      <title>Keycloak -- multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/a28dd61b-be3e-11f1-bd34-3c7c3fba4204.html</link>
+      <description/>
+      <guid isPermaLink="false">bee5ce84965b3ae118a94d43df94f69a1f8f8e3f2f43048b0d0ea9b1f7405a9c</guid>
+      <pubDate>Fri, 02 Oct 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>I built an MCP server that lets AI agents debug and inspect running Windows programs (memory scan, breakpoints, disassembly) – Cortex 1.0, open source - Reverse Engineering</title>
@@ -1477,88 +1552,6 @@ The vulnerabilities are as follows -
 "The Fairwind Program gives high-priority defenders (like governments, healthcare providers, and telecommunications services) early access to advanced models that help them</description>
       <guid isPermaLink="false">786f886a7cd2f73f1fba1aaec6354d29b4d65cdce540cdcbfcedca5f66c4888d</guid>
       <pubDate>Wed, 02 Sep 2026 18:27:49 +0000</pubDate>
-    </item>
-    <item>
-      <title>Fake Software Installers Disable Windows Update and Weaken Microsoft Defender - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/fake-software-installers-disable.html</link>
-      <description>An active malware campaign is using bogus software-download websites to impersonate trusted vendors and distribute malicious installers.
-"The campaign has targeted users looking to download popular software and has resulted in compromises across multiple organizations and industries, primarily affecting China-based operations of multinational organizations and Chinese-speaking users," Microsoft</description>
-      <guid isPermaLink="false">0beb927fb8413260f248752052dba1a7fb1b4fc20d648dbac9f11810ea786c64</guid>
-      <pubDate>Wed, 02 Sep 2026 16:41:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>Malicious .git Configs Can Make Claude, Codex, Cursor, and Other AI Agents Run Attacker Code - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/malicious-git-configs-can-make-claude.html</link>
-      <description>Manifold Security has disclosed eight security flaws across seven command-line AI coding agents in which a repository's own Git configuration names a command that the agent runs on the developer's machine, four of them still unpatched at publication.
-The command executes as the user, outside the agent's sandbox and without an approval prompt, and exploitation requires the repository to arrive</description>
-      <guid isPermaLink="false">896a75326535ddd55745fcac71d9c5bd0280fadfe9ddd12d53940e974cc709f9</guid>
-      <pubDate>Wed, 02 Sep 2026 14:06:59 +0000</pubDate>
-    </item>
-    <item>
-      <title>Malicious Apache Modules Hijack Brazilian Government Site Traffic to Push Betting Pages - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/malicious-apache-modules-hijack.html</link>
-      <description>A Chinese-speaking cybercrime cluster known as Gambling Goblin has been observed installing malicious Apache modules on compromised web servers run by Brazilian government and educational institutions, and using them to divert visitors to attacker-controlled pages promoting online gambling and sports betting.
-Check Point Research said it has tracked the campaign since mid-2025.
-The modules</description>
-      <guid isPermaLink="false">8d76bed77f42158ecd0650aefb71de1b4792b47341895f14a916005625811b61</guid>
-      <pubDate>Wed, 02 Sep 2026 13:44:16 +0000</pubDate>
-    </item>
-    <item>
-      <title>BGP Hijack Delivers Malicious Virtualizor Update That Establishes Persistent Root Access - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/bgp-hijack-delivers-malicious.html</link>
-      <description>Virtualizor said hackers used a Border Gateway Protocol (BGP) hijack to divert Softaculous traffic. The hackers then used the diverted update traffic to deliver a malicious Virtualizor package to some installations. A hosting-provider account separately said 5 of its 34 checked Virtualizor hypervisors sustained root-level compromise.
-The incident window ran from approximately August 28 at 20:57</description>
-      <guid isPermaLink="false">eb4d112924cf3f7a506a4c3cffd0ba580881dd6919af2cb1d9cdd0e6cc90cc3d</guid>
-      <pubDate>Wed, 02 Sep 2026 13:12:45 +0000</pubDate>
-    </item>
-    <item>
-      <title>Meta Ads Push StreamRat Android Trojan That Can Gain Near-Complete Device Control - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/meta-ads-push-streamrat-android-trojan.html</link>
-      <description>Cybersecurity researchers have disclosed details of a new Android banking trojan called StreamRat that was promoted to Spanish-speaking users through a fake television-streaming campaign on Meta and can give operators near-complete control of infected devices.
-ThreatFabric said the campaign's advertisement focused on Spain and reached an estimated 570,950 Meta accounts in the European Union</description>
-      <guid isPermaLink="false">ad1ee72069c7ed20e1d9fdd430cd4a070e94b3c55b2ddecfd0f5e975567b2608</guid>
-      <pubDate>Wed, 02 Sep 2026 12:22:02 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Exploit Two SonicWall SMA 1000 Zero-Days That May Form an Attack Chain - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/attackers-exploit-two-sonicwall-sma.html</link>
-      <description>SonicWall has released security updates to address two security flaws impacting its Secure Mobile Access (SMA) 1000 series VPN appliances that have been exploited in zero-day attacks.
-The vulnerabilities, discovered internally by SonicWall's William Perry and Adam Babis, are listed below -
-  CVE-2026-83548 (CVSS score: 10.0) -&amp;nbsp; A pre-authentication SSRF vulnerability in the Appliance</description>
-      <guid isPermaLink="false">7fb58c18aa4643bc3632e199c461e3acbd98a731f0b7dabd6d3ca74179688c6f</guid>
-      <pubDate>Wed, 02 Sep 2026 10:53:49 +0000</pubDate>
-    </item>
-    <item>
-      <title>GeoNetwork Fixes Unauthenticated RCE Chain Affecting Government Geoportal Backends - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/geonetwork-fixes-unauthenticated-rce.html</link>
-      <description>Two vulnerabilities in GeoNetwork can be chained to achieve unauthenticated remote code execution (RCE) on the open-source geospatial metadata catalog, which sits behind many government and agency geoportals.
-The project shipped fixes in versions 4.4.12 and 4.2.17 on July 8, 2026, and published the vulnerability details on August 31.
-GeoNetwork originated at the United Nations Food and</description>
-      <guid isPermaLink="false">c507e676b0e8fdd287c64b2e9cfb4ba91d412e6fa2050510926c94a9212b05b3</guid>
-      <pubDate>Wed, 02 Sep 2026 09:18:02 +0000</pubDate>
-    </item>
-    <item>
-      <title>Extradited Russian Hacker Faces Charges Over Excel Malware Campaign That Infected Thousands - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/extradited-russian-hacker-faces-charges.html</link>
-      <description>The U.S. Department of Justice (DoJ) has charged a Russian national, extradited from Cyprus on August 28, with using roughly 255 fake accounts on a freelance platform to send malware-laced Excel attachments to about 80,000 of its users in 2016 and 2017.
-Searzhudin Tamirlanovich Aktulaev, 40, was arrested in Cyprus in May 2025, the U.S. Attorney's Office for the Northern District of California</description>
-      <guid isPermaLink="false">02ba4e0a9b730d0c74174b534da3d092eaea8e24d7f6c1cf6321a8f97a7ee1bf</guid>
-      <pubDate>Wed, 02 Sep 2026 09:10:23 +0000</pubDate>
-    </item>
-    <item>
-      <title>Researchers Use Claude to Port Pre-Auth RCE Exploit From One PLC Model to Another - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/researchers-use-claude-to-port-pre-auth.html</link>
-      <description>Forescout Research - Vedere Labs said it used Anthropic's Claude to port a working pre-authentication remote code execution (RCE) exploit from one WAGO programmable logic controller (PLC) to another, executing attacker-supplied ARM shellcode on live hardware.
-The exploit targets&amp;nbsp;CVE-2021-31886, a stack-based buffer overflow in the Nucleus FTP server's handling of the&amp;nbsp;USER&amp;nbsp;command</description>
-      <guid isPermaLink="false">64a2175083e40457c344f6105621326d1a365e1d9d74a47921e91e2d1b05475d</guid>
-      <pubDate>Wed, 02 Sep 2026 07:47:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>Static pattern discovery tool to locate structures from frequent patterns and understand file layout (FF-16) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w53n8x/static_pattern_discovery_tool_to_locate/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/HexLasso"&gt; /u/HexLasso &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/HexLasso/FF-16"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w53n8x/static_pattern_discovery_tool_to_locate/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">451dc9ba18752aa26971a0b291e80a3c3fa440e3bdcb8e9c4f55f699a43e96fb</guid>
-      <pubDate>Wed, 02 Sep 2026 07:42:34 +0000</pubDate>
     </item>
   </channel>
 </rss>

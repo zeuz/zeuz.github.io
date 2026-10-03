@@ -5,7 +5,7 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Fri, 02 Oct 2026 14:00:37 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 03 Oct 2026 14:00:34 +0000</lastBuildDate>
     <item>
       <title>Talk Python to Me: #565: Tachyon, Python 3.15's Built-in Sampling Profiler - Planet Python</title>
       <link>https://talkpython.fm/episodes/show/565/tachyon-python-3.15s-built-in-sampling-profiler</link>
@@ -53,6 +53,13 @@
 &amp;lt;strong&amp;gt;Michael on X.com&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://x.com/mkennedy?featured_on=talkpython" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-twitter"&amp;gt;&amp;lt;/i&amp;gt; @mkennedy&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;/div&amp;gt;</description>
       <guid isPermaLink="false">c1b4adf99500dcd80827099ea4e23529a33f769974ab5a1b97f4cd1e1a3ee1c8</guid>
       <pubDate>Fri, 02 Oct 2026 00:09:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Insider: Python 3.15.0 candidate 3 is here! - Planet Python</title>
+      <link>https://blog.python.org/2026/10/python-3150-rc3/</link>
+      <description>Following tradition, a surprise rc3!</description>
+      <guid isPermaLink="false">2ec5c94ea1779776d8ce1e88f37f98548aba5c6c7e66b9cac24d3c7823cd7dbf</guid>
+      <pubDate>Fri, 02 Oct 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Python Insider: Python 3.10.22, 3.11.17, 3.12.15, 3.13.16 and 3.14.8 are now available! - Planet Python</title>
