@@ -5,7 +5,61 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sat, 03 Oct 2026 14:00:34 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2026 14:00:32 +0000</lastBuildDate>
+    <item>
+      <title>Bug hunt: Pizza Tycoon's missing pizza boxes - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wxepbe/bug_hunt_pizza_tycoons_missing_pizza_boxes/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Optdev"&gt; /u/Optdev &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://pizzalegacy.nl/blog/the-mystery-of-the-empty-box.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wxepbe/bug_hunt_pizza_tycoons_missing_pizza_boxes/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">cb861e16f297735b48a96e5a4d124fbb9391306420cc04a35edcc5c838556f66</guid>
+      <pubDate>Sun, 04 Oct 2026 12:38:21 +0000</pubDate>
+    </item>
+    <item>
+      <title>ShinyHunters Suspect Rey Reportedly Detained in Jordan, Helping FBI Identify Group Members - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/shinyhunters-suspect-rey-reportedly.html</link>
+      <description>A suspected member of the ShinyHunters digital extortion group, who goes by the online alias "Rey," has been allegedly detained by authorities in Jordan, Reuters reported, citing three people familiar with the matter.
+Rey, whose real name is Saif ‌al-Din Khader, is said to have been brought into custody on September 29, 2026, cooperating with the U.S. Federal Bureau of Investigation (FBI) and</description>
+      <guid isPermaLink="false">5dd488de9666f0c5d0033f59fd7c0c55c3a2c95b3aa73415bdbf48dfed53a2d8</guid>
+      <pubDate>Sun, 04 Oct 2026 07:22:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>China-Aligned TA419 Targets U.S. AI Policy Experts With Microsoft AitM Phishing - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/china-aligned-ta419-targets-us-ai.html</link>
+      <description>A new China-nexus cyber espionage group known as TA419 has been attributed to multiple credential phishing campaigns targeting artificial intelligence (AI) experts working for U.S. think tanks, universities, and legal sector organizations.
+The campaigns have impersonated prominent economists and AI policymakers, as well as a prominent Anthropic employee, to single out an AI policy expert at a</description>
+      <guid isPermaLink="false">4539d6c8c9508c404775085056b718d7d0d0d121cccda1788c1fb7291f3f3b1e</guid>
+      <pubDate>Sun, 04 Oct 2026 07:20:32 +0000</pubDate>
+    </item>
+    <item>
+      <title>N0xis: from a hardware watchpoint in a live process to the decompiled statement that wrote the value (Rust, Windows/Linux, CLI + MCP) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wwy6x4/n0xis_from_a_hardware_watchpoint_in_a_live/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Ok-Kangaroo8925"&gt; /u/Ok-Kangaroo8925 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/Structio-labs/N0xis"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wwy6x4/n0xis_from_a_hardware_watchpoint_in_a_live/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">af33c6290be65929572264c8893727854d0a3c6614aa8eac005e376488399734</guid>
+      <pubDate>Sat, 03 Oct 2026 21:13:54 +0000</pubDate>
+    </item>
+    <item>
+      <title>I turned a low-cost RP2040-Zero into a FIDO2/WebAuthn security key - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wwwvpb/i_turned_a_lowcost_rp2040zero_into_a/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/KaraaslanLabs"&gt; /u/KaraaslanLabs &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/karaaslanlabs/kl-security-key"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wwwvpb/i_turned_a_lowcost_rp2040zero_into_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">3549b3831fa738c49d1ae5cfefad41c01b196f27a08b542304dc70e52f74e715</guid>
+      <pubDate>Sat, 03 Oct 2026 20:16:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>MI5 Says China’s MSS Funded Research Involving 100+ U.K.-Linked Academics - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/mi5-says-chinas-mss-funded-research.html</link>
+      <description>The U.K.'s domestic intelligence and security agency has warned that more than 100 academics have helped China boost its intelligence gathering efforts on behalf of Beijing's state security service.
+In a "Security Service Espionage Alert" issued on September 30, 2026, MI5 said the "primary purpose of the China General Technology Research Institute (CGTRI) 中国通用技术研究院 is to fund research that</description>
+      <guid isPermaLink="false">d690311ca2b167a1ef211bd73056ee54403d3081f2b83cc3d87b7d45e2abe3ca</guid>
+      <pubDate>Sat, 03 Oct 2026 14:38:46 +0000</pubDate>
+    </item>
+    <item>
+      <title>Warlock Exploits SharePoint Flaws to Disable Security Tools and Deploy Ransomware - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/warlock-exploits-sharepoint-flaws-to.html</link>
+      <description>The suspected China-linked threat actor known as Warlock is still continuing to weaponize Microsoft SharePoint vulnerabilities, likely both old and new, in attacks targeting organizations in Portuguese- and Spanish-speaking countries.
+The activity, observed by the Symantec and Carbon Black Threat Hunter Team, has hit critical infrastructure, government, and education organizations.
+"In the</description>
+      <guid isPermaLink="false">7607666f845aec89dc4099022cad0a8e8d10169032e1677241eaef9bcb93a5e3</guid>
+      <pubDate>Sat, 03 Oct 2026 14:36:33 +0000</pubDate>
+    </item>
     <item>
       <title>Pre-installed C2 loader on cheap Android projectors - deploys proxy/ad-fraud botnets, can run arbitrary code (Technical analysis) - Reverse Engineering</title>
       <link>https://www.reddit.com/r/ReverseEngineering/comments/1wwmw15/preinstalled_c2_loader_on_cheap_android/</link>
@@ -1497,61 +1551,6 @@ According to a new report published by the Symantec Threat Hunter Team today, th
 "The technique's appeal is that node.exe (the</description>
       <guid isPermaLink="false">f59d830cccb41d6fec4f98c319ef38b369a6a33ae0c08ae6ecd638da6c38da7c</guid>
       <pubDate>Thu, 03 Sep 2026 10:43:01 +0000</pubDate>
-    </item>
-    <item>
-      <title>Shai-Hulud's Reach Just Grew to 469 Credential Locations. Here's What That Means - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/shai-huluds-reach-just-grew-to-469.html</link>
-      <description>In early August, GitGuardian researchers found that a recent Shai-Hulud infostealer worm variant had evolved to scan for credentials across 469 locations across developer environments, Continuous Integration/Continuous Deployment (CI/CD) tooling, cloud configurations, and even AI tool configs.
-Earlier variants of the infostealer worm only checked 189 paths. The jump says a lot. Attackers have</description>
-      <guid isPermaLink="false">8fb40f492d4591e263d0bb8b4e8a0d325901489151a6649de0952e0672e0a067</guid>
-      <pubDate>Thu, 03 Sep 2026 10:36:39 +0000</pubDate>
-    </item>
-    <item>
-      <title>Pegasus Zero-Click Spyware Exploit Infects Serbian Student Movement Member's iPhone - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/pegasus-zero-click-spyware-exploit.html</link>
-      <description>The iPhone belonging to a member of Serbia's student protest movement was infected with NSO Group's Pegasus spyware, according to new findings from the Citizen Lab in collaboration with the SHARE Foundation.
-"Our analysis confirmed that an iMessage zero-click exploit was used to infect the device with NSO Group's Pegasus spyware," the Citizen Lab said. "We found high-confidence indicators of</description>
-      <guid isPermaLink="false">4405fd6b2457b7ff5ffa69bbb52d59438bca1fe2eeb0b82b6d8296cacd7aac98</guid>
-      <pubDate>Thu, 03 Sep 2026 08:43:17 +0000</pubDate>
-    </item>
-    <item>
-      <title>Researcher Releases FalconFlank PoC Showing Privilege Escalation in CrowdStrike Falcon - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/researcher-releases-falconflank-poc.html</link>
-      <description>The security researcher known as Chaotic Eclipse (aka INFINITE NIGHTMARE, MSNightmare, and Nightmare-Eclipse) has dropped a new zero-day dubbed FalconFlank, a proof-of-concept (PoC) for a privilege escalation flaw impacting Crowdstrike Falcon.
-"FalconFlank is a 0-day privilege escalation that abuses the office malicious macros remediation in CrowdStrike Falcon Sensor," the researcher said in</description>
-      <guid isPermaLink="false">79be62c9c31ee5c8b23cb8b218cf42e06b0df076ab589336edd8bc05c240100d</guid>
-      <pubDate>Thu, 03 Sep 2026 06:26:59 +0000</pubDate>
-    </item>
-    <item>
-      <title>CISA Adds Seven Exploited Flaws as Attackers Deploy Reverse Shells and Crypto Miners - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/cisa-adds-seven-exploited-flaws-as.html</link>
-      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Wednesday added seven security flaws to its Known Exploited Vulnerabilities (KEV) catalog after they landed in attackers' crosshairs.
-The vulnerabilities are as follows -
-  CVE-2026-83548 (CVSS score: 10.0) - A server-side request forgery vulnerability in SonicWall SMA 1000 Appliances that could allow a remote unauthenticated</description>
-      <guid isPermaLink="false">836cbb54764dac791bf8fc56c5a6705c0eea017e38bf66db1862b8ab690974d2</guid>
-      <pubDate>Thu, 03 Sep 2026 05:19:04 +0000</pubDate>
-    </item>
-    <item>
-      <title>electron42 -- multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/271556c1-ddbf-4d44-95e6-a731841539b2.html</link>
-      <description/>
-      <guid isPermaLink="false">90bfe13420e39db8bb9604c9ace71352373d1bccf977fbc51e76cc509c9490b6</guid>
-      <pubDate>Thu, 03 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>njs -- heap buffer overflow in XML exclusive canonicalization - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/0bfb082c-a7b6-11f1-a655-3497f65b111b.html</link>
-      <description/>
-      <guid isPermaLink="false">3f71591b43c5e834cb3188b318ab439ddbe52ddffb04733577a35faac57f37fa</guid>
-      <pubDate>Thu, 03 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Google, Anthropic, and OpenAI Unveil Cyber AI Models, Safeguards, and Access Programs - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/google-anthropic-and-openai-unveil.html</link>
-      <description>Google on Wednesday announced Gemini 3.8 Flash Cyber, which it described as its most capable cybersecurity model, and has made it available to a set of trusted defenders via a new initiative called the Fairwind Program.
-"The Fairwind Program gives high-priority defenders (like governments, healthcare providers, and telecommunications services) early access to advanced models that help them</description>
-      <guid isPermaLink="false">786f886a7cd2f73f1fba1aaec6354d29b4d65cdce540cdcbfcedca5f66c4888d</guid>
-      <pubDate>Wed, 02 Sep 2026 18:27:49 +0000</pubDate>
     </item>
   </channel>
 </rss>

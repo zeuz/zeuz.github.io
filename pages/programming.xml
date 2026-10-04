@@ -5,7 +5,27 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sat, 03 Oct 2026 14:00:34 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2026 14:00:32 +0000</lastBuildDate>
+    <item>
+      <title>Mark Dufour: Shed Skin v0.9.14, v1.0 coming soon! - Planet Python</title>
+      <link>http://shed-skin.blogspot.com/2026/10/shed-skin-v0914-v10-coming-soon.html</link>
+      <description>&lt;p&gt;I have just released &lt;a href="https://github.com/shedskin/shedskin/releases/tag/v0.9.14-1"&gt;version 0.9.14&lt;/a&gt; of &lt;a href="https://github.com/shedskin/shedskin"&gt;Shed Skin&lt;/a&gt;, a restricted-python to C++ transpiler. Shed Skin allows one to effectively convert (or transpile) pure Python code to highly optimized machine code. This comes at the cost though of having to conform to a seriously restricted subset of Python features/libraries. Although, it is possible to generate extension modules, that can be used in larger, unrestricted, programs.
+&lt;p&gt;While the previous release was just a month ago, I felt like there were so many important improvements already that I didn't want them to wait for the 1.0 release which looks like it may finally happen within a few months! From a completely rewritten and faster, more scalable, type inference engine, to full Unicode support, to almost complete feature parity with Python 3.15 (for the support modules), to support for heteregeneous 3-len tuples - it has been a hectic month :)
+&lt;p&gt;With all this in place, I'm starting to plan the final pieces I would like to see in place for a 1.0 release. There is still quite a bit of work left, but much of it is mechanical and just working through a long list of minor decisions and details.. It should be possible to have all that done around the end of the year.
+&lt;p&gt;I'm also happy to mention a relatively new but similar project here, &lt;a href="https://tpy-lang.org/"&gt;TurboPython&lt;/a&gt;, which may be of interest to those reading this. The most interesting difference with Shed Skin is that it uses a RUST-like memory model:
+"TurboPython is a general-purpose, statically typed language that compiles Python through C++ to a native binary. It combines Python's syntax with an ownership model that gives memory safety and predictable performance—no garbage collector, no automatic reference counting, no GIL."&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">b526f4ade55cedd1532d896ada80f6e56a0720c4ea6852c6c11e73ce66f63489</guid>
+      <pubDate>Sat, 03 Oct 2026 23:45:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>Brian Okken: PyBay 2026 Talk info and slides - Planet Python</title>
+      <link>https://pythontest.com/tdd-pybay-2026/</link>
+      <description>&lt;p&gt;&lt;strong&gt;Talk Title:&lt;/strong&gt; Is TDD even relevant anymore? Yes, but don&amp;rsquo;t be dumb about it.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Event:&lt;/strong&gt; &lt;a href="https://pybay.org/"&gt;PyBay 2026&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Slides:&lt;/strong&gt; &lt;a href="https://pythontest.com/tdd-pybay-2026.pdf"&gt;tdd-pybay-2026.pdf&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">6319260016b11c573695d0ad3c31cb1d62713e000d54a2302e801b7fb7602344</guid>
+      <pubDate>Sat, 03 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Talk Python to Me: #565: Tachyon, Python 3.15's Built-in Sampling Profiler - Planet Python</title>
       <link>https://talkpython.fm/episodes/show/565/tachyon-python-3.15s-built-in-sampling-profiler</link>
