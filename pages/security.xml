@@ -5,7 +5,61 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sun, 04 Oct 2026 14:00:32 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 14:00:53 +0000</lastBuildDate>
+    <item>
+      <title>Response Overview and Colonel Clustered – Grouping Burp Responses by Content - Darknet - The Darkside</title>
+      <link>https://www.darknet.org.uk/2026/10/response-overview-colonel-clustered-burp-response-grouping/</link>
+      <description>Two Burp Suite extensions that group responses by content: Response Overview, a BApp with a threshold you set, and Colonel Clustered, which picks its own.</description>
+      <guid isPermaLink="false">8e2dac63e76bf4ed84c0c89fcdc233e1edc751feaa42c6123605a9cf31fd87d7</guid>
+      <pubDate>Mon, 05 Oct 2026 12:33:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>Realtek Jungle SDK Exploit Attempts Deliver Cling Botnet With STUN-Based C2 - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/realtek-jungle-sdk-exploit-attempts.html</link>
+      <description>Threat actors have been observed attempting to exploit a now-patched critical security flaw impacting the Realtek Jungle software development kit (SDK) to deploy a botnet malware called Cling.
+"Cling is notable not because it introduces a new propagation technique, but because it repurposes ordinary STUN behavior into a practical command-and-control channel," Nozomi Networks said in a report</description>
+      <guid isPermaLink="false">54ea42dbfaa649223f995eecdc17087b96a944203dc7f7fcc9bc9745f265636f</guid>
+      <pubDate>Mon, 05 Oct 2026 11:46:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>Apple Plans Tighter macOS Full Disk Access Controls Over AI Agent Data Access - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/apple-plans-tighter-macos-full-disk.html</link>
+      <description>Apple has announced that it's taking steps to tighten controls around a macOS setting called Full Disk Access (FDA) due to security risks posed by artificial intelligence (AI) agents.
+"Some developers are using Full Disk Access in ways that could put users at risk, exposing everything on their systems—including files, mail, messages, and even browsing history – without users' full knowledge</description>
+      <guid isPermaLink="false">3c2e07704961a599e5a3cff88a1806d17d78ec7e8acf70ab6d6080ee3a5691b7</guid>
+      <pubDate>Mon, 05 Oct 2026 10:38:50 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Target Rejetto HFS Flaw That Enables Admin Session Forgery and RCE - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/attackers-target-rejetto-hfs-flaw-that.html</link>
+      <description>A critical security flaw impacting Rejetto HTTP File Server (HFS) is witnessing active exploitation attempts, according to VulnCheck.
+The vulnerability in question is CVE-2026-61500 (CVSS score: 9.3), a case of session forgery stemming from the use of a weak pseudo-random number generator (PRNG) that can lead to a predictable key, which an attacker can then use to gain unauthorized access and</description>
+      <guid isPermaLink="false">88e27c4249edd62405609f70a05ce6d93d6fe9cbca6715ce9e1c1967016e1824</guid>
+      <pubDate>Mon, 05 Oct 2026 08:09:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>New NetScaler Zero-Day Exploited in Targeted Attacks Can Knock SAML Deployments Offline - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/new-netscaler-zero-day-exploited-in.html</link>
+      <description>Citrix has released security updates for a high-severity security flaw in NetScaler ADC and Citrix NetScaler Gateway that has been exploited as part of targeted zero-day attacks.
+The vulnerability, tracked as CVE-2026-88779, carries a CVSS score of 8.7 out of 10.0.
+"CVE-2026-88779 is a memory overflow vulnerability in Citrix NetScaler ADC and Citrix NetScaler Gateway that can lead to</description>
+      <guid isPermaLink="false">c0d78e26ce03675bf9bb65c559da64ba54b9e4a224bd7b78f15ec6e3e291adb9</guid>
+      <pubDate>Mon, 05 Oct 2026 06:40:19 +0000</pubDate>
+    </item>
+    <item>
+      <title>Loading a Samsung Shannon baseband into Ghidra 12.1.4 - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wxs70y/loading_a_samsung_shannon_baseband_into_ghidra/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Electronic_You_1199"&gt; /u/Electronic_You_1199 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://medium.com/@0x08102000/loading-a-samsung-shannon-baseband-into-ghidra-12-1-4-2026-792147d806f4"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wxs70y/loading_a_samsung_shannon_baseband_into_ghidra/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">2844024d588f7f6b464b6a7bb6029513fbbf8be473255e5c21610380f8763e08</guid>
+      <pubDate>Sun, 04 Oct 2026 22:15:42 +0000</pubDate>
+    </item>
+    <item>
+      <title>iOS 27 kernelcache RE writeup — full SEP dispatch map (96 selectors), AMFI diff, Ghidra workflow (zero new vulns, but full methodology public) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wxqpor/ios_27_kernelcache_re_writeup_full_sep_dispatch/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/JustActuator6946"&gt; /u/JustActuator6946 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/vvirei333/ABrake27"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wxqpor/ios_27_kernelcache_re_writeup_full_sep_dispatch/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">adf2b4f959b13e81cb5b3cb22ba5ff737a5576d9ca469677b23943739c7fe431</guid>
+      <pubDate>Sun, 04 Oct 2026 21:10:37 +0000</pubDate>
+    </item>
     <item>
       <title>Bug hunt: Pizza Tycoon's missing pizza boxes - Reverse Engineering</title>
       <link>https://www.reddit.com/r/ReverseEngineering/comments/1wxepbe/bug_hunt_pizza_tycoons_missing_pizza_boxes/</link>
@@ -1496,61 +1550,6 @@ The development comes days after the artificial intelligence (AI) company said t
 "Astra is state-of-the-art on computer use, browsing, software engineering,</description>
       <guid isPermaLink="false">4ce48d6a36add83cd58fd9aa8df29bc1b758633e02e0a4d9f60faf92bc434271</guid>
       <pubDate>Fri, 04 Sep 2026 06:47:52 +0000</pubDate>
-    </item>
-    <item>
-      <title>How Forza Horizon 6 Breaks Your IDA - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w6pb7m/how_forza_horizon_6_breaks_your_ida/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Beneficial_Slide_424"&gt; /u/Beneficial_Slide_424 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://iretq.com/how-forza-horizon-6-breaks-your-ida/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w6pb7m/how_forza_horizon_6_breaks_your_ida/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">184e53b8a896455ae9931bb364472f8d109f275c36b986b3040fbc5253b0ce4f</guid>
-      <pubDate>Fri, 04 Sep 2026 00:37:02 +0000</pubDate>
-    </item>
-    <item>
-      <title>OpenVPN: denial of service - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/25012057-a886-11f1-a836-b42e991fc52e.html</link>
-      <description/>
-      <guid isPermaLink="false">54739ef5b176a3809a3e31f890860356781b46a5f0ecd99eaf2fffa2fc43b226</guid>
-      <pubDate>Fri, 04 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Critical Cisco Nexus 9000 Flaw Lets Unauthenticated Remote Attackers Run Code as Root - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/critical-cisco-nexus-9000-flaw-lets.html</link>
-      <description>Cisco has released patches to address a critical security flaw affecting 10 Silicon One-based Nexus 9000 switches that could allow an unauthenticated, remote attacker to execute code as root, alongside an IOS XR hardening release bundling 7 umbrella CVEs, 2 of which are rated 9.8, with no workaround for any IOS XR version.
-The Nexus vulnerability, tracked as CVE-2026-20212 (CVSS score: 9.8), is</description>
-      <guid isPermaLink="false">729b0a8b0d73403049038635af3ca3f733e1b64146f53c773c6482859e873889</guid>
-      <pubDate>Thu, 03 Sep 2026 15:52:07 +0000</pubDate>
-    </item>
-    <item>
-      <title>BraZetsu Malware Turns Compromised Windows Hosts Into Criminal Marketplace Inventory - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/brazetsu-malware-turns-compromised.html</link>
-      <description>Cybersecurity researchers have disclosed details of a sophisticated Python-based Windows malware framework called BraZetsu that fuels an underground marketplace commercializing access to compromised hosts.
-"Unlike the standard infostealer model, BraZetsu is a comprehensive master toolkit that empowers Initial Access Brokers (IABs) by turning compromised systems into highly valuable commercial</description>
-      <guid isPermaLink="false">cfabb97894fa8b950fe755421ce138d09d206648c532377450720d8b9bce91a0</guid>
-      <pubDate>Thu, 03 Sep 2026 15:26:47 +0000</pubDate>
-    </item>
-    <item>
-      <title>Thomson Reuters Court Software Breach May Have Exposed SSNs and Sealed Data - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/thomson-reuters-court-software-breach.html</link>
-      <description>Thomson Reuters disclosed on Wednesday that an unauthorized party obtained files from C-Track, the court case management platform sold by its West Publishing Corporation unit, in March 2026, affecting courts in 11 U.S. states, the U.S. Virgin Islands, and Ontario, Canada.
-West Publishing said it discovered the activity on June 30, 2026. A subset of court records could contain individuals' names</description>
-      <guid isPermaLink="false">79317dd0593f38631966dcf4a8d134a1b7ea5b5576c3c49b0ead4dea72d077de</guid>
-      <pubDate>Thu, 03 Sep 2026 14:39:05 +0000</pubDate>
-    </item>
-    <item>
-      <title>US Becomes Top Target in RMM Phishing Campaign Spanning 46 Countries - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/us-becomes-top-target-in-rmm-phishing.html</link>
-      <description>An RMM phishing campaign initially associated with Canadian targeting due to its use of Canada Revenue Agency (CRA) tax forms as lures has turned out to be part of a broader campaign spanning 46 countries.
-Around 45% of observed activity was associated with the United States, making it the campaign's top geographic target. ANY.RUN research connected 601 cases to the wider operation, which uses</description>
-      <guid isPermaLink="false">c5dad94934093757b16cf0b8961d4b931a0ef3ae35954e5a91a4ab81680d179a</guid>
-      <pubDate>Thu, 03 Sep 2026 11:58:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Turn Trusted Node.js Runtime Into Malware Delivery Tool in Targeted Attacks - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/attackers-turn-trusted-nodejs-runtime.html</link>
-      <description>Threat actors are leveraging the trusted Node.js JavaScript runtime in multiple cyber attacks as a way to deploy malicious payloads.
-According to a new report published by the Symantec Threat Hunter Team today, the attack method has been put to use in attacks targeting government departments, technology companies, and hotels since February 2026.
-"The technique's appeal is that node.exe (the</description>
-      <guid isPermaLink="false">f59d830cccb41d6fec4f98c319ef38b369a6a33ae0c08ae6ecd638da6c38da7c</guid>
-      <pubDate>Thu, 03 Sep 2026 10:43:01 +0000</pubDate>
     </item>
   </channel>
 </rss>
