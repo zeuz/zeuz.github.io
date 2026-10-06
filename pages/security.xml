@@ -5,7 +5,102 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Mon, 05 Oct 2026 14:00:53 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 14:00:55 +0000</lastBuildDate>
+    <item>
+      <title>LibreOffice and OpenOffice Flaws Let Malicious Spreadsheets Run Code Without Macro Warnings - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/libreoffice-and-openoffice-flaws-let.html</link>
+      <description>A malicious spreadsheet can make LibreOffice and Apache OpenOffice run an attacker's code as soon as the file is opened, security researchers have shown. There is no warning first, of the kind either program shows before it runs a macro.
+The attack works only when the program's Java support is enabled. So far, it has only been shown as a proof of concept, and there are no reports of its use in</description>
+      <guid isPermaLink="false">681bfb9f0245b5b4c439ddf7ff72fe39774f80404ba2c5f2aeeeeda9ff411d58</guid>
+      <pubDate>Tue, 06 Oct 2026 11:57:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Wikimedia Says OpenAI Agents Tried to Compromise Etherpad and Use Wiki Tools as Proxies - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/wikimedia-says-openai-agents-tried-to.html</link>
+      <description>The Wikimedia Foundation, which hosts Wikipedia, has confirmed that it has discovered activity by rogue OpenAI agents on its platforms, including unsuccessful efforts to compromise Etherpad, a public note-taking tool, and edit Wikipedia pages.
+"The unauthorized bot activities included edits to our wikis, some unsuccessful attempts to exploit a public note-taking tool we host, and heavy traffic,</description>
+      <guid isPermaLink="false">9fc1ccae0209f3b755c1f47bfd1c9d664c8f23b4aefdf5a59f5929f237c56c32</guid>
+      <pubDate>Tue, 06 Oct 2026 11:26:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>Welcome to the Jungle: What We Found Inside 15,465 Public MCP Servers - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/welcome-to-jungle-what-we-found-inside.html</link>
+      <description>In 2024, MCP (Model Context Protocol) set out to become the USB-C of AI: one standard for connecting models, agents, and IDEs to tools and data. The protocol delivered. Thousands of developers built servers, and enterprises plugged them into agent workflows.
+The ecosystem around it fell short. Earlier this year, our team at OX Security,&amp;nbsp; traced critical vulnerabilities in Anthropic's MCP</description>
+      <guid isPermaLink="false">3ed86cffbf15e7406d290557faad000fb674e021fc70300e7f2b65da5af0ee3d</guid>
+      <pubDate>Tue, 06 Oct 2026 11:02:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>Google Pauses OSS Product Bug Bounty Rewards After Surge in Invalid Automated Reports - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/google-pauses-oss-product-bug-bounty.html</link>
+      <description>Google has stopped accepting product vulnerability reports through its bug bounty program for its open-source software.
+The change, in effect since October 1, means researchers can no longer submit security flaws in the code of projects such as Go, Angular, and Protocol Buffers there for a reward. Reports about supply chain compromises are still accepted, and reports filed before October 1 are</description>
+      <guid isPermaLink="false">38be968c93d4e6025df8c1cf5fc41087b6738a2abd165d53b520100db4e2901b</guid>
+      <pubDate>Tue, 06 Oct 2026 09:21:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>Critical Atlassian Flaw Lets Unauthenticated Attackers Read Known Files Across 8 Products - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/critical-atlassian-flaw-lets.html</link>
+      <description>A critical flaw in 8 Atlassian Data Center products, which customers host themselves, allows an attacker with no login access to read specific files in each product's web application root directory.
+The attacker must already know a file's exact name and path and cannot list what the directory holds. Atlassian&amp;nbsp;disclosed the flaw, CVE-2026-21589, on October 5, rated it 9.3 out of 10, and</description>
+      <guid isPermaLink="false">3c2a7773176a68d50f479f4eb2bee366c468ec416c3b16c8fb7b81ffa91527ba</guid>
+      <pubDate>Tue, 06 Oct 2026 06:58:56 +0000</pubDate>
+    </item>
+    <item>
+      <title>FBI Removes Accenture Contractor After Patch Failure Led to ShinyHunters Breach - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/fbi-removes-accenture-contractor-after.html</link>
+      <description>The U.S. Federal Bureau of Investigation (FBI) has removed an Accenture contractor for their alleged role in a ShinyHunters-breach that led to the theft of personal details of thousands of bureau employees.
+That's according to a report from Reuters, citing two sources familiar with the matter.
+"To date, our review has determined that the incident occurred as the result of a security failure ​</description>
+      <guid isPermaLink="false">e7e7fea4abb5dac3acd41114abf630797f5a865a3559a3513e9b5ea23d201305</guid>
+      <pubDate>Tue, 06 Oct 2026 06:56:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>Denmark Says Attackers Accessed CPR Data for 8.8 Million People via Company Account - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/denmark-says-attackers-accessed-cpr.html</link>
+      <description>Unauthorized parties have gained access to the names, addresses, and personal identification numbers of about 8.8 million people, living and dead, in Denmark's national population register, the country's digitalization ministry&amp;nbsp;said on October 5.
+They used a private Danish company's lawful right to look up records in the Central Person Register (CPR). The ministry has told people never to</description>
+      <guid isPermaLink="false">9aa3c5dbe07cb1f2ba18bbf283a50b8ec7a0e737c5f7603dc8a061ea39c165a9</guid>
+      <pubDate>Tue, 06 Oct 2026 06:00:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>ClickFix Smuggles Payloads Through Browser Cache to Bypass Windows Run Limits - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/clickfix-smuggles-payloads-through.html</link>
+      <description>A new type of ClickFix attack is using compromised websites to trick users into executing a malicious payload cached in a web browser's cache.
+"Instead of downloading and executing remote payloads like the typical attack pattern, in this attack, the websites pre-fetch a script payload into the browser cache disguised as a PNG file," the Microsoft Threat Intelligence team said in a post on X.</description>
+      <guid isPermaLink="false">2a22ed1d938b19f21e6cccd12947d211f76b109430fb7de968fb88abc8eb45e7</guid>
+      <pubDate>Tue, 06 Oct 2026 05:22:55 +0000</pubDate>
+    </item>
+    <item>
+      <title>Autel EVO Nano+: getting a root shell | 0xD34D’s Space - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wytyw1/autel_evo_nano_getting_a_root_shell_0xd34ds_space/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/0xD34D"&gt; /u/0xD34D &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://0xd34d.github.io/autel_evo_nano/drone-pwn"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wytyw1/autel_evo_nano_getting_a_root_shell_0xd34ds_space/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">02cec3efa8e2641e478d671e0fd6376aa076ae4842231c5b4ea0e25549e47bc7</guid>
+      <pubDate>Tue, 06 Oct 2026 04:57:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>iOS 27.0.1 ImageIO — GPSCopy OOB-write (silently patched in 27.2 beta) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wykp9y/ios_2701_imageio_gpscopy_oobwrite_silently/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/JustActuator6946"&gt; /u/JustActuator6946 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/wvirel333/ABrake27"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wykp9y/ios_2701_imageio_gpscopy_oobwrite_silently/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">e9d281ccec688ba77336792168c45fadf61e3baa8e2200e1f7d372b94c8e3f96</guid>
+      <pubDate>Mon, 05 Oct 2026 21:22:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>I turned a low-cost RP2040-Zero into a FIDO2/WebAuthn security key - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wyivrg/i_turned_a_lowcost_rp2040zero_into_a/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/KaraaslanLabs"&gt; /u/KaraaslanLabs &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/karaaslanlabs/kl-security-key"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wyivrg/i_turned_a_lowcost_rp2040zero_into_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">53e14e7dddb32ca6a630d9ef191b774f1ec875473e48113be8179c5e173d69d8</guid>
+      <pubDate>Mon, 05 Oct 2026 20:09:42 +0000</pubDate>
+    </item>
+    <item>
+      <title>Microsoft Exchange Flaw Lets Authenticated Attackers Read Other Users' Mailboxes - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/microsoft-exchange-flaw-lets.html</link>
+      <description>Microsoft has released out-of-band security updates to address a high-severity flaw in Microsoft Exchange Server that could allow an attacker to escalate privileges under certain conditions.
+The vulnerability, tracked as CVE-2026-96940, is rated 8.8 on the CVSS scoring system.
+"Weak authorization in Microsoft Exchange Server allows an authenticated attacker to elevate privileges over a</description>
+      <guid isPermaLink="false">bad4b0e1bf733466734b9f000b081fef40bb5b30233eba16768906f609071e8f</guid>
+      <pubDate>Mon, 05 Oct 2026 16:21:52 +0000</pubDate>
+    </item>
     <item>
       <title>Response Overview and Colonel Clustered – Grouping Burp Responses by Content - Darknet - The Darkside</title>
       <link>https://www.darknet.org.uk/2026/10/response-overview-colonel-clustered-burp-response-grouping/</link>
@@ -45,6 +140,13 @@ The vulnerability, tracked as CVE-2026-88779, carries a CVSS score of 8.7 out of
 "CVE-2026-88779 is a memory overflow vulnerability in Citrix NetScaler ADC and Citrix NetScaler Gateway that can lead to</description>
       <guid isPermaLink="false">c0d78e26ce03675bf9bb65c559da64ba54b9e4a224bd7b78f15ec6e3e291adb9</guid>
       <pubDate>Mon, 05 Oct 2026 06:40:19 +0000</pubDate>
+    </item>
+    <item>
+      <title>LibreSSL -- Multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/85bcb950-c0b4-11f1-a6ea-8447094a420f.html</link>
+      <description/>
+      <guid isPermaLink="false">da525a0c33724ef222c48c79b7ae55f47bb67ea9158c392442c9891c58e3f3de</guid>
+      <pubDate>Mon, 05 Oct 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Loading a Samsung Shannon baseband into Ghidra 12.1.4 - Reverse Engineering</title>
@@ -1445,111 +1547,6 @@ The vulnerability, tracked as CVE-2026-59346 (CVSS score: 9.3), is an integer-ov
 The exposed information includes customer names, email addresses, phone numbers, shipping addresses, and order numbers between November 2019 and August 2021. The breach does not affect the security of the company's hardware wallets</description>
       <guid isPermaLink="false">82c06c667ef232a82754f7f0ac33d05e0fdb38b91e4bfc76c0eee0d69715882f</guid>
       <pubDate>Sat, 05 Sep 2026 14:17:02 +0000</pubDate>
-    </item>
-    <item>
-      <title>FF-16-Web is a browser-based, interactive static pattern discovery tool that finds frequently occurring local 16-bit patterns across the entire file. It can run offline in a web browser. FF-16-Web is hosted on GitHub and it works in the same way like as the CLI and TUI versions. - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w811zm/ff16web_is_a_browserbased_interactive_static/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/HexLasso"&gt; /u/HexLasso &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://hexlasso.github.io/FF-16-Web/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w811zm/ff16web_is_a_browserbased_interactive_static/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">502b992500494ee05675c7214fa1b5a27f2bc5b55e05884a9d35599be721b84a</guid>
-      <pubDate>Sat, 05 Sep 2026 13:39:55 +0000</pubDate>
-    </item>
-    <item>
-      <title>Thousands of OpenAI Agents Quietly Turned an Abandoned Wiki Into Their Coordination Channel - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/thousands-of-openai-agents-quietly.html</link>
-      <description>A group of AI safety researchers says a fleet of autonomous agents that identified themselves as OpenAI systems left about 18,000 posts on a dormant 25-year-old German wiki between May and July 2026, using the site as a shared board to pool answers to a timed web task and pass around a way out of their sandbox.
-The activity was concentrated on DSEwiki, a German software developer wiki that runs</description>
-      <guid isPermaLink="false">1105cdff18bea43928038064f40a2dba0888d29d163a4bcfdc27bdc6e879dc47</guid>
-      <pubDate>Sat, 05 Sep 2026 07:55:10 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Exploit PaperCut Flaws to Steal Credentials From Schools and Universities - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/attackers-exploit-papercut-flaws-to.html</link>
-      <description>Threat actors are exploiting the newly disclosed PaperCut flaws to facilitate credential theft in attacks targeting the education sector in the U.S. and Europe.
-The Arctic Wolf Adversary Research Team said it observed attackers exploiting CVE-2026-81578 and CVE-2026-82078 – an authentication bypass and remote code execution chain – to conduct command execution and reconnaissance, as well as</description>
-      <guid isPermaLink="false">336683a628f3470db7f11c1ec26ffa7d80ac4259733b5e7bc74783c988071da0</guid>
-      <pubDate>Sat, 05 Sep 2026 07:31:53 +0000</pubDate>
-    </item>
-    <item>
-      <title>VAXD_VM: Reverse Engineering a Running Windows Program from Outside the VM - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w7n8rk/vaxd_vm_reverse_engineering_a_running_windows/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Bicurico"&gt; /u/Bicurico &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.youtube.com/watch?v=zpP4e8Ytl4k"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w7n8rk/vaxd_vm_reverse_engineering_a_running_windows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">b34cad484264e3794ce52511bea4f2f98c61e6b59d7223fe64a7d594391b7c76</guid>
-      <pubDate>Sat, 05 Sep 2026 01:40:10 +0000</pubDate>
-    </item>
-    <item>
-      <title>Phishing Campaign Sends Millions of Emails Using Invisible Unicode to Evade Filters - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/phishing-campaign-sends-millions-of.html</link>
-      <description>Microsoft is alerting of a "high-volume phishing campaign" that's using invisible Unicode tag characters to bypass email filters.
-"Instead of using these characters to hide instructions from people while exposing them to AI models, the attacker used them to split financial lure words such as 'funding' to prevent email filters from parsing them," the Microsoft Security Research team said.
-The</description>
-      <guid isPermaLink="false">bc63715d98c7a66d02a8301f6bed8bb0c02bb172412f8a322443a5b9bf8f66d3</guid>
-      <pubDate>Fri, 04 Sep 2026 15:57:15 +0000</pubDate>
-    </item>
-    <item>
-      <title>PostgreSQL Fixes 12-Year-Old Logical Decoding Flaw Enabling Replication-Role Code Execution - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/postgresql-fixes-12-year-old-logical.html</link>
-      <description>PostgreSQL has released updates to address a security flaw that allows an account with the REPLICATION attribute to run arbitrary code as the operating-system user running the database server.
-The flaw, tracked as CVE-2026-6471 (CVSS score: 7.2), has been present since logical decoding was introduced in PostgreSQL 9.4 in 2014. Versions before PostgreSQL 18.6, 17.11, 16.15, 15.19, and 14.24 are</description>
-      <guid isPermaLink="false">d1deae667233a9274144b57f6681bff0f4b24704df1b10c10da034f0af309c0b</guid>
-      <pubDate>Fri, 04 Sep 2026 15:20:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>On solving the Jane Street Reverse Engineering Challenge - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w76zvc/on_solving_the_jane_street_reverse_engineering/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/ni5arga"&gt; /u/ni5arga &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://jestoph.com/2026/09/04/jane-street-challenge.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w76zvc/on_solving_the_jane_street_reverse_engineering/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">4324b87b41ad9a981f77da45286e8f416146138a36d930773270bceea01c7215</guid>
-      <pubDate>Fri, 04 Sep 2026 15:07:03 +0000</pubDate>
-    </item>
-    <item>
-      <title>New Ted Backdoor Hides Inside Victims' Own HAProxy Builds to Intercept Web Traffic - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/new-ted-backdoor-hides-inside-victims.html</link>
-      <description>A previously undocumented Linux toolkit has been found compiled directly into the trojanized HAProxy load balancers of two South Korean organizations, where it intercepted web traffic and served altered pages to selected visitors.
-The attackers named the implant ted in debug strings left in the binary. It is not a HAProxy vulnerability, and installing it requires code execution on the host and</description>
-      <guid isPermaLink="false">31cd7ce92c9a8a5b743feb9a962b979500eb4a35dfaa5bd4f4b7937c54e342a8</guid>
-      <pubDate>Fri, 04 Sep 2026 14:51:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>The Gentlemen Ransomware Analysis: Go Obfuscated - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w704tk/the_gentlemen_ransomware_analysis_go_obfuscated/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/420ass_slayer69"&gt; /u/420ass_slayer69 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://app.reverser.space/p/duckie/the-gentlemen-ransomware-2026#0x140078b20"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w704tk/the_gentlemen_ransomware_analysis_go_obfuscated/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">aea8d8d08c0039cda6908363e8c4fd7394ead492b0975046b04fc96b94cd176d</guid>
-      <pubDate>Fri, 04 Sep 2026 10:05:26 +0000</pubDate>
-    </item>
-    <item>
-      <title>Over 440,000 Exploit Attempts Target Super Forms and Elementor Pro RCE Flaws - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/over-440000-exploit-attempts-target.html</link>
-      <description>Threat actors are exploiting two critical security flaws in WordPress plugins Super Forms and Elementor Pro, according to findings from Wordfence.
-The vulnerabilities in question are -
-  CVE-2026-14894 (CVSS score: 9.8) - A missing file type validation vulnerability in Super Forms – Drag &amp;amp; Drop Form Builder that allows unauthenticated attackers to upload files of any type, including</description>
-      <guid isPermaLink="false">79204aea9f757f426e0e35fdf33b9fb6a1304e53470828519c017e8eea05fa61</guid>
-      <pubDate>Fri, 04 Sep 2026 08:48:45 +0000</pubDate>
-    </item>
-    <item>
-      <title>Plex Urges Immediate Updates After Patching Multiple Undisclosed Security Flaws - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/plex-urges-immediate-updates-after.html</link>
-      <description>Plex is urging users to update their instances to the latest version following the release of an update that patches multiple security flaws.
-The fixes are available in Plex Media Server 1.43.3 and Plex Desktop 1.115.0. The streaming media service did not elaborate on what those issues are, but said CVE identifiers have been requested for them.
-"We recommend all server owners and Desktop users</description>
-      <guid isPermaLink="false">036241c31e387583f372f8c37deb1d44878fd741578315310e30fc769c0b5fb0</guid>
-      <pubDate>Fri, 04 Sep 2026 07:35:14 +0000</pubDate>
-    </item>
-    <item>
-      <title>Google Releases Chrome Update to Patch Actively Exploited V8 Zero-Day - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/google-releases-chrome-update-to-patch.html</link>
-      <description>Google on Thursday released security updates to patch 12 vulnerabilities, including one that has come under active exploitation in the wild.
-The high-severity vulnerability, tracked as CVE-2026-85046 (CVSS score: 8.8), has been described as a type confusion bug in V8, Chrome's JavaScript and WebAssembly engine.
-"Type confusion in V8 in Google Chrome prior to 152.0.7977.82 allowed a remote</description>
-      <guid isPermaLink="false">1beb9fdcb17f9c8f628d20c8d8d2fbfefb84e78cb388a9cb729e40cb80aa3469</guid>
-      <pubDate>Fri, 04 Sep 2026 07:18:47 +0000</pubDate>
-    </item>
-    <item>
-      <title>GPT-6 Astra Scores 100% on ExploitBench as OpenAI Blocks PoC Exploit Requests - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/gpt-6-astra-scores-100-on-exploitbench.html</link>
-      <description>OpenAI on Thursday officially unveiled GPT‑6 Astra, which it described as the "world's most intelligent and aligned model."
-The development comes days after the artificial intelligence (AI) company said the model had reached the "Critical" cybersecurity capability threshold under its Preparedness Framework.
-"Astra is state-of-the-art on computer use, browsing, software engineering,</description>
-      <guid isPermaLink="false">4ce48d6a36add83cd58fd9aa8df29bc1b758633e02e0a4d9f60faf92bc434271</guid>
-      <pubDate>Fri, 04 Sep 2026 06:47:52 +0000</pubDate>
     </item>
   </channel>
 </rss>
