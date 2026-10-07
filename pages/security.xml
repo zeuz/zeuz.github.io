@@ -5,7 +5,83 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 06 Oct 2026 14:00:55 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 07 Oct 2026 14:01:03 +0000</lastBuildDate>
+    <item>
+      <title>FBI Warns FortiBleed Remains Active After Amassing 86,644 Fortinet Device Credentials - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/fbi-warns-fortibleed-remains-active.html</link>
+      <description>The U.S. Federal Bureau of Investigation (FBI) and Secret Service (USSS) on Tuesday warned that the FortiBleed credential harvesting campaign remains an active threat aimed at internet-facing Fortinet FortiGate firewalls and secure socket layer (SSL) virtual private network (VPN) gateways.
+"The campaign exploits reused or leaked credentials and legacy SHA-256 password storage, enabling threat</description>
+      <guid isPermaLink="false">f6f5ea84fffefa0b3a161af29f87e5059498a88f6719f8c09ee8be0b000ba361</guid>
+      <pubDate>Wed, 07 Oct 2026 11:56:56 +0000</pubDate>
+    </item>
+    <item>
+      <title>Atlassian Data Center Flaw Draws Exploitation Attempts Within Two Hours of Public Details - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/atlassian-data-center-flaw-draws.html</link>
+      <description>Threat actors have begun to exploit a newly disclosed critical security flaw impacting Atlassian Data Center products that could allow access to sensitive files under certain conditions.
+The arbitrary file access flaw, tracked as CVE-2026-21589 (CVSS score: 9.3) affects multiple products, including Bitbucket Data Center, Confluence Data Center, Jira Service Management Data Center, Jira Software</description>
+      <guid isPermaLink="false">13e06c327d95f3b462b379961dfe2b081feb3dacf559fd13d7e869db9758d12e</guid>
+      <pubDate>Wed, 07 Oct 2026 11:49:26 +0000</pubDate>
+    </item>
+    <item>
+      <title>Pinball Fantasies reverse engineered byte-for-byte, dot-for-dot. - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wzu023/pinball_fantasies_reverse_engineered_byteforbyte/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/pedrocatalao"&gt; /u/pedrocatalao &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/pedrocatalao/pinball-fantasies-encore"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wzu023/pinball_fantasies_reverse_engineered_byteforbyte/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">133c71e370b04970eb3b75c941a6cb4a6386d8c2a1f5951593c3fe5a0d092aec</guid>
+      <pubDate>Wed, 07 Oct 2026 11:25:37 +0000</pubDate>
+    </item>
+    <item>
+      <title>Anthropic Expands Claude Access for Vetted Cyber Teams as Glasswing Finds 129,000 Flaws - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/anthropic-expands-claude-access-for.html</link>
+      <description>Anthropic on Tuesday said it's expanding a program that allows vetted cybersecurity professionals to test its advanced artificial intelligence (AI) models with reduced safeguards and blocking classifiers, as the company claimed its Project Glasswing initiative uncovered at least 129,000 verified software vulnerabilities between April and July 2026.
+The company said it also found an additional</description>
+      <guid isPermaLink="false">9abbc25bbc0d6f034d68d8d1ee9ca4d2e4a962568b1a1336a492a3bc4e5a2fb5</guid>
+      <pubDate>Wed, 07 Oct 2026 08:07:38 +0000</pubDate>
+    </item>
+    <item>
+      <title>100+ Compromised Websites Use Fake Cloudflare Checks to Deliver LunexStealer - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/100-compromised-websites-use-fake.html</link>
+      <description>The Computer Emergency Response Team of Ukraine (CERT-UA) has identified more than 100 compromised websites that have been injected with malicious JavaScript to serve an information-stealing malware called LunexStealer (aka Psychedelic Stealer).
+The activity, which was observed by the agency in September 2026, has been attributed to a threat cluster dubbed UAC-0277. It did not disclose who the</description>
+      <guid isPermaLink="false">902c85689ce6e027399f346b2e984a8feb30d17667ead7488d83670f3c60ec43</guid>
+      <pubDate>Wed, 07 Oct 2026 06:57:54 +0000</pubDate>
+    </item>
+    <item>
+      <title>Reverse engineering a Magelight XP glitch in Skyrim - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wzexqi/reverse_engineering_a_magelight_xp_glitch_in/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/dado3212"&gt; /u/dado3212 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://blog.alexbeals.com/posts/explaining-the-magelight-xp-glitch-in-skyrim"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wzexqi/reverse_engineering_a_magelight_xp_glitch_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">a1ffeafdce0706f0ba3fb4689889505ec1e298209df4945ed7d8a86063e019b8</guid>
+      <pubDate>Tue, 06 Oct 2026 21:31:49 +0000</pubDate>
+    </item>
+    <item>
+      <title>Fake ChatGPT, Gemini, and Claude Ad Portals Capture Credentials and MFA Codes - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/fake-chatgpt-gemini-and-claude-ad.html</link>
+      <description>Cybersecurity researchers have disclosed details of a "human-operated phishing platform" that impersonates advertising products for artificial intelligence (AI) chatbots like Google Gemini, Anthropic Claude, OpenAI ChatGPT, Perplexity, Meta Muse, and Manus.
+The products, which claim to offer campaign optimization, spend audits, and business-account connections, are designed with one goal in</description>
+      <guid isPermaLink="false">da3e8f543f05be785905055cec4fe34ca04f3104753938c4bde4e046a1ce0c87</guid>
+      <pubDate>Tue, 06 Oct 2026 18:38:55 +0000</pubDate>
+    </item>
+    <item>
+      <title>Linux Backdoors Impersonate Email Security Tools to Evade Detection in Korea and Taiwan - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/linux-backdoors-impersonate-email.html</link>
+      <description>Linux backdoors targeting telecom and network appliances in South Korea and Taiwan have been disguising their traffic as email services and seemingly legitimate processes to blend in and evade detection.
+Threat actors are known to name their malicious software after a legitimate operating system component or a process as a defense evasion measure. By borrowing the name of a real binary, it may</description>
+      <guid isPermaLink="false">1b53632e70ebe7398140689bd1789e4a297920a95898a48bd4fcbc479628c6a5</guid>
+      <pubDate>Tue, 06 Oct 2026 18:24:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>iOS 27.2 beta: silent hardening in ImageIO ASTC decoder — structural, zero-click candidate - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wz9rrk/ios_272_beta_silent_hardening_in_imageio_astc/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/JustActuator6946"&gt; /u/JustActuator6946 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/vvirei333/ABrake27"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wz9rrk/ios_272_beta_silent_hardening_in_imageio_astc/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">81a4744b9a6930b2cbc657c3f51d6faad0fcfdc8856e547a6316168d0fc3649b</guid>
+      <pubDate>Tue, 06 Oct 2026 18:11:29 +0000</pubDate>
+    </item>
+    <item>
+      <title>Inside the Windows I/O Manager : Deep dive into how read I/O requests are initialized. - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wz4qf0/inside_the_windows_io_manager_deep_dive_into_how/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/_WinAsm"&gt; /u/_WinAsm &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://winware31.blogspot.com/2026/10/inside-windows-io-manager-deep-dive.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wz4qf0/inside_the_windows_io_manager_deep_dive_into_how/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">dfc625f95ab35f109116e519b8dc227340d73c224580f439aa9c72f76b2d6bfd</guid>
+      <pubDate>Tue, 06 Oct 2026 14:57:00 +0000</pubDate>
+    </item>
     <item>
       <title>LibreOffice and OpenOffice Flaws Let Malicious Spreadsheets Run Code Without Macro Warnings - The Hacker News</title>
       <link>https://thehackernews.com/2026/10/libreoffice-and-openoffice-flaws-let.html</link>
@@ -77,6 +153,27 @@ They used a private Danish company's lawful right to look up records in the Cent
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/0xD34D"&gt; /u/0xD34D &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://0xd34d.github.io/autel_evo_nano/drone-pwn"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wytyw1/autel_evo_nano_getting_a_root_shell_0xd34ds_space/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">02cec3efa8e2641e478d671e0fd6376aa076ae4842231c5b4ea0e25549e47bc7</guid>
       <pubDate>Tue, 06 Oct 2026 04:57:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>rabbitmq-c -- multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/03308f12-c15d-11f1-ab87-107c611e671e.html</link>
+      <description/>
+      <guid isPermaLink="false">0dd28bb0b536de7a9e7d7b10619dc8ec77a920cd5fbc89befb11cbe810a88e54</guid>
+      <pubDate>Tue, 06 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>rabbitmq-c -- remote client-side memory exhaustion - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/03302734-c15d-11f1-8561-107c611e671e.html</link>
+      <description/>
+      <guid isPermaLink="false">32b3c9fc60c93caf213abe37934613348f1206c5c4cd0451979696fcb9740bd1</guid>
+      <pubDate>Tue, 06 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Vaultwarden -- Multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/3a72cd47-c157-11f1-a6ea-8447094a420f.html</link>
+      <description/>
+      <guid isPermaLink="false">30fef090717e62f45c131081349b6542375f8f70ac024de8700b4919fa8bd335</guid>
+      <pubDate>Tue, 06 Oct 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>iOS 27.0.1 ImageIO — GPSCopy OOB-write (silently patched in 27.2 beta) - Reverse Engineering</title>
@@ -1446,107 +1543,6 @@ Security firm TantoSec has published a working exploit chain targeting vulnerabi
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/StructBreaker"&gt; /u/StructBreaker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/kaandemir993/DarkTortilla-RAT-Telegram-Exfiltration-Payload-Extraction-Analysis"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w9ogyb/darktortilla_rat_telegram_exfiltration_payload/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">a4ae8e699e5547f559159db0b1f4a0ee2d8810f3ad379e655de036914cac18e3</guid>
       <pubDate>Mon, 07 Sep 2026 10:29:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>N-able Issues Fourth N-central Hotfix in Five Weeks for Unauthenticated RCE Flaw - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/n-able-issues-fourth-n-central-hotfix.html</link>
-      <description>Every on-premises N-central build below 2026.3.1.14 — including servers updated to Hotfix 3 a day earlier — needs Hotfix 4. N-able's incident notice says the flaw has been exploited in the wild; its release notes say that is unconfirmed.
-N-able has released its&amp;nbsp;fourth hotfix&amp;nbsp;in five weeks for the N-central remote monitoring and management (RMM) platform, this time for a</description>
-      <guid isPermaLink="false">58bff86f25ae1469cce6d332b8915e9df33bdda72298f3cb4e806910c6bdb0e0</guid>
-      <pubDate>Mon, 07 Sep 2026 08:31:12 +0000</pubDate>
-    </item>
-    <item>
-      <title>WRAITH – Browser Hooking and Blind XSS Page Mirroring - Darknet - The Darkside</title>
-      <link>https://www.darknet.org.uk/2026/09/wraith-browser-hooking-and-blind-xss-page-mirroring/</link>
-      <description>WRAITH combines BeEF-style browser hooks with blind-XSS capture and a credentialed Page Mirror. Tested locally, with its limits examined.</description>
-      <guid isPermaLink="false">7b5497cf3a809bd3deeb516aea644a73fe98c4654b5ddc2971d862f644b259ce</guid>
-      <pubDate>Mon, 07 Sep 2026 07:58:02 +0000</pubDate>
-    </item>
-    <item>
-      <title>JSCeal Malware Can Bypass Google Authentication Using Stolen Session Cookies - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/jsceal-malware-can-bypass-google.html</link>
-      <description>Cybersecurity researchers have unpacked JSCeal, a sophisticated compiled V8 JavaScript (JSC) malware with credential harvesting, surveillance, and traffic-interception capabilities.
-"The payloads are protected with javascript-obfuscator, using multiple techniques including RC4-protected strings, control-flow flattening, proxy functions, and operation wrappers," Check Point Research said in a</description>
-      <guid isPermaLink="false">62e773f5f7ac4f4a4b6d4ec99b214c4b3ea7a7d3d6ed76c6b3eeba9894f8bcbf</guid>
-      <pubDate>Mon, 07 Sep 2026 07:53:04 +0000</pubDate>
-    </item>
-    <item>
-      <title>It took 8 months to reverse engineer this algorithm used in CADO-NFS, a production grade integer factorization library. The paper was dense math and not even AI could help. So I trial and errored my way into a working lattice sieve. - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w923y1/it_took_8_months_to_reverse_engineer_this/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/DataBaeBee"&gt; /u/DataBaeBee &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://leetarxiv.substack.com/p/continued-fractions-and-lattice-sieving"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w923y1/it_took_8_months_to_reverse_engineer_this/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">0acecb84db82d7f694cd5a0d6aa8dc61aebe7cf6c918dead589009ad60a2ad27</guid>
-      <pubDate>Sun, 06 Sep 2026 17:19:04 +0000</pubDate>
-    </item>
-    <item>
-      <title>Tengu, a Mirai-style Linux and IoT botnet - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w8w7fq/tengu_a_miraistyle_linux_and_iot_botnet/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/420ass_slayer69"&gt; /u/420ass_slayer69 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://app.reverser.space/p/duckie/tengu-reverse-engineering-a-mirai-style-linux-iot#0x1083d"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w8w7fq/tengu_a_miraistyle_linux_and_iot_botnet/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">b0f134bfac1d9b410f0f0d667a3dd44770ec35206d21e61530c3c19d29d99d6c</guid>
-      <pubDate>Sun, 06 Sep 2026 13:27:17 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Hijack MikroTik Routers Through Internet-Exposed SSH Without Authentication - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/attackers-hijack-mikrotik-routers.html</link>
-      <description>Attackers are exploiting MikroTik routers with their Secure Shell (SSH) remote-access service, which is reachable from the internet, to gain full administrative control without authentication, according to&amp;nbsp;CERT Polska's attack warning, published on September 5.
-Successful attacks date to at least September 2. The Hacker News’s September 6 review of the warning found no victim count or</description>
-      <guid isPermaLink="false">c262b1acbae73151c8c02a16c1119ca0e35b5326596a3c666a9ac4f82860dd47</guid>
-      <pubDate>Sun, 06 Sep 2026 09:32:38 +0000</pubDate>
-    </item>
-    <item>
-      <title>Four REVSTEALER-Linked Modules Disable Windows Update and Defender to Run a Crypto Miner - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/four-revstealer-linked-modules-disable.html</link>
-      <description>Elastic Security Labs has documented four previously unreported programs associated with REVSTEALER, an emerging Windows information stealer, that remain on an infected machine after the stealer deletes itself.
-One of them switches off Windows Update and Microsoft Defender before running a cryptocurrency miner.
-The company named the four programs ProManager, WinUpdate, SoftManager, and</description>
-      <guid isPermaLink="false">0473921b203c65a52e417ba41c8a60e213da907b71199bbd03eed427e25745c9</guid>
-      <pubDate>Sun, 06 Sep 2026 08:34:20 +0000</pubDate>
-    </item>
-    <item>
-      <title>Roundcube -- Multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/e7726f5e-a9d0-11f1-93c7-8447094a420f.html</link>
-      <description/>
-      <guid isPermaLink="false">7e4fde1dceb8c2471f4126a327199fef44713c0875e402f9a0cf16a2aacf5b16</guid>
-      <pubDate>Sun, 06 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Unpatched Magento and Adobe Commerce Zero-Day Exploited to Backdoor Online Stores - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/unpatched-magento-and-adobe-commerce.html</link>
-      <description>Attackers are exploiting a new unpatched vulnerability in Magento Open Source and Adobe Commerce that lets them run malicious code on an online store's server without logging in, Dutch e-commerce security company Sansec said in an&amp;nbsp;advisory published on September 5.
-Sansec, which discovered the flaw and named it StyleSmuggler, said attacks started on September 4. "Sansec is</description>
-      <guid isPermaLink="false">95b25d0d2ebdb5b69c8398558708b06b171f426c70edabe010534435129d507e</guid>
-      <pubDate>Sat, 05 Sep 2026 20:14:47 +0000</pubDate>
-    </item>
-    <item>
-      <title>Binary Ninja 6.0: MCP, Binary Similarity, Perf, Migration Wizard, much more - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w86vit/binary_ninja_60_mcp_binary_similarity_perf/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Psifertex"&gt; /u/Psifertex &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://binary.ninja/2026/09/03/binary-ninja-6.0-krypton.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w86vit/binary_ninja_60_mcp_binary_similarity_perf/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">08093ca9490d31e2219827b43b1f2dae0c88955e320b6b17a5531a1b193571fb</guid>
-      <pubDate>Sat, 05 Sep 2026 17:28:30 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Breached JetBrains Cadence via Unpatched TeamCity, Extracting AWS Credentials - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/attackers-breached-jetbrains-cadence.html</link>
-      <description>JetBrains is urging Cadence users to revoke and rotate all credentials following a security incident last month in which unidentified threat actors exploited a recently disclosed critical vulnerability in TeamCity to breach its own environment.
-"Cadence users should immediately revoke or rotate all credentials and secrets that may have been used to run their Cadence executions," JetBrains said.</description>
-      <guid isPermaLink="false">5f2d3b4a2668a0de71f2155028044847c950588b08bdee244755d7847831fc4c</guid>
-      <pubDate>Sat, 05 Sep 2026 16:52:33 +0000</pubDate>
-    </item>
-    <item>
-      <title>Critical VMware Workstation and Fusion Flaw Lets VM Admins Execute Host Code - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/critical-vmware-workstation-and-fusion.html</link>
-      <description>Broadcom has released security updates for two security flaws impacting VMware Workstation and Fusion, including one critical bug that could result in arbitrary code execution under certain conditions.
-The vulnerability, tracked as CVE-2026-59346 (CVSS score: 9.3), is an integer-overflow vulnerability that a local attacker with elevated privileges can exploit to run arbitrary code.
-"A</description>
-      <guid isPermaLink="false">ab268302869a1d9884edceaa8cf4190334bc644d77efb2d1103954817a490bc6</guid>
-      <pubDate>Sat, 05 Sep 2026 16:05:08 +0000</pubDate>
-    </item>
-    <item>
-      <title>Trezor Says ShipMonk Breach Exposed 67,000 U.S. Customers' Data It Said Was Deleted - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/trezor-says-shipmonk-breach-exposed.html</link>
-      <description>Hardware wallet manufacturer Trezor on Friday disclosed that another 67,000 customers from the U.S. have been impacted in a breach at its shipping provider ShipMonk.
-The exposed information includes customer names, email addresses, phone numbers, shipping addresses, and order numbers between November 2019 and August 2021. The breach does not affect the security of the company's hardware wallets</description>
-      <guid isPermaLink="false">82c06c667ef232a82754f7f0ac33d05e0fdb38b91e4bfc76c0eee0d69715882f</guid>
-      <pubDate>Sat, 05 Sep 2026 14:17:02 +0000</pubDate>
     </item>
   </channel>
 </rss>

@@ -5,7 +5,24 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Misc category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 15 Sep 2026 14:01:34 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 07 Oct 2026 14:01:04 +0000</lastBuildDate>
+    <item>
+      <title>Distorted plots - And now it's all this</title>
+      <link>https://leancrew.com/all-this/2026/10/distorted-plots/</link>
+      <description>&lt;p&gt;Rhett Allain, physics professor and blogger, published &lt;a href="https://rjallain.medium.com/why-do-textbooks-lie-about-the-moons-orbit-around-the-earth-7e29f9810aa9?sk=7cf9fbcc5f1f235461c6dc8d04367fa6"&gt;a nice article today&lt;/a&gt; about the Moon’s orbit. It follows largely the same line of reasoning as &lt;a href="https://leancrew.com/all-this/2022/10/orbital-curvature/"&gt;my post on the same topic&lt;/a&gt; (and the various write-ups I linked to in that post) from a few years ago. I nodded my head as I read through it, until I got to a plot at the end of the article.&lt;/p&gt;
+&lt;p&gt;For much of the article, Allain complains about how the orbit of the Moon as it and the Earth make their way around the Sun is often distorted in textbooks. Like this, which is a frame from an animated GIF in the article.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Distorted orbits around the Sun" class="ss" src="https://leancrew.com/all-this/images2026/20261006-Distorted%20orbits%20around%20the%20Sun.png" title="Distorted orbits around the Sun" width="80%" /&gt;&lt;/p&gt;
+&lt;p&gt;In this image, the Earth-Moon distance is exaggerated, and it looks like the Moon curves away from the Sun when it’s between the Earth and the Sun. To show that this is wrong, he plots portions of the Moon and Earth orbits without exaggerating the Moon-Earth distance:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Allain plot of Moon and Earth orbits" class="ss" src="https://leancrew.com/all-this/images2026/20261006-Allain%20plot%20of%20Moon%20and%20Earth%20orbits.png" title="Allain plot of Moon and Earth orbits" width="100%" /&gt;&lt;/p&gt;
+&lt;p&gt;Forgive me, but what the actual fuck? How can you spend over 1000 words complaining about graphical distortions and then produce this? Sure, it’s not the same distortion he was complaining about, but still. The whole point of the article was to show that the Moon’s path over the course of an Earth year is a sort of wobbly circle around the Sun. The arcs in this plot are nowhere near circular.&lt;/p&gt;
+&lt;p&gt;Here’s a properly scaled version of Allain’s plot:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Rescaled Moon and Earth orbit" class="ss" src="https://leancrew.com/all-this/images2026/20261006-Rescaled%20Moon%20and%20Earth%20orbit.svg" title="Rescaled Moon and Earth orbit" width="35%" /&gt;&lt;/p&gt;
+&lt;p&gt;Yes, the plot is really tall and skinny. It has to be to avoid distorting the paths. Note that the grids are square and represent the same distance in each direction.&lt;/p&gt;
+&lt;p&gt;We all know how this happened. The range of the &lt;em&gt;x&lt;/em&gt; data is very small compared to the range of the &lt;em&gt;y&lt;/em&gt; data, but because the plotting software defaults to a landscape-style graph, the paths come out looking like arcs of very wide ellipses. Unless the person running the software steps in to make sure &lt;em&gt;x&lt;/em&gt; and &lt;em&gt;y&lt;/em&gt; distances are drawn to the same scale.&lt;/p&gt;
+&lt;p&gt;I could write a post like this almost every day. So many people accept the defaults of their graphing software without thinking about how one or two small tweaks could make their plots so much better.&lt;/p&gt;</description>
+      <guid isPermaLink="false">76478e1c265e22f8915992f07ddaa2eec655462b02edcf617a6a823764842b50</guid>
+      <pubDate>Wed, 07 Oct 2026 02:08:33 +0000</pubDate>
+    </item>
     <item>
       <title>Apple drawings - And now it's all this</title>
       <link>https://leancrew.com/all-this/2026/09/apple-drawings/</link>

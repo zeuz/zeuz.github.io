@@ -5,7 +5,672 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 06 Oct 2026 14:00:55 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 07 Oct 2026 14:01:03 +0000</lastBuildDate>
+    <item>
+      <title>Python GUIs: Change the color of the ProgressBar indicator text when it exceeds 50% - Planet Python</title>
+      <link>https://www.pythonguis.com/faq/change-the-color-of-the-progressbar-indicator-text-when-it-exceeds-50/</link>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;How can I change the text color from black to white of the percentage indicator inside the &lt;code&gt;QProgressBar&lt;/code&gt; when it exceeds the value of 50?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;When a &lt;code&gt;QProgressBar&lt;/code&gt; fills past the halfway mark, the dark-colored chunk behind the text can make the default black percentage label hard to read. A common solution is to switch the text color to white once the value crosses 50%. Let's walk through how to do this in PyQt5 using stylesheets and a signal connection.&lt;/p&gt;
+&lt;h2 id="why-the-text-becomes-hard-to-read"&gt;Why the text becomes hard to read&lt;/h2&gt;
+&lt;p&gt;By default, &lt;code&gt;QProgressBar&lt;/code&gt; draws its percentage text on top of the bar. When the colored "chunk" is small, the text sits against a light background and black text is fine. As the chunk grows and fills most of the bar, the text ends up on top of a dark background &amp;mdash; and black-on-dark is difficult to see.&lt;/p&gt;
+&lt;p&gt;The fix is straightforward: watch for value changes and update the stylesheet to swap the text color at the right moment.&lt;/p&gt;
+&lt;h2 id="styling-the-qprogressbar-text"&gt;Styling the &lt;code&gt;QProgressBar&lt;/code&gt; text&lt;/h2&gt;
+&lt;p&gt;The text color on a &lt;code&gt;QProgressBar&lt;/code&gt; is controlled by the &lt;code&gt;color&lt;/code&gt; property on the &lt;code&gt;QProgressBar&lt;/code&gt; selector itself &amp;mdash; not on &lt;code&gt;QProgressBar::chunk&lt;/code&gt;. The &lt;code&gt;::chunk&lt;/code&gt; sub-control only styles the filled portion of the bar (its background color, border, etc.), while &lt;code&gt;color&lt;/code&gt; on &lt;code&gt;QProgressBar&lt;/code&gt; sets the text color.&lt;/p&gt;
+&lt;p&gt;Here's a quick example of setting the text to white:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;self.progress_bar.setStyleSheet("QProgressBar { color: white; }")
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;And setting it back to black:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;self.progress_bar.setStyleSheet("QProgressBar { color: black; }")
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h2 id="responding-to-value-changes"&gt;Responding to value changes&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;QProgressBar&lt;/code&gt; emits a &lt;code&gt;valueChanged&lt;/code&gt; signal every time its value updates. You can connect a slot to this signal that checks the current value and applies the appropriate stylesheet.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;self.progress_bar.valueChanged.connect(self.update_progress_text_color)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Then define the slot:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;def update_progress_text_color(self, value):
+    if value &amp;gt; 50:
+        self.progress_bar.setStyleSheet("""
+            QProgressBar {
+                color: white;
+            }
+        """)
+    else:
+        self.progress_bar.setStyleSheet("""
+            QProgressBar {
+                color: black;
+            }
+        """)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Each time the value changes, this method checks whether it's above 50 and sets the text color accordingly.&lt;/p&gt;
+&lt;h2 id="preserving-other-styles"&gt;Preserving other styles&lt;/h2&gt;
+&lt;p&gt;If you already have a stylesheet on your progress bar (for example, customizing the chunk color or the bar's border), you'll want to include those properties in both branches so they aren't lost when the stylesheet is replaced. Every call to &lt;code&gt;setStyleSheet()&lt;/code&gt; replaces the previous stylesheet entirely.&lt;/p&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;BASE_STYLE = """
+    QProgressBar {
+        border: 1px solid grey;
+        border-radius: 5px;
+        text-align: center;
+    }
+    QProgressBar::chunk {
+        background-color: #4CAF50;
+        border-radius: 5px;
+    }
+"""
+def update_progress_text_color(self, value):
+    if value &amp;gt; 50:
+        color_style = "QProgressBar { color: white; }"
+    else:
+        color_style = "QProgressBar { color: black; }"
+    self.progress_bar.setStyleSheet(BASE_STYLE + color_style)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Because the &lt;code&gt;color_style&lt;/code&gt; rule comes after &lt;code&gt;BASE_STYLE&lt;/code&gt;, it overrides the text color while keeping everything else intact.&lt;/p&gt;
+&lt;h2 id="complete-working-example"&gt;Complete working example&lt;/h2&gt;
+&lt;p&gt;Here's a full PyQt5 application you can copy and run. It uses a &lt;code&gt;QTimer&lt;/code&gt; to increment the progress bar automatically so you can see the text color flip from black to white as the bar crosses 50%.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;import sys
+from PyQt5.QtWidgets import (
+    QApplication, QWidget, QVBoxLayout, QProgressBar, QPushButton,
+)
+from PyQt5.QtCore import QTimer
+BASE_STYLE = """
+    QProgressBar {
+        border: 1px solid grey;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 14px;
+    }
+    QProgressBar::chunk {
+        background-color: #3874f2;
+        border-radius: 5px;
+    }
+"""
+class MainWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("QProgressBar Text Color Demo")
+        self.resize(400, 120)
+        layout = QVBoxLayout()
+        self.setLayout(layout)
+        self.progress_bar = QProgressBar()
+        self.progress_bar.setMinimum(0)
+        self.progress_bar.setMaximum(100)
+        self.progress_bar.setValue(0)
+        self.progress_bar.setStyleSheet(BASE_STYLE + "QProgressBar { color: black; }")
+        layout.addWidget(self.progress_bar)
+        self.start_button = QPushButton("Start")
+        self.start_button.clicked.connect(self.start_progress)
+        layout.addWidget(self.start_button)
+        self.progress_bar.valueChanged.connect(self.update_progress_text_color)
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.advance_progress)
+    def start_progress(self):
+        self.progress_bar.setValue(0)
+        self.timer.start(50)
+    def advance_progress(self):
+        current = self.progress_bar.value()
+        if current &amp;gt;= 100:
+            self.timer.stop()
+            return
+        self.progress_bar.setValue(current + 1)
+    def update_progress_text_color(self, value):
+        if value &amp;gt; 50:
+            color_style = "QProgressBar { color: white; }"
+        else:
+            color_style = "QProgressBar { color: black; }"
+        self.progress_bar.setStyleSheet(BASE_STYLE + color_style)
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+sys.exit(app.exec_())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;When you run this, click &lt;strong&gt;Start&lt;/strong&gt; and watch the percentage label. While the bar is at 50% or below, the text is black. The moment it passes 50%, the text switches to white, keeping it readable against the blue chunk.&lt;/p&gt;
+&lt;p&gt;You can adjust the threshold, the colors, or even add a gradual transition by checking at multiple thresholds &amp;mdash; the same pattern applies. Connect to &lt;code&gt;valueChanged&lt;/code&gt;, check the value, and set the stylesheet accordingly.&lt;/p&gt;
+            &lt;p&gt;For an in-depth guide to building Python GUIs with PyQt5 see my book, &lt;a href="https://www.pythonguis.com/pyqt5-book/"&gt;Create GUI Applications with Python &amp;amp; Qt5.&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">554cd4d367539c97ee43840b388ec992b7561320ecd33c0fdcdbaa900b618ed2</guid>
+      <pubDate>Wed, 07 Oct 2026 06:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python GUIs: Using Complex Data Sources with PyQt6 Model/View Architecture — How to use JSON, nested data, and other complex structures in your Qt table and list views - Planet Python</title>
+      <link>https://www.pythonguis.com/faq/complex-data-in-pyqt-models/</link>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;I have a complex data set in a JSON file. Is it possible to use this as my model's data in PyQt6 views, or do I need to simplify it to a basic table?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Great news: you can use &lt;em&gt;any&lt;/em&gt; data structure you like in a PyQt6 model. JSON files, nested dictionaries, lists of objects, database results &amp;mdash; it all works. The model acts as an interface between how &lt;em&gt;you&lt;/em&gt; store your data and how &lt;em&gt;Qt&lt;/em&gt; expects to see it. As long as your model returns data in the format Qt expects, the view will display it without complaint.&lt;/p&gt;
+&lt;p&gt;In this tutorial, we'll walk through how to load a JSON file and display its data in a &lt;code&gt;QTableView&lt;/code&gt; using a custom &lt;code&gt;QAbstractTableModel&lt;/code&gt;. Along the way, you'll see how the model translates between your real-world data and Qt's row-and-column view of the world.&lt;/p&gt;
+&lt;h2 id="how-modelview-works-with-complex-data"&gt;How Model/View Works with Complex Data&lt;/h2&gt;
+&lt;p&gt;Qt's &lt;a href="https://www.pythonguis.com/tutorials/pyqt6-modelview-architecture/"&gt;Model/View architecture&lt;/a&gt; separates &lt;em&gt;data&lt;/em&gt; from &lt;em&gt;presentation&lt;/em&gt;. The view (e.g. &lt;code&gt;QTableView&lt;/code&gt;, &lt;code&gt;QListView&lt;/code&gt;) asks the model questions like:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;"How many rows are there?"&lt;/li&gt;
+&lt;li&gt;"How many columns are there?"&lt;/li&gt;
+&lt;li&gt;"What's the data at row 2, column 3?"&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Your model answers these questions by looking at whatever underlying data structure you're using. The view doesn't care whether your data lives in a flat list, a JSON file, a pandas DataFrame, or a SQL database. It only cares about the answers.&lt;/p&gt;
+&lt;p&gt;This means you can wrap &lt;em&gt;any&lt;/em&gt; data source in a model. You just need to translate between your data's shape and the row/column format that Qt uses.&lt;/p&gt;
+&lt;h2 id="a-simple-json-example"&gt;A Simple JSON Example&lt;/h2&gt;
+&lt;p&gt;Let's start with a straightforward example. Suppose you have a JSON file containing a list of people, where each person has several fields:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-json"&gt;json&lt;/span&gt;
+&lt;pre&gt;&lt;code class="json"&gt;[
+    {
+        "name": "Alice",
+        "age": 34,
+        "city": "Berlin",
+        "role": "Engineer"
+    },
+    {
+        "name": "Bob",
+        "age": 28,
+        "city": "London",
+        "role": "Designer"
+    },
+    {
+        "name": "Charlie",
+        "age": 41,
+        "city": "New York",
+        "role": "Manager"
+    },
+    {
+        "name": "Diana",
+        "age": 25,
+        "city": "Tokyo",
+        "role": "Developer"
+    }
+]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Save this as &lt;code&gt;people.json&lt;/code&gt; in the same directory as your Python script.&lt;/p&gt;
+&lt;p&gt;Each object in the list becomes a row in the table, and each field becomes a column. The model's job is to map between these two representations.&lt;/p&gt;
+&lt;h2 id="building-the-model"&gt;Building the Model&lt;/h2&gt;
+&lt;p&gt;To display this data in a &lt;code&gt;QTableView&lt;/code&gt;, we subclass &lt;code&gt;QAbstractTableModel&lt;/code&gt; and implement three required methods:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;rowCount()&lt;/code&gt; &amp;mdash; returns the number of rows&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;columnCount()&lt;/code&gt; &amp;mdash; returns the number of columns&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;data()&lt;/code&gt; &amp;mdash; returns the data for a given row and column&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here's how that looks:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;import json
+from PyQt6.QtCore import Qt, QAbstractTableModel
+class JsonTableModel(QAbstractTableModel):
+    def __init__(self, data, headers=None):
+        super().__init__()
+        self._data = data
+        # Use provided headers, or extract keys from the first item.
+        if headers:
+            self._headers = headers
+        elif data:
+            self._headers = list(data[0].keys())
+        else:
+            self._headers = []
+    def rowCount(self, parent=None):
+        return len(self._data)
+    def columnCount(self, parent=None):
+        return len(self._headers)
+    def data(self, index, role=Qt.ItemDataRole.DisplayRole):
+        if role == Qt.ItemDataRole.DisplayRole:
+            row = self._data[index.row()]
+            key = self._headers[index.column()]
+            return str(row.get(key, ""))
+        return None
+    def headerData(self, section, orientation, role=Qt.ItemDataRole.DisplayRole):
+        if role == Qt.ItemDataRole.DisplayRole:
+            if orientation == Qt.Orientation.Horizontal:
+                return self._headers[section].capitalize()
+        return None
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Let's walk through what's happening here.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;__init__&lt;/code&gt; method stores the list of dictionaries and figures out the column headers. If you don't provide headers explicitly, it grabs the keys from the first dictionary in the list.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;rowCount()&lt;/code&gt; method returns the length of the data list &amp;mdash; one row per dictionary.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;columnCount()&lt;/code&gt; method returns the number of headers &amp;mdash; one column per key.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;data()&lt;/code&gt; method is where the translation happens. Qt calls this method with an &lt;code&gt;index&lt;/code&gt; (which contains a row and column number) and a &lt;code&gt;role&lt;/code&gt; (which describes &lt;em&gt;what kind&lt;/em&gt; of data Qt wants). For display purposes, we use &lt;code&gt;Qt.ItemDataRole.DisplayRole&lt;/code&gt;. We look up the right dictionary from the list using the row number, then look up the right value using the column header as a key.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;headerData()&lt;/code&gt; method provides labels for the column headers at the top of the table.&lt;/p&gt;
+&lt;h2 id="displaying-the-data"&gt;Displaying the Data&lt;/h2&gt;
+&lt;p&gt;Now let's wire everything together in a small application:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;import sys
+import json
+from PyQt6.QtWidgets import QApplication, QMainWindow, QTableView
+from PyQt6.QtCore import Qt, QAbstractTableModel
+class JsonTableModel(QAbstractTableModel):
+    def __init__(self, data, headers=None):
+        super().__init__()
+        self._data = data
+        if headers:
+            self._headers = headers
+        elif data:
+            self._headers = list(data[0].keys())
+        else:
+            self._headers = []
+    def rowCount(self, parent=None):
+        return len(self._data)
+    def columnCount(self, parent=None):
+        return len(self._headers)
+    def data(self, index, role=Qt.ItemDataRole.DisplayRole):
+        if role == Qt.ItemDataRole.DisplayRole:
+            row = self._data[index.row()]
+            key = self._headers[index.column()]
+            return str(row.get(key, ""))
+        return None
+    def headerData(self, section, orientation, role=Qt.ItemDataRole.DisplayRole):
+        if role == Qt.ItemDataRole.DisplayRole:
+            if orientation == Qt.Orientation.Horizontal:
+                return self._headers[section].capitalize()
+        return None
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("JSON Table Model")
+        # Load data from the JSON file.
+        with open("people.json", "r") as f:
+            data = json.load(f)
+        # Create the model and view.
+        self.model = JsonTableModel(data)
+        self.table = QTableView()
+        self.table.setModel(self.model)
+        self.setCentralWidget(self.table)
+        self.resize(500, 300)
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+sys.exit(app.exec())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Run this and you'll see a table view displaying the data from your JSON file, complete with column headers.&lt;/p&gt;
+&lt;h2 id="working-with-nested-json"&gt;Working with Nested JSON&lt;/h2&gt;
+&lt;p&gt;Real-world JSON is often more complex than a flat list of objects. You might have nested structures like this:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-json"&gt;json&lt;/span&gt;
+&lt;pre&gt;&lt;code class="json"&gt;[
+    {
+        "name": "Alice",
+        "age": 34,
+        "address": {
+            "city": "Berlin",
+            "country": "Germany"
+        },
+        "skills": ["Python", "C++"]
+    },
+    {
+        "name": "Bob",
+        "age": 28,
+        "address": {
+            "city": "London",
+            "country": "UK"
+        },
+        "skills": ["JavaScript", "CSS"]
+    }
+]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Save this as &lt;code&gt;people_nested.json&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;A &lt;code&gt;QTableView&lt;/code&gt; is inherently a flat, two-dimensional grid. You can't directly display nested structures in it, but you &lt;em&gt;can&lt;/em&gt; flatten the data in your model. The model is the perfect place to do this &amp;mdash; your original data stays complex, but the model presents a simplified view to Qt.&lt;/p&gt;
+&lt;p&gt;Here's a model that handles nested dictionaries by using dot-notation column definitions:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;class NestedJsonTableModel(QAbstractTableModel):
+    def __init__(self, data, columns):
+        super().__init__()
+        self._data = data
+        # columns is a list of tuples: (header_label, key_path)
+        # key_path is a dot-separated string like "address.city"
+        self._columns = columns
+    def rowCount(self, parent=None):
+        return len(self._data)
+    def columnCount(self, parent=None):
+        return len(self._columns)
+    def _resolve(self, obj, key_path):
+        """Walk into a nested dict using a dot-separated path."""
+        keys = key_path.split(".")
+        for key in keys:
+            if isinstance(obj, dict):
+                obj = obj.get(key, "")
+            else:
+                return ""
+        return obj
+    def data(self, index, role=Qt.ItemDataRole.DisplayRole):
+        if role == Qt.ItemDataRole.DisplayRole:
+            row = self._data[index.row()]
+            _, key_path = self._columns[index.column()]
+            value = self._resolve(row, key_path)
+            # Handle lists by joining them into a string.
+            if isinstance(value, list):
+                return ", ".join(str(v) for v in value)
+            return str(value)
+        return None
+    def headerData(self, section, orientation, role=Qt.ItemDataRole.DisplayRole):
+        if role == Qt.ItemDataRole.DisplayRole:
+            if orientation == Qt.Orientation.Horizontal:
+                label, _ = self._columns[section]
+                return label
+        return None
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;The &lt;code&gt;_resolve&lt;/code&gt; method walks through the nested dictionary using a dot-separated path. So &lt;code&gt;"address.city"&lt;/code&gt; first looks up &lt;code&gt;"address"&lt;/code&gt; (getting a nested dict), then looks up &lt;code&gt;"city"&lt;/code&gt; inside that. This keeps the logic clean and reusable.&lt;/p&gt;
+&lt;p&gt;You define the columns you want to display when creating the model:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;columns = [
+    ("Name", "name"),
+    ("Age", "age"),
+    ("City", "address.city"),
+    ("Country", "address.country"),
+    ("Skills", "skills"),
+]
+with open("people_nested.json", "r") as f:
+    data = json.load(f)
+model = NestedJsonTableModel(data, columns)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;This approach gives you full control over which parts of your data appear in the table and in what order. Your JSON stays as-is &amp;mdash; the model handles the mapping.&lt;/p&gt;
+&lt;h2 id="complete-working-example-with-nested-data"&gt;Complete Working Example with Nested Data&lt;/h2&gt;
+&lt;p&gt;Here's the full application with the nested JSON model:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;import sys
+import json
+from PyQt6.QtWidgets import QApplication, QMainWindow, QTableView
+from PyQt6.QtCore import Qt, QAbstractTableModel
+class NestedJsonTableModel(QAbstractTableModel):
+    """A table model that can display data from nested JSON structures."""
+    def __init__(self, data, columns):
+        super().__init__()
+        self._data = data
+        # columns: list of (header_label, dot_separated_key_path)
+        self._columns = columns
+    def rowCount(self, parent=None):
+        return len(self._data)
+    def columnCount(self, parent=None):
+        return len(self._columns)
+    def _resolve(self, obj, key_path):
+        """Walk into a nested dict using a dot-separated path."""
+        keys = key_path.split(".")
+        for key in keys:
+            if isinstance(obj, dict):
+                obj = obj.get(key, "")
+            else:
+                return ""
+        return obj
+    def data(self, index, role=Qt.ItemDataRole.DisplayRole):
+        if role == Qt.ItemDataRole.DisplayRole:
+            row = self._data[index.row()]
+            _, key_path = self._columns[index.column()]
+            value = self._resolve(row, key_path)
+            if isinstance(value, list):
+                return ", ".join(str(v) for v in value)
+            return str(value)
+        return None
+    def headerData(self, section, orientation, role=Qt.ItemDataRole.DisplayRole):
+        if role == Qt.ItemDataRole.DisplayRole:
+            if orientation == Qt.Orientation.Horizontal:
+                label, _ = self._columns[section]
+                return label
+        return None
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Nested JSON Table Model")
+        # Define which fields to show and how to reach them.
+        columns = [
+            ("Name", "name"),
+            ("Age", "age"),
+            ("City", "address.city"),
+            ("Country", "address.country"),
+            ("Skills", "skills"),
+        ]
+        # Load the nested JSON data.
+        with open("people_nested.json", "r") as f:
+            data = json.load(f)
+        self.model = NestedJsonTableModel(data, columns)
+        self.table = QTableView()
+        self.table.setModel(self.model)
+        # Resize columns to fit their contents.
+        self.table.resizeColumnsToContents()
+        self.setCentralWidget(self.table)
+        self.resize(600, 300)
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+sys.exit(app.exec())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h2 id="adding-sorting-with-qsortfilterproxymodel"&gt;Adding Sorting with QSortFilterProxyModel&lt;/h2&gt;
+&lt;p&gt;Once you have your model working, adding sorting is straightforward using &lt;code&gt;QSortFilterProxyModel&lt;/code&gt;. This sits between your model and the view, providing sort and filter capabilities without modifying your original data. For more details on sorting and filtering tables, see our &lt;a href="https://www.pythonguis.com/tutorials/pyqt6-modelview-sort-filter-tables/"&gt;guide to sorting and filtering in Qt Model/View&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;import sys
+import json
+from PyQt6.QtWidgets import QApplication, QMainWindow, QTableView
+from PyQt6.QtCore import Qt, QAbstractTableModel, QSortFilterProxyModel
+class NestedJsonTableModel(QAbstractTableModel):
+    def __init__(self, data, columns):
+        super().__init__()
+        self._data = data
+        self._columns = columns
+    def rowCount(self, parent=None):
+        return len(self._data)
+    def columnCount(self, parent=None):
+        return len(self._columns)
+    def _resolve(self, obj, key_path):
+        keys = key_path.split(".")
+        for key in keys:
+            if isinstance(obj, dict):
+                obj = obj.get(key, "")
+            else:
+                return ""
+        return obj
+    def data(self, index, role=Qt.ItemDataRole.DisplayRole):
+        if role == Qt.ItemDataRole.DisplayRole:
+            row = self._data[index.row()]
+            _, key_path = self._columns[index.column()]
+            value = self._resolve(row, key_path)
+            if isinstance(value, list):
+                return ", ".join(str(v) for v in value)
+            return str(value)
+        return None
+    def headerData(self, section, orientation, role=Qt.ItemDataRole.DisplayRole):
+        if role == Qt.ItemDataRole.DisplayRole:
+            if orientation == Qt.Orientation.Horizontal:
+                label, _ = self._columns[section]
+                return label
+        return None
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Sortable JSON Table")
+        columns = [
+            ("Name", "name"),
+            ("Age", "age"),
+            ("City", "address.city"),
+            ("Country", "address.country"),
+            ("Skills", "skills"),
+        ]
+        with open("people_nested.json", "r") as f:
+            data = json.load(f)
+        # Create the source model.
+        self.source_model = NestedJsonTableModel(data, columns)
+        # Wrap it in a proxy model for sorting.
+        self.proxy_model = QSortFilterProxyModel()
+        self.proxy_model.setSourceModel(self.source_model)
+        self.table = QTableView()
+        self.table.setModel(self.proxy_model)
+        self.table.setSortingEnabled(True)
+        self.table.resizeColumnsToContents()
+        self.setCentralWidget(self.table)
+        self.resize(600, 300)
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+sys.exit(app.exec())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Click any column header to sort by that column. Click again to reverse the sort order. The &lt;code&gt;QSortFilterProxyModel&lt;/code&gt; handles all of this automatically &amp;mdash; you don't need to write any sorting logic yourself.&lt;/p&gt;
+&lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
+&lt;p&gt;The Model/View architecture in PyQt6 is designed to work with whatever data you have. The model is a translation layer: it takes your data &amp;mdash; whether it's a flat list, nested JSON, a database query, or anything else &amp;mdash; and presents it in the row-and-column format that Qt's views expect.&lt;/p&gt;
+&lt;p&gt;When working with complex data structures, keep these principles in mind:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Your data stays as-is.&lt;/strong&gt; You don't need to restructure your JSON or flatten your database. The model handles the translation.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Define your columns explicitly.&lt;/strong&gt; For nested data, decide upfront which fields you want to display and how to reach them.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Use helper methods.&lt;/strong&gt; A small utility like &lt;code&gt;_resolve()&lt;/code&gt; keeps your &lt;code&gt;data()&lt;/code&gt; method clean and makes it easy to access deeply nested values.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Layer on functionality.&lt;/strong&gt; Use &lt;code&gt;QSortFilterProxyModel&lt;/code&gt; to add sorting and filtering without touching your model code.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you're working with tabular data from pandas or numpy instead of JSON, take a look at our tutorial on &lt;a href="https://www.pythonguis.com/tutorials/pyqt6-qtableview-modelviews-numpy-pandas/"&gt;displaying pandas DataFrames in QTableView&lt;/a&gt;. For making your table cells editable, see our guide on &lt;a href="https://www.pythonguis.com/faq/editing-pyqt6-tableview/"&gt;editing data in a PyQt6 QTableView&lt;/a&gt;.&lt;/p&gt;
+            &lt;p&gt;For an in-depth guide to building Python GUIs with PyQt6 see my book, &lt;a href="https://www.pythonguis.com/pyqt6-book/"&gt;Create GUI Applications with Python &amp;amp; Qt6.&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">7e473aea66895183aefeeb9835a40cce81c2a62562a48087cc16905e9c0929f1</guid>
+      <pubDate>Wed, 07 Oct 2026 06:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Tryton News: Tryton Release 8.2 - Planet Python</title>
+      <link>https://discuss.tryton.org/t/tryton-release-8-2/9421</link>
+      <description>&lt;div&gt; &lt;/div&gt;
+&lt;p&gt;&lt;/p&gt;&lt;div class="lightbox-wrapper"&gt;&lt;a class="lightbox" href="https://discuss-cdn.tryton.org/uploads/default/original/2X/5/540fb2923602ec7b3bd69ee701714d0c6bc2d424.jpeg" title="Credit: Pexels by fauxels"&gt;&lt;img alt="Coworkers analyzing data charts on laptops during a team meeting" height="459" src="https://discuss-cdn.tryton.org/uploads/default/optimized/2X/5/540fb2923602ec7b3bd69ee701714d0c6bc2d424_2_690x459.jpeg" title="Credit: Pexels by fauxels" width="690" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;We are proud to announce the 8.2 release of &lt;a href="https://www.tryton.org/"&gt;Tryton&lt;/a&gt;.&lt;br /&gt;
+This release provides many bug fixes, performance improvements and some fine tuning.&lt;br /&gt;
+You can give it a &lt;a href="https://www.tryton.org/demo"&gt;try on the demo server&lt;/a&gt;, &lt;a href="https://hub.docker.com/r/tryton/tryton/"&gt;use the docker image&lt;/a&gt; or &lt;a href="https://www.tryton.org/download"&gt;download it here&lt;/a&gt;.&lt;br /&gt;
+As usual &lt;a href="https://docs.tryton.org/8.2/server/topics/setup_database.html#update-a-database"&gt;upgrading from previous series&lt;/a&gt; is fully supported.&lt;/p&gt;
+&lt;p&gt;Here is a list of the most noticeable changes:&lt;/p&gt;
+&lt;h2 id="heading--user"&gt;Changes for the User&lt;/h2&gt;
+&lt;h3 id="heading--user-client"&gt;Client&lt;/h3&gt;
+&lt;p&gt;When deleting or removing multiple rows from a list widget, a popup is displayed to confirm the selection that will be deleted or removed.&lt;br /&gt;
+And when clicking on delete or remove from a list widget with no row selected, a search popup is raised to search and select the rows to delete or remove.&lt;/p&gt;
+&lt;p&gt;When selecting multiple rows for editing from a &lt;code&gt;One2Many&lt;/code&gt; widget, the edition popup loops over each record. This is a faster and more reliable way to perform a mass edition.&lt;/p&gt;
+&lt;p&gt;The login services can now display an icon to represent the service provider. This makes it easier for users to select the right services.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;Binary&lt;/code&gt; widget supports filtering the file selection per file extension and mime type.&lt;br /&gt;
+And when the field has no file name defined, the widget will use the record name as a fallback file name when the content is downloaded.&lt;/p&gt;
+&lt;p&gt;It is now possible to mark as read a set of notifications.&lt;/p&gt;
+&lt;h3 id="heading--user-accounting"&gt;Accounting&lt;/h3&gt;
+&lt;p&gt;The “Open Journal” menu entry has been replaced by the “Lines” menu entry which uses a journal and period header as default values.&lt;br /&gt;
+This new menu entry also provides a new way to search for accounting lines.&lt;/p&gt;
+&lt;p&gt;We now use the maturity date before the effective date to calculate the reconciliation date.&lt;/p&gt;
+&lt;p&gt;The wizard to create dunning allows limiting the creation to a selection of companies.&lt;/p&gt;
+&lt;p&gt;The wizard to create direct debits allows limiting the creation to a selection of companies.&lt;/p&gt;
+&lt;p&gt;When posting an invoice, the system will check the validity of the European tax identifiers used.&lt;/p&gt;
+&lt;p&gt;A relate is now available from the period and the fiscal year to open the related invoices.&lt;br /&gt;
+This is useful when you need to collect all the invoices done in a period, for example to send to an external accountant.&lt;/p&gt;
+&lt;p&gt;The SEPA payment module now includes the flavors &lt;code&gt;pain.001.001.09&lt;/code&gt; and &lt;code&gt;pain.008.001.08&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;A generic CSV format has been added to import statements. You can configure the format to map columns to the Tryton fields.&lt;br /&gt;
+It is common that banks provide only a custom CSV format for the statements.&lt;/p&gt;
+&lt;p&gt;It is now possible to create tax rules based on organizations.&lt;br /&gt;
+This is useful for example to create a single rule that applies to all European countries.&lt;/p&gt;
+&lt;h3 id="heading--user-edocument"&gt;E-document&lt;/h3&gt;
+&lt;h4 id="heading--user-edocument-peppol"&gt;PEPPOL&lt;/h4&gt;
+&lt;p&gt;We added a configurable processing delay on each PEPPOL service.&lt;br /&gt;
+This prevents sending the newly posted invoice directly and allows some time for the user to correct any mistakes.&lt;/p&gt;
+&lt;h4 id="heading--user-edocument-uncefact"&gt;UN/CEFACT&lt;/h4&gt;
+&lt;p&gt;Tryton can now parse the UN/CEFACT invoice to create a supplier invoice.&lt;br /&gt;
+This will be useful to implement &lt;a href="https://discuss.tryton.org/t/sponsoring-super-pdp-integration/9229"&gt;French e-invoicing&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id="heading--user-party"&gt;Party&lt;/h3&gt;
+&lt;p&gt;The wizard to check VAT numbers with the VIES service has been replaced by an automatic background task.&lt;br /&gt;
+Once a number has been validated, it is considered valid for a configurable period before being re-validated.&lt;/p&gt;
+&lt;p&gt;When entering a contact mechanism, the system will try to guess the type.&lt;/p&gt;
+&lt;h3 id="heading--user-product"&gt;Product&lt;/h3&gt;
+&lt;p&gt;The products can now be added or removed directly from the category form.&lt;/p&gt;
+&lt;h3 id="heading--user-production"&gt;Production&lt;/h3&gt;
+&lt;p&gt;A tolerance can now be configured on each &lt;a href="https://en.wikipedia.org/wiki/Bill_of_materials"&gt;BoM&lt;/a&gt;. It raises warnings when the input or output quantities deviate from the calculated quantities from the BoM. It also detects additional or missing products.&lt;/p&gt;
+&lt;h3 id="heading--user-purchase"&gt;Purchase&lt;/h3&gt;
+&lt;p&gt;Tryton now calculates the actual average lead time of each product supplier over the last year.&lt;br /&gt;
+This is useful to update the configured lead time or to find poor suppliers.&lt;/p&gt;
+&lt;h3 id="heading--user-sales"&gt;Sales&lt;/h3&gt;
+&lt;p&gt;It is now possible to configure sales to create customer shipments only in draft (instead of waiting).&lt;br /&gt;
+This is useful when the workflow requires a manual validation of the shipment before being processed.&lt;/p&gt;
+&lt;p&gt;The wizard to create invoices and consumptions of subscriptions allows limiting the creation to a selection of companies.&lt;/p&gt;
+&lt;p&gt;A stock lot can now be set on the sale line from a POS.&lt;br /&gt;
+This is useful for businesses that require tracking the lot sold to customers.&lt;/p&gt;
+&lt;h3 id="heading--user-stock"&gt;Stock&lt;/h3&gt;
+&lt;p&gt;Tryton now warns when an inventory modifies the quantities or costs too much.&lt;br /&gt;
+The variations are now displayed with a visual hint when they are close to the tolerance.&lt;/p&gt;
+&lt;p&gt;A scheduled task has been added to create stock periods automatically using a configured interval. And another task closes them after a configured delay.&lt;br /&gt;
+This removes the need to manually close stock periods, which is important for performance.&lt;/p&gt;
+&lt;h3 id="heading--user-web-shop"&gt;Web Shop&lt;/h3&gt;
+&lt;p&gt;A scheduled task has been added to cancel abandoned sales after a configured delay per web shop.&lt;br /&gt;
+This prevents the list of draft sales from increasing too much.&lt;/p&gt;
+&lt;h2 id="heading--new-modules"&gt;New Modules&lt;/h2&gt;
+&lt;h3 id="heading--module-account-invoice-factur-x"&gt;Account Invoice Factur-X&lt;/h3&gt;
+&lt;p&gt;The &lt;a href="https://docs.tryton.org/8.2/modules-account-invoice-factur-x"&gt;&lt;em&gt;Account Invoice Factur-X Module&lt;/em&gt;&lt;/a&gt; allows to generate invoices in &lt;a href="https://fnfe-mpe.org/factur-x/factur-x_en/"&gt;Factur-X&lt;/a&gt; format.&lt;/p&gt;
+&lt;h3 id="heading--module-document-incoming-ocr-eagle-doc"&gt;Document Incoming OCR Eagle Doc&lt;/h3&gt;
+&lt;p&gt;The &lt;a href="https://docs.tryton.org/8.2/modules-document-incoming-ocr-eagle-doc"&gt;&lt;em&gt;Document Incoming OCR Eagle Doc Module&lt;/em&gt;&lt;/a&gt; provides integration with &lt;a href="https://www.eagle-doc.com/"&gt;Eagle Doc&lt;/a&gt; services.&lt;/p&gt;
+&lt;h3 id="heading--module-project-disbursement"&gt;Project Disbursement&lt;/h3&gt;
+&lt;p&gt;The &lt;a href="https://docs.tryton.org/8.2/modules-project-disbursement"&gt;&lt;em&gt;Project Disbursement Module&lt;/em&gt;&lt;/a&gt; provides support for paying and invoicing disbursements per project.&lt;/p&gt;
+&lt;h3 id="heading--module-stock-conversion"&gt;Stock Conversion&lt;/h3&gt;
+&lt;p&gt;The &lt;a href="https://docs.tryton.org/8.2/modules-stock-conversion"&gt;&lt;em&gt;Stock Conversion Module&lt;/em&gt;&lt;/a&gt; transforms one product into another with ease.&lt;/p&gt;
+&lt;h2 id="heading--sysadmin"&gt;Changes for the System Administrator&lt;/h2&gt;
+&lt;h3 id="heading--sysadmin-server"&gt;Server&lt;/h3&gt;
+&lt;p&gt;The “Administration” group has been replaced by an “Administrator” flag on the user.&lt;br /&gt;
+This ensures that an administrator always has access to everything even if a resource access is restricted to a group (which was not the “Administration” group).&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;trytond-admin&lt;/code&gt; command can now manage any user. This means that it can create a new user, activate or deactivate, promote as administrator or demote from administrator, set the email or password and send a reset password email.&lt;/p&gt;
+&lt;p&gt;The unfinished queued tasks are now retried automatically by a scheduled task.&lt;/p&gt;
+&lt;p&gt;A timer is now attached to every RPC request with a &lt;code&gt;timeout&lt;/code&gt; defined. It ensures that the request does not last longer by raising a &lt;code&gt;TimeOutException&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=":warning:" class="emoji" height="20" src="https://discuss-cdn.tryton.org/images/emoji/twitter/warning.png?v=15" title=":warning:" width="20" /&gt; The webhooks must be updated to include the &lt;code&gt;/r/&lt;/code&gt; prefix inherited from the new &lt;code&gt;Router&lt;/code&gt;.&lt;br /&gt;
+We have kept the former routes for backward compatibility.&lt;/p&gt;
+&lt;h3 id="heading--sysadmin-accounting"&gt;Accounting&lt;/h3&gt;
+&lt;p&gt;The Stripe API has been updated to the version &lt;code&gt;2026-09-30.endive&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id="heading--sysadmin-stock"&gt;Stock&lt;/h3&gt;
+&lt;p&gt;The DPD Shipment Service API has been updated to version &lt;code&gt;4.5&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id="heading--developer"&gt;Changes for the Developer&lt;/h2&gt;
+&lt;h3 id="heading--developer-server"&gt;Server&lt;/h3&gt;
+&lt;p&gt;The &lt;code&gt;readonly&lt;/code&gt; attribute and &lt;code&gt;states&lt;/code&gt; are now enforced on the server-side when checking the access rights of the user.&lt;/p&gt;
+&lt;p&gt;The fields have a new &lt;code&gt;editable&lt;/code&gt; &lt;code&gt;states&lt;/code&gt; which completes the existing &lt;code&gt;readonly&lt;/code&gt; but it is not enforced, only used for UI purposes.&lt;/p&gt;
+&lt;p&gt;We added &lt;code&gt;BulkBuffer&lt;/code&gt; for creation, deletion, save or any function on &lt;code&gt;ModelStorage&lt;/code&gt;.&lt;br /&gt;
+The &lt;code&gt;BulkBuffer&lt;/code&gt;s are &lt;a href="http://docs.python.org/reference/datamodel.html#context-managers"&gt;context managers&lt;/a&gt; that are flushed when reaching a defined size by calling a function with the current content.&lt;br /&gt;
+This is useful when looping on a large set of records to limit the memory consumption.&lt;br /&gt;
+Ex:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="lang-python"&gt;# records are saved every 2000 records
+with Model.bulk_save() as save:
+    for record in records:
+         record.amount += 10
+         save.push(record)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A new &lt;code&gt;router&lt;/code&gt; type of object is now supported in the &lt;code&gt;Pool&lt;/code&gt;.&lt;br /&gt;
+A &lt;code&gt;Router&lt;/code&gt; exposes entrypoints but as it is registered in the &lt;code&gt;Pool&lt;/code&gt; it can be extended by other modules.&lt;br /&gt;
+The entrypoint of a &lt;code&gt;Router&lt;/code&gt; is only registered for the database for which the origin module is activated.&lt;/p&gt;
+&lt;p&gt;A route has been added for the &lt;code&gt;custom.js&lt;/code&gt; and &lt;code&gt;custom.css&lt;/code&gt; files of sao. It chains a list of files that can be extended by any module.&lt;/p&gt;
+&lt;p&gt;The ORM is now using a &lt;code&gt;BrowseList&lt;/code&gt; instead of a simple list of instances. The &lt;code&gt;BrowseList&lt;/code&gt; allows keeping the cache and prefetching aligned with its content when it is mutated, for example by &lt;code&gt;.sort()&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;It is now possible to define the filename extension of &lt;code&gt;Binary&lt;/code&gt; fields.&lt;br /&gt;
+And it is also possible to set filters on the &lt;code&gt;binary&lt;/code&gt; and &lt;code&gt;image&lt;/code&gt; widgets.&lt;/p&gt;
+&lt;p&gt;The database connection &lt;code&gt;cursor&lt;/code&gt; now supports row factories like &lt;code&gt;dict_row&lt;/code&gt;, &lt;code&gt;namedtuple_row&lt;/code&gt; and &lt;code&gt;scalar_row&lt;/code&gt;. They change the default &lt;code&gt;tuple&lt;/code&gt; type of fetched records.&lt;br /&gt;
+Thanks to the row factory, the &lt;code&gt;cursor_dict&lt;/code&gt; has been removed.&lt;/p&gt;
+&lt;p&gt;It is now possible to configure &lt;a href="https://en.wikipedia.org/wiki/Mixin"&gt;Mixins&lt;/a&gt; to apply to the &lt;code&gt;Database&lt;/code&gt; and &lt;code&gt;TableHandler&lt;/code&gt; of the backend.&lt;br /&gt;
+This feature is now used for the &lt;a href="https://en.wikipedia.org/wiki/Geographic_information_system"&gt;GIS&lt;/a&gt; backend.&lt;/p&gt;
+&lt;p&gt;We added support for &lt;code&gt;AGE&lt;/code&gt; to the SQLite backend.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;DBTestCase&lt;/code&gt; is now public and can be reused by modules. It is useful to create test cases based on a module but without the generic tests from &lt;code&gt;ModuleTestCase&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://en.wikipedia.org/wiki/XML"&gt;XML&lt;/a&gt; record tag now supports a &lt;code&gt;search&lt;/code&gt; attribute. The value is a domain used to search for existing records and reuse them when the &lt;code&gt;id&lt;/code&gt; is not yet known.&lt;br /&gt;
+This is useful for example to create a country record which may have been already created.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;convert&lt;/code&gt; module gains an &lt;code&gt;import_xml&lt;/code&gt; function which can be used to import &lt;a href="https://en.wikipedia.org/wiki/XML"&gt;XML&lt;/a&gt; files into the database (like the file declared in the module).&lt;br /&gt;
+It can be useful for tests that need to have such records created.&lt;/p&gt;
+&lt;p&gt;The email validation tools now have a check deliverability option.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;URLAccessor&lt;/code&gt; can now accept a &lt;code&gt;request&lt;/code&gt; parameter to use instead of the &lt;code&gt;Transaction.context&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;ResourceAccessMixin&lt;/code&gt; gains two new fields &lt;code&gt;last_user&lt;/code&gt; and &lt;code&gt;last_modification&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id="heading--developer-proteus"&gt;Proteus &lt;small&gt;the scripting client&lt;/small&gt;&lt;/h3&gt;
+&lt;p&gt;When configured with &lt;code&gt;trytond&lt;/code&gt; (on the server host), it allows controlling access checks with the &lt;code&gt;_check_access&lt;/code&gt; contextual keyword.&lt;/p&gt;
+&lt;h3 id="heading--developer-company"&gt;Company&lt;/h3&gt;
+&lt;p&gt;The &lt;code&gt;companies&lt;/code&gt; and &lt;code&gt;employees&lt;/code&gt; are now in the user context.&lt;br /&gt;
+This is useful to write domains that restrict a selection to only allowed companies or employees.&lt;/p&gt;
+            &lt;p&gt;&lt;small&gt;1 post - 1 participant&lt;/small&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;a href="https://discuss.tryton.org/t/tryton-release-8-2/9421"&gt;Read full topic&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">3f668f511d661938e5494d2516d75de920ab20eda954e4697954dfde5703fe2d</guid>
+      <pubDate>Tue, 06 Oct 2026 16:00:22 +0000</pubDate>
+    </item>
     <item>
       <title>Django Weblog: Django security releases issued: 6.1.2, 6.0.9, and 5.2.18 - Planet Python</title>
       <link>https://www.djangoproject.com/weblog/2026/oct/06/security-releases/</link>
@@ -111,6 +776,18 @@ the Django Forum. Please see
 information.&lt;/p&gt;</description>
       <guid isPermaLink="false">89aa7b60a5dbc59e3bd0b98d5bc2ef38cde2d6ade466901e69face754caf0f1a</guid>
       <pubDate>Tue, 06 Oct 2026 13:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: Pandas groupby with sort=False: Keep groups in order of appearance - Planet Python</title>
+      <link>https://lernerpython.com/2026/10/06/pandas-groupby-with-sort-false-keep-groups-in-order-of-appearance/</link>
+      <description>&lt;img alt="Pandas groupby with sort=False: Keep groups in order of appearance" class="wp-image-17972" height="1194" src="https://lernerpython.com/wp-content/uploads/2026/10/2026-10-06.png" width="2535" /&gt;
+&lt;p class="wp-block-paragraph"&gt;A &amp;#8220;groupby&amp;#8221; call in Python Pandas is normally sorted by index.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;But if you&amp;#8217;re grouping by month name, April will come before January.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Pass &amp;#8220;sort=False&amp;#8221;, and the index will reflect the order of appearance:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;df.groupby('passenger_count', sort=False)['trip_distance'].mean()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/10/06/pandas-groupby-with-sort-false-keep-groups-in-order-of-appearance/"&gt;Pandas groupby with sort=False: Keep groups in order of appearance&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">18dc6c760370c255dd06613f3809ee131087dc36eedf46fc4aefdc4cc5d1624c</guid>
+      <pubDate>Tue, 06 Oct 2026 06:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Armin Ronacher: What is Codemode - Planet Python</title>
@@ -560,6 +1237,19 @@ leverage more.&lt;/p&gt;</description>
             &lt;p&gt;&lt;a href="https://discuss.tryton.org/t/security-release-for-issue-15035/9412"&gt;Read full topic&lt;/a&gt;&lt;/p&gt;</description>
       <guid isPermaLink="false">48ee81820b231cd98a9b1ebe176ce78a1dfd0e8957b05d1b9002def9248f8f93</guid>
       <pubDate>Mon, 05 Oct 2026 06:00:21 +0000</pubDate>
+    </item>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: Pandas groupby basics: Aggregating a numeric column by category - Planet Python</title>
+      <link>https://lernerpython.com/2026/10/05/pandas-groupby-basics-aggregating-a-numeric-column-by-category/</link>
+      <description>&lt;img alt="Pandas groupby basics: Aggregating a numeric column by category" class="wp-image-17964" height="637" src="https://lernerpython.com/wp-content/uploads/2026/10/2026-10-05.png" width="1223" /&gt;
+&lt;p class="wp-block-paragraph"&gt;The simplest grouping in Python Pandas is groupby:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;df.groupby(CATEGORICAL)[NUMERIC].AGG_METHOD()&lt;/code&gt;&lt;/pre&gt;
+&lt;p class="wp-block-paragraph"&gt;For example:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;df.groupby('passenger_count')['trip_distance'].mean()&lt;/code&gt;&lt;/pre&gt;
+&lt;p class="wp-block-paragraph"&gt;Returns a series whose index is the unique values from passenger_count.&lt;/p&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/10/05/pandas-groupby-basics-aggregating-a-numeric-column-by-category/"&gt;Pandas groupby basics: Aggregating a numeric column by category&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">4d34fe51b0ee456ce79630b220004bc396ee47f2839bb5c4a393dd8c0b869fda</guid>
+      <pubDate>Mon, 05 Oct 2026 06:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Mark Dufour: Shed Skin v0.9.14, v1.0 coming soon! - Planet Python</title>
