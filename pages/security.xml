@@ -5,7 +5,101 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Wed, 07 Oct 2026 14:01:03 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 14:01:49 +0000</lastBuildDate>
+    <item>
+      <title>Wazza Phishkit Targets Banking, Government, and Manufacturing Across the US, EU, and Australia - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/wazza-phishkit-targets-banking.html</link>
+      <description>Phishing kits are no longer limited to copying a familiar login page and waiting for a victim to enter credentials. Attackers are increasingly building filtering, session management, and traffic controls into the infrastructure that delivers the phishing page itself.
+ANY.RUN has identified Wazza, a new phishkit targeting banking, manufacturing, and government organizations across the US, Europe</description>
+      <guid isPermaLink="false">e9e994ef9e64badfef0523f2c5d7181b2eb4dda599ef0151a509f9cb1de15ba7</guid>
+      <pubDate>Thu, 08 Oct 2026 10:30:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>16 Malicious Firefox Extensions Pose as Rabby and OKX Wallets to Steal Recovery Phrases - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/16-malicious-firefox-extensions-pose-as.html</link>
+      <description>Cybersecurity researchers have discovered a cluster of 16 malicious Mozilla Firefox extensions that are capable of stealing cryptocurrency wallet recovery phrases and private keys.
+"The extensions masquerade as wallet portals, desktop utilities, and browser tools, but their code intercepts recovery phrases and private keys during wallet import flows and attempts to send those secrets to</description>
+      <guid isPermaLink="false">abe8a73d6bbfe082b962ee71b4273e5628f54754ad5feb8b16f78ec95afa7fa0</guid>
+      <pubDate>Thu, 08 Oct 2026 09:46:32 +0000</pubDate>
+    </item>
+    <item>
+      <title>Presenting DiagNG: After QCSuper, a new open-source initiative for freeing up mobile baseband Diag protocols - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x0kzfr/presenting_diagng_after_qcsuper_a_new_opensource/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/marin-m"&gt; /u/marin-m &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.p1sec.com/blog/presenting-diagng-open-source-qcsuper-successor"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x0kzfr/presenting_diagng_after_qcsuper_a_new_opensource/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">bc0ec208a5134443d51cbe17285bd9e9433b5dcf1e83c99009ac457726b1956f</guid>
+      <pubDate>Thu, 08 Oct 2026 07:51:56 +0000</pubDate>
+    </item>
+    <item>
+      <title>U.S. Offers Up to $10 Million for Tips on Zhang Yu, Charged in HAFNIUM Hacks - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/us-offers-up-to-10-million-for-tips-on.html</link>
+      <description>The U.S. State Department is offering up to $10 million for information leading to the identification or location of Zhang Yu, a Chinese national charged in the United States in connection with the 2021 Microsoft Exchange Server attacks known as HAFNIUM.
+The reward is for information leading to his identification or location, the news outlet&amp;nbsp;NTD reported&amp;nbsp;this week, citing a notice</description>
+      <guid isPermaLink="false">b383055a5b46cc01a97c1fa9b71c691e272a2755bb4b92160075b1d0658a7abc</guid>
+      <pubDate>Thu, 08 Oct 2026 07:42:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>MonsterCloud Owner Accused of Billing Over $19M While Secretly Paying Ransoms to Decrypt Data - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/monstercloud-owner-accused-of-billing.html</link>
+      <description>The U.S. Department of Justice (DoJ) on Wednesday announced charges against a 50-year-old U.S. and Israeli national for allegedly defrauding ransomware victims by secretly paying the attackers to obtain decryptors while claiming to use proprietary tools to recover their data.
+Zohar Pinhasi (aka Zack Silver and Zack Green) has been charged with two counts of wire fraud and one count of wire</description>
+      <guid isPermaLink="false">3e68521b5ff118449ec431db26bacdb91f5972a612ad78f886fec1235345ccf9</guid>
+      <pubDate>Thu, 08 Oct 2026 07:41:44 +0000</pubDate>
+    </item>
+    <item>
+      <title>Tensorlake npm Package Compromised to Deliver Shai-Hulud Credential-Stealing Worm - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/tensorlake-npm-package-compromised-to.html</link>
+      <description>The npm package known as "tensorlake," a TypeScript software development kit (SDK) for Tensorlake applications, sandboxes, and cloud services, was compromised as part of a ChainDrop / Shai-Hulud supply chain attack.
+The malicious version 0.5.144 "contains obfuscated malware that harvests credentials, exfiltrates secrets, establishes persistence, and executes remotely supplied code," Socket said</description>
+      <guid isPermaLink="false">e9b7ddedf1315fe8e6020be099c4092544ea9c3e8e43519b567e384f4c218110</guid>
+      <pubDate>Thu, 08 Oct 2026 05:46:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Hijack .gh, .sl, and .as Registries to Obtain Certificates for Google Domains - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/attackers-hijack-gh-sl-and-as.html</link>
+      <description>Attackers compromised three country-code top-level domains (ccTLDs) and obtained unauthorized HTTPS certificates for several Google domains, Google&amp;nbsp;said on October 6.
+Google's own systems were not breached, but any domain ending in .gh (Ghana), .sl (Sierra Leone) or .as (American Samoa) was put at risk. With such a certificate, an attacker could pose as the real site over an encrypted</description>
+      <guid isPermaLink="false">07d7cd3f29b4bf2d29a878fa338a382e0aa785d721cf2702060695f70a5de95d</guid>
+      <pubDate>Wed, 07 Oct 2026 18:48:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>Rebuilding Moonstone (1991) from 68k machine code into readable, moddable C++ for the Amiga 1200 - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x03pux/rebuilding_moonstone_1991_from_68k_machine_code/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/jarskih"&gt; /u/jarskih &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/Jarskih/moonstone-ace-public"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x03pux/rebuilding_moonstone_1991_from_68k_machine_code/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">d2c4adc5c4e85959d3b4a6d629398712b37efeaa8848235cfd60a5cd56de2b0f</guid>
+      <pubDate>Wed, 07 Oct 2026 18:07:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>Eight Malicious npm Packages Downloaded 40,767 Times Deliver Overlord RAT and Stealer - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/eight-malicious-npm-packages-downloaded.html</link>
+      <description>Cybersecurity researchers have disclosed details of a long-running npm supply chain malware campaign that pushes information stealers and remote access trojans (RAT) to compromised hosts.
+The campaign has been codenamed MALFEX by CloudSEK and Checkmarx. The activity is assessed to be the work of a lone threat actor who appears to have published 12 packages since August 2023, eight of which have</description>
+      <guid isPermaLink="false">f2c3735b2dde174e51b96f00ffc59f62c7e626b0177598b12ab8fc1a405df42b</guid>
+      <pubDate>Wed, 07 Oct 2026 17:43:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>SonicWall Patches CVSS 10.0 Pre-Authentication SSRF Flaw in SMA1000 Appliances - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/sonicwall-patches-cvss-100-pre.html</link>
+      <description>SonicWall has released hotfixes for four flaws in its SMA1000 appliances, the gateways that give remote workers access to a company's network and applications. The most serious could allow an attacker without a login to send requests through the appliance and reach internal functions.
+SonicWall rates it 10.0 on the CVSS scale and says it has no evidence that any of the four flaws is being</description>
+      <guid isPermaLink="false">77021e14f58833eef7bb39775b14032340234a1616e95a837261207a9e56d835</guid>
+      <pubDate>Wed, 07 Oct 2026 16:17:44 +0000</pubDate>
+    </item>
+    <item>
+      <title>Unpatched Critical LMCache Flaw Lets Unauthenticated Attackers Run Code Remotely - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/unpatched-critical-lmcache-flaw-lets.html</link>
+      <description>A critical vulnerability in LMCache, open-source software that speeds up large language model (LLM) servers such as vLLM, lets an attacker run code on the cache server without logging in, and no fixed version is available.
+The flaw is in LMCache's&amp;nbsp;multiprocess mode, where the cache runs as a standalone server that LLM workers reach over the ZeroMQ messaging library. A single network</description>
+      <guid isPermaLink="false">c219d42c30c051a3ae5130d9ef0d5093c092300a11281fcbce5a7dfb59a58a47</guid>
+      <pubDate>Wed, 07 Oct 2026 15:34:53 +0000</pubDate>
+    </item>
+    <item>
+      <title>PoeLLM Malware Infects 3,400+ Servers to Expand Crypto Mining Botnet - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/poellm-malware-infects-3400-servers-to.html</link>
+      <description>Cybersecurity researchers are calling attention to a new malware family that has been observed targeting exposed artificial intelligence (AI) and large language model (LLM) infrastructure with an aim to deploy cryptocurrency miners and further expand the scale of the botnet.
+The financially motivated campaign, dubbed Canto Incognito, has been found to install cryptocurrency miners, including</description>
+      <guid isPermaLink="false">76df43a85aaadb491dbfc657cdb5145f22529a3a96f600249fec1fd138cc9b09</guid>
+      <pubDate>Wed, 07 Oct 2026 15:33:51 +0000</pubDate>
+    </item>
     <item>
       <title>FBI Warns FortiBleed Remains Active After Amassing 86,644 Fortinet Device Credentials - The Hacker News</title>
       <link>https://thehackernews.com/2026/10/fbi-warns-fortibleed-remains-active.html</link>
@@ -1448,101 +1542,6 @@ Google Threat Intelligence Group (GTIG) said it has observed attackers with dive
 The person being called does not have to answer or touch their phone for it to work, but the caller must already be one of their WeChat contacts. Calif reported the flaw to Tencent in July and says the company has since</description>
       <guid isPermaLink="false">958dda7a71200d7ee47c90feff1c4c8fb1894e2b77643cafe1300718fb92a85c</guid>
       <pubDate>Tue, 08 Sep 2026 11:54:29 +0000</pubDate>
-    </item>
-    <item>
-      <title>What It Took to Reach 1 Billion Build Manifests - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/what-it-took-to-reach-1-billion-build.html</link>
-      <description>In the last six months, Chainguard doubled its output from 500 million to more than 1 billion container build manifests. We also surpassed 3,000 unique container images and 675,000 image versions in our catalog. Those are the headline numbers, but I want to share what's actually behind them. The number itself is less interesting than the system that produced it, and why we had to fundamentally</description>
-      <guid isPermaLink="false">c05c297eb0e0711234694f994403ca0c66ca167045af424faf2a6a5724c3c888</guid>
-      <pubDate>Tue, 08 Sep 2026 11:49:02 +0000</pubDate>
-    </item>
-    <item>
-      <title>FreeIPA Flaw Chain Lets Anonymous Clients Create Reusable Administrator Credentials - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/freeipa-flaw-chain-lets-anonymous.html</link>
-      <description>A flaw in FreeIPA lets a client that has never logged in create a Kerberos identity of its own choosing in the directory and end up in the administrators group, Red Hat says.
-FreeIPA is the system that determines who may log in across a Linux domain and maintains all identities in a 389 Directory Server database accessed via LDAP. The attack needs a second flaw in that database software.
-The</description>
-      <guid isPermaLink="false">05f84b13bf60a2367cba249082e14f01fe08ed116fe22f77f23748084517c93c</guid>
-      <pubDate>Tue, 08 Sep 2026 11:22:07 +0000</pubDate>
-    </item>
-    <item>
-      <title>Adobe Patches Magento Zero-Day Exploited to Deploy Rust Backdoor and PHP Web Shell - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/adobe-patches-magento-zero-day.html</link>
-      <description>Adobe on Monday released security patches to address a maximum-severity flaw impacting Adobe Commerce and Magento Open Source that has come under active exploitation in the wild.
-The vulnerability, now tracked as CVE-2026-75650 (CVSS score: 10.0), has been codenamed StyleSmuggler by Sansec, which discovered zero-day exploitation starting September 4, 2026.
-"This update resolves a critical</description>
-      <guid isPermaLink="false">709313a78c30a3dbda8da9aa03d6c0353e77927380ffc31d4912dd886ac2a8d7</guid>
-      <pubDate>Tue, 08 Sep 2026 09:13:47 +0000</pubDate>
-    </item>
-    <item>
-      <title>BengalSEO Poisons Bing Search Results to Deliver MayaBot and Tech Support Scams - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/bengalseo-poisons-bing-search-results.html</link>
-      <description>Cybersecurity researchers have disclosed details of a sprawling search engine optimization (SEO) poisoning campaign that paves the way for malware deployment and tech support scams.
-The campaign, discovered by the DFIR Report in March 2026, has been codenamed BengalSEO. It has operated out of the Indian state of Rajasthan since at least 2015, driven by two IT service providers named WeConnect</description>
-      <guid isPermaLink="false">49fa7550adbef9db602710a7c354f7415a85d33e8ff026628b81e8b9ad90d000</guid>
-      <pubDate>Tue, 08 Sep 2026 08:43:51 +0000</pubDate>
-    </item>
-    <item>
-      <title>Grindr to Pay £26 Million to Settle U.K. Claims Over HIV Status Data Sharing - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/grindr-to-pay-26-million-to-settle-uk.html</link>
-      <description>Online dating app Grindr has opted to pay £26 million ($35.1 million) to settle a lawsuit in the U.K. over allegations that it shared users' personal information, including their HIV status, with third-parties.
-Grindr, which is the largest LGBTQ+ dating app, was sued in April 2024, accusing it of violating U.K. privacy laws by sharing sensitive data for commercial purposes such as advertising.</description>
-      <guid isPermaLink="false">4f9c46dd15a17e8dcc1b5aad02cfd68743b90cd33a938a9d819b6057056ac7c0</guid>
-      <pubDate>Tue, 08 Sep 2026 07:00:43 +0000</pubDate>
-    </item>
-    <item>
-      <title>Bose Sleepbuds II: Reverse-engineered the full BLE file-transfer protocol (TUMBLE) — audio codec still unidentified - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wa486i/bose_sleepbuds_ii_reverseengineered_the_full_ble/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/xsigurdrifa"&gt; /u/xsigurdrifa &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/chillee151/SleepBuds2Revival"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wa486i/bose_sleepbuds_ii_reverseengineered_the_full_ble/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">a08d0cefe48163233693a3c71161246933d1d5b32f85811e7668b805b287c5c6</guid>
-      <pubDate>Mon, 07 Sep 2026 20:56:46 +0000</pubDate>
-    </item>
-    <item>
-      <title>PEEP Turns Chrome and Edge Into Post-Compromise Backdoors for Host Command Execution - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/peep-turns-chrome-and-edge-into-post.html</link>
-      <description>Cybersecurity researchers have disclosed details of a complex Chromium-based post-exploitation toolkit called PEEP that masquerades as a bookmarks extension for the web browser.
-"Requiring prior administrative or code execution access, its installer injects the extension directly into Chrome/Edge profiles, bypassing Web Store checks and user prompts by forging Chromium's own Secure Preferences</description>
-      <guid isPermaLink="false">c2bc5e1a80b0e0ed6e343595f4bd87a72f80bca45491b25786e992d5b01226a5</guid>
-      <pubDate>Mon, 07 Sep 2026 18:12:09 +0000</pubDate>
-    </item>
-    <item>
-      <title>Fake IT Calls Target Executives in Microsoft 365 Data Theft and Extortion Attacks - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/microsoft-365-attackers-use-help-desk.html</link>
-      <description>Threat hunters have disclosed details of a widespread data theft and extortion threat cluster that's targeting Microsoft 365 and other software-as-a-service (SaaS) offerings through information technology (IT) help desk vishing, adversary-in-the-middle (AitM) token theft, and residential-proxy sign-ins.
-The activity, which mainly singles out directors, vice presidents, and other executive staff</description>
-      <guid isPermaLink="false">e2397ba2ef3151aa57f9c3c085c120b5b8bef04237e5a85ac78dbd3fb775b52f</guid>
-      <pubDate>Mon, 07 Sep 2026 15:51:56 +0000</pubDate>
-    </item>
-    <item>
-      <title>Your Cloud Security Checklist Doesn't Work the Way You Think It Does - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/your-cloud-security-checklist-doesnt.html</link>
-      <description>If managing security across multiple cloud providers wasn't hard enough, each one fails in a different way. For the 2026 Cloud Security Index, Intruder analyzed misconfiguration data from 3,000 organizations across AWS, Azure, and Google Cloud and found that risk profiles across providers have almost nothing in common. Here’s what the data looks like.
-How risk differs across cloud providers</description>
-      <guid isPermaLink="false">2d7076da10e336403d110c714fbc6ec60a38ddb2e12c574dc2a7ff959193a4cc</guid>
-      <pubDate>Mon, 07 Sep 2026 11:45:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Rogue ScreenConnect Clients Spread Four-Stage VBScript Chain to Newly Connected Hosts - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/rogue-screenconnect-clients-spread-four.html</link>
-      <description>Cybersecurity researchers have disclosed details of worm-like activity that abuses ConnectWise ScreenConnect to distribute a malicious Visual Basic Script (VBScript) payload to newly connected systems.
-According to Huntress, three unrelated incidents have been found to use diverse initial access methods, namely a Quick Assist tech-support scam, a phishing-delivered MSI installer, and a fake</description>
-      <guid isPermaLink="false">b35e3d5fe88c724b3d9023e8330b63dc52b95a74e86da3152eee802e6d1b5f07</guid>
-      <pubDate>Mon, 07 Sep 2026 11:36:39 +0000</pubDate>
-    </item>
-    <item>
-      <title>Telerik UI Padding-Oracle Bug Chained to Unauthenticated RCE — Public Exploit Released - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/telerik-ui-padding-oracle-bug-chained.html</link>
-      <description>A TantoSec proof-of-concept turns an AES-CBC "padding oracle" in Telerik UI for ASP.NET AJAX into unauthenticated remote code execution — but only against applications in a specific non-default configuration, and Progress patched the chain in July. There are no confirmed reports of exploitation in the wild.
-Security firm TantoSec has published a working exploit chain targeting vulnerabilities</description>
-      <guid isPermaLink="false">2b75550837bf8ae6e249506ec77712c7d315ef170e82bcd75b648f511d37058f</guid>
-      <pubDate>Mon, 07 Sep 2026 11:20:14 +0000</pubDate>
-    </item>
-    <item>
-      <title>DarkTortilla RAT – Telegram Exfiltration &amp; Payload Extraction - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1w9ogyb/darktortilla_rat_telegram_exfiltration_payload/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/StructBreaker"&gt; /u/StructBreaker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/kaandemir993/DarkTortilla-RAT-Telegram-Exfiltration-Payload-Extraction-Analysis"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1w9ogyb/darktortilla_rat_telegram_exfiltration_payload/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">a4ae8e699e5547f559159db0b1f4a0ee2d8810f3ad379e655de036914cac18e3</guid>
-      <pubDate>Mon, 07 Sep 2026 10:29:48 +0000</pubDate>
     </item>
   </channel>
 </rss>

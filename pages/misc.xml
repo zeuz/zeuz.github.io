@@ -5,7 +5,29 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Misc category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Wed, 07 Oct 2026 14:01:04 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 14:01:49 +0000</lastBuildDate>
+    <item>
+      <title>Making a tall, skinny plot in Mathematica - And now it's all this</title>
+      <link>https://leancrew.com/all-this/2026/10/making-a-tall-skinny-plot-in-mathematica/</link>
+      <description>&lt;p&gt;&lt;a href="https://leancrew.com/all-this/2026/10/distorted-plots/"&gt;Yesterday’s post&lt;/a&gt; included this plot:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Rescaled Moon and Earth orbit" class="ss" src="https://leancrew.com/all-this/images2026/20261006-Rescaled%20Moon%20and%20Earth%20orbit.svg" title="Rescaled Moon and Earth orbit" width="40%" /&gt;&lt;/p&gt;
+&lt;p&gt;I figured it was worth a quick post to show how I made it.&lt;/p&gt;
+&lt;p&gt;I had already done most of the work back in 2022 in a Mathematica notebook I made to support &lt;a href="https://leancrew.com/all-this/2022/10/orbital-curvature/"&gt;my original orbital curvature post&lt;/a&gt;. So I copied the pertinent calculations from that notebook, pasted them into a new one, and made the adjustments necessary to produce the plot. Here’s the new notebook:&lt;/p&gt;
+&lt;p&gt;The bottom half of the notebook is where the plotting commands are. The key items are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The definitions of &lt;code&gt;xGrid&lt;/code&gt;, &lt;code&gt;xTicks&lt;/code&gt;, &lt;code&gt;yGrid&lt;/code&gt;, and &lt;code&gt;yTicks&lt;/code&gt;. These produce lists of values used to lay out the grid spacing and tick mark labels. Most of this is self-explanatory, but I do want to call out the use of &lt;a href="http://reference.wolfram.com/language/ref/NumberForm.html"&gt;&lt;code&gt;NumberForm&lt;/code&gt;&lt;/a&gt; to format the tick labels with two decimal places. &lt;code&gt;NumberForm[x, {3, 2}]&lt;/code&gt; is very much like Python’s &lt;code&gt;{x:3.2f}&lt;/code&gt; in an f-string. Like most things in Mathematica, it’s kind of verbose, but it is readable.&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The call to &lt;a href="http://reference.wolfram.com/language/ref/ParametricPlot.html"&gt;&lt;code&gt;ParametricPlot&lt;/code&gt;&lt;/a&gt; includes the option&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;AspectRatio -&amp;gt; .25/.05
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a href="http://reference.wolfram.com/language/ref/AspectRatio.html"&gt;&lt;code&gt;AspectRatio&lt;/code&gt;&lt;/a&gt; sets the ratio of height to width for the plot as a whole, so the value I set it to was based on the ratio of the values given in the &lt;a href="http://reference.wolfram.com/language/ref/PlotRange.html"&gt;&lt;code&gt;PlotRange&lt;/code&gt;&lt;/a&gt; option. The overall plot is 0.25 units high and 0.05 units wide, so to make the &lt;em&gt;x&lt;/em&gt; and &lt;em&gt;y&lt;/em&gt; units the same size, &lt;code&gt;AspectRatio&lt;/code&gt; is set to that ratio. I entered it as a division instead of as the number 5 because I wanted the reasoning behind it to be clear. I suppose I could have been even more explicit by saying&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;AspectRatio -&amp;gt; (.25 - 0)/(1.01 - .96)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;but there are limits to my verbosity, even when using Mathematica.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To get the image out of the notebook, I right-clicked on it, selected &lt;span class="menu"&gt;Save Graphic As…&lt;/span&gt; from the popup menu, and chose SVG as the format. That’s why the plot stays smooth if you zoom in on it.&lt;/p&gt;</description>
+      <guid isPermaLink="false">ad5b363d17d5da499f376ab085f08da9c9a5581ba2568f3eef972fa3f68ad638</guid>
+      <pubDate>Wed, 07 Oct 2026 17:12:51 +0000</pubDate>
+    </item>
     <item>
       <title>Distorted plots - And now it's all this</title>
       <link>https://leancrew.com/all-this/2026/10/distorted-plots/</link>

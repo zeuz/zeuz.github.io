@@ -5,7 +5,258 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Wed, 07 Oct 2026 14:01:03 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 14:01:49 +0000</lastBuildDate>
+    <item>
+      <title>Django Weblog: Django security reporting update - Planet Python</title>
+      <link>https://www.djangoproject.com/weblog/2026/oct/08/django-security-reporting-update/</link>
+      <description>&lt;p&gt;We are no longer accepting new security reports for the Django project through HackerOne. Existing reports submitted through HackerOne will remain open and continue to be handled by the Django Security Team.&lt;/p&gt;
+&lt;p&gt;If you discover a security issue in Django, please follow the reporting process described in the &lt;a href="https://www.djangoproject.com/security/"&gt;Django security policies&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Security issues should be reported by emailing &lt;strong&gt;&lt;a href="mailto:security@djangoproject.com"&gt;security@djangoproject.com&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">ac6420d90c37b5692f01918407076e78b2c1f2c2cb936cfa47b73f29b006009e</guid>
+      <pubDate>Thu, 08 Oct 2026 11:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Eli Bendersky: Monte-Carlo simulations - Planet Python</title>
+      <link>https://eli.thegreenplace.net/2026/monte-carlo-simulations/</link>
+      <description>&lt;p&gt;Monte Carlo simulations (or &lt;em&gt;methods&lt;/em&gt;) is the technique of applying
+randomness and the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Law_of_large_numbers"&gt;Law of large numbers&lt;/a&gt;
+to the solution of various scientific and engineering problems. One of its
+first documented uses was by Stanislaw Ulam and John von Neumann for nuclear
+weapon simulations after WWII &lt;a class="footnote-reference" href="https://eli.thegreenplace.net/feeds/python.atom.xml#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In this post I want to provide examples of some simple uses of Monte Carlo
+simulations. We'll start with the classical example of calculating the value
+of \pi by throwing darts.&lt;/p&gt;
+&lt;div class="section" id="estimating-pi"&gt;
+&lt;h2&gt;Estimating pi&lt;/h2&gt;
+&lt;p&gt;Suppose we take a square board and inscribe a quarter of a circle into it. We
+then proceed to throw darts at the board and record whether each dart hits
+inside or outside the quarter circle. Having thrown many such darts, we
+calculate the ratio of the darts inside the circle to the total number thrown.&lt;/p&gt;
+&lt;p&gt;Assuming our darts are distributed uniformly over the
+square, by the Law of large numbers this ratio should approach the ratio of
+areas of the quarter circle A_{circ} to the full square A_{square}.&lt;/p&gt;
+&lt;p&gt;With a square side length of 1, we have:&lt;/p&gt;
+\[\frac{A_{circ}}{A_{square}}=\frac{\pi/4}{1}=\frac{\pi}{4}\]
+&lt;p&gt;Therefore:&lt;/p&gt;
+\[\pi\approx 4\frac{\text{hits inside}}{\text{total throws}}\]
+&lt;p&gt;Here's a visualization:&lt;/p&gt;
+&lt;div class="pi-monte-carlo-wrap"&gt;
+    A quarter circle of radius 1 inside a unit square.
+  &lt;div class="pi-monte-carlo-controls"&gt;
+    &lt;div class="pi-monte-carlo-row"&gt;
+      &lt;div class="pi-monte-carlo-slider"&gt;
+        &lt;label class="pi-monte-carlo-label" for="pi-monte-carlo-samples"&gt;
+          Samples 200
+        &lt;/label&gt;
+        &lt;input class="pi-monte-carlo-range" id="pi-monte-carlo-samples" type="range" value="200" /&gt;
+        &lt;div class="pi-monte-carlo-range-labels"&gt;&lt;span&gt;10&lt;/span&gt;&lt;span&gt;1000&lt;/span&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;button class="pi-monte-carlo-button" id="pi-monte-carlo-go" type="button"&gt;Run&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;p class="pi-monte-carlo-result"&gt;
+      &lt;span class="pi-monte-carlo-symbol"&gt;π&lt;/span&gt; ≈ &lt;span id="pi-monte-carlo-estimate"&gt;—&lt;/span&gt;
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Change the number of samples (dart throws) and click &amp;quot;Run&amp;quot; to regenerate. The
+code is very simple - here's a slightly sanitized version:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;const&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;total&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;Number&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;samples&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;value&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="kd"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;inside&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;total&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="kd"&gt;const&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;Math&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;random&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="kd"&gt;const&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;y&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;Math&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;random&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="kd"&gt;const&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;inCircle&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;y&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;y&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;inCircle&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;inside&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="nx"&gt;estimateValue&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;4&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;inside&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;total&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You'll notice that the estimate is relatively poor - even with 1000 samples - if
+you click &amp;quot;Run&amp;quot; several times, some numbers will be way off mark. While this
+method does estimate \pi, it's not a particularly &lt;em&gt;good&lt;/em&gt; estimate. I
+find that running ~10 billion samples is necessary to estimate it to 4 digits
+after the decimal with reasonable reliability.&lt;/p&gt;
+&lt;p&gt;In general, for independent trials like these, the typical sampling error
+decreases in proportion to 1/\sqrt{N}, where N is the number of trials.
+This means that halving the error requires four times as many samples.&lt;/p&gt;
+&lt;p&gt;While the \pi estimation may seem whimsical, it's an example of an
+important class of problems to which Monte Carlo simulation is applied:
+numerical integration. Our simulation estimates the area
+under the quarter-circle curve, which is a definite integral.&lt;/p&gt;
+&lt;p&gt;Many integrals are very difficult to solve analytically, and much research has
+been done in the area of numerical analysis to develop methods to calculate
+integrals. Monte Carlo methods are
+particularly useful for high-dimensional integrals, where other numerical
+methods can become prohibitively expensive.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="combinatorial-simulation-the-game-of-set"&gt;
+&lt;h2&gt;Combinatorial simulation - the game of SET&lt;/h2&gt;
+&lt;p&gt;A common use of Monte Carlo methods is estimating complex combinatorial
+calculations. These often don't have analytical solutions, and enumerating all
+options is intractable due to the scale of the numbers involved. As an example,
+let's consider &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Set_(card_game)"&gt;the game of SET&lt;/a&gt;. Each SET card has four
+attributes:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Number of shapes (1, 2 or 3)&lt;/li&gt;
+&lt;li&gt;Color (Red, Green or Purple)&lt;/li&gt;
+&lt;li&gt;Shape type (Oval, Diamond or Squiggle)&lt;/li&gt;
+&lt;li&gt;Shading (Empty, Striped or Solid)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;And the goal is to find a &amp;quot;set&amp;quot; - three cards that are either all different or
+all the same &lt;em&gt;for each attribute separately&lt;/em&gt;. As an example, here's
+a hand with a single set; see if you can find it &lt;a class="footnote-reference" href="https://eli.thegreenplace.net/feeds/python.atom.xml#footnote-2" id="footnote-reference-2"&gt;[2]&lt;/a&gt;:&lt;/p&gt;
+SET hand with a single set
+&lt;p&gt;And the next hand doesn't have any sets:&lt;/p&gt;
+SET hand with no hands
+&lt;p&gt;Here's a question: given a freshly shuffled SET deck, what are the odds that
+the first 12 cards drawn will have no sets among them? This question is
+difficult to answer without using a computer.&lt;/p&gt;
+&lt;p&gt;It's easy to calculate the number of ways to deal a 12-card hand from
+a deck of 81:&lt;/p&gt;
+\[\binom{81}{12}=70,724,320,184,700\]
+&lt;p&gt;But how many of these hands have no sets? Enumerating 70 trillion SET hands
+and checking each one can take quite a while, and there is no straightforward
+counting formula to answer this question. Some clever methods can be employed to
+leverage symmetries and other mathematical properties of SET to cut down this
+search space considerably. Donald Knuth himself worked on this problem and came
+up with a neat program (&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;setset-all&lt;/span&gt;&lt;/tt&gt; on &lt;a class="reference external" href="https://cs.stanford.edu/~knuth/programs.html"&gt;his programs page&lt;/a&gt;) that found 2,284,535,476,080
+such hands. Therefore, the answer to our question is:&lt;/p&gt;
+\[\frac{2,284,535,476,080}{70,724,320,184,700}\approx 0.0323\]
+&lt;p&gt;There's a 3.23% chance that a randomly drawn hand of 12 cards from a full deck
+of SET will have no set in it.&lt;/p&gt;
+&lt;p&gt;Let's see how we can use a Monte Carlo simulation to answer this question
+with relatively small effort, without deep knowledge of the mathematical
+properties of SET that enable cutting down the search space Knuth-style.
+We can use the following pseudo-code:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;C = 0
+run N times:
+  draw a random 12-card hand from a fresh deck
+  count sets in the hand
+  if no sets:
+    C += 1
+Estimated probability = C / N
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;After running 10 million simulated draws, I got an answer of 0.0323, which
+matches the real answer very closely.&lt;/p&gt;
+&lt;p&gt;The Monte Carlo approach lets us solve rather complicated problems in a very
+simple way. Suppose we want to answer the same question for a hand of 15 cards;
+this would blow up the search space considerably - there are about 100x more
+ways to select 15-card hands than there are to select 12-card hands. But for
+a Monte Carlo simulation, we adjust one small parameter and get a very reliable
+&lt;a class="footnote-reference" href="https://eli.thegreenplace.net/feeds/python.atom.xml#footnote-3" id="footnote-reference-3"&gt;[3]&lt;/a&gt; answer (about 0.00037, in case you were wondering).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="retirement-projection"&gt;
+&lt;h2&gt;Retirement projection&lt;/h2&gt;
+&lt;p&gt;One domain where Monte Carlo simulations are ubiquitous is projections for
+retirement portfolios. Suppose someone prepares to retire with a total sum
+of 1 million dollars in their portfolio; they'd like to be able to draw
+$30,000 a year from the portfolio for their living expenses. Would that work?&lt;/p&gt;
+&lt;p&gt;There's a large number of factors to take into account when analyzing this
+question, but for simplicity let's focus on just two: portfolio return and
+inflation. We can run a naive estimate, assuming average values: suppose an
+average yearly portfolio return of 4%, and average yearly inflation of 2% &lt;a class="footnote-reference" href="https://eli.thegreenplace.net/feeds/python.atom.xml#footnote-4" id="footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Let's denote our portfolio return as r=0.04, and inflation as
+q=0.02. Then the real return each year is:&lt;/p&gt;
+\[r^{\mathrm{real}}=\frac{1+r}{1+q}-1\approx0.0196\]
+&lt;p&gt;Starting with $1,000,000, at the end of the year we'll have $1,019,600
+and then draw $30,000 for living expenses &lt;a class="footnote-reference" href="https://eli.thegreenplace.net/feeds/python.atom.xml#footnote-5" id="footnote-reference-5"&gt;[5]&lt;/a&gt;, ending with $989,600. If we
+continue this way, the money runs out after ~55 years, which means that a
+person retiring at the age of 65 should be reasonably safe, right?&lt;/p&gt;
+&lt;p&gt;But this is &lt;em&gt;very simplistic&lt;/em&gt;; assuming just average returns is risky, because
+they do a poor job of representing reality, and many factors have uncertainty.
+For example, the sequence of returns matters a lot; a bad year (-10%) followed
+by a great year (+18%) would still count as &amp;quot;4% on average&amp;quot; but produces
+significantly less money than two consecutive +4% years.
+Inflation is also unpredictable, and sometimes
+correlated with portfolio returns; there could be bad years of high inflation and
+low / volatile returns that can wreak havoc on a portfolio.&lt;/p&gt;
+&lt;p&gt;As we add factors (variance in yearly draws, mixed portfolios of stocks, bonds,
+real estate, life expectancy, unexpected events, changing tax laws etc.),
+relying on a single average estimate becomes increasingly more fraught. This
+is why Monte Carlo simulations are very popular in this domain: by drawing
+from reasonable distributions based on historical data, a Monte Carlo simulation
+can easily run a million different scenarios and provide estimates: for example,
+what are the odds of money running out before death.&lt;/p&gt;
+&lt;p&gt;Here's a useful chart from a simulation I ran:&lt;/p&gt;
+&lt;img alt="Monte Carlo simulation of retirement, showing percentiles and odds of funds running out" class="align-center" src="https://eli.thegreenplace.net/images/2026/retirement-monte-carlo.png" /&gt;
+&lt;p&gt;In the top chart:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The dashed line shows the constant assumptions mentioned before: what happens
+when yearly return is always 4% and inflation is always 2%.&lt;/li&gt;
+&lt;li&gt;The shaded blue areas demonstrate the outcomes of 1,000,000 simulations where
+inflation and return numbers are drawn from reasonable normal distributions
+based on historical data. We see that in 25% of the cases, all money ran out
+by roughly 22 years.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In the bottom chart:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;It's even easier to see how long the funds last; if we're interested in
+knowing, say, what are the odds that this plan will have enough money for
+30 years - the chart shows it's about 60% (since in 40% of the simulations
+the funds were depleted at this point).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Looking a this simulation, under the current assumptions the plan sounds much
+riskier than the average assumption makes it appear. Assuming that a 65-y.o.
+person would plan for
+25 years of retirement until death, the ~30% odds of not having sufficient funds
+for this duration of time are sobering. Perhaps a change in plans is needed
+(such as a more frugal lifestyle or securing additional funds in some way).&lt;/p&gt;
+&lt;p&gt;Retirement projection is only one of may ways in which Monte Carlo simulations
+are used for financial and economical applications; given the high uncertainty
+of these domains, it's very difficult to plan using analytical calculations.
+Company sales projections, growth projections, stock offering prices and much
+more uses Monte Carlo simulations to arrive at estimates with reasonable error
+bars.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="code"&gt;
+&lt;h2&gt;Code&lt;/h2&gt;
+&lt;p&gt;All the code for the explorations in this post is &lt;a class="reference external" href="https://github.com/eliben/code-for-blog/tree/main/2026/monte-carlo"&gt;available on GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;hr class="docutils" /&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="https://eli.thegreenplace.net/feeds/python.atom.xml#footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;While these techniques were conceptually understood much earlier, it's
+not surprising that their first real applications coincided with the
+development of the first digital computers. As we'll see later in the
+post, Monte Carlo simulations benefit from running large numbers of
+trials to get reasonable accuracy.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-2" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="https://eli.thegreenplace.net/feeds/python.atom.xml#footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The answer is: three empty red diamonds, three solid purple ovals, three
+striped green squiggles. Note that for each of the 4 SET attributes,
+these three cards are either all the same or all different.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-3" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="https://eli.thegreenplace.net/feeds/python.atom.xml#footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;For the same number of trials, this estimate has greater relative
+uncertainty than the 12-card estimate, because we encounter far fewer
+hands without a set.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-4" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="https://eli.thegreenplace.net/feeds/python.atom.xml#footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;For the examples in this post, we'll be using &lt;em&gt;real dollars&lt;/em&gt;, or today's
+value of the money. We'll assume that the $30,000 yearly draw doesn't
+change and will instead apply inflation to the portfolio itself.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-5" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="https://eli.thegreenplace.net/feeds/python.atom.xml#footnote-reference-5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;More sophisticated simulations would let us control these parameters;
+for example, are the expense funds drawn at the beginning or end of each
+year, or distributed on a monthly basis?&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;</description>
+      <guid isPermaLink="false">7475b6967a82f9b846ff4da2505aa58a709ac9d6b2af580282ecf1e51673152b</guid>
+      <pubDate>Thu, 08 Oct 2026 09:35:03 +0000</pubDate>
+    </item>
     <item>
       <title>Python GUIs: Change the color of the ProgressBar indicator text when it exceeds 50% - Planet Python</title>
       <link>https://www.pythonguis.com/faq/change-the-color-of-the-progressbar-indicator-text-when-it-exceeds-50/</link>
@@ -538,6 +789,18 @@ sys.exit(app.exec())
 &lt;p&gt;If you're working with tabular data from pandas or numpy instead of JSON, take a look at our tutorial on &lt;a href="https://www.pythonguis.com/tutorials/pyqt6-qtableview-modelviews-numpy-pandas/"&gt;displaying pandas DataFrames in QTableView&lt;/a&gt;. For making your table cells editable, see our guide on &lt;a href="https://www.pythonguis.com/faq/editing-pyqt6-tableview/"&gt;editing data in a PyQt6 QTableView&lt;/a&gt;.&lt;/p&gt;
             &lt;p&gt;For an in-depth guide to building Python GUIs with PyQt6 see my book, &lt;a href="https://www.pythonguis.com/pyqt6-book/"&gt;Create GUI Applications with Python &amp;amp; Qt6.&lt;/a&gt;&lt;/p&gt;</description>
       <guid isPermaLink="false">7e473aea66895183aefeeb9835a40cce81c2a62562a48087cc16905e9c0929f1</guid>
+      <pubDate>Wed, 07 Oct 2026 06:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: Pandas groupby with two columns: Reshape results with unstack - Planet Python</title>
+      <link>https://lernerpython.com/2026/10/07/pandas-groupby-with-two-columns-reshape-results-with-unstack/</link>
+      <description>&lt;img alt="Pandas groupby with two columns: Reshape results with unstack" class="wp-image-17978" height="1306" src="https://lernerpython.com/wp-content/uploads/2026/10/2026-10-07.png" width="1876" /&gt;
+&lt;p class="wp-block-paragraph"&gt;Invoke &amp;#8220;groupby&amp;#8221; with two categorical columns in Python Pandas, and get a two-part multi-index:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;g = df.groupby(['passenger_count', 'VendorID'])['trip_distance'].mean()&lt;/code&gt;&lt;/pre&gt;
+&lt;p class="wp-block-paragraph"&gt;Turn into a data frame with unstack:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;g.unstack()  # index 0-6 (passenger_count), columns 1-2 (VendorID)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/10/07/pandas-groupby-with-two-columns-reshape-results-with-unstack/"&gt;Pandas groupby with two columns: Reshape results with unstack&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">473234b11b199a43a07967d178c4ef81f265200c84e45d78939af6882bd9af08</guid>
       <pubDate>Wed, 07 Oct 2026 06:00:00 +0000</pubDate>
     </item>
     <item>
