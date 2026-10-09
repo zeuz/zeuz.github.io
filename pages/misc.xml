@@ -5,7 +5,50 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Misc category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Thu, 08 Oct 2026 14:01:49 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 09 Oct 2026 14:01:01 +0000</lastBuildDate>
+    <item>
+      <title>I’m pissed at the Library of Congress - And now it's all this</title>
+      <link>https://leancrew.com/all-this/2026/10/im-pissed-at-the-library-of-congress/</link>
+      <description>&lt;p&gt;Today I tried to add a couple of recently purchased books to my library database using &lt;a href="https://leancrew.com/all-this/2025/04/adding-books-to-my-library-database/"&gt;my &lt;code&gt;lccn2library&lt;/code&gt; script&lt;/a&gt;. It failed because the Library of Congress has either moved or deleted the files &lt;code&gt;lccn2library&lt;/code&gt; relies on.&lt;/p&gt;
+&lt;p&gt;Let’s say I was trying to add &lt;a href="https://lccn.loc.gov/26010978"&gt;&lt;em&gt;Applied Elasticity&lt;/em&gt;&lt;/a&gt; by Timoshenko and Lessells.&lt;sup id="fnref:westinghouse"&gt;&lt;a href="#fn:westinghouse" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt; If you go to the LoC’s MARC record for the book and click on the Download link, you’ll see a popup that looks like this:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="LoC downloads popup" class="ss" src="https://leancrew.com/all-this/images2026/20261008-LoC%20downloads%20popup.png" title="LoC downloads popup" width="60%" /&gt;&lt;/p&gt;
+&lt;p&gt;So it looks like you can click the MODS link to get the &lt;a href="https://www.loc.gov/standards/mods/"&gt;MODS file&lt;/a&gt; for the book. That’s the file my script parses to get the information to add to the database. The MODS link for this book is&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;https://lccn.loc.gov/26010978/mods
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;which is the URL form that &lt;code&gt;lccn2library&lt;/code&gt; expects. Unfortunately, that link returns an empty file. And not just for that book, but for every book I tried. What does the little northeast-pointing arrow mean? Beats me. You’d think it was an indication that the MODS link was pointing to some external site, but that’s not the case.&lt;/p&gt;
+&lt;p&gt;Maybe I’ve caught the LoC in the middle of a transition to a new system for storing records in various formats. Maybe I’ll return in a month or two to find that everything is working again—perhaps with new URLs for the different formats. I hope so.&lt;/p&gt;
+&lt;p&gt;But until that hoped-for day, I’m pissed at the LoC because I have to add books to my database by hand using the &lt;a href="https://www.sqlite.org/"&gt;&lt;code&gt;sqlite3&lt;/code&gt;&lt;/a&gt; interactive command-line tool. Which is slow but not terrible, especially since I’m adding only a book or two at a time.&lt;/p&gt;
+&lt;p&gt;The command to add a new book to the database is&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;INSERT INTO book(title, subtitle, volume, edition, publisher, published, lccn, loc, added)
+VALUES(&amp;lt;list of values separated by commas&amp;gt;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The book will be assigned an ID automatically. To get it, I run&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT id,title FROM book WHERE added IS "2026-10-08";
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The first field in the output will be the ID. The date must be a string with the current date in yyyy-mm-dd format.&lt;/p&gt;
+&lt;p&gt;The new book may be written by an author already in the database. To check if that’s the case, I run&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT * FROM author WHERE name LIKE "%&amp;lt;portion of name&amp;gt;%";
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If the author’s already in the database, that command will return their ID. If not, it returns nothing. I then run&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;INSERT INTO author(name) VALUES("&amp;lt;full name&amp;gt;");
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and then the &lt;code&gt;SELECT&lt;/code&gt; command above to get the author’s ID.&lt;/p&gt;
+&lt;p&gt;The final step is to add a record to the &lt;code&gt;book_author&lt;/code&gt; table to tie the book and author together. That’s&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;INSERT INTO book_author(book_id, author_id) VALUES(&amp;lt;book ID&amp;gt;, &amp;lt;author ID&amp;gt;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As I said, this is slow because it’s several steps, but none of the steps are difficult.&lt;/p&gt;
+&lt;p&gt;What will I do if the LoC never fixes the problem of the missing MODS files? I suppose I could parse the &lt;a href="https://www.loc.gov/marc/umb/um01to06.html"&gt;MARC records&lt;/a&gt;, which are still accessible, but that would be a pain in the ass. Maybe I’ll build a little interactive script where I can just type in the necessary information and have the script generate and run the SQL commands. I hope it doesn’t come to that.&lt;/p&gt;
+&lt;div class="footnotes"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:westinghouse"&gt;
+&lt;p&gt;It’d be so cool to have this book. It was written when Timoshenko had just come to the US and was working at Westinghouse before landing a teaching gig at the University of Michigan. Sadly, this was not one of the books I was adding to my library. &lt;a href="#fnref:westinghouse" rev="footnote"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
+      <guid isPermaLink="false">1412534efa93eb95333bd4865d0a5163e49578861fa64099a14792edd58af0b1</guid>
+      <pubDate>Fri, 09 Oct 2026 02:27:19 +0000</pubDate>
+    </item>
     <item>
       <title>Making a tall, skinny plot in Mathematica - And now it's all this</title>
       <link>https://leancrew.com/all-this/2026/10/making-a-tall-skinny-plot-in-mathematica/</link>

@@ -5,7 +5,102 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Thu, 08 Oct 2026 14:01:49 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 09 Oct 2026 14:01:01 +0000</lastBuildDate>
+    <item>
+      <title>GoBalance Flaw Lets Attackers Hijack .onion Addresses by Recovering Tor-Format Keys - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/gobalance-flaw-lets-attackers-hijack.html</link>
+      <description>A bug in GoBalance, a tool many dark-web sites use to stay reachable during attacks, lets anyone work out the secret key that controls a site's .onion address using only public information, and then take that address over.
+Searchlight Cyber, which&amp;nbsp;disclosed the flaw&amp;nbsp;on October 8, says an attacker who recovers the key can redirect the site's visitors to a copy of the site they control.</description>
+      <guid isPermaLink="false">820de150af6228213d14ca076a16899d3d9e9c31f54575ed1e4c320b5bd658a4</guid>
+      <pubDate>Fri, 09 Oct 2026 09:03:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>Three Teams Demonstrate Remote Hacks of Fully Patched Google Pixel 10 at Pwn2Own - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/three-teams-demonstrate-remote-hacks-of.html</link>
+      <description>Three research teams broke into Google's Pixel 10 on October 8 at Pwn2Own Ireland, a hacking contest in Cork whose rules require every target to be fully patched. The contest pays researchers to show working exploits and passes the flaws to the vendors. One of the three Pixel exploits earned Ikotas Labs $300,000, the contest's top prize, and made the team the overall winner.
+Trend Micro's Zero</description>
+      <guid isPermaLink="false">124b8d5dcc35ebedac82856068abac84163d452c09c7ad59d6c67334261145ce</guid>
+      <pubDate>Fri, 09 Oct 2026 08:26:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>Citrix Patches Critical NetScaler Flaw That Could Enable RCE in SAML Deployments - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/citrix-patches-critical-netscaler-flaw.html</link>
+      <description>Citrix has released patches for yet another critical security flaw impacting NetScaler ADC and NetScaler Gateway that could result in remote code execution or denial-of-service (DoS) under certain conditions.
+"CVE-2026-107406 is a memory overflow vulnerability that may lead to remote code execution or denial-of-service under specific configuration conditions," Citrix said.
+The vulnerability</description>
+      <guid isPermaLink="false">3735a4ce28bde85eb647e5b743ec5758b74a978be0d043fa534f4f44ffa68470</guid>
+      <pubDate>Fri, 09 Oct 2026 08:11:33 +0000</pubDate>
+    </item>
+    <item>
+      <title>Getting old Macromedia Director Games to run on modern Hardware - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x1ep2u/getting_old_macromedia_director_games_to_run_on/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/WerWolv"&gt; /u/WerWolv &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://werwolv.net/posts/macromedia_copy_protection/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x1ep2u/getting_old_macromedia_director_games_to_run_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">29b9903e1dd0552f1c0cdb9fdaf24b41c2eec03872ca311dbb4b9d00ae80cd92</guid>
+      <pubDate>Fri, 09 Oct 2026 07:09:55 +0000</pubDate>
+    </item>
+    <item>
+      <title>FBI Seizes 7 Domains, Disrupts Flax Typhoon Tools Used in Critical Infrastructure Intrusions - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/fbi-seizes-7-domains-disrupts-flax.html</link>
+      <description>The U.S. Federal Bureau of Investigation (FBI) and Department of Justice (DoJ) have announced the disruption of malicious tools used by a China-linked advanced persistent threat group known as Flax Typhoon.
+To that end, the agencies seized several domains and blocked access to platforms that were used to scan, and in some cases infiltrate, U.S. critical infrastructure. The list of seized</description>
+      <guid isPermaLink="false">d6ed859955b618d4b1b542f54bb113aff8ebbca3889c8cf7f3fe7a284a641558</guid>
+      <pubDate>Fri, 09 Oct 2026 06:39:29 +0000</pubDate>
+    </item>
+    <item>
+      <title>Reverse Engineering AirPods Self-Calibration Test - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x10lxd/reverse_engineering_airpods_selfcalibration_test/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Hot_Radio_2381"&gt; /u/Hot_Radio_2381 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://ateliti99.substack.com/p/reverse-engineering-airpods-self?utm_source=app-post-stats-page&amp;amp;r=wsh8o&amp;amp;utm_medium=ios"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x10lxd/reverse_engineering_airpods_selfcalibration_test/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">bd2acfd842bcd02b0fb32532e3e6ad85f0f201edf5fcc5e09dc0e8062f94cfad</guid>
+      <pubDate>Thu, 08 Oct 2026 19:41:32 +0000</pubDate>
+    </item>
+    <item>
+      <title>FBI Says China-Linked Hackers Ran Portal Giving Third Parties Access to Stolen Emails - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/fbi-says-china-linked-hackers-ran.html</link>
+      <description>Hackers tied to a Chinese cybersecurity company stole email from government organizations, law enforcement agencies, healthcare systems, and religious institutions in Southeast Asia, the FBI and agencies in 6 other countries said on October 8.
+The company, Integrity Technology Group, has been sanctioned by the U.S. and the UK. The hackers scanned websites for flaws using a tool containing more</description>
+      <guid isPermaLink="false">8f769821833d506d754bd616671eaaec2cdbb1aa8a84699d93c1f2de152589b3</guid>
+      <pubDate>Thu, 08 Oct 2026 18:32:21 +0000</pubDate>
+    </item>
+    <item>
+      <title>I have been building a javap replacement and a JVM in C++ - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x0vkvy/i_have_been_building_a_javap_replacement_and_a/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/samaxidervish"&gt; /u/samaxidervish &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/VuqarAhadli/DRVM/tree/main"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x0vkvy/i_have_been_building_a_javap_replacement_and_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">9cd4a1f946ec3707e72762d1df8486b3cee77ba9704493359232c7ac48830434</guid>
+      <pubDate>Thu, 08 Oct 2026 16:31:12 +0000</pubDate>
+    </item>
+    <item>
+      <title>ACE .qvm0 keeps RUNTIME_FUNCTION in the VM section tail; recovering entries and hidden jmp-reg edges - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x0uipj/ace_qvm0_keeps_runtime_function_in_the_vm_section/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/NeuroSaki987"&gt; /u/NeuroSaki987 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/NeuroSaki987/qvm-tool"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x0uipj/ace_qvm0_keeps_runtime_function_in_the_vm_section/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">fc853e87c72db8512c2a543122c53cb28829949cc52a5b7697ce048e799bd014</guid>
+      <pubDate>Thu, 08 Oct 2026 15:50:54 +0000</pubDate>
+    </item>
+    <item>
+      <title>Japan Sees Sharp Rise in Web Data Leaks Amid Mobile API Abuse and Metabase Attacks - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/japan-sees-sharp-rise-in-web-data-leaks.html</link>
+      <description>Attackers behind a string of personal data leaks at Japanese organizations have abused APIs for mobile apps and targeted known software flaws, the JPCERT Coordination Center (JPCERT/CC) said.
+The Tokyo-based center, which takes incident reports, based its&amp;nbsp;October 8, 2026 alert&amp;nbsp;on those reports and other information. The alert names no attacker and no affected organization.
+JPCERT/</description>
+      <guid isPermaLink="false">bd9c72eaf5f4794fd028761c9b33ce01996bb705891eb4e371ee918dd5ffdb4b</guid>
+      <pubDate>Thu, 08 Oct 2026 15:45:56 +0000</pubDate>
+    </item>
+    <item>
+      <title>UAC-0099 Targets Ukrainian Government Personnel With ASHVEIN RAT Hiding Commands in HTML - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/uac-0099-targets-ukrainian-government.html</link>
+      <description>The Russia-aligned threat actor known as UAC-0099 has been attributed to a previously undocumented .NET infostealer and remote access trojan (RAT) codenamed ASHVEIN.
+According to TrendAI, the malware has been put to use in attacks targeting Ukrainian government personnel. The cybersecurity company is tracking the cluster under the name Earth Sirrush (previously SHADOW-EARTH-065).
+ASHVEIN,</description>
+      <guid isPermaLink="false">8d9ba51b25840f8c9f6271131d4064dc7bec641ab692c0f4d3b6189ee4e925bf</guid>
+      <pubDate>Thu, 08 Oct 2026 15:26:56 +0000</pubDate>
+    </item>
+    <item>
+      <title>ARTEX AI Pentesting Tool Used in Data Theft Attacks on South Korean Financial Firms - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/artex-ai-pentesting-tool-used-in-data.html</link>
+      <description>Cybersecurity researchers have disclosed details of a targeted campaign aimed at South Korean financial organizations that used an artificial intelligence (AI) pen testing tool named ARTEX to carry out the attacks.
+The activity, per CrowdStrike Intelligence, was active from late September to early October 2026, and resulted in data exfiltration from various South Korea-based financial firms,</description>
+      <guid isPermaLink="false">e39d7ff185bcb984243a3835b1b986c3339e6ec9ef88d310813d28614ff52feb</guid>
+      <pubDate>Thu, 08 Oct 2026 14:12:34 +0000</pubDate>
+    </item>
     <item>
       <title>Wazza Phishkit Targets Banking, Government, and Manufacturing Across the US, EU, and Australia - The Hacker News</title>
       <link>https://thehackernews.com/2026/10/wazza-phishkit-targets-banking.html</link>
@@ -52,6 +147,20 @@ Zohar Pinhasi (aka Zack Silver and Zack Green) has been charged with two counts 
 The malicious version 0.5.144 "contains obfuscated malware that harvests credentials, exfiltrates secrets, establishes persistence, and executes remotely supplied code," Socket said</description>
       <guid isPermaLink="false">e9b7ddedf1315fe8e6020be099c4092544ea9c3e8e43519b567e384f4c218110</guid>
       <pubDate>Thu, 08 Oct 2026 05:46:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>OpenSSH -- Multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/26fd839c-c338-11f1-a6ea-8447094a420f.html</link>
+      <description/>
+      <guid isPermaLink="false">51a8812afc55eeea677112e89245f37dbc0f155a26248c011fe936dd7c591a73</guid>
+      <pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>xorg -- Multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/06bf834f-c31f-11f1-9b94-901b0e13f1a0.html</link>
+      <description/>
+      <guid isPermaLink="false">91148c2c9128e57073b441b08ab4b6f57139dd993d06439898be576140ff0e8e</guid>
+      <pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Attackers Hijack .gh, .sl, and .as Registries to Obtain Certificates for Google Domains - The Hacker News</title>
@@ -1430,118 +1539,6 @@ The medium-severity vulnerability, assigned the CVE identifier CVE-2026-87491 (C
 "Out-of-bounds write in V8 in Google Chrome prior to</description>
       <guid isPermaLink="false">2f7efdefcd912806889febdc712257e00352c0281a71a5452166c3930eee80b0</guid>
       <pubDate>Wed, 09 Sep 2026 09:11:03 +0000</pubDate>
-    </item>
-    <item>
-      <title>New cPanel Flaw Lets a Hosting Account With Mail Privileges Run Code as Root - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/new-cpanel-flaw-lets-hosting-account.html</link>
-      <description>cPanel has patched a flaw that it says lets a single hosting account take control of an entire server. An authenticated account holder with mail-related privileges can create files of their choosing on the server through EmailTrack and, from there, run code as the root user.
-cPanel published the&amp;nbsp;advisory on September 8&amp;nbsp;and says every supported version of cPanel and WHM is affected.</description>
-      <guid isPermaLink="false">4e975bc245494d7e4d0d3801d1753b76b37c69d42b60b27420f2f4d20c4cc6a7</guid>
-      <pubDate>Wed, 09 Sep 2026 08:19:32 +0000</pubDate>
-    </item>
-    <item>
-      <title>F5 BIG-IP APM Malware Injects a PHP Web Shell Into Memory, Evading Disk Scans - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/f5-big-ip-apm-malware-injects-php-web.html</link>
-      <description>Malware linked to break-ins at F5 BIG-IP Access Policy Manager appliances hides a PHP web shell in memory instead of in a file on disk, Sophos said in an&amp;nbsp;analysis published on September 7.
-When Apache loads any of the three appliances' own PHP scripts, the malware adds the web shell to the copy held in memory, so a check of the file on disk can come back clean. Those three scripts are</description>
-      <guid isPermaLink="false">860acdc8b90fddc62e9c937a8c07c729ec4d9a5183ed46b6a9b3493c5b50f983</guid>
-      <pubDate>Wed, 09 Sep 2026 07:36:49 +0000</pubDate>
-    </item>
-    <item>
-      <title>Researcher Drops New Microsoft Defender PoC Showing ShieldBreak Patch Can Be Bypassed - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/researcher-drops-new-microsoft-defender.html</link>
-      <description>The security researcher known as Chaotic Eclipse has dropped a proof-of-concept (PoC) for yet another zero-day in Microsoft Defender.
-The vulnerability, codenamed ShieldCrash, is assessed to be a patch bypass for CVE-2026-69414 (CVSS score: 7.8), also called ShieldBreak, which the researcher reported last month.
-"Microsoft has failed to properly patch ShieldBreak CVE-2026-69414," Chaotic</description>
-      <guid isPermaLink="false">89a309b717035b9ed3a6af32a84e3585a533f0aa0cb2a74508a4f5b28ae37f23</guid>
-      <pubDate>Wed, 09 Sep 2026 06:47:27 +0000</pubDate>
-    </item>
-    <item>
-      <title>SAP Patches CVSS 10.0 Kernel Flaw Enabling Unauthenticated Remote Code Execution - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/sap-patches-cvss-100-kernel-flaw.html</link>
-      <description>SAP has released security updates to address multiple vulnerabilities, including a maximum-severity flaw in SAP Extended Passport (EPP) Processing that could have a severe impact on the confidentiality, integrity, and availability of the application
-The vulnerability, tracked as CVE-2026-44756 (CVSS score: 10.0), has been described as a case of memory corruption. Discovered and reported by SAP</description>
-      <guid isPermaLink="false">c7fd7fced2be6e9ec96e0be98d2f0b6ddbdfe8e8b716a70e3b23db5fcb8b4871</guid>
-      <pubDate>Wed, 09 Sep 2026 06:25:45 +0000</pubDate>
-    </item>
-    <item>
-      <title>Microsoft Patches Record 974 Flaws, Including Two Exploited Windows Zero-Days - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/microsoft-patches-record-974-flaws.html</link>
-      <description>Microsoft on Tuesday broke Patch Tuesday records by addressing an earth-shattering 974 vulnerabilities spanning its software portfolio, including two flaws that it said have been actively exploited in the wild.
-These include 723 flaws in Windows, 111 in Office and Office 2016, 62 in SQL, and 22 in Developer Tools. Of these, over 110 shortcomings have been assigned a critical severity rating.</description>
-      <guid isPermaLink="false">b6f516c75e1df7bdc16336f15fb1c5e57459d5b6b30ae089dae16a9ab59766ee</guid>
-      <pubDate>Wed, 09 Sep 2026 04:41:29 +0000</pubDate>
-    </item>
-    <item>
-      <title>N-able N-central Pre-Auth RCE Flaw Exploited in the Wild - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/n-able-n-central-pre-auth-rce-flaw.html</link>
-      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Tuesday added a maximum-severity security flaw impacting N-able N-central to its Known Exploited Vulnerabilities (KEV) catalog, requiring Federal Civilian Executive Branch (FCEB) agencies to apply the fixes by September 11, 2026.
-The vulnerability in question is CVE-2026-86218 (CVSS score: 10.0), which has been described as a</description>
-      <guid isPermaLink="false">a108aaefbc5e58345acf7eca4f7cffd5ebe3a7fccc1e1799734e9a9bb469064e</guid>
-      <pubDate>Wed, 09 Sep 2026 04:27:51 +0000</pubDate>
-    </item>
-    <item>
-      <title>CrowdSec -- multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/6a6ddb1d-ac6b-11f1-982d-3c7c3fba4204.html</link>
-      <description/>
-      <guid isPermaLink="false">d99a1bf7201c289cd47076112f8c226b9288494036f349a58ce3b4a85a36a1de</guid>
-      <pubDate>Wed, 09 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>yt-dlp: Improper Neutralization of Special Elements - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/cd5bfb7d-ac34-11f1-9b94-901b0e13f1a0.html</link>
-      <description/>
-      <guid isPermaLink="false">8d841c52460c36247cbdccfbd9c63b63c407cd8723cfc1806f9d8e9157544404</guid>
-      <pubDate>Wed, 09 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Reverse engineering a 1994 Philips PM5139 function generator: I used the emulator as a measuring instrument instead of reading the disassembly - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1waxuv7/reverse_engineering_a_1994_philips_pm5139/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Ready-Recording8012"&gt; /u/Ready-Recording8012 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/doctormord/Philips-PM-5139-5138A-5136-Firmware-Project"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1waxuv7/reverse_engineering_a_1994_philips_pm5139/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">1cce920aada89cc67e07566c20c82156db88143e1df6019a9a1be1f261bb2be4</guid>
-      <pubDate>Tue, 08 Sep 2026 19:08:04 +0000</pubDate>
-    </item>
-    <item>
-      <title>Slim Spider Steals Crypto Custody Secrets From Brazilian Financial Institution - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/slim-spider-steals-crypto-custody.html</link>
-      <description>A previously undocumented financially motivated threat actor has been linked to attacks targeting Brazilian financial institutions since at least March 2026.
-Cybersecurity company CrowdStrike is tracking the Brazil-based activity cluster under the name Slim Spider.
-"The adversary demonstrates deep operational knowledge of Brazilian financial infrastructure, including the instant payment</description>
-      <guid isPermaLink="false">262d9f8303059a1220347c0ddd9f79fddb1f1dc82685f69aead132ed30db6f11</guid>
-      <pubDate>Tue, 08 Sep 2026 16:20:23 +0000</pubDate>
-    </item>
-    <item>
-      <title>Liquid Hackers Return 3,400 Bitcoin Taken via Elements Bug, Still Holding $47M in BTC - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/liquid-hackers-return-3400-bitcoin.html</link>
-      <description>Whoever took nearly 4,000 bitcoin from the Liquid Network on Sunday, September 6,&amp;nbsp;returned 3,400 of it&amp;nbsp;the next day, Bitcoin's public record shows. About 598.5 bitcoin has not come back.
-Liquid is a Bitcoin sidechain that holds real bitcoin to back a token called L-BTC. The network is still paused, so holders cannot turn that token back into bitcoin.
-The 3,400 bitcoin was sent to a&amp;</description>
-      <guid isPermaLink="false">3b20e8d45b9c8ac9e1eb03fd082c776cf7b8f5304403493dd10728cdcb8f81c5</guid>
-      <pubDate>Tue, 08 Sep 2026 14:54:30 +0000</pubDate>
-    </item>
-    <item>
-      <title>ChatGPT Flaw Let a Planted Prompt Send a Victim's Gmail Data to Another Account - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/chatgpt-flaw-let-planted-prompt-send.html</link>
-      <description>Check Point Research said in a&amp;nbsp;report published today&amp;nbsp;that a single instruction planted in a ChatGPT conversation could cause ChatGPT to quietly work for an attacker while answering the user's question as usual.
-In the company's proof of concept, that hidden work read data from the user's connected Gmail account and passed it to a second ChatGPT account through a hidden channel</description>
-      <guid isPermaLink="false">fd5799eb81959f8fe74dc461c42ee51ead8ec1e5fba2229caec3ebad41fb70f5</guid>
-      <pubDate>Tue, 08 Sep 2026 14:19:17 +0000</pubDate>
-    </item>
-    <item>
-      <title>Autonomous AI Agents Compromise Thousands of Credentials in Under Six Hours - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/autonomous-ai-agents-compromise.html</link>
-      <description>Threat actors are continuing to leverage artificial intelligence (AI) to streamline their operations, with one financially motivated hacking group employing an autonomous, multi-agent attack framework to carry out a large-scale credential harvesting campaign within six hours.
-Google Threat Intelligence Group (GTIG) said it has observed attackers with diverse motivations targeting proprietary AI</description>
-      <guid isPermaLink="false">cbe894de98bfb9ef0e09a02133ccbce7a12e38201cff9d16c73b9bc4a633de56</guid>
-      <pubDate>Tue, 08 Sep 2026 13:48:16 +0000</pubDate>
-    </item>
-    <item>
-      <title>WeChat Zero-Click Worm Took Over Accounts on iPhone and Android via Incoming Calls - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/wechat-zero-click-worm-took-over.html</link>
-      <description>Researchers at the security firm Calif have built a worm that takes over a WeChat account via an incoming call and&amp;nbsp;demonstrated it spreading&amp;nbsp;among three test phones.
-The person being called does not have to answer or touch their phone for it to work, but the caller must already be one of their WeChat contacts. Calif reported the flaw to Tencent in July and says the company has since</description>
-      <guid isPermaLink="false">958dda7a71200d7ee47c90feff1c4c8fb1894e2b77643cafe1300718fb92a85c</guid>
-      <pubDate>Tue, 08 Sep 2026 11:54:29 +0000</pubDate>
     </item>
   </channel>
 </rss>
