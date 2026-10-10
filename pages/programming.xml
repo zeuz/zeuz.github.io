@@ -5,7 +5,70 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Fri, 09 Oct 2026 14:01:01 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 14:01:02 +0000</lastBuildDate>
+    <item>
+      <title>Python Morsels: Python 3.15's best new features - Planet Python</title>
+      <link>https://www.pythonmorsels.com/python315/</link>
+      <description>&lt;p&gt;Python 3.15 includes a UTF-8 default encoding, explicit lazy imports, &lt;code&gt;*&lt;/code&gt; unpacking in comprehensions, a new sampling profiler, &lt;code&gt;sentinel&lt;/code&gt;, &lt;code&gt;frozendict&lt;/code&gt;, and more!&lt;/p&gt;
+&lt;div&gt;
+    &lt;a href="https://www.pythonmorsels.com/python315/"&gt;&lt;img height="270" src="https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F2207113962-3a6d9dc0bde8de9e92896fa1859ba5a87ba481520df6aa2ad43dbf71486a5fa9-d_1920x1080%3F%26region%3Dus&amp;amp;src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png" width="480" /&gt;&lt;/a&gt;
+  &lt;p&gt;
+  &lt;strong&gt;Table of contents&lt;/strong&gt;
+  &lt;ol&gt;
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/python315/#a-utf-8-default-encoding" target="_blank"&gt;A UTF-8 default encoding&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/python315/#sentinel-objects" target="_blank"&gt;Sentinel objects&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/python315/#unpacking-in-comprehensions" target="_blank"&gt;Unpacking in comprehensions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/python315/#explicit-lazy-imports" target="_blank"&gt;Explicit lazy imports&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/python315/#the-new-profiling-package" target="_blank"&gt;The new &lt;code&gt;profiling&lt;/code&gt; package&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/python315/#improved-error-messages" target="_blank"&gt;Improved error messages&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/python315/#more-color" target="_blank"&gt;More color!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/python315/#a-few-quick-ones" target="_blank"&gt;A few quick ones&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/python315/#try-out-python-315-yourself" target="_blank"&gt;Try out Python 3.15 yourself&lt;/a&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+    &lt;h2&gt;A UTF-8 default encoding&lt;/h2&gt;
+        &lt;p&gt;The best feature might be one of the most &lt;em&gt;boring&lt;/em&gt; ones.&lt;/p&gt;
+        &lt;p&gt;As of Python 3.15, UTF-8 is the default file encoding on all operating systems, which means... Windows.&lt;/p&gt;
+        &lt;p&gt;Linux and Mac already used UTF-8 as their default file encoding in Python.
+But on Windows, Python used a legacy code page, which depended on your system's language settings.
+With English language settings, it was usually CP-1252.&lt;/p&gt;
+        &lt;p&gt;Say a coworker on a Mac writes a file with an accented character in it:&lt;/p&gt;
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"cafe.txt"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"wt"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="gp"&gt;... &lt;/span&gt;    &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"caf&amp;#233;"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;...&lt;/span&gt;
+&lt;span class="go"&gt;4&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;p&gt;What happens if we &lt;em&gt;read&lt;/em&gt; that file from Python running on a Windows machine?
+Using the Windows default encoding of CP-1252, this is what we'd see:&lt;/p&gt;
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"cafe.txt"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;encoding&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"cp1252"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="go"&gt;'caf&amp;#195;&amp;#169;'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;p&gt;We don't get an error... but we &lt;em&gt;do&lt;/em&gt; get garbled text.
+UTF-8 stores &lt;code&gt;&amp;#233;&lt;/code&gt; as two bytes, and CP-1252 happily reads those two bytes as two separate characters.&lt;/p&gt;
+        &lt;p&gt;And if the file had an emoji in it, the old default encoding on Windows couldn't even &lt;em&gt;write&lt;/em&gt; the file to begin with:&lt;/p&gt;
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"snake.txt"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"wt"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;encoding&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"cp1252"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="gp"&gt;... &lt;/span&gt;    &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&amp;#128013;"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;...&lt;/span&gt;
+&lt;span class="gt"&gt;Traceback (most recent call last):&lt;/span&gt;
+  File &lt;span class="nb"&gt;"&amp;lt;stdin&amp;gt;"&lt;/span&gt;, line &lt;span class="m"&gt;2&lt;/span&gt;, in &lt;span class="n"&gt;&amp;lt;module&amp;gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&amp;#128013;"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="pm"&gt;~~~~~~~^^^^^^&lt;/span&gt;
+  File &lt;span class="nb"&gt;"/home/trey/.local/share/uv/python/cpython-3.15.0rc2-linux-x86_64-gnu/lib/python3.15/encodings/cp1252.py"&lt;/span&gt;, line &lt;span class="m"&gt;19&lt;/span&gt;, in &lt;span class="n"&gt;encode&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;codecs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;charmap_encode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;errors&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;encoding_table&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="w"&gt;           &lt;/span&gt;&lt;span class="pm"&gt;~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^&lt;/span&gt;
+&lt;span class="gr"&gt;UnicodeEncodeError&lt;/span&gt;: &lt;span class="n"&gt;'charmap' codec can't encode character '\U0001f40d' in position 0: character maps to &amp;lt;undefined&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;p&gt;In Python 3.15, the &lt;code&gt;open&lt;/code&gt; function uses UTF-8 as its default encoding on every operating system, so &lt;strong&gt;a file written on one machine reads the same on every other machine&lt;/strong&gt;.&lt;/p&gt;
+        &lt;p&gt;If your code also needs to run on older versions of Python, it's still a good idea to &lt;a href="https://www.pythonmorsels.com/unicode-character-encodings-in-python/" target="_blank"&gt;explicitly pass &lt;code&gt;encoding="utf-8"&lt;/code&gt;&lt;/a&gt; to the &lt;code&gt;open&lt;/code&gt; function.&lt;/p&gt;
+    &lt;h2&gt;Sentinel objects&lt;/h2&gt;
+      &lt;p&gt;There&amp;#x27;s also now an official …&lt;/p&gt;
+&lt;/div&gt;
+&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/python315/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/python315/&lt;/a&gt;&lt;/h3&gt;</description>
+      <guid isPermaLink="false">fa392c2dd188dfff412ccc707d3be7c8997a3568c223a854d8f5be303bbb20d4</guid>
+      <pubDate>Fri, 09 Oct 2026 14:11:31 +0000</pubDate>
+    </item>
     <item>
       <title>Rodrigo Girão Serrão: The 5 most exciting new features of Python 3.15 - Planet Python</title>
       <link>https://mathspp.com/blog/the-5-most-exciting-new-features-of-python-315</link>
@@ -116,6 +179,105 @@ endeavors&lt;/a&gt;, you can &lt;a href="https://glyph.twistedmatrix.com/pages/p
 sponsor&lt;/a&gt;!&lt;/p&gt;</description>
       <guid isPermaLink="false">102267a8f19d8f0b697d91b351745b1c53ee513446ac61c851b1ea51d71e17e8</guid>
       <pubDate>Fri, 09 Oct 2026 07:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Wingware: Wing Python IDE 12.1 Beta - October 9, 2026 - Planet Python</title>
+      <link>https://wingware.com/news/2026-10-09</link>
+      <description>&lt;p&gt;Wing 12.1 is now available as a beta release. It introduces guided autonomous
+development. You specify the goals, answer questions, and review results. AI
+agents design and write the code, unit tests, and documentation. Wing keeps
+you in control. Wing Pro 12.1 now supports Claude Code, Codex, Antigravity,
+Copilot, Cursor, goose, OpenCode, and other ACP-compatible AI coding agents.
+It also adds a new Modern look and display themes, graphical revision control
+history, and many other improvements.&lt;/p&gt;
+&lt;img alt="Wing 12.1 Screen Shot" class="eye-candy-image unfloat-at-900" src="https://wingware.com/images/screenshots/wing12.1-screenshot.png" width="650px" /&gt;&lt;h3&gt;Downloads&lt;/h3&gt;&lt;div class="note"&gt;
+&lt;strong&gt;IMPORTANT&lt;/strong&gt; Be sure to &lt;tt class="literal"&gt;&lt;span class="pre"&gt;Check&lt;/span&gt; &lt;span class="pre"&gt;for&lt;/span&gt; &lt;span class="pre"&gt;Updates&lt;/span&gt;&lt;/tt&gt; from Wing's &lt;tt class="literal"&gt;&lt;span class="pre"&gt;Help&lt;/span&gt;&lt;/tt&gt; menu
+after installing so that you have the latest hot fixes.&lt;/div&gt;
+&lt;p&gt;This is a beta release. Please try it and &lt;a class="reference" href="mailto:support@wingware.com?subject=Wing%2012.1%20Early%20Access%20Feedback"&gt;email us&lt;/a&gt;
+if you find problems or have suggestions!&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference" href="http://wingware.com/downloads/wing-pro/12.1.0"&gt;Wing 12.1.0&lt;/a&gt; -- Full-featured Python IDE
+with two licensing tiers&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference" href="http://wingware.com/downloads/wing-101/12.1.0"&gt;Wing 101 12.1.0&lt;/a&gt; -- Free IDE for teaching
+beginners to program&lt;/p&gt;
+&lt;p&gt;Wing 12.1 will replace Wing 12.0 when it is installed. You can revert to Wing
+12.0 by reinstalling it at any time.&lt;/p&gt;
+&lt;p&gt;To get started quickly with autonomous development in Wing 12.1, see
+&lt;a class="reference" href="https://wingware.com/wingide/early-details"&gt;Getting Started with Autonomous Development&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;New in Wing 12.1&lt;/h2&gt;&lt;h3&gt;Autonomous Development with the Tasks Manager&lt;/h3&gt;&lt;p&gt;The new &lt;tt class="literal"&gt;&lt;span class="pre"&gt;Tasks&lt;/span&gt; &lt;span class="pre"&gt;Manager&lt;/span&gt;&lt;/tt&gt; is an agent that runs the &lt;tt class="literal"&gt;&lt;span class="pre"&gt;Tasks&lt;/span&gt;&lt;/tt&gt; tool's queues
+for you, so that development proceeds autonomously under your direction. You
+write tasks, mark the ones you want started as &lt;tt class="literal"&gt;&lt;span class="pre"&gt;Ready&lt;/span&gt;&lt;/tt&gt;, and review the results.&lt;/p&gt;
+&lt;p&gt;The Manager accepts anything from a bug report to a high-level specification
+for a new software project. It can break down larger tasks into a design and
+development plan. It decides task order, serializes those that are likely to
+edit the same files, and runs closely related tasks in shared session
+context. It can message a running agent to tell it about related work or new
+insights, or redirect it if it goes astray.&lt;/p&gt;
+&lt;p&gt;While the Manager is on, tasks run autonomously: Rather than stopping to ask
+questions or present intermediate results, each works as far as it can and
+ends with a report of the judgement calls it made along the way, and any
+questions it has left. A new &lt;tt class="literal"&gt;&lt;span class="pre"&gt;Questions&lt;/span&gt;&lt;/tt&gt; tab in the &lt;tt class="literal"&gt;&lt;span class="pre"&gt;Tasks&lt;/span&gt;&lt;/tt&gt; tool collects
+everything that is waiting for you, so you can provide answers in one place.
+Follow-up work and problems that agents notice as they run are added to the
+&lt;tt class="literal"&gt;&lt;span class="pre"&gt;Plan&lt;/span&gt;&lt;/tt&gt; tab of the &lt;tt class="literal"&gt;&lt;span class="pre"&gt;Tasks&lt;/span&gt;&lt;/tt&gt; tool as new tasks. The Manager may
+automatically start found tasks that are closely related to ongoing work;
+others wait for your review.&lt;/p&gt;
+&lt;p&gt;You stay in control of which work runs, how much the Manager can do, and how
+results are reviewed. Every change the Manager makes is listed and can be
+reverted or revised, even after changes have been committed. You can also
+talk to the Manager to ask about the status of development or give it special
+instructions about your development workflow.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Claude Code&lt;/strong&gt; and &lt;strong&gt;Codex&lt;/strong&gt; are best for autonomous development, since they
+self-check the safety of commands that they run. &lt;strong&gt;Antigravity&lt;/strong&gt;,
+&lt;strong&gt;Copilot&lt;/strong&gt;, and &lt;strong&gt;Cursor&lt;/strong&gt; also work but don't implement the same level of
+safety checks. See &lt;tt class="literal"&gt;&lt;span class="pre"&gt;AI&lt;/span&gt; &lt;span class="pre"&gt;Agent&lt;/span&gt; &lt;span class="pre"&gt;Safety&lt;/span&gt;&lt;/tt&gt; in the &lt;tt class="literal"&gt;&lt;span class="pre"&gt;AI&lt;/span&gt; &lt;span class="pre"&gt;Agent-Assisted&lt;/span&gt;
+&lt;span class="pre"&gt;Development&lt;/span&gt;&lt;/tt&gt; chapter of the manual in Wing 12.1's &lt;tt class="literal"&gt;&lt;span class="pre"&gt;Help&lt;/span&gt;&lt;/tt&gt; menu for details
+and safety recommendations.&lt;/p&gt;
+&lt;p&gt;The Manager agent itself and queues in the &lt;tt class="literal"&gt;&lt;span class="pre"&gt;Tasks&lt;/span&gt;&lt;/tt&gt; tool can each use a
+different agent. You bring your own subscriptions or API keys for the agents
+you choose. Wing does not install agents or provide access to models.&lt;/p&gt;
+&lt;h3&gt;Other Improvements&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Your Choice of AI Agent:&lt;/strong&gt; Wing 12.1 adds support for other AI agents, now
+including Claude Code, Codex, Antigravity, Copilot, Cursor, goose, and
+OpenCode, either using their Textual User Interfaces (TUIs) or the Agent
+Client Protocol (ACP).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;User Interface:&lt;/strong&gt; An optional new &lt;tt class="literal"&gt;&lt;span class="pre"&gt;Modern&lt;/span&gt;&lt;/tt&gt; look redesigns the toolbar,
+&lt;tt class="literal"&gt;&lt;span class="pre"&gt;Preferences&lt;/span&gt;&lt;/tt&gt; dialog, status bar, and tab overflow, and improves the
+display font. A welcome window lets you choose what to open at startup. Two
+new display themes, &lt;tt class="literal"&gt;&lt;span class="pre"&gt;Night&lt;/span&gt; &lt;span class="pre"&gt;Flight&lt;/span&gt;&lt;/tt&gt; and &lt;tt class="literal"&gt;&lt;span class="pre"&gt;Solo&lt;/span&gt; &lt;span class="pre"&gt;Flight&lt;/span&gt;&lt;/tt&gt;, have been added.
+Themes can now incorporate transparent colors, be imported from VS Code,
+created from a small set of colors, or exported from your current color
+configuration.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tasks Tool (Wing Pro):&lt;/strong&gt; New &lt;tt class="literal"&gt;&lt;span class="pre"&gt;Checklists&lt;/span&gt;&lt;/tt&gt; hold recurring reviews, fixes,
+and release and deployment steps. A task's committed changes can now be
+reverted, edited, or commented on. Every task has a short ID that links to
+the task wherever it is cited, and mini-search works on every tab. Tracking
+of changes made by concurrently running tasks is more reliable, and there are
+many other fixes to task and session management.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Version Control (Wing Pro and Wing Classic):&lt;/strong&gt; The &lt;tt class="literal"&gt;&lt;span class="pre"&gt;git&lt;/span&gt;&lt;/tt&gt; and
+&lt;tt class="literal"&gt;&lt;span class="pre"&gt;mercurial&lt;/span&gt;&lt;/tt&gt; logs now show a graphical history with expandable diffs,
+&lt;tt class="literal"&gt;&lt;span class="pre"&gt;Project&lt;/span&gt; &lt;span class="pre"&gt;Log&lt;/span&gt;&lt;/tt&gt; replaces &lt;tt class="literal"&gt;&lt;span class="pre"&gt;Show&lt;/span&gt; &lt;span class="pre"&gt;Changeset&lt;/span&gt;&lt;/tt&gt;, and the editor can show
+annotations with commit message tooltips.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Editor and Analysis:&lt;/strong&gt; In all products, the editor's scroll bar shows marks
+for diffs, search matches, and errors and warnings. Source analysis is faster
+and its database is about 30% smaller.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Other Changes:&lt;/strong&gt; Wing now offers to remove large cache directories left
+behind by older versions. &lt;tt class="literal"&gt;&lt;span class="pre"&gt;Accept&lt;/span&gt; &lt;span class="pre"&gt;Debug&lt;/span&gt; &lt;span class="pre"&gt;Connections&lt;/span&gt;&lt;/tt&gt; has moved to &lt;tt class="literal"&gt;&lt;span class="pre"&gt;Project&lt;/span&gt;
+&lt;span class="pre"&gt;Properties&lt;/span&gt;&lt;/tt&gt; so it is set per project. Wing 12.1 also includes many bug
+fixes, particularly for remote development and Docker containers, debugging
+free-threaded Python on Windows, git worktrees and submodules, non-ASCII text
+on Windows, unit test discovery, and display themes.&lt;/p&gt;
+&lt;p&gt;See the &lt;a class="reference" href="https://wingware.com/pub/wingpro/12.1.0.0/CHANGELOG.txt"&gt;change log&lt;/a&gt; for details.&lt;/p&gt;
+&lt;h3&gt;Getting Started with Autonomous Development&lt;/h3&gt;&lt;p&gt;To get started quickly with autonomous development in Wing 12.1, see
+&lt;a class="reference" href="https://wingware.com/wingide/early-details"&gt;Getting Started with Autonomous Development&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you have questions, please don't hesitate to contact us at &lt;a class="reference" href="mailto:support@wingware.com"&gt;support&amp;#64;wingware.com&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">4a9630d58724b144a0d7db40cce6ebd7d846ded8864803943eda9dc017083fae</guid>
+      <pubDate>Fri, 09 Oct 2026 01:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Insider: Python 3.15.0 (final) is here! - Planet Python</title>
+      <link>https://blog.python.org/2026/10/python-3150-final-is-here/</link>
+      <description>A brand new Python here for you to enjoy!</description>
+      <guid isPermaLink="false">9350f18e0d752fd5e1491aae37ea60e1c52b925498189ca9889445bf5ea1663f</guid>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Django Weblog: Django security reporting update - Planet Python</title>

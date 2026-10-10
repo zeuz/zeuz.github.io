@@ -5,7 +5,133 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Misc category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Fri, 09 Oct 2026 14:01:01 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 14:01:02 +0000</lastBuildDate>
+    <item>
+      <title>Mean vs mean - And now it's all this</title>
+      <link>https://leancrew.com/all-this/2026/10/mean-vs-mean/</link>
+      <description>&lt;p&gt;[Equations in this post may not look right (or appear at all) in your RSS reader. Go to &lt;a href="https://leancrew.com/all-this/2026/10/mean-vs-mean/"&gt;the original article&lt;/a&gt; to see them rendered properly.]&lt;/p&gt;
+  &lt;hr /&gt;
+  &lt;p&gt;I decided to start learning about machine learning a couple of weeks ago. Partly because it sounds interesting, partly because I think I have enough math to handle it, and partly because I felt it was important to have a deeper knowledge if I want to criticize AI.&lt;/p&gt;
+&lt;p&gt;I started with a library copy of Friedman and Mendhekar’s &lt;a href="https://lccn.loc.gov/2022045341"&gt;&lt;em&gt;The Little Learner&lt;/em&gt;&lt;/a&gt; but decided to drop it after I was about halfway through. Although I was following along reasonably well, I kept struggling with the book’s notation—after 200 pages, I shouldn’t have to keep returning to the front of the book to see what things like &lt;!-- $t|_i$ --&gt;&lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;msub&gt;&lt;mo form="prefix" stretchy="false"&gt;|&lt;/mo&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/msub&gt;&lt;/mrow&gt;&lt;/math&gt; mean. If the book’s Scheme code were actually written in Scheme, I might have stuck with it, but its mixture of Scheme with math was too frustrating.&lt;/p&gt;
+&lt;p&gt;Yesterday I started Kneusel’s &lt;a href="https://www.oreilly.com/library/view/practical-deep-learning/9798341655119/"&gt;&lt;em&gt;Practical Deep Learning&lt;/em&gt;&lt;/a&gt;. My library gives me free access to O’Reilly ebooks, so it’s easy to have the book open on my iPad while I work through example code on my MacBook. And yes, I certainly feel more comfortable working in Python. But I was surprised by a result pretty early on.&lt;/p&gt;
+&lt;p&gt;It had to do with calculating the mean values of the columns of a 2D array. The book is explaining a way to normalize (or standardize) a set of data whose features are on vastly different scales. Here’s the code (in an interactive Python session) that does it using the book’s example data:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;python:
+&amp;gt;&amp;gt;&amp;gt; import numpy as np
+&amp;gt;&amp;gt;&amp;gt; x = np.array([
+...  [6998, 0.1361, 0.3408, 0.00007350, 78596048],
+...  [6580, 0.4908, 3.0150, 0.00004484, 38462706],
+...  [7563, 0.9349, 4.3465, 0.00001003,  6700340],
+...  [8355, 0.6529, 2.1271, 0.00002966, 51430391],
+...  [2393, 0.4605, 2.7561, 0.00003395, 27284192],
+...  [9498, 0.0244, 2.7887, 0.00008880, 78543394],
+...  [4030, 0.6467, 4.8231, 0.00000403, 19101443],
+...  [5275, 0.3560, 0.0705, 0.00000899, 96029352],
+...  [8094, 0.7979, 3.9897, 0.00006691,  7307156],
+...  [ 843, 0.7892, 0.9804, 0.00005798, 10179751],
+...  [1221, 0.9564, 2.3944, 0.00007815, 14241835],
+...  [5879, 0.0329, 2.0085, 0.00009564, 34243070],
+...  [ 923, 0.4159, 1.7821, 0.00002467, 52404615],
+...  [5882, 0.0002, 1.5362, 0.00005066, 18728752],
+...  [1796, 0.7247, 2.3190, 0.00001332, 96703562],
+... ])
+...
+&amp;gt;&amp;gt;&amp;gt; xs = (x - x.mean(axis=0)) / x.std(axis=0)
+&amp;gt;&amp;gt;&amp;gt; xs
+array([[ 0.69308862, -1.12598999, -1.53184967,  0.95258185,  1.18240196],
+       [ 0.54647372, -0.01203876,  0.50510857, -0.01928358, -0.1141859 ],
+       [ 0.89126426,  1.38267719,  1.51932212, -1.19969655, -1.14033263],
+       [ 1.16906091,  0.49704356, -0.17121154, -0.53403994,  0.3047611 ],
+       [-0.92213055, -0.10719726,  0.30790249, -0.38856532, -0.47533014],
+       [ 1.56997199, -1.47678885,  0.33273415,  1.47140742,  1.18070086],
+       [-0.34794732,  0.47757218,  1.88235192, -1.40315756, -0.73969021],
+       [ 0.0887406 , -0.43538419, -1.73773921, -1.23496312,  1.7456197 ],
+       [ 1.07751429,  0.95242255,  1.24754488,  0.72911384, -1.12072823],
+       [-1.46579825,  0.92509981, -1.04466154,  0.42629603, -1.0279233 ],
+       [-1.33321348,  1.4501989 ,  0.03239288,  1.11026413, -0.89668956],
+       [ 0.30059562, -1.45009422, -0.26155005,  1.70335297, -0.25050967],
+       [-1.43773798, -0.24726556, -0.43400063, -0.70325168,  0.33623535],
+       [ 0.30164788, -1.55279003, -0.62130451,  0.1780736 , -0.75173073],
+       [-1.1315303 ,  0.72253467, -0.02503987, -1.08813209,  1.7674014 ]])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The example data consists of 15 samples, each of which has 5 features. The third command rescales each feature by subtracting its mean and dividing by its standard deviation.&lt;/p&gt;
+&lt;p&gt;In the book, Kneusel checks the mean of the fourth column of rescaled data to confirm that it’s basically zero. He gets &lt;!-- $-1.33 \times 10^{-16}$ --&gt;&lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;mi&gt;−&lt;/mi&gt;&lt;mn&gt;1.33&lt;/mn&gt;&lt;mo&gt;×&lt;/mo&gt;&lt;msup&gt;&lt;mn&gt;10&lt;/mn&gt;&lt;mrow&gt;&lt;mi&gt;−&lt;/mi&gt;&lt;mn&gt;16&lt;/mn&gt;&lt;/mrow&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;/math&gt;, which is effectively zero for 64-bit floating point values.&lt;/p&gt;
+&lt;p&gt;To make sure I was doing things right, I ran this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;python:
+&amp;gt;&amp;gt;&amp;gt; xs.mean(axis=0)
+array([ 1.48029737e-17, -8.88178420e-17,  6.77698638e-17, -1.62832710e-16,
+        4.44089210e-17])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;While the fourth mean, &lt;!-- $-1.63 \times 10^{-16}$ --&gt;&lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;mi&gt;−&lt;/mi&gt;&lt;mn&gt;1.63&lt;/mn&gt;&lt;mo&gt;×&lt;/mo&gt;&lt;msup&gt;&lt;mn&gt;10&lt;/mn&gt;&lt;mrow&gt;&lt;mi&gt;−&lt;/mi&gt;&lt;mn&gt;16&lt;/mn&gt;&lt;/mrow&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;/math&gt;, is certainly as good a zero as the book’s answer, it isn’t the same. To double-check my work, I ran this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;python:
+&amp;gt;&amp;gt;&amp;gt; xs[:, 3].mean()
+-1.3322676295501878e-16
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This &lt;em&gt;is&lt;/em&gt; the book’s value. What’s going on?&lt;/p&gt;
+&lt;p&gt;You may think this is perfectly normal. Floating point numbers are inherently inexact, and as long as I get a result that’s effectively zero, there’s nothing to be bothered about. But I was bothered.&lt;/p&gt;
+&lt;p&gt;I’m using the same function, &lt;a href="https://numpy.org/doc/stable/reference/generated/numpy.mean.html"&gt;&lt;code&gt;mean&lt;/code&gt;&lt;/a&gt;, from the same library, NumPy, on the same set of data, and I get different answers depending on how I invoke that function. Or maybe I do get the same answers. Here’s another command and its output:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;python:
+&amp;gt;&amp;gt;&amp;gt; for i in range(xs.shape[1]):
+...     print(f'Column {i}: {xs.mean(axis=0)[i] == xs[:, i].mean()}')
+...
+Column 0: True
+Column 1: True
+Column 2: True
+Column 3: False
+Column 4: False
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For the first three columns, it doesn’t matter which way I use &lt;code&gt;mean&lt;/code&gt;; for the last two, it does.&lt;/p&gt;
+&lt;p&gt;I should mention here that while the different results are obvious when the mean is close to zero, this behavior is present when operating on any 2D array. I’ve tried it out on several 2D arrays made from randomly generated floating point numbers.&lt;/p&gt;
+&lt;p&gt;During these experiments with randomly generated arrays, I got the sense that the likelihood of getting the same mean both ways got smaller as the number of rows in the array got larger. I decided to check that out with this script:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;python:
+ 1:  #!/usr/bin/env python3
+ 2:  
+ 3:  import numpy as np
+ 4:  
+ 5:  rng = np.random.default_rng()
+ 6:  
+ 7:  N = 5000
+ 8:  
+ 9:  for n in (10, 100, 1000, 10_000, 100_000):
+10:    count = 0
+11:    for i in range(N):
+12:      x0 = rng.uniform(low=0, high=100, size=n)
+13:      x1 = rng.uniform(low=100, high=200, size=n)
+14:      x = np.column_stack((x0, x1))
+15:      if x.mean(axis=0)[0] == x[:, 0].mean():
+16:        count += 1
+17:      if x.mean(axis=0)[1] == x[:, 1].mean():
+18:        count += 1
+19:    print(f'n = {n:,d}')
+20:    print(f'  Same means: {count/(2*N):.2%}')
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The results were&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;n = 10
+  Same means: 73.97%
+n = 100
+  Same means: 28.47%
+n = 1,000
+  Same means:  7.47%
+n = 10,000
+  Same means:  2.50%
+n = 100,000
+  Same means:  1.03%
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So arrays with more rows &lt;em&gt;are&lt;/em&gt; less likely to yield the same mean values when the &lt;code&gt;mean&lt;/code&gt; function is used in these two different ways.&lt;/p&gt;
+&lt;p&gt;My working theory is that when I use &lt;code&gt;mean()&lt;/code&gt; on a 1D array extracted from a 2D array, the computations are done differently than when I use &lt;code&gt;mean(axis=0)&lt;/code&gt; on the 2D array. Mathematically the same, but computationally different. Maybe it’s as simple as the summation being done in a different order so the partial sums round off in slightly different ways. The more partial sums, the greater the likelihood of a different answer.&lt;/p&gt;
+&lt;p&gt;Ultimately, &lt;!-- $-1.33 \times 10^{-16}$ --&gt;&lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;mi&gt;−&lt;/mi&gt;&lt;mn&gt;1.33&lt;/mn&gt;&lt;mo&gt;×&lt;/mo&gt;&lt;msup&gt;&lt;mn&gt;10&lt;/mn&gt;&lt;mrow&gt;&lt;mi&gt;−&lt;/mi&gt;&lt;mn&gt;16&lt;/mn&gt;&lt;/mrow&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;/math&gt; and &lt;!-- $-1.63 \times 10^{-16}$ --&gt;&lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;mi&gt;−&lt;/mi&gt;&lt;mn&gt;1.63&lt;/mn&gt;&lt;mo&gt;×&lt;/mo&gt;&lt;msup&gt;&lt;mn&gt;10&lt;/mn&gt;&lt;mrow&gt;&lt;mi&gt;−&lt;/mi&gt;&lt;mn&gt;16&lt;/mn&gt;&lt;/mrow&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;/math&gt; are both zero, so this was mainly an exercise in satisfying my curiosity. I worry when computer results that ought to be exactly the same are only nearly the same. It usually means I’ve done something wrong, but apparently not in this case.&lt;/p&gt;
+&lt;div class="update"&gt;
+&lt;p&gt;&lt;strong&gt;Update 9 Oct 2026 9:41 PM&lt;/strong&gt;&lt;br /&gt;
+Nathan Grigg, who has set me straight too many times to count, &lt;a href="https://mastodon.social/@nathangrigg/117413516387160372"&gt;pointed out&lt;/a&gt; that the &lt;a href="https://numpy.org/doc/stable/reference/generated/numpy.sum.html"&gt;NumPy docs for &lt;code&gt;sum&lt;/code&gt;&lt;/a&gt; explain how that function uses algorithms with different precision depending on&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;whether the &lt;code&gt;axis&lt;/code&gt; parameter is used or not; and&lt;/li&gt;
+&lt;li&gt;which axis is chosen if the parameter is used.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;There’s basically a speed/precision tradeoff at work. While it’s true that &lt;a href="https://numpy.org/doc/stable/reference/generated/numpy.mean.html"&gt;the docs for &lt;code&gt;mean&lt;/code&gt;&lt;/a&gt; don’t include this explanation, &lt;code&gt;sum&lt;/code&gt; and &lt;code&gt;mean&lt;/code&gt; are so alike that it must be the reason for the different answers.&lt;/p&gt;
+&lt;p&gt;Thanks, Nathan!&lt;/p&gt;
+&lt;/div&gt;</description>
+      <guid isPermaLink="false">cd5dcecfb3c517d82dd9c89fc3ec479e629908f2cad52ef9805a915954effa57</guid>
+      <pubDate>Fri, 09 Oct 2026 22:55:47 +0000</pubDate>
+    </item>
     <item>
       <title>I’m pissed at the Library of Congress - And now it's all this</title>
       <link>https://leancrew.com/all-this/2026/10/im-pissed-at-the-library-of-congress/</link>

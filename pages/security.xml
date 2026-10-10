@@ -5,7 +5,124 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Fri, 09 Oct 2026 14:01:01 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 14:01:02 +0000</lastBuildDate>
+    <item>
+      <title>Overlord-RAT-Analysis-Keylogging-Browser-Injection-HTTP2-C2 - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x2fphe/overlordratanalysiskeyloggingbrowserinjectionhttp2/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/StructBreaker"&gt; /u/StructBreaker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/kaandemir993/Overlord-RAT-Reverse-Engineering-a-Go-Based-RAT-Injection-Keylogging-C2-Exfiltration-Analysis"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x2fphe/overlordratanalysiskeyloggingbrowserinjectionhttp2/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">cd201f4db9a1fb05e73130772eadf872a87843df93b85498490b6bf7ff87bc47</guid>
+      <pubDate>Sat, 10 Oct 2026 13:46:13 +0000</pubDate>
+    </item>
+    <item>
+      <title>500+ Billion Tokens Later: Letting AI Agents Decompile A First-Person Shooter | MW2 (2009) 83% done final - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x2eizk/500_billion_tokens_later_letting_ai_agents/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/NXGZ"&gt; /u/NXGZ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://momo5502.com/posts/2026-10-09-game-decompilation/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x2eizk/500_billion_tokens_later_letting_ai_agents/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">3269b87bd1fdf86d2ab286f47345caa08ca2f141210655136eaf50b1a22b6acc</guid>
+      <pubDate>Sat, 10 Oct 2026 12:50:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>Anthropic Cuts Live Internet Access for Internal AI Tests After Claude Exploits Injection Flaws - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/anthropic-cuts-live-internet-access-for.html</link>
+      <description>Anthropic on Friday said it's cutting off live internet access for all its internal evaluations following the discovery of new incidents in which its artificial intelligence (AI) models exhibited misaligned behavior and targeted real websites.
+The AI company said it identified four broad categories of unintended model actions during evaluations and internal use of Claude -
+  Claude Mythos</description>
+      <guid isPermaLink="false">2d0836bf9fdc3ef8afb264d31c259524a82ca9f5769afd898d74e6a31d69a0da</guid>
+      <pubDate>Sat, 10 Oct 2026 09:18:45 +0000</pubDate>
+    </item>
+    <item>
+      <title>There was no software for my mouse on Linux, so I captured the Windows app's USB traffic and built the configurator with AI - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x2ap0r/there_was_no_software_for_my_mouse_on_linux_so_i/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/blakok14"&gt; /u/blakok14 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="http://github.com/blak0p/attack-shark-linux"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x2ap0r/there_was_no_software_for_my_mouse_on_linux_so_i/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">a0eddb74a2566a7cfed4109bb293597215399e5919ebc0d8f8e4429113570d00</guid>
+      <pubDate>Sat, 10 Oct 2026 09:10:03 +0000</pubDate>
+    </item>
+    <item>
+      <title>`AetherVM` is an LLVM-native binary analysis and emulation platform built around instruction lifting to `LLVM IR`. It unifies static, dynamic, and symbolic analysis through a common intermediate representation, enabling advanced instrumentation, runtime recovery, deobfuscation, etc.... - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x29vzl/aethervm_is_an_llvmnative_binary_analysis_and/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/JesseVPAND"&gt; /u/JesseVPAND &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/AetherVM/AetherVM"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x29vzl/aethervm_is_an_llvmnative_binary_analysis_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">f3f88ad5363ba77b4189744b02f14c95ce5e1f2c238cb967872927f473be1326</guid>
+      <pubDate>Sat, 10 Oct 2026 08:18:15 +0000</pubDate>
+    </item>
+    <item>
+      <title>Open source firmware for a cheap USB C meter (KWS-X1) that shows way more PD info than stock - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x22l2f/open_source_firmware_for_a_cheap_usb_c_meter/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/kralonurdev"&gt; /u/kralonurdev &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/kralonur/kws-x1-standalone-rs"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x22l2f/open_source_firmware_for_a_cheap_usb_c_meter/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">a3a8d523ca63cb60e20039600e45334ffffa1d79eabe88a2098ce5fea12874de</guid>
+      <pubDate>Sat, 10 Oct 2026 01:23:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>GitHub - gilnett/wstrace: Standalone zero-driver Windows system and API monitor in Rust - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x1vsxm/github_gilnettwstrace_standalone_zerodriver/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/gilnett"&gt; /u/gilnett &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/gilnett/wstrace"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x1vsxm/github_gilnettwstrace_standalone_zerodriver/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">d70e6fd47776d0a29bd8898b909ad454cbcf2c055f3df1689a63cada2dac3a89</guid>
+      <pubDate>Fri, 09 Oct 2026 20:16:40 +0000</pubDate>
+    </item>
+    <item>
+      <title>Credential-Stealing GitHub Actions Workflows Planted in Tens of Thousands of Repositories - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/credential-stealing-github-actions.html</link>
+      <description>Cybersecurity researchers have disclosed details of an ongoing credential-theft campaign that has compromised two high-profile open-source maintainer accounts to push a malicious workflow into over 340 repositories.
+"Using the account of Takashi Kitao, author of the 18,400-star game engine pyxel, the attacker pushed a malicious workflow to 27 repositories starting at 13:20 UTC," StepSecurity</description>
+      <guid isPermaLink="false">e5cfc8fa2a99746a1aa41e200fb596b883da068ed8f746e5d0eb90876c959357</guid>
+      <pubDate>Fri, 09 Oct 2026 19:14:28 +0000</pubDate>
+    </item>
+    <item>
+      <title>FBI Arrests Another ShinyHunters Suspect Reportedly Involved in Its Jobs Portal Hack - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/fbi-arrests-another-shinyhunters.html</link>
+      <description>The FBI has arrested another suspected co-conspirator of ShinyHunters, FBI Director Kash Patel said on October 9 in a&amp;nbsp;post on X.
+ShinyHunters is the extortion group that said in September it had&amp;nbsp;breached the FBI's jobs portal&amp;nbsp;and stolen sensitive data on almost all FBI agents and job applicants. The FBI has not named the suspect, and no charges have been made public.
+The</description>
+      <guid isPermaLink="false">1b379bbac6d913465a1bf518d4f582822a9a8fb7d630e05979857905ca966474</guid>
+      <pubDate>Fri, 09 Oct 2026 17:45:26 +0000</pubDate>
+    </item>
+    <item>
+      <title>Apple Watch connector for Android, Linux, Windows... It seems to be a world first - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x1r3rt/apple_watch_connector_for_android_linux_windows/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Prestigious_Intern50"&gt; /u/Prestigious_Intern50 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/LordixDemon/apple_watch_connector"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x1r3rt/apple_watch_connector_for_android_linux_windows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">54fcec59eb901c3831387351bd7a301f8b29055ea45618ace686f641c6ce99fe</guid>
+      <pubDate>Fri, 09 Oct 2026 17:14:39 +0000</pubDate>
+    </item>
+    <item>
+      <title>P7 DarkSword iOS Exploit Kit Adds Crypto Wallet Data Theft and Remote Commands - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/p7-darksword-ios-exploit-kit-adds.html</link>
+      <description>Cybersecurity researchers have disclosed details of a previously unseen variant of the DarkSword iOS exploit kit called P7 DarkSword.
+"Compared with the variants we usually observe, P7 reduces its on-device footprint, adds on-device keychain and crypto-wallet theft, and adds two way C2 communication with the attacker's infrastructure," iVerify said in a new report published Thursday.
+The name</description>
+      <guid isPermaLink="false">32ebcee7c30c8e20887513cd9d0776db2a5414030bc7eacf658d579e55243bb3</guid>
+      <pubDate>Fri, 09 Oct 2026 16:29:55 +0000</pubDate>
+    </item>
+    <item>
+      <title>TP-Link Sued by Four More U.S. States Over Router Security and China Ties - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/tp-link-sued-by-four-more-us-states.html</link>
+      <description>Four more U.S. states sued router maker TP-Link Systems on October 6, bringing the total to five, with &amp;nbsp;Texas filing a suit in February. Florida, Iowa, Montana and Nebraska allege the California company misled buyers about how secure its routers are and how separate it is from China. TP-Link&amp;nbsp;denies the claims&amp;nbsp;and says it will fight them in court.
+TP-Link Systems is based in</description>
+      <guid isPermaLink="false">81d5d3b99c75655ecd2fa6d27ae141a61e71b41292f6e08367d32a7e494e4acc</guid>
+      <pubDate>Fri, 09 Oct 2026 13:22:53 +0000</pubDate>
+    </item>
+    <item>
+      <title>Researchers Publish Working Exploit for Pre-Auth AnyDesk Linux Flaw That Gives Root Access - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/researchers-publish-working-exploit-for.html</link>
+      <description>Security researchers have&amp;nbsp;published a full working exploit&amp;nbsp;for a pre-authentication remote code execution flaw in AnyDesk Linux that gives attackers root access before anyone approves the connection.
+AnyDesk patched the flaw in version 8.0.3 in June, but its&amp;nbsp;changelog&amp;nbsp;described the fix only as "fixed a bug that could lead to a crash," with no CVE assigned and no security</description>
+      <guid isPermaLink="false">8cbfa9a2e4e3faa63f183741bec53322fdeaef26e5464d21772aeb0287005bb7</guid>
+      <pubDate>Fri, 09 Oct 2026 12:59:22 +0000</pubDate>
+    </item>
+    <item>
+      <title>Anthropic Launches Free AI Vulnerability Scanner for Open-Source Projects - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/anthropic-launches-free-ai.html</link>
+      <description>Anthropic on Thursday unveiled OSS Scanner as an opt-in vulnerability scanner to help secure the open-source ecosystem using artificial intelligence (AI).
+"It's an opt-in service informed by our experience using Claude to find vulnerabilities during Project Glasswing," Anthropic said. "Projects that join will receive thorough, periodic security scans by our strongest models at no cost."</description>
+      <guid isPermaLink="false">ca4223316ce2d8bb45c8cb4dd22f561b6b8bd81dc6f63a17a1c37b3f354e3d3e</guid>
+      <pubDate>Fri, 09 Oct 2026 12:47:28 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Exploit AhsayCBS Flaws to Deploy XMRig Miners Disguised as Microsoft Edge - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/attackers-exploit-ahsaycbs-flaws-to.html</link>
+      <description>Threat actors have been observed exploiting two recently disclosed flaws in the AhsayCBS backup utility to seize control of affected devices and deploy web shells and XMRig cryptocurrency miners.
+Details of the flaws are below -
+  CVE-2026-105133 (CVSS v4 score: 5.5) - An improper authentication vulnerability in the checkSysPwd() function in the "com/ahsay/obs/api/ApiStructsAction.java"</description>
+      <guid isPermaLink="false">d2cfc96279483bb9d25b4f2db5c9335f19abf0460e9b81252fa860672cd43f20</guid>
+      <pubDate>Fri, 09 Oct 2026 12:47:26 +0000</pubDate>
+    </item>
     <item>
       <title>GoBalance Flaw Lets Attackers Hijack .onion Addresses by Recovering Tor-Format Keys - The Hacker News</title>
       <link>https://thehackernews.com/2026/10/gobalance-flaw-lets-attackers-hijack.html</link>
@@ -45,6 +162,13 @@ The vulnerability</description>
 To that end, the agencies seized several domains and blocked access to platforms that were used to scan, and in some cases infiltrate, U.S. critical infrastructure. The list of seized</description>
       <guid isPermaLink="false">d6ed859955b618d4b1b542f54bb113aff8ebbca3889c8cf7f3fe7a284a641558</guid>
       <pubDate>Fri, 09 Oct 2026 06:39:29 +0000</pubDate>
+    </item>
+    <item>
+      <title>clamav -- Multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/2719a8da-c3f8-11f1-8da1-3497f65b111b.html</link>
+      <description/>
+      <guid isPermaLink="false">538a7a2325527cdc53bb6361ce87c60d7d6b19960a01b30d780e2ba8b92ddec6</guid>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Reverse Engineering AirPods Self-Calibration Test - Reverse Engineering</title>
@@ -1415,130 +1539,6 @@ According to independent reports from Blackpoint Cyber and GreyNoise, the activi
 A work profile is a separate space that Android typically reserves for employer apps, and what's inside it is kept separate from everything in the personal space. That</description>
       <guid isPermaLink="false">52cd2d14a57f5948080f852dfa1ad20f791f2f89057b70e8ef9292d6899c8b4d</guid>
       <pubDate>Thu, 10 Sep 2026 11:33:43 +0000</pubDate>
-    </item>
-    <item>
-      <title>CISA Flags Exploited Cisco, Citrix, Fortinet Flaws, Sets Sept. 12 Federal Patch Deadline - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/cisa-flags-exploited-cisco-citrix.html</link>
-      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Wednesday added three flaws, each impacting Cisco, Citrix, and Fortinet, to its Known Exploited Vulnerabilities (KEV) catalog, requiring Federal Civilian Executive Branch (FCEB) agencies to apply the patches by September 12, 2026.
-The vulnerabilities are listed below -
-  CVE-2026-20079 (CVSS score: 10.0) - An authentication</description>
-      <guid isPermaLink="false">5220a67ae925d61afd33511950dae44a2adcec6e6dfc78317385e08782f03984</guid>
-      <pubDate>Thu, 10 Sep 2026 10:36:46 +0000</pubDate>
-    </item>
-    <item>
-      <title>GitHub - mein-0/forti-research fortinet ppl bypass - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wcd81l/github_mein0fortiresearch_fortinet_ppl_bypass/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/nanaynunay"&gt; /u/nanaynunay &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/mein-0/forti-research"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wcd81l/github_mein0fortiresearch_fortinet_ppl_bypass/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">962d75ca8df5ecc4de30ab96d778a40cf4410e1fde2941a69ea6e826013c861a</guid>
-      <pubDate>Thu, 10 Sep 2026 08:33:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>Nearly 1 in 10 Exposed LiteLLM Gateways Accepted the Example "sk-1234" Admin Key - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/nearly-1-in-10-exposed-litellm-gateways.html</link>
-      <description>Nearly one in ten of the internet-facing LiteLLM servers that&amp;nbsp;Wiz Research&amp;nbsp;scanned in February accepted&amp;nbsp;sk-1234, the example admin key in LiteLLM's own setup guide.
-LiteLLM is an open-source AI gateway, the software a company puts between its applications and the model providers it pays for. That key is the gateway's administrator credential.
-Anyone who holds it can read every</description>
-      <guid isPermaLink="false">afe0c2668ff7ccd84609561eb4b6ae13fc6c1a543efa87b656f30585fe9dcc5a</guid>
-      <pubDate>Thu, 10 Sep 2026 07:12:55 +0000</pubDate>
-    </item>
-    <item>
-      <title>Anthropic Discloses Fourth AI Hacking Incident Involving Claude Opus 4.6 - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/anthropic-ai-models-breached-real.html</link>
-      <description>Anthropic on Wednesday disclosed a fourth incident in which its artificial intelligence (AI) model broke into real third-party systems, marking the latest in a growing list of cases that have raised concerns about the security risks posed by autonomous AI agents.
-The AI company said the incident dates back to January 2026 and involved an early version of Claude Opus 4.6 that breached "</description>
-      <guid isPermaLink="false">cdf5c3f06aab459d9f1ce9bb3da3e4d89c4b68761f0f95f29bfd02b9cf50074c</guid>
-      <pubDate>Thu, 10 Sep 2026 07:04:01 +0000</pubDate>
-    </item>
-    <item>
-      <title>Razer Lycosa.sys analysis: kernel memory disclosure and stack buffer overflow - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wc5k75/razer_lycosasys_analysis_kernel_memory_disclosure/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Other-Income-5085"&gt; /u/Other-Income-5085 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/416rehman/razer-lycosa-kernel-lpe-BYOVD-Vulnerability-PoC"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wc5k75/razer_lycosasys_analysis_kernel_memory_disclosure/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">9baf11da990e30f2b5e78916c29480c29c24b3d5344a9115e6f7a1d176687a11</guid>
-      <pubDate>Thu, 10 Sep 2026 02:01:05 +0000</pubDate>
-    </item>
-    <item>
-      <title>strongSwan -- multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/e627950e-ad4f-11f1-8656-000af7b98cf6.html</link>
-      <description/>
-      <guid isPermaLink="false">ed0fb6c5b4928e09f389044e54eb856776ce2382cb32f3c6c117efb0fc2e4d7d</guid>
-      <pubDate>Thu, 10 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Reverse engineering the 2008 LogiCola, a logic drill program - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wbzlrt/reverse_engineering_the_2008_logicola_a_logic/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Environmental-Ask30"&gt; /u/Environmental-Ask30 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://logicola.org/blog/the-new-logicola"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wbzlrt/reverse_engineering_the_2008_logicola_a_logic/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">8b309df66579169ea1ceed7abdad1973a9a59e11ff9b02ef5bd526313bd76a88</guid>
-      <pubDate>Wed, 09 Sep 2026 21:53:01 +0000</pubDate>
-    </item>
-    <item>
-      <title>U.S. Disrupts Xinbi Guarantee Scam Marketplace, Freezes $52.8 Million in Crypto - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/us-disrupts-xinbi-guarantee-scam.html</link>
-      <description>The U.S. Department of Justice (DoJ) on Wednesday announced coordinated actions aimed at an illicit online marketplace called Xinbi Guarantee that offered scam services, including seizing Telegram channels used to run the service, confiscating two cryptocurrency wallets, and deploying the Scam Center Strike Force to Madagascar to help disrupt 13 scam compounds run by Chinese organized crime</description>
-      <guid isPermaLink="false">d2f492a6e3b2d8c9281671777837ba1a74d2cadf5c339576c40c7f27a076ba85</guid>
-      <pubDate>Wed, 09 Sep 2026 18:26:05 +0000</pubDate>
-    </item>
-    <item>
-      <title>Four Spy Groups Used the Same Chrome and Windows Exploit Kit Within a Week - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/four-spy-groups-used-same-chrome-and.html</link>
-      <description>Multiple espionage-motivated threat activity clusters have been found deploying a previously undocumented exploit kit called BlueMoon that chains together multiple vulnerabilities in Microsoft Windows and Google Chrome.
-The first in-the-wild use of BlueMoon has been attributed to the China-aligned state-sponsored group tracked as APT31 (aka Bronze Vinewood, Judgement Panda, JungleBamboo,</description>
-      <guid isPermaLink="false">2a346851f026ea5b4585668a6edcbfdfbeb162c22e75c4135d19ce19e0b1fbeb</guid>
-      <pubDate>Wed, 09 Sep 2026 16:34:05 +0000</pubDate>
-    </item>
-    <item>
-      <title>Update: Attack Shark X6 Linux driver — from DPI-only to button remap, lighting, and emergency reset (Go + Wails) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wbqh36/update_attack_shark_x6_linux_driver_from_dpionly/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/blakok14"&gt; /u/blakok14 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/blak0p/attack-shark-linux"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wbqh36/update_attack_shark_x6_linux_driver_from_dpionly/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">6729743961813acc2ab4127a29c11e9f641c585d04212bf2fdd06049b91625f4</guid>
-      <pubDate>Wed, 09 Sep 2026 16:29:03 +0000</pubDate>
-    </item>
-    <item>
-      <title>Piracy CDN renamed .ts video segments to .woff2 to abuse extension-based CDN caching, a byte-level analysis - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wbqfll/piracy_cdn_renamed_ts_video_segments_to_woff2_to/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/ab032tx"&gt; /u/ab032tx &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://saimanish.com/blog/cloudflare-woff2-cache-abuse/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wbqfll/piracy_cdn_renamed_ts_video_segments_to_woff2_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">55056f9348394f36b0fb9e879551921d67540f50ce77f4034ff718f36cd2b73c</guid>
-      <pubDate>Wed, 09 Sep 2026 16:27:32 +0000</pubDate>
-    </item>
-    <item>
-      <title>Infostealer Logs Expose Replayable AI Tokens That Can Bypass MFA - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/infostealer-logs-expose-replayable-ai.html</link>
-      <description>Cybercriminals are hijacking artificial intelligence (AI) user accounts via information stealer logs to create "stolen keys" that grant illicit access to tools from model providers like Google, Anthropic, and others.&amp;nbsp;
-Information stealers like Lumma Stealer or Vidar are equipped to harvest a wide range of data from compromised systems. This can include credential, session tokens, and API</description>
-      <guid isPermaLink="false">ebf08dff2b721fbb60cfa651cefa1faf3afec2a832af4666fcf69f20250571a6</guid>
-      <pubDate>Wed, 09 Sep 2026 14:23:55 +0000</pubDate>
-    </item>
-    <item>
-      <title>DeepSeek Harness Flaw Let AI Agents Disable Their Own File Sandbox Without Approval - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/deepseek-harness-flaw-let-ai-agents.html</link>
-      <description>A flaw in DeepSeek Harness, DeepSeek's open-source tool for running AI coding agents on a developer's machine, let a sandboxed agent turn off its own sandbox with a single command.
-The tool runs an agent's commands inside an operating-system sandbox, so that an agent working on untrusted files cannot write outside its workspace. The agent could remove that limit by calling the tool's own web</description>
-      <guid isPermaLink="false">c07a2d4561cb909c6d54fe41f999209bb8962e53c26a2a2d2eb33f6ab8a0964a</guid>
-      <pubDate>Wed, 09 Sep 2026 11:17:07 +0000</pubDate>
-    </item>
-    <item>
-      <title>Alby Hub Critical Flaw Could Let Attackers Take Over Internet-Exposed Bitcoin Wallets - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/alby-hub-critical-flaw-could-let.html</link>
-      <description>Bitcoin wallet company Alby has&amp;nbsp;warned of a critical flaw&amp;nbsp;in Alby Hub that could have let an attacker take over a wallet and send its funds, but only where the owner had made the Hub reachable from the internet.
-Alby Hub is a self-hosted Lightning wallet, meaning the owner runs it on their own computer or server, and it holds their bitcoin. The flaw affects versions v1.7.0 through</description>
-      <guid isPermaLink="false">5cc753d437bf9e66872075d4f49105281253072f73aae2c31774c8dd103a7ea5</guid>
-      <pubDate>Wed, 09 Sep 2026 10:43:04 +0000</pubDate>
-    </item>
-    <item>
-      <title>U.S. Agencies Accuse China AI Firms of Distilling Claude, GPT, Gemini, and Grok - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/us-agencies-accuse-china-ai-firms-of.html</link>
-      <description>U.S. cybersecurity and intelligence agencies have accused China-based artificial intelligence (AI) companies of conducting "systematic extraction" of proprietary functionalities and capabilities of American frontier models through distillation attacks.
-The activity has been described as occurring at an industrial-scale and one that forms the "core" of their AI development strategy, according to</description>
-      <guid isPermaLink="false">e6719347d5e56dc4c8acff9e33c6b0bbc8dabd4c1588de6d5c5fc707a8b32368</guid>
-      <pubDate>Wed, 09 Sep 2026 09:32:26 +0000</pubDate>
-    </item>
-    <item>
-      <title>Chrome V8 Zero-Day Exploited in the Wild Enables Code Execution Inside Sandbox - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/chrome-v8-zero-day-exploited-in-wild.html</link>
-      <description>Google on Thursday released updates to patch 230 security vulnerabilities, including one that has come under active exploitation in the wild.
-The medium-severity vulnerability, assigned the CVE identifier CVE-2026-87491 (CVSS score: N/A), has been described as an out-of-bounds bug in V8, Chrome's JavaScript and WebAssembly engine.
-"Out-of-bounds write in V8 in Google Chrome prior to</description>
-      <guid isPermaLink="false">2f7efdefcd912806889febdc712257e00352c0281a71a5452166c3930eee80b0</guid>
-      <pubDate>Wed, 09 Sep 2026 09:11:03 +0000</pubDate>
     </item>
   </channel>
 </rss>
