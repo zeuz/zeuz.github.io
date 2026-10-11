@@ -5,7 +5,49 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sat, 10 Oct 2026 14:01:02 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 11 Oct 2026 14:00:42 +0000</lastBuildDate>
+    <item>
+      <title>Patched a local serial check in an old 32-bit game after registry fakes and injectors failed under EDR - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x35q5e/patched_a_local_serial_check_in_an_old_32bit_game/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/tianx9370"&gt; /u/tianx9370 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://gist.github.com/apacchi/da3bf9445a16f6fdc8c2c9c6be9ef944"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x35q5e/patched_a_local_serial_check_in_an_old_32bit_game/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">cd5d203ea050b2d4401e958ff98fa813ccf99a2ce8db8c34da3a62e5a323a55c</guid>
+      <pubDate>Sun, 11 Oct 2026 11:21:01 +0000</pubDate>
+    </item>
+    <item>
+      <title>EntropyStrip: finding hidden payloads when naive Shannon entropy misses them - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x34rqb/entropystrip_finding_hidden_payloads_when_naive/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Pristine-Sign3680"&gt; /u/Pristine-Sign3680 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/dwexi/entropystrip"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x34rqb/entropystrip_finding_hidden_payloads_when_naive/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">8ec5550456d7641dbf734c2a21659d68b74f17d8ccb38c6e9cfb1bf6624809b0</guid>
+      <pubDate>Sun, 11 Oct 2026 10:25:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>Sniffing a Bricked Glucose Monitor with Codex - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x3416i/sniffing_a_bricked_glucose_monitor_with_codex/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/farhanhubble"&gt; /u/farhanhubble &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://medium.com/@farhanhubble/sniffing-a-bricked-glucose-monitor-with-codex-690c74229d02?sharedUserId=farhanhubble"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x3416i/sniffing_a_bricked_glucose_monitor_with_codex/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">54a5aa2e641679d6da9c002763b1da8f17e9a2726a534cc3520fc3500b39d8c0</guid>
+      <pubDate>Sun, 11 Oct 2026 09:41:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>AI agents reconstruct 99% of MW2 functions, 83% byte-for-byte - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x33eqf/ai_agents_reconstruct_99_of_mw2_functions_83/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/ryanmerket"&gt; /u/ryanmerket &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://runtimewire.com/article/ai-agents-mw2-decompilation-byte-matching"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x33eqf/ai_agents_reconstruct_99_of_mw2_functions_83/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">ef6cbc112d41099d5eee6da089469bcacd7d3d1a491f7a482af5900571d5d3b1</guid>
+      <pubDate>Sun, 11 Oct 2026 09:01:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>Reverse-engineered a cheap USB battery/charging tester (Qianli iBridge A3 "Tail-QL", HC32F460 Cortex-M4) — full protocol + SPI screen driver mapped, stuck on font bitmap format, looking for help [link: original firmware bin + official flashing tool + MCU datasheet] - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x2w7kz/reverseengineered_a_cheap_usb_batterycharging/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Apprehensive-Shoe492"&gt; /u/Apprehensive-Shoe492 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://end2end.tech/2fd56acaeb59"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x2w7kz/reverseengineered_a_cheap_usb_batterycharging/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">529d6e07cf50f29871b2749470ef3ea45f4eb453907359a61e7e7ee2f48c40fc</guid>
+      <pubDate>Sun, 11 Oct 2026 02:04:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>asmsense: fine-tuning Qwen3-8B to name functions in stripped x86-64 binaries, with a memorization-resistant benchmark against large LLMs - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x2ik6a/asmsense_finetuning_qwen38b_to_name_functions_in/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/luxurycashew"&gt; /u/luxurycashew &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/krxi/asmsense"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x2ik6a/asmsense_finetuning_qwen38b_to_name_functions_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">547f501258dc6c4feaa93535c6d3a644a7e62806dfdf17d41432d73851cc5bca</guid>
+      <pubDate>Sat, 10 Oct 2026 15:49:30 +0000</pubDate>
+    </item>
     <item>
       <title>Overlord-RAT-Analysis-Keylogging-Browser-Injection-HTTP2-C2 - Reverse Engineering</title>
       <link>https://www.reddit.com/r/ReverseEngineering/comments/1x2fphe/overlordratanalysiskeyloggingbrowserinjectionhttp2/</link>
@@ -49,6 +91,13 @@ The AI company said it identified four broad categories of unintended model acti
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/kralonurdev"&gt; /u/kralonurdev &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/kralonur/kws-x1-standalone-rs"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x22l2f/open_source_firmware_for_a_cheap_usb_c_meter/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">a3a8d523ca63cb60e20039600e45334ffffa1d79eabe88a2098ce5fea12874de</guid>
       <pubDate>Sat, 10 Oct 2026 01:23:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>traefik -- Multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/049d88bb-c4a2-11f1-9d0b-5404a68ad561.html</link>
+      <description/>
+      <guid isPermaLink="false">4ebf719c7853290b5a0f795dce07cc0b3d7f807fdce8196c52d96327c8b8b270</guid>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>GitHub - gilnett/wstrace: Standalone zero-driver Windows system and API monitor in Rust - Reverse Engineering</title>
@@ -168,6 +217,13 @@ To that end, the agencies seized several domains and blocked access to platforms
       <link>http://www.vuxml.org/freebsd/2719a8da-c3f8-11f1-8da1-3497f65b111b.html</link>
       <description/>
       <guid isPermaLink="false">538a7a2325527cdc53bb6361ce87c60d7d6b19960a01b30d780e2ba8b92ddec6</guid>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>mutt -- Heap out-of-bounds write via crafted Content-Header line - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/28c48cd9-e79a-4ad6-8e62-1317c2ec19a1.html</link>
+      <description/>
+      <guid isPermaLink="false">82c1d480d30787b1deff9744384beaafe12f6fdcba7b41c919e0c438aaee4791</guid>
       <pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
@@ -1479,66 +1535,6 @@ The attacks leverage CVE-2026-20079 (CVSS score: 10.0), an authentication bypass
       <description/>
       <guid isPermaLink="false">d8b166c364e49b77cd28592a3fea735e80e595ab9f167990f4cef6dd6397edd0</guid>
       <pubDate>Fri, 11 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>immich -- open redirect and reflected XSS in maintenance endpoint - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/fcc6baaa-adbc-11f1-a655-3497f65b111b.html</link>
-      <description/>
-      <guid isPermaLink="false">a21def3cbb96ab2d7df6cddbc75bb1be169deaf337dfde081f6a4308f12ec3ca</guid>
-      <pubDate>Fri, 11 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>redpanda-connect -- memory exhaustion via oversized AMQP frames - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/5d69ee28-adb9-11f1-9d0e-4c526214c986.html</link>
-      <description/>
-      <guid isPermaLink="false">bfe8978939a9b4ae795a02f6139339f521cbbc4ee7b434302ecc45f2c5095eb4</guid>
-      <pubDate>Fri, 11 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Windows Internals Explained - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wcxqs2/windows_internals_explained/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/1337axxo"&gt; /u/1337axxo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://youtu.be/AjzXGaH5VPY"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wcxqs2/windows_internals_explained/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">ab1102836be5767a298c4f2117493d9505d4cef3e9f14068c5b8718f5248a73d</guid>
-      <pubDate>Thu, 10 Sep 2026 22:19:10 +0000</pubDate>
-    </item>
-    <item>
-      <title>Beltdown: Escaping the Claude Code Sandbox - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wcx845/beltdown_escaping_the_claude_code_sandbox/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/natcoba"&gt; /u/natcoba &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.accomplish.ai/blog/beltdown-escaping-the-claude-code-sandbox/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wcx845/beltdown_escaping_the_claude_code_sandbox/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">c15acfafe3eea22c485495e1003007d0465aaaa75560d0cc03eb6539ab9843b5</guid>
-      <pubDate>Thu, 10 Sep 2026 21:59:04 +0000</pubDate>
-    </item>
-    <item>
-      <title>Google Play Early Access Abused to Push Thousands of Deceptive Android Apps - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/google-play-early-access-abused-to-push.html</link>
-      <description>Bad actors are misusing Google Play's Early Access program to push deceptive apps that claim to offer money, rewards, casino winnings, and premium content.
-Early Access apps are apps that haven't been released on the official Android app marketplace. The main idea behind the program is for developers to solicit user feedback for new applications or features they may be working on before their</description>
-      <guid isPermaLink="false">2553d46bb7b05685a9113efff5b9f947d6f100f102f55ba2a17eaf855008238f</guid>
-      <pubDate>Thu, 10 Sep 2026 14:36:47 +0000</pubDate>
-    </item>
-    <item>
-      <title>Check Point Discloses Two 9.8-Rated VPN Certificate Flaws Enabling Unauthenticated RCE - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/check-point-discloses-two-98-rated-vpn.html</link>
-      <description>Check Point has patched two critical vulnerabilities in the way its firewall and management products handle VPN certificates. The company says both could allow an unauthenticated remote attacker to run code, but only "under specific conditions" that it has not described.
-One flaw affects Check Point's Security Gateways, its firewall appliances. The other affects those gateways and the Security</description>
-      <guid isPermaLink="false">b29f3fbdea9ab3ddd8fa287665b96a74776d1b98557bc9c7066e2bf2e45f8fd5</guid>
-      <pubDate>Thu, 10 Sep 2026 11:45:05 +0000</pubDate>
-    </item>
-    <item>
-      <title>PaperCut Attacker Uses Hundreds of AI Agents to Compromise 440+ Instances - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/papercut-attacker-uses-hundreds-of-ai.html</link>
-      <description>A suspected Russian-speaking cyber actor has been attributed to the use of artificial intelligence (AI) to devise exploits targeting a recently disclosed pair of security flaws in PaperCut NG/MF and break into hundreds of instances.
-According to independent reports from Blackpoint Cyber and GreyNoise, the activity originates from "45.142.193[.]132," an IP address that has been linked to</description>
-      <guid isPermaLink="false">e6c67258a108b02aeb4c16ef84411b43c523bd417b65aaf0cecb860e43ae05d0</guid>
-      <pubDate>Thu, 10 Sep 2026 11:41:53 +0000</pubDate>
-    </item>
-    <item>
-      <title>Gigabud Creates Android Work Profiles to Hide From Banking App Malware Checks - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/gigabud-creates-android-work-profiles.html</link>
-      <description>The Gigabud banking trojan now installs a second Android app that creates a work profile on an infected phone and drops a tampered banking app inside it, security firm Group-IB said in a&amp;nbsp;report published on September 9.
-A work profile is a separate space that Android typically reserves for employer apps, and what's inside it is kept separate from everything in the personal space. That</description>
-      <guid isPermaLink="false">52cd2d14a57f5948080f852dfa1ad20f791f2f89057b70e8ef9292d6899c8b4d</guid>
-      <pubDate>Thu, 10 Sep 2026 11:33:43 +0000</pubDate>
     </item>
   </channel>
 </rss>
