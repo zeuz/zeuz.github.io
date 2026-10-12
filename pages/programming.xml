@@ -5,7 +5,16 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sun, 11 Oct 2026 14:00:42 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 Oct 2026 14:00:57 +0000</lastBuildDate>
+    <item>
+      <title>Mike C. Fletcher: PyOpenGL 4.0.0a7 -- Cleanup and Preparation - Planet Python</title>
+      <link>http://blog.vrplumber.com/b/2026/10/11/pyopengl-400a7-cleanup-and-preparation/</link>
+      <description>&lt;p&gt;4.0.0a7 is closing in on the final form for the 4.0.0 release. There's a raft of bug-fixes from testing and tickets, the Windows GLUT binaries are now a separate python package, documentation system updates, and OpenGL_accelerate now pins the OpenGL version exactly.&lt;/p&gt;
+&lt;p&gt;At this point it's likely worth testing your PyOpenGL codebases with the alpha to report any regressions. This is a major release with a raft of changes. It's also tested far more than any PyOpenGL release has ever been tested, so I'm relatively confident that it works in the sense of letting you write 3D rendering engines with modern features, but there are potentially going to be regressions, particularly if you have older code (the majority of testing is all on OpenGL 3.3+ contexts with legacy-free feature-sets), or Tk based apps (where there's a new widget implementation).&lt;/p&gt;
+&lt;p&gt;We're still missing some Mac work, porting the new Tk widget to use CGL. We've also not yet got confirmation that we've got real-world (as opposed to CI) operation all working on Macs.&lt;/p&gt;</description>
+      <guid isPermaLink="false">6cf7c149547a76a1e6a94618d2e67e3b35c12cca0131dd53d977839a01b3e83c</guid>
+      <pubDate>Mon, 12 Oct 2026 02:27:08 +0000</pubDate>
+    </item>
     <item>
       <title>Ned Batchelder: Making git hooks visible - Planet Python</title>
       <link>https://nedbatchelder.com/blog/202610/making_git_hooks_visible</link>
@@ -111,6 +120,129 @@ any attacks, but I found at least one of my projects where I forgot to install
 pre-commit.&lt;/p&gt;</description>
       <guid isPermaLink="false">cc42815c0151017e9fdf472d0ee1e3315f9bf7232e4740e5236a7049c819a2e7</guid>
       <pubDate>Sun, 11 Oct 2026 12:25:12 +0000</pubDate>
+    </item>
+    <item>
+      <title>Mahmoud Hashemi: CalVer 26.0: 10th Anniversary Edition - Planet Python</title>
+      <link>https://sedimental.org/calver_26.html</link>
+      <description>&lt;p&gt;&lt;img align="right" src="https://sedimental.org/uploads/illo/calver26_cal_stack_med.png" width="35%" /&gt;&lt;/p&gt;
+&lt;p&gt;A decade ago, a little bit of history was made. I didn't realize it, but a colleague made a great point, one of those real mind-changing points that seem too obvious to admit same-day. But, the next day, &lt;a href="https://calver.org"&gt;calver.org&lt;/a&gt; was born.&lt;/p&gt;
+&lt;p&gt;At the time my team maintained the Python infrastructure for eBay and PayPal, and we were stuck deciding whether we were really ready for a "major" 1.0 release. &lt;em&gt;&lt;a href="https://semver.org/"&gt;Semantic Versioning&lt;/a&gt;&lt;/em&gt; was the only game in town and "major" means "big", right?!&lt;/p&gt;
+&lt;p&gt;Thankfully, a wiser colleague mentioned: Ubuntu and Twisted don't struggle with version number debates. They slap a date on it and keep shipping. In fact, their date-based versions were even better because you always knew where it stood, in terms of updatedness &lt;em&gt;and&lt;/em&gt; support.&lt;/p&gt;
+&lt;p&gt;The only problem is that no one really knew about it. Somehow, this problem solving versioning alternative, arguably as old as history itself, had gone nameless for millenia, conspiring to make me feel foolish in an office meeting. Never again!&lt;/p&gt;
+&lt;h2 id="ten_years_of_adoption"&gt;&lt;a class="toclink" href="https://sedimental.org/tagged/python/atom.xml#ten_years_of_adoption"&gt;Ten years of adoption&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://calver.org/timeline.html"&gt;&lt;img align="right" alt="The CalVer timeline" src="https://sedimental.org/uploads/calver_timeline.png" width="35%" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Fast forward 10 years, we've seen CalVer adopted by Apple, Nvidia, JetBrains, and countless others. (We have a &lt;a href="https://calver.org/timeline.html"&gt;timeline&lt;/a&gt;!) The site may have more inbound links than any other project of mine. &lt;a href="https://calver.org/#apple"&gt;Apple&lt;/a&gt; made the biggest jump, at WWDC 2025: &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;iOS went from 18 to 26&lt;/li&gt;
+&lt;li&gt;macOS from 15 to 26&lt;/li&gt;
+&lt;li&gt;watchOS from 11 to 26&lt;/li&gt;
+&lt;li&gt;and visionOS from 2 to 26&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All landing on one, consistent number like a car's model year. I still remember the texts from the Venn diagram fanbase of my friends who love Apple and reasonable versioning. No such texts from when &lt;a href="https://calver.org/#nvidia"&gt;NVIDIA&lt;/a&gt; announced calendar versions across the GPU Operator, RAPIDS, and its monthly NGC containers, but still very cool.&lt;/p&gt;
+&lt;p&gt;Open source, too: Home Assistant, pip, CockroachDB, and yt-dlp all ship on dates, with plenty more on &lt;a href="https://calver.org/users.html"&gt;the users page&lt;/a&gt;. The conversation even reached the language core; &lt;a href="https://peps.python.org/pep-2026/"&gt;PEP 2026&lt;/a&gt; proposed versioning CPython as &lt;code&gt;3.YY&lt;/code&gt;, and it almost happened, too. And it's never too late, time marches on!&lt;/p&gt;
+&lt;h2 id="fixing_the_notation"&gt;&lt;a class="toclink" href="https://sedimental.org/tagged/python/atom.xml#fixing_the_notation"&gt;Fixing the notation&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;But I don't think I got every detail right from day 1. That's the main motivator for CalVer 26. It's high time to start righting a couple idiosyncratic token design choices, starting with some additions:&lt;/p&gt;
+&lt;p&gt;&lt;img align="right" src="https://sedimental.org/uploads/illo/caltree_med.png" width="30%" /&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Meaning&lt;/th&gt;
+&lt;th&gt;Before 26.0&lt;/th&gt;
+&lt;th&gt;26.0&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Full year&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;YYYY&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;YYYY&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Short year (6, 16)&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;YY&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;YY&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Zero-padded year (06, 16)&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0Y&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0Y&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Short month (1 ... 12)&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;&lt;code&gt;MM&lt;/code&gt;&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;&lt;code&gt;M&lt;/code&gt;&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Zero-padded month (01 ... 12)&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0M&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0M&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Short week (1 ... 52)&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;&lt;code&gt;WW&lt;/code&gt;&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;&lt;code&gt;W&lt;/code&gt;&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Zero-padded week (01 ... 52)&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0W&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0W&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Short day (1 ... 31)&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;&lt;code&gt;DD&lt;/code&gt;&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;&lt;code&gt;D&lt;/code&gt;&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Zero-padded day (01 ... 31)&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0D&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0D&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id="seeing_double"&gt;&lt;a class="toclink" href="https://sedimental.org/tagged/python/atom.xml#seeing_double"&gt;Seeing double&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;First, the doubled letters. From the first version (16.6), &lt;code&gt;MM&lt;/code&gt; and &lt;code&gt;DD&lt;/code&gt; meant the &lt;em&gt;unpadded&lt;/em&gt; month and day, which reads backwards to anyone who knows date formats (ISO 8601's &lt;code&gt;YYYY-MM-DD&lt;/code&gt;, Java, moment.js, day.js), as some community members &lt;a href="https://news.ycombinator.com/item?id=21967879"&gt;correctly pointed out&lt;/a&gt;. I was ready to flip them, until I checked what people actually use: most projects with a &lt;code&gt;YY.MM.MICRO&lt;/code&gt; badge (conda, Twisted, Ansible's tooling) don't pad, and more than a dozen other version management tools (like bumpver and bump-my-version) implement the old meaning.&lt;/p&gt;
+&lt;p&gt;So, it's too late to flip MM's meaning. Instead, 26.0 deprecates it and offers a more explicit and hopefully clearer option: &lt;code&gt;M&lt;/code&gt; is the short month, &lt;code&gt;0M&lt;/code&gt; the padded one, and &lt;code&gt;MM&lt;/code&gt; is a technically-retired synonym for &lt;code&gt;M&lt;/code&gt;. In case you're wondering, the explicit &lt;code&gt;0M&lt;/code&gt; was me being overinspired by Ubuntu's approach, perhaps: &lt;code&gt;6.06&lt;/code&gt; pads its month but not its year, and &lt;code&gt;YY.0M&lt;/code&gt; says exactly that. &lt;/p&gt;
+&lt;h4 id="to_pad_or_not_to_pad"&gt;&lt;a class="toclink" href="https://sedimental.org/tagged/python/atom.xml#to_pad_or_not_to_pad"&gt;To pad or not to pad&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;I think it's worth a detour into why padding is even a thing anyways.&lt;/p&gt;
+&lt;p&gt;It's become important now that new ecosystems have emerged that enforced SemVer formatting semantics, and I wanted clear guidance about on the spec site. &lt;a href="https://semver.org/"&gt;SemVer&lt;/a&gt; forbids leading zeros outright, so Cargo rejects &lt;code&gt;26.04.0&lt;/code&gt; and Go modules reject &lt;code&gt;v26.04.0&lt;/code&gt;. Even Python's packaging spec &lt;a href="https://packaging.python.org/en/latest/specifications/version-specifiers/#integer-normalization"&gt;normalizes leading zeros away&lt;/a&gt;, so you can tag &lt;code&gt;2026.08.19&lt;/code&gt; if you want, but PyPI will still show &lt;code&gt;2026.8.19&lt;/code&gt;. NVIDIA's GPU Operator docs &lt;a href="https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/life-cycle-policy.html"&gt;put it this way&lt;/a&gt;: "Zero padding is omitted for month to be still compatible with semantic versioning."&lt;/p&gt;
+&lt;p&gt;CalVer was always intended to drop in where SemVer was used. So 26.0 recommends unpadded (&lt;code&gt;YYYY.M.D&lt;/code&gt;) as a sane "pure" default for software libraries. But libraries are not the only objects of versioning schemes.&lt;/p&gt;
+&lt;p&gt;The exception is a version that becomes a filename, an image tag, or an object-store key that gets listed lexically. There, padding keeps &lt;code&gt;26.10&lt;/code&gt; sorted after &lt;code&gt;26.09&lt;/code&gt;, which is why Ubuntu, NixOS, and NVIDIA's own NGC containers pad. More evidence of teams &lt;a href="https://sedimental.org/designing_a_version.html"&gt;designing their versions&lt;/a&gt;. We love to see it. &lt;/p&gt;
+&lt;p&gt;Our &lt;a href="https://calver.org/#to-pad-or-not-to-pad"&gt;FAQ&lt;/a&gt; has a longer discussion of the padding issue, as well.&lt;/p&gt;
+&lt;h3 id="optional_segments"&gt;&lt;a class="toclink" href="https://sedimental.org/tagged/python/atom.xml#optional_segments"&gt;Optional segments&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;There was never any rule against them, but 26.0 makes optional trailing segments more explicit with square brackets. Now, yt-dlp's scheme can finally be written down: &lt;code&gt;YYYY.0M.0D[.MICRO]&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;For the CalVer badges I could find on GitHub, they all stay valid for now. I've got a &lt;a href="https://calver.org/#scheme"&gt;note on the deprecated spellings&lt;/a&gt; and a new copy-paste &lt;a href="https://calver.org/#badges"&gt;badge section&lt;/a&gt; for new ones.&lt;/p&gt;
+&lt;h2 id="what_else_is_new"&gt;&lt;a class="toclink" href="https://sedimental.org/tagged/python/atom.xml#what_else_is_new"&gt;What else is new?&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;It's always a great time to add more citations to the site.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A &lt;a href="https://calver.org/#spec-changelog"&gt;spec changelog&lt;/a&gt;; the spec now versions itself: 16.6, 19.7, 26.0.&lt;/li&gt;
+&lt;li&gt;A &lt;a href="https://calver.org/#frequently-asked-questions"&gt;FAQ&lt;/a&gt;: breaking changes, same-day releases, and padding.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://calver.org/users.html"&gt;The users page&lt;/a&gt;, rebuilt by category, with past users of note (schemes change; that's fine) and tooling.&lt;/li&gt;
+&lt;li&gt;Case studies: Apple and NVIDIA in, yt-dlp replacing youtube-dl.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Much of the thinking behind these changes happened in the &lt;a href="https://github.com/mahmoud/calver/issues"&gt;GitHub issue tracker&lt;/a&gt; over the years, and 19 or so issues close with this release. That's where ideas for CalVer should go, so by all means, open an issue, and we'll get it sorted! In due time, of course.&lt;/p&gt;
+&lt;p&gt;In closing, I can't believe I still love belaboring these numbers so much. Thanks to all (but especially Mark, Glyph, Hugo, issue reporters, translators, and maintainers) for the discussion, and ultimately making the most timely versioning system a timeless classic.&lt;/p&gt;
+&lt;h2 id="see_also"&gt;&lt;a class="toclink" href="https://sedimental.org/tagged/python/atom.xml#see_also"&gt;See also&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://sedimental.org/calver.html"&gt;2016 announcement&lt;/a&gt; &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://sedimental.org/designing_a_version.html"&gt;Designing a version&lt;/a&gt; &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://yap.so/p/2RMbM6RMBb4"&gt;My Yap on Why CalVer beats Semver&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;</description>
+      <guid isPermaLink="false">3625e46f848e430995bd7cbaca6cf54f440e6ca8faab8069e5cf506d805e3d63</guid>
+      <pubDate>Sun, 11 Oct 2026 07:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: Pandas groupby: Multiple columns and multiple aggregation methods - Planet Python</title>
+      <link>https://lernerpython.com/2026/10/11/pandas-groupby-multiple-columns-and-multiple-aggregation-methods/</link>
+      <description>&lt;img alt="Pandas groupby: Multiple columns and multiple aggregation methods" class="wp-image-18001" height="837" src="https://lernerpython.com/wp-content/uploads/2026/10/2026-10-11.png" width="1871" /&gt;
+&lt;p class="wp-block-paragraph"&gt;Does Python Pandas allow multiple categorical columns and multiple methods?&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Yes!&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;df.groupby(['passenger_count', 'VendorID'])['trip_distance'].agg(['mean', 'std'])&lt;/code&gt;&lt;/pre&gt;
+&lt;p class="wp-block-paragraph"&gt;The above returns:&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&amp;#8211; A 2-column data frame (mean + std)&lt;br /&gt;&amp;#8211; A 2-level index (passenger_count + VendorID)&lt;/p&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/10/11/pandas-groupby-multiple-columns-and-multiple-aggregation-methods/"&gt;Pandas groupby: Multiple columns and multiple aggregation methods&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">886ea62a94e0c04b9af33d45befb0a01c034a885ab0b4c61d3d2ca3596ecf881</guid>
+      <pubDate>Sun, 11 Oct 2026 06:00:00 +0000</pubDate>
     </item>
     <item>
       <title>The Python Coding Stack: 1. What makes an AI agent different from a chatbot? - Planet Python</title>
