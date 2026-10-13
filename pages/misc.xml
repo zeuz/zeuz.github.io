@@ -5,7 +5,160 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Misc category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sat, 10 Oct 2026 14:01:02 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 14:01:12 +0000</lastBuildDate>
+    <item>
+      <title>Randomizing array indices - And now it's all this</title>
+      <link>https://leancrew.com/all-this/2026/10/randomizing-array-indices/</link>
+      <description>&lt;p&gt;I mentioned in &lt;a href="https://leancrew.com/all-this/2026/10/mean-vs-mean/"&gt;my last post&lt;/a&gt; that I’m working my way through &lt;a href="https://learning-oreilly-com.ezproxy.naperville-lib.org/library/view/practical-deep-learning/9798341655119/"&gt;&lt;em&gt;Practical Deep Learning&lt;/em&gt;&lt;/a&gt; by Ronald Kneusel. The math so far has been straightforward, and the code is written in Python, which I find easy to follow.&lt;/p&gt;
+&lt;p&gt;“Easy to follow” does not mean “correct” or “to my liking.” Some of the code in the book simply doesn’t work, and I’ve had to make changes here and there to get it to run. It’s possible that some of the APIs the book relies on have changed their calling conventions, but I also found a pretty obvious off-by-one error. And I’m only three chapters in.&lt;/p&gt;
+&lt;p&gt;This post, though, is about the “not to my liking” aspect of the code. I feel a little uncomfortable doing this, but I’ve been reading and writing data analysis code in Python for 15–20 years, so I’m going to put my discomfort to the side.&lt;/p&gt;
+&lt;p&gt;One of the examples used in the book is the well-known &lt;a href="https://en.wikipedia.org/wiki/Iris_flower_data_set"&gt;iris measurement dataset&lt;/a&gt;. There are 150 records in the dataset; here are the first ten:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="center"&gt;Index&lt;/th&gt;
+&lt;th align="center"&gt;Sepal&lt;br /&gt;length&lt;/th&gt;
+&lt;th align="center"&gt;Sepal&lt;br /&gt;width&lt;/th&gt;
+&lt;th align="center"&gt;Petal&lt;br /&gt;length&lt;/th&gt;
+&lt;th align="center"&gt;Petal&lt;br /&gt;width&lt;/th&gt;
+&lt;th align="center"&gt;Class&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;0&lt;/td&gt;
+&lt;td align="center"&gt;5.1&lt;/td&gt;
+&lt;td align="center"&gt;3.5&lt;/td&gt;
+&lt;td align="center"&gt;1.4&lt;/td&gt;
+&lt;td align="center"&gt;0.2&lt;/td&gt;
+&lt;td align="center"&gt;Iris-setosa&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;1&lt;/td&gt;
+&lt;td align="center"&gt;4.9&lt;/td&gt;
+&lt;td align="center"&gt;3.0&lt;/td&gt;
+&lt;td align="center"&gt;1.4&lt;/td&gt;
+&lt;td align="center"&gt;0.2&lt;/td&gt;
+&lt;td align="center"&gt;Iris-setosa&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;2&lt;/td&gt;
+&lt;td align="center"&gt;4.7&lt;/td&gt;
+&lt;td align="center"&gt;3.2&lt;/td&gt;
+&lt;td align="center"&gt;1.3&lt;/td&gt;
+&lt;td align="center"&gt;0.2&lt;/td&gt;
+&lt;td align="center"&gt;Iris-setosa&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;3&lt;/td&gt;
+&lt;td align="center"&gt;4.6&lt;/td&gt;
+&lt;td align="center"&gt;3.1&lt;/td&gt;
+&lt;td align="center"&gt;1.5&lt;/td&gt;
+&lt;td align="center"&gt;0.2&lt;/td&gt;
+&lt;td align="center"&gt;Iris-setosa&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;4&lt;/td&gt;
+&lt;td align="center"&gt;5.0&lt;/td&gt;
+&lt;td align="center"&gt;3.6&lt;/td&gt;
+&lt;td align="center"&gt;1.4&lt;/td&gt;
+&lt;td align="center"&gt;0.2&lt;/td&gt;
+&lt;td align="center"&gt;Iris-setosa&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;5&lt;/td&gt;
+&lt;td align="center"&gt;5.4&lt;/td&gt;
+&lt;td align="center"&gt;3.9&lt;/td&gt;
+&lt;td align="center"&gt;1.7&lt;/td&gt;
+&lt;td align="center"&gt;0.4&lt;/td&gt;
+&lt;td align="center"&gt;Iris-setosa&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;6&lt;/td&gt;
+&lt;td align="center"&gt;4.6&lt;/td&gt;
+&lt;td align="center"&gt;3.4&lt;/td&gt;
+&lt;td align="center"&gt;1.4&lt;/td&gt;
+&lt;td align="center"&gt;0.3&lt;/td&gt;
+&lt;td align="center"&gt;Iris-setosa&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;7&lt;/td&gt;
+&lt;td align="center"&gt;5.0&lt;/td&gt;
+&lt;td align="center"&gt;3.4&lt;/td&gt;
+&lt;td align="center"&gt;1.5&lt;/td&gt;
+&lt;td align="center"&gt;0.2&lt;/td&gt;
+&lt;td align="center"&gt;Iris-setosa&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;8&lt;/td&gt;
+&lt;td align="center"&gt;4.4&lt;/td&gt;
+&lt;td align="center"&gt;2.9&lt;/td&gt;
+&lt;td align="center"&gt;1.4&lt;/td&gt;
+&lt;td align="center"&gt;0.2&lt;/td&gt;
+&lt;td align="center"&gt;Iris-setosa&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;9&lt;/td&gt;
+&lt;td align="center"&gt;4.9&lt;/td&gt;
+&lt;td align="center"&gt;3.1&lt;/td&gt;
+&lt;td align="center"&gt;1.5&lt;/td&gt;
+&lt;td align="center"&gt;0.1&lt;/td&gt;
+&lt;td align="center"&gt;Iris-setosa&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;There are three species of iris in the dataset: &lt;em&gt;setosa&lt;/em&gt;, &lt;em&gt;versicolor&lt;/em&gt;, and &lt;em&gt;virginica&lt;/em&gt;. The records, which are &lt;a href="https://archive.ics.uci.edu/dataset/53/iris"&gt;easy to find&lt;/a&gt;, are sorted according to class, and it’s necessary to randomize the records for certain operations.&lt;/p&gt;
+&lt;p&gt;Let’s say the measurements are in a 2D (150×4) NumPy array called &lt;code&gt;x&lt;/code&gt;, and the classes, which have been reduced to the integers 0, 1, and 2 for &lt;em&gt;setosa&lt;/em&gt;, &lt;em&gt;versicolor&lt;/em&gt;, and &lt;em&gt;virginica&lt;/em&gt;, respectively, are in a 1D NumPy array called &lt;code&gt;y&lt;/code&gt;. Here they are in an interactive Python session:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; x
+array([[5.1, 3.5, 1.4, 0.2],
+       [4.9, 3. , 1.4, 0.2],
+       [4.7, 3.2, 1.3, 0.2],
+       [4.6, 3.1, 1.5, 0.2],
+       [5. , 3.6, 1.4, 0.2],
+       [140 other rows],
+       [6.7, 3. , 5.2, 2.3],
+       [6.3, 2.5, 5. , 1.9],
+       [6.5, 3. , 5.2, 2. ],
+       [6.2, 3.4, 5.4, 2.3],
+       [5.9, 3. , 5.1, 1.8]])
+&amp;gt;&amp;gt;&amp;gt; y
+array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Kneusel uses NumPy’s &lt;a href="https://numpy.org/doc/stable/user/basics.indexing.html#integer-array-indexing"&gt;integer array indexing&lt;/a&gt; to randomize &lt;code&gt;y&lt;/code&gt; and the rows of &lt;code&gt;x&lt;/code&gt; using the same rearrangement in each. Here’s what he does:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; idx = np.argsort(np.random.random(x.shape[0]))
+&amp;gt;&amp;gt;&amp;gt; x = x[idx, :]
+&amp;gt;&amp;gt;&amp;gt; y = y[idx]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;What this does is generate an array of 150 (&lt;code&gt;x.shape[0]&lt;/code&gt; is 150) random numbers between 0 and 1. It then returns an array of the indices of the sorted version of that array. So &lt;code&gt;idx&lt;/code&gt; is an array of the integers from 0 through 149 in random order. The following two lines rearrange &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;y&lt;/code&gt; in that same random order.&lt;/p&gt;
+&lt;p&gt;I don’t know about you, but I see this as a weird way to go about randomization. I realize you can’t just shuffle &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;y&lt;/code&gt; individually, as that would break the connection between an iris’s measurements and its class. But why go through two steps when you can create the &lt;code&gt;idx&lt;/code&gt; array directly?&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; idx = np.random.permutation(x.shape[0])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Maybe Kneusel’s method is faster, even though it seems like it should be slower. This won’t matter for the small iris dataset, but he may be preparing his readers for huge datasets to come.&lt;/p&gt;
+&lt;p&gt;I tested the two methods using &lt;a href="https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit"&gt;IPython’s &lt;code&gt;%timeit&lt;/code&gt; magic command&lt;/a&gt;. Here’s what I found, with 1,000,000 indices instead of 150:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; %timeit np.argsort(np.random.random(1_000_000))
+63.8 ms ± 434 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+&amp;gt;&amp;gt;&amp;gt; %timeit np.random.permutation(1_000_000)
+5.98 ms ± 17.8 μs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So the simple code is both more direct &lt;em&gt;and&lt;/em&gt; about an order of magnitude faster. I’ll be looking at the code in the book with a more critical eye as I proceed—assuming I don’t bail out and look for another machine learning reference.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;You may have noticed that the code above uses NumPy’s older random number system. The current approach would be to create a &lt;a href="https://numpy.org/doc/stable/reference/random/generator.html#permutations"&gt;&lt;code&gt;Generator&lt;/code&gt;&lt;/a&gt; instance and use that as the basis for later function calls. Would this have any effect on the timing results? Let’s see.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; rng = np.random.default_rng()
+&amp;gt;&amp;gt;&amp;gt; %timeit np.argsort(rng.random(1_000_000))
+65 ms ± 188 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+&amp;gt;&amp;gt;&amp;gt; %timeit rng.permutation(1_000_000)
+4.91 ms ± 10.9 μs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;No, the runtimes are about the same.&lt;/p&gt;</description>
+      <guid isPermaLink="false">83d7295242c1877c528d52d8b2edf384467d4ba8b1f311bd2911b5376f6e7aef</guid>
+      <pubDate>Tue, 13 Oct 2026 02:15:04 +0000</pubDate>
+    </item>
     <item>
       <title>Mean vs mean - And now it's all this</title>
       <link>https://leancrew.com/all-this/2026/10/mean-vs-mean/</link>

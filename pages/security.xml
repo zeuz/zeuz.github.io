@@ -5,7 +5,78 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Mon, 12 Oct 2026 14:00:57 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 14:01:11 +0000</lastBuildDate>
+    <item>
+      <title>LG Smart TVs Vulnerable to Pre-Auth Root Takeover From Local Network - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/lg-smart-tvs-vulnerable-to-pre-auth.html</link>
+      <description>Three vulnerabilities in LG's webOS can be chained to give an attacker on the same local network root access to certain smart TVs without a PIN or any interaction from the owner.
+LG has issued a fix, according to&amp;nbsp;an advisory published by SSD Secure Disclosure&amp;nbsp;on October 12.
+The chain was tested on two TV models, the 32LQ636BPSA and the 27TQ600SW, running webOS 7.5.7-25 on firmware</description>
+      <guid isPermaLink="false">cbd49149f26bb55d520963c0f9ef8aa4d0020ea9d9805bebe5f4e11fadd3b0b2</guid>
+      <pubDate>Tue, 13 Oct 2026 11:09:10 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Heat French Supermarket Fridges Up to 50°C by Hijacking Danfoss Controllers - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/attackers-heat-french-supermarket.html</link>
+      <description>Attackers took remote control of fridges and freezers at hundreds of French supermarkets on the night of October 11 and warmed them, forcing stores to throw food away, several retail chains said.
+The attackers reached them through the controller that runs all of a store's fridges and freezers, a device made by Danish company Danfoss that maintenance firms can manage remotely. Les Mousquetaires</description>
+      <guid isPermaLink="false">8e92f5de45f6bbd9f9afaea2b1ea3231dfb05749d4bec24548ae7c3468a218af</guid>
+      <pubDate>Tue, 13 Oct 2026 08:48:41 +0000</pubDate>
+    </item>
+    <item>
+      <title>Two Critical MarkLogic Flaws Could Give Delegated Managers Persistent Admin Control - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/two-critical-marklogic-flaws-could-give.html</link>
+      <description>Two of 31 newly disclosed flaws in Progress Software's&amp;nbsp;MarkLogic Server&amp;nbsp;database could let an account given only some management privileges take administrator control of the server, the company says.
+Progress published all 31 on October 12 and scored five of them critical. Fixes have been available since September 10, in&amp;nbsp;MarkLogic 11.3.7&amp;nbsp;and&amp;nbsp;MarkLogic 12.1.0.
+Affected</description>
+      <guid isPermaLink="false">cb0b9a8bda71dd558d441e3fc7838bdffda5c608ebde14d46730c57d51664682</guid>
+      <pubDate>Tue, 13 Oct 2026 08:44:01 +0000</pubDate>
+    </item>
+    <item>
+      <title>GitLab Patches CVSS 10.0 Flaw That Could Let Unauthenticated Users Run Server Code - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/gitlab-patches-cvss-100-flaw-that-could.html</link>
+      <description>GitLab has released patches for a maximum-severity security flaw impacting its Community Edition (CE) and Enterprise Edition (EE) software that could result in arbitrary code execution.
+"GitLab has remediated an issue that, under certain conditions, could have allowed an unauthenticated user to execute arbitrary code on the GitLab server via a specially crafted regular expression in a CI/CD</description>
+      <guid isPermaLink="false">0089d6a78cc8d8a22d9aca0132651b1fde1af2db3411cde3c136df91e5b91ed3</guid>
+      <pubDate>Tue, 13 Oct 2026 08:43:37 +0000</pubDate>
+    </item>
+    <item>
+      <title>Full reverse engineering of the PartyBox TWS wireless link (200/300) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x4qtnb/full_reverse_engineering_of_the_partybox_tws/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/nicocoow"&gt; /u/nicocoow &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/Nicooow/jbl-partybox-tws-re"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x4qtnb/full_reverse_engineering_of_the_partybox_tws/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">91a9d9477ab6703fc98e883f46b284f15728a1018da037f35e56b87676e9b850</guid>
+      <pubDate>Tue, 13 Oct 2026 08:06:10 +0000</pubDate>
+    </item>
+    <item>
+      <title>I made a tiny and embeddable shared library injector for Android - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x4pct6/i_made_a_tiny_and_embeddable_shared_library/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Few-Refuse3402"&gt; /u/Few-Refuse3402 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/crydafan/AndroidLibraryInjector"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x4pct6/i_made_a_tiny_and_embeddable_shared_library/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">132fed7ad21bce9dfb74185f239d043e0dc30ba95ba3ce4eb6d8ff390290bdd9</guid>
+      <pubDate>Tue, 13 Oct 2026 06:30:38 +0000</pubDate>
+    </item>
+    <item>
+      <title>Low-Cost Android Phones Ship With Preinstalled Malware That Turns Them Into Residential Proxies - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/low-cost-android-phones-ship-with.html</link>
+      <description>Low-cost Android smartphones have been shipped with malicious software baked into the device firmware, allowing bad actors to covertly install apps, conduct ad fraud, and turn devices into residential proxies.
+The activity, which targets Android devices built on MediaTek platforms across several brands, is being tracked by Bitdefender under the moniker Midnight Mimosa.
+The preinstalled</description>
+      <guid isPermaLink="false">8a41580883306fd2a5b0e05fa495879235435e960ff2a1ea935a0322a66fd219</guid>
+      <pubDate>Tue, 13 Oct 2026 06:00:11 +0000</pubDate>
+    </item>
+    <item>
+      <title>Exoproc: Out-of-process Windows x64 instrumentation engine in pure TypeScript - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x4eczt/exoproc_outofprocess_windows_x64_instrumentation/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/woldann"&gt; /u/woldann &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/woldann/exoproc"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x4eczt/exoproc_outofprocess_windows_x64_instrumentation/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">e8695144bb55ad5ac718a6835e9cd8235c6efc65f4803ae152430b3380ec7fa0</guid>
+      <pubDate>Mon, 12 Oct 2026 21:21:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>How I Found a $90,000 Remote Code Execution Vulnerability in Google - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x45vr2/how_i_found_a_90000_remote_code_execution/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/tnavda"&gt; /u/tnavda &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://simonkoeck.com/writeups/google-devsite-flask-session-pickle-rce"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x45vr2/how_i_found_a_90000_remote_code_execution/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">beffac4cb3a2913cc9c7bb18ddbd7e85aa35f3315a2759ae8a3292166bfe758d</guid>
+      <pubDate>Mon, 12 Oct 2026 16:05:42 +0000</pubDate>
+    </item>
     <item>
       <title>Ledger Finds Unauthorized Hardware Implant in CryptoBilis-Sold Wallet Amid Fund Theft Reports - The Hacker News</title>
       <link>https://thehackernews.com/2026/10/ledger-finds-unauthorized-hardware.html</link>
@@ -1462,70 +1533,6 @@ The extension, named "Twitch Enhanced Viewer | JeetBot," lists HISHIMIRO/jeetbot
       <description/>
       <guid isPermaLink="false">621710b777ddb282e9cf7635826fa0b9aa773626dbb3d3c5e3eb3cf5618bc4fb</guid>
       <pubDate>Mon, 14 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Super Trouper: A new MCP server in Golang to give coding agents a Frida interface - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wf8wpo/super_trouper_a_new_mcp_server_in_golang_to_give/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/neathack"&gt; /u/neathack &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/crissyfield/super-trouper"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wf8wpo/super_trouper_a_new_mcp_server_in_golang_to_give/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">ca7c3f3bd18e696ae426c02e9789fd0473d13733837979b5629903e0192ab7d0</guid>
-      <pubDate>Sun, 13 Sep 2026 14:17:58 +0000</pubDate>
-    </item>
-    <item>
-      <title>Burnout Revenge turns 21 this year. Still my favorite game ever. So i've did working recompilation - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wf3xma/burnout_revenge_turns_21_this_year_still_my/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/BasketAnxious45"&gt; /u/BasketAnxious45 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/shipa-2/Xerenge"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wf3xma/burnout_revenge_turns_21_this_year_still_my/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">ffb8ec65219b0682ac883ea3bae06b77ce785b4a0ea85e1a4352e26ba774fe06</guid>
-      <pubDate>Sun, 13 Sep 2026 10:20:59 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Use Passkey Phishing to Hijack Microsoft Cloud Accounts and Exfiltrate Data - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/attackers-use-passkey-phishing-to.html</link>
-      <description>Microsoft has disclosed details of two campaigns in which threat actors are abusing third-party email delivery infrastructure to blast financial fraud scam messages and using passkey-themed social engineering to breach cloud environments.
-The first campaign, per the tech giant, involved sending over a million scam emails between August 3 and 5, 2026, by masquerading as chief executive officers</description>
-      <guid isPermaLink="false">dfa28e1d6151eff0fde8d3fedb993313b7e216197a7293c7d7898830f9b07da6</guid>
-      <pubDate>Sun, 13 Sep 2026 10:11:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>GitHub - grm2ngo/turnstile: Cloudflare Turnstile — measured research notes: the 2-POST chain, the per-fetch build pool, the capture protocol, and the FO1 bag-binding mechanism (per-draw execution/nonce binding) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wf0ddl/github_grm2ngoturnstile_cloudflare_turnstile/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Independent_Fan_232"&gt; /u/Independent_Fan_232 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/grm2ngo/turnstile"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wf0ddl/github_grm2ngoturnstile_cloudflare_turnstile/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">d13ffb785301739d51c70ebac22326611d0e8f6bd2d1a0694c62474a768480ff</guid>
-      <pubDate>Sun, 13 Sep 2026 06:51:46 +0000</pubDate>
-    </item>
-    <item>
-      <title>Locating Flutter's TLS certificate verifier in a stripped libflutter.so, tested across 13 apps and 9 engine versions - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wexq29/locating_flutters_tls_certificate_verifier_in_a/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/magixer"&gt; /u/magixer &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://crossfyre.io/publications/blog/finding-flutters-certificate-verifier"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wexq29/locating_flutters_tls_certificate_verifier_in_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">59aa72e2afb1f257985a7669fc1ae1c53630375170d41de7a460a9192a343cc1</guid>
-      <pubDate>Sun, 13 Sep 2026 04:25:44 +0000</pubDate>
-    </item>
-    <item>
-      <title>Gitlab -- vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/7fd351d1-af26-11f1-a883-2cf05da270f3.html</link>
-      <description/>
-      <guid isPermaLink="false">54b6835de8257cd9b0aa8220ea1c9e8d4c77e31a5a42a36c52492cb3759a783b</guid>
-      <pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>znc -- multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/b7ae786a-af80-11f1-9800-641c67a117d8.html</link>
-      <description/>
-      <guid isPermaLink="false">7c5d5adb005ee9091aa072745ff82c33d7e5a6603dbcdd8635432dbef0a919a7</guid>
-      <pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Gitea -- multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/fac18f5f-afc2-11f1-8266-3c7c3fba4204.html</link>
-      <description/>
-      <guid isPermaLink="false">57b70018d2470d0ad1954efcdafa3608ba8d6e2ffae5e0c35b8ee533231a9744</guid>
-      <pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>GitHub - mein-0/LolModapi: MSI Dragon Center 2.0.155.0 LPE - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wekt7q/github_mein0lolmodapi_msi_dragon_center_201550_lpe/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/nanaynunay"&gt; /u/nanaynunay &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/mein-0/LolModapi"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wekt7q/github_mein0lolmodapi_msi_dragon_center_201550_lpe/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">1dc20213c66d73eb8b0bcb1125f7a32add2b459785daeb87fd54e5ead1957050</guid>
-      <pubDate>Sat, 12 Sep 2026 18:52:02 +0000</pubDate>
     </item>
   </channel>
 </rss>
