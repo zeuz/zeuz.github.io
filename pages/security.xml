@@ -5,7 +5,168 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 13 Oct 2026 14:01:11 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 14:01:37 +0000</lastBuildDate>
+    <item>
+      <title>CISA Urges Immediate Ivanti Connect Secure Updates as Honeypots Log 105 Exploit Attempts - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/cisa-urges-immediate-ivanti-connect.html</link>
+      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Tuesday urged organizations to take steps to immediately update their Ivanti Connect Secure (ICS) appliances and deployments to the latest version following the disclosure of an actively exploited vulnerability.
+The security flaw, tracked as CVE-2026-104935 (CVSS score: 8.6), is a case of authentication bypass impacting ICS</description>
+      <guid isPermaLink="false">9fc283aea588604b23621f0ea874245d9fc15ff1fb2a1a8fe8e8fce106897fc5</guid>
+      <pubDate>Wed, 14 Oct 2026 12:30:42 +0000</pubDate>
+    </item>
+    <item>
+      <title>curl Patches HTTP/2 Upload Flaw After PoC Demonstrates Client-Side Code Execution - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/curl-patches-http2-upload-flaw-after.html</link>
+      <description>A flaw in how curl handles HTTP/2 uploads lets a malicious server receiving an upload corrupt the client's memory, and the researcher who reported it turned that into code execution on the uploading machine.
+The curl project fixed it on October 14 in&amp;nbsp;curl 8.23.0. Taking over a client needs exact knowledge of its build and memory layout, and curl expects a real attack to end in a crash</description>
+      <guid isPermaLink="false">c9b99d09a2c81bb1b8a5c43ee3fda3d06ae22ff70e72a8fd34ead6cc4124a10c</guid>
+      <pubDate>Wed, 14 Oct 2026 12:13:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>Researchers Used a Public OpenAI Model to Build a $250,000 Chrome Full-Chain Exploit in Six Days - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/researchers-used-public-openai-model-to.html</link>
+      <description>A team at security firm XBOW chained three then-unknown Google Chrome bugs into a single attack that runs code on a Windows computer when the user only loads a web page, the company said.
+Its researchers built the attack in six days by directing AI agents running OpenAI's publicly available GPT-5.6 Sol model. Google has since confirmed all three bugs,&amp;nbsp;fixed them, and paid XBOW its top $</description>
+      <guid isPermaLink="false">2af203de9e11cf0c7338375ae7953948cf94f96a3ab4e3a9c704adb83ded4eb7</guid>
+      <pubDate>Wed, 14 Oct 2026 11:19:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hirudo Android Trojan Uses Patched Banking Apps to Bypass Their Built-In Security Checks - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/hirudo-android-trojan-uses-patched.html</link>
+      <description>Cybersecurity researchers have disclosed details of a new Android banking trojan called Hirudo that works by replacing legitimate banking apps with purpose-built patched versions designed to bypass security checks from inside the app itself, marking a new escalation in financial fraud.&amp;nbsp;
+Dutch mobile security company ThreatFabric said it identified replacements for eight Indonesian banking</description>
+      <guid isPermaLink="false">dccd1f26bda931cdafff0ce1c0469ec2f0f33718f0dedcd41e0ec7b2615cdd04</guid>
+      <pubDate>Wed, 14 Oct 2026 11:08:22 +0000</pubDate>
+    </item>
+    <item>
+      <title>Recovering missing GTA 2 data tables while porting CriminalRETeam's gta2_re to WebAssembly - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x5o9s2/recovering_missing_gta_2_data_tables_while/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Thisiaphr0"&gt; /u/Thisiaphr0 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/M1sterMo/gta2-browser/blob/main/docs/benchmark-report.md"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x5o9s2/recovering_missing_gta_2_data_tables_while/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">02771809eb745e3e61ea2a3473fcca97bce29332543061f81f04525f4c52d097</guid>
+      <pubDate>Wed, 14 Oct 2026 11:02:34 +0000</pubDate>
+    </item>
+    <item>
+      <title>Black-box Modbus RE of a 5-in-1 water-quality controller: AI-assisted reset discovery and a 401 ms reply trap - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x5lkwz/blackbox_modbus_re_of_a_5in1_waterquality/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/JaredReabow"&gt; /u/JaredReabow &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/JaredReabow/hsy-250617-ph-ec-rs485-modbus/blob/main/docs/reverse-engineering.md"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x5lkwz/blackbox_modbus_re_of_a_5in1_waterquality/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">0dbc515c6d227512db22f75e83e7e9978617b177309ff0788e20b444dfcf867d</guid>
+      <pubDate>Wed, 14 Oct 2026 08:12:14 +0000</pubDate>
+    </item>
+    <item>
+      <title>AI-Found Linux Kernel Flaw Gives Local Users Root, and Can Break a Guest Out to the Host - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/ai-found-linux-kernel-flaw-gives-local.html</link>
+      <description>A flaw in Linux's vhost subsystem lets a local user read and write kernel memory at will and become root across nearly a decade of kernel versions. In one virtualization setup, it lets an untrusted virtual machine write to the host's memory and hijack the program that runs the virtual machine.
+The bug is tracked as&amp;nbsp;CVE-2026-74580&amp;nbsp;and named Vghost. Tencent Zhuque Lab, which found the</description>
+      <guid isPermaLink="false">0a0d9c885ae082a92ba5160d82dafa19334de5281cdccda6d95b2b6d534429d5</guid>
+      <pubDate>Wed, 14 Oct 2026 07:46:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>hexvero: execution-free first look at ELF/PE/Mach-O/APK/.NET/Wasm/Electron with evidence per finding. Zero-dep parsers in Node, optional r2/rizin/Ghidra. - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x5k66d/hexvero_executionfree_first_look_at/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/ImaginationVarious30"&gt; /u/ImaginationVarious30 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/maximilianfeix/hexvero"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x5k66d/hexvero_executionfree_first_look_at/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">db8dacf8697c6dc9c2f78c954539ec43f75a6243e7e6f0d26aed55efd1d8f6ae</guid>
+      <pubDate>Wed, 14 Oct 2026 06:40:16 +0000</pubDate>
+    </item>
+    <item>
+      <title>Four-Byte Write and Timing Bug Let Researchers Run Code in Windows SmartScreen Enclave - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/four-byte-write-and-timing-bug-let.html</link>
+      <description>Security researchers ran their own code inside a protected part of Windows that is meant to stay sealed off even when the rest of the computer is taken over.
+The protected area is a VBS enclave, an isolated slice of memory the operating system uses to guard secrets, and the one they broke into handles passwords for a Windows anti-phishing feature.
+The work was done in a lab as a proof of</description>
+      <guid isPermaLink="false">96d5fd1b302e50593de573e6d0730ef86b01c8c89f2ac13da609f45e88537069</guid>
+      <pubDate>Wed, 14 Oct 2026 05:52:28 +0000</pubDate>
+    </item>
+    <item>
+      <title>Microsoft Patches Record 1,413 Flaws, Including Exploited Windows Shell Bug - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/microsoft-patches-record-1413-flaws.html</link>
+      <description>Microsoft on Tuesday shattered its own Patch Tuesday record by shipping patches for a whopping 1,413 vulnerabilities, including one that it said has come under active exploitation.
+These include 1,102 flaws in Windows, 134 in Office, 61 in Developer Tools, 36 in SharePoint Server, and 22 in SQL Server. Of these, more than 670 relate to privilege escalation, followed by over 300 remote code</description>
+      <guid isPermaLink="false">83051c51b01b4693240cb5f029a8ed320489714c3450747a7739dd9f9e9bce52</guid>
+      <pubDate>Wed, 14 Oct 2026 04:34:43 +0000</pubDate>
+    </item>
+    <item>
+      <title>OpenAI Employee Arrested for Allegedly Planting Hidden Recorder in Executive Conference Room - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/openai-employee-arrested-for-allegedly.html</link>
+      <description>A Saudi national and employee of OpenAI has been arrested for allegedly planting a hidden recording device in an executive conference room at the company's San Francisco offices to covertly record sensitive conversations.
+Abdulrahman Alfozan, 35, has been charged with using or endeavoring to use an electronic, mechanical, or other device to intercept oral communications. He was arrested by</description>
+      <guid isPermaLink="false">4f90b563e20c30608e67e4c984e999ce75a645fd2915fb585f218e597bb871e2</guid>
+      <pubDate>Wed, 14 Oct 2026 01:59:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>Linux configurator for the 8BitDo Ultimate 2, reverse-engineered from the Windows app - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x5dx6e/linux_configurator_for_the_8bitdo_ultimate_2/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Gloomy-Exercise-9121"&gt; /u/Gloomy-Exercise-9121 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/MiguelSanzBr/8bitdo-ultimate2-linux"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x5dx6e/linux_configurator_for_the_8bitdo_ultimate_2/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">bc2f9d5d82da4b9b93578c7ed3da012516e11373ea39a30bf029bdfdc7a437a2</guid>
+      <pubDate>Wed, 14 Oct 2026 00:57:10 +0000</pubDate>
+    </item>
+    <item>
+      <title>Curl -- Multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/14dab969-c797-11f1-a6ea-8447094a420f.html</link>
+      <description/>
+      <guid isPermaLink="false">d9885f8a69602ef12237b0d5f2b51e8b304e1a8bde8102aead1542b11e27d22e</guid>
+      <pubDate>Wed, 14 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>I reverse-engineered how Ray-Ban Meta glasses talk to their phone and wrote an open-source Android app that replaces Meta AI. "Hey Meta" goes to Claude or your own model. - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x56cps/i_reverseengineered_how_rayban_meta_glasses_talk/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Macedonga"&gt; /u/Macedonga &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/macedonga/visor"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x56cps/i_reverseengineered_how_rayban_meta_glasses_talk/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">7d390763c924adb78f58d40761a8ecb074f75a4ebbf510a4d4bd097ddc4f0681</guid>
+      <pubDate>Tue, 13 Oct 2026 19:32:51 +0000</pubDate>
+    </item>
+    <item>
+      <title>Anthropic Warns Small AI Models Could Soon Form Self-Propagating IoT Botnets - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/anthropic-warns-small-ai-models-could.html</link>
+      <description>Small artificial intelligence (AI) models may be months away from developing capabilities to self-replicate on IoT devices like smart ovens and off-brand Android TV boxes, according to a warning from Anthropic.
+The frontier AI lab said small AI models could form autonomous, self-propagating worm botnets that are "challenging to shut down," since "there's no centralized point to shut off."</description>
+      <guid isPermaLink="false">271ba22ca430418c38a2a4c866c72d9f6f092ddbaf5e10650b566dc427564685</guid>
+      <pubDate>Tue, 13 Oct 2026 18:20:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>Docker Fixes Critical Two-Year-Old Hub Flaw That Let One User Push Images as Another - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/docker-fixes-critical-two-year-old-hub.html</link>
+      <description>A flaw in Docker Hub, the registry where container images are published and downloaded, let one user push, pull, or delete images as another user. Docker fixed the flaw on September 30 and says it found no evidence that anyone exploited it.
+The flaw was in the feature that&amp;nbsp;converts a personal account&amp;nbsp;into an organization, Docker said in a&amp;nbsp;security advisory&amp;nbsp;on October 12.</description>
+      <guid isPermaLink="false">61bf34d99b8aa7311ac84c4404f758aed4a21e648b1799dfc1852624990db2e5</guid>
+      <pubDate>Tue, 13 Oct 2026 18:03:18 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attacker Chains Three Ivanti Connect Secure Zero-Days for Root Access, Only Two Patched So Far - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/attacker-chains-three-ivanti-connect.html</link>
+      <description>An attacker chained three zero-day flaws in Ivanti Connect Secure, a VPN appliance, to run commands as root without logging in, security firm&amp;nbsp;Volexity said&amp;nbsp;on October 13. Ivanti has released fixes for two of the flaws and told customers on affected versions to "act immediately." A fix for the third is still pending, according to Volexity.
+Volexity, which reported the flaws to Ivanti,</description>
+      <guid isPermaLink="false">185c930454fa5431e6a7d13cfa04997ebea0667caa44855c966974a749c0be35</guid>
+      <pubDate>Tue, 13 Oct 2026 17:33:11 +0000</pubDate>
+    </item>
+    <item>
+      <title>SAP Discloses Critical CVSS 10 Flaw in Cloud SDK for Python Allowing OAuth2 Credential Theft - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/sap-discloses-critical-cvss-10-flaw-in.html</link>
+      <description>A flaw in SAP's&amp;nbsp;Cloud SDK for Python&amp;nbsp;can send an application's OAuth2 client credentials to a server an attacker controls, SAP said in a&amp;nbsp;security advisory&amp;nbsp;on October 13. The flaw affects multi-tenant applications on SAP Business Technology Platform (BTP) that use the SDK, SAP's official Python client for BTP services. An attacker must be able to control the tenant subdomain,</description>
+      <guid isPermaLink="false">10bbbc2fb301842369d86cf5e872dfb13cd7ee3a82893592fad2bc1d174ec6f4</guid>
+      <pubDate>Tue, 13 Oct 2026 17:28:50 +0000</pubDate>
+    </item>
+    <item>
+      <title>GitHub Tightens npm Publishing After Flaw Left 1,500+ Packages Vulnerable to Hijacking - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/github-tightens-npm-publishing-after.html</link>
+      <description>GitHub has taken the step of expiring unvalidated npm trusted publishing configurations 48 hours after creation after researchers found that it was possible for an attacker to push new versions of a different user's package without having to steal their credentials.
+"Your configuration becomes validated and exempt from expiry after its first successful publish," the Microsoft-owned subsidiary</description>
+      <guid isPermaLink="false">db60504ad38e3cb2d973d685c43c04cbe23a7aaa22ebbe3bdc0f3949450a762f</guid>
+      <pubDate>Tue, 13 Oct 2026 16:18:18 +0000</pubDate>
+    </item>
+    <item>
+      <title>Decoding the MIB of a Samsung Shannon baseband in Ghidra (Part 2) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x4yq32/decoding_the_mib_of_a_samsung_shannon_baseband_in/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Electronic_You_1199"&gt; /u/Electronic_You_1199 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://medium.com/@0x08102000/decoding-the-mib-of-a-samsung-shannon-baseband-in-ghidra-part-2-b7b570d60452"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x4yq32/decoding_the_mib_of_a_samsung_shannon_baseband_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">ae7d764caedd01f4beb605bc2dede32a426060cddede5855fe2475f4be402aa7</guid>
+      <pubDate>Tue, 13 Oct 2026 14:51:01 +0000</pubDate>
+    </item>
+    <item>
+      <title>Xandr Fined a Record €8.6 Million for Relaying Grindr Data Revealing Sexual Orientation - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/xandr-fined-record-86-million-for.html</link>
+      <description>The Norwegian Data Protection Authority (DPA) has fined Xandr, an advertising unit owned by Microsoft, €8.6 million ($9.62 million) for illegally relaying ​Grindr users' sensitive data to advertisers.
+The administrative penalty is the largest issued by the data protection watchdog, arguing the case merited a high fine because of the "very serious" nature of the breach. The infringements</description>
+      <guid isPermaLink="false">23eb86466b854814f55370e9788f3f57aba30a062f14cd4eb41b158d6c1906be</guid>
+      <pubDate>Tue, 13 Oct 2026 13:12:32 +0000</pubDate>
+    </item>
     <item>
       <title>LG Smart TVs Vulnerable to Pre-Auth Root Takeover From Local Network - The Hacker News</title>
       <link>https://thehackernews.com/2026/10/lg-smart-tvs-vulnerable-to-pre-auth.html</link>
@@ -152,6 +313,13 @@ The activity, which brings together commodity offensive tools like Cobalt Strike
       <pubDate>Mon, 12 Oct 2026 00:15:02 +0000</pubDate>
     </item>
     <item>
+      <title>Timing leaks of the nonce in ECDSA, EdDSA and DSA signatures - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/07e99f22-c176-4c8f-9678-a57ba8114959.html</link>
+      <description/>
+      <guid isPermaLink="false">5124d9faea2aeb0048612b006a47cb1ca1c9bf3ce2a7da6200b3b37ddde1fd25</guid>
+      <pubDate>Mon, 12 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
       <title>ceasta: open-source disassembler, decompiler and debugger in one program. with a built-in MCP server for driving it from an AI (mac, windows, linux) - Reverse Engineering</title>
       <link>https://www.reddit.com/r/ReverseEngineering/comments/1x3jhwy/ceasta_opensource_disassembler_decompiler_and/</link>
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Original-Delivery289"&gt; /u/Original-Delivery289 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/ngwg/ceasta"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x3jhwy/ceasta_opensource_disassembler_decompiler_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
@@ -240,6 +408,13 @@ The activity, which brings together commodity offensive tools like Cobalt Strike
       <link>http://www.vuxml.org/freebsd/0f5aaca7-c4d5-11f1-96b4-74563cf85f9d.html</link>
       <description/>
       <guid isPermaLink="false">8feeaefde8690b239fd02662d24dde3acc0713d88639bf0f88b6cc3e76b31401</guid>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>libwasmtime -- Multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/371fc9b2-c543-11f1-b115-74563cf85f9d.html</link>
+      <description/>
+      <guid isPermaLink="false">d21f776d0e6cf687b227f5da07c08fd7c0db9a6de1c34e4a132150605489bdad</guid>
       <pubDate>Sun, 11 Oct 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
@@ -1355,184 +1530,6 @@ The emerging malware family, codenamed BambooToken, is assessed to be active sin
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/natcoba"&gt; /u/natcoba &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://accomplish.ai/blog/escaping-the-openai-codex-sandbox-twice/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wh0ukg/escaping_the_openai_codex_sandbox_twice/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">3e51a4ac437576f9a1792d200a9233d219ebd0671b2764acc971a758687e8287</guid>
       <pubDate>Tue, 15 Sep 2026 13:45:35 +0000</pubDate>
-    </item>
-    <item>
-      <title>Human Attacker Exploits Marimo RCE, Reaches SSH Bastion in Eight Seconds - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/human-attacker-exploits-marimo-rce.html</link>
-      <description>With artificial intelligence (AI) shrinking the window between vulnerability discovery and exploitation and lowering the barrier to entry for bad actors, new findings from Sysdig show that skilled human operators can move just as swiftly after gaining initial access.
-In one instance highlighted by the cloud security company, the threat actor pivoted from a vulnerable Marimo notebook to an SSH</description>
-      <guid isPermaLink="false">8055e406fb5ba5fa5d33aa5ef26149398348afbcbc9dcbbf41080019b3530518</guid>
-      <pubDate>Tue, 15 Sep 2026 11:52:28 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attack Chains, Not Just Attack Surfaces: Why Testing Individual Techniques Misses the Point - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/attack-chains-not-just-attack-surfaces.html</link>
-      <description>Introduction
-Security teams have gotten pretty good at testing against what can hurt them. Can this EDR agent catch this payload? Will my organization fail the phishing simulation? Does this SIEM rule fire on this particular technique? And, in more mature organizations, this testing happens continuously rather than as a one-off exercise.
-But no matter how much you validate against these</description>
-      <guid isPermaLink="false">2509643d4ddd25476ccb928cf5f13bb1fddb6c599db50597d0db87ecaf4c8286</guid>
-      <pubDate>Tue, 15 Sep 2026 11:26:36 +0000</pubDate>
-    </item>
-    <item>
-      <title>Mass-Scanning Campaign Exploits Vite Flaw to Extract Cloud Credentials From Exposed Dev Servers - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/mass-scanning-campaign-exploits-vite.html</link>
-      <description>Cybersecurity researchers have disclosed details of a mass-scanning campaign that has targeted Vite deployments siphon sensitive data.
-The first is an automated effort aimed at internet-exposed Vite development servers that's designed to steal cloud credentials, configurations from Amazon Web Services (AWS) and Microsoft Azure instances, and infrastructure state files, per F5 Labs.
-The</description>
-      <guid isPermaLink="false">ecdb07a3591be531ff094f693cd1df4f85874319e9183722a5ce4523bee0bea4</guid>
-      <pubDate>Tue, 15 Sep 2026 11:12:32 +0000</pubDate>
-    </item>
-    <item>
-      <title>ALPC-Enumerator: digging out Windows ALPC ports that normal handle-based enumeration misses - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wgwx1c/alpcenumerator_digging_out_windows_alpc_ports/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/SPHlNX_321"&gt; /u/SPHlNX_321 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/talha-nazeef-ahmed/ALPC-Enumerator"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wgwx1c/alpcenumerator_digging_out_windows_alpc_ports/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">d77cd17d639bb7fb449621334db98d923d17b3efaa5e03f48bd5faa3cbd645f8</guid>
-      <pubDate>Tue, 15 Sep 2026 10:47:47 +0000</pubDate>
-    </item>
-    <item>
-      <title>LiteSpeed Enterprise Flaw Could Let One Hosting Account Gain Root Access on a Shared Server - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/litespeed-enterprise-flaw-could-let-one.html</link>
-      <description>A critical vulnerability in LiteSpeed Web Server Enterprise could let a low-privilege website user gain root access on a shared-hosting server, cPanel warned in an&amp;nbsp;advisory published on September 14.
-On such servers, many customers' sites run on a single machine, and an attacker with one of those hosting accounts could exploit the flaw to access or alter other sites and the server itself,</description>
-      <guid isPermaLink="false">12720c33ad7a1e803f04ec68bd66c6b310d8274f926f2d6f0788c70ef5053613</guid>
-      <pubDate>Tue, 15 Sep 2026 06:52:16 +0000</pubDate>
-    </item>
-    <item>
-      <title>Cisco Secure Email Gateway Flaw Exploited in the Wild, Enables Root Command Execution - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/cisco-secure-email-gateway-flaw.html</link>
-      <description>Cisco has warned that a new critical vulnerability impacting AsyncOS Software for Cisco Secure Email Gateway has come under active exploitation in the wild.
-The vulnerability, tracked as CVE-2026-76461, carries a CVSS score of 9.8 out of a maximum of 10.0. It has been described as a case of insufficient validation in the email parsing logic that could allow an unauthenticated, remote attacker</description>
-      <guid isPermaLink="false">6e31caa4edbe3a13ae960a224b0039719cbcb976f1e3609055363e42405554ed</guid>
-      <pubDate>Tue, 15 Sep 2026 06:11:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>China-Linked Hackers Exploit Chrome-Windows Zero-Day Chain to Deploy GRIMWEDGE - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/china-linked-hackers-exploit-chrome.html</link>
-      <description>A Chinese threat actor has been attributed to a spear-phishing campaign that exploits recently patched security flaws in Google Chrome and Microsoft Windows to deliver a malicious JavaScript backdoor called GRIMWEDGE.
-Volexity, which is tracking the threat cluster under the moniker UTA0560, said the activity targeted multiple non-governmental organizations (NGOs) on September 1, 2026.
-"The</description>
-      <guid isPermaLink="false">e222557c0b41387720e17363ec2abf05eb49b1d7cc06f17b615f256a0394ec23</guid>
-      <pubDate>Tue, 15 Sep 2026 05:31:05 +0000</pubDate>
-    </item>
-    <item>
-      <title>Reverse Engineering Halo: Infinite Theater Films - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wgp7s3/reverse_engineering_halo_infinite_theater_films/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/simbleau"&gt; /u/simbleau &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://spencer.imbleau.com/blog/ai/rust/2026/09/14/halo-infinite-theater-format-astra.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wgp7s3/reverse_engineering_halo_infinite_theater_films/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">c4ecedce12ca3c5d69cbc510c05eeec305d237349df16a831efcfde6a2385a11</guid>
-      <pubDate>Tue, 15 Sep 2026 03:42:39 +0000</pubDate>
-    </item>
-    <item>
-      <title>CoD:MW2 (2009) runtime reimplemented in Rust is open source - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wghurx/codmw2_2009_runtime_reimplemented_in_rust_is_open/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/77daa"&gt; /u/77daa &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/vladtrc/iw4L"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wghurx/codmw2_2009_runtime_reimplemented_in_rust_is_open/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">5b0ff3090339d8681c311256f33f2946c4165531661e88bffafce45849a54fb7</guid>
-      <pubDate>Mon, 14 Sep 2026 22:12:30 +0000</pubDate>
-    </item>
-    <item>
-      <title>whitelist-bypass – WebRTC Tunnels Through Video-Calling Platforms - Darknet - The Darkside</title>
-      <link>https://www.darknet.org.uk/2026/09/whitelist-bypass-webrtc-tunnels-through-video-calling-platforms/</link>
-      <description>whitelist-bypass tunnels traffic through commercial video calls, for networks that allow only approved domains. How its two tunnels work, and the claim to verify.</description>
-      <guid isPermaLink="false">ea67236973f1e6485d3cfc3d363189be3d3edd24a1ab91cd1305cc33b1d3a4f3</guid>
-      <pubDate>Mon, 14 Sep 2026 19:53:26 +0000</pubDate>
-    </item>
-    <item>
-      <title>New DDRop Attack Breaks Intel TDX and AMD SEV-SNP Confidential Computing - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/new-ddrop-attack-breaks-intel-tdx-and.html</link>
-      <description>Researchers have disclosed a new hardware attack, called DDRop, that breaks the memory protection in Intel and AMD confidential computing by silently dropping writes to a server's memory, so the processor keeps reading old encrypted data as if it were current.
-The attack requires an attacker who already controls the server's software and can briefly access the machine to insert a small circuit</description>
-      <guid isPermaLink="false">6e02955cd305ddaa7265ab169f20a7c9a99f7eb82cada6b9fbea0cfa9050aa1d</guid>
-      <pubDate>Mon, 14 Sep 2026 18:02:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>3BB Attacker Used MeshCentral Backdoor for Root Access, Targeted Subscriber Credentials - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/3bb-attacker-used-meshcentral-backdoor.html</link>
-      <description>An attacker was operating inside the network of 3BB, one of Thailand's largest broadband providers, and maintained remote control of internal machines using a legitimate management tool called MeshCentral, threat intelligence firm Hunt.io said.
-The company uncovered the intrusion by examining a server the attacker had left open on the internet, which held the attacker's own tools and a list of</description>
-      <guid isPermaLink="false">783dc3c818860042ae211baa95255cb04f9e016eaf19e5aa0d58fbcabb4f09e2</guid>
-      <pubDate>Mon, 14 Sep 2026 18:01:49 +0000</pubDate>
-    </item>
-    <item>
-      <title>Telegram Desktop Flaw Lets Hidden JavaScript Exfiltrate Messages From HTML Exports - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/telegram-desktop-flaw-lets-hidden.html</link>
-      <description>A flaw in Telegram Desktop let a bot's message plant hidden JavaScript inside chats that users exported to HTML files, security researchers at ExPatch said in a&amp;nbsp;writeup&amp;nbsp;published on September 12.
-In Telegram, the message looked ordinary, with a link button, and the script ran only when someone opened the export file in a web browser. It could then copy every message in that file to</description>
-      <guid isPermaLink="false">350f973bd5a9e45deeecc3d46355e6aa246846126852e2c2a15bb300d459c808</guid>
-      <pubDate>Mon, 14 Sep 2026 17:58:16 +0000</pubDate>
-    </item>
-    <item>
-      <title>Red Heron Exploits Gitea RCE to Compromise 13 Organizations Across Six Countries - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/red-heron-exploits-gitea-rce-to.html</link>
-      <description>A suspected Chinese threat actor tracked as Red Heron has been attributed to the rapid exploitation of a recently disclosed security vulnerability in Gitea to compromise internet-facing instances as part of a multi-national campaign.
-"Red Heron scanned 1,386 Gitea instances across seven countries and maintained a separate dataset of 477 Taiwan-based systems," Acronis Threat Research Unit (TRU)</description>
-      <guid isPermaLink="false">1696647e2110908a133ccd1dd05c8f8884d0efb259c376892ecc3160336cf94f</guid>
-      <pubDate>Mon, 14 Sep 2026 16:56:30 +0000</pubDate>
-    </item>
-    <item>
-      <title>WordPress Adds Automated Plugin Reviews to Block High-Risk Updates Before Distribution - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/wordpress-adds-automated-plugin-reviews.html</link>
-      <description>WordPress has announced it's launching an automated security review for every release of a plugin before it's distributed through the WordPress.org update API so as to analyze it for potential security issues and ensure there are no risks involved.
-"New plugins are reviewed before they enter the directory, but updates ship continuously after that," David Perez, WordPress Official Plugin</description>
-      <guid isPermaLink="false">13b5e4baec48d20693776de17607f1a09aa98a56619cb4e28c3e1cc7db94ce74</guid>
-      <pubDate>Mon, 14 Sep 2026 16:00:04 +0000</pubDate>
-    </item>
-    <item>
-      <title>Technical Analysis of Suno internals post-September 26 and a working tool to assist with curation - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wg66rt/technical_analysis_of_suno_internals/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/SolidAlternative1646"&gt; /u/SolidAlternative1646 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/ArcticWinterSturm/GenMusicAssist"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wg66rt/technical_analysis_of_suno_internals/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">2ffc983ed6fb022968f5b2157153a3433ca28edc7bc4f2ae592de200fc655ed0</guid>
-      <pubDate>Mon, 14 Sep 2026 15:13:29 +0000</pubDate>
-    </item>
-    <item>
-      <title>AI Changed the Exposure Problem. Validation Needs to Change With It. - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/ai-changed-exposure-problem-validation.html</link>
-      <description>There's a lot of noise around AI and cybersecurity right now. What’s actually important is far simpler, if often lost in the hubbub. Vulnerability discovery is getting faster and happening at a much greater scale, while defenders still have to work out which findings actually deserve their action.
-In the first half of 2026, a whopping 35,853 CVEs were published, roughly 49% more than in the</description>
-      <guid isPermaLink="false">ce9a5cef77cc9cde864b77ede61fa493070a0f8a195afbd527063d9269d15802</guid>
-      <pubDate>Mon, 14 Sep 2026 11:58:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>The Harness Matters: Cutting AI Reverse-Engineering Tokens by 33% - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wg0fvk/the_harness_matters_cutting_ai_reverseengineering/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/420ass_slayer69"&gt; /u/420ass_slayer69 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://reverser.space/blog/the-harness-matters-ai-reverse-engineering/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wg0fvk/the_harness_matters_cutting_ai_reverseengineering/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">6a30b9883fbac3da476b71e3410531161afb9a5bed491e0f4a8e75ba2278b48d</guid>
-      <pubDate>Mon, 14 Sep 2026 11:11:10 +0000</pubDate>
-    </item>
-    <item>
-      <title>StealC Stealer – RuntimeBroker Hollowing, C2 Extraction &amp; Payload Extraction - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wfwpk9/stealc_stealer_runtimebroker_hollowing_c2/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/StructBreaker"&gt; /u/StructBreaker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/kaandemir993/StealC-Stealer-RuntimeBroker-Hollowing-C2-Extraction-Payload-Extraction-Analysis"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wfwpk9/stealc_stealer_runtimebroker_hollowing_c2/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">5c453204143a157170b03dfd73902bb9caeb1208b5585d8dc3ad4fcf9ce3cd30</guid>
-      <pubDate>Mon, 14 Sep 2026 07:31:47 +0000</pubDate>
-    </item>
-    <item>
-      <title>Malicious Twitch Browser Extension Leaks OAuth Tokens From Nearly 31,000 Users - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/malicious-twitch-browser-extension.html</link>
-      <description>A malicious cross-store Twitch browser extension has leaked OAuth tokens associated with nearly 31,000 users to proxy servers operated by a Russian commercial bot service.
-The extension, named "Twitch Enhanced Viewer | JeetBot," lists HISHIMIRO/jeetbot.cc as its developer and has the following identifiers on the Google Chrome Web Store and Mozilla Firefox Add-Ons store -
-  Chrome -</description>
-      <guid isPermaLink="false">2ad44ead9efa5114ecd6723436e2005b853966eb0ab867914204727dc5e567d4</guid>
-      <pubDate>Mon, 14 Sep 2026 07:24:39 +0000</pubDate>
-    </item>
-    <item>
-      <title>Traced SetWindowDisplayAffinity from win32k to dwm.exe — detecting anti-capture windows via CWindowContext::HasProtectedContent (Win10/11) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wfwhu2/traced_setwindowdisplayaffinity_from_win32k_to/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/HawkeyeLab"&gt; /u/HawkeyeLab &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://hawkeye-leo.github.io/hawkeye/research/capture/01-display-affinity/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wfwhu2/traced_setwindowdisplayaffinity_from_win32k_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">20f333c6dd41ab46ba665d0b29b60f4886b4bbe5baddced358a2adf8cf5fe389</guid>
-      <pubDate>Mon, 14 Sep 2026 07:18:33 +0000</pubDate>
-    </item>
-    <item>
-      <title>cjose: Heap-based Buffer Overflow - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/35b3a492-b05a-11f1-9369-b42e991fc52e.html</link>
-      <description/>
-      <guid isPermaLink="false">839c532f2ef6b0fe71b71203cc7db7f42c82a008deb4832593509a813adb27f1</guid>
-      <pubDate>Mon, 14 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>cjose: Use of Hard-coded Cryptographic Key - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/3a38fdda-b05a-11f1-9369-b42e991fc52e.html</link>
-      <description/>
-      <guid isPermaLink="false">621710b777ddb282e9cf7635826fa0b9aa773626dbb3d3c5e3eb3cf5618bc4fb</guid>
-      <pubDate>Mon, 14 Sep 2026 00:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>

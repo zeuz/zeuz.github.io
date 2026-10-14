@@ -5,7 +5,146 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 13 Oct 2026 14:01:11 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 14:01:38 +0000</lastBuildDate>
+    <item>
+      <title>PyPy: PyPy v8.0.1 release - Planet Python</title>
+      <link>https://www.pypy.org/posts/2026/10/pypy-v801-release.html</link>
+      <description>&lt;h2&gt;PyPy v8.0.1: release of python 2.7, 3.11, and 3.12 beta released 2026-09-14&lt;/h2&gt;
+&lt;p&gt;The PyPy team is proud to release version 8.0.1 of PyPy after the previous
+release on Sept 25, 2026. Some problems with buffer memory leaks were fixed,
+and problems around the new strategy to tie RPython objects to non-managed C
+&lt;code class="docutils literal"&gt;PyObject&lt;/code&gt; objects were also fixed. The stdlib for 3.11 and 3.12 was updated,
+as was the vendored libexpat (to 2.8.5). Internally, we now use pytest3.10
+rather than 2.9.2.&lt;/p&gt;
+&lt;p&gt;The release includes three different interpreters:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;PyPy2.7, supporting the syntax and the features of
+Python 2.7 including the stdlib for CPython 2.7.18+ (the &lt;code class="docutils literal"&gt;+&lt;/code&gt; is for
+backported security updates)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;PyPy3.11, supporting the syntax and the features of
+Python 3.11, including the stdlib for CPython 3.11.17. Barring security
+issues, this will be the last release to support 3.11.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;PyPy3.12, supporting the syntax and features of Python 3.12, including the
+stdlib for CPython 3.12.15.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The interpreters are based on much the same codebase, thus the triple
+release.&lt;/p&gt;
+&lt;p&gt;We recommend updating. You can find links to download the releases here:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://pypy.org/download.html"&gt;https://pypy.org/download.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We would like to thank our donors for the continued support of the PyPy
+project. If PyPy is not quite good enough for your needs, we are available for
+&lt;a class="reference external" href="https://www.pypy.org/pypy-sponsors.html"&gt;direct consulting&lt;/a&gt; work. If PyPy is helping you out, we would love to hear
+about it and encourage submissions to our &lt;a class="reference external" href="https://pypy.org/blog"&gt;blog&lt;/a&gt; via a pull request
+to &lt;a class="reference external" href="https://github.com/pypy/pypy.org"&gt;https://github.com/pypy/pypy.org&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;We would also like to thank our contributors and encourage new people to join
+the project. PyPy has many layers and we need help with all of them: bug fixes,
+&lt;a class="reference external" href="https://doc.pypy.org/"&gt;PyPy&lt;/a&gt; and &lt;a class="reference external" href="https://rpython.readthedocs.org"&gt;RPython&lt;/a&gt; documentation improvements, or general &lt;a class="reference external" href="https://doc.pypy.org/project-ideas.html"&gt;help&lt;/a&gt; with
+making RPython's JIT even better.&lt;/p&gt;
+&lt;p&gt;If you are a python library maintainer and use C-extensions, please consider
+making a &lt;a class="reference external" href="https://cffi.readthedocs.io"&gt;CFFI&lt;/a&gt; version of your library that would be performant
+on PyPy. Failing that, PyPy will soon support the cp312-abi3 tag for limited
+ABI wheels.  In any case, &lt;a class="reference external" href="https://github.com/joerick/cibuildwheel"&gt;cibuildwheel&lt;/a&gt; supports building wheels for PyPy.&lt;/p&gt;
+&lt;h3&gt;What is PyPy?&lt;/h3&gt;
+&lt;p&gt;PyPy is a Python interpreter, a drop-in replacement for CPython.
+It's fast (&lt;a class="reference external" href="https://speed.pypy.org"&gt;PyPy and CPython&lt;/a&gt; performance
+comparison) due to its integrated tracing JIT compiler.&lt;/p&gt;
+&lt;p&gt;We also welcome developers of other &lt;a class="reference external" href="https://rpython.readthedocs.io/en/latest/examples.html"&gt;dynamic languages&lt;/a&gt; to see what RPython
+can do for them.&lt;/p&gt;
+&lt;p&gt;We provide binary builds for:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;x86&lt;/strong&gt; machines on most common operating systems
+(Linux 32/64 bits, Mac OS 64 bits, Windows 64 bits)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;64-bit &lt;strong&gt;ARM&lt;/strong&gt; machines running Linux (&lt;code class="docutils literal"&gt;aarch64&lt;/code&gt;) and macos (&lt;code class="docutils literal"&gt;macos_arm64&lt;/code&gt;).&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;PyPy supports Windows 32-bit, Linux PPC64 big- and little-endian, Linux ARM
+32 bit, RISC-V RV64IMAFD Linux, and s390x Linux but does not release binaries.
+Please reach out to us if you wish to sponsor binary releases for those
+platforms. Downstream packagers provide binary builds for debian, Fedora,
+conda, OpenBSD, FreeBSD, Gentoo, and more.&lt;/p&gt;
+&lt;h3&gt;What else is new?&lt;/h3&gt;
+&lt;p&gt;For more information about the release, see the &lt;a class="reference external" href="https://doc.pypy.org/en/latest/release-v8.0.1.html#changelog"&gt;full changelog&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Please update, and continue to help us make pypy better.&lt;/p&gt;
+&lt;p&gt;Cheers,
+The PyPy Team&lt;/p&gt;</description>
+      <guid isPermaLink="false">96d7b3109997dd713469f5821b9115f31b82c4d565790c792172af377575b280</guid>
+      <pubDate>Wed, 14 Oct 2026 07:42:06 +0000</pubDate>
+    </item>
+    <item>
+      <title>Mark Dufour: CPython 3.15 (JIT) Performance Showdown - Planet Python</title>
+      <link>http://shed-skin.blogspot.com/2026/10/cpython-315-jit-performance-showdown.html</link>
+      <description>Now that CPython 3.15 has been released, I decided to do a historical performance comparison similar in spirit to &lt;a href="https://lost.co.nz/articles/sixteen-years-of-python-performance/"&gt;Sixteen Years of Python Performance&lt;/a&gt;. Obviously I wanted to include CPython 3.15, but I also wanted to compare CPython to other Python implementations/optimizers (as I'm the main author of &lt;a href="https://github.com/shedskin/shedskin"&gt;Shed Skin&lt;/a&gt;), to get a feel for the relative performance.
+&lt;p&gt;The comparison was done for eight examples coming from &lt;a href="https://tpy-lang.org/"&gt;TurboPython&lt;/a&gt;, an interesting up-and-coming restricted-Python transpiler. Caveats: these programs were originally ported from the Shed Skin examples. I also didn't include the latest PyPy, as 7.3.20 is the one on my system. In all, you can assume these results are slightly biased towards Shed Skin (so no need to complain about that in the comments! ;)).
+&lt;p&gt;Without further ado, here are the final numbers (geometric mean speedup over the eight programs, versus CPython 2.7):
+&lt;div class="separator"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj8YqGYGCMKXB42gGCw2l2a2Be0i2EhW9SpYUf4ZuObMN01n_e-xvDLboS6X_TnNV3Nn2LtuyfKQCeLpdhwrjk0rHPz3aEOS5UV-GoFsRM6BXiPuv-2xzgikItGJFsDusD6krtcJ45jxTFsimsAszAbhYixMUQvUaxuy9TSWShCxOa-c3K1lba0hw/s2088/pybench-geomean.png"&gt;&lt;img alt="" border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj8YqGYGCMKXB42gGCw2l2a2Be0i2EhW9SpYUf4ZuObMN01n_e-xvDLboS6X_TnNV3Nn2LtuyfKQCeLpdhwrjk0rHPz3aEOS5UV-GoFsRM6BXiPuv-2xzgikItGJFsDusD6krtcJ45jxTFsimsAszAbhYixMUQvUaxuy9TSWShCxOa-c3K1lba0hw/s400/pybench-geomean.png" width="500" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;So what do the numbers show? First of all, the 3.15 JIT is doing really well for these algorithmic-type programs, with a mean speedup going from 1.61x (without JIT) to 2.47x (with JIT)! For 3.14, the JIT barely makes a difference. This is probably the most important take-away. It's still some ways away from PyPy-level performance, but if the CPython JIT is finally taking off, it could quickly make similar large jumps over the next few releases, perhaps even closing the gap with PyPy substantially.
+&lt;p&gt;&lt;a href="https://pypy.org/"&gt;PyPy&lt;/a&gt; 7.3.20 gives a very nice mean speedup of 24.2x. Note that I gave both PyPy and CPython JIT some warm-up time, and only measured after that. This is quite an impressive speedup, given that PyPy has its hands tied behind its back, supporting all Python features!
+&lt;p&gt;As for the AOT transpilers, keep in mind that these operate on restricted-Python variants, so they do not work for arbitrary Python code. It takes some work to make your code compatible, and sometimes that is not an option, but if you put in the work you can expect a larger speedup than using CPython JIT/PyPy.
+&lt;p&gt;&lt;a href="https://tpy-lang.org/"&gt;TurboPython&lt;/a&gt; does really well for a relatively young project, with a mean speedup of 41.1x. It is actually fastest for two of the eight programs. There are currently some performance issues for the 'sieve' program, but I'm sure those will be worked out with the next release.  
+&lt;p&gt;&lt;a href="https://github.com/shedskin/shedskin"&gt;Shed Skin&lt;/a&gt; itself has had many performance improvements over the past year, so I included 0.9.12 for reference. The reason for testing with Shed Skin main is that I didn't want to do another release just for this comparison (but I could have probably easily released it as 0.9.15).
+&lt;p&gt;The full results (with per-program measurements) can be found &lt;a href="https://claude.ai/artifact/W8Wi7kNazZeJ8gWd1dqX6U"&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">c3bfdb26f2041731865c6a3708c65cdb3dc24a2f5d1883f7c93254d224ddb8a0</guid>
+      <pubDate>Wed, 14 Oct 2026 04:30:11 +0000</pubDate>
+    </item>
+    <item>
+      <title>Rodrigo Girão Serrão: Sentinel built-in - Planet Python</title>
+      <link>https://mathspp.com/blog/pydonts/sentinel-builtin</link>
+      <description>&lt;img alt="" src="https://mathspp.com/images/e/c/7/8/b/ec78b250edffd8c0e5b7eb1d4b9033f058895b06-thumbnail.webp" /&gt;
+                                &lt;p&gt;Learn how to use the sentinel built-in from Python 3.15 for placeholder values.&lt;/p&gt;
+&lt;p&gt;Python 3.15 introduced the new &lt;strong&gt;&lt;code&gt;sentinel&lt;/code&gt; built-in&lt;/strong&gt;.
+The &lt;strong&gt;&lt;code&gt;sentinel&lt;/code&gt;&lt;/strong&gt; built-in can be used to create placeholder values:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-py"&gt;NOTHING = sentinel("NOTHING")&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A placeholder created by &lt;code&gt;sentinel&lt;/code&gt; is the more idiomatic way to provide default arguments or return values where &lt;code&gt;None&lt;/code&gt; wouldn't be usable.&lt;/p&gt;
+&lt;h2 id="15-days-of-python-3-15"&gt;15 days of Python 3.15&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#15-days-of-python-3-15"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;To &lt;a href="https://mathspp.com/python-315"&gt;celebrate the release of Python 3.15&lt;/a&gt;, over the next 15 business days I'll be writing about a new 3.15 feature every day.
+Explained clearly and with examples so you don't have to sift through the changelog.&lt;/p&gt;
+&lt;p&gt;Subscribe to receive this free email series:&lt;/p&gt;
+&lt;p&gt;
+&lt;/p&gt;&lt;div class="form-wrapper" id="enroll-wrapper"&gt;
+&lt;form action="https://mathspp.com/courses/uv" class=" " id="enroll" method="POST" name="enroll"&gt;
+                          &lt;input class="form-honeybear" name="data[honeypot]" tabindex="-1" type="text" value="" /&gt;&lt;div class="form-field form-group "&gt;
+          &lt;div class="form-data"&gt;
+                        &lt;div class="form-input-wrapper "&gt;
+                                    &lt;input class="form-input " name="data[email]" type="email" value="" /&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+  &lt;/div&gt;
+            &lt;div class="form-field form-group "&gt;
+            &lt;div class="form-label-wrapper"&gt;&lt;label class="form-label"&gt;&lt;/label&gt;
+      &lt;/div&gt;
+        &lt;div class="form-data"&gt;
+            &lt;div class="g-recaptcha-container"&gt;
+                                &lt;input name="data[token]" type="hidden" value="" /&gt;&lt;input name="data[action]" type="hidden" value="692add1e48ae8ced7062ad941df6f705" /&gt;&lt;/div&gt;
+            &lt;/div&gt;
+  &lt;/div&gt;
+        &lt;input name="__form-name__" type="hidden" value="enroll" /&gt;&lt;input name="__unique_form_id__" type="hidden" value="devs5wb1yxzui3migttl" /&gt;&lt;input class="form-nonce-field" name="form-nonce" type="hidden" value="9c0cf1197d59e4616d85ae63fe79006d" /&gt;&lt;div class="button-wrapper"&gt;
+  &lt;button class="btn " type="submit"&gt;Enroll for free &amp;#128013;&amp;#128640;&lt;/button&gt;
+        &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+&lt;p&gt;If you want, you can also &lt;a href="https://mathspp.com/python-315"&gt;check the schedule&lt;/a&gt; of the upcoming emails.&lt;/p&gt;
+&lt;h2 id="creating-and-using-sentinels"&gt;Creating and using sentinels&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#creating-and-using-sentinels"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The built-in &lt;code&gt;sentinel&lt;/code&gt; accepts a string argument which is the name of the sentinel:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-py"&gt;NOTHING = sentinel("NOTHING")
+print(NOTHING)  # NOTHING&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The name of the sentinel is used as its default string representation.&lt;/p&gt;
+&lt;p&gt;Alternatively, you can provide a second named argument to be used as the representation of the sentinel:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-py"&gt;NOTHING = sentinel("NOTHING", repr="__main__.NOTHING")
+print(NOTHING)  # __main__.NOTHING&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;While there's no runtime restriction imposed, the name of the sentinel and the name of the variable that the sentinel is assigned to should match:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-py"&gt;# Correct:
+NOTHING = sentinel("NOTHING")
+# Wrong:
+NOTHING = sentinel("nothing")
+N = sentinel("NOTHING")
+BANANAS = sentinel("APPLES")&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Linters and type checkers may complain if there's a mismatch.
+Since sentinels are typically constants you won't update, it's also common for sentinels to have names in all uppercase.&lt;/p&gt;
+&lt;p&gt;Sentinels are typically used as placeholders and the most common operation is to check if a value is a specific sentinel.
+For example, imagine a function &lt;code&gt;find&lt;/code&gt; that looks...&lt;/p&gt;</description>
+      <guid isPermaLink="false">7b81715e5aae3f9cfd7770ee000edf64b75209c4295955eed3a98ab094342a6d</guid>
+      <pubDate>Tue, 13 Oct 2026 13:11:00 +0000</pubDate>
+    </item>
     <item>
       <title>Seth Michael Larson: Gaming’s all-digital future doesn’t include “Sonic the Hedgehog 3” and “Pikmin 2” - Planet Python</title>
       <link>https://sethmlarson.dev/gaming-all-digital-future-and-creative-constraint?utm_campaign=rss</link>
@@ -82,6 +221,13 @@ and players can continue to enjoy games &lt;em&gt;as the developers
 intended&lt;/em&gt; long after licensing terms expire.&lt;/p&gt;
 &lt;br /&gt;&lt;hr /&gt;&lt;p&gt;Thanks for reading ♥ I would love to hear your thoughts! Contact me via &lt;a href="https://mastodon.social/@sethmlarson"&gt;Mastodon&lt;/a&gt;, &lt;a href="https://bsky.app/profile/sethmlarson.dev"&gt;Bluesky&lt;/a&gt;, or &lt;a href="mailto:sethmichaellarson@gmail.com"&gt;email&lt;/a&gt;. Browse the &lt;a href="https://sethmlarson.dev/"&gt;blog archive&lt;/a&gt;. Check out my &lt;a href="https://sethmlarson.dev/blogroll"&gt;blogroll&lt;/a&gt;.&lt;/p&gt;&lt;hr /&gt;&lt;br /&gt;</description>
       <guid isPermaLink="false">74ec012b6c4ced01df7bd4bf45013ff0bdb0b7395d38cea2f061d5050a779581</guid>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Insider: Python 3.16.0 alpha 1 is now available - Planet Python</title>
+      <link>https://blog.python.org/2026/10/python-3160-alpha-1-is-now-available/</link>
+      <description>The first developer preview of Python 3.16 is ready for testing.</description>
+      <guid isPermaLink="false">1da18917d453c97284d3d99eb2d221803dfbe174b8413259167a996221488420</guid>
       <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
