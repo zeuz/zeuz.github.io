@@ -5,7 +5,116 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Wed, 14 Oct 2026 14:01:38 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 14:01:50 +0000</lastBuildDate>
+    <item>
+      <title>Bob Belderbos: My bookkeeping runs on code now. AI only reads the PDFs. - Planet Python</title>
+      <link>https://belderbos.dev/blog/replaced-my-bookkeeping-tool-with-python/</link>
+      <description>&lt;p&gt;I paid for a popular bookkeeping tool and it worked well. But the UI kept getting slower, and I wasn't using its reporting, so I had no real view of my numbers.&lt;/p&gt;
+&lt;p&gt;So I did what I usually do: I scoped a solution, &lt;a href="https://belderbos.dev/blog/build-the-simplest-thing-that-works/"&gt;built the smallest thing that worked&lt;/a&gt; and tested it.&lt;/p&gt;
+&lt;span id="continue-reading"&gt;&lt;/span&gt;
+&lt;p&gt;Result: about 2K lines of Python, 45 tests, my own invoice scanner with a human in the loop, and a couple of &lt;code&gt;make&lt;/code&gt; commands to close the month and regenerate an Excel report (synced to Drive) for my accountant.&lt;/p&gt;
+&lt;h2 id="what-closing-a-month-of-bookkeeping-involves"&gt;What closing a month of bookkeeping involves&lt;/h2&gt;
+&lt;p&gt;I'm an autónomo (freelancer) in Spain. Each month I issue invoices to clients, collect supplier invoices in a mix of currencies, and hand the close to my asesor (accountant).&lt;/p&gt;
+&lt;p&gt;On paper the paid tool covered all of that, and maybe a higher tier had the report I wanted. But I live in the terminal, and a command-line workflow beats a nicer dashboard. It's the same lesson I teach clients: build around how people work, not around how a vendor decided things should work.&lt;/p&gt;
+&lt;p&gt;Before writing any code, I mapped the workflow and split the steps into rules and interpretation.&lt;/p&gt;
+&lt;h2 id="only-one-step-needed-ai"&gt;Only one step needed AI&lt;/h2&gt;
+&lt;p&gt;It's tempting to let AI loose on everything, but the map showed only one step where an LLM added value: extracting fields from supplier PDFs with varying layouts. I use Claude by default, but the model call is one function, so swapping in a local model is a small change.&lt;/p&gt;
+&lt;p&gt;Everything else is arithmetic (numbering, VAT, IRPF, totals, FX), which calls for plain code with good test coverage.&lt;/p&gt;
+&lt;p&gt;For example, the code converts currencies at the ECB rate via &lt;a href="https://frankfurter.dev" rel="noopener external" target="_blank"&gt;frankfurter.dev&lt;/a&gt;, and the original amount and rate are added in the description: &lt;code&gt;(USD 20.00 @ 0.88511 ECB 2026-10-01)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;This also shows that much of integrating AI is about the &lt;em&gt;control layer&lt;/em&gt;. The model proposes fields. Python computes, converts, assigns ids and validates. I fix and approve. Tests and logs make it verifiable. See also: &lt;a href="https://belderbos.dev/blog/control-layer-is-the-product/"&gt;the control layer is the product&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="the-ai-proposes-i-append"&gt;The AI proposes, I append&lt;/h2&gt;
+&lt;p&gt;Nothing touches the ledger until I press &lt;code&gt;a&lt;/code&gt; (append):&lt;/p&gt;
+&lt;p&gt;&lt;img alt="make scan proposing two expense rows from sample invoices, each waiting for append, edit, skip or quit" src="https://belderbos.dev/images/bookkeeping-scan.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Each proposed row gets the next &lt;code&gt;EXP-YYYY-NNN&lt;/code&gt; id and the extracted fields, with VAT and gross computed by code. Append is blocked while validation errors exist:&lt;/p&gt;
+&lt;pre class="giallo z-code"&gt;&lt;code&gt;&lt;span class="giallo-l"&gt;&lt;span&gt;choice&lt;/span&gt;&lt;span class="z-keyword"&gt; =&lt;/span&gt;&lt;span class="z-support"&gt; input&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class="z-punctuation z-definition z-string z-string"&gt;&amp;quot;  [a]ppend / [e]dit / [s]kip / [q]uit: &amp;quot;&lt;/span&gt;&lt;span&gt;).strip().lower()&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;if&lt;/span&gt;&lt;span&gt; choice&lt;/span&gt;&lt;span class="z-keyword"&gt; ==&lt;/span&gt;&lt;span class="z-punctuation z-definition z-string z-string"&gt; &amp;quot;a&amp;quot;&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;    if&lt;/span&gt;&lt;span&gt; _errors(exp):&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-support"&gt;        print&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class="z-punctuation z-definition z-string z-string"&gt;&amp;quot;  fix the errors first (edit), or skip.&amp;quot;&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;        continue&lt;/span&gt;&lt;/span&gt;
+&lt;span class="giallo-l"&gt;&lt;span class="z-keyword"&gt;    return&lt;/span&gt;&lt;span&gt; exp&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Extraction misses things, like a receipt without a printed tax ID or a description too vague for my asesor. The edit step catches those:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="editing a proposed expense before appending it: adding the supplier tax ID and a more specific description" src="https://belderbos.dev/images/bookkeeping-scan-edit.png" /&gt;&lt;/p&gt;
+&lt;p&gt;On approval, the PDF is renamed to &lt;code&gt;EXP-YYYY-NNN_Supplier.pdf&lt;/code&gt;. That rename is the whole &lt;em&gt;state machine&lt;/em&gt;, no database needed. The rename happens before the row is written. If it crashes in between, the next run proposes that PDF again under the same id, so nothing is lost or recorded twice.&lt;/p&gt;
+&lt;p&gt;I also fenced off the AI that helped me write the code: reads and edits to my issued invoices and invoice ledger are denied, and every shell command requires my approval.&lt;/p&gt;
+&lt;h2 id="boring-by-design"&gt;Boring by design&lt;/h2&gt;
+&lt;p&gt;I keep most of the system immutable (a habit &lt;a href="https://belderbos.dev/blog/10-days-rust-python-developers-recap/"&gt;Rust is reinforcing&lt;/a&gt;). The CSV files are the source of truth for invoices and expenses. Issued invoice PDFs are immutable (overwriting one needs &lt;code&gt;--force&lt;/code&gt;). Excel is regenerated, never edited.&lt;/p&gt;
+&lt;p&gt;Every total in the workbook is a formula pointing back to its rows, not a pasted number, so my asesor can click any figure and see where it came from without asking me.&lt;/p&gt;
+&lt;p&gt;The month close is easy now: drop the PDFs in a folder, &lt;code&gt;make scan&lt;/code&gt;, &lt;code&gt;make report&lt;/code&gt; (which validates first).&lt;/p&gt;
+&lt;p&gt;When my asesor confirmed mid-build that the VAT on my expenses wasn't deductible in my case, it had to move into cost. The tests pinned the totals, so it was one commit instead of a week of doubt.&lt;/p&gt;
+&lt;p&gt;There is one tradeoff: I now need to maintain this system. There's no vendor support, the FX lookup needs a network connection, and tax rules might change. But it's a good trade for a one-person business with tech skills. Full control, one less subscription, and a faster, higher-quality process are worth it.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;img alt="a one-week Scope First Audit maps a workflow from email to done: most steps are plain code, one step uses AI, and a person approves before anything is final" src="https://belderbos.dev/images/illustrations/workflow-first.webp" /&gt;&lt;/p&gt;
+&lt;p&gt;The transferable part is the order of operations:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Map the workflow.&lt;/li&gt;
+&lt;li&gt;Give the model the one step that needs judgment.&lt;/li&gt;
+&lt;li&gt;Code the rules.&lt;/li&gt;
+&lt;li&gt;Put a human at the critical decision points.&lt;/li&gt;
+&lt;li&gt;Make the results traceable.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If a process in your business is slow, error-prone or lives in one person's head, that's what my &lt;a href="https://belderbos.dev/consulting/"&gt;Scope First Audit&lt;/a&gt; maps out.&lt;/p&gt;
+&lt;p&gt;P.S. The &lt;code&gt;a/e/s/q&lt;/code&gt; prompt treats every field the same, so I extracted the scanner into &lt;a href="https://github.com/bbelderbos/invoice-scanner" rel="noopener external" target="_blank"&gt;invoice-scanner&lt;/a&gt;. It asks only about low-confidence fields, shows the source text and logs corrections. More on that in an upcoming post.&lt;/p&gt;</description>
+      <guid isPermaLink="false">81b471c13a9296363c34c91e3e4277f0dbfd52a47a4d52e2ad1ce5baeb91f245</guid>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Rodrigo Girão Serrão: frozendict built-in - Planet Python</title>
+      <link>https://mathspp.com/blog/pydonts/frozendict-builtin</link>
+      <description>&lt;img alt="" src="https://mathspp.com/images/f/a/f/d/7/fafd7dbd61b64e8d0d5cb21cc5df0ff4e856a803-thumbnail.webp" /&gt;
+                                &lt;p&gt;Learn how to use the new &lt;code&gt;frozendict&lt;/code&gt; built-in to create and manipulate immutable dictionaries.&lt;/p&gt;
+&lt;p&gt;Python 3.15 introduced a new built-in data type: the &lt;strong&gt;frozendict&lt;/strong&gt;.
+A &lt;strong&gt;frozendict&lt;/strong&gt; is an immutable dictionary that can be created with the built-in of the same name:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-py"&gt;version_info = frozendict(
+    {"major": 3, "minor": 15, "patch": 0}
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The dictionary literal syntax using the curly braces &lt;code&gt;{}&lt;/code&gt; creates a regular dictionary, so you must always use the built-in &lt;code&gt;frozendict&lt;/code&gt; to create a new frozen dictionary.&lt;/p&gt;
+&lt;p&gt;In this article you'll learn about the characteristics of this immutable dictionary like its hashability, along with how to use this in conjunction with &lt;code&gt;dict&lt;/code&gt; in typing contexts.&lt;/p&gt;
+&lt;h2 id="15-days-of-python-3-15"&gt;15 days of Python 3.15&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#15-days-of-python-3-15"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;To &lt;a href="https://mathspp.com/python-315"&gt;celebrate the release of Python 3.15&lt;/a&gt;, over the next 15 business days I'll be writing about a new 3.15 feature every day.
+Explained clearly and with examples so you don't have to sift through the changelog.&lt;/p&gt;
+&lt;p&gt;Subscribe to receive this free email series:&lt;/p&gt;
+&lt;p&gt;
+&lt;/p&gt;&lt;div class="form-wrapper" id="enroll-wrapper"&gt;
+&lt;form action="https://mathspp.com/courses/uv" class=" " id="enroll" method="POST" name="enroll"&gt;
+                          &lt;input class="form-honeybear" name="data[honeypot]" tabindex="-1" type="text" value="" /&gt;&lt;div class="form-field form-group "&gt;
+          &lt;div class="form-data"&gt;
+                        &lt;div class="form-input-wrapper "&gt;
+                                    &lt;input class="form-input " name="data[email]" type="email" value="" /&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+  &lt;/div&gt;
+            &lt;div class="form-field form-group "&gt;
+            &lt;div class="form-label-wrapper"&gt;&lt;label class="form-label"&gt;&lt;/label&gt;
+      &lt;/div&gt;
+        &lt;div class="form-data"&gt;
+            &lt;div class="g-recaptcha-container"&gt;
+                                &lt;input name="data[token]" type="hidden" value="" /&gt;&lt;input name="data[action]" type="hidden" value="acc58eff0fe18fae344c0dcd3c398099" /&gt;&lt;/div&gt;
+            &lt;/div&gt;
+  &lt;/div&gt;
+        &lt;input name="__form-name__" type="hidden" value="enroll" /&gt;&lt;input name="__unique_form_id__" type="hidden" value="trxcewf4oyoswm7glbv1" /&gt;&lt;input class="form-nonce-field" name="form-nonce" type="hidden" value="65b347066d65e56fe0f7f55a0597dd0d" /&gt;&lt;div class="button-wrapper"&gt;
+  &lt;button class="btn " type="submit"&gt;Enroll for free &amp;#128013;&amp;#128640;&lt;/button&gt;
+        &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+&lt;p&gt;If you want, you can also &lt;a href="https://mathspp.com/python-315"&gt;check the schedule&lt;/a&gt; of the upcoming emails.&lt;/p&gt;
+&lt;h2 id="creation-and-usage"&gt;Creation and usage&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#creation-and-usage"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;You create immutable dictionaries with the built-in &lt;code&gt;frozendict&lt;/code&gt; and you can access key/value pairs with the regular dictionary syntax:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-py"&gt;version_info = frozendict({"major": 3, "minor": 15, "patch": 0})
+print(version_info["major"])  # 3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can also iterate through a &lt;code&gt;frozendict&lt;/code&gt;'s keys, values, or items:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-py"&gt;for name, number in version_info.items():
+    print(name, number)
+"""
+major 3
+minor 15
+patch 0
+"""&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you don't have to support Python 3.14 or earlier, you should use &lt;code&gt;frozendict&lt;/code&gt; whenever you're creating or returning a dictionary that isn't supposed to be explicitly and clearly used as mutable.&lt;/p&gt;
+&lt;h2 id="immutability-of-a-frozendict"&gt;Immutability of a &lt;code&gt;frozendict&lt;/code&gt;&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#immutability-of-a-frozendict"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The main premise of &lt;code&gt;frozendict&lt;/code&gt; is that it's immutable:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-py"&gt;version_info = frozendict({"major":...&lt;/code&gt;&lt;/pre&gt;</description>
+      <guid isPermaLink="false">8c61d5322db386e0965248130afbd9a5c0649ce53a3b8f64523204069c53400c</guid>
+      <pubDate>Wed, 14 Oct 2026 12:29:00 +0000</pubDate>
+    </item>
     <item>
       <title>PyPy: PyPy v8.0.1 release - Planet Python</title>
       <link>https://www.pypy.org/posts/2026/10/pypy-v801-release.html</link>

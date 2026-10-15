@@ -5,7 +5,140 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Wed, 14 Oct 2026 14:01:37 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 14:01:49 +0000</lastBuildDate>
+    <item>
+      <title>I made an open-source companion for REA that turns reverse-engineering findings into a build plan - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x6lg23/i_made_an_opensource_companion_for_rea_that_turns/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Electrical_Worth7942"&gt; /u/Electrical_Worth7942 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/ShadowSwaps/REA-Reconstruction-Companion"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x6lg23/i_made_an_opensource_companion_for_rea_that_turns/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">50fc37ff4cee1e5eee81914df603d50278059bfaa820c684aeedf331c1aaa8f9</guid>
+      <pubDate>Thu, 15 Oct 2026 13:19:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>Drupal Patches Critical Core RCE Flaw with No-Login Path via Contributed Modules - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/drupal-patches-critical-core-rce-flaw.html</link>
+      <description>Drupal core has a critical flaw in its Field UI module that could let an attacker run code on the site's server, and fixes were shipped on October 14 in Drupal 11.4.10, 11.3.19, and 10.6.19.
+An attacker cannot reach the flaw through core alone, the Drupal Security Team said in&amp;nbsp;its advisory. Several exploit paths exist through contributed modules, and at least one known path needs no login.</description>
+      <guid isPermaLink="false">93ece725461fa0dd331c8758c8a153f4c5da819810275b5beffb8c7b7965ceee</guid>
+      <pubDate>Thu, 15 Oct 2026 12:07:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>GitHub - XavierGeerinck/insta360-custom-firmware: Open firmware for the Insta360 Wave speakerphone: no telemetry, recordings that go only where you send them, one script back to stock - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x6jjso/github_xaviergeerinckinsta360customfirmware_open/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/thebillkidy"&gt; /u/thebillkidy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/XavierGeerinck/insta360-custom-firmware/tree/main"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x6jjso/github_xaviergeerinckinsta360customfirmware_open/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">fbb14c1f2c79bba0d24521563611eed8ac4ed788e1be99706c4e48cd1114c01c</guid>
+      <pubDate>Thu, 15 Oct 2026 11:50:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>Palo Alto Networks Patches PAN-OS Authenticated RCE Flaw Amid Active Exploitation - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/palo-alto-networks-patches-pan-os.html</link>
+      <description>Palo Alto Networks on Wednesday issued security updates for a high-severity flaw in PAN-OS software that has come under active exploitation.
+The vulnerability, tracked as CVE-2026-0322 (CVSS score: 8.6), is a case of remote code execution in the management interface.
+"A remote code execution (RCE) vulnerability in the management interface of Palo Alto Networks PAN-OS software enables an</description>
+      <guid isPermaLink="false">ef66d514b4572fa23bfbb3282fc0c2c88563033a04c610fa861834ba158635b3</guid>
+      <pubDate>Thu, 15 Oct 2026 11:46:49 +0000</pubDate>
+    </item>
+    <item>
+      <title>India Mandates Registered Caller Name Display on 4G and Newer Networks From November 1 - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/india-mandates-registered-caller-name.html</link>
+      <description>The Indian government has directed telecom service providers (TSPs) in the country to mandatorily display callers' registered names along with their numbers for incoming calls starting November 1, 2026, in an effort to help people identify calls from unknown numbers and tackle spam or fraudulent calls.
+To that end, the Department of Telecommunications has issued a circular urging service</description>
+      <guid isPermaLink="false">408b597279a8b093edc805f27ba42069de8946c835a4652e752a9637d82a5890</guid>
+      <pubDate>Thu, 15 Oct 2026 10:42:16 +0000</pubDate>
+    </item>
+    <item>
+      <title>GhostAction Compromises About 1,900 GitHub Accounts, Targets Over 30,000 Repositories - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/ghostaction-compromises-about-1900.html</link>
+      <description>The credential-theft campaign known as GhostAction has ramped up, targeting more than 30,000 repositories across 3,000 users and organizations.
+The spike, according to GitGuardian, was observed on October 8 and 9, 2026.
+"This resulted from compromising the GitHub accounts of about 1,900 users. It attempted to extract 3,174 secrets from public repositories' CI," security researchers Gaetan</description>
+      <guid isPermaLink="false">67f8d2551a3ba395aa4e5137c82b46876f21f7fd3af8012cd94598eb7c01db78</guid>
+      <pubDate>Thu, 15 Oct 2026 08:45:10 +0000</pubDate>
+    </item>
+    <item>
+      <title>retro-kit: headless Ghidra toolkit for 90s DOS/4GW (Watcom LE/LX) and Win32 games – LE/LX loader, Watcom calling conventions, cross-version library signatures, COM vtable typing - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x6fmx1/retrokit_headless_ghidra_toolkit_for_90s_dos4gw/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Nemo2278"&gt; /u/Nemo2278 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/nemo22/retrokit"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x6fmx1/retrokit_headless_ghidra_toolkit_for_90s_dos4gw/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">05c3c09c2b8501ac08371ae011f71a3c0fb243a02f1017d4da63740d58bd72ab</guid>
+      <pubDate>Thu, 15 Oct 2026 07:54:37 +0000</pubDate>
+    </item>
+    <item>
+      <title>Langflow's Critical Authenticated RCE Flaw Targeted in 1,423 Honeypot Exploit Attempts - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/langflows-critical-authenticated-rce.html</link>
+      <description>Threat actors are exploiting a critical security flaw in Langflow, according to an alert from Previdian.
+Langflow is an open-source platform that allows developers to build artificial intelligence (AI) applications and agentic workflows. In February 2025, DataStax, the parent company of Langflow, was acquired by IBM.
+The vulnerability in question is CVE-2026-105740 (CVSS score: 9.9), a case of</description>
+      <guid isPermaLink="false">6f8e460c7429deff2bf1a63087a87d747dc2f63331dd63adc076bbd624fa837b</guid>
+      <pubDate>Thu, 15 Oct 2026 07:07:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>AhsayCBS Flaws Exploited to Deploy Web Shells Get New Fixes After Incomplete Patches - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/ahsaycbs-flaws-exploited-to-deploy-web.html</link>
+      <description>Singapore-based Ahsay Backup has released security updates to address two security flaws in AhsayCBS that have been exploited by bad actors to drop web shells and XMRig cryptocurrency miners.
+The vulnerabilities in question are CVE-2026-105133 and CVE-2026-105134, which could be chained to sidestep authentication and execute arbitrary commands on affected systems.
+In a report published earlier</description>
+      <guid isPermaLink="false">e06d37023f281a58208d43418663d6366ff4d6ca79e1ca231af18797fffcd09e</guid>
+      <pubDate>Thu, 15 Oct 2026 06:43:08 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Multiple vulnerabilities in bhyve device models - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/3f9e602e-c849-11f1-ada3-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">fc024ec3d4347c5bcad0475c4a580c3d9ed92c5e8cb5fe2ca4b4f41c06f7c025</guid>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Remotely triggerable buffer overflow in tcp_rack - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/e40e981e-c847-11f1-ada3-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">8a2bcf0c3a28ba7024d6be697efe0df7641c5bcedff33bf62122e9e1482eeb8b</guid>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- TOCTOU race between sound(4) buffer resizing and mmap - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/1fef3562-c848-11f1-ada3-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">793893676cd1549fe35da60f601b41cb4a89f7bbe19f62dd400dd894933c7782</guid>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>I reverse engineered Black &amp; White with Astra and added LLM integration by exposing the game world as tools and context so you can now control your creature via Chat! - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x6593o/i_reverse_engineered_black_white_with_astra_and/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/sedthh"&gt; /u/sedthh &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/sedthh/batch_and_vibe"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x6593o/i_reverse_engineered_black_white_with_astra_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">d6d9d1e16619885206798e47d9351e493feb23090147b8a100df567c86e272df</guid>
+      <pubDate>Wed, 14 Oct 2026 22:36:44 +0000</pubDate>
+    </item>
+    <item>
+      <title>Cisco Warns of Active Attacks Exploiting New Critical Secure Email Gateway Vulnerability - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/cisco-warns-of-active-attacks.html</link>
+      <description>Attackers are exploiting a critical flaw in Cisco Secure Email Gateway that lets a sender with no login write files to the appliance's operating system, Cisco&amp;nbsp;said in an advisory&amp;nbsp;on Wednesday.
+The attacker sends an email with a crafted attachment through the gateway and, if it succeeds, could then run commands as root. The appliance filters an organization's email for spam, malware,</description>
+      <guid isPermaLink="false">d4b9e74efe1bfecd4cc4436980d5429c988db82dfb579a6ef09bfed92778257c</guid>
+      <pubDate>Wed, 14 Oct 2026 18:38:56 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hackers Backdoor Nextcloud Servers Through Critical Flaw in Collabora’s Built-in CODE App - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/hackers-backdoor-nextcloud-servers.html</link>
+      <description>Attackers exploited a flaw in an optional Nextcloud app,&amp;nbsp;Collabora Online - Built-in CODE Server, to plant web shells on Nextcloud servers. Three administrators&amp;nbsp;reported the issue on GitHub, with the first logged attack on September 10.
+A web shell is a small file that executes any command an attacker sends via a web request, with the rights of the web server account. The flaw</description>
+      <guid isPermaLink="false">b5a9a612cd3c8ddf1d4fb93a8fc97dcd8ad09ba9c4cfc7240f15fa632f3410ff</guid>
+      <pubDate>Wed, 14 Oct 2026 17:38:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>Microsoft Disrupts 3 Phishing Kits Linked to Over 1 Billion Scam Messages - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/microsoft-disrupts-3-phishing-kits.html</link>
+      <description>Microsoft and Health-ISAC, along with the Japan Cybercrime Control Center (JC3) and a coalition of private sector companies, such as Resecurity, Cloudflare, Oracle, Proofpoint, and TRM Labs, announced the disruption of three phishing kits, CoGUI (aka NX or FA), Haozi (aka Phoenix), and Iron Man System.
+"Since January 2026, the threat actors behind these kits have been responsible for</description>
+      <guid isPermaLink="false">58c6d9110b57f91b106f2fc5bf8107caada8146453eff9c3f62c47d36c752ffa</guid>
+      <pubDate>Wed, 14 Oct 2026 17:09:15 +0000</pubDate>
+    </item>
+    <item>
+      <title>U.S. Shuts Down Over 40 Laptop Farms, Charges 14 in North Korean IT Worker Fraud - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/us-shuts-down-over-40-laptop-farms.html</link>
+      <description>The U.S. Department of Justice (DoJ) on Tuesday charged 14 people and seized about 187 computers and KVM devices as part of its ongoing efforts to disrupt North Korea's fraudulent remote IT worker (ITW) scheme.
+The indictment charges a mix of U.S. citizens and Chinese nationals for their roles in an IT worker conspiracy affecting more than 70 U.S. companies, charging them with wire fraud</description>
+      <guid isPermaLink="false">640eefe11d8ab3fa8ca5449a891052b00305c3a039319585e3fb2182a2a43215</guid>
+      <pubDate>Wed, 14 Oct 2026 16:34:31 +0000</pubDate>
+    </item>
     <item>
       <title>CISA Urges Immediate Ivanti Connect Secure Updates as Honeypots Log 105 Exploit Attempts - The Hacker News</title>
       <link>https://thehackernews.com/2026/10/cisa-urges-immediate-ivanti-connect.html</link>
@@ -104,6 +237,13 @@ Abdulrahman Alfozan, 35, has been charged with using or endeavoring to use an el
       <link>http://www.vuxml.org/freebsd/14dab969-c797-11f1-a6ea-8447094a420f.html</link>
       <description/>
       <guid isPermaLink="false">d9885f8a69602ef12237b0d5f2b51e8b304e1a8bde8102aead1542b11e27d22e</guid>
+      <pubDate>Wed, 14 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>p5-Plack -- Multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/fdb34ad1-c7ac-11f1-97dc-40b034429ecf.html</link>
+      <description/>
+      <guid isPermaLink="false">fc75df832cbbe2e0d2cf73c3afbe88a5386749568cea57dfe844ec45da80ac39</guid>
       <pubDate>Wed, 14 Oct 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
@@ -1390,146 +1530,6 @@ Its researchers found more than 13,000 internal images from developers at over 3
 By combining Microsoft 365 session theft with remote-access tool deployment, CSuite can turn a phishing incident into broader account compromise, fraud</description>
       <guid isPermaLink="false">948b0e849caeba04043f235d16e23f57e629db636d2b55943c1189ffd21a71a2</guid>
       <pubDate>Wed, 30 Sep 2026 10:45:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>OpenSSL Fixes High-Severity DTLS Flaw That Can Leak Heap Memory Unencrypted - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/openssl-fixes-high-severity-dtls-flaw.html</link>
-      <description>A High-severity OpenSSL flaw can leak heap memory to the other side of a DTLS connection or crash the program,&amp;nbsp;OpenSSL said&amp;nbsp;on September 29 as it released fixes.
-DTLS, the TLS variant used for UDP traffic, resends a handshake message if no reply arrives before the timer expires. The leak or crash can happen when such a resend starts while a larger handshake message is stuck part-way</description>
-      <guid isPermaLink="false">4d53da0995c402c17975da6806465249522a7b9c718cd16d52cbaddd57d17839</guid>
-      <pubDate>Wed, 30 Sep 2026 08:09:28 +0000</pubDate>
-    </item>
-    <item>
-      <title>Citrix NetScaler CVE-2026-88772 Exploit Details Show Pre-Auth Path to Shellcode Execution - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/citrix-netscaler-cve-2026-88772-exploit.html</link>
-      <description>Cybersecurity researchers have disclosed technical details of a recently patched critical security flaw in Citrix NetScaler ADC and Gateway that has come under active exploitation in the wild.
-The vulnerability, tracked as CVE-2026-88772 (CVSS score: 9.5), has been described as a memory overflow bug in the Datagram Transport Layer Security (DTLS) protocol handling that's rooted in the NetScaler</description>
-      <guid isPermaLink="false">7b86377892a5451257dd05978cec59744f64aeeb3d4ddc58fdf2dfb532b2d677</guid>
-      <pubDate>Wed, 30 Sep 2026 05:30:30 +0000</pubDate>
-    </item>
-    <item>
-      <title>FreeBSD -- Heap out-of-bounds access in semop(2) - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/6ef25129-bccc-11f1-906f-bc241121aa0a.html</link>
-      <description/>
-      <guid isPermaLink="false">38dfcba4dd3f40865d8124e8d33812420a4755fee5ff2c5b403e648f7991935c</guid>
-      <pubDate>Wed, 30 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>FreeBSD -- IPv6 UDP sendto(2) bypasses jail loopback restriction - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/6d92b2a3-bcce-11f1-906f-bc241121aa0a.html</link>
-      <description/>
-      <guid isPermaLink="false">62cadd72a7ee7f0f5ef7bdf3bae77429be2af775b576be49c70ac74712152a13</guid>
-      <pubDate>Wed, 30 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>FreeBSD -- Memory safety bugs in kqueue copy-on-fork implementation - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/d725b228-bccc-11f1-906f-bc241121aa0a.html</link>
-      <description/>
-      <guid isPermaLink="false">562176b588a40df5cc79346332375c165039eadc3cc3048a27d85159e8fa1401</guid>
-      <pubDate>Wed, 30 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>FreeBSD -- Multiple jail filesystem root escapes - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/1fe3495b-bccd-11f1-906f-bc241121aa0a.html</link>
-      <description/>
-      <guid isPermaLink="false">68dfe77e7f9d045ae8f46a2e079af0845cab81b45ed5c27fd90ee5f8de886e5b</guid>
-      <pubDate>Wed, 30 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>FreeBSD -- Remote DoS via receive-side kernel TLS - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/36c2abd8-bcce-11f1-906f-bc241121aa0a.html</link>
-      <description/>
-      <guid isPermaLink="false">e0761c414e71251d4fe5f9f4911aa5a7b535aadd484a9e5db7690989e98066a1</guid>
-      <pubDate>Wed, 30 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>OpenSSL -- Multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/0d183075-bcb5-11f1-b09d-8447094a420f.html</link>
-      <description/>
-      <guid isPermaLink="false">fa298ff136124973403545f56831431c9b33d837b6215523fb1dce49ecec5fc6</guid>
-      <pubDate>Wed, 30 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>N0va Phishkit Targets US and EU Businesses: A New Challenge for Identity Security - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/n0va-phishkit-targets-us-and-eu.html</link>
-      <description>N0va is targeting organizations across North America and Europe with phishing campaigns that impersonate trusted services and abuse legitimate authentication flows. Successful attacks can give threat actors access to valid accounts without relying on obvious malware activity.
-From there, a single compromised identity can open the door to sensitive data, business systems, and additional cloud</description>
-      <guid isPermaLink="false">350e1c8f1758a06ca515c23ce199edb813340ffb5f9988ee14cb816aba72a902</guid>
-      <pubDate>Wed, 16 Sep 2026 11:58:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Google Patches Pixel Modem Flaw Amid Signs of Limited Targeted Exploitation - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/google-patches-pixel-modem-flaw-amid.html</link>
-      <description>Google has disclosed that a high-severity security flaw in its Pixel Cellular Modem has come under exploitation in the wild.
-The vulnerability, tracked as CVE-2026-58704 (CVSS score: 8.0), is a privilege escalation flaw.
-"In Cellular Modem, there is a possible permission bypass due to a logic error in the code," according to a description of the bug in the NIST National Vulnerability Database</description>
-      <guid isPermaLink="false">0e121f13129a70fa831e76c2819eee429deae478dca5da9ff79c48c695f43330</guid>
-      <pubDate>Wed, 16 Sep 2026 11:15:58 +0000</pubDate>
-    </item>
-    <item>
-      <title>Acronis cPanel Backup Plugin Vulnerability Exploited in Targeted Attacks - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/acronis-cpanel-backup-plugin.html</link>
-      <description>Acronis has warned that a high-severity security flaw in its Backup plugin for cPanel and Web Host Manager (WHM) deployments has been exploited in the wild.
-The vulnerability, tracked as CVE-2026-87886 (CVSS score: 7.8), is described as a case of local privilege escalation due to insecure file permissions. It affects the following versions -
-  Acronis Backup plugin for cPanel &amp;amp; WHM (Linux</description>
-      <guid isPermaLink="false">f807bebaf4d77339c28beccf93cd9dec7be1a97e6e47318b697ed80fd045ff01</guid>
-      <pubDate>Wed, 16 Sep 2026 11:08:54 +0000</pubDate>
-    </item>
-    <item>
-      <title>Help Needed: Missing global perspective/rotation matrix data when converting UMK3 iOS .meshset files to .obj - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1whqcps/help_needed_missing_global_perspectiverotation/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Commercial-Mix6381"&gt; /u/Commercial-Mix6381 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/MaryNCRT/Ultimate-Mortal-Kombat-3-iOS-Recomp"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1whqcps/help_needed_missing_global_perspectiverotation/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">468b107ece84c23ea243ce472ae9e4b3a34dc5d5459b590ffc0a24d26166abb3</guid>
-      <pubDate>Wed, 16 Sep 2026 07:31:28 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Exploit WooCommerce Wholesale Lead Capture Flaw to Plant PHP Web Shells - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/attackers-exploit-woocommerce-wholesale.html</link>
-      <description>Threat actors are exploiting a critical security flaw in WooCommerce Wholesale Lead Capture, a premium WordPress plugin that has more than 6,000 active installs.
-"This vulnerability can be leveraged by unauthenticated attackers to upload arbitrary files, including PHP backdoors, and achieve remote code execution," Wordfence said.
-The WordPress security company said it has blocked over</description>
-      <guid isPermaLink="false">aef0a6f4f914158228e55d9b4b538210976ded2a4c5905d8ded31bf05a753be0</guid>
-      <pubDate>Wed, 16 Sep 2026 05:48:28 +0000</pubDate>
-    </item>
-    <item>
-      <title>Active Exploitation Attempts Target WSO2 API Manager JWT Bypass With Forged Admin Tokens - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/active-exploitation-attempts-target.html</link>
-      <description>A critical security flaw in WSO2 API Manager has come under active exploitation in the wild, according to findings from watchTowr.
-The vulnerability, tracked as CVE-2026-5430 (CVSS score: 9.8/10.0), is a case of improper verification of a cryptographic signature that could result in account takeover. Hacktron Team has been credited with discovering and reporting the flaw.
-"JWT authentication</description>
-      <guid isPermaLink="false">8460571f8a0b2f3531541881211d59e2c88d4e9861925bbd39a1be51f77e8555</guid>
-      <pubDate>Wed, 16 Sep 2026 05:18:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>KREMLIN Banking Malware Hijacks Chrome and Edge to Steal Credentials and Session Tokens - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/kremlin-banking-malware-hijacks-chrome.html</link>
-      <description>Cybersecurity researchers have shed light on a previously undocumented Brazilian banking malware operation that delivers a toolkit called KREMLIN.
-Elastic Security Labs is tracking the activity under the moniker REF9334. Active since at least May 2025, the threat actor has used lures that impersonate a dozen Brazilian banks and install a malicious browser extension on Google Chrome and</description>
-      <guid isPermaLink="false">24f58ea9d654c4c00a7481cb83fa0914d6e41570bfa5bb193c3670491335113c</guid>
-      <pubDate>Tue, 15 Sep 2026 18:54:14 +0000</pubDate>
-    </item>
-    <item>
-      <title>Iranian Hackers Use Telegram-Controlled Malware to Spy on Dissidents and Journalists - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/iranian-hackers-use-telegram-controlled.html</link>
-      <description>Cybersecurity agencies in the United States, the United Kingdom, and the Netherlands have detailed a Windows malware that they say Iran's intelligence service uses to spy on dissidents, journalists, and activists around the world.
-The malware is controlled via the Telegram messaging app and can copy a target's emails and chat messages, take screenshots, and activate the microphone to record</description>
-      <guid isPermaLink="false">cef9eec0fea809da7523281b8987e95892e1e47e1bd04d8c5255e5e1e22c8806</guid>
-      <pubDate>Tue, 15 Sep 2026 16:29:51 +0000</pubDate>
-    </item>
-    <item>
-      <title>BambooToken Malware Uses MQTT to Control Windows and Linux Systems - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/bambootoken-malware-uses-mqtt-to.html</link>
-      <description>Cybersecurity researchers have disclosed details of a multi-platform campaign that uses the Message Queueing Telemetry Transport (MQTT) protocol as a communication channel to control Windows and Linux systems.
-The emerging malware family, codenamed BambooToken, is assessed to be active since at least February 2023 and put to use in attacks targeting organizations across Asia and South America.</description>
-      <guid isPermaLink="false">b5959d7dee84a9d692240afd4910d7570daec37211366f7f2117f03065776976</guid>
-      <pubDate>Tue, 15 Sep 2026 15:23:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>Escaping the OpenAI Codex sandbox, twice - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wh0ukg/escaping_the_openai_codex_sandbox_twice/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/natcoba"&gt; /u/natcoba &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://accomplish.ai/blog/escaping-the-openai-codex-sandbox-twice/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wh0ukg/escaping_the_openai_codex_sandbox_twice/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">3e51a4ac437576f9a1792d200a9233d219ebd0671b2764acc971a758687e8287</guid>
-      <pubDate>Tue, 15 Sep 2026 13:45:35 +0000</pubDate>
     </item>
   </channel>
 </rss>
