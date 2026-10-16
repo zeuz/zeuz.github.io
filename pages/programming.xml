@@ -5,7 +5,83 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Thu, 15 Oct 2026 14:01:50 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 14:01:15 +0000</lastBuildDate>
+    <item>
+      <title>Artem Golubin: Python's binary wheels and supply chain attacks - Planet Python</title>
+      <link>https://rushter.com/blog/python-binary-wheels/</link>
+      <description>&lt;p&gt;Python is known for fast packages despite being a slow language.
+The fastest Python packages are written in compiled languages such as C, C++, or Rust,
+with Python acting only as a glue.&lt;/p&gt;
+&lt;p&gt;Python users usually don't even notice that, because PyPI (Python's package index) provides
+precompiled binaries.
+They are called wheels, and when you run &lt;code&gt;pip install&lt;/code&gt;, it prefers them over the source distribution.
+For example, each release of my packages ships up to 90 different wheels.
+You need a separate binary wheel for each Python version, platform, and architecture
+combination. The regular distribution only contains the source code.&lt;/p&gt;
+&lt;p&gt;Without Python wheels, the distribution would be much harder. When wheels are not available,
+a user has to compile the code when installing a package.
+That requires the correct compiler and system dependencies.&lt;/p&gt;
+&lt;p&gt;Since I've spent &lt;a href="https://rushter.com/blog/python-code-exec/" target="_blank"&gt;quite a while&lt;/a&gt; analyzing malicious packages on PyPI, this got me thinking about wheels.[......]&lt;/p&gt;</description>
+      <guid isPermaLink="false">9fd797a139cdfc648455fd362a7a3630f4b8c67e6eeacd46d0ad82ed2ed0b21a</guid>
+      <pubDate>Thu, 15 Oct 2026 16:37:15 +0000</pubDate>
+    </item>
+    <item>
+      <title>Rodrigo Girão Serrão: Unpacking inside comprehensions - Planet Python</title>
+      <link>https://mathspp.com/blog/unpacking-inside-comprehensions</link>
+      <description>&lt;img alt="" src="https://mathspp.com/images/4/f/5/a/8/4f5a839e98306b8f7bce67d172584ffee23eb517-thumbnail.webp" /&gt;
+                                &lt;p&gt;Learn how to use the unpacking operator inside list comprehensions.&lt;/p&gt;
+&lt;p&gt;Starting with Python 3.15, you can use the asterisk &lt;code&gt;*&lt;/code&gt; to unpack inside &lt;a href="https://mathspp.com/blog/pydonts/list-comprehensions-101"&gt;list comprehensions&lt;/a&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-py"&gt;nested = [[0, 1, 2], [3, 4], [], [5, 6, 7]]
+flattened = [*sublist for sublist in nested]
+print(flattened)  # [0, 1, 2, 3, 4, 5, 6, 7]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This new unpacking feature also works with set comprehensions, dictionary comprehensions, and generator expressions.
+This article explains the syntax, the alternatives in Python 3.14 or earlier, and shows real world example applications.&lt;/p&gt;
+&lt;h2 id="15-days-of-python-3-15"&gt;15 days of Python 3.15&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#15-days-of-python-3-15"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;To &lt;a href="https://mathspp.com/python-315"&gt;celebrate the release of Python 3.15&lt;/a&gt;, over the next 15 business days I'll be writing about a new 3.15 feature every day.
+Explained clearly and with examples so you don't have to sift through the changelog.&lt;/p&gt;
+&lt;p&gt;Subscribe to receive this free email series:&lt;/p&gt;
+&lt;p&gt;
+&lt;/p&gt;&lt;div class="form-wrapper" id="enroll-wrapper"&gt;
+&lt;form action="https://mathspp.com/courses/uv" class=" " id="enroll" method="POST" name="enroll"&gt;
+                          &lt;input class="form-honeybear" name="data[honeypot]" tabindex="-1" type="text" value="" /&gt;&lt;div class="form-field form-group "&gt;
+          &lt;div class="form-data"&gt;
+                        &lt;div class="form-input-wrapper "&gt;
+                                    &lt;input class="form-input " name="data[email]" type="email" value="" /&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+  &lt;/div&gt;
+            &lt;div class="form-field form-group "&gt;
+            &lt;div class="form-label-wrapper"&gt;&lt;label class="form-label"&gt;&lt;/label&gt;
+      &lt;/div&gt;
+        &lt;div class="form-data"&gt;
+            &lt;div class="g-recaptcha-container"&gt;
+                                &lt;input name="data[token]" type="hidden" value="" /&gt;&lt;input name="data[action]" type="hidden" value="a92dbf02d8e30e55867383627ee3103c" /&gt;&lt;/div&gt;
+            &lt;/div&gt;
+  &lt;/div&gt;
+        &lt;input name="__form-name__" type="hidden" value="enroll" /&gt;&lt;input name="__unique_form_id__" type="hidden" value="vpybr4c6et5wagffjuyw" /&gt;&lt;input class="form-nonce-field" name="form-nonce" type="hidden" value="0cf88c22778dae38e5d8dbc362752617" /&gt;&lt;div class="button-wrapper"&gt;
+  &lt;button class="btn " type="submit"&gt;Enroll for free &amp;#128013;&amp;#128640;&lt;/button&gt;
+        &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+&lt;p&gt;If you want, you can also &lt;a href="https://mathspp.com/python-315"&gt;check the schedule&lt;/a&gt; of the upcoming emails.&lt;/p&gt;
+&lt;h2 id="unpacking-inside-a-comprehension"&gt;Unpacking inside a comprehension&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#unpacking-inside-a-comprehension"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;If you have a nested list of lists, you can flatten them out by unpacking inside a comprehension:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-py"&gt;nested = [[0, 1, 2], [3, 4], [], [5, 6, 7]]
+flattened = [*sublist for sublist in nested]
+print(flattened)  # [0, 1, 2, 3, 4, 5, 6, 7]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Before the unpacking syntax in 3.15, you'd have to write a nested list comprehension:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-py"&gt;nested = [[0, 1, 2], [3, 4], [], [5, 6, 7]]
+flattened = [
+    element
+    for sublist in nested
+    for element in sublist
+]
+print(flattened)  # [0, 1, 2, 3, 4, 5, 6, 7]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The structure of the nested list comprehension mirrors the structure of the equivalent nested &lt;code&gt;for&lt;/code&gt; loop:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-py"&gt;nested = [[0, 1, 2], [3, 4], [], [5, 6, 7]]
+for sublist in nested:...&lt;/code&gt;&lt;/pre&gt;</description>
+      <guid isPermaLink="false">c76a56698577c821b8e47804aa10426ece17dbaa0aac6fa281bc2b3ea3ed3f17</guid>
+      <pubDate>Thu, 15 Oct 2026 15:14:00 +0000</pubDate>
+    </item>
     <item>
       <title>Bob Belderbos: My bookkeeping runs on code now. AI only reads the PDFs. - Planet Python</title>
       <link>https://belderbos.dev/blog/replaced-my-bookkeeping-tool-with-python/</link>
@@ -179,6 +255,17 @@ conda, OpenBSD, FreeBSD, Gentoo, and more.&lt;/p&gt;
 The PyPy Team&lt;/p&gt;</description>
       <guid isPermaLink="false">96d7b3109997dd713469f5821b9115f31b82c4d565790c792172af377575b280</guid>
       <pubDate>Wed, 14 Oct 2026 07:42:06 +0000</pubDate>
+    </item>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: Pandas groupby on datetime parts with the dt accessor - Planet Python</title>
+      <link>https://lernerpython.com/2026/10/14/pandas-groupby-on-datetime-parts-with-the-dt-accessor/</link>
+      <description>&lt;img alt="Pandas groupby on datetime parts with the dt accessor" class="wp-image-18400" height="1311" src="https://lernerpython.com/wp-content/uploads/2026/10/2026-10-14.png" width="1823" /&gt;
+&lt;p class="wp-block-paragraph"&gt;If your Python Pandas data frame has a datetime column, you can group on a portion of that via the &amp;#8220;dt&amp;#8221; accessor.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;For example, let&amp;#8217;s get mean trip_distance for each hour of the day:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;df.groupby(df['tpep_pickup_datetime'].dt.hour)['trip_distance'].mean()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/10/14/pandas-groupby-on-datetime-parts-with-the-dt-accessor/"&gt;Pandas groupby on datetime parts with the dt accessor&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">0289dd149f22f0a177a04f20c67b217e3ff3d7deb4360623261f5e557ac66ddb</guid>
+      <pubDate>Wed, 14 Oct 2026 06:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Mark Dufour: CPython 3.15 (JIT) Performance Showdown - Planet Python</title>

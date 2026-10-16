@@ -5,13 +5,109 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Thu, 15 Oct 2026 14:01:49 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 14:01:15 +0000</lastBuildDate>
+    <item>
+      <title>Setting Up REA with Claude Code — Teaching AI to Read Binaries with Ghidra (with Codex &amp; OpenCode) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x7fqu4/setting_up_rea_with_claude_code_teaching_ai_to/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/ercanatay"&gt; /u/ercanatay &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://e.ercanatay.com/rea-en"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x7fqu4/setting_up_rea_with_claude_code_teaching_ai_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">652fee9f568cf101646ae4aaf797cbc49a0bbd0adbfd4c033966ece5273da9e5</guid>
+      <pubDate>Fri, 16 Oct 2026 13:06:53 +0000</pubDate>
+    </item>
+    <item>
+      <title>China-Linked Hackers Exploited BeyondTrust Zero-Day to Take Over Remote Support Servers - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/china-linked-hackers-exploited.html</link>
+      <description>The China-nexus cyber espionage group tracked as Armory Castle (previously UNC5221 or Warp Panda) exploited a newly disclosed security flaw in BeyondTrust Remote Support (formerly Bomgar) as a zero-day in late August 2026.
+The vulnerability, tracked as CVE-2026-102764 (CVSS score: 9.3), is a case of improper origin validation in an internal messaging component that could be exploited by a</description>
+      <guid isPermaLink="false">d1872d2f03dab2df3b56e1bcdcc202cf9be30e37ab545adb0b9729c2aefa1467</guid>
+      <pubDate>Fri, 16 Oct 2026 06:55:55 +0000</pubDate>
+    </item>
+    <item>
+      <title>CERT-In Warns AI Agents Accessed Sensitive Data at Indian Organizations During Testing - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/cert-in-warns-ai-agents-accessed.html</link>
+      <description>AI agents being tested online reached the live systems of Indian organizations and read business records, including personal data and confidential material, CERT-In&amp;nbsp;said in an advisory&amp;nbsp;on October 15.
+The agents went beyond their assigned tasks, and none of the organizations detected the unauthorized access. After internal reviews, the AI companies whose models were being tested</description>
+      <guid isPermaLink="false">499208dd1d326fb7d5f26e3f2e6f703f36a69448e5cc889191634e6a493e2bf5</guid>
+      <pubDate>Fri, 16 Oct 2026 06:53:09 +0000</pubDate>
+    </item>
+    <item>
+      <title>PEERSTITCH Malware Deployed via FortiOS Flaw Bypasses Checks on Tagged VPN Sessions - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/attackers-exploit-fortios-flaw-to.html</link>
+      <description>A suspected advanced threat actor has been observed exploiting a security flaw in Fortinet FortiOS to deliver a previously unreported memory-resident ARM64 malware known as PEERSTITCH.
+The attack involves the exploitation of CVE-2025-61624 (CVSS score: 5.4), a path traversal flaw in the command line interpreter of FortiOS, FortiPAM, FortiProxy, and FortiSwitchManager that could allow a</description>
+      <guid isPermaLink="false">bf3db503ab0791f2d211be5c99c946ce720fda2d36ac8fd839cc29483e505254</guid>
+      <pubDate>Fri, 16 Oct 2026 04:59:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>Wanted to download an ISO, ended up writing a kernel exploit - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x6z4gi/wanted_to_download_an_iso_ended_up_writing_a/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/tnavda"&gt; /u/tnavda &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://blog.dfb.sh/blog/eap770-root-for-two-zeros/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x6z4gi/wanted_to_download_an_iso_ended_up_writing_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">2cf6b552e7acf307689f3e705322cc3a229c50a63d647aa13c973b4303145942</guid>
+      <pubDate>Thu, 15 Oct 2026 22:10:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>Critical PwnEscape Linux Kernel Vulnerability Lets Guest VMs Read Host Memory - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/critical-pwnescape-linux-kernel.html</link>
+      <description>A newly disclosed critical flaw in the Linux kernel allows code inside a virtual machine to read memory on the host computer it runs on. A researcher demonstrated the leak against Vercel's live cloud sandboxes, and Vercel confirmed it.
+The flaw, now tracked as CVE-2026-99999 and nicknamed PwnEscape, is in the Linux kernel's networking code, not in any one cloud's setup, so it reaches the shared</description>
+      <guid isPermaLink="false">0b843d8eac6b3d3a9f887afd7593c8c366f7f9985bd04e4e54f204e9f4c9de03</guid>
+      <pubDate>Thu, 15 Oct 2026 20:24:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>Rewynth: recovering branchy ARM64 behavior and comparing edits under explicit input bounds (AI-assisted) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x6sxp2/rewynth_recovering_branchy_arm64_behavior_and/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Awkward_Conflict3990"&gt; /u/Awkward_Conflict3990 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/nazeeh111/Rewynth/blob/81ce6228760f7db31d0aadb59a6aeff23ab5bb3d/docs/control-flow.md#run-the-complete-lesson"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x6sxp2/rewynth_recovering_branchy_arm64_behavior_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">c80217137654bf3b3525d413fe99de29dc60bbdba5ce08ff739e1666a20ab85c</guid>
+      <pubDate>Thu, 15 Oct 2026 18:06:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>Citizen Lab Traces Zero-Click Candiru Spyware Infections at Al Jazeera to Targeted Online Ads - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/citizen-lab-traces-zero-click-candiru.html</link>
+      <description>Candiru, an Israeli maker of spyware sold to governments, infected devices at the news network Al Jazeera through ordinary online ads, in attacks that needed no click or other action from the user, researchers at&amp;nbsp;the Citizen Lab&amp;nbsp;said Thursday.
+The hidden attack code ran the moment an ad loaded on the screen, and in some cases the ad loaded out of sight, in the background.
+The Citizen</description>
+      <guid isPermaLink="false">c24fef9a04ee19057a6e4413e0effa048587f8142ec18b5863cc33df66aa91fc</guid>
+      <pubDate>Thu, 15 Oct 2026 16:01:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>Silent Lynx Exploits WinRAR Flaw to Deploy Reverse Shell in CIS Government Attacks - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/silent-lynx-exploits-winrar-flaw-to.html</link>
+      <description>The threat actor known as Silent Lynx has been attributed to a fresh set of attacks targeting government organizations across the Commonwealth of Independent States (CIS).
+The activity, observed from June 2025 through August 2026, involves four different infection chains that make use of macro-enabled documents, PS2EXE downloaders, GitHub-hosted PowerShell, and crafted WinRAR archives</description>
+      <guid isPermaLink="false">cd6bdc800f0623335fd4425c46e2182968f0f0627f4aa5504d5552bc3d553f77</guid>
+      <pubDate>Thu, 15 Oct 2026 16:00:26 +0000</pubDate>
+    </item>
+    <item>
+      <title>Help TDS Linked to Hotejka as 20,000+ Cloudflare Pages Domains Host Tech Support Scams - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/help-tds-linked-to-hotejka-as-20000.html</link>
+      <description>A long-running Traffic Distribution System (TDS) known as Help TDS to a Russian-language affiliate program called Hotejka, which appears to be a rebrand of a traffic monetization operation dubbed ROI777.
+Help TDS is assessed to be active since at least 2017, offering PHP code templates to partners and affiliates that are installed into compromised websites with an aim to direct unsuspecting</description>
+      <guid isPermaLink="false">43a84daddf62f464696d76f2e9ada041aa0545d6ceb2cdeb4713cb96287ace46</guid>
+      <pubDate>Thu, 15 Oct 2026 14:11:36 +0000</pubDate>
+    </item>
     <item>
       <title>I made an open-source companion for REA that turns reverse-engineering findings into a build plan - Reverse Engineering</title>
       <link>https://www.reddit.com/r/ReverseEngineering/comments/1x6lg23/i_made_an_opensource_companion_for_rea_that_turns/</link>
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Electrical_Worth7942"&gt; /u/Electrical_Worth7942 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/ShadowSwaps/REA-Reconstruction-Companion"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x6lg23/i_made_an_opensource_companion_for_rea_that_turns/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">50fc37ff4cee1e5eee81914df603d50278059bfaa820c684aeedf331c1aaa8f9</guid>
       <pubDate>Thu, 15 Oct 2026 13:19:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>NGINX Fixes 5 Flaws, Including Possible RCE and a TLS Bug That May Skip Client-Cert Checks - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/nginx-fixes-5-flaws-including-possible.html</link>
+      <description>NGINX released&amp;nbsp;versions 1.30.6 and 1.31.7&amp;nbsp;on October 14 to fix five vulnerabilities, one of them present in every release since May 2005.
+There are three memory bugs that F5, the company behind NGINX, says could crash a worker process or possibly let an attacker run code, and each requires a specific configuration to exploit.
+A fourth lets an attacker forge a TLS session that could</description>
+      <guid isPermaLink="false">0b07eb479962b2720eda426494844556634bce6eabffd6c4a68827582a465f39</guid>
+      <pubDate>Thu, 15 Oct 2026 12:58:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>Next.js Ships Out-of-Band Patch for Two Critical RCE Flaws in Caching and SVG Processing - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/nextjs-ships-out-of-band-patch-for-two.html</link>
+      <description>Next.js released an&amp;nbsp;out-of-band security update&amp;nbsp;on October 14 that fixes two critical flaws allowing unauthenticated remote code execution, along with a high-severity denial-of-service flaw.
+One code-execution flaw is in React Server Components, and the other in librsvg, the open-source library Next.js uses through the&amp;nbsp;sharp&amp;nbsp;package to handle SVG images.
+The fixes are in</description>
+      <guid isPermaLink="false">1be8d9e11f9efe63aeaf1b53e57d937d6a4ce2a02120de6ba49421e191b46658</guid>
+      <pubDate>Thu, 15 Oct 2026 12:28:13 +0000</pubDate>
     </item>
     <item>
       <title>Drupal Patches Critical Core RCE Flaw with No-Login Path via Contributed Modules - The Hacker News</title>
@@ -1440,96 +1536,6 @@ LevelBlue's Threat Hunt Operations &amp;amp; Research (THOR) team, which analyze
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/_WinAsm"&gt; /u/_WinAsm &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://winware31.blogspot.com/2026/05/deep-dive-into-object-creation-flow-in_01568126117.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wukl41/deep_dive_into_the_object_creation_flow_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">2fa5f13041cbdf0247b35b863be72dc298ec3babab6f1014c18049f0527ad86d</guid>
       <pubDate>Wed, 30 Sep 2026 23:50:50 +0000</pubDate>
-    </item>
-    <item>
-      <title>Deep dive into the object creation flow in Windows - PART 3: Post-initialization and Name Lookup - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wukktq/deep_dive_into_the_object_creation_flow_in/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/_WinAsm"&gt; /u/_WinAsm &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://winware31.blogspot.com/2026/05/deep-dive-into-object-creation-flow-in_0798478475.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wukktq/deep_dive_into_the_object_creation_flow_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">ee7c08d516ac77aef494d2361e1944acb6fcb9795913865f49e1a9af6cb4d873</guid>
-      <pubDate>Wed, 30 Sep 2026 23:50:29 +0000</pubDate>
-    </item>
-    <item>
-      <title>Deepdive into the object creation flow in Windows -PART 2 : access check internals - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wukknc/deepdive_into_the_object_creation_flow_in_windows/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/_WinAsm"&gt; /u/_WinAsm &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://winware31.blogspot.com/2026/05/deep-dive-into-object-creation-flow-in.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wukknc/deepdive_into_the_object_creation_flow_in_windows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">ea98ea6b2d2243704ef567046958057418b2806a7bd3fffe3e9824956a363fe7</guid>
-      <pubDate>Wed, 30 Sep 2026 23:50:15 +0000</pubDate>
-    </item>
-    <item>
-      <title>Deep dive into the object creation flow in Windows -PART1 : Allocation and Pre-Initialization - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wukk8o/deep_dive_into_the_object_creation_flow_in/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/_WinAsm"&gt; /u/_WinAsm &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://winware31.blogspot.com/2026/04/deep-dive-into-object-creation-flow-in.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wukk8o/deep_dive_into_the_object_creation_flow_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">cdb371aa6572c6175d56200f228e7890b794882c2cbee3f498c43a51577a759e</guid>
-      <pubDate>Wed, 30 Sep 2026 23:49:44 +0000</pubDate>
-    </item>
-    <item>
-      <title>Loading windows PE .dlls on linux - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wuj1jb/loading_windows_pe_dlls_on_linux/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/0lach"&gt; /u/0lach &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://delta.rocks/blog/lach-stuff/champagne"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wuj1jb/loading_windows_pe_dlls_on_linux/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">6f63409fd480a9ae30b19b0ac960d45eb103c36ea879ce809e9e95630bfc758f</guid>
-      <pubDate>Wed, 30 Sep 2026 22:39:46 +0000</pubDate>
-    </item>
-    <item>
-      <title>ASM BOTS: Core War where every warrior is raw 8086 machine code you can ndisasm, with an in-browser debugger (step back 256, watches, trace). Open source, MIT - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wuiwuf/asm_bots_core_war_where_every_warrior_is_raw_8086/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/pedramamini"&gt; /u/pedramamini &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/pedramamini/asmbots.io"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wuiwuf/asm_bots_core_war_where_every_warrior_is_raw_8086/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">87424c68680708b2620ba23dc55dd803e6d2d2f993df5df7e5452a5b0d2e3051</guid>
-      <pubDate>Wed, 30 Sep 2026 22:33:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>Gigabyte kernel driver LPE - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wue3of/gigabyte_kernel_driver_lpe/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/nanaynunay"&gt; /u/nanaynunay &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/mein-0/gvcidrv64/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wue3of/gigabyte_kernel_driver_lpe/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">8134f99499d7a3f03e15f1ea941820816d31b063c32d68fbbd475433efd84c81</guid>
-      <pubDate>Wed, 30 Sep 2026 19:19:44 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Exploit Zimbra Flaw to Deploy Web Shells and Harvest Authentication Secrets - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/attackers-exploit-zimbra-flaw-to-deploy.html</link>
-      <description>Threat actors have weaponized a now-patched security flaw in Zimbra Collaboration Suite (ZCS) to deploy web shells and access mailbox data, according to findings from the Microsoft Security Research team.
-The attack exploits CVE-2026-73570 (CVSS score: 8.9), an unauthenticated operating system command injection flaw that can lead to remote code execution when Simple Network Management Protocol</description>
-      <guid isPermaLink="false">f441da403eebf2e70fc0a27bab9c1ca80baeec7350b798888629985df3d367b8</guid>
-      <pubDate>Wed, 30 Sep 2026 16:46:29 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Abuse MSP360 to Deploy ScreenConnect in Dual-RMM Phishing Attacks - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/attackers-abuse-msp360-to-deploy.html</link>
-      <description>Microsoft has warned of phishing campaigns distributing an installer for the MSP360 Remote Monitoring and Management (RMM) software under the guise of meeting invitations, PDF-themed lures, software update prompts, and other social-engineering content.
-"Once executed, the legitimate MSP360 installer, distributed under a deceptive file name established remote management access on affected</description>
-      <guid isPermaLink="false">86d8c2200b287c98276c589604fe70bc5b8988f2453f5e22e8d592b966cb9746</guid>
-      <pubDate>Wed, 30 Sep 2026 16:32:59 +0000</pubDate>
-    </item>
-    <item>
-      <title>Cisco Warns of Attackers Exploiting Critical Authentication Bypass in SD-WAN Manager - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/cisco-warns-of-attackers-exploiting.html</link>
-      <description>Attackers are exploiting a new critical zero-day flaw in Cisco Catalyst SD-WAN Manager, the system companies use to manage their Cisco SD-WAN networks, Cisco said in an&amp;nbsp;advisory&amp;nbsp;on September 30.
-The flaw, CVE-2026-76504, could allow a remote attacker with no login access to use the Manager's API as the admin user. Fixed releases are available, and there is no workaround. It carries a</description>
-      <guid isPermaLink="false">d53a660ea5c57c936bf467abefe0e56094ae2b1327ede03839154d7fcbf359b5</guid>
-      <pubDate>Wed, 30 Sep 2026 15:24:54 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Abuse ChatGPT Custom GPTs to Deliver RAT via ClickFix Lures - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/attackers-abuse-chatgpt-custom-gpts-to.html</link>
-      <description>Threat actors are abusing ChatGPT Custom GPTs to disguise them as legitimate product offerings and direct unsuspecting victims to malicious sites that employ ClickFix lures to deliver malware.
-Huntress, which observed the activity in late September 2026, said it marks the abuse of yet another feature in trusted artificial intelligence (AI) platforms. Prior campaigns have weaponized shared</description>
-      <guid isPermaLink="false">d78ba279c2858c4d14e48b7ae63b496de593637b7544bfba352efaa6e90d7fb1</guid>
-      <pubDate>Wed, 30 Sep 2026 15:00:15 +0000</pubDate>
-    </item>
-    <item>
-      <title>AI Coding Agents Exposed 13,000 Internal Images, Including Billing Records, on GitHub - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/ai-coding-agents-exposed-13000-internal.html</link>
-      <description>AI coding agents asked to share screenshots of code changes for review have put internal company images in public GitHub repositories, security company Glow said.
-Its researchers found more than 13,000 internal images from developers at over 300 organizations, including customer billing records and screens of features not yet released. In most cases, they sat under developers' personal accounts</description>
-      <guid isPermaLink="false">1466f5e1b4951287c8b85f8d5899683c904ed28a1c28f88f3da9d179d0673c4b</guid>
-      <pubDate>Wed, 30 Sep 2026 11:30:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>US-Focused CSuite Phishing Steals Microsoft 365 Sessions and Deploys RMM Tools for Remote Access - The Hacker News</title>
-      <link>https://thehackernews.com/2026/09/us-focused-csuite-phishing-steals.html</link>
-      <description>ANY.RUN researchers traced a US-focused CSuite phishing campaign across 351 sandbox analyses, with 51% of submissions coming from the United States. Technology, manufacturing, government, and consulting organizations showed the highest exposure.
-By combining Microsoft 365 session theft with remote-access tool deployment, CSuite can turn a phishing incident into broader account compromise, fraud</description>
-      <guid isPermaLink="false">948b0e849caeba04043f235d16e23f57e629db636d2b55943c1189ffd21a71a2</guid>
-      <pubDate>Wed, 30 Sep 2026 10:45:00 +0000</pubDate>
     </item>
   </channel>
 </rss>
