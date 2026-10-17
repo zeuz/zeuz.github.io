@@ -5,7 +5,94 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Fri, 16 Oct 2026 14:01:15 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 14:01:18 +0000</lastBuildDate>
+    <item>
+      <title>Talk Python to Me: #566: State of the art in Python 2026 - Planet Python</title>
+      <link>https://talkpython.fm/episodes/show/566/state-of-the-art-in-python-2026</link>
+      <description>Which of your Python tools would you still pick if you started fresh today? For a long time, the answer was easy. The stack felt settled. AI has reopened almost every one of those choices. Some tools got faster. Others got replaced outright. On this episode, a panel takes stock of the state of the art in Python for 2026. Calvin Hendryx-Parker is CTO and co-founder of Six Feet Up. Pat Decker works in DevOps at Hibu. Reuven Lerner has trained Python developers for 15 years. Sydney Runkle does product management for open source at LangChain. One of them barely opens an editor anymore. Listen in to hear the surprising replacement.&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Episode sponsors&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;a href='https://talkpython.fm/training'&amp;gt;Talk Python Courses&amp;lt;/a&amp;gt;&amp;lt;br&amp;gt;
+&amp;lt;a href='https://talkpython.fm/devopsbook'&amp;gt;Python in Production&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;h2 class="links-heading mb-4"&amp;gt;Links from the show&amp;lt;/h2&amp;gt;
+&amp;lt;div&amp;gt;&amp;lt;strong&amp;gt;Guests&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Pat Decker&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Reuven Lerner&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://github.com/reuven?featured_on=talkpython" target="_blank" &amp;gt;github.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Calvin Hendryx-Parker&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.linkedin.com/in/calvinhp?featured_on=talkpython" target="_blank" &amp;gt;linkedin.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Sydney Runkle&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://github.com/sydney-runkle?featured_on=talkpython" target="_blank" &amp;gt;github.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Talk Python Membership&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/community" target="_blank" &amp;gt;talkpython.fm/community&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;This Reddit post&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.reddit.com/r/Python/comments/1wkziub/state_of_the_art_in_python_2026/?featured_on=talkpython" target="_blank" &amp;gt;www.reddit.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;PSF+Jetbrains survey&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://blog.jetbrains.com/pycharm/2025/08/the-state-of-python-2025/?featured_on=talkpython" target="_blank" &amp;gt;blog.jetbrains.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;vscode&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://code.visualstudio.com?featured_on=talkpython" target="_blank" &amp;gt;code.visualstudio.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;pycharm&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.jetbrains.com/pycharm/?featured_on=talkpython" target="_blank" &amp;gt;www.jetbrains.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;cmux&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://cmux.com/?featured_on=talkpython" target="_blank" &amp;gt;cmux.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;warp.dev&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.warp.dev?featured_on=talkpython" target="_blank" &amp;gt;www.warp.dev&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;herdr&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://herdr.dev/?featured_on=talkpython" target="_blank" &amp;gt;herdr.dev&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Royal TS&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://apps.microsoft.com/detail/xp99wvbk3knn3s?hl=en-US&amp;amp;amp;gl=US&amp;amp;amp;featured_on=talkpython" target="_blank" &amp;gt;apps.microsoft.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Tailscale&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://tailscale.com/?featured_on=talkpython" target="_blank" &amp;gt;tailscale.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;uv&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://docs.astral.sh/uv/?featured_on=talkpython" target="_blank" &amp;gt;docs.astral.sh&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;FastAPI&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://fastapi.tiangolo.com/?featured_on=talkpython" target="_blank" &amp;gt;fastapi.tiangolo.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Litestar&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://litestar.dev/?featured_on=talkpython" target="_blank" &amp;gt;litestar.dev&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Django&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.djangoproject.com?featured_on=talkpython" target="_blank" &amp;gt;www.djangoproject.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;httpx2&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://github.com/pydantic/httpx2?featured_on=talkpython" target="_blank" &amp;gt;github.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;ty&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://github.com/astral-sh/ty?featured_on=talkpython" target="_blank" &amp;gt;github.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;pyrefly&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://pyrefly.org/?featured_on=talkpython" target="_blank" &amp;gt;pyrefly.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;postgres&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.postgresql.org/?featured_on=talkpython" target="_blank" &amp;gt;www.postgresql.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;sqlite&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.sqlite.org/?featured_on=talkpython" target="_blank" &amp;gt;www.sqlite.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;duckdb&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://duckdb.org/?featured_on=talkpython" target="_blank" &amp;gt;duckdb.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Hetzner&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.hetzner.com/?featured_on=talkpython" target="_blank" &amp;gt;www.hetzner.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;DigitalOcean&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.digitalocean.com/?featured_on=talkpython" target="_blank" &amp;gt;www.digitalocean.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;AWS&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://aws.amazon.com/?featured_on=talkpython" target="_blank" &amp;gt;aws.amazon.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Great Docs&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://posit-dev.github.io/great-docs/?featured_on=talkpython" target="_blank" &amp;gt;posit-dev.github.io&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Zensical&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://zensical.org/?featured_on=talkpython" target="_blank" &amp;gt;zensical.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Vue.js&amp;lt;/strong&amp;gt;: &amp;lt;a href="http://Vue.js?featured_on=talkpython" target="_blank" &amp;gt;Vue.js&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;AgentsView&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.agentsview.io?featured_on=talkpython" target="_blank" &amp;gt;www.agentsview.io&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;LangChain Blog&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.langchain.com/blog?featured_on=talkpython" target="_blank" &amp;gt;www.langchain.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Umami Example of Great Docs&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://mkennedy.codes/docs/umami-python/?featured_on=talkpython" target="_blank" &amp;gt;mkennedy.codes&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Mintlify&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.mintlify.com/?featured_on=talkpython" target="_blank" &amp;gt;www.mintlify.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;DuckLake&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://ducklake.select/2025/05/27/ducklake-01/?featured_on=talkpython" target="_blank" &amp;gt;ducklake.select&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Robyn Web Framework&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://robyn.tech?featured_on=talkpython" target="_blank" &amp;gt;robyn.tech&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Django Ninja&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://django-ninja.dev?featured_on=talkpython" target="_blank" &amp;gt;django-ninja.dev&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Talk Python CLI&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/ai-integration" target="_blank" &amp;gt;talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;KEdit&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.kedit.com?featured_on=talkpython" target="_blank" &amp;gt;www.kedit.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Kitty&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://sw.kovidgoyal.net/kitty/?featured_on=talkpython" target="_blank" &amp;gt;sw.kovidgoyal.net&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Watch this episode on YouTube&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.youtube.com/watch?v=Rzn1Gf89N2Q" target="_blank" &amp;gt;youtube.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Episode #566 deep-dive&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/episodes/show/566/state-of-the-art-in-python-2026#takeaways-anchor" target="_blank" &amp;gt;talkpython.fm/566&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Episode transcripts&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/episodes/transcript/566/state-of-the-art-in-python-2026" target="_blank" &amp;gt;talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Theme Song: Developer Rap&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;🥁 Served in a Flask 🎸&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/flasksong" target="_blank" &amp;gt;talkpython.fm/flasksong&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;---==  Don't be a stranger  ==---&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;YouTube&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/youtube" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-youtube"&amp;gt;&amp;lt;/i&amp;gt; youtube.com/@talkpython&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Bluesky&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://bsky.app/profile/talkpython.fm" target="_blank" &amp;gt;@talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Mastodon&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://fosstodon.org/web/@talkpython" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-mastodon"&amp;gt;&amp;lt;/i&amp;gt; @talkpython@fosstodon.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;X.com&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://x.com/talkpython" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-twitter"&amp;gt;&amp;lt;/i&amp;gt; @talkpython&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Michael on Bluesky&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://bsky.app/profile/mkennedy.codes?featured_on=talkpython" target="_blank" &amp;gt;@mkennedy.codes&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Michael on Mastodon&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://fosstodon.org/web/@mkennedy" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-mastodon"&amp;gt;&amp;lt;/i&amp;gt; @mkennedy@fosstodon.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Michael on X.com&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://x.com/mkennedy?featured_on=talkpython" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-twitter"&amp;gt;&amp;lt;/i&amp;gt; @mkennedy&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;/div&amp;gt;</description>
+      <guid isPermaLink="false">e17bb6411f68a6a6b5f92e91057fdcb02123b54eeb793d61b6123e26caeb5d4f</guid>
+      <pubDate>Sat, 17 Oct 2026 11:36:21 +0000</pubDate>
+    </item>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: Pandas Grouper: Group datetime columns by custom time periods - Planet Python</title>
+      <link>https://lernerpython.com/2026/10/16/pandas-grouper-group-datetime-columns-by-custom-time-periods/</link>
+      <description>&lt;img alt="Pandas Grouper: Group datetime columns by custom time periods" class="wp-image-18408" height="802" src="https://lernerpython.com/wp-content/uploads/2026/10/2026-10-16.png" width="1916" /&gt;
+&lt;p class="wp-block-paragraph"&gt;Want to change the granularity when grouping on a Python Pandas data frame&amp;#8217;s datetime column? &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Use Grouper. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;For example: Here we get the mean trip_distance per 14-day period:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;df.groupby(pd.Grouper(key='tpep_pickup_datetime', freq='14D'))['trip_distance'].mean()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/10/16/pandas-grouper-group-datetime-columns-by-custom-time-periods/"&gt;Pandas Grouper: Group datetime columns by custom time periods&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">92805788bddc88c83c9b954907a8b7c0458b1914f0826184e8c8d8294c31008d</guid>
+      <pubDate>Fri, 16 Oct 2026 06:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Artem Golubin: Python's binary wheels and supply chain attacks - Planet Python</title>
       <link>https://rushter.com/blog/python-binary-wheels/</link>
