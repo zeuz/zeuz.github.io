@@ -5,7 +5,246 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sun, 18 Oct 2026 14:00:37 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 14:00:40 +0000</lastBuildDate>
+    <item>
+      <title>Hugo van Kemenade: Releasing Python 3.15.0 - Planet Python</title>
+      <link>https://hugovk.dev/blog/2026/releasing-python-3-15-0/</link>
+      <description>&lt;h2 class="relative group" id="prologue"&gt;Prologue &lt;span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"&gt;&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" href="https://hugovk.dev/tags/python/index.xml#prologue"&gt;#&lt;/a&gt;&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;Like &lt;a href="https://hugovk.dev/2025/releasing-python-3-14-0"&gt;last year&lt;/a&gt;, I livetooted the release of Python
+3.15.0. Here it is in blogpost form!&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 class="relative group" id="two-weeks"&gt;Two weeks &lt;span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"&gt;&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" href="https://hugovk.dev/tags/python/index.xml#two-weeks"&gt;#&lt;/a&gt;&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;&lt;a href="https://hugovk.dev/next-release/"&gt;Two weeks&lt;/a&gt; until Python 3.15.0 final!&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href="https://mastodon.social/tags/Python"&gt;#Python&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/Python315"&gt;#Python315&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://mastodon.social/@hugovk/117288511700924676"&gt;&lt;em&gt;Fri, Sep 18, 2026, 00:30 EEST&lt;/em&gt;&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;h2 class="relative group" id="one-week"&gt;One week &lt;span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"&gt;&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" href="https://hugovk.dev/tags/python/index.xml#one-week"&gt;#&lt;/a&gt;&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;&lt;a href="https://hugovk.dev/next-release/"&gt;One week&lt;/a&gt; until Python 3.15.0 final!!&lt;/p&gt;
+&lt;p&gt;What are you &lt;a href="https://docs.python.org/3.15/whatsnew/3.15.html"&gt;most looking forward to&lt;/a&gt;?&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href="https://mastodon.social/tags/Python"&gt;#Python&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/Python315"&gt;#Python315&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://mastodon.social/@hugovk/117316062163655962"&gt;&lt;em&gt;Tue, Sep 22, 2026, 21:17 EEST&lt;/em&gt;&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;h2 class="relative group" id="python-3150-release-day"&gt;Python 3.15.0 release day! &lt;span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"&gt;&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" href="https://hugovk.dev/tags/python/index.xml#python-3150-release-day"&gt;#&lt;/a&gt;&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;First blocker, we&amp;rsquo;re getting 503s on &lt;a href="https://docs.python.org"&gt;docs.python.org&lt;/a&gt; and
+&lt;a href="https://buildbot.python.org"&gt;buildbot.python.org&lt;/a&gt;, the latter of which is needed to
+check the tier 1 and 2 buildbots are passing, needed for a release.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s a certificate issue from an incompatible pyOpenSSL upgrade. We&amp;rsquo;re waiting for the
+US to wake up and poke it with a stick.&lt;/p&gt;
+&lt;p&gt;
+ &lt;img alt="buildbot.python.org: 503 Service Unavailable. No server is available to handle this request" class="mx-auto my-0 rounded-md" height="314" src="https://hugovk.dev/blog/2026/releasing-python-3-15-0/buildbot-503_hu_c3d7506cb2905d61.png" width="676" /&gt;
+&lt;/p&gt;
+&lt;p&gt;
+ &lt;img alt="docs.python.org: 503 Service Unavailable. No server is available to handle this request" class="mx-auto my-0 rounded-md" height="340" src="https://hugovk.dev/blog/2026/releasing-python-3-15-0/docs-503_hu_82e36965d650d711.png" width="686" /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href="https://mastodon.social/tags/Python"&gt;#Python&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/Python315"&gt;#Python315&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://mastodon.social/@hugovk/117365378328527529"&gt;&lt;em&gt;Thu, Oct 1, 2026, 14:19 EEST&lt;/em&gt;&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;h2 class="relative group" id="red"&gt;Red &lt;span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"&gt;&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" href="https://hugovk.dev/tags/python/index.xml#red"&gt;#&lt;/a&gt;&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;The US woke up and they&amp;rsquo;re &lt;a href="https://github.com/python/psf-salt/pull/657"&gt;both back up&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;Now, there&amp;rsquo;s &lt;a href="https://buildbot.python.org/release-status"&gt;one tier 1 failure to check&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;
+ &lt;img alt="Python Release Status Dashboard: 3.16 is yellow, 3.14-3.11 are green but 3.15 is red and &amp;lsquo;✘ Unreleasable: Tier-1 build failed&amp;rsquo;" class="mx-auto my-0 rounded-md" height="238" src="https://hugovk.dev/blog/2026/releasing-python-3-15-0/buildbots-red_hu_81bed08d6b59bc47.png" width="969" /&gt;
+&lt;/p&gt;
+&lt;p&gt;
+ &lt;img alt="3.15 Tier-1 build failed, Tier-2 build failed (1): AMD64 Fedora Stable Refleaks 3.15)" class="mx-auto my-0 rounded-md" height="776" src="https://hugovk.dev/blog/2026/releasing-python-3-15-0/buildbots-details_hu_53d25d6aae044ddc.png" width="2444" /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href="https://mastodon.social/tags/Python"&gt;#Python&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/Python315"&gt;#Python315&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/release"&gt;#release&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://mastodon.social/@hugovk/117365389908140888"&gt;&lt;em&gt;Thu, Oct 1, 2026, 14:22 EEST&lt;/em&gt;&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;h2 class="relative group" id="flaky"&gt;Flaky &lt;span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"&gt;&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" href="https://hugovk.dev/tags/python/index.xml#flaky"&gt;#&lt;/a&gt;&lt;/span&gt;&lt;/h2&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;RuntimeError: join took too long: &amp;lt;Process name='Process-2107' pid=2290504 parent=2276730 started daemon&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Looks like a &lt;a href="https://buildbot.python.org/#/builders/2047/builds/358"&gt;flaky test&lt;/a&gt;, and
+&lt;a href="https://github.com/python/cpython/issues/157184"&gt;python/cpython#157184&lt;/a&gt; has a fix to
+increase a timeout. Will try
+&lt;a href="https://buildbot.python.org/#/builders/2047/builds/359"&gt;restarting&lt;/a&gt; for now.&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href="https://mastodon.social/tags/Python"&gt;#Python&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/Python315"&gt;#Python315&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/release"&gt;#release&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://mastodon.social/@hugovk/117365404671635296"&gt;&lt;em&gt;Thu, Oct 1, 2026, 14:25 EEST&lt;/em&gt;&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;h2 class="relative group" id="green"&gt;Green &lt;span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"&gt;&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" href="https://hugovk.dev/tags/python/index.xml#green"&gt;#&lt;/a&gt;&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;That passed, the
+&lt;a href="https://buildbot.python.org/release-status"&gt;buildbots are back to green&lt;/a&gt; ✅️&lt;/p&gt;
+&lt;p&gt;
+ &lt;img alt="Python Release Status Dashboard: 3.16 is yellow, 3.15-3.11 are green: ✔ Releasable" class="mx-auto my-0 rounded-md" height="500" src="https://hugovk.dev/blog/2026/releasing-python-3-15-0/buildbots-mostly-green_hu_713ac7744d828713.png" width="2082" /&gt;
+&lt;/p&gt;
+&lt;p&gt;Next, issues/PRs with
+&lt;a href="https://github.com/python/cpython/labels/release-blocker"&gt;release-blocker label&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;One is a straightforward docs update, I marked as blocker so I don&amp;rsquo;t forget, to change
+future tense to present.&lt;/p&gt;
+&lt;p&gt;Then three last-minute lazy import blockers that need a closer look.&lt;/p&gt;
+&lt;p&gt;
+ &lt;img alt="List of GitHub issues and PRs labelled as release-blocker" class="mx-auto my-0 rounded-md" height="1176" src="https://hugovk.dev/blog/2026/releasing-python-3-15-0/release-blockers_hu_8038068f29e4d197.png" width="2446" /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href="https://mastodon.social/tags/Python"&gt;#Python&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/Python315"&gt;#Python315&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/release"&gt;#release&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://mastodon.social/@hugovk/117365585932571822"&gt;&lt;em&gt;Thu, Oct 1, 2026, 15:11 EEST&lt;/em&gt;&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;h2 class="relative group" id="traditional-surprise-rc3"&gt;Traditional surprise rc3 &lt;span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"&gt;&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" href="https://hugovk.dev/tags/python/index.xml#traditional-surprise-rc3"&gt;#&lt;/a&gt;&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;Following recent tradition, I’m going to add a
+&lt;a href="https://discuss.python.org/t/python-3-15-following-tradition-lets-have-a-surprise-rc3/109313?u=hugovk"&gt;surprise third release candidate&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;It makes sense to include the last-minute lazy-import fixes in 3.15.0 final.&lt;/p&gt;
+&lt;p&gt;It also makes sense to give time to test them properly, so today’s planned 3.15.0 final
+is postponed, and I’m going to release a 3.15.0rc3 tomorrow, assuming everything is in
+place.&lt;/p&gt;
+&lt;p&gt;And then 3.15.0 final will follow about week later. Exact date to be announced.&lt;/p&gt;
+&lt;p&gt;We’re nearly there! 🤞&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href="https://mastodon.social/tags/Python"&gt;#Python&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/Python315"&gt;#Python315&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/release"&gt;#release&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://mastodon.social/@hugovk/117367858694300126"&gt;&lt;em&gt;Fri, Oct 2, 2026, 00:49 EEST&lt;/em&gt;&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;h2 class="relative group" id="missing-backport"&gt;Missing backport &lt;span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"&gt;&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" href="https://hugovk.dev/tags/python/index.xml#missing-backport"&gt;#&lt;/a&gt;&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;The three lazy blockers are finally merged into &lt;code&gt;main&lt;/code&gt;, two have been backported to
+&lt;code&gt;3.15&lt;/code&gt;, but wait, &lt;a href="https://github.com/python/cpython/pull/158613"&gt;the third failed&lt;/a&gt;,
+because it depends on some tests not yet backported.&lt;/p&gt;
+&lt;p&gt;Okay, &lt;a href="https://github.com/python/cpython/pull/158614"&gt;backport created&lt;/a&gt;, merge conflict
+fixed, CI is now spinning, and automerge enabled. That&amp;rsquo;ll merge in about 15 mins, then
+we can update it into the last blocker PR, that should merge about 30 mins later, and
+rc3 can begin!&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href="https://mastodon.social/tags/Python"&gt;#Python&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/Python315"&gt;#Python315&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/release"&gt;#release&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://mastodon.social/@hugovk/117372609147481775"&gt;&lt;em&gt;Fri, Oct 2, 2026, 20:58 EEST&lt;/em&gt;&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;h2 class="relative group" id="rc3"&gt;rc3 &lt;span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"&gt;&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" href="https://hugovk.dev/tags/python/index.xml#rc3"&gt;#&lt;/a&gt;&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;Get yer
+&lt;a href="https://discuss.python.org/t/python-3-15-0-candidate-3-is-here/109327?u=hugovk"&gt;rc3 here!&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;You know the drill: please test and report bugs!&lt;/p&gt;
+&lt;p&gt;Library maintainers, join the Cool Testers&amp;rsquo; Club 😎 and
+&lt;a href="https://hugovk.dev/blog/2026/help-test-python-315/"&gt;add 3.15 to your test matrix&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Python 3.15.0 final planned for 2026-10-09.&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href="https://mastodon.social/tags/Python"&gt;#Python&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/Python315"&gt;#Python315&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/release"&gt;#release&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://mastodon.social/@hugovk/117373382807529332"&gt;&lt;em&gt;Sat, Oct 3, 2026, 00:14 EEST&lt;/em&gt;&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;h2 class="relative group" id="python-3150-release-day-second-attempt"&gt;Python 3.15.0 release day (second attempt)! &lt;span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"&gt;&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" href="https://hugovk.dev/tags/python/index.xml#python-3150-release-day-second-attempt"&gt;#&lt;/a&gt;&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;✅️ &lt;a href="https://github.com/python/cpython/pull/159053"&gt;Release date updated&lt;/a&gt; in What&amp;rsquo;s New
+in Python 3.15&lt;/p&gt;
+&lt;p&gt;✅️ No &lt;a href="https://github.com/python/cpython/labels/release-blocker"&gt;release blockers&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;✅️ No &lt;a href="https://github.com/python/cpython/labels/deferred-blocker"&gt;deferred blockers&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;✅️ &lt;a href="https://buildbot.python.org/release-status"&gt;Buildbots&lt;/a&gt; all green&lt;/p&gt;
+&lt;p&gt;
+ &lt;img alt="Python Release Status Dashboard: 3.16-3.11 all green: ✔ Releasable" class="mx-auto my-0 rounded-md" height="598" src="https://hugovk.dev/blog/2026/releasing-python-3-15-0/buildbots-all-green_hu_947332ab016191b7.png" width="2438" /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href="https://mastodon.social/tags/Python"&gt;#Python&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/Python315"&gt;#Python315&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/release"&gt;#release&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://mastodon.social/@hugovk/117410381067772845"&gt;&lt;em&gt;Fri, Oct 9, 2026, 13:03 EEST&lt;/em&gt;&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;h2 class="relative group" id="cooldowns"&gt;Cooldowns &lt;span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"&gt;&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" href="https://hugovk.dev/tags/python/index.xml#cooldowns"&gt;#&lt;/a&gt;&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;Pydantic finally added support for Python 3.15 yesterday, and aiohttp on Monday, so I
+&lt;em&gt;could&lt;/em&gt; use Python 3.15 rc3 to run the release scripts and release Python 3.15.0 final!&lt;/p&gt;
+&lt;p&gt;But&amp;hellip; I&amp;rsquo;m going to respect our seven-day cooldown, and stick with 3.14.&lt;/p&gt;
+&lt;p&gt;You also
+&lt;a href="https://blog.yossarian.net/2025/11/21/We-should-all-be-using-dependency-cooldowns"&gt;use cooldowns for your dependencies&lt;/a&gt;,
+right?&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href="https://mastodon.social/tags/Python"&gt;#Python&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/Python315"&gt;#Python315&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/release"&gt;#release&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://mastodon.social/@hugovk/117410412765558455"&gt;&lt;em&gt;Fri, Oct 9, 2026, 13:12 EEST&lt;/em&gt;&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;h2 class="relative group" id="blurb-bug"&gt;blurb bug &lt;span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"&gt;&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" href="https://hugovk.dev/tags/python/index.xml#blurb-bug"&gt;#&lt;/a&gt;&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;Pushing the big launch button:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="chroma" tabindex="0"&gt;&lt;code class="language-sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;.venv/bin/python run_release.py --repository ../cpython --ssh-user hugovk --release 3.15.0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&amp;hellip; and immediately ran into a bug with our changelog tool &lt;code&gt;blurb&lt;/code&gt;, because we&amp;rsquo;ve had no
+new NEWS fragments since rc3 :)&lt;/p&gt;
+&lt;p&gt;
+ &lt;img alt="Start of the release script, showing a number of successful checks, before the start of a traceback from blurb" class="mx-auto my-0 rounded-md" height="1572" src="https://hugovk.dev/blog/2026/releasing-python-3-15-0/blurb-traceback1_hu_98df967b4969a5a0.png" width="1306" /&gt;
+ &lt;img alt="Remainder of blurb traceback, ending with BlurbError: Error in Misc/NEWS.d/3.15.0.rst:8: Invalid gh-issue number: &amp;lsquo;0&amp;rsquo; (must be at least 32426)" class="mx-auto my-0 rounded-md" height="1548" src="https://hugovk.dev/blog/2026/releasing-python-3-15-0/blurb-traceback2_hu_f68ff75225cec818.png" width="1300" /&gt;
+&lt;/p&gt;
+&lt;p&gt;This needs a fix in blurb, a new PyPI release, and then the docs lockfile regenerated
+and backported to 3.15.&lt;/p&gt;
+&lt;p&gt;Fix PR: &lt;a href="https://github.com/python/blurb/pull/92"&gt;python/blurb#92&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href="https://mastodon.social/tags/Python"&gt;#Python&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/Python315"&gt;#Python315&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/release"&gt;#release&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://mastodon.social/@hugovk/117410536496169713"&gt;&lt;em&gt;Fri, Oct 9, 2026, 13:43 EEST&lt;/em&gt;&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;h2 class="relative group" id="blurb-fix"&gt;blurb fix &lt;span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"&gt;&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" href="https://hugovk.dev/tags/python/index.xml#blurb-fix"&gt;#&lt;/a&gt;&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;OK, merged and released (really easy using
+&lt;a href="https://docs.pypi.org/trusted-publishers/"&gt;Trusted Publishing&lt;/a&gt;), lockfile
+&lt;a href="https://github.com/python/cpython/pull/159058"&gt;updated&lt;/a&gt; and
+&lt;a href="https://github.com/python/cpython/pull/159060"&gt;backported&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Restarted the release and that&amp;rsquo;s better now.&lt;/p&gt;
+&lt;p&gt;A temporary branch and tag has been pushed to my fork, and I need to verify the
+&lt;a href="https://github.com/hugovk/cpython/commit/d220409a13b77de7a6c30abe16ea90db01528edc"&gt;release commit&lt;/a&gt;
+does not contain any unexpected changes.&lt;/p&gt;
+&lt;p&gt;All looks good. Next to start the installer and artifact builds.&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href="https://mastodon.social/tags/Python"&gt;#Python&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/Python315"&gt;#Python315&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/release"&gt;#release&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://mastodon.social/@hugovk/117410685206925439"&gt;&lt;em&gt;Fri, Oct 9, 2026, 14:21 EEST&lt;/em&gt;&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;h2 class="relative group" id="installers"&gt;Installers &lt;span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"&gt;&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" href="https://hugovk.dev/tags/python/index.xml#installers"&gt;#&lt;/a&gt;&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;The
+&lt;a href="https://github.com/python/release-tools/actions/runs/37922985653/job/113795259513"&gt;release artifact build failed&lt;/a&gt;,
+need to bump blurb in that lockfile too.&lt;/p&gt;
+&lt;p&gt;Like this: &lt;a href="https://github.com/python/release-tools/pull/451"&gt;python/release-tools#451&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Now
+&lt;a href="https://github.com/python/release-tools/actions/runs/37925506436"&gt;restarted that workflow&lt;/a&gt;
+with the existing CPython tag, no need for retag.&lt;/p&gt;
+&lt;p&gt;This builds source+docs tarballs and Android+iOS artifacts. Takes ~30 mins.&lt;/p&gt;
+&lt;p&gt;
+ &lt;img alt="GitHub Actions building docs, source, iOS and Android artifacts" class="mx-auto my-0 rounded-md" height="1184" src="https://hugovk.dev/blog/2026/releasing-python-3-15-0/github-actions_hu_26513d17590197c5.png" width="2188" /&gt;
+&lt;/p&gt;
+&lt;p&gt;Ned Deily has started the macOS installer builds. And I&amp;rsquo;ve started the
+&lt;a href="https://dev.azure.com/Python/cpython/_build/results?buildId=175636&amp;amp;view=results"&gt;Windows installer builds&lt;/a&gt;,
+takes ~2 hours.&lt;/p&gt;
+&lt;p&gt;
+ &lt;img alt="Azure Pipelines building Windows installers" class="mx-auto my-0 rounded-md" height="1208" src="https://hugovk.dev/blog/2026/releasing-python-3-15-0/azure-pipelines_hu_e9aee0bdc26310ba.png" width="2438" /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href="https://mastodon.social/tags/Python"&gt;#Python&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/Python315"&gt;#Python315&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/release"&gt;#release&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://mastodon.social/@hugovk/117410824836402022"&gt;&lt;em&gt;Fri, Oct 9, 2026, 14:56 EEST&lt;/em&gt;&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;h2 class="relative group" id="sbom"&gt;SBOM &lt;span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"&gt;&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" href="https://hugovk.dev/tags/python/index.xml#sbom"&gt;#&lt;/a&gt;&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;In the meantime, the GitHub Actions build has finished, SBOMs created and some things
+uploaded.&lt;/p&gt;
+&lt;p&gt;
+ &lt;img alt="Release script showing download of artifact files, SBOM creation, upload to PSF servers, and waiting for Windows and Mac files" class="mx-auto my-0 rounded-md" height="1486" src="https://hugovk.dev/blog/2026/releasing-python-3-15-0/release-script_hu_47c619c1a736a1c9.png" width="1292" /&gt;
+&lt;/p&gt;
+&lt;p&gt;The Windows process has paused a couple of times, awaiting button clicks to approve
+signing of binaries. The whole release team gets emails about this, so no sneaking out
+signed releases. 🥷&lt;/p&gt;
+&lt;p&gt;
+ &lt;img alt="Azure Pipelines: 1 approval needs your review before this run can continue to Sign binaries" class="mx-auto my-0 rounded-md" height="736" src="https://hugovk.dev/blog/2026/releasing-python-3-15-0/azure-pipelines-sign_hu_4a87595e56eb899b.png" width="2744" /&gt;
+&lt;/p&gt;
+&lt;p&gt;
+ &lt;img alt="Azure Pipelines: 1 approval needs your review before this run can continue to Pack" class="mx-auto my-0 rounded-md" height="734" src="https://hugovk.dev/blog/2026/releasing-python-3-15-0/azure-pipelines-pack_hu_a27cf078d405ad75.png" width="2744" /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href="https://mastodon.social/tags/Python"&gt;#Python&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/Python315"&gt;#Python315&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/release"&gt;#release&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://mastodon.social/@hugovk/117411092679614029"&gt;&lt;em&gt;Fri, Oct 9, 2026, 16:04 EEST&lt;/em&gt;&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;h2 class="relative group" id="nearly-there"&gt;Nearly there &lt;span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"&gt;&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" href="https://hugovk.dev/tags/python/index.xml#nearly-there"&gt;#&lt;/a&gt;&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;Windows complete, tags pushed upstream, Sigstore signing done, adding files to
+python.org&amp;hellip; nearly there&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href="https://mastodon.social/tags/Python"&gt;#Python&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/Python315"&gt;#Python315&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/release"&gt;#release&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://mastodon.social/@hugovk/117411353005018777"&gt;&lt;em&gt;Fri, Oct 9, 2026, 17:11 EEST&lt;/em&gt;&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;h2 class="relative group" id="out-now"&gt;Out now &lt;span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"&gt;&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" href="https://hugovk.dev/tags/python/index.xml#out-now"&gt;#&lt;/a&gt;&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;🐍🚀 Out now:
+&lt;a href="https://discuss.python.org/t/python-3-15-0-final-is-here/109415?u=hugovk"&gt;Python 3.15.0 final!&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;💤 Lazy imports!&lt;br /&gt; 🧊 frozendict builtin!&lt;br /&gt; 💂 sentinel builtin!&lt;br /&gt; 📉 Tachyon
+profiler!&lt;br /&gt; 🖼️ Frame pointers everywhere!&lt;br /&gt; 🛅 Unpacking in comprehensions!&lt;br /&gt; 🗣️
+UTF-8 as the default encoding!&lt;br /&gt; 🛞 Stable ABI for free-threading!&lt;br /&gt; 🆕 Package
+startup config files!&lt;br /&gt; ⌨️ TypedDict &amp;amp; TypeForm!&lt;br /&gt; 🐎 Faster JIT!&lt;br /&gt; 🎨 More
+colour!&lt;br /&gt; 🚌 &amp;amp; more!&lt;/p&gt;
+&lt;p&gt;Huge thanks to the
+&lt;a href="https://www.sovereign.tech/programs/fellowship"&gt;Sovereign Tech Agency&lt;/a&gt; supporting my
+work as release manager and enabling another smooth release!&lt;/p&gt;
+&lt;p&gt;
+ &lt;img alt="Python 3.15 logo: a purple heart with &amp;ldquo;3.15&amp;rdquo; in blue and yellow, flanked by a blue and a yellow snake, with lightning bolts, pink clouds and laurel branches, framed by the release&amp;rsquo;s headline features" class="mx-auto my-0 rounded-md" height="600" src="https://hugovk.dev/blog/2026/releasing-python-3-15-0/feature.png" width="600" /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href="https://mastodon.social/tags/Python"&gt;#Python&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/Python315"&gt;#Python315&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/CPython"&gt;#CPython&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/release"&gt;#release&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://mastodon.social/@hugovk/117411399858939022"&gt;&lt;em&gt;Fri, Oct 9, 2026, 17:23 EEST&lt;/em&gt;&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;h2 class="relative group" id="its-not-over-yet"&gt;It&amp;rsquo;s not over yet! &lt;span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"&gt;&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" href="https://hugovk.dev/tags/python/index.xml#its-not-over-yet"&gt;#&lt;/a&gt;&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;I &lt;a href="https://github.com/python/peps/pull/5164"&gt;updated PEP 790&lt;/a&gt;, which also updates the
+PEPs API, which is used to point the docs at /3/ to 3.15, kicked off a docs build:
+&lt;a href="https://docs.python.org/3/"&gt;docs.python.org/3/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Unpin &lt;a href="https://mastodon.social/@hugovk/115333348041057866"&gt;one toot&lt;/a&gt; and pin
+&lt;a href="https://mastodon.social/@hugovk/117411399858939022"&gt;another&lt;/a&gt; to my profile.&lt;/p&gt;
+&lt;p&gt;(3.14 might not be the newest, but we can still celebrate with pie!)&lt;/p&gt;
+&lt;p&gt;And then unlock the 3.15 branch so the core team can start merging
+&lt;a href="https://github.com/python/cpython/pulls?q=is%3Aopen+is%3Apr+base%3A3.15"&gt;185 PRs that didn&amp;rsquo;t get in during RC&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href="https://mastodon.social/tags/Python"&gt;#Python&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/Python315"&gt;#Python315&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/release"&gt;#release&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://mastodon.social/@hugovk/117411652929387507"&gt;&lt;em&gt;Fri, Oct 9, 2026, 18:27 EEST&lt;/em&gt;&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;h2 class="relative group" id="also"&gt;Also &lt;span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"&gt;&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" href="https://hugovk.dev/tags/python/index.xml#also"&gt;#&lt;/a&gt;&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;✅️ &lt;a href="https://github.com/python/cpython/labels"&gt;update 3.15 label&lt;/a&gt;&lt;br /&gt; ✅️ rebuild devguide
+to update: &lt;a href="https://devguide.python.org/versions/"&gt;devguide.python.org/versions/&lt;/a&gt;&lt;br /&gt; ✅️
+unlock 3.15 branch&lt;/p&gt;
+&lt;p&gt;And I think that&amp;rsquo;s it!&lt;/p&gt;
+&lt;p&gt;Hey, &lt;a href="https://fosstodon.org/@savannah"&gt;@savannah&lt;/a&gt;, you&amp;rsquo;re up next with the
+&lt;a href="https://hugovk.dev/next-release/"&gt;first 3.16 alpha on Tuesday&lt;/a&gt;! 🚀&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href="https://mastodon.social/tags/Python"&gt;#Python&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/Python315"&gt;#Python315&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/Python316"&gt;#Python316&lt;/a&gt;
+&lt;a href="https://mastodon.social/tags/release"&gt;#release&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://mastodon.social/@hugovk/117411775424580934"&gt;&lt;em&gt;Fri, Oct 9, 2026, 18:58 EEST&lt;/em&gt;&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">a36925700147685582d1f266cb4b7fb6bcc805fd01421f260904aa4e39b48899</guid>
+      <pubDate>Mon, 19 Oct 2026 10:21:54 +0000</pubDate>
+    </item>
     <item>
       <title>The Python Coding Stack: 2. Who actually does the work, the model or the software? - Planet Python</title>
       <link>https://www.thepythoncodingstack.com/p/2-who-actually-does-the-work-the</link>

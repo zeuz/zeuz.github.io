@@ -5,7 +5,81 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sun, 18 Oct 2026 14:00:37 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 14:00:40 +0000</lastBuildDate>
+    <item>
+      <title>tvm-recover: Tencent VM devirtualization through semantic lifting and algebraic simplification - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x9x4ru/tvmrecover_tencent_vm_devirtualization_through/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/NeuroSaki987"&gt; /u/NeuroSaki987 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/NeuroSaki987/tvm-recover"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x9x4ru/tvmrecover_tencent_vm_devirtualization_through/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">29db1d27f632abb524b18f27a75a1e26bf384b0e906142af9ded08cba06414af</guid>
+      <pubDate>Mon, 19 Oct 2026 13:38:22 +0000</pubDate>
+    </item>
+    <item>
+      <title>GhostAction Attackers Plant Credential Stealer Disguised as Font in 94 GitHub Repositories - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/ghostaction-attackers-plant-credential.html</link>
+      <description>The threat actor behind the GhostAction supply chain attack has expanded beyond injecting malicious GitHub Actions workflows into compromised projects to phish open-source developers and deliver a stealer malware disguised within a fake font file.
+The latest evolution, detailed by OpenSourceMalware, signals that the attackers are actively refining their modus operandi in response to steps</description>
+      <guid isPermaLink="false">35c2ce143e6f64466ec6de1b64ad45628786ca84b18347176513430c579e5a29</guid>
+      <pubDate>Mon, 19 Oct 2026 13:05:45 +0000</pubDate>
+    </item>
+    <item>
+      <title>Fake Web3 Accelerator Uses npm Packages to Spread Malware and Hijack AI Agent Traffic - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/fake-web3-accelerator-uses-npm-packages.html</link>
+      <description>A fake Web3 accelerator has been observed pushing information stealers and backdoors to Windows and macOS systems using malicious npm packages under the pretext of offering free artificial intelligence (AI) credits for Anthropic Claude and Google Gemini, coding tools, and security audits.
+"The tools delivered information-stealing malware and backdoors for macOS and Windows machines," Elastic</description>
+      <guid isPermaLink="false">f21fbfcdd2b84ec312b082ceb5b5944d55eee11f294896a546ad5bb4ef325a42</guid>
+      <pubDate>Mon, 19 Oct 2026 10:06:40 +0000</pubDate>
+    </item>
+    <item>
+      <title>Unpatched Broadcom Wi-Fi Flaw Lets Attackers in Range Run Code as Root on Routers - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/unpatched-broadcom-wi-fi-flaw-lets.html</link>
+      <description>A flaw in Broadcom's Wi-Fi setup software lets an attacker within radio range run code as root on Broadcom-based routers, without the network password or any pairing step, security researcher Quentin Kaiser&amp;nbsp;disclosed&amp;nbsp;on October 16.
+He showed the attack working against home gateways supplied by three Belgian internet providers, in one case reading the Wi-Fi password off the device</description>
+      <guid isPermaLink="false">d65a8cbdc7b3cf3df0bc33d1be3f45e017e3d1bb0ed9713788ef6c49ae28297a</guid>
+      <pubDate>Mon, 19 Oct 2026 06:29:44 +0000</pubDate>
+    </item>
+    <item>
+      <title>OpenCode Console Breach May Have Exposed OpenAI, Anthropic, and Google API Keys - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/opencode-console-breach-may-have.html</link>
+      <description>An intruder reached a legacy system at OpenCode on the night of October 16 and may have exposed the third-party AI provider keys that users had saved in OpenCode Console, the company said.
+Console is OpenCode's optional hosted service: a workspace saves its own OpenAI, Anthropic, or Google key there, and Console uses that key to call the provider so team members can use the models without</description>
+      <guid isPermaLink="false">47feaceddd3b55ee69cdb10f645d5e5aba00693464dd8d2ab851a4304ef898dd</guid>
+      <pubDate>Mon, 19 Oct 2026 06:07:08 +0000</pubDate>
+    </item>
+    <item>
+      <title>Homeworld: Cataclysm source code - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x9idol/homeworld_cataclysm_source_code/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/CelebrationSharp2476"&gt; /u/CelebrationSharp2476 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://codeberg.org/SamuraiCop/Cataclysm"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x9idol/homeworld_cataclysm_source_code/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">9e53c01e25c2b34b44b3da81199d50e00de5aa63441e8a7b93d32c36db49f0ec</guid>
+      <pubDate>Mon, 19 Oct 2026 00:07:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>PS2 games statically recompiled to WebAssembly - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x9hu8e/ps2_games_statically_recompiled_to_webassembly/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/-beleon"&gt; /u/-beleon &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/snuri00/ps2-web-recomp"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x9hu8e/ps2_games_statically_recompiled_to_webassembly/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">8f70302fd728285b594439bd4c3caa698105159bf05a86329ebaeba35c836773</guid>
+      <pubDate>Sun, 18 Oct 2026 23:41:37 +0000</pubDate>
+    </item>
+    <item>
+      <title>One Parser, Two Bugs, Many Routers: Exploiting Broadcom WiFi Across eCos and Linux - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x9ef1g/one_parser_two_bugs_many_routers_exploiting/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/tnavda"&gt; /u/tnavda &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://quentinkaiser.be/security/2026/10/16/one-parser-two-bugs/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x9ef1g/one_parser_two_bugs_many_routers_exploiting/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">b870759b38e5f2f26dd8efc8ab342c2054384f7ca71a0092959adbb548cec44e</guid>
+      <pubDate>Sun, 18 Oct 2026 21:06:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>Inside the Intel 8087 chip: floating-point addition and subtraction - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x9edxm/inside_the_intel_8087_chip_floatingpoint_addition/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/tnavda"&gt; /u/tnavda &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.righto.com/2026/10/8087-addition-subtraction-microcode.html?m=1"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x9edxm/inside_the_intel_8087_chip_floatingpoint_addition/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">49ed51ecb81d3cc02dbcdfa69f0dec2a8c805fdf1519d47dc7acb34dd26e4002</guid>
+      <pubDate>Sun, 18 Oct 2026 21:05:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>TP-Link Deco XE75 Pro V3] Two years after CCS'24 / Black Hat '24, TP-Link only bumped the RSA key size — Port 20001 -&gt; tmpsvr still gives Arbitrary Root File Write (0xC456) &amp; RCE on 2026 Firmware 1.5.0 - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x98de1/tplink_deco_xe75_pro_v3_two_years_after_ccs24/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/CPlusPlus2025"&gt; /u/CPlusPlus2025 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/CPlusPlus17/deco-filepush-disclosure/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x98de1/tplink_deco_xe75_pro_v3_two_years_after_ccs24/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">9f7f975ab62d168df4d83bd0cdb10e5025f823042d9d94b65e9783a5b6c8331e</guid>
+      <pubDate>Sun, 18 Oct 2026 17:04:53 +0000</pubDate>
+    </item>
     <item>
       <title>nmp (new media player) - reverse engineered Android Media player (older AIMP 2.71.559). The Java files and C++ source code have been restored. - Reverse Engineering</title>
       <link>https://www.reddit.com/r/ReverseEngineering/comments/1x93rbx/nmp_new_media_player_reverse_engineered_android/</link>
@@ -36,6 +110,13 @@ The disabled identities are listed below -
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Ryu116"&gt; /u/Ryu116 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/HappyTotoro116/ghidra-llm-pipeline"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x8ra4o/pyghidra_python_local_llms_turning_the_model_into/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">a59548d9c74ca43d9e8c666d24f1540a7a37134ca9a41921f4e4f126b7078124</guid>
       <pubDate>Sun, 18 Oct 2026 01:57:39 +0000</pubDate>
+    </item>
+    <item>
+      <title>Drupal 10 and 11 -- remote code execution - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/3de00266-caf6-11f1-881f-d89ef317b2fc.html</link>
+      <description/>
+      <guid isPermaLink="false">78931339b6a4a3665c8030e34ca7679dfdf72730eca0740a3f9f52bd37bffa43</guid>
+      <pubDate>Sun, 18 Oct 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>[Release] First-Ever Open Source QEMU Machine Model &amp; Hardware Definitions for Realtek RTD2841 Smart TV SoCs - Reverse Engineering</title>
@@ -218,6 +299,20 @@ The attack involves the exploitation of CVE-2025-61624 (CVSS score: 5.4), a path
       <link>http://www.vuxml.org/freebsd/dec22770-c953-11f1-bebb-3c7c3fba4204.html</link>
       <description/>
       <guid isPermaLink="false">2765bb54ef53a75699734cad25ed58942f5e07ab59019e6bccdb356f2ecee238</guid>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Erlang/OTP -- erl_tar denial of service via crafted GNU sparse member - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/37492489-c8f9-11f1-9ceb-4c526214c986.html</link>
+      <description/>
+      <guid isPermaLink="false">6074902ad04a099593809e13acce347ffcf828f52ec186ee72b68070f90c6508</guid>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Erlang/OTP -- multiple vulnerabilities in ssl, inets, public_key and snmp - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/3749073b-c8f9-11f1-9ceb-4c526214c986.html</link>
+      <description/>
+      <guid isPermaLink="false">6fe75ebfdddf0f8c3e385d77c7fbba3c8924f1d1320d88d677915c9ae9691bcc</guid>
       <pubDate>Fri, 16 Oct 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
@@ -1429,102 +1524,6 @@ The vulnerability, tracked as CVE-2026-88779, carries a CVSS score of 8.7 out of
       <description/>
       <guid isPermaLink="false">da525a0c33724ef222c48c79b7ae55f47bb67ea9158c392442c9891c58e3f3de</guid>
       <pubDate>Mon, 05 Oct 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Loading a Samsung Shannon baseband into Ghidra 12.1.4 - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wxs70y/loading_a_samsung_shannon_baseband_into_ghidra/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Electronic_You_1199"&gt; /u/Electronic_You_1199 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://medium.com/@0x08102000/loading-a-samsung-shannon-baseband-into-ghidra-12-1-4-2026-792147d806f4"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wxs70y/loading_a_samsung_shannon_baseband_into_ghidra/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">2844024d588f7f6b464b6a7bb6029513fbbf8be473255e5c21610380f8763e08</guid>
-      <pubDate>Sun, 04 Oct 2026 22:15:42 +0000</pubDate>
-    </item>
-    <item>
-      <title>iOS 27 kernelcache RE writeup — full SEP dispatch map (96 selectors), AMFI diff, Ghidra workflow (zero new vulns, but full methodology public) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wxqpor/ios_27_kernelcache_re_writeup_full_sep_dispatch/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/JustActuator6946"&gt; /u/JustActuator6946 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/vvirei333/ABrake27"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wxqpor/ios_27_kernelcache_re_writeup_full_sep_dispatch/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">adf2b4f959b13e81cb5b3cb22ba5ff737a5576d9ca469677b23943739c7fe431</guid>
-      <pubDate>Sun, 04 Oct 2026 21:10:37 +0000</pubDate>
-    </item>
-    <item>
-      <title>Bug hunt: Pizza Tycoon's missing pizza boxes - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wxepbe/bug_hunt_pizza_tycoons_missing_pizza_boxes/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Optdev"&gt; /u/Optdev &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://pizzalegacy.nl/blog/the-mystery-of-the-empty-box.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wxepbe/bug_hunt_pizza_tycoons_missing_pizza_boxes/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">cb861e16f297735b48a96e5a4d124fbb9391306420cc04a35edcc5c838556f66</guid>
-      <pubDate>Sun, 04 Oct 2026 12:38:21 +0000</pubDate>
-    </item>
-    <item>
-      <title>ShinyHunters Suspect Rey Reportedly Detained in Jordan, Helping FBI Identify Group Members - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/shinyhunters-suspect-rey-reportedly.html</link>
-      <description>A suspected member of the ShinyHunters digital extortion group, who goes by the online alias "Rey," has been allegedly detained by authorities in Jordan, Reuters reported, citing three people familiar with the matter.
-Rey, whose real name is Saif ‌al-Din Khader, is said to have been brought into custody on September 29, 2026, cooperating with the U.S. Federal Bureau of Investigation (FBI) and</description>
-      <guid isPermaLink="false">5dd488de9666f0c5d0033f59fd7c0c55c3a2c95b3aa73415bdbf48dfed53a2d8</guid>
-      <pubDate>Sun, 04 Oct 2026 07:22:05 +0000</pubDate>
-    </item>
-    <item>
-      <title>China-Aligned TA419 Targets U.S. AI Policy Experts With Microsoft AitM Phishing - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/china-aligned-ta419-targets-us-ai.html</link>
-      <description>A new China-nexus cyber espionage group known as TA419 has been attributed to multiple credential phishing campaigns targeting artificial intelligence (AI) experts working for U.S. think tanks, universities, and legal sector organizations.
-The campaigns have impersonated prominent economists and AI policymakers, as well as a prominent Anthropic employee, to single out an AI policy expert at a</description>
-      <guid isPermaLink="false">4539d6c8c9508c404775085056b718d7d0d0d121cccda1788c1fb7291f3f3b1e</guid>
-      <pubDate>Sun, 04 Oct 2026 07:20:32 +0000</pubDate>
-    </item>
-    <item>
-      <title>N0xis: from a hardware watchpoint in a live process to the decompiled statement that wrote the value (Rust, Windows/Linux, CLI + MCP) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wwy6x4/n0xis_from_a_hardware_watchpoint_in_a_live/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Ok-Kangaroo8925"&gt; /u/Ok-Kangaroo8925 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/Structio-labs/N0xis"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wwy6x4/n0xis_from_a_hardware_watchpoint_in_a_live/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">af33c6290be65929572264c8893727854d0a3c6614aa8eac005e376488399734</guid>
-      <pubDate>Sat, 03 Oct 2026 21:13:54 +0000</pubDate>
-    </item>
-    <item>
-      <title>I turned a low-cost RP2040-Zero into a FIDO2/WebAuthn security key - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wwwvpb/i_turned_a_lowcost_rp2040zero_into_a/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/KaraaslanLabs"&gt; /u/KaraaslanLabs &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/karaaslanlabs/kl-security-key"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wwwvpb/i_turned_a_lowcost_rp2040zero_into_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">3549b3831fa738c49d1ae5cfefad41c01b196f27a08b542304dc70e52f74e715</guid>
-      <pubDate>Sat, 03 Oct 2026 20:16:52 +0000</pubDate>
-    </item>
-    <item>
-      <title>MI5 Says China’s MSS Funded Research Involving 100+ U.K.-Linked Academics - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/mi5-says-chinas-mss-funded-research.html</link>
-      <description>The U.K.'s domestic intelligence and security agency has warned that more than 100 academics have helped China boost its intelligence gathering efforts on behalf of Beijing's state security service.
-In a "Security Service Espionage Alert" issued on September 30, 2026, MI5 said the "primary purpose of the China General Technology Research Institute (CGTRI) 中国通用技术研究院 is to fund research that</description>
-      <guid isPermaLink="false">d690311ca2b167a1ef211bd73056ee54403d3081f2b83cc3d87b7d45e2abe3ca</guid>
-      <pubDate>Sat, 03 Oct 2026 14:38:46 +0000</pubDate>
-    </item>
-    <item>
-      <title>Warlock Exploits SharePoint Flaws to Disable Security Tools and Deploy Ransomware - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/warlock-exploits-sharepoint-flaws-to.html</link>
-      <description>The suspected China-linked threat actor known as Warlock is still continuing to weaponize Microsoft SharePoint vulnerabilities, likely both old and new, in attacks targeting organizations in Portuguese- and Spanish-speaking countries.
-The activity, observed by the Symantec and Carbon Black Threat Hunter Team, has hit critical infrastructure, government, and education organizations.
-"In the</description>
-      <guid isPermaLink="false">7607666f845aec89dc4099022cad0a8e8d10169032e1677241eaef9bcb93a5e3</guid>
-      <pubDate>Sat, 03 Oct 2026 14:36:33 +0000</pubDate>
-    </item>
-    <item>
-      <title>Pre-installed C2 loader on cheap Android projectors - deploys proxy/ad-fraud botnets, can run arbitrary code (Technical analysis) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wwmw15/preinstalled_c2_loader_on_cheap_android/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/DerErbsenzaehler"&gt; /u/DerErbsenzaehler &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/Kavan00/Android-Projector-C2-Malware"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wwmw15/preinstalled_c2_loader_on_cheap_android/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">b73406886a92daacebace771d88f607057066f2b939f192d7f34b9c02cbd98f3</guid>
-      <pubDate>Sat, 03 Oct 2026 13:09:58 +0000</pubDate>
-    </item>
-    <item>
-      <title>History of Windows symbols all the way to 1.0 from 1985 - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1ww59x0/history_of_windows_symbols_all_the_way_to_10_from/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/PoweredBySorse"&gt; /u/PoweredBySorse &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/WindowsTracking"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1ww59x0/history_of_windows_symbols_all_the_way_to_10_from/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">73a5c50b94b87311d4c9bac2d4506457d925097ab7d1adac2f379538aa95f6bf</guid>
-      <pubDate>Fri, 02 Oct 2026 21:08:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>Super Trouper v0.4.0 — more Frida tools for iOS app reverse engineering - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1ww25ox/super_trouper_v040_more_frida_tools_for_ios_app/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/neathack"&gt; /u/neathack &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/crissyfield/super-trouper"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1ww25ox/super_trouper_v040_more_frida_tools_for_ios_app/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">2113e2dc9cc86f4b0255db7c3f0a7afb3b5f46457355b174ec24428454e6b311</guid>
-      <pubDate>Fri, 02 Oct 2026 19:01:43 +0000</pubDate>
-    </item>
-    <item>
-      <title>I built dex2jvm: a DEX → JVM bytecode converter designed for actual HotSpot execution - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1ww1hx8/i_built_dex2jvm_a_dex_jvm_bytecode_converter/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/kksimp"&gt; /u/kksimp &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/kksimp/dex2jvm"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1ww1hx8/i_built_dex2jvm_a_dex_jvm_bytecode_converter/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">de5657d25d31c34f272d4ffdb0397832c721465bcab38448a49d42085d5a38d1</guid>
-      <pubDate>Fri, 02 Oct 2026 18:36:09 +0000</pubDate>
     </item>
   </channel>
 </rss>
