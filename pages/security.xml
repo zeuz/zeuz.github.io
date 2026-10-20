@@ -5,7 +5,117 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Mon, 19 Oct 2026 14:00:40 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 14:01:08 +0000</lastBuildDate>
+    <item>
+      <title>Pegasus Spyware Infection Confirmed on Serbian University Rector's iPhone Days Before Election - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/pegasus-spyware-infection-confirmed-on.html</link>
+      <description>The iPhone of Vladan Đokić, rector of the University of Belgrade and a prominent supporter of Serbia's student protest movement, was infected with NSO Group's Pegasus spyware in 2026, the&amp;nbsp;Citizen Lab said&amp;nbsp;on October 19.
+The finding came six days before Serbia's October 25 snap parliamentary election. The infection used a zero-click exploit, meaning Đokić did not have to tap a link or</description>
+      <guid isPermaLink="false">bd2f6f66ee4e540c93fb1eb25f6b9081662a9e92d42701b0d862b0882c66764e</guid>
+      <pubDate>Tue, 20 Oct 2026 12:59:44 +0000</pubDate>
+    </item>
+    <item>
+      <title>WhatsApp Hid Instructions in Help Pages Telling Its AI Chatbot Not to Recommend Privacy Regulators - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/whatsapp-hid-instructions-in-help-pages.html</link>
+      <description>WhatsApp's help pages carried hidden instructions for its support chatbot that told it not to recommend a data protection authority or regulator to users who could no longer delete their accounts, even though WhatsApp's own privacy policy for Europe tells users they can complain to one.
+The text sat in the pages' code, never shown on screen, until it was removed by October 18. Whether the</description>
+      <guid isPermaLink="false">acfaa656f1f80d1f421f9011b585e39ea5d879c1fa1dd05cd07d0fb29df94ee3</guid>
+      <pubDate>Tue, 20 Oct 2026 11:41:06 +0000</pubDate>
+    </item>
+    <item>
+      <title>Go Issues Emergency Update Blocking Eight CA Keys Over Undisclosed Security Concerns - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/go-issues-emergency-update-blocking.html</link>
+      <description>Go 1.27.3 and Go 1.26.10, released on October 20, make Go's certificate verifier reject any certificate chain that passes through one of&amp;nbsp;eight intermediate certificate authority keys.
+Programs built on the new release will refuse connections to sites and services whose certificates were issued under those keys. The Go team says the keys belong to one certificate authority it has not</description>
+      <guid isPermaLink="false">dd606db4ed268abe2b18b83fb238f006c34db83da2c3b86a3eb2673480630dfe</guid>
+      <pubDate>Tue, 20 Oct 2026 11:32:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>Russian APT28 Breaches NATO Naval Shipbuilder in NATO Country, Deploys New Reflective Loader - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/russian-apt28-breaches-nato-naval.html</link>
+      <description>The Russia-linked state-sponsored threat actor tracked as APT28 (aka BlueDelta, Fancy Bear, and Forest Blizzard) has been attributed to attacks targeting two member states of the North Atlantic Treaty Organization (NATO).
+The Symantec Threat Hunter Team, which is tracking the activity cluster under the moniker Swallowtail, involved the use of a backdoor called HOOKEDGE and a previously</description>
+      <guid isPermaLink="false">e983e9c2a6d27dab4820982d6e1f1fcbc6a7cca10265f1144989269d015fa594</guid>
+      <pubDate>Tue, 20 Oct 2026 11:06:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>ConnectWise Resets Credentials as Cloud Backup Remains Offline After Security Incident - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/connectwise-resets-credentials-as-cloud.html</link>
+      <description>ConnectWise on Monday said it has taken remediation measures, including strengthening administrative-access protections and resetting accounts and replacing application credentials, as it continues to respond to a security incident that led to unauthorized access to application identities associated with Cloud Backup.
+The company said it has completed the following actions since it began</description>
+      <guid isPermaLink="false">2f46f4fbd75138dca993f63b75eb0cbbce723ceb4d986367788ebaad0b63e805</guid>
+      <pubDate>Tue, 20 Oct 2026 10:56:08 +0000</pubDate>
+    </item>
+    <item>
+      <title>Reverse-engineering Sony NW-A910 firmware: language patches, resource formats, and homebrew - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xaoj5x/reverseengineering_sony_nwa910_firmware_language/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Infinite-Zombie5875"&gt; /u/Infinite-Zombie5875 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://youtube.com/watch?v=A5f6_2eZAiA&amp;amp;si=vsk-oAHelpnMVAtj"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xaoj5x/reverseengineering_sony_nwa910_firmware_language/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">a2046efb24f57ed4c8664370248ec2e4a7c7e645da3ae78757c332540dac0c45</guid>
+      <pubDate>Tue, 20 Oct 2026 10:28:41 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hackers Hijack Five OVHcloud CLI Releases to Distribute Secret-Stealing Malware - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/hackers-hijack-five-ovhcloud-cli.html</link>
+      <description>An attacker used a contributor's GitHub account to replace the download archives on five existing releases of OVHcloud's command-line tool on Monday, October 19. The account had been hijacked, and the new files were a build designed to steal secrets stored on the disk of any machine that runs it, the cloud provider says.
+They were live on GitHub for up to 94 minutes, from 12:47 to 14:21 UTC,</description>
+      <guid isPermaLink="false">65377acc13c703c3e2db21b482cc9e4933590c2df9c39f50a1a3f782b87b7d1b</guid>
+      <pubDate>Tue, 20 Oct 2026 08:21:29 +0000</pubDate>
+    </item>
+    <item>
+      <title>ClickFix Attackers Exploit Siemens Software Center Flaw to Deploy Remote Access Trojan - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/clickfix-attackers-exploit-siemens.html</link>
+      <description>Siemens has addressed a DLL sideloading vulnerability impacting Siemens Software Center that it said has been exploited in ClickFix attacks.
+The high-severity vulnerability, tracked as CVE-2026-110936 (CVSS v4 score: 8.4), could allow an attacker to place a specially-crafted DLL in a directory the application searches, resulting in execution of malicious code with the same privileges as the</description>
+      <guid isPermaLink="false">aa3e3e97ae78d54c7b8249bf843c1e7a8bacb2421a1749921ae24e905bf4f34b</guid>
+      <pubDate>Tue, 20 Oct 2026 07:11:45 +0000</pubDate>
+    </item>
+    <item>
+      <title>Ex-OpenAI Engineer Detained in Spy Device Case as Saudi Royal Contacts Emerge - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/ex-openai-engineer-detained-in-spy.html</link>
+      <description>A U.S. court on Monday granted the U.S. government's request to detain a former OpenAI engineer accused of planting a recording device in an executive conference room at the company's San Francisco office to allegedly steal sensitive secrets.
+In a new court filing Sunday, prosecutors revealed that Abdulrahman Alfozan, a 35-year-old Saudi national, was "in frequent communications via WhatsApp</description>
+      <guid isPermaLink="false">c1084fa8ede6bf6d6e14c2acb29be7705941a855907254bb8de33b36ee8434a0</guid>
+      <pubDate>Tue, 20 Oct 2026 05:53:16 +0000</pubDate>
+    </item>
+    <item>
+      <title>Playing Chromatron Again, Twenty Years Later - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xaj3hl/playing_chromatron_again_twenty_years_later/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/h1994st"&gt; /u/h1994st &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://shengtuo.me/blog/chromatron-remake/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xaj3hl/playing_chromatron_again_twenty_years_later/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">f46115d391c43102d08fe995eeea2d0eb275f738d0ba25b35fa5eafa82ae8dd2</guid>
+      <pubDate>Tue, 20 Oct 2026 04:52:45 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hackers Use New ROMULUS ClickFix Platform to Deliver LegionLoader and Other Malware - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/romulus-clickfix-platform-tricks-users.html</link>
+      <description>Cybersecurity researchers have disclosed details of a ClickFix delivery platform called ROMULUS that's being used to distribute malware such as Legion Loader.
+According to Forescout Research - Vedere Labs, ROMULUS is akin to a malware delivery service that employs ClickFix-style lures on bogus landing pages to trick unsuspecting users into running malicious commands and infecting their own</description>
+      <guid isPermaLink="false">44e0afd85403e765953c611d8847afecef33180d338417f253a4f02d097c83b6</guid>
+      <pubDate>Tue, 20 Oct 2026 04:05:58 +0000</pubDate>
+    </item>
+    <item>
+      <title>subfinder – Passive Subdomain Enumeration Tool - Darknet - The Darkside</title>
+      <link>https://www.darknet.org.uk/2026/10/subfinder-passive-subdomain-enumeration-tool/</link>
+      <description>subfinder 2.17.0 tested on darknet.org.uk with no API keys: 17 subdomains in 14 seconds, and only one resolved in DNS. What needs keys, and how to install it.</description>
+      <guid isPermaLink="false">9b91236f30af270c681a765c1280fc690a1a1bad600e02089dcc1eda06eafe4d</guid>
+      <pubDate>Mon, 19 Oct 2026 18:58:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hackers Exploit Plex2Shell Flaws to Install Crypto Miners and Linux Proxy Backdoor - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/hackers-exploit-plex2shell-flaws-to.html</link>
+      <description>Threat actors have begun to exploit a chain of vulnerabilities in Plex Media Server to deploy cryptocurrency miners and reverse proxy software, a day after a proof-of-concept (PoC) went public.
+According to a researcher who goes by the online alias boredhackerblog, the exploitation activity involves chaining four different vulnerabilities, collectively called Plex2Shell.
+The vulnerabilities</description>
+      <guid isPermaLink="false">9c9647e4067ed2a9f2a33e61b2a83dca2d9b8eeff40dfd33be90fa6ac401430f</guid>
+      <pubDate>Mon, 19 Oct 2026 17:32:13 +0000</pubDate>
+    </item>
+    <item>
+      <title>Popular WordPress SEO Plugin Rank Math PRO Hijacked to Deliver Self-Restoring Backdoor - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/popular-wordpress-seo-plugin-rank-math.html</link>
+      <description>Copies of Rank Math PRO, the paid version of the Rank Math SEO plugin for WordPress, that were downloaded from rankmath.com or delivered as updates between 20:02 UTC on October 15 and 07:12 UTC on October 16 contained malware, Rank Math said in a&amp;nbsp;security notice&amp;nbsp;published on October 16.
+Any site that installed and activated one of those copies should be treated as compromised, and the</description>
+      <guid isPermaLink="false">077aa2705e202fa2c1eb51ca0b6b1c829df08933857f974584e1122e3cb72791</guid>
+      <pubDate>Mon, 19 Oct 2026 16:28:47 +0000</pubDate>
+    </item>
     <item>
       <title>tvm-recover: Tencent VM devirtualization through semantic lifting and algebraic simplification - Reverse Engineering</title>
       <link>https://www.reddit.com/r/ReverseEngineering/comments/1x9x4ru/tvmrecover_tencent_vm_devirtualization_through/</link>
@@ -51,6 +161,20 @@ Console is OpenCode's optional hosted service: a workspace saves its own OpenAI,
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/CelebrationSharp2476"&gt; /u/CelebrationSharp2476 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://codeberg.org/SamuraiCop/Cataclysm"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x9idol/homeworld_cataclysm_source_code/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">9e53c01e25c2b34b44b3da81199d50e00de5aa63441e8a7b93d32c36db49f0ec</guid>
       <pubDate>Mon, 19 Oct 2026 00:07:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>anki -- page manipulation via deck description links - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/e1e332d7-cbe2-11f1-8d05-74563cf85f9d.html</link>
+      <description/>
+      <guid isPermaLink="false">eac2f1dd435e8ee0464ef6e9f5dde88d874472a20672dcbb7df8a04939b6b659</guid>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Roundcube -- Multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/69adacad-cba3-11f1-8135-8447094a420f.html</link>
+      <description/>
+      <guid isPermaLink="false">39ef3e4604ecb3ca7bafed864224631c6012fcea6d041f4bc16ce7ac9839f9ad</guid>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>PS2 games statically recompiled to WebAssembly - Reverse Engineering</title>
@@ -1401,129 +1525,6 @@ The change, in effect since October 1, means researchers can no longer submit se
 The attacker must already know a file's exact name and path and cannot list what the directory holds. Atlassian&amp;nbsp;disclosed the flaw, CVE-2026-21589, on October 5, rated it 9.3 out of 10, and</description>
       <guid isPermaLink="false">3c2a7773176a68d50f479f4eb2bee366c468ec416c3b16c8fb7b81ffa91527ba</guid>
       <pubDate>Tue, 06 Oct 2026 06:58:56 +0000</pubDate>
-    </item>
-    <item>
-      <title>FBI Removes Accenture Contractor After Patch Failure Led to ShinyHunters Breach - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/fbi-removes-accenture-contractor-after.html</link>
-      <description>The U.S. Federal Bureau of Investigation (FBI) has removed an Accenture contractor for their alleged role in a ShinyHunters-breach that led to the theft of personal details of thousands of bureau employees.
-That's according to a report from Reuters, citing two sources familiar with the matter.
-"To date, our review has determined that the incident occurred as the result of a security failure ​</description>
-      <guid isPermaLink="false">e7e7fea4abb5dac3acd41114abf630797f5a865a3559a3513e9b5ea23d201305</guid>
-      <pubDate>Tue, 06 Oct 2026 06:56:57 +0000</pubDate>
-    </item>
-    <item>
-      <title>Denmark Says Attackers Accessed CPR Data for 8.8 Million People via Company Account - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/denmark-says-attackers-accessed-cpr.html</link>
-      <description>Unauthorized parties have gained access to the names, addresses, and personal identification numbers of about 8.8 million people, living and dead, in Denmark's national population register, the country's digitalization ministry&amp;nbsp;said on October 5.
-They used a private Danish company's lawful right to look up records in the Central Person Register (CPR). The ministry has told people never to</description>
-      <guid isPermaLink="false">9aa3c5dbe07cb1f2ba18bbf283a50b8ec7a0e737c5f7603dc8a061ea39c165a9</guid>
-      <pubDate>Tue, 06 Oct 2026 06:00:30 +0000</pubDate>
-    </item>
-    <item>
-      <title>ClickFix Smuggles Payloads Through Browser Cache to Bypass Windows Run Limits - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/clickfix-smuggles-payloads-through.html</link>
-      <description>A new type of ClickFix attack is using compromised websites to trick users into executing a malicious payload cached in a web browser's cache.
-"Instead of downloading and executing remote payloads like the typical attack pattern, in this attack, the websites pre-fetch a script payload into the browser cache disguised as a PNG file," the Microsoft Threat Intelligence team said in a post on X.</description>
-      <guid isPermaLink="false">2a22ed1d938b19f21e6cccd12947d211f76b109430fb7de968fb88abc8eb45e7</guid>
-      <pubDate>Tue, 06 Oct 2026 05:22:55 +0000</pubDate>
-    </item>
-    <item>
-      <title>Autel EVO Nano+: getting a root shell | 0xD34D’s Space - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wytyw1/autel_evo_nano_getting_a_root_shell_0xd34ds_space/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/0xD34D"&gt; /u/0xD34D &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://0xd34d.github.io/autel_evo_nano/drone-pwn"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wytyw1/autel_evo_nano_getting_a_root_shell_0xd34ds_space/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">02cec3efa8e2641e478d671e0fd6376aa076ae4842231c5b4ea0e25549e47bc7</guid>
-      <pubDate>Tue, 06 Oct 2026 04:57:05 +0000</pubDate>
-    </item>
-    <item>
-      <title>rabbitmq-c -- multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/03308f12-c15d-11f1-ab87-107c611e671e.html</link>
-      <description/>
-      <guid isPermaLink="false">0dd28bb0b536de7a9e7d7b10619dc8ec77a920cd5fbc89befb11cbe810a88e54</guid>
-      <pubDate>Tue, 06 Oct 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>rabbitmq-c -- remote client-side memory exhaustion - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/03302734-c15d-11f1-8561-107c611e671e.html</link>
-      <description/>
-      <guid isPermaLink="false">32b3c9fc60c93caf213abe37934613348f1206c5c4cd0451979696fcb9740bd1</guid>
-      <pubDate>Tue, 06 Oct 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Vaultwarden -- Multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/3a72cd47-c157-11f1-a6ea-8447094a420f.html</link>
-      <description/>
-      <guid isPermaLink="false">30fef090717e62f45c131081349b6542375f8f70ac024de8700b4919fa8bd335</guid>
-      <pubDate>Tue, 06 Oct 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>iOS 27.0.1 ImageIO — GPSCopy OOB-write (silently patched in 27.2 beta) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wykp9y/ios_2701_imageio_gpscopy_oobwrite_silently/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/JustActuator6946"&gt; /u/JustActuator6946 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/wvirel333/ABrake27"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wykp9y/ios_2701_imageio_gpscopy_oobwrite_silently/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">e9d281ccec688ba77336792168c45fadf61e3baa8e2200e1f7d372b94c8e3f96</guid>
-      <pubDate>Mon, 05 Oct 2026 21:22:17 +0000</pubDate>
-    </item>
-    <item>
-      <title>I turned a low-cost RP2040-Zero into a FIDO2/WebAuthn security key - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wyivrg/i_turned_a_lowcost_rp2040zero_into_a/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/KaraaslanLabs"&gt; /u/KaraaslanLabs &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/karaaslanlabs/kl-security-key"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wyivrg/i_turned_a_lowcost_rp2040zero_into_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">53e14e7dddb32ca6a630d9ef191b774f1ec875473e48113be8179c5e173d69d8</guid>
-      <pubDate>Mon, 05 Oct 2026 20:09:42 +0000</pubDate>
-    </item>
-    <item>
-      <title>Microsoft Exchange Flaw Lets Authenticated Attackers Read Other Users' Mailboxes - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/microsoft-exchange-flaw-lets.html</link>
-      <description>Microsoft has released out-of-band security updates to address a high-severity flaw in Microsoft Exchange Server that could allow an attacker to escalate privileges under certain conditions.
-The vulnerability, tracked as CVE-2026-96940, is rated 8.8 on the CVSS scoring system.
-"Weak authorization in Microsoft Exchange Server allows an authenticated attacker to elevate privileges over a</description>
-      <guid isPermaLink="false">bad4b0e1bf733466734b9f000b081fef40bb5b30233eba16768906f609071e8f</guid>
-      <pubDate>Mon, 05 Oct 2026 16:21:52 +0000</pubDate>
-    </item>
-    <item>
-      <title>Response Overview and Colonel Clustered – Grouping Burp Responses by Content - Darknet - The Darkside</title>
-      <link>https://www.darknet.org.uk/2026/10/response-overview-colonel-clustered-burp-response-grouping/</link>
-      <description>Two Burp Suite extensions that group responses by content: Response Overview, a BApp with a threshold you set, and Colonel Clustered, which picks its own.</description>
-      <guid isPermaLink="false">8e2dac63e76bf4ed84c0c89fcdc233e1edc751feaa42c6123605a9cf31fd87d7</guid>
-      <pubDate>Mon, 05 Oct 2026 12:33:47 +0000</pubDate>
-    </item>
-    <item>
-      <title>Realtek Jungle SDK Exploit Attempts Deliver Cling Botnet With STUN-Based C2 - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/realtek-jungle-sdk-exploit-attempts.html</link>
-      <description>Threat actors have been observed attempting to exploit a now-patched critical security flaw impacting the Realtek Jungle software development kit (SDK) to deploy a botnet malware called Cling.
-"Cling is notable not because it introduces a new propagation technique, but because it repurposes ordinary STUN behavior into a practical command-and-control channel," Nozomi Networks said in a report</description>
-      <guid isPermaLink="false">54ea42dbfaa649223f995eecdc17087b96a944203dc7f7fcc9bc9745f265636f</guid>
-      <pubDate>Mon, 05 Oct 2026 11:46:25 +0000</pubDate>
-    </item>
-    <item>
-      <title>Apple Plans Tighter macOS Full Disk Access Controls Over AI Agent Data Access - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/apple-plans-tighter-macos-full-disk.html</link>
-      <description>Apple has announced that it's taking steps to tighten controls around a macOS setting called Full Disk Access (FDA) due to security risks posed by artificial intelligence (AI) agents.
-"Some developers are using Full Disk Access in ways that could put users at risk, exposing everything on their systems—including files, mail, messages, and even browsing history – without users' full knowledge</description>
-      <guid isPermaLink="false">3c2e07704961a599e5a3cff88a1806d17d78ec7e8acf70ab6d6080ee3a5691b7</guid>
-      <pubDate>Mon, 05 Oct 2026 10:38:50 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Target Rejetto HFS Flaw That Enables Admin Session Forgery and RCE - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/attackers-target-rejetto-hfs-flaw-that.html</link>
-      <description>A critical security flaw impacting Rejetto HTTP File Server (HFS) is witnessing active exploitation attempts, according to VulnCheck.
-The vulnerability in question is CVE-2026-61500 (CVSS score: 9.3), a case of session forgery stemming from the use of a weak pseudo-random number generator (PRNG) that can lead to a predictable key, which an attacker can then use to gain unauthorized access and</description>
-      <guid isPermaLink="false">88e27c4249edd62405609f70a05ce6d93d6fe9cbca6715ce9e1c1967016e1824</guid>
-      <pubDate>Mon, 05 Oct 2026 08:09:23 +0000</pubDate>
-    </item>
-    <item>
-      <title>New NetScaler Zero-Day Exploited in Targeted Attacks Can Knock SAML Deployments Offline - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/new-netscaler-zero-day-exploited-in.html</link>
-      <description>Citrix has released security updates for a high-severity security flaw in NetScaler ADC and Citrix NetScaler Gateway that has been exploited as part of targeted zero-day attacks.
-The vulnerability, tracked as CVE-2026-88779, carries a CVSS score of 8.7 out of 10.0.
-"CVE-2026-88779 is a memory overflow vulnerability in Citrix NetScaler ADC and Citrix NetScaler Gateway that can lead to</description>
-      <guid isPermaLink="false">c0d78e26ce03675bf9bb65c559da64ba54b9e4a224bd7b78f15ec6e3e291adb9</guid>
-      <pubDate>Mon, 05 Oct 2026 06:40:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>LibreSSL -- Multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/85bcb950-c0b4-11f1-a6ea-8447094a420f.html</link>
-      <description/>
-      <guid isPermaLink="false">da525a0c33724ef222c48c79b7ae55f47bb67ea9158c392442c9891c58e3f3de</guid>
-      <pubDate>Mon, 05 Oct 2026 00:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>

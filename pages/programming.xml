@@ -5,7 +5,104 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Mon, 19 Oct 2026 14:00:40 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 14:01:08 +0000</lastBuildDate>
+    <item>
+      <title>Rodrigo Girão Serrão: Startup configuration files - Planet Python</title>
+      <link>https://mathspp.com/blog/startup-configuration-files</link>
+      <description>&lt;img alt="" src="https://mathspp.com/images/7/7/0/2/b/7702b761a8c4186f04a4b9fd1e874cf87499d056-thumbnail.webp" /&gt;
+                                &lt;p&gt;Learn how to use startup configuration files to run package entry points when the Python interpreter starts up.&lt;/p&gt;
+&lt;p&gt;A &lt;strong&gt;startup configuration file&lt;/strong&gt; is a file with the extension &lt;code&gt;.start&lt;/code&gt;.
+Starting from Python 3.15, the Python interpreter uses &lt;strong&gt;startup configuration files&lt;/strong&gt; to run package entry points when the interpreter starts up.&lt;/p&gt;
+&lt;p&gt;Here is an example of a simple startup configuration file that &lt;a class="external-link no-image" href="https://github.com/rodrigogiraoserrao/error-links" rel="nofollow noopener noreferrer" target="_blank"&gt;installs &lt;code&gt;error-links&lt;/code&gt;&lt;/a&gt; when the Python interpreter starts:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-text"&gt;error_links:install&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The entry point &lt;code&gt;error_links:install&lt;/code&gt; from the above points to the function &lt;code&gt;install&lt;/code&gt; from the module &lt;code&gt;error_links&lt;/code&gt;.
+In general, an entry point resembles an import:&lt;/p&gt;
+&lt;ol&gt;&lt;li&gt;the import path&lt;/li&gt;
+&lt;li&gt;followed by a colon&lt;/li&gt;
+&lt;li&gt;followed by the callable that gets called&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;For the entry point &lt;code&gt;error_links:install&lt;/code&gt;, the equivalent import would be &lt;code&gt;from error_links import install&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id="the-module-site-and-some-historical-context"&gt;The module &lt;code&gt;site&lt;/code&gt; and some historical context&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#the-module-site-and-some-historical-context"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The module &lt;code&gt;site&lt;/code&gt;, from the standard library, is imported automatically when the Python interpreter starts up.
+When imported, the module &lt;code&gt;site&lt;/code&gt; does a couple of things.
+Among them, it adds some paths to the module search path and then checks them for configuration paths.&lt;/p&gt;
+&lt;p&gt;In Python 3.14 or earlier, configuration files were &lt;code&gt;.pth&lt;/code&gt; files.
+&lt;code&gt;.pth&lt;/code&gt; files can be used to extend &lt;code&gt;sys.path&lt;/code&gt; by listing directories.
+Alongside that, and for backwards compatibility reasons, &lt;code&gt;.pth&lt;/code&gt; files could also include &lt;code&gt;import&lt;/code&gt; lines.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;import&lt;/code&gt; lines in a &lt;code&gt;.pth&lt;/code&gt; &lt;a class="external-link no-image" href="https://peps.python.org/pep-0829/#motivation" rel="nofollow noopener noreferrer" target="_blank"&gt;represent a security risk&lt;/a&gt;, so &lt;a class="external-link no-image" href="https://peps.python.org/pep-0829/" rel="nofollow noopener noreferrer" target="_blank"&gt;PEP 829&lt;/a&gt; introduced a safer way of running custom hooks during Python interpreter start up.
+&lt;code&gt;import&lt;/code&gt; lines in &lt;code&gt;.pth&lt;/code&gt; files are now deprecated and Python 3.15+ also looks for &lt;code&gt;.start&lt;/code&gt; files to run the listed entry points.&lt;/p&gt;
+&lt;h2 id="python-3-15-brings-much-more-to-the-table"&gt;Python 3.15 brings much more to the table&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#python-3-15-brings-much-more-to-the-table"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;From the two new built-ins &lt;code&gt;frozendict&lt;/code&gt; and &lt;code&gt;sentinel&lt;/code&gt;, to lazy imports, package startup configuration files, typing improvements, or more colour everywhere, Python 3.15 has a lot more to offer.
+If you want to learn more about what's new in Python 3.15, &lt;a href="https://mathspp.com/python-315"&gt;take a look at the &amp;ldquo;15 days of Python 3.15&amp;rdquo; series&lt;/a&gt; I'm running.
+For 15 days, I'll explain a new Python 3.15 feature every day.&lt;/p&gt;
+&lt;p&gt;Get the free 3.15 email series:&lt;/p&gt;
+&lt;p&gt;
+&lt;/p&gt;&lt;div class="form-wrapper" id="enroll-bottom-wrapper"&gt;
+&lt;form action="https://mathspp.com/blog/unpacking-inside-comprehensions" class=" " id="enroll-bottom" method="POST" name="enroll_bottom"&gt;
+                          &lt;input class="form-honeybear" name="data[honeypot]" tabindex="-1" type="text" value="" /&gt;&lt;div class="form-field form-group "&gt;
+          &lt;div class="form-data"&gt;
+                        &lt;div class="form-input-wrapper "&gt;
+                                    &lt;input class="form-input " name="data[email]" type="email" value="" /&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+  &lt;/div&gt;
+            &lt;div class="form-field form-group "&gt;
+            &lt;div class="form-label-wrapper"&gt;&lt;label class="form-label"&gt;&lt;/label&gt;
+      &lt;/div&gt;
+        &lt;div class="form-data"&gt;
+            &lt;div class="g-recaptcha-container"&gt;
+                                &lt;input name="data[token]" type="hidden" value="" /&gt;&lt;input name="data[action]" type="hidden" value="8ed5ba4f2363335578b32d61aec2ca83" /&gt;&lt;/div&gt;
+            &lt;/div&gt;&lt;/div&gt;&lt;/form&gt;&lt;/div&gt;</description>
+      <guid isPermaLink="false">ad011b253a852fb02859693835e51b7e9abcd12757777cdad21c8f1ad80d6554</guid>
+      <pubDate>Mon, 19 Oct 2026 19:19:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Django Weblog: Quarterly contributor outreach - Planet Python</title>
+      <link>https://www.djangoproject.com/weblog/2026/oct/19/quarterly-contributor-outreach/</link>
+      <description>&lt;p&gt;Hi Django community, thank you all for continuing to contribute to Django.&lt;/p&gt;
+&lt;p&gt;The Steering Council is reaching out to bring people's attention to a few areas. We have major features we'd like to test and review for &lt;a href="https://docs.djangoproject.com/en/dev/releases/6.2/"&gt;6.2&lt;/a&gt;, smaller changes that could use attention and then various &lt;a href="https://github.com/orgs/django/projects/24"&gt;New Feature ideas&lt;/a&gt; we'd like community input on.&lt;/p&gt;
+&lt;h2 id="s-major-features"&gt;&lt;strong&gt;Major features&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;These PRs are things we'd like to refine, test and get merged in. We're looking for people to &lt;strong&gt;test the features&lt;/strong&gt; themselves and &lt;strong&gt;review the PRs&lt;/strong&gt;. Please see our &lt;a href="https://docs.djangoproject.com/en/dev/internals/contributing/triaging-tickets/#reviewing-patches"&gt;guidelines on reviewing PRs&lt;/a&gt;. &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://github.com/django/django/pull/21636"&gt;&lt;code&gt;CompositeField&lt;/code&gt; (multi-column subqueries)&lt;/a&gt;   &lt;/li&gt;
+&lt;li&gt;Only needs testing, not review.  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/django/django/pull/21400"&gt;&lt;code&gt;DEFAULT_PK_FIELD&lt;/code&gt; setting (e.g. UUID primary keys)&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/django/django/pull/16905"&gt;Move models between apps&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Sage Abdullah has a great &lt;a href="https://www.djangolondon.com"&gt;Django London&lt;/a&gt; talk on how to &lt;a href="https://djangotv.com/videos/unknown/9999/run-your-tests-against-djangos-main-django-london-meetup/"&gt;test your project against Django's main branch&lt;/a&gt;. Please note that you would need to change the branch to point to the PR’s specific branch.&lt;/p&gt;
+&lt;h2 id="s-other-features"&gt;&lt;strong&gt;Other features&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;These are other PRs that we thought would be cool to have included in 6.2. They are in various states of refinement. We're looking for people to test and review the PRs. They are smaller in nature, so it may be easier to get involved here.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://github.com/django/django/pull/18468"&gt;Adding &lt;code&gt;QuerySet.executed_queries&lt;/code&gt;&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/django/django/pull/19603"&gt;Partitioned cookies&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/django/django/pull/21855"&gt;Support for the HTTP QUERY method&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/django/django/pull/21847"&gt;Improve CSRF debug messaging behind proxies&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="s-new-features"&gt;&lt;strong&gt;New Features&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;This section is bringing attention to the New Features queue. Ideas are in various stages and require different types of input. With over 150 ideas so far, we'll try to provide direction for those who have limited time to participate.&lt;/p&gt;
+&lt;h3 id="s-ideas-needing-technical-vetting-medium-effort"&gt;&lt;strong&gt;Ideas needing technical vetting [medium+ effort]&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;These are ideas the community would like integrated, but we need contributor opinion on. The links are to proposals that could use vetting.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://github.com/django/new-features/issues/73#issuecomment-3288489933"&gt;Ability to customize model Meta and migration generation&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/django/new-features/issues/98#issuecomment-4024360544"&gt;Implement modern CSRF protection&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/django/new-features/issues/144"&gt;Add timeout API for tasks&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/django/deps/pull/122"&gt;Subresource integrity (SRI)&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/django/deps/pull/101"&gt;Adding import maps to Django&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="s-ideas-needing-community-input-low-effort"&gt;&lt;strong&gt;Ideas needing community input [low effort]&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;We encourage people to review the entire New Feature queue and use the emoji reactions. Please use the 😕 emoji to register a "saw this, but have no opinion". This helps us understand what has been reviewed by the community. We have selected a few from the list that we'd like people to weigh in on:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://github.com/django/new-features/issues/175"&gt;Better hooks to customize &lt;code&gt;PasswordResetForm&lt;/code&gt; email sending&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/django/new-features/issues/50"&gt;Add PR help in Working with Git GitHub contribution documentation&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/django/new-features/issues/165"&gt;Service URL parsing in core (e.g. database and cache URLs)&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/django/new-features/issues/188"&gt;Standardise Task execution order&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/django/new-features/issues/193"&gt;Update &lt;code&gt;AuthenticationMiddleware&lt;/code&gt; to delegate to Authentication Backends&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/django/new-features/issues/206"&gt;Support sending to Unicode email addresses via SMTP&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="s-thank-you"&gt;&lt;strong&gt;Thank you&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Django is built by the community and every bit helps move Django forward. We encourage everyone to feel empowered to participate. If you aren't sure where to start or have questions, ask on the &lt;a href="https://forum.djangoproject.com/"&gt;Django Forum&lt;/a&gt; or in the &lt;a href="https://chat.djangoproject.com/"&gt;Django Discord&lt;/a&gt;. We're happy to help you find your way in.&lt;/p&gt;
+&lt;p&gt;- The Django Steering Council&lt;/p&gt;</description>
+      <guid isPermaLink="false">b4c2467584a792180b5a09783d451a4011f9457bf5c54809f6f5680907d664ee</guid>
+      <pubDate>Mon, 19 Oct 2026 17:28:23 +0000</pubDate>
+    </item>
     <item>
       <title>Hugo van Kemenade: Releasing Python 3.15.0 - Planet Python</title>
       <link>https://hugovk.dev/blog/2026/releasing-python-3-15-0/</link>
@@ -244,6 +341,128 @@ unlock 3.15 branch&lt;/p&gt;
 &lt;a href="https://mastodon.social/@hugovk/117411775424580934"&gt;&lt;em&gt;Fri, Oct 9, 2026, 18:58 EEST&lt;/em&gt;&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;</description>
       <guid isPermaLink="false">a36925700147685582d1f266cb4b7fb6bcc805fd01421f260904aa4e39b48899</guid>
       <pubDate>Mon, 19 Oct 2026 10:21:54 +0000</pubDate>
+    </item>
+    <item>
+      <title>Peter Hoffmann: Home Server Ops with a Read-Only Agent and pyinfra - Planet Python</title>
+      <link>https://peter-hoffmann.com/2026/home-server-with-a-read-only-agent-and-pyinfra.html</link>
+      <description>&lt;p&gt;My home server is a small mini PC running Debian. It holds the file
+shares, Time Machine backups, Gitea, a music server and a few small apps of my
+own. Like most home servers it grew by hand over the years: a command here, a
+config edit there, notes somewhere else. Its exact state was mostly in my
+head, and not reliably.&lt;/p&gt;
+&lt;p&gt;Over two days I moved it to a setup where a coding agent does most of the
+work, but can't change the server on its own. This setup has proven to be
+extremely reliable and helpful: the server now has a declarative state, and I
+can review every change the agent proposes before it is applied.&lt;/p&gt;
+&lt;h2&gt;The idea&lt;/h2&gt;
+&lt;p&gt;The setup is built on two rules:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;The agent gets read-only access.&lt;/strong&gt; It can SSH into the server as my normal
+user and look at everything: systemd units, logs, disk usage, config files,
+cron jobs. &lt;code&gt;sudo&lt;/code&gt; requires a password, which the agent doesn't have. So in
+practice it can explore, but not change anything.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Every change is code.&lt;/strong&gt; The agent never runs ad-hoc commands to fix
+something. It writes or changes a &lt;a href="https://pyinfra.com"&gt;pyinfra&lt;/a&gt; deploy in a
+git repo. pyinfra is &amp;quot;Ansible in Python&amp;quot;: you describe the desired state with
+Python operations, it compares that state with the server and only applies
+the difference.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The sudo password is the boundary between the two. I run the dry run and the
+real deploy in my own terminal, see the diff and type the password. No special
+user, no extra tooling.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="The agent explores the server read-only and writes pyinfra deploys; only my deploy with the sudo password changes the server" src="https://peter-hoffmann.com/static/2026/home-server-agent-pyinfra.png" /&gt;&lt;/p&gt;
+&lt;h2&gt;The repo&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;miniserver/
+├── CLAUDE.md        # rules for the agent
+├── SERVER.md        # current state of the server, written by the agent
+├── inventory.py     # the server, resolved via ~/.ssh/config
+├── justfile         # plan, deploy, ping, fact, ...
+├── deploys/         # one pyinfra deploy per topic
+│   ├── base.py      # packages, time sync, unattended-upgrades
+│   ├── backup.py
+│   ├── proxy.py
+│   ├── ...
+│   └── all.py       # includes everything in order
+└── files/           # scripts and systemd units deployed to the server
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;CLAUDE.md&lt;/code&gt; holds the rules the agent follows in every session. The important
+part is short:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;- Read-only exploration is fine: ssh in and run commands that only read state.
+- Never modify the server without explicit permission.
+- Prefer pyinfra over ad-hoc commands for changes. Always do a dry run first
+  (`just plan [deploys/&amp;lt;file&amp;gt;.py]`) and review the plan before the real run.
+- `files/` holds the scripts/units deployed to the server; edit them here,
+  never directly on the server.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;SERVER.md&lt;/code&gt; is the inventory the agent wrote in the first session by exploring
+the server: OS, hardware, disks, users, services, backups. It gets updated at
+the end of every session, so the next session starts from a description instead
+of from scratch.&lt;/p&gt;
+&lt;h2&gt;A deploy&lt;/h2&gt;
+&lt;p&gt;A deploy is plain Python. This one manages a single setting in Gitea's
+&lt;code&gt;app.ini&lt;/code&gt;, restarts Gitea only if the setting changed, and checks the result:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;pyinfra.operations&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;server&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;systemd&lt;/span&gt;
+&lt;span class="n"&gt;APP_INI&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/home/git/gitea/custom/conf/app.ini&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;ROOT_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;http://gitea.local/&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;root_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;app.ini: ROOT_URL = &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;ROOT_URL&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;APP_INI&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;^ROOT_URL *=.*$&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ROOT_URL = &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;ROOT_URL&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;_sudo&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;systemd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;service&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Restart gitea after config change&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;service&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;gitea&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;restarted&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;_if&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;root_url&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;did_change&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;_sudo&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;server&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shell&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Verify Gitea&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;commands&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;systemctl is-active gitea&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+    &lt;span class="n"&gt;_sudo&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Deploys are idempotent: running them again changes nothing. That makes it safe
+to run &lt;code&gt;all.py&lt;/code&gt; at any time to check whether the server still matches the repo.&lt;/p&gt;
+&lt;h2&gt;The workflow&lt;/h2&gt;
+&lt;p&gt;A typical change looks like this:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;I describe what I want, e.g. &amp;quot;every app should get a name like
+&lt;code&gt;gitea.local&lt;/code&gt; instead of a port&amp;quot;.&lt;/li&gt;
+&lt;li&gt;The agent explores the server read-only, writes the deploy (here: Caddy as
+reverse proxy plus mDNS aliases) and tells me what will change.&lt;/li&gt;
+&lt;li&gt;I run &lt;code&gt;just plan deploys/proxy.py&lt;/code&gt;, a pyinfra dry run with diff, and review
+it.&lt;/li&gt;
+&lt;li&gt;I run &lt;code&gt;just deploy deploys/proxy.py&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;The agent verifies the result over SSH, updates &lt;code&gt;SERVER.md&lt;/code&gt; and commits.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The agent does the tedious parts (reading man pages, finding config locations,
+writing systemd units, checking logs), while I keep control over what actually
+changes. And the git history doubles as an operations log.&lt;/p&gt;
+&lt;h2&gt;What came out of it&lt;/h2&gt;
+&lt;p&gt;In two days the repo grew to about 40 commits: a full system upgrade, the
+printer moved over from an old Raspberry Pi, Time Machine backups for the
+Macs, push notifications for failed jobs, a reverse proxy with local names for
+all apps, and two of my own Python apps deployed as pinned releases.&lt;/p&gt;
+&lt;p&gt;Mistakes still happened, but they ended up in &lt;code&gt;CLAUDE.md&lt;/code&gt; as lessons learned
+for the next session. A few examples:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;apt autoremove&lt;/code&gt; after the upgrade removed about 250 packages, including
+&lt;code&gt;smartmontools&lt;/code&gt;. pyinfra's dry run can't show what apt will remove, so now
+the rule is to check &lt;code&gt;apt-get -s autoremove&lt;/code&gt; first.&lt;/li&gt;
+&lt;li&gt;A backup of an unmounted mount point &amp;quot;succeeds&amp;quot; with an empty snapshot. The
+backup script now refuses an empty source or a missing destination.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;OnFailure=&lt;/code&gt; on a unit with &lt;code&gt;Restart=always&lt;/code&gt; fires on every restart, which
+means a flood of notifications.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;One caveat: read-only doesn't mean the agent sees nothing sensitive. It can
+read everything my user can read. For a home server I'm fine with that, but
+it's worth keeping in mind before you do the same with a machine that holds
+other people's data.&lt;/p&gt;</description>
+      <guid isPermaLink="false">298d23960b274344b50e1aceffb973da045f3b52618fc1c435a78208e0999d9b</guid>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>The Python Coding Stack: 2. Who actually does the work, the model or the software? - Planet Python</title>
