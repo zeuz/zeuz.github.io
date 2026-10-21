@@ -5,7 +5,177 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 20 Oct 2026 14:01:08 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2026 14:01:03 +0000</lastBuildDate>
+    <item>
+      <title>Rodrigo Girão Serrão: DX improvements in Python 3.15 - Planet Python</title>
+      <link>https://mathspp.com/blog/dx-improvements-in-python-315</link>
+      <description>&lt;img alt="" src="https://mathspp.com/images/9/c/8/d/f/9c8df2f49855c1c3dd45394c0ab77374b43bade5-thumbnail.webp" /&gt;
+                                &lt;p&gt;Learn about the top 3 developer experience improvements from Python 3.15&lt;/p&gt;
+&lt;p&gt;This article covers the top 3 improvements made to the developer experience of Python 3.15 users:&lt;/p&gt;
+&lt;ol&gt;&lt;li&gt;improved error messages&lt;/li&gt;
+&lt;li&gt;more colours&lt;/li&gt;
+&lt;li&gt;default UTF-8 encoding&lt;/li&gt;
+&lt;/ol&gt;&lt;h2 id="15-days-of-python-3-15"&gt;15 days of Python 3.15&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#15-days-of-python-3-15"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;To &lt;a href="https://mathspp.com/python-315"&gt;celebrate the release of Python 3.15&lt;/a&gt;, over the next 15 business days I'll be writing about a new 3.15 feature every day.
+Explained clearly and with examples so you don't have to sift through the changelog.&lt;/p&gt;
+&lt;p&gt;Subscribe to receive this free email series:&lt;/p&gt;
+&lt;p&gt;
+&lt;/p&gt;&lt;div class="form-wrapper" id="enroll-wrapper"&gt;
+&lt;form action="https://mathspp.com/courses/uv" class=" " id="enroll" method="POST" name="enroll"&gt;
+                          &lt;input class="form-honeybear" name="data[honeypot]" tabindex="-1" type="text" value="" /&gt;&lt;div class="form-field form-group "&gt;
+          &lt;div class="form-data"&gt;
+                        &lt;div class="form-input-wrapper "&gt;
+                                    &lt;input class="form-input " name="data[email]" type="email" value="" /&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+  &lt;/div&gt;
+            &lt;div class="form-field form-group "&gt;
+            &lt;div class="form-label-wrapper"&gt;&lt;label class="form-label"&gt;&lt;/label&gt;
+      &lt;/div&gt;
+        &lt;div class="form-data"&gt;
+            &lt;div class="g-recaptcha-container"&gt;
+                                &lt;input name="data[token]" type="hidden" value="" /&gt;&lt;input name="data[action]" type="hidden" value="4b95f0061573b2667d15fbd676dba0fc" /&gt;&lt;/div&gt;
+            &lt;/div&gt;
+  &lt;/div&gt;
+        &lt;input name="__form-name__" type="hidden" value="enroll" /&gt;&lt;input name="__unique_form_id__" type="hidden" value="zullkyjsp4p9fwv5aeem" /&gt;&lt;input class="form-nonce-field" name="form-nonce" type="hidden" value="52a53eb1029bd4152a3308b6b3e631f6" /&gt;&lt;div class="button-wrapper"&gt;
+  &lt;button class="btn " type="submit"&gt;Enroll for free &amp;#128013;&amp;#128640;&lt;/button&gt;
+        &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+&lt;p&gt;If you want, you can also &lt;a href="https://mathspp.com/python-315"&gt;check the schedule&lt;/a&gt; of the upcoming emails.&lt;/p&gt;
+&lt;h2 id="improved-error-messages"&gt;Improved error messages&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#improved-error-messages"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Over the past few years, lots of effort has been poured into improving Python's error messages.
+Python 3.15 is no exception, as it introduces three improved types of error messages.&lt;/p&gt;
+&lt;h3 id="errors-in-accessing-nested-attributes"&gt;Errors in accessing nested attributes&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#errors-in-accessing-nested-attributes"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;If you get an &lt;code&gt;AttributeError&lt;/code&gt; exception when accessing a name of an object, but that object has another member that has the correct name, Python suggests it:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-py"&gt;class Inner:
+    def __init__(self):
+        self.value = 42
+class Outer:
+    def __init__(self):
+        self.inner = Inner()
+o = Outer()
+o.value
+# AttributeError: 'Outer' object has no attribute 'value'.
+# Did you mean '.inner.value' instead of '.value'?&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Incidentally, while Python 3.15 was in alpha, I &lt;a class="external-link no-image" href="https://github.com/python/cpython/issues/146171" rel="nofollow noopener noreferrer" target="_blank"&gt;found and reported a bug with this feature&lt;/a&gt; that was fixed in just a couple of hours!&lt;/p&gt;
+&lt;h3 id="checking-methods-from-popular-programming-languages"&gt;Checking methods from popular programming languages&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#checking-methods-from-popular-programming-languages"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;If you get an &lt;code&gt;AttributeError&lt;/code&gt; when trying to access a method from a built-in type, Python starts by checking if that's a typo.
+For example, &lt;code&gt;list.pp&lt;/code&gt; will ask if you meant to type &lt;code&gt;list.pop&lt;/code&gt;.
+Now, if there's no &amp;ldquo;obvious&amp;rdquo; typo, Python will also check a static table of common...&lt;/p&gt;</description>
+      <guid isPermaLink="false">35a3251885610b894aadab04dd065175549c3757f30f9cc2aab751ad9a8e0486</guid>
+      <pubDate>Tue, 20 Oct 2026 15:56:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Software Foundation: Wikis: Relaunched! - Planet Python</title>
+      <link>https://pyfound.blogspot.com/2026/10/wikis-relaunched.html</link>
+      <description>&lt;p&gt;In February 2026, the Python Software Foundation (PSF) made the PSF, Python, and Jython wikis read-only due to excessive automated traffic and security concerns on outdated infrastructure. This sudden change was disruptive to the many community members who rely on and contribute to these wikis. We are pleased to share that we have stood up new wikis through GitHub Pages that address the automated traffic and security concerns. The new wikis will have a more modern front-end, as well as a permissions-based content management system (CMS) for community members to make updates.&lt;/p&gt;
+&lt;p&gt;Find the new wikis here:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="https://psf.github.io/wiki/psf/index.html"&gt;PSF Wiki&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://psf.github.io/wiki/index.html"&gt;Python Wiki&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://psf.github.io/wiki/jython/index.html"&gt;Jython Wiki&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;More details and context&lt;/h2&gt;
+&lt;h3&gt;Excessive automated traffic&lt;/h3&gt;
+&lt;p&gt;With the old wiki structure, we received a large volume of alerts at all hours, each serious enough to page and wake our on-call infrastructure staff, which is very limited (just one person currently, although this will be changing soon!). The quantity of scraping overloaded our servers, causing outages, which happened often enough that these issues required a significant amount of effort for the PSF staff to manage. On review back in February, that traffic turned out to be almost entirely AI bots that were trying to scrape the entire internet.&lt;/p&gt;
+&lt;h3&gt;Security&lt;/h3&gt;
+&lt;p&gt;Additionally, some portions of the wikis were still built with Python 2. Python 2 reached end of life on January 1, 2020, and no longer receives upstream security fixes. Moving to a static site makes it very fast and reduces security risks, while also having the benefit of a more modern user interface.&lt;/p&gt;
+&lt;h3&gt;Impact&lt;/h3&gt;
+&lt;p&gt;The PSF acknowledges that retiring the old wikis without notice was frustrating to the overall community and especially so to those community members who have spent a lot of time contributing to the wikis over the years. The abrupt nature of this change did not reflect the care and respect that our contributors deserve, and we recognize the frustration this caused. We built the new wikis with the guiding principle of how to best serve the community, and we hope they will continue to be a valuable community resource, and hopefully improve on the experience. The new CMS means you can even create pull requests in your code editor if you prefer!&lt;/p&gt;
+&lt;h3&gt;Platform&lt;/h3&gt;
+&lt;p&gt;GitHub was chosen for the home of the new wikis as this is where CPython, &lt;a href="https://www.python.org"&gt;python.org&lt;/a&gt;, and other properties the PSF hosts currently live. The hope is to continue to streamline the PSF's hosting and stewardship of services to simplify for both PSF staff and the community folks who contribute to them.&lt;/p&gt;
+&lt;h2&gt;How to Contribute&lt;/h2&gt;
+&lt;p&gt;Previously, the Python and Jython wikis were user-editable by invitation of an existing editor and the PSF wiki was permissions based. Moving forward, all three of the wikis will be permissions based via &lt;a href="https://github.com/psf/wiki"&gt;the GitHub repository they are hosted on&lt;/a&gt;, and changes can be requested through pull requests by anyone in the community.&lt;/p&gt;
+&lt;p&gt;We realize that moving to GitHub, with an entirely permissions based process, is a big change from the previous form. As stewards of Python's web presence, we've opted to provide a more modern interface, relying on GitHub, the platform that already powers CPython development. GitHub allows us to distribute granular control, review changes through pull requests, and maintain the uptime this service deserves. Also, since the site is now generated statically, it removes any worry about AI bots overwhelming the hosts that the wikis were previously hosted on.&lt;/p&gt;
+&lt;p&gt;Please review the &lt;a href="https://github.com/psf/wiki/blob/main/README.md"&gt;repository's README file&lt;/a&gt; to learn more about contributing. We welcome the community to come join in on updating, cleaning up, and adding pages to the new wiki! We will happily grant write access to the Python wiki to contributors who are known stewards of the previous wiki, and look forward to bringing on more contributors in the future.&lt;/p&gt;</description>
+      <guid isPermaLink="false">50bf95a10f7392827b827428967e35aaac45efe8b5aa00e888322448fd0ad5bb</guid>
+      <pubDate>Tue, 20 Oct 2026 12:29:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>Seth Michael Larson: Documenting certificate distribution pain points for the Python ecosystem - Planet Python</title>
+      <link>https://sethmlarson.dev/python-cert-dist-pain-points?utm_campaign=rss</link>
+      <description>&lt;p&gt;I'm writing this blog post on the same day as
+the &lt;a href="https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576"&gt;eMudhra Intermediate CA compromises news&lt;/a&gt; was
+published so the memory of what was required from me
+and unfortunately volunteer maintainers today
+is still fresh and top-of-mind. Fixing the systemic
+issues that many open source projects faced today
+takes longer than a day of hurriedly patching everything
+and publishing advisories, so I'm leaving these
+as notes for future us.&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;I'm only writing from the perspective of the Python
+ecosystem, although I know at least some of these
+issues exist elsewhere. Here's some context:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CPython uses OpenSSL for TLS on all platforms and OpenSSL
+requires CA root certificates provided as files, directories,
+or in-memory data. CPython distributes OpenSSL to Windows and macOS,
+because those platforms don't distribute OpenSSL on their own typically.
+Linux distributions do distribute OpenSSL typically.&lt;/li&gt;
+&lt;li&gt;certifi is the Python ecosystems' packaged distribution of CA root certificates.
+certifi was designed to work well with OpenSSL, but many Linux distributions
+distribute CA root certificates as their own package, too (and do a much better job today than long ago). So in practice,
+certifi is useful today on Windows and macOS where the system certificate stores
+can't be made available as a file or directory to be compatible with OpenSSL.&lt;/li&gt;
+&lt;li&gt;Much of the pain of this incident is because we can't revoke certificates
+actively by default on an OpenSSL-based Python installation. If we could do so,
+then any revocation mechanism could protect end-users without dependency updates.&lt;/li&gt;
+&lt;li&gt;Some of the pain is caused by needing to update certifi as a dependency, and
+everything associated with upgrading across a dependency tree.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Python and pip&lt;/h2&gt;
+&lt;p&gt;pip bundles its dependencies because bootstrapping is a really hard problem,
+including certifi. Python bundles pip because bootstrapping is a really hard
+problem. So a critical issue in certifi means potentially updating both pip and Python
+on short notice.&lt;/p&gt;
+&lt;p&gt;Python distributes pip through ensurepip, so the Python Security Response Team
+sometimes needs to respond by upgrading pip in case of a vulnerability that
+affects whether pip can be securely used to upgrade itself... like in the case
+of a CA certificate compromise... So if there's an issue in certifi not only
+do we need to publish a release of pip, we need to head-of-line block on that
+release landing in Python (across relevant release branches, usually 3-4),
+and then do releases of those branches.&lt;/p&gt;
+&lt;p&gt;pip already uses truststore (a library I maintain) by default.
+For compatibility reasons, pip still adds certifi
+root certificates to be considered as roots. By removing the certifi default (&lt;a href="https://github.com/pypa/pip/issues/14374"&gt;which appears
+to be happening&lt;/a&gt;) this would &lt;em&gt;slightly&lt;/em&gt; improve the situation for Linux-based users,
+where they could upgrade their system CA certificates and be safe, still no
+revocation mechanism. The big benefit is that pip maintainers wouldn't need to do
+anything in the case of a certifi CA store compromise anymore.&lt;/p&gt;
+&lt;p&gt;Many other packaging tools and infra had to take action on short notice, too,
+like the manylinux build images, various bots
+and cron jobs, Python build bots, Sigstore CLI for Python, and likely many more.&lt;/p&gt;
+&lt;p&gt;Once all the patching is done, the biggest problem then is alerting users as they
+too have to take action to upgrade dependencies. I &lt;a href="https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576"&gt;published a topic on
+discuss.python.org&lt;/a&gt;, sent an alert to security-announce@python.org, added
+banners to pypi.org and discuss.python.org, and posted on social media (thanks for boosting).&lt;/p&gt;
+&lt;h2&gt;PyPI as a certificate distribution channel&lt;/h2&gt;
+&lt;p&gt;An over-arching opinion that I have (and I am willing to be wrong) is that PyPI
+should no longer be a certificate distribution channel. Packages like certifi were necessary
+in the past to get a decent CA certificates bundle to platforms without one.
+&lt;strong&gt;Remember, Python is about the same age as TLS and much older than the expectation that your system has decent CA certificate bundles&lt;/strong&gt;.
+Today I am not aware of a major platform that exists &lt;em&gt;without&lt;/em&gt; a decent CA certificate bundle,
+as Python isn't the only application that needs CA certificates. And I'm not sure
+how much it is Python or pip's responsibility that your system provides a decent
+CA certificate bundle.&lt;/p&gt;
+&lt;p&gt;Maybe it's time to evaluate leaning on system-provided certificate stores
+more generally in the Python ecosystem. This would mean less work for
+open source maintainers that provide applications (Python, pip), by
+relying on maintainers of systems instead (distros, browsers, services like Let's Encrypt).
+Systems maintainers have to do this work anyway, can we rely more on their work
+so we don't have to painfully duplicate that same work across an ecosystem?&lt;/p&gt;
+&lt;h2&gt;Revocation for OpenSSL-based platforms&lt;/h2&gt;
+&lt;p&gt;This is still an open question for me, what is the best way forward towards
+certificate revocation for OpenSSL-based platforms like Linux distributions.
+I haven't spent a lot of time thinking about this, but if we could have this
+in a privacy and performance preserving way that would go a long way to reduce
+the amount of short-notice demands on volunteers or open source projects.&lt;/p&gt;
+&lt;p&gt;That's all for now, time to log off and rest up.&lt;/p&gt;
+&lt;br /&gt;&lt;hr /&gt;&lt;p&gt;Thanks for reading ♥ I would love to hear your thoughts! Contact me via &lt;a href="https://mastodon.social/@sethmlarson"&gt;Mastodon&lt;/a&gt;, &lt;a href="https://bsky.app/profile/sethmlarson.dev"&gt;Bluesky&lt;/a&gt;, or &lt;a href="mailto:sethmichaellarson@gmail.com"&gt;email&lt;/a&gt;. Browse the &lt;a href="https://sethmlarson.dev/"&gt;blog archive&lt;/a&gt;. Check out my &lt;a href="https://sethmlarson.dev/blogroll"&gt;blogroll&lt;/a&gt;.&lt;/p&gt;&lt;hr /&gt;&lt;br /&gt;</description>
+      <guid isPermaLink="false">98ae877b6f755cb71b938769574584b33b50e152b791c119f5f4f510205e0e48</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Rodrigo Girão Serrão: Startup configuration files - Planet Python</title>
       <link>https://mathspp.com/blog/startup-configuration-files</link>
@@ -341,6 +511,24 @@ unlock 3.15 branch&lt;/p&gt;
 &lt;a href="https://mastodon.social/@hugovk/117411775424580934"&gt;&lt;em&gt;Fri, Oct 9, 2026, 18:58 EEST&lt;/em&gt;&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;</description>
       <guid isPermaLink="false">a36925700147685582d1f266cb4b7fb6bcc805fd01421f260904aa4e39b48899</guid>
       <pubDate>Mon, 19 Oct 2026 10:21:54 +0000</pubDate>
+    </item>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: Pandas date range selection: Slicing a datetime index with .loc - Planet Python</title>
+      <link>https://lernerpython.com/2026/10/19/pandas-date-range-selection-slicing-a-datetime-index-with-loc/</link>
+      <description>&lt;img alt="Pandas date range selection: Slicing a datetime index with .loc" class="wp-image-18422" height="611" src="https://lernerpython.com/wp-content/uploads/2026/10/2026-10-19.png" width="1533" /&gt;
+&lt;p class="wp-block-paragraph"&gt;Want to select a chunk of time from a Python Pandas data frame?&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Make the datetime column the index, then use .loc and a slice to choose dates:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;(
+  df
+  .set_index('tpep_pickup_datetime')
+  .sort_index()
+  .loc['2025-11-10':'2025-11-20']
+  ['trip_distance']
+  .mean()
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/10/19/pandas-date-range-selection-slicing-a-datetime-index-with-loc/"&gt;Pandas date range selection: Slicing a datetime index with .loc&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">88fb3f71abfc1b85d62cd707ae49b618909917b4654a25d25e7feb5facda83ff</guid>
+      <pubDate>Mon, 19 Oct 2026 06:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Peter Hoffmann: Home Server Ops with a Read-Only Agent and pyinfra - Planet Python</title>

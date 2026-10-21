@@ -5,7 +5,129 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 20 Oct 2026 14:01:08 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2026 14:01:03 +0000</lastBuildDate>
+    <item>
+      <title>Google Chrome Adds ClickFix Warnings to Stop Users From Running Malicious Commands - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/google-chrome-adds-clickfix-warnings-to.html</link>
+      <description>Google on Tuesday said it's rolling out improved safeguards in its Chrome browser to secure users against ClickFix attacks when Enhanced Protection is enabled.
+ClickFix is a popular social engineering technique in which bad actors trick users into copying and pasting malicious code directly into their computer's operating system, thereby bypassing conventional security controls.
+As part of</description>
+      <guid isPermaLink="false">821858a7647cdcff578d7927dbccdc8467381d96af5bfc81e1ccf0b49ee732a8</guid>
+      <pubDate>Wed, 21 Oct 2026 13:15:09 +0000</pubDate>
+    </item>
+    <item>
+      <title>How Cryo's Atlantis: The Lost Tales (1997) engine works: formats, panoramic projection, scripts and 3D heads - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xbmu5k/how_cryos_atlantis_the_lost_tales_1997_engine/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/PsychologicalBid7836"&gt; /u/PsychologicalBid7836 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.retroreversing.com/cryo-atlantis-engine"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xbmu5k/how_cryos_atlantis_the_lost_tales_1997_engine/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">cb7ba48466634220f453ff4ac50c9e283023201609eff86a71becc534acbfa35</guid>
+      <pubDate>Wed, 21 Oct 2026 13:14:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>China-Aligned Bronze Sandcastle Abuses Sandboxie DLL Sideloading to Deploy Backdoors - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/china-aligned-bronze-sandcastle-abuses.html</link>
+      <description>Cybersecurity researchers have disclosed details of a previously undocumented China-aligned threat cluster known as Bronze Sandcastle that has been observed targeting organizations in Asia and Africa since mid-2025.
+"The most distinctive technical marker for Bronze Sandcastle is its consistent use of Sandboxie DLL sideloading," Sophos security researcher Gabor Szappanos said in a post published</description>
+      <guid isPermaLink="false">dc37437302bdede4f99c31d18edab3860162a3c2d7dd297db713688ecd16a7fc</guid>
+      <pubDate>Wed, 21 Oct 2026 12:05:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Hijacked Over 300 Tor Exit Relays to Intercept SSH Connections - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/attackers-hijacked-over-300-tor-exit.html</link>
+      <description>Attackers took control of more than 300 Tor exit relays in early October and used them to redirect SSH connections to servers that stole login passwords, a researcher found.
+Exit relays are the last hop in a Tor circuit, where traffic leaves the network for its destination. Only a password login to an SSH server made through Tor between October 1 and 5, after accepting the interception</description>
+      <guid isPermaLink="false">47d715ae08662676517464e657f488355394f43ee87a86cb57aa93c60f1832b7</guid>
+      <pubDate>Wed, 21 Oct 2026 10:30:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>PHP2Shell: Two Unpatched Critical PHP RCE Flaws (CVSS 9.2) Trigger Emergency Security Alert - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/php2shell-two-unpatched-critical-php.html</link>
+      <description>This story is developing and was written before PHP's scheduled 14:00 UTC release on October 21. Once the release is out, the affected and fixed versions below are confirmed by the official advisory.
+PHP will ship an out-of-cycle security release at 14:00 UTC today, October 21, for two critical vulnerabilities that its security team has rated 9.2 on the CVSS v4.0 scale but has not described.</description>
+      <guid isPermaLink="false">2af5fc868108d2eb3bdfa090be3a7383973bf54bcb7fb678970539c3761c89c3</guid>
+      <pubDate>Wed, 21 Oct 2026 09:05:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Abuse UpdraftCentral Keys to Plant Backdoors on WordPress Sites - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/attackers-abuse-updraftcentral-keys-to.html</link>
+      <description>Unknown threat actors breached TeamUpdraft's website and potentially gained unauthorized access to customers' connection keys for UpdraftCentral, UpdraftVault, and UpdraftClone, using them to backdoor WordPress sites.
+TeamUpdraft is the developer behind UpdraftPlus, a popular WordPress backup plugin with over four million active installations. The vendor also offers UpdraftCentral, a remote</description>
+      <guid isPermaLink="false">674c2ab9e81967a4bac1e73738ced02b352d5e1fce790820dbfe665443c7a1d6</guid>
+      <pubDate>Wed, 21 Oct 2026 09:01:12 +0000</pubDate>
+    </item>
+    <item>
+      <title>U.S. Orders DeepSeek Removed From Federal Civilian Systems, Bans New Purchases - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/us-orders-deepseek-removed-from-federal.html</link>
+      <description>U.S. federal civilian agencies must remove DeepSeek products from their information technology systems, along with any third-party products or services "developed using DeepSeek implementations," under a Department of Homeland Security order.
+They may also no longer buy information technology products or services from the Chinese AI developer or its affiliates
+Homeland Security Secretary</description>
+      <guid isPermaLink="false">5fe663f3b156bd2168b6dfcf24cb1c7b3d0d857ebb1dff8f7a0ef18aa52d39a4</guid>
+      <pubDate>Wed, 21 Oct 2026 08:04:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>CISA Orders Federal Agencies to Patch Exploited Plex2Shell, Siemens, and SiteGuard Flaws - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/cisa-orders-federal-agencies-to-patch.html</link>
+      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Tuesday added four vulnerabilities to its Known Exploited Vulnerabilities (KEV) catalog, including four vulnerabilities impacting Plex Media Server that's collectively called Plex2Shell.
+The vulnerabilities are listed below -
+  CVE-2026-96652 (CVSS score: 5.3) - Plex Media Server Server-Side Request Forgery (SSRF)</description>
+      <guid isPermaLink="false">86f6043205fd4c1c4cb06b083348006967fe986f4179f576f181050d9df8120d</guid>
+      <pubDate>Wed, 21 Oct 2026 07:26:49 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hackers Hid Vasilek Backdoor in VMware Tools During 2-Year Russian Healthcare Intrusion - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/hackers-hid-vasilek-backdoor-in-vmware.html</link>
+      <description>A Belarus-aligned hacktivist group spent nearly two years within the network of a Russian healthcare organization.
+According to a report published by Russian cybersecurity firm Solar, the activity has been attributed to a threat cluster dubbed Partisan Zmiy, which is also known as the Cyber Partisans.
+Known to be active since at least 2020, the group has a track record of striking industrial</description>
+      <guid isPermaLink="false">033e99a96a0ef89a855174da4e71ddfeaf71d8f44ac99bcd142bdbe7cf5ff7c9</guid>
+      <pubDate>Wed, 21 Oct 2026 06:05:15 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- TLS certificate store update due to eMudhra compromise - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/070a35ef-cd22-11f1-ada3-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">4c2cf54b2898dd8e747393bddacd3507d490796479babf5883c7a3119beb4aa7</guid>
+      <pubDate>Wed, 21 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Reverse Engineering Pokémon Sprites (LGPE) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xazbye/reverse_engineering_pokémon_sprites_lgpe/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Efficient-Hawk3568"&gt; /u/Efficient-Hawk3568 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://triyan.dev/blog/reverse-engineering-pokemon-sprites-lgpe"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xazbye/reverse_engineering_pokémon_sprites_lgpe/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">b726c55bf1fcd807e884e2c113591443ce1a57a478f528deb1a746e21f971b92</guid>
+      <pubDate>Tue, 20 Oct 2026 18:01:28 +0000</pubDate>
+    </item>
+    <item>
+      <title>Eight eMudhra CA Keys Compromised, Triggering Emergency Fixes Across Browsers and Software - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/eight-emudhra-ca-keys-compromised.html</link>
+      <description>The private keys of eight eMudhra intermediate certificate authority (CA) certificates are compromised,&amp;nbsp;Mozilla&amp;nbsp;and&amp;nbsp;Google's Chrome Root Program&amp;nbsp;confirms on October 20.
+An intermediate CA signs the certificates that websites present, so anyone holding one of these keys could issue a certificate for any website that a browser would accept.
+A researcher reported the</description>
+      <guid isPermaLink="false">c1c511f3c210ff7c4dd6c1afe028458c4995d7230bf7473fd4fa6f048e27834a</guid>
+      <pubDate>Tue, 20 Oct 2026 17:09:53 +0000</pubDate>
+    </item>
+    <item>
+      <title>Critical FortiSIEM Flaw Gets Public Exploit PoC for Unauthenticated Remote Code Execution - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/critical-fortisiem-flaw-gets-public.html</link>
+      <description>Cybersecurity researchers have released a proof-of-concept (PoC) exploit for a recently patched critical security flaw impacting Fortinet FortiSIEM that could result in arbitrary code execution.
+The vulnerability, tracked as CVE-2026-106173 (CVSS score: 9.4), is a critical path traversal flaw that could allow an unauthenticated attacker to execute unauthorized code or commands via specially</description>
+      <guid isPermaLink="false">2c05f712f3f0c94bbee57f1e8503811b3280312d2442fa1d098a60329512d11a</guid>
+      <pubDate>Tue, 20 Oct 2026 15:38:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>Qilin and INC Ransomware Groups Exploit Palo Alto Networks Flaw to Bypass MFA - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/qilin-and-inc-ransomware-groups-exploit.html</link>
+      <description>Palo Alto Networks has disclosed that it's continuing to observe exploitation of a now-patched security flaw impacting&amp;nbsp; PAN-OS and Prisma Access by ransomware actors.
+The activity relates to CVE-2026-0257 (CVSS score: 7.8), an authentication bypass flaw that could be exploited by bad actors to set up unauthorized VPN connections. It was patched by Palo Alto Networks in May 2026 and was</description>
+      <guid isPermaLink="false">26e39f3b45374da468e32a3f21a94fc0feb1752980a8b0cae4801bba1268ef05</guid>
+      <pubDate>Tue, 20 Oct 2026 15:32:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hackers Use Autonomous AI Agents to Breach Company Websites, Target Over 1,200 Sites - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/hackers-use-autonomous-ai-agents-to.html</link>
+      <description>A Chinese-speaking criminal pointed autonomous AI agents at company websites and let them break in with almost no help, and a security researcher watched it happen because the operators left their control panels open on the internet.
+The agents tried more than 1,200 sites and reached websites belonging to more than 100 companies, including farm-equipment maker Deere, appliance company</description>
+      <guid isPermaLink="false">f631556ba11eaff118d5f6046788cf499c73c8c0f7cce974343f446b0ec5bd56</guid>
+      <pubDate>Tue, 20 Oct 2026 14:07:17 +0000</pubDate>
+    </item>
     <item>
       <title>Pegasus Spyware Infection Confirmed on Serbian University Rector's iPhone Days Before Election - The Hacker News</title>
       <link>https://thehackernews.com/2026/10/pegasus-spyware-infection-confirmed-on.html</link>
@@ -1409,122 +1531,6 @@ The flaw is in LMCache's&amp;nbsp;multiprocess mode, where the cache runs as a s
 The financially motivated campaign, dubbed Canto Incognito, has been found to install cryptocurrency miners, including</description>
       <guid isPermaLink="false">76df43a85aaadb491dbfc657cdb5145f22529a3a96f600249fec1fd138cc9b09</guid>
       <pubDate>Wed, 07 Oct 2026 15:33:51 +0000</pubDate>
-    </item>
-    <item>
-      <title>FBI Warns FortiBleed Remains Active After Amassing 86,644 Fortinet Device Credentials - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/fbi-warns-fortibleed-remains-active.html</link>
-      <description>The U.S. Federal Bureau of Investigation (FBI) and Secret Service (USSS) on Tuesday warned that the FortiBleed credential harvesting campaign remains an active threat aimed at internet-facing Fortinet FortiGate firewalls and secure socket layer (SSL) virtual private network (VPN) gateways.
-"The campaign exploits reused or leaked credentials and legacy SHA-256 password storage, enabling threat</description>
-      <guid isPermaLink="false">f6f5ea84fffefa0b3a161af29f87e5059498a88f6719f8c09ee8be0b000ba361</guid>
-      <pubDate>Wed, 07 Oct 2026 11:56:56 +0000</pubDate>
-    </item>
-    <item>
-      <title>Atlassian Data Center Flaw Draws Exploitation Attempts Within Two Hours of Public Details - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/atlassian-data-center-flaw-draws.html</link>
-      <description>Threat actors have begun to exploit a newly disclosed critical security flaw impacting Atlassian Data Center products that could allow access to sensitive files under certain conditions.
-The arbitrary file access flaw, tracked as CVE-2026-21589 (CVSS score: 9.3) affects multiple products, including Bitbucket Data Center, Confluence Data Center, Jira Service Management Data Center, Jira Software</description>
-      <guid isPermaLink="false">13e06c327d95f3b462b379961dfe2b081feb3dacf559fd13d7e869db9758d12e</guid>
-      <pubDate>Wed, 07 Oct 2026 11:49:26 +0000</pubDate>
-    </item>
-    <item>
-      <title>Pinball Fantasies reverse engineered byte-for-byte, dot-for-dot. - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wzu023/pinball_fantasies_reverse_engineered_byteforbyte/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/pedrocatalao"&gt; /u/pedrocatalao &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/pedrocatalao/pinball-fantasies-encore"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wzu023/pinball_fantasies_reverse_engineered_byteforbyte/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">133c71e370b04970eb3b75c941a6cb4a6386d8c2a1f5951593c3fe5a0d092aec</guid>
-      <pubDate>Wed, 07 Oct 2026 11:25:37 +0000</pubDate>
-    </item>
-    <item>
-      <title>Anthropic Expands Claude Access for Vetted Cyber Teams as Glasswing Finds 129,000 Flaws - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/anthropic-expands-claude-access-for.html</link>
-      <description>Anthropic on Tuesday said it's expanding a program that allows vetted cybersecurity professionals to test its advanced artificial intelligence (AI) models with reduced safeguards and blocking classifiers, as the company claimed its Project Glasswing initiative uncovered at least 129,000 verified software vulnerabilities between April and July 2026.
-The company said it also found an additional</description>
-      <guid isPermaLink="false">9abbc25bbc0d6f034d68d8d1ee9ca4d2e4a962568b1a1336a492a3bc4e5a2fb5</guid>
-      <pubDate>Wed, 07 Oct 2026 08:07:38 +0000</pubDate>
-    </item>
-    <item>
-      <title>100+ Compromised Websites Use Fake Cloudflare Checks to Deliver LunexStealer - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/100-compromised-websites-use-fake.html</link>
-      <description>The Computer Emergency Response Team of Ukraine (CERT-UA) has identified more than 100 compromised websites that have been injected with malicious JavaScript to serve an information-stealing malware called LunexStealer (aka Psychedelic Stealer).
-The activity, which was observed by the agency in September 2026, has been attributed to a threat cluster dubbed UAC-0277. It did not disclose who the</description>
-      <guid isPermaLink="false">902c85689ce6e027399f346b2e984a8feb30d17667ead7488d83670f3c60ec43</guid>
-      <pubDate>Wed, 07 Oct 2026 06:57:54 +0000</pubDate>
-    </item>
-    <item>
-      <title>Reverse engineering a Magelight XP glitch in Skyrim - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wzexqi/reverse_engineering_a_magelight_xp_glitch_in/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/dado3212"&gt; /u/dado3212 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://blog.alexbeals.com/posts/explaining-the-magelight-xp-glitch-in-skyrim"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wzexqi/reverse_engineering_a_magelight_xp_glitch_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">a1ffeafdce0706f0ba3fb4689889505ec1e298209df4945ed7d8a86063e019b8</guid>
-      <pubDate>Tue, 06 Oct 2026 21:31:49 +0000</pubDate>
-    </item>
-    <item>
-      <title>Fake ChatGPT, Gemini, and Claude Ad Portals Capture Credentials and MFA Codes - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/fake-chatgpt-gemini-and-claude-ad.html</link>
-      <description>Cybersecurity researchers have disclosed details of a "human-operated phishing platform" that impersonates advertising products for artificial intelligence (AI) chatbots like Google Gemini, Anthropic Claude, OpenAI ChatGPT, Perplexity, Meta Muse, and Manus.
-The products, which claim to offer campaign optimization, spend audits, and business-account connections, are designed with one goal in</description>
-      <guid isPermaLink="false">da3e8f543f05be785905055cec4fe34ca04f3104753938c4bde4e046a1ce0c87</guid>
-      <pubDate>Tue, 06 Oct 2026 18:38:55 +0000</pubDate>
-    </item>
-    <item>
-      <title>Linux Backdoors Impersonate Email Security Tools to Evade Detection in Korea and Taiwan - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/linux-backdoors-impersonate-email.html</link>
-      <description>Linux backdoors targeting telecom and network appliances in South Korea and Taiwan have been disguising their traffic as email services and seemingly legitimate processes to blend in and evade detection.
-Threat actors are known to name their malicious software after a legitimate operating system component or a process as a defense evasion measure. By borrowing the name of a real binary, it may</description>
-      <guid isPermaLink="false">1b53632e70ebe7398140689bd1789e4a297920a95898a48bd4fcbc479628c6a5</guid>
-      <pubDate>Tue, 06 Oct 2026 18:24:25 +0000</pubDate>
-    </item>
-    <item>
-      <title>iOS 27.2 beta: silent hardening in ImageIO ASTC decoder — structural, zero-click candidate - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wz9rrk/ios_272_beta_silent_hardening_in_imageio_astc/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/JustActuator6946"&gt; /u/JustActuator6946 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/vvirei333/ABrake27"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wz9rrk/ios_272_beta_silent_hardening_in_imageio_astc/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">81a4744b9a6930b2cbc657c3f51d6faad0fcfdc8856e547a6316168d0fc3649b</guid>
-      <pubDate>Tue, 06 Oct 2026 18:11:29 +0000</pubDate>
-    </item>
-    <item>
-      <title>Inside the Windows I/O Manager : Deep dive into how read I/O requests are initialized. - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1wz4qf0/inside_the_windows_io_manager_deep_dive_into_how/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/_WinAsm"&gt; /u/_WinAsm &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://winware31.blogspot.com/2026/10/inside-windows-io-manager-deep-dive.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1wz4qf0/inside_the_windows_io_manager_deep_dive_into_how/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">dfc625f95ab35f109116e519b8dc227340d73c224580f439aa9c72f76b2d6bfd</guid>
-      <pubDate>Tue, 06 Oct 2026 14:57:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>LibreOffice and OpenOffice Flaws Let Malicious Spreadsheets Run Code Without Macro Warnings - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/libreoffice-and-openoffice-flaws-let.html</link>
-      <description>A malicious spreadsheet can make LibreOffice and Apache OpenOffice run an attacker's code as soon as the file is opened, security researchers have shown. There is no warning first, of the kind either program shows before it runs a macro.
-The attack works only when the program's Java support is enabled. So far, it has only been shown as a proof of concept, and there are no reports of its use in</description>
-      <guid isPermaLink="false">681bfb9f0245b5b4c439ddf7ff72fe39774f80404ba2c5f2aeeeeda9ff411d58</guid>
-      <pubDate>Tue, 06 Oct 2026 11:57:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Wikimedia Says OpenAI Agents Tried to Compromise Etherpad and Use Wiki Tools as Proxies - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/wikimedia-says-openai-agents-tried-to.html</link>
-      <description>The Wikimedia Foundation, which hosts Wikipedia, has confirmed that it has discovered activity by rogue OpenAI agents on its platforms, including unsuccessful efforts to compromise Etherpad, a public note-taking tool, and edit Wikipedia pages.
-"The unauthorized bot activities included edits to our wikis, some unsuccessful attempts to exploit a public note-taking tool we host, and heavy traffic,</description>
-      <guid isPermaLink="false">9fc1ccae0209f3b755c1f47bfd1c9d664c8f23b4aefdf5a59f5929f237c56c32</guid>
-      <pubDate>Tue, 06 Oct 2026 11:26:25 +0000</pubDate>
-    </item>
-    <item>
-      <title>Welcome to the Jungle: What We Found Inside 15,465 Public MCP Servers - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/welcome-to-jungle-what-we-found-inside.html</link>
-      <description>In 2024, MCP (Model Context Protocol) set out to become the USB-C of AI: one standard for connecting models, agents, and IDEs to tools and data. The protocol delivered. Thousands of developers built servers, and enterprises plugged them into agent workflows.
-The ecosystem around it fell short. Earlier this year, our team at OX Security,&amp;nbsp; traced critical vulnerabilities in Anthropic's MCP</description>
-      <guid isPermaLink="false">3ed86cffbf15e7406d290557faad000fb674e021fc70300e7f2b65da5af0ee3d</guid>
-      <pubDate>Tue, 06 Oct 2026 11:02:30 +0000</pubDate>
-    </item>
-    <item>
-      <title>Google Pauses OSS Product Bug Bounty Rewards After Surge in Invalid Automated Reports - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/google-pauses-oss-product-bug-bounty.html</link>
-      <description>Google has stopped accepting product vulnerability reports through its bug bounty program for its open-source software.
-The change, in effect since October 1, means researchers can no longer submit security flaws in the code of projects such as Go, Angular, and Protocol Buffers there for a reward. Reports about supply chain compromises are still accepted, and reports filed before October 1 are</description>
-      <guid isPermaLink="false">38be968c93d4e6025df8c1cf5fc41087b6738a2abd165d53b520100db4e2901b</guid>
-      <pubDate>Tue, 06 Oct 2026 09:21:47 +0000</pubDate>
-    </item>
-    <item>
-      <title>Critical Atlassian Flaw Lets Unauthenticated Attackers Read Known Files Across 8 Products - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/critical-atlassian-flaw-lets.html</link>
-      <description>A critical flaw in 8 Atlassian Data Center products, which customers host themselves, allows an attacker with no login access to read specific files in each product's web application root directory.
-The attacker must already know a file's exact name and path and cannot list what the directory holds. Atlassian&amp;nbsp;disclosed the flaw, CVE-2026-21589, on October 5, rated it 9.3 out of 10, and</description>
-      <guid isPermaLink="false">3c2a7773176a68d50f479f4eb2bee366c468ec416c3b16c8fb7b81ffa91527ba</guid>
-      <pubDate>Tue, 06 Oct 2026 06:58:56 +0000</pubDate>
     </item>
   </channel>
 </rss>
