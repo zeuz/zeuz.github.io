@@ -5,7 +5,160 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Wed, 21 Oct 2026 14:01:03 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 14:01:11 +0000</lastBuildDate>
+    <item>
+      <title>Tryton News: Information regarding eMudhra / emSign CA certificate security incident - Planet Python</title>
+      <link>https://discuss.tryton.org/t/information-regarding-emudhra-emsign-ca-certificate-security-incident/9447</link>
+      <description>&lt;p&gt;Following &lt;a class="inline-onebox" href="https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576"&gt;Information for Python users regarding eMudhra / emSign CA certificate security incident - Announcements - Discussions on Python.org&lt;/a&gt;, we have updated the &lt;a href="https://hub.docker.com/r/tryton/tryton"&gt;Docker images of Tryton&lt;/a&gt; because &lt;a href="https://pypi.org/p/certifi"&gt;certifi&lt;/a&gt; is an indirect dependency of Tryton.&lt;br /&gt;
+It is recommended to update your deployment to use the updated images.&lt;br /&gt;
+If you deploy Tryton using a virtual environment, it must be updated following the &lt;a href="https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576"&gt;instructions&lt;/a&gt;.&lt;/p&gt;
+            &lt;p&gt;&lt;small&gt;1 post - 1 participant&lt;/small&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;a href="https://discuss.tryton.org/t/information-regarding-emudhra-emsign-ca-certificate-security-incident/9447"&gt;Read full topic&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">edf3313a46a9d9bd0f0a70a2e92657b4275974a8988eafd0a02ff0d3b36d025a</guid>
+      <pubDate>Thu, 22 Oct 2026 10:00:42 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Engineering at Microsoft: Pylance + Pyrefly: bring your preferred type checker to Visual Studio Code - Planet Python</title>
+      <link>https://devblogs.microsoft.com/python/announcing-tsp/</link>
+      <description>&lt;p&gt;At Microsoft, our focus is on providing the best possible experience for Python developers &amp;#8211; both for everyday coding and for the agentic workflows that are increasingly central to how developers build software.
+A great type checking experience is a core part of that, not only for surfacing accurate and actionable diagnostics and providing a strong foundation for Intellisense, but as the bedrock of static semantic intelligence for software agents.
+Today we&amp;#8217;re announcing the &lt;a href="https://github.com/microsoft/pylance-release/blob/main/docs/tsp/type-server-protocol.md"&gt;&lt;strong&gt;Type Server Protocol (TSP)&lt;/strong&gt;&lt;/a&gt; and our partnership with Meta to bring &lt;a href="https://Pyrefly.org/"&gt;Pyrefly&lt;/a&gt; support to &lt;a href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance"&gt;Pylance&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Introducing the Type Server Protocol&lt;/h2&gt;
+&lt;p&gt;TSP is an open standard that extends &lt;a href="https://microsoft.github.io/language-server-protocol/"&gt;LSP &amp;#8211; the Language Server Protocol&lt;/a&gt; that underpins editor integrations across the industry &amp;#8211; designed to allow any editor or tool to integrate type checkers as first-class backends.&lt;/p&gt;
+&lt;p&gt;Until now, Pylance and &lt;a href="https://github.com/microsoft/pyright"&gt;Pyright&lt;/a&gt; were tightly coupled. TSP creates a clean separation between the two: Pylance becomes the &lt;a href="https://code.visualstudio.com/"&gt;VS Code&lt;/a&gt; IDE intelligence layer for Python, and the type checker becomes an interchangeable static analysis component underneath it.
+Pyright remains the default and continues to power the experience for the vast majority of users.
+But for developers who have a strong preference &amp;#8211; or whose codebase is better served by a different checker &amp;#8211; switching is now a straightforward operation, right from the VS Code status bar.&lt;/p&gt;
+&lt;p&gt;What stays constant regardless of which checker you use is Pylance&amp;#8217;s completions, Quick Info, environment management, and critically its deep integration with GitHub Copilot.
+Those experiences are built on Pylance, not on any individual type checker.
+TSP means you can bring the checker you want without giving up any of those features that you know and love.&lt;/p&gt;
+&lt;h2&gt;Partnering with Meta to bring Pyrefly to Pylance&lt;/h2&gt;
+&lt;p&gt;We are excited to announce that we have partnered with Meta to design and implement the TSP protocol and make sure that Pyrefly fully supports it.
+This collaboration is built on a shared belief that the Python ecosystem is better served by interoperability than by fragmentation.
+Meta brings deep expertise in fast static type analysis and a particular strength in AI/ML library support.
+Microsoft brings the VS Code IDE integration layer and the &lt;a href="https://github.com/features/copilot"&gt;GitHub Copilot&lt;/a&gt; experience.
+TSP is the protocol that makes them work together.&lt;/p&gt;
+&lt;p&gt;Meta has been at the forefront of Python typing longer than almost anyone.
+Since 2017, they have been solving type checking at scale on some of the world&amp;#8217;s largest Python codebases, including &lt;a href="https://www.instagram.com/"&gt;Instagram&lt;/a&gt;.
+That experience shaped every design decision in Pyrefly, which checks code at 1.8 million lines per second and was built from the ground up to deliver a consistent experience in both CI and the IDE.
+Meta has also invested heavily in the broader ecosystem, bringing &lt;a href="https://numpy.org/"&gt;NumPy&lt;/a&gt; to nearly 90% type completeness, completing &lt;a href="https://pandas.pydata.org/"&gt;pandas&lt;/a&gt;&amp;#8216; public API type coverage, and publishing the most comprehensive public performance &lt;a href="https://pyrefly.org/blog/speed-and-memory-comparison/#the-benchmark"&gt;benchmarks for Python type checkers&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We are proud to partner with Meta on bringing Pyrefly to Pylance and we look forward to the ecosystem growing around this open standard, and to bringing even more choice to Python developers in the future.&lt;/p&gt;
+&lt;h2&gt;Why Pylance + TSP + Pyrefly instead of Pyrefly standalone?&lt;/h2&gt;
+&lt;p&gt;This is the right question to ask.
+Pyrefly already has a highly performant &lt;a href="https://marketplace.visualstudio.com/items?itemName=meta.pyrefly"&gt;VS Code extension&lt;/a&gt; and is an excellent choice for type checking in continuous integration (CI).
+Why use it through Pylance instead of directly?&lt;/p&gt;
+&lt;p&gt;Pylance provides tight integrations with the GitHub Copilot experience that a standalone type checker extension can&amp;#8217;t replicate &amp;#8211; context provision for AI completions, intelligent code understanding that feeds into GitHub Copilot Chat, MCP tools for Python codebases, and the full suite of Python developer tooling that Pylance has built over years in production.
+In decoupling Pyright from Pylance we now have a clear separation of concerns where pylance can provide an intelligence layer for Python developers and delegate the heavy lifting of type checking.
+By using Pyrefly with Pylance via TSP, you get Pyrefly&amp;#8217;s type analysis powering the engine, with Pylance&amp;#8217;s AI-aware intelligence layer on top. You don&amp;#8217;t have to choose.&lt;/p&gt;
+&lt;h2&gt;How to try it&lt;/h2&gt;
+&lt;p&gt;TSP support with Pyrefly requires a Pylance version of 2026.4.1 or newer.
+Here&amp;#8217;s how the experience works.&lt;/p&gt;
+&lt;h3&gt;Automatic detection&lt;/h3&gt;
+&lt;p&gt;When you open a workspace, Pylance checks your Python environments for a Pyrefly installation.
+If it finds one &amp;#8211; whether installed in your virtual environment or signaled by a &lt;code&gt;pyrefly.toml&lt;/code&gt; or &lt;code&gt;tool.pyrefly&lt;/code&gt; config in your &lt;code&gt;pyproject.toml&lt;/code&gt; &amp;#8211; you&amp;#8217;ll see a notification:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Pyrefly was found in your Python environment. Would you like to use it as your source of diagnostics in VS Code?&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;img alt="Toast asking " src="https://devblogs.microsoft.com/python/wp-content/uploads/sites/12/2026/10/toast.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Click &lt;strong&gt;Switch to Pyrefly&lt;/strong&gt; and Pylance will activate Pyrefly as your diagnostics source immediately, registering the path to the Pyrefly executable automatically.
+No manual configuration needed.
+and the choice to &amp;#8220;Switch to Pyrefly&amp;#8221; can always be reverted or reenabled via Settings.&lt;/p&gt;
+&lt;h3&gt;Manual setup via settings&lt;/h3&gt;
+&lt;p&gt;You can also switch at any time through the VS Code Settings UI.
+Under &lt;a href="https://settings/python.analysis.diagnosticsSource"&gt;&lt;strong&gt;Python › Analysis: Diagnostics Source&lt;/strong&gt;&lt;/a&gt;, you&amp;#8217;ll find a dropdown with three options:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Pylance &amp;#8211; default, uses Pylance&amp;#8217;s built-in analysis&lt;/li&gt;
+&lt;li&gt;Pylance + Pyright &amp;#8211; explicitly routes diagnostics through Pyright&lt;/li&gt;
+&lt;li&gt;Pylance + Pyrefly &amp;#8211; uses Pyrefly as the diagnostics engine&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="Screenshot of the **Python › Analysis: Diagnostics Source** setting expanded" src="https://devblogs.microsoft.com/python/wp-content/uploads/sites/12/2026/10/setting.png" /&gt;&lt;/p&gt;
+&lt;p&gt;When Pylance + Pyrefly is selected, Pylance will search for a Pyrefly installation in your virtual environments or download it automatically.&lt;/p&gt;
+&lt;p&gt;A companion &lt;a href="https://settings/python.analysis.pyreflyVersion"&gt;&lt;strong&gt;Python › Analysis: Pyrefly Version&lt;/strong&gt;&lt;/a&gt; setting lets you pin a specific version, point to a local executable, or leave it empty to always use the latest.
+The minimum supported version is 0.60.0.&lt;/p&gt;
+&lt;h3&gt;Status bar&lt;/h3&gt;
+&lt;p&gt;Once active, the status bar shows &lt;strong&gt;Diagnostics Source: Pylance + Pyrefly&lt;/strong&gt; alongside your interpreter and environment.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Screenshot of the language status bar" src="https://devblogs.microsoft.com/python/wp-content/uploads/sites/12/2026/10/status-bar.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Clicking it opens the &lt;a href="https://settings/python.analysis.diagnosticsSource"&gt;&lt;strong&gt;Python › Analysis: Diagnostics Source&lt;/strong&gt;&lt;/a&gt; setting.&lt;/p&gt;
+&lt;h2&gt;What do you think?&lt;/h2&gt;
+&lt;p&gt;Try the new Pylance + Pyrefly experience today in VS Code and let us know your thoughts. Share any feedback by &lt;a href="https://github.com/microsoft/pylance-release/issues/"&gt;opening an issue or voting on an existing one&lt;/a&gt;. You can also leave a comment below or reach us on &lt;a href="https://x.com/pythonvscode"&gt;X&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The Pyrefly team have their &lt;a href="https://pyrefly.org/blog/pyrefly-pylance"&gt;own blog post&lt;/a&gt; on TSP and the work we have done together.&lt;/p&gt;
+&lt;p&gt;The post &lt;a href="https://devblogs.microsoft.com/python/announcing-tsp/"&gt;Pylance + Pyrefly: bring your preferred type checker to Visual Studio Code&lt;/a&gt; appeared first on &lt;a href="https://devblogs.microsoft.com/python"&gt;Microsoft for Python Developers Blog&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">ac44c268b2fd114e811157baae6565adae8acfec833cc0831e1490aa1f755517</guid>
+      <pubDate>Wed, 21 Oct 2026 16:42:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>Rodrigo Girão Serrão: Tachyon: sampling profiling in Python - Planet Python</title>
+      <link>https://mathspp.com/blog/tachyon-sampling-profiling-in-python</link>
+      <description>&lt;img alt="" src="https://mathspp.com/images/f/f/a/2/d/ffa2d1edca8f6f82a5e871d935c32c1c24c3bca1-thumbnail.webp" /&gt;
+                                &lt;p&gt;Learn how to use Tachyon, Python's sampling profiler.&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Tachyon&amp;rdquo; is a new sampling profiler that was introduced in Python 3.15.
+It provides a CLI that allows running and profiling scripts or attaching to running processes.&lt;/p&gt;
+&lt;img alt="The Tachyon logo, featuring a blue snake with wings coming out its head and the word Tachyon written in the middle." src="https://mathspp.com/user/pages/02.blog/tachyon-sampling-profiling-in-python/_tachyon.webp" title="Tachyon logo" /&gt;Tachyon logo&lt;p&gt;In this article you'll learn what statistical profiling is and how to use the Tachyon CLI to identify performance bottlenecks in your code.&lt;/p&gt;
+&lt;h2 id="15-days-of-python-3-15"&gt;15 days of Python 3.15&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#15-days-of-python-3-15"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;To &lt;a href="https://mathspp.com/python-315"&gt;celebrate the release of Python 3.15&lt;/a&gt;, over the next 15 business days I'll be writing about a new 3.15 feature every day.
+Explained clearly and with examples so you don't have to sift through the changelog.&lt;/p&gt;
+&lt;p&gt;Subscribe to receive this free email series:&lt;/p&gt;
+&lt;p&gt;
+&lt;/p&gt;&lt;div class="form-wrapper" id="enroll-wrapper"&gt;
+&lt;form action="https://mathspp.com/courses/uv" class=" " id="enroll" method="POST" name="enroll"&gt;
+                          &lt;input class="form-honeybear" name="data[honeypot]" tabindex="-1" type="text" value="" /&gt;&lt;div class="form-field form-group "&gt;
+          &lt;div class="form-data"&gt;
+                        &lt;div class="form-input-wrapper "&gt;
+                                    &lt;input class="form-input " name="data[email]" type="email" value="" /&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+  &lt;/div&gt;
+            &lt;div class="form-field form-group "&gt;
+            &lt;div class="form-label-wrapper"&gt;&lt;label class="form-label"&gt;&lt;/label&gt;
+      &lt;/div&gt;
+        &lt;div class="form-data"&gt;
+            &lt;div class="g-recaptcha-container"&gt;
+                                &lt;input name="data[token]" type="hidden" value="" /&gt;&lt;input name="data[action]" type="hidden" value="836b9287c1d51fe66b0595e543e0f638" /&gt;&lt;/div&gt;
+            &lt;/div&gt;
+  &lt;/div&gt;
+        &lt;input name="__form-name__" type="hidden" value="enroll" /&gt;&lt;input name="__unique_form_id__" type="hidden" value="hoz5nc2xcgfmnvre3hwt" /&gt;&lt;input class="form-nonce-field" name="form-nonce" type="hidden" value="f146db0bf33aaaf7cd4e6461e040e157" /&gt;&lt;div class="button-wrapper"&gt;
+  &lt;button class="btn " type="submit"&gt;Enroll for free &amp;#128013;&amp;#128640;&lt;/button&gt;
+        &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+&lt;p&gt;If you want, you can also &lt;a href="https://mathspp.com/python-315"&gt;check the schedule&lt;/a&gt; of the upcoming emails.&lt;/p&gt;
+&lt;h2 id="what-is-statistical-profiling"&gt;What is statistical profiling&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#what-is-statistical-profiling"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Statistical profiling&lt;/strong&gt; is the practice of profiling your code by periodically taking snapshots of the state of your Python program.
+Since you're &lt;em&gt;periodically&lt;/em&gt; snapshotting the call stack of your program, you call Tachyon a &lt;strong&gt;sampling profiler&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Tachyon collects all of its samples over a profiling run and uses it to estimate how much time is being spent in each part of your code.
+Suppose Tachyon collects 1,000,000 samples over the course of 10 seconds.
+Out of those 1,000,000 samples, assume 25,000 samples (2.5%) show the function &lt;code&gt;foobar&lt;/code&gt;.
+Tachyon &lt;em&gt;estimates&lt;/em&gt; that you spent 2.5% of the 10 seconds, or 250 miliseconds, inside the function &lt;code&gt;foobar&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The longer Tachyon runs, and the higher its frequency (the shorter the interval between snapshots), the more accurate the results that Tachyon produces.&lt;/p&gt;
+&lt;h2 id="using-the-tachyon-cli"&gt;Using the Tachyon CLI&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#using-the-tachyon-cli"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Tachyon is the &amp;ldquo;cool&amp;rdquo; name for the module &lt;code&gt;profiling.sampling&lt;/code&gt; from the standard library.
+Since it's a module...&lt;/p&gt;</description>
+      <guid isPermaLink="false">e4cb4af948f21710134603406af9c54e62d9a47aaa482da4c8f90960b4c3ba1f</guid>
+      <pubDate>Wed, 21 Oct 2026 15:50:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Mariatta: Python Core Sprint 2026: Day 2 - Planet Python</title>
+      <link>https://mariatta.ca/posts/python-core-sprint-2026-day-2/</link>
+      <description>&lt;p&gt;Day 2 of the &lt;a href="https://mariatta.ca/posts/python-core-sprint-2026-day-1/"&gt;Python Core Sprint&lt;/a&gt; was all about one thing for me: moving our
+GitHub bots, &lt;a href="https://github.com/python/bedevere" rel="noopener" target="_blank"&gt;bedevere&lt;/a&gt;, &lt;a href="https://github.com/python/blurb_it" rel="noopener" target="_blank"&gt;blurb_it&lt;/a&gt;, and
+&lt;a href="https://github.com/python/miss-islington" rel="noopener" target="_blank"&gt;miss-islington&lt;/a&gt;, off Heroku and onto the PSF&amp;rsquo;s
+&lt;a href="https://github.com/cabotage/cabotage-app" rel="noopener" target="_blank"&gt;Cabotage&lt;/a&gt;. Monday was prep. Yesterday was the switch.&lt;/p&gt;
+&lt;p&gt;The facts first. The downtime was announced for 11 AM to 12 noon Pacific. Here is how it went, in Pacific time:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;11:00 AM&lt;/strong&gt;: posted on Discord that the downtime was starting.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;11:35 AM&lt;/strong&gt;: bedevere switched over to Cabotage.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;12:08 PM&lt;/strong&gt;: miss-islington switched over.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;12:17 PM&lt;/strong&gt;: first backport created on Cabotage.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;12:36 PM&lt;/strong&gt;: updated the &lt;a href="https://discuss.python.org/t/planned-downtime-for-our-github-bots/109556" rel="noopener" target="_blank"&gt;Discourse thread&lt;/a&gt;
+to say &amp;ldquo;This is now completed.&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Zachary Ware commented that it sounded like it went very smoothly.&lt;/p&gt;</description>
+      <guid isPermaLink="false">cad0c76f337fc6add9e50447b8e41a3489797e2173cfe30c1214d9acb71c3316</guid>
+      <pubDate>Wed, 21 Oct 2026 14:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Insider: Python 3.15.1, 3.14.9 and 3.13.17 are out - Planet Python</title>
+      <link>https://blog.python.org/2026/10/python-3151-3149-31317/</link>
+      <description>Three certified security releases for 3.15, 3.14 and 3.13.</description>
+      <guid isPermaLink="false">e2f73aaf6c478920d261db352c3603eb713c52bf52f552252d2f8831eae95b85</guid>
+      <pubDate>Wed, 21 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Rodrigo Girão Serrão: DX improvements in Python 3.15 - Planet Python</title>
       <link>https://mathspp.com/blog/dx-improvements-in-python-315</link>
