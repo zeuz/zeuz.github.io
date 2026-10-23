@@ -5,7 +5,35 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Thu, 22 Oct 2026 14:01:11 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 14:01:05 +0000</lastBuildDate>
+    <item>
+      <title>Daniel Roy Greenfeld: TIL: How to extract subtitles from video - Planet Python</title>
+      <link>https://daniel.feldroy.com/posts/til-2026-10-how-to-extract-subtitles-from-video</link>
+      <description>&lt;p&gt;Recently I've been making more and more videos for my &lt;a href="https://www.youtube.com/@DanielFeldroy"&gt;youtube channel&lt;/a&gt;. I like videos with subtitles, and decided to add them to my own efforts. This is what I do:&lt;/p&gt;
+&lt;p&gt;This command assumes you have uv and ffmpeg installed.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;uvx&lt;span class="w"&gt; &lt;/span&gt;--python&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.14&lt;span class="w"&gt; &lt;/span&gt;--from&lt;span class="w"&gt; &lt;/span&gt;openai-whisper&lt;span class="w"&gt; &lt;/span&gt;whisper&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;name-of-video.mp4&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;--model&lt;span class="w"&gt; &lt;/span&gt;small&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;--language&lt;span class="w"&gt; &lt;/span&gt;English&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;--task&lt;span class="w"&gt; &lt;/span&gt;transcribe&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;--output_format&lt;span class="w"&gt; &lt;/span&gt;srt&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;--output_dir&lt;span class="w"&gt; &lt;/span&gt;captions&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;--fp16&lt;span class="w"&gt; &lt;/span&gt;False
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The output is put in a &lt;code&gt;captions&lt;/code&gt; directory, named after the &lt;code&gt;.mp4&lt;/code&gt; file that is its source.&lt;/p&gt;
+&lt;p&gt;As a &lt;code&gt;zsh&lt;/code&gt; function:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;subtitle&lt;span class="o"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;uvx&lt;span class="w"&gt; &lt;/span&gt;--python&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.14&lt;span class="w"&gt; &lt;/span&gt;--from&lt;span class="w"&gt; &lt;/span&gt;openai-whisper&lt;span class="w"&gt; &lt;/span&gt;whisper&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;--model&lt;span class="w"&gt; &lt;/span&gt;small&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;--language&lt;span class="w"&gt; &lt;/span&gt;English&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;--task&lt;span class="w"&gt; &lt;/span&gt;transcribe&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;--output_format&lt;span class="w"&gt; &lt;/span&gt;srt&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;--output_dir&lt;span class="w"&gt; &lt;/span&gt;captions&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;--fp16&lt;span class="w"&gt; &lt;/span&gt;False
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <guid isPermaLink="false">729e1466e9ae25987d6ab4d4ace266d4d3a6430757475dae0f5fb7ad5e66113a</guid>
+      <pubDate>Thu, 22 Oct 2026 15:40:27 +0000</pubDate>
+    </item>
     <item>
       <title>Tryton News: Information regarding eMudhra / emSign CA certificate security incident - Planet Python</title>
       <link>https://discuss.tryton.org/t/information-regarding-emudhra-emsign-ca-certificate-security-incident/9447</link>
@@ -16,6 +44,439 @@ If you deploy Tryton using a virtual environment, it must be updated following t
             &lt;p&gt;&lt;a href="https://discuss.tryton.org/t/information-regarding-emudhra-emsign-ca-certificate-security-incident/9447"&gt;Read full topic&lt;/a&gt;&lt;/p&gt;</description>
       <guid isPermaLink="false">edf3313a46a9d9bd0f0a70a2e92657b4275974a8988eafd0a02ff0d3b36d025a</guid>
       <pubDate>Thu, 22 Oct 2026 10:00:42 +0000</pubDate>
+    </item>
+    <item>
+      <title>Peter Hoffmann: Loading 33,000 Peaks on Demand with a z10 Tile Grid - Planet Python</title>
+      <link>https://peter-hoffmann.com/2026/loading-peaks-on-demand-with-a-z10-tile-grid.html</link>
+      <description>&lt;p&gt;&lt;a href="https://biwak.info"&gt;biwak.info&lt;/a&gt; is my mobile-first map of Alpine huts and
+bivouacs. Recently I wanted to add peaks: tap anywhere near a summit and get its
+name, elevation, prominence, a photo and the Wikipedia link. The data for that
+comes from OpenStreetMap and Wikidata: &lt;strong&gt;33,437 named peaks&lt;/strong&gt; between Nice and
+Vienna.&lt;/p&gt;
+&lt;p&gt;As a single &lt;code&gt;peaks.json&lt;/code&gt; file this is 15.4 MB (1.8 MB gzipped). That's fine for
+a desktop, but on a phone with one bar of signal in a valley it is not, and most
+of it is never used: you look at one valley, not the whole Alps.&lt;/p&gt;
+&lt;p&gt;The site is hosted as plain static files, without a database or an application
+server, and I wanted to keep it that way. So the question was: how do you load
+only the peaks the user is looking at, using nothing but files?&lt;/p&gt;
+&lt;p&gt;&lt;img alt="The 356 z10 tiles that contain peaks, darker means more peaks. The Matterhorn tile 533/364 is outlined in red." src="https://peter-hoffmann.com/static/2026/biwak-peaks-z10-grid.webp" /&gt;&lt;/p&gt;
+&lt;h2&gt;Use the map's own tile grid&lt;/h2&gt;
+&lt;p&gt;Leaflet already splits the world into a grid: the slippy map tiles &lt;code&gt;z/x/y&lt;/code&gt; that
+every OpenStreetMap-style basemap uses. At zoom level &lt;code&gt;z&lt;/code&gt; there are &lt;code&gt;2^z × 2^z&lt;/code&gt;
+tiles, and any coordinate maps to exactly one of them with two lines of math:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;lon2x&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lon&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;floor&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;lon&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;180&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;360&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;lat2y&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lat&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;lat_rad&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;radians&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lat&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;floor&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tan&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lat_rad&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cos&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lat_rad&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The idea: cut the peaks into files along that same grid at one fixed zoom
+level, one JSON file per tile. The browser computes which tiles cover the
+current view and fetches only those. Because the build (Python) and the client
+(JavaScript) use the same formula, they always agree on which file a peak is in.
+The &lt;code&gt;floor&lt;/code&gt; also means every peak belongs to exactly one tile, so nothing is
+duplicated.&lt;/p&gt;
+&lt;p&gt;The Matterhorn (45.97639, 7.65833) for example lands in tile &lt;code&gt;10/533/364&lt;/code&gt;. I keep
+a handful of these as unit test fixtures for the build and the client.&lt;/p&gt;
+&lt;h2&gt;Why zoom level 10&lt;/h2&gt;
+&lt;p&gt;The zoom level of the data grid is independent of the zoom level the map is
+showing. It is a trade-off between the number of requests and the size of each
+file:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A z10 tile is about &lt;strong&gt;27 × 27 km&lt;/strong&gt; in the Alps.&lt;/li&gt;
+&lt;li&gt;Peaks are only drawn from map zoom 12 on. There a phone screen (390 × 790 px)
+shows roughly 10 × 21 km. With a 25% margin around the view to preload
+neighbours, a view touches at most &lt;strong&gt;6 tiles at zoom 12 and 4 at zoom 13&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;The whole Alps fit into &lt;strong&gt;356 non-empty tiles&lt;/strong&gt;. A tile holds 93 peaks in the
+median, the densest one 348: tile &lt;code&gt;541/358&lt;/code&gt; in the Allgäu Alps, with the
+Hochvogel and Krottenkopf.&lt;/li&gt;
+&lt;li&gt;A tile is 13 KB of JSON in the median (3.6 KB gzipped), the largest 87 KB.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;At z9 the tiles would hold four times as many peaks, so most of each download
+would be off-screen. At z11 a view would need four times as many requests. z10
+is the sweet spot for this density of data.&lt;/p&gt;
+&lt;h2&gt;The build: one small file per tile&lt;/h2&gt;
+&lt;p&gt;A Python script (&lt;code&gt;tools/build_peaks.py&lt;/code&gt;) reads the big &lt;code&gt;peaks.json&lt;/code&gt; and writes
+the grid:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;data/peaks/manifest.json      non-empty tiles with peak counts
+data/peaks/10/{x}/{y}.json    one file per tile
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Each tile is a compact table: a &lt;code&gt;fields&lt;/code&gt; header and one array per peak, instead
+of repeating the key names thousands of times. Coordinates are stored as integers
+in 1e-5 degrees, which is about one meter and saves the long float strings:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;cat&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;fields&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;id&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;lat_e5&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;lon_e5&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ele&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;rank&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;prominence&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;wikipedia&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;wikidata&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;image&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;...&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;rows&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;n26863664&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;4597643&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;765860&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;4478&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Matterhorn&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1038&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;it:Cervino&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Q1374&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;https://...&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;...&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;n1436639948&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;4603418&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;761193&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;4358&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Dent Blanche&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;915&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Q15125&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;https://...&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;...&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;x&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;533&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;y&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;364&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;z&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The manifest lists only the tiles that exist (7 KB). The client checks it first
+and never requests a tile over the Po valley or the Mediterranean that would only
+return a 404.&lt;/p&gt;
+&lt;p&gt;The build is deterministic: the same input gives byte-identical files. That
+keeps the git diffs readable when the OSM data changes, and &lt;code&gt;rsync&lt;/code&gt; only uploads
+the tiles that really changed.&lt;/p&gt;
+&lt;h2&gt;Not every peak at every zoom&lt;/h2&gt;
+&lt;p&gt;At zoom 12 the Alps are full of small bumps that are technically named peaks. So
+every peak gets a &lt;strong&gt;rank&lt;/strong&gt; from 0 to 3 at build time. The rank comes from the
+prominence (how far you have to descend before you can climb anything higher)
+or, if that is unknown, from the isolation (the distance to the nearest higher
+peak):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;peak_rank&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ele&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;prominence&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;isolation_km&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;ele&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;prominence&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;prominence&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;500&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;prominence&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;150&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;prominence&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;isolation_km&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;isolation_km&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;isolation_km&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;isolation_km&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.8&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;That gives 1,558 peaks with rank 3, 7,385 with rank 2, 18,015 with rank 1 and
+6,479 with rank 0. The rows in each tile are sorted by rank, then by elevation.
+The map shows rank ≥ 2 at zoom 12, rank ≥ 1 at zoom 13 and everything from zoom
+14 on.&lt;/p&gt;
+&lt;h2&gt;The client: fetch what the view needs&lt;/h2&gt;
+&lt;p&gt;In the browser (&lt;code&gt;peaks.js&lt;/code&gt;) it all hangs off Leaflet's &lt;code&gt;moveend&lt;/code&gt; event. From zoom
+11 on, one zoom level before anything is drawn, the visible bounds plus a 25%
+margin are turned into tile keys. Missing tiles are queued:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;tileKeys&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;bounds&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="kd"&gt;const&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;x0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;lon2x&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;bounds&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getWest&lt;/span&gt;&lt;span class="p"&gt;()),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;x1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;lon2x&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;bounds&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getEast&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="kd"&gt;const&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;y0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;lat2y&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;bounds&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getNorth&lt;/span&gt;&lt;span class="p"&gt;()),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;y1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;lat2y&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;bounds&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getSouth&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;x0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;x1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;y&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;y0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;y&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;y1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;y&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;yield&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="sb"&gt;/&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nx"&gt;y&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;loadVisiblePeakTiles&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;peakManifest&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getZoom&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;LOAD_FROM_ZOOM&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;const&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;key&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;tileKeys&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getBounds&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="nx"&gt;pad&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;VIEW_PAD&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;key&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;peakManifest&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;tiles&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;peakTiles&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;has&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;key&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;peakTileState&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;has&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;key&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;continue&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;peakTileState&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;key&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;'loading'&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;fetchQueue&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;key&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nx"&gt;pumpFetchQueue&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nx"&gt;map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;on&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'moveend'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;loadVisiblePeakTiles&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;A few details made it work well on a phone:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;At most 4 requests in parallel&lt;/strong&gt;, so a fast pan doesn't fire a dozen fetches
+at once. A failed tile is retried once after two seconds and otherwise skipped
+for the session. The map keeps working, just without peaks in that square.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;An LRU of 64 tiles.&lt;/strong&gt; A JavaScript &lt;code&gt;Map&lt;/code&gt; keeps insertion order, so deleting
+and re-inserting a key on every use turns it into an LRU for free. When there
+are more than 64 tiles, the least recently used ones are dropped, but never one
+that is in the current view.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Rows become objects shaped like the hut records&lt;/strong&gt;, so the existing detail
+view shows peaks without any changes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Drawing: one canvas, no markers&lt;/h2&gt;
+&lt;p&gt;33,000 Leaflet markers would be far too heavy, and the basemap
+(&lt;a href="https://opentopomap.org"&gt;OpenTopoMap&lt;/a&gt;) already prints peak names and
+elevations. So the peaks layer is a single &lt;code&gt;&amp;lt;canvas&amp;gt;&lt;/code&gt; on its own map pane that
+draws small, slightly transparent grey triangles after each move. During a zoom
+animation the canvas is hidden, because it isn't transformed with the map. It
+is redrawn on &lt;code&gt;zoomend&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Tapping is a nearest-neighbour search over the loaded tiles: anything within
+30 px of the tap counts, from zoom 12 on. The search box can span a tile border,
+so it looks at all tiles it touches. A peak right at the edge of its tile is
+still found when you tap just across the line.&lt;/p&gt;
+&lt;h2&gt;Deep links come for free&lt;/h2&gt;
+&lt;p&gt;Since then every hut and peak also has a stable URL like
+&lt;a href="https://biwak.info/p/matterhorn"&gt;biwak.info/p/matterhorn&lt;/a&gt;. For a peak, the slug
+lookup only needs to store its coordinates: the client computes the tile from
+them with the same &lt;code&gt;lon2x&lt;/code&gt;/&lt;code&gt;lat2y&lt;/code&gt;, fetches that one file and opens the peak.
+The grid works as a spatial index that needs no extra code.&lt;/p&gt;
+&lt;h2&gt;What I'd do next&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;More categories.&lt;/strong&gt; Passes, viewpoints, springs and drinking water can use the
+same grid. Their files only need a category field and a per-category count in
+the manifest, so the client can skip tiles without any enabled category.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Vector tiles.&lt;/strong&gt; If the map ever moves to MapLibre, the same build pipeline
+could write MVT tiles instead of JSON. The grid and the ranking would stay.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For data of this size, tens of thousands of points over a mountain range, the
+plain file grid works very well: no server, no database, a few kilobytes per
+view, and the whole thing is about 430 lines of Python and JavaScript.&lt;/p&gt;</description>
+      <guid isPermaLink="false">e6b29456c9b98f1cffe5a0db0eac8d73e20caa72d0c96164446978a23870104a</guid>
+      <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Zero-with-Dot (Oleg Żero): Text-to-Diagram for AI Systems: Designing a DSL an LLM Gets Right - Planet Python</title>
+      <link>https://zerowithdot.com/blog/text-to-diagram-for-ai-systems/</link>
+      <description>&lt;h2 id="introduction"&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;I have worked on sensor design, e-commerce, airlines, medicine and CAD software, in several countries. The domains could not be more different, yet one problem kept coming back: people do not understand each other. Not because they are careless. Everybody simply looks at the same system from a different side. Legal sees data, the CEO sees cost, DevOps sees uptime.&lt;/p&gt;
+&lt;p&gt;Take one sentence from a kick-off meeting:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“We are building an agent to &lt;strong&gt;fix&lt;/strong&gt; invoices.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;What does &lt;em&gt;fix&lt;/em&gt; mean? Who uses it? Does it see customer data? Where does it run, and who owns it? Nobody asks, because everybody &lt;em&gt;thinks&lt;/em&gt; they know. A year later the project has five different answers to each of those questions.&lt;/p&gt;
+&lt;p&gt;Large language models make this more urgent, not less. Anybody can now describe a system in a paragraph, and a model will happily draw it. The open question is whether that drawing is &lt;em&gt;the&lt;/em&gt; architecture, or just &lt;em&gt;an&lt;/em&gt; architecture.&lt;/p&gt;
+&lt;p&gt;Gnomon is my attempt at an answer. It is a small language, gnomocode, and a compiler that checks every statement against an ontology. A language model translates what people say into gnomocode; the compiler decides what is allowed; and the result can be drawn, queried and read back as prose. The compiler is written in Python, on top of Lark, rdflib and pySHACL.&lt;/p&gt;
+&lt;p&gt;I presented it as a keynote at &lt;a href="https://devai.dssconf.pl/"&gt;DevAI by Data Science Summit&lt;/a&gt; in Warsaw on 20 October 2026, under the title of this article. This is the written version of that talk: why I built Gnomon, how it works, and what the measurements say about it.&lt;/p&gt;
+&lt;p class="aside__label"&gt;Status&lt;/p&gt;&lt;p&gt;Work in progress, October 2026. A public repository is being prepared. Until it exists, this article is the best description of what is built and why it looks the way it does.&lt;/p&gt;
+&lt;h2 id="motivation"&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;Draw the invoice agent and you are done in five seconds: invoices go in, an agent does something, fixed invoices come out. The box is easy. The questions around it are the architecture: who owns the data, where the model runs, whether personal data is involved, who reviews the edge cases. That gap between &lt;strong&gt;words&lt;/strong&gt; and a &lt;strong&gt;diagram somebody can be held to&lt;/strong&gt; is what I wanted to close.&lt;/p&gt;
+&lt;p&gt;It has to work in both directions. Forward, from a conversation to a model that a developer, or an agent, can build from. Backward, from existing code and diagrams to text that people can read. The forward direction is the harder one, and it is what this article is mostly about.&lt;/p&gt;
+&lt;p&gt;Before writing any code, I wrote down what a language sitting in the middle has to offer:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;unambiguous terms;&lt;/li&gt;
+&lt;li&gt;native words for what we build today: language models, memory, tools, MCP &lt;a href="https://zerowithdot.com/feed.xml#ref-15"&gt;[15]&lt;/a&gt;, A2A &lt;a href="https://zerowithdot.com/feed.xml#ref-16"&gt;[16]&lt;/a&gt;;&lt;/li&gt;
+&lt;li&gt;easy to read &lt;em&gt;and&lt;/em&gt; write, by people as well as by models;&lt;/li&gt;
+&lt;li&gt;one model, many views, one per reader;&lt;/li&gt;
+&lt;li&gt;versions, diffs and references;&lt;/li&gt;
+&lt;li&gt;a way to say “I am not sure”.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The last one turned out to matter more than I expected.&lt;/p&gt;
+&lt;h2 id="approach"&gt;Approach&lt;/h2&gt;
+&lt;p&gt;I did not start with a language. I started with the cheapest option and let it fail.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Just ask the model.&lt;/strong&gt; “Draw an architecture for an agent that fixes invoices.” The answer is fluent, plausible and different every time. It invents words, gives no errors and no line numbers, and there is nothing to diff. When it is wrong, nothing tells you where.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Objects.&lt;/strong&gt; Pydantic &lt;a href="https://zerowithdot.com/feed.xml#ref-12"&gt;[12]&lt;/a&gt; classes, filled in by the model through structured output. Validation is real and every provider supports it. But an architecture is a &lt;em&gt;graph&lt;/em&gt;, not a tree. A missing fact is either an error or a &lt;code&gt;null&lt;/code&gt;, and a conversation with a client is mostly missing facts. Two statements cannot be merged, nor can they contradict each other, and every new term means a new class and a new release. The vocabulary ends up cemented in code.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Existing notations.&lt;/strong&gt; UML, BPMN, C4 &lt;a href="https://zerowithdot.com/feed.xml#ref-10"&gt;[10]&lt;/a&gt;, ArchiMate and SysML v2 &lt;a href="https://zerowithdot.com/feed.xml#ref-11"&gt;[11]&lt;/a&gt; are standards, and people understand them. They come with fixed symbols and a fixed depth, none of them has a “maybe”, and only some of them check whether a diagram &lt;em&gt;makes sense&lt;/em&gt;, as opposed to whether it is drawn correctly.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;A language of my own, with a compiler.&lt;/strong&gt; This is the one that stayed. The idea is old and boring, which is how I like my ideas: &lt;strong&gt;let the model talk, let the compiler decide.&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="border border-line-soft bg-surface overflow-hidden"&gt;&lt;img alt="Pipeline: natural language goes to text2gnc (a language model), then to gnomocode, then to a compiler with rules only, then to a graph, then to views, diagrams and recommendations. Compiler errors loop back to text2gnc for up to three rounds; gnc2text turns the graph back into prose." class="block h-auto w-full" src="https://zerowithdot.com/images/blog/text-to-diagram-for-ai-systems/pipeline-light.png" /&gt;&lt;/div&gt;&lt;span class="text-accent"&gt;Fig.&amp;nbsp;1&lt;/span&gt; — The language model translates; it never gets the last word. Compiler errors go back to it for up to three rounds of repair.
+&lt;p&gt;The translator, text2gnc, turns natural language into gnomocode. The compiler, which is plain rules with no model inside, checks each statement and builds a graph. When it finds errors, it sends them back to the translator with line numbers and hints. Everything else, diagrams for different audiences, recommendations, even prose, is drawn from the graph.&lt;/p&gt;
+&lt;p&gt;Two consequences matter to me. The &lt;strong&gt;script&lt;/strong&gt; is the source of truth, not a single call to a model: the same script always compiles to the same graph. And errors are &lt;strong&gt;located and readable&lt;/strong&gt;, so a person and a model can both act on them.&lt;/p&gt;
+&lt;h2 id="the-ontology-is-the-key"&gt;The ontology is the key&lt;/h2&gt;
+&lt;p&gt;Before designing a single keyword, I went looking for who had already described this world. Plenty of people had. A taxonomy says what is a kind of what: a language model is a machine learning model. An ontology goes further and adds relations and rules: an agent &lt;em&gt;uses&lt;/em&gt; a model, a model &lt;em&gt;runs on&lt;/em&gt; an environment, and a dataset cannot run on anything at all. Such vocabularies have been written in RDF &lt;a href="https://zerowithdot.com/feed.xml#ref-1"&gt;[1]&lt;/a&gt; for years, and some are widely used: SKOS &lt;a href="https://zerowithdot.com/feed.xml#ref-3"&gt;[3]&lt;/a&gt; for taxonomies, PROV-O &lt;a href="https://zerowithdot.com/feed.xml#ref-2"&gt;[2]&lt;/a&gt; for provenance, DCAT &lt;a href="https://zerowithdot.com/feed.xml#ref-4"&gt;[4]&lt;/a&gt; for data catalogues, DPV &lt;a href="https://zerowithdot.com/feed.xml#ref-7"&gt;[7]&lt;/a&gt; for privacy, QUDT &lt;a href="https://zerowithdot.com/feed.xml#ref-8"&gt;[8]&lt;/a&gt; for units and schema.org &lt;a href="https://zerowithdot.com/feed.xml#ref-9"&gt;[9]&lt;/a&gt; for the web. OWL &lt;a href="https://zerowithdot.com/feed.xml#ref-6"&gt;[6]&lt;/a&gt; defines the classes and SHACL &lt;a href="https://zerowithdot.com/feed.xml#ref-5"&gt;[5]&lt;/a&gt; checks the graphs.&lt;/p&gt;
+&lt;p&gt;So the rule became: &lt;strong&gt;take terms, relations, types and hierarchy from what exists, and add the minimum.&lt;/strong&gt; The result is a kernel of 57 terms and twelve modules (systems, deployment, integration, data, ML, agents, processes, operations, security, legal, cost and service levels) that a script imports only when it needs them. From day one there was also a licence rule: nothing copyleft goes in, so that the whole thing can later be distributed freely &lt;em&gt;and&lt;/em&gt; commercially.&lt;/p&gt;
+&lt;div class="border border-line-soft bg-surface overflow-hidden"&gt;&lt;img alt="Names of existing vocabularies (PROV-O, DCAT, DPV, SKOS, schema.org, QUDT, OWL, SHACL, ODRL, Dublin Core, SPDX, ML Schema, AIRO, Croissant, TOSCA) funnel into the Gnomon tree: a kernel of 57 terms and modules for systems, deployment, integration, data, ML, agents, processes, operations, security, legal, cost and service levels." class="block h-auto w-full" src="https://zerowithdot.com/images/blog/text-to-diagram-for-ai-systems/ontology-sources-light.png" /&gt;&lt;/div&gt;&lt;span class="text-accent"&gt;Fig.&amp;nbsp;2&lt;/span&gt; — Many sources in, one small vocabulary out.
+&lt;p&gt;Why call the ontology &lt;em&gt;the&lt;/em&gt; key? Because every other part of Gnomon is generated from it or checked against it. Take a single word that a script writes, &lt;code&gt;runs_on&lt;/code&gt;. In the ontology it has three layers: a lexicon entry that gives the word and its inverse reading, a property with a definition, and a shape that says what may stand on either side of it.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;ontology (abridged)&lt;/em&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class="language-turtle"&gt;gnlex:runs-on a skos:Concept ; skos:prefLabel &amp;quot;runs on&amp;quot;@en ;
+    gn:inverseReading &amp;quot;hosts&amp;quot;@en ;
+    gn:denotes gn:runsOn .
+gn:runsOn a owl:ObjectProperty ;
+    rdfs:label &amp;quot;runs on&amp;quot;@en ;
+    skos:definition &amp;quot;The subject executes in or on the object.&amp;quot;@en ;
+    gn:acyclic true .
+gnsh:runsOn-subject a sh:NodeShape ;
+    sh:targetSubjectsOf gn:runsOn ;
+    sh:or ( [ sh:class gn:System ]
+            [ sh:class gn:Model ]
+            [ sh:class gn:Activity ] ) ;
+    sh:message &amp;quot;only a system, a model or an activity can run on something&amp;quot; ;
+    gn:diagnosticCode &amp;quot;type/signature&amp;quot; .&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That one definition feeds the whole tool chain. The lexicon decides which words a script may use, and therefore which words a model may generate. The shape becomes the compiler’s error message, word for word. The labels become the English sentences in which a script is read back. The concerns attached to each term decide which audience sees it on a diagram. And because Gnomon’s classes are declared as subclasses of the borrowed ones (a &lt;code&gt;gn:Dataset&lt;/code&gt; is also a &lt;code&gt;dcat:Dataset&lt;/code&gt; and a &lt;code&gt;prov:Entity&lt;/code&gt;), the compiled graph is readable by tools that have never heard of Gnomon.&lt;/p&gt;
+&lt;p class="aside__label"&gt;Info&lt;/p&gt;&lt;p&gt;The grammar of gnomocode is generated from the kernel alone. Words come from the lexicon, so adding a module adds vocabulary without changing the grammar. Extending the language is a matter of editing data, not releasing code.&lt;/p&gt;
+&lt;h2 id="the-language"&gt;The language&lt;/h2&gt;
+&lt;p&gt;Why not let the model write RDF directly and validate it with SHACL? RDF is precise, but it is not something I want to read in a review. Here is the invoice agent as gnomocode, 23 lines:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;fix-invoices.gnc&lt;/em&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class="language-gnomocode"&gt;---
+gnomon: 0.2.2
+as_of: 2026-10
+state: TARGET
+import: systems, deployment, ml, agent, process
+---
+finance_team: Team
+erp: Application
+    owned_by = finance_team
+    runs_on = CloudEnvironment() ~0.5        # &amp;quot;in the cloud, I think&amp;quot;
+invoices: Dataset
+    stored_in = erp
+    contains_personal_data = true
+invoice_agent: AIAgent
+    uses = LanguageModel()
+    classifies(invoices, frequency = 200/DAY)
+fixing: Process = check &amp;gt;&amp;gt; (&amp;quot;amount &amp;gt; 10k&amp;quot; =&amp;gt; review | post)
+review.performer = finance_team
+invoices -&amp;gt; check -&amp;gt; checked_invoices
+checked_invoices: Dataset&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It compiles to 76 lines of RDF. Three forms carry almost everything: &lt;code&gt;name: Type&lt;/code&gt; declares an element, &lt;code&gt;property = value&lt;/code&gt; states a fact about it, and &lt;code&gt;action(object)&lt;/code&gt; says what it does. Flows connect steps (&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;) and data (&lt;code&gt;-&amp;gt;&lt;/code&gt;). The notation borrows from places people already know: front matter from Markdown, indented blocks and assignments from Python, arrows from graph query languages. Even the case of a word tells you its kind: &lt;code&gt;Type&lt;/code&gt;, &lt;code&gt;property&lt;/code&gt;, &lt;code&gt;CONSTANT&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The front matter pins the release of the ontology the script was written against, says whether it describes the current state or a target, and imports only the modules the text needs. An old script therefore compiles against the same release, or gets migrated to a new one on purpose.&lt;/p&gt;
+&lt;p&gt;Look at the &lt;code&gt;~0.5&lt;/code&gt; on the &lt;code&gt;runs_on&lt;/code&gt; line. It means “I think so, but I am only half sure”, and it is part of the language. Confidence has a few reference points: 1 is confirmed in a system or a document, 0.8 is stated by someone who does the work, 0.5 is second-hand, 0.2 is a guess. Below 0.7 a fact is not an error, but it is reported as a finding. In the graph it becomes an annotated statement, so you can query for everything that still needs confirming:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;fix-invoices.trig (excerpt)&lt;/em&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class="language-turtle"&gt;    rdf:subject :erp ;
+    rdf:predicate gn:runsOn ;
+    rdf:object minted:cloud-environment-0 ;
+    gn:confidence 0.5 .&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="the-syntax-at-a-glance"&gt;The syntax at a glance&lt;/h3&gt;
+&lt;p&gt;The invoice script uses only part of the language. Here is most of the rest in one script that compiles, with a comment on what each line does:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;support.gnc&lt;/em&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class="language-gnomocode"&gt;---
+gnomon: 0.2.2
+as_of: 2026-10
+state: CURRENT
+import: systems, deployment, ml, agent, process
+---
+sales_team: Team                             # declares an element
+support_team: Team
+cloud_account: CloudEnvironment
+tickets: Dataset
+product_catalogue: Dataset
+crm: Application
+    runs_on = cloud_account ~0.8             # a fact and its confidence
+    owned_by = sales_team                    # inverse reading of owns
+    search_tool: Tool                        # a part of crm
+support_agent: AIAgent
+    uses = search_tool, LanguageModel()      # two values, one unnamed
+    reads(product_catalogue)                 # an action: a new activity
+    summarises(tickets, frequency = 50/DAY)  # with its own properties
+LanguageModel[0] is gpt_4o                   # two names, one element
+gpt_4o: LanguageModel
+    name = &amp;quot;GPT-4o&amp;quot;
+triage: Process = sort &amp;gt;&amp;gt; (&amp;quot;urgent&amp;quot; =&amp;gt; call_back | answer)
+sort: Classification
+    performer = support_agent
+    duration = 3 MIN                         # a quantity with a unit
+call_back.performer = support_team
+tickets -&amp;gt; sort -&amp;gt; sorted_tickets            # data flows through a step
+sorted_tickets: Dataset&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A few things are worth noticing. A declaration inside a block makes the element a part of its parent, so nesting is how you say “consists of”. An action such as &lt;code&gt;reads(product_catalogue)&lt;/code&gt; does not need a name: the compiler creates an unnamed activity of the right kind, with the agent as its performer and the catalogue as its input, and numbers it so that later lines can refer to it. And &lt;code&gt;|&lt;/code&gt; in a flow means exactly one branch is taken, while &lt;code&gt;&amp;amp;&lt;/code&gt; means all of them are.&lt;/p&gt;
+&lt;h3 id="a-compiler-in-python-built-on-lark"&gt;A compiler in Python, built on Lark&lt;/h3&gt;
+&lt;p&gt;The compiler is plain Python 3.14, managed with uv. Parsing is done by &lt;a href="https://github.com/lark-parser/lark"&gt;Lark&lt;/a&gt; &lt;a href="https://zerowithdot.com/feed.xml#ref-20"&gt;[20]&lt;/a&gt;, a parsing toolkit for Python under the MIT licence. The grammar is not written by hand: &lt;code&gt;gnomon grammar&lt;/code&gt; generates it from the kernel of the ontology, with one slot per class of words. A new module adds words, never grammar rules. An excerpt:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;gnomocode.lark (excerpt)&lt;/em&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class="language-text"&gt;declaration: NAME &amp;quot;:&amp;quot; type_ref confidence? assigned_flow? _NEWLINE block?
+block: _INDENT member+ _DEDENT
+own_property: NAME &amp;quot;=&amp;quot; values _NEWLINE
+own_action: NAME &amp;quot;(&amp;quot; [arguments] &amp;quot;)&amp;quot; confidence? _NEWLINE
+step_flow: step_term (&amp;quot;&amp;gt;&amp;gt;&amp;quot; step_term)+
+data_flow: reference (&amp;quot;-&amp;gt;&amp;quot; reference)+
+group: &amp;quot;(&amp;quot; branch (&amp;quot;|&amp;quot; branch)* &amp;quot;)&amp;quot; -&amp;gt; one_of
+     | &amp;quot;(&amp;quot; branch (&amp;quot;&amp;amp;&amp;quot; branch)+ &amp;quot;)&amp;quot; -&amp;gt; all_of
+confidence: &amp;quot;~&amp;quot; NUMBER
+TYPE: /[A-Z][A-Z0-9]*[a-z][A-Za-z0-9]*/
+CONST: /[A-Z][A-Z0-9_]*(?![A-Za-z0-9_])/
+NAME: /[^\W\dA-Z]\w*/&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Indentation works exactly as in Python, because Lark ships a post-lexer for it. Subclass &lt;code&gt;Indenter&lt;/code&gt;, name the tokens, and the LALR parser receives &lt;code&gt;_INDENT&lt;/code&gt; and &lt;code&gt;_DEDENT&lt;/code&gt; like any other token:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;syntax.py (abridged)&lt;/em&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class="language-python"&gt;from lark import Lark
+from lark.indenter import Indenter
+class GnomocodeIndenter(Indenter):
+    NL_type = &amp;quot;_NEWLINE&amp;quot;
+    OPEN_PAREN_types = [&amp;quot;LPAR&amp;quot;, &amp;quot;LSQB&amp;quot;]
+    CLOSE_PAREN_types = [&amp;quot;RPAR&amp;quot;, &amp;quot;RSQB&amp;quot;]
+    INDENT_type = &amp;quot;_INDENT&amp;quot;
+    DEDENT_type = &amp;quot;_DEDENT&amp;quot;
+    tab_len = 4
+parser = Lark(
+    grammar,
+    parser=&amp;quot;lalr&amp;quot;,
+    postlex=GnomocodeIndenter(),
+    propagate_positions=True,
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;LALR keeps parsing fast and deterministic, which matters when the studio rechecks the script after every pause in typing. &lt;code&gt;propagate_positions&lt;/code&gt; keeps the line and column of every node, so each diagnostic can point at the exact span of the source. A Lark &lt;code&gt;Transformer&lt;/code&gt; turns the parse tree into statements; &lt;a href="https://github.com/RDFLib/rdflib"&gt;rdflib&lt;/a&gt; &lt;a href="https://zerowithdot.com/feed.xml#ref-21"&gt;[21]&lt;/a&gt; builds the graph from them; the rules of the release derive further facts; and &lt;a href="https://github.com/RDFLib/pySHACL"&gt;pySHACL&lt;/a&gt; &lt;a href="https://zerowithdot.com/feed.xml#ref-22"&gt;[22]&lt;/a&gt; validates the result against the shapes of the ontology. Every violation is mapped back to the line it came from.&lt;/p&gt;
+&lt;h3 id="what-the-compiler-says"&gt;What the compiler says&lt;/h3&gt;
+&lt;p&gt;Mistype a word and the compiler answers like a linter, with the line, a caret and a suggestion taken from the lexicon:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;typos.gnc&lt;/em&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class="language-gnomocode"&gt;---
+gnomon: 0.2.2
+as_of: 2026-10
+state: TARGET
+import: systems, ml, agent
+---
+finance_team: Team
+erp: Application
+invoices: Dataset
+    stored_at = erp
+reviewer: HumanRol&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;gnomon check typos.gnc&lt;/em&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class="language-text"&gt;typos.gnc:11:5: error type/vocabulary: unknown property `stored_at`
+   |
+11 |     stored_at = erp
+   |     ^^^^^^^^^
+   = hint: did you mean `stored_in` or `stores`?
+typos.gnc:12:11: error type/vocabulary: unknown type `HumanRol`
+   |
+12 | reviewer: HumanRol
+   |           ^^^^^^^^
+   = hint: did you mean `HumanRole` or `HumanReview`?
+typos.gnc: blocked (2 errors, 0 warnings, 0 infos)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Syntax errors look the same. Indent a block by three spaces instead of four and you get:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;gnomon check&lt;/em&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class="language-text"&gt;syntax.gnc:9:1: error syntax/indentation: an indentation of 3 spaces
+  |
+9 |    owned_by = finance_team
+  | ^^^
+  = hint: indent with four spaces per level&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A script that compiles still gets its findings. For &lt;code&gt;support.gnc&lt;/code&gt; above the verdict is &lt;code&gt;compiles (0 errors, 12 warnings, 18 infos)&lt;/code&gt;, starting with lines such as:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;gnomon check support.gnc&lt;/em&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class="language-text"&gt;support.gnc:11:1: warning finding/missing-owner: no owner: `tickets`
+support.gnc:11:1: warning finding/missing-personal-data-marker: personal data not marked: `tickets`
+support.gnc:19:1: warning finding/missing-owner: no owner: `support_agent`
+support.gnc:28:52: warning finding/missing-performer: no performer: `answer`
+support.gnc:19:1: info finding/missing-runs-on: where it runs is not stated: `support_agent`
+support.gnc: compiles (0 errors, 12 warnings, 18 infos)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With &lt;code&gt;--format json&lt;/code&gt; the same diagnostics come as records. This is what the translator receives in the repair loop:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;gnomon check --format json typos.gnc (first record)&lt;/em&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class="language-json"&gt;{
+  &amp;quot;file&amp;quot;: &amp;quot;typos.gnc&amp;quot;,
+  &amp;quot;line&amp;quot;: 11,
+  &amp;quot;column&amp;quot;: 5,
+  &amp;quot;end_line&amp;quot;: 11,
+  &amp;quot;end_column&amp;quot;: 14,
+  &amp;quot;severity&amp;quot;: &amp;quot;error&amp;quot;,
+  &amp;quot;code&amp;quot;: &amp;quot;type/vocabulary&amp;quot;,
+  &amp;quot;message&amp;quot;: &amp;quot;unknown property `stored_at`&amp;quot;,
+  &amp;quot;hint&amp;quot;: &amp;quot;did you mean `stored_in` or `stores`?&amp;quot;,
+  &amp;quot;rules&amp;quot;: []
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="from-a-sentence-to-a-line-to-a-picture"&gt;From a sentence to a line to a picture&lt;/h3&gt;
+&lt;p&gt;Each line of the script answers something somebody said. Suppose the kick-off meeting went on a few minutes longer. This is how its sentences map onto the script, and how the compiler reads each line back, in its own controlled English (&lt;code&gt;gnomon explain&lt;/code&gt;, no model involved):&lt;/p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;What was said&lt;/th&gt;&lt;th&gt;Gnomocode&lt;/th&gt;&lt;th&gt;What the compiler reads back&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;”We are building…”&lt;/td&gt;&lt;td&gt;&lt;code&gt;state: TARGET&lt;/code&gt;&lt;/td&gt;&lt;td&gt;This description is of the target state, as of 2026-10.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;”…an agent…”&lt;/td&gt;&lt;td&gt;&lt;code&gt;invoice_agent: AIAgent&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Invoice agent is an AI agent.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;”…that uses an LLM…”&lt;/td&gt;&lt;td&gt;&lt;code&gt;uses = LanguageModel()&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Invoice agent uses the unnamed language model 0.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;”About 200 invoices a day.”&lt;/td&gt;&lt;td&gt;&lt;code&gt;classifies(invoices, frequency = 200/DAY)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Invoice agent classifies invoices (classification 0). The frequency of the unnamed classification 0 is 200 per day.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;”Invoices hold customer data.”&lt;/td&gt;&lt;td&gt;&lt;code&gt;contains_personal_data = true&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Invoices contains personal data.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;”The ERP is in the cloud, I think.”&lt;/td&gt;&lt;td&gt;&lt;code&gt;runs_on = CloudEnvironment() ~0.5&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Possibly (confidence 0.5): erp runs on the unnamed cloud environment 0.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;”Anything over 10k goes to review.”&lt;/td&gt;&lt;td&gt;&lt;code&gt;check &amp;gt;&amp;gt; (&amp;quot;amount &amp;gt; 10k&amp;quot; =&amp;gt; review | post)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;After check comes exactly one of these: review when “amount &amp;gt; 10k”; post.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;”Finance does the review.”&lt;/td&gt;&lt;td&gt;&lt;code&gt;review.performer = finance_team&lt;/code&gt;&lt;/td&gt;&lt;td&gt;The performer of review is finance team.&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;The read-back matters more than it looks. A person who will never learn gnomocode can still check, sentence by sentence, whether the script says what they meant. And a language model that turns the script into prose works from these sentences, so it has nothing to guess.&lt;/p&gt;
+&lt;p&gt;The same lines are also a picture. The process line becomes the process view, with the branch, its condition and the performer of the review:&lt;/p&gt;
+&lt;div class="border border-line-soft bg-surface overflow-hidden"&gt;&lt;img alt="Isometric process view: the activity check, marked as an exclusive branch, followed by review and post, all three on a plate labelled fixing; review carries a small cube marking its performer, the finance team." class="block h-auto w-full" src="https://zerowithdot.com/images/blog/text-to-diagram-for-ai-systems/process-light.png" /&gt;&lt;/div&gt;&lt;span class="text-accent"&gt;Fig.&amp;nbsp;3&lt;/span&gt; — One line of gnomocode, check &amp;gt;&amp;gt; (&amp;quot;amount &amp;gt; 10k&amp;quot; =&amp;gt; review | post), drawn as the process view in Gnomon Studio.
+&lt;h3 id="vague-is-valid-contradictions-are-not"&gt;Vague is valid, contradictions are not&lt;/h3&gt;
+&lt;p&gt;This is the principle I am most attached to. A real conversation is full of gaps and guesses. A language that rejects every incomplete statement will never be used; a language that accepts everything is useless. So the compiler draws a different line: &lt;strong&gt;it accepts vagueness and rejects contradictions.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;invoice_agent: AIAgent&lt;/code&gt; is valid. It is vague, but it is true. The statements below are not, and the compiler says why, with the line and the reason taken straight from the ontology:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;invalid.gnc&lt;/em&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class="language-gnomocode"&gt;---
+gnomon: 0.2.2
+as_of: 2026-10
+state: CURRENT
+import: systems, deployment, process
+---
+finance_team: Team
+erp: Application
+invoices: Dataset
+    runs_on = erp
+check: Activity
+    automation_level = MANUAL
+    automation_level = AUTOMATED
+erp: Dataset
+module_a: System
+    part_of = module_b
+module_b: System
+    part_of = module_a&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;gnomon check invalid.gnc&lt;/em&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class="language-text"&gt;invalid.gnc:9:1: error inconsistency/disjoint-kinds: disjoint kinds: `erp`
+invalid.gnc:11:15: error type/signature: only a system, a model or an activity can run on something: `invoices`
+invalid.gnc:14:24: error inconsistency/single-value: two values of a single-valued term: `check`
+invalid.gnc:17:15: error inconsistency/cycle: partOf cycle: `module_a`
+invalid.gnc:19:15: error inconsistency/cycle: partOf cycle: `module_b`
+invalid.gnc: blocked (5 errors, 8 warnings, 5 infos)&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="the-compiler-talks-back"&gt;The compiler talks back&lt;/h3&gt;
+&lt;p&gt;Diagnostics have three levels. Errors block; warnings and infos pass. The useful side effect is that the missing information turns into questions. The invoice script compiles, with 11 warnings and 15 infos, and those read like the agenda for the next meeting:&lt;/p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;The compiler says&lt;/th&gt;&lt;th&gt;The question it is asking&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;no owner: invoices&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Who owns the invoices?&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;no tool: invoice_agent&lt;/code&gt;&lt;/td&gt;&lt;td&gt;What can the agent actually do?&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;where it runs is not stated: invoice_agent&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Where is it hosted?&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;personal data not marked: checked_invoices&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Does the output fall under GDPR too?&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;a fact below the confidence threshold: erp runs on&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Is the ERP really in the cloud?&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;These are the questions nobody asked at the kick-off. The same messages, with their line numbers and hints, are what the translator receives in the repair loop. In practice that is what makes a language model usable here: it gets an error it can act on, not a shrug.&lt;/p&gt;
+&lt;h2 id="one-model-many-pictures"&gt;One model, many pictures&lt;/h2&gt;
+&lt;p&gt;A diagram is a projection of the graph, not the model itself. Gnomon draws three views of a script (architecture, process and data lineage), filters them for an audience (executives, architects, legal and compliance, security, operations) and folds them to a level of detail. A lawyer sees the personal data and where it is kept; an architect sees every part.&lt;/p&gt;
+&lt;p&gt;The drawing itself is replaceable too. The same compiled graph goes to Gnomon’s own isometric canvas, to Mermaid, or to LikeC4, and nothing in the script changes:&lt;/p&gt;
+&lt;div class="border border-line-soft bg-surface overflow-hidden"&gt;&lt;img alt="The architecture view of the invoice script drawn three ways: on the left an isometric canvas with coloured blocks for the ERP on a cloud environment slab, the invoices, the invoice agent and the language model; top right a Mermaid flowchart; bottom right a LikeC4 diagram with coloured cards." class="block h-auto w-full" src="https://zerowithdot.com/images/blog/text-to-diagram-for-ai-systems/renderers-light.png" /&gt;&lt;/div&gt;&lt;span class="text-accent"&gt;Fig.&amp;nbsp;4&lt;/span&gt; — The architecture view of fix-invoices.gnc, drawn by Gnomon's canvas (left), Mermaid (top right) and LikeC4 (bottom right). One model, three renderers.
+&lt;p&gt;Each renderer makes its own choices. The canvas sets the ERP on the slab of the cloud it runs on and marks personal data with a red lock. Mermaid labels every edge. LikeC4 stacks the same edges top-down. The facts underneath are identical, which is the point: you can argue about the picture without arguing about the system.&lt;/p&gt;
+&lt;p&gt;From the same graph, the rules of the ontology also recommend where an agent could take over work, ranked by effort, with the facts still missing to decide.&lt;/p&gt;
+&lt;h2 id="evaluation"&gt;Evaluation&lt;/h2&gt;
+&lt;p&gt;I did not want to show only a demo, so I built a way to measure the translation.&lt;/p&gt;
+&lt;div class="border border-line-soft bg-surface overflow-hidden"&gt;&lt;img alt="Evaluation scheme: the original text goes through text2gnc to a script, then gnc2text to prose (the round trip); a hand-written golden script goes through gnc2text to prose (the ceiling); an LLM judge compares both proses with the original for coverage and faithfulness; code compares the generated graph with the golden graph for graph F1." class="block h-auto w-full" src="https://zerowithdot.com/images/blog/text-to-diagram-for-ai-systems/evaluation-light.png" /&gt;&lt;/div&gt;&lt;span class="text-accent"&gt;Fig.&amp;nbsp;5&lt;/span&gt; — The round trip: text to script to prose, judged against the original. A second path through a hand-written golden script shows what the language itself can carry.
+&lt;p&gt;There are three measures. &lt;strong&gt;Coverage&lt;/strong&gt; says how much of the original the prose still says. &lt;strong&gt;Faithfulness&lt;/strong&gt; says how much of the prose the original supports. &lt;strong&gt;Graph F1&lt;/strong&gt; counts the facts two graphs share, and it is computed by code, with no model involved. The first two use a language model as a judge &lt;a href="https://zerowithdot.com/feed.xml#ref-13"&gt;[13]&lt;/a&gt;: it extracts claims from a text, each with a quote of the original that code then verifies, and gives a verdict per claim.&lt;/p&gt;
+&lt;p&gt;The test set is 54 texts about architectures, agent systems, data pipelines, processes and audits, all from public sources that allow reuse: 40 from the Azure Architecture Center &lt;a href="https://zerowithdot.com/feed.xml#ref-18"&gt;[18]&lt;/a&gt;, 5 from the GDS Way &lt;a href="https://zerowithdot.com/feed.xml#ref-17"&gt;[17]&lt;/a&gt; and 9 algorithmic transparency records of the UK government &lt;a href="https://zerowithdot.com/feed.xml#ref-19"&gt;[19]&lt;/a&gt;. Each has a golden script written for it.&lt;/p&gt;
+&lt;h3 id="does-it-compile"&gt;Does it compile?&lt;/h3&gt;
+&lt;p&gt;With Claude Sonnet 5.5 as the translator, all 54 texts ended up as scripts that compile. 29 compiled at once, 23 needed one repair round, and 2 needed two or three.&lt;/p&gt;
+&lt;div class="border border-line-soft bg-surface overflow-hidden"&gt;&lt;img alt="Stacked bar of 54 texts: 29 compiled at once, 23 after one repair round, 2 after two or three rounds; 25 texts were saved by the repair loop." class="block h-auto w-full" src="https://zerowithdot.com/images/blog/text-to-diagram-for-ai-systems/compile-light.png" /&gt;&lt;/div&gt;&lt;span class="text-accent"&gt;Fig.&amp;nbsp;6&lt;/span&gt; — The repair loop earns its keep: without it, nearly half of the texts would not compile.
+&lt;h3 id="where-do-the-facts-go"&gt;Where do the facts go?&lt;/h3&gt;
+&lt;p&gt;Of 100 claims in an original text, 58 survive the round trip. The interesting part is where the other 42 go. Splitting the loss into layers shows that about 40 are lost because the language, and my golden scripts, cannot say them yet. The translator loses only 7.&lt;/p&gt;
+&lt;div class="border border-line-soft bg-surface overflow-hidden"&gt;&lt;img alt="Waterfall chart per 100 claims: 100 claims of the original, minus 39.6 lost by the language and the golden scripts, minus 7.0 lost by the translator, plus 4.5 gained when telling the script as prose, leaving 58.0 kept; whiskers show 95% bootstrap intervals." class="block h-auto w-full" src="https://zerowithdot.com/images/blog/text-to-diagram-for-ai-systems/waterfall-light.png" /&gt;&lt;/div&gt;&lt;span class="text-accent"&gt;Fig.&amp;nbsp;7&lt;/span&gt; — Where 100 claims of an original go. The language and the golden scripts lose about 40, the translator 7. The prose restores 4.5 that its controlled sentences do not state.
+&lt;p&gt;I find this the most useful result of the whole project. &lt;strong&gt;The bottleneck is the language, not the translator.&lt;/strong&gt; That is a very different to-do list from “use a bigger model”, and it tells me which words to add next.&lt;/p&gt;
+&lt;h3 id="how-far-to-trust-the-judge-and-the-graph"&gt;How far to trust the judge, and the graph?&lt;/h3&gt;
+&lt;p&gt;Not blindly. The judge finds every claim of a text in the text itself, and 99.7 of 100 in a text with a fifth of its sentences removed. But when asked to notice the removed claims, it caught only 57 of 100. Two different judges (gpt-oss-120b and Claude Haiku 4.5) gave the same verdict on 73% of 6,054 claims, a Cohen’s kappa of 0.55, which counts as moderate &lt;a href="https://zerowithdot.com/feed.xml#ref-14"&gt;[14]&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The graph measure needs no judge. Against its own golden graph, a generated graph scores an F1 of 0.56 on average; against the golden graph of a &lt;em&gt;different&lt;/em&gt; text, 0.29.&lt;/p&gt;
+&lt;div class="border border-line-soft bg-surface overflow-hidden"&gt;&lt;img alt="Dot plot of 54 texts sorted by graph F1: each text has a gold dot for F1 against its own golden graph (mean 0.56) and a grey dot for F1 against the golden graph of another text (mean 0.29), joined by a thin line." class="block h-auto w-full" src="https://zerowithdot.com/images/blog/text-to-diagram-for-ai-systems/graph-f1-light.png" /&gt;&lt;/div&gt;&lt;span class="text-accent"&gt;Fig.&amp;nbsp;8&lt;/span&gt; — Each text twice: against its own golden graph (gold) and against another text's (grey, the chance level). The graph is about the right text, but only about half of its facts match.
+&lt;p&gt;So the graph is clearly about the right text, and only about half of its facts match. Part of that is the translator choosing different relations and levels of detail for the same fact: two translations of one text agree with each other at an F1 of 0.74. This is enough for a demo, not yet proof, and I would rather say so here than have you find out.&lt;/p&gt;
+&lt;h2 id="what-it-looks-like"&gt;What it looks like&lt;/h2&gt;
+&lt;p&gt;All of this sits behind a local web page, Gnomon Studio: the chat on the left, the script in the middle with live diagnostics and its description in plain English, and the diagram on the right. You describe a system, a script appears, compiles or repairs itself, and the picture updates. Every later message extends the script instead of starting again.&lt;/p&gt;
+&lt;div class="border border-line-soft bg-surface overflow-hidden"&gt;&lt;img alt="Gnomon Studio: on the left a chat where the user describes how a support team answers customer emails and then asks for an AI agent to draft the answers; in the middle 40 lines of gnomocode that compile with 5 warnings and 4 infos, with the description in plain English below; on the right an isometric diagram of the CRM on a cloud environment, the shared mailbox and the emails dataset." class="block h-auto w-full" src="https://zerowithdot.com/images/blog/text-to-diagram-for-ai-systems/studio.png" /&gt;&lt;/div&gt;&lt;span class="text-accent"&gt;Fig.&amp;nbsp;9&lt;/span&gt; — Gnomon Studio after two messages: the chat, the script with its diagnostics and description, and the architecture view.
+&lt;h2 id="conclusions"&gt;Conclusions&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Everyone sees a different system.&lt;/strong&gt; This is a people problem before it is a technology problem.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A shared language beats a better drawing.&lt;/strong&gt; A drawing can be nicer; only a language can be checked, diffed and versioned.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;The ontology carries the weight.&lt;/strong&gt; Vocabulary, rules, error messages, read-back and views all come from one place. Borrowing it from existing standards made it smaller and more trustworthy than anything I would have invented.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Let the model talk, let the compiler decide.&lt;/strong&gt; Models are excellent at turning messy words into structure and poor at being consistent. Put the determinism somewhere else.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Measure the layers separately.&lt;/strong&gt; “58%” alone would have told me to improve the model. Splitting the loss showed me where the loss really was.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Allow “I don’t know” in the language itself.&lt;/strong&gt; It changes what people are willing to write down.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;What is next: separating the public repository (the ontology, the compiler and the studio); conventions that narrow the ways of writing one fact, since the same text still gives different scripts; words for the 40% the language cannot say yet; and the backward direction at scale, from existing code and diagrams to text.&lt;/p&gt;
+&lt;p&gt;If you work on architecture descriptions, agent systems, or on making language models and rules cooperate, I would be glad to hear from you. Gnomon is also meant as a working tool for audits: mapping the processes and data of a company before anyone builds an agent for them. The &lt;a href="https://zerowithdot.com/projects/gnomon/"&gt;project page&lt;/a&gt; collects the scenarios I have translated so far.&lt;/p&gt;
+&lt;h2 id="references"&gt;References&lt;/h2&gt;
+&lt;ol class="references"&gt;&lt;li id="ref-1"&gt;W3C, &lt;a href="https://www.w3.org/TR/rdf11-concepts/"&gt;RDF 1.1 Concepts and Abstract Syntax&lt;/a&gt;, Recommendation, 25 February 2014.&lt;/li&gt;&lt;li id="ref-2"&gt;W3C, &lt;a href="https://www.w3.org/TR/prov-o/"&gt;PROV-O: The PROV Ontology&lt;/a&gt;, Recommendation, 30 April 2013.&lt;/li&gt;&lt;li id="ref-3"&gt;W3C, &lt;a href="https://www.w3.org/TR/skos-reference/"&gt;SKOS Simple Knowledge Organization System Reference&lt;/a&gt;, Recommendation, 18 August 2009.&lt;/li&gt;&lt;li id="ref-4"&gt;W3C, &lt;a href="https://www.w3.org/TR/vocab-dcat-3/"&gt;Data Catalog Vocabulary (DCAT), Version 3&lt;/a&gt;, Recommendation, 22 August 2024.&lt;/li&gt;&lt;li id="ref-5"&gt;W3C, &lt;a href="https://www.w3.org/TR/shacl/"&gt;Shapes Constraint Language (SHACL)&lt;/a&gt;, Recommendation, 20 July 2017.&lt;/li&gt;&lt;li id="ref-6"&gt;W3C, &lt;a href="https://www.w3.org/TR/owl2-overview/"&gt;OWL 2 Web Ontology Language Document Overview (Second Edition)&lt;/a&gt;, Recommendation, 11 December 2012.&lt;/li&gt;&lt;li id="ref-7"&gt;Data Privacy Vocabularies and Controls Community Group, &lt;a href="https://w3id.org/dpv/"&gt;Data Privacy Vocabulary (DPV)&lt;/a&gt;, W3C Community Group report.&lt;/li&gt;&lt;li id="ref-8"&gt;&lt;a href="https://qudt.org/"&gt;QUDT&lt;/a&gt;, Quantities, Units, Dimensions and Types.&lt;/li&gt;&lt;li id="ref-9"&gt;&lt;a href="https://schema.org/"&gt;Schema.org&lt;/a&gt;.&lt;/li&gt;&lt;li id="ref-10"&gt;S. Brown, &lt;a href="https://c4model.com/"&gt;The C4 model&lt;/a&gt;.&lt;/li&gt;&lt;li id="ref-11"&gt;Object Management Group, &lt;a href="https://www.omg.org/spec/SysML/2.0/About-SysML"&gt;Systems Modeling Language (SysML) 2.0&lt;/a&gt;, 2025.&lt;/li&gt;&lt;li id="ref-12"&gt;&lt;a href="https://pydantic.dev/docs/"&gt;Pydantic documentation&lt;/a&gt;.&lt;/li&gt;&lt;li id="ref-13"&gt;L. Zheng et al., &lt;a href="https://arxiv.org/abs/2306.05685"&gt;Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena&lt;/a&gt;, NeurIPS 2023 Datasets and Benchmarks Track.&lt;/li&gt;&lt;li id="ref-14"&gt;J. R. Landis, G. G. Koch, &lt;a href="https://doi.org/10.2307/2529310"&gt;The Measurement of Observer Agreement for Categorical Data&lt;/a&gt;, Biometrics 33(1), 1977, pp. 159–174.&lt;/li&gt;&lt;li id="ref-15"&gt;&lt;a href="https://modelcontextprotocol.io/"&gt;Model Context Protocol&lt;/a&gt;.&lt;/li&gt;&lt;li id="ref-16"&gt;&lt;a href="https://a2a-protocol.org/"&gt;Agent2Agent (A2A) Protocol&lt;/a&gt;.&lt;/li&gt;&lt;li id="ref-17"&gt;Government Digital Service, &lt;a href="https://gds-way.digital.cabinet-office.gov.uk/standards/user-support.html"&gt;How GDS provides user support&lt;/a&gt;, The GDS Way, Open Government Licence v3.0.&lt;/li&gt;&lt;li id="ref-18"&gt;Microsoft, &lt;a href="https://learn.microsoft.com/en-us/azure/architecture/"&gt;Azure Architecture Center&lt;/a&gt;, CC BY 4.0.&lt;/li&gt;&lt;li id="ref-19"&gt;GOV.UK, &lt;a href="https://www.gov.uk/algorithmic-transparency-records"&gt;Algorithmic transparency records&lt;/a&gt;, Open Government Licence v3.0.&lt;/li&gt;&lt;li id="ref-20"&gt;&lt;a href="https://github.com/lark-parser/lark"&gt;Lark&lt;/a&gt;, a parsing toolkit for Python, MIT licence; &lt;a href="https://lark-parser.readthedocs.io/"&gt;documentation&lt;/a&gt;.&lt;/li&gt;&lt;li id="ref-21"&gt;&lt;a href="https://github.com/RDFLib/rdflib"&gt;rdflib&lt;/a&gt;, a Python library for working with RDF.&lt;/li&gt;&lt;li id="ref-22"&gt;&lt;a href="https://github.com/RDFLib/pySHACL"&gt;pySHACL&lt;/a&gt;, a SHACL validator in Python.&lt;/li&gt;&lt;/ol&gt;</description>
+      <guid isPermaLink="false">8ce052975b1bb1caea909f1aa944acbd5bc1be89d1db18a35bf50215918420ba</guid>
+      <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Python Engineering at Microsoft: Pylance + Pyrefly: bring your preferred type checker to Visual Studio Code - Planet Python</title>
@@ -243,6 +704,18 @@ Now, if there's no &amp;ldquo;obvious&amp;rdquo; typo, Python will also check a 
 &lt;p&gt;Please review the &lt;a href="https://github.com/psf/wiki/blob/main/README.md"&gt;repository's README file&lt;/a&gt; to learn more about contributing. We welcome the community to come join in on updating, cleaning up, and adding pages to the new wiki! We will happily grant write access to the Python wiki to contributors who are known stewards of the previous wiki, and look forward to bringing on more contributors in the future.&lt;/p&gt;</description>
       <guid isPermaLink="false">50bf95a10f7392827b827428967e35aaac45efe8b5aa00e888322448fd0ad5bb</guid>
       <pubDate>Tue, 20 Oct 2026 12:29:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: Pandas DatetimeIndex slicing: Fix KeyError with sort_index - Planet Python</title>
+      <link>https://lernerpython.com/2026/10/20/pandas-datetimeindex-slicing-fix-keyerror-with-sort-index/</link>
+      <description>&lt;img alt="Pandas DatetimeIndex slicing: Fix KeyError with sort_index" class="wp-image-18430" height="941" src="https://lernerpython.com/wp-content/uploads/2026/10/2026-10-20.png" width="2246" /&gt;
+&lt;p class="wp-block-paragraph"&gt;Slice an unsorted datetime index in Python Pandas, and you&amp;#8217;ll likely get:&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;KeyError: &amp;#8216;Value based partial slicing on non-monotonic DatetimeIndexes with non-existing keys is not allowed.&amp;#8217;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Why? If the dates are unsorted, where should Pandas start/stop?&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Solution: sort_index!&lt;/p&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/10/20/pandas-datetimeindex-slicing-fix-keyerror-with-sort-index/"&gt;Pandas DatetimeIndex slicing: Fix KeyError with sort_index&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">ac6ae82b931eca8ab29a81dff75c311b6f2d7bb2e080d4ad1b554239134d826e</guid>
+      <pubDate>Tue, 20 Oct 2026 06:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Seth Michael Larson: Documenting certificate distribution pain points for the Python ecosystem - Planet Python</title>

@@ -5,7 +5,71 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Hardware category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Thu, 22 Oct 2026 14:01:11 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 14:01:06 +0000</lastBuildDate>
+    <item>
+      <title>When You Can’t Pick Between Electric and Jet Power, This Buggy Has You Covered - Hack a Day</title>
+      <link>https://hackaday.com/2026/10/23/when-you-cant-pick-between-electric-and-jet-power-this-buggy-has-you-covered/</link>
+      <description>&lt;div&gt;&lt;img alt="Rear view of the sand rail whizzing by." class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/10/turbine-hybrid-feat.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;Technically, what [Macona] built with a surplus Solar T-62 turbine is not a dune buggy, but a sand rail, but it does have the delightfully rare combination of electric and turbine drive that is absolutely worth wading through &lt;a href="https://bbs.homeshopmachinist.net/forum/general/2141294-picked-up-a-turbine-engine" target="_blank"&gt;a 53-page forum thread to learn about.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The turbine came bare as surplus, but [Marcona] used a pair of Kia/Hyundai HSG water-cooled motor-generators to turn it back into something very much like the APU it likely started out as. That&amp;#8217;s APU as in &amp;#8220;Auxiliary Power Unit&amp;#8221; in this context, the little generator that keeps the lights on when your plane is sitting on the tarmac. That went into the sort of frame you&amp;#8217;d once have put a VW bug engine in &amp;#8212; and the 150 HP off the shaft of the turbine beats anything you&amp;#8217;ll get with Wolfsburg&amp;#8217;s little boxer motor, even after losses in the generator and motors. Even better, the whole assembly, which uses the electric motor from a Mitsubishi Outlander, likely doesn&amp;#8217;t weigh any more than the internal combustion engine and transmission, so whatever you call this little off-roader it ought to move well. It certainly seems to in &lt;a href="https://www.youtube.com/watch?v=LhY5FaIXyB8" target="_blank"&gt;the demo video&lt;/a&gt; embedded below.&lt;/p&gt;
+&lt;p&gt;What it doesn&amp;#8217;t do is sip fuel, the T-62 being rated at 19.3 gallons/hr at full load. Fuel efficiency is definitely not the motivation here. He&amp;#8217;s absolutely not saving money, especially not with what jet fuel costs these days. It&amp;#8217;s one of those projects done purely for the joy of it &amp;#8212; where if you have to ask why, you&amp;#8217;re barking up the wrong tree. The vehicle isn&amp;#8217;t yet street legal, but [Marcona] is working on it.&lt;/p&gt;
+&lt;p&gt;If you do like the idea of this kind of series hybrid drive, Edison Motors of Canada is working on bringing it &lt;a href="https://hackaday.com/2025/02/18/it-works-for-locomotives-why-not-series-hybrid-semi-trucks/"&gt;both to semitrucks&lt;/a&gt; and&lt;a href="https://hackaday.com/2025/07/01/move-over-cybertruck-series-hybrids-from-edison-are-on-the-way/"&gt; heavy trucks&lt;/a&gt;, and that &lt;em&gt;is&lt;/em&gt; motivated by fuel savings. &lt;span id="more-1353797"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">d4637b6e5b59409d7a192ba44754c0aefc5167a5e08d1ea5d8f72325d461c680</guid>
+      <pubDate>Fri, 23 Oct 2026 11:00:10 +0000</pubDate>
+    </item>
+    <item>
+      <title>DOOM Ported to a $30 Clamp Meter - Hack a Day</title>
+      <link>https://hackaday.com/2026/10/23/doom-ported-to-a-30-clamp-meter/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/10/Playing-DOOM-running-on-a-multimeter-with-32KB-of-RAM-6-29-screenshot.png?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;DOOM.&lt;/em&gt; Boil it, mash it, stick it in a stew, it&amp;#8217;s the game that runs on anything and everything. Now, the classic shooter is running on a rather unlikely target—a cheap clamp meter of very limited resources, &lt;a href="https://github.com/ArturBieniek4/DMC100-Doom" target="_blank"&gt;thanks to the work of [Artur Bieniek].&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The clamp meter in question is the FNIRSI DMC-100, which can be had for the low price of just $30 or so if you know where to look. It&amp;#8217;s a far cry from the many thousands of dollars you&amp;#8217;d pay for a heavy old 486-based machine back in 1993. [Artur] got the doomgeneric engine running on the Artery AT32F415 chip that runs the clamp meter.&lt;/p&gt;
+&lt;p&gt;The chip is pretty capable, with its 150 MHz clock speed, though the 32 KB of RAM posed rather a big limitation to the project. It may be one of the lowest RAM &lt;em&gt;DOOM&lt;/em&gt; ports out there. Even with this limit, [Artur] was able to get Episode 1 of Freedoom: Phase 1 loaded on to the thing, including E1M1 to E1M9 along with the title screen, intermissions, the finale, the menu, and four save slots. Color graphics are displayed on the meter&amp;#8217;s 320 x 240 screen, and there are even sound effects on the built-in buzzer. Controls are mapped to the rather curious choice of a DJI RC-N1 drone controller.&lt;/p&gt;
+&lt;p&gt;We&amp;#8217;ve seen &lt;em&gt;DOOM &lt;/em&gt;running on everything &lt;a href="https://hackaday.com/2026/03/03/old-desk-phone-gets-doom-port/"&gt;from desk phones&lt;/a&gt; to &lt;a href="https://hackaday.com/2026/07/23/running-doom-on-a-custom-cpu-built-from-scratch/"&gt;completely custom CPUs&lt;/a&gt;. These days you have to try pretty hard to find something it hasn&amp;#8217;t already been ported to.&lt;/p&gt;
+&lt;p&gt;&lt;span id="more-1354302"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">352897241f03e10951d646a2320998d663614cb6e87edf6d10b0d153ab43d7cc</guid>
+      <pubDate>Fri, 23 Oct 2026 08:00:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>Restoring a Soviet ES-4001 Mainframe Control Panel - Hack a Day</title>
+      <link>https://hackaday.com/2026/10/22/restoring-a-soviet-es-4001-mainframe-control-panel/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="455" src="https://hackaday.com/wp-content/uploads/2026/10/es-4001_control_panel_chornobyl_family_youtube.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;Recently the [Chornobyl Family] got their hands on an ES-4001 control panel for a 1970s-era Soviet mainframe, with the intention &lt;a href="https://www.youtube.com/watch?v=zuj7naj6U2E" target="_blank"&gt;to restore it to full working order&lt;/a&gt;. Not just because they&amp;#8217;re really into cool old Soviet technology, but also because of the connection that this control panel holds to the Chernobyl nuclear accident that was so instrumental to the area in modern times.&lt;/p&gt;
+&lt;figure class="wp-caption alignright" id="attachment_1354354" style="width: 400px;"&gt;&lt;img alt="The Duga-1 computer room with what's left of the ES-1060 mainframe. (Credit: Chornobyl Family, YouTube)" class="size-medium wp-image-1354354" height="303" src="https://hackaday.com/wp-content/uploads/2026/10/duga-1_computer_room_chornobyl_family_youtube.jpg?w=400" width="400" /&gt;&lt;figcaption class="wp-caption-text" id="caption-attachment-1354354"&gt;The Duga-1 computer room with what&amp;#8217;s left of the ES-1060 mainframe. (Credit: Chornobyl Family, YouTube)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;During the 1970s the USSR felt that it could not be left behind in the race to create better digital computers. This led them to not only create a few original designs, but also effectively clone the IBM System/360 and System/370. This resulted in the &lt;a href="https://en.wikipedia.org/wiki/ES_EVM" target="_blank"&gt;ES EVM&lt;/a&gt;-series of mainframes, with an &lt;a href="https://www.computer-museum.ru/english/es_comp_family_2.php" target="_blank"&gt;ES-1060&lt;/a&gt; finding itself installed at the Duga-1 early warning radar system near what is now the Chornobyl nuclear power plant in Ukraine.&lt;/p&gt;
+&lt;p&gt;Although the radar arrays are the most well-known feature of the Duga-1, below it is the computer center where the ES-1060 was installed. It was never put into service following the ChNPP Unit-4 accident &amp;#8212; all that remains of a once pinnacle of Soviet engineering are the picked-over carcass of the mainframe and its control panel.&lt;/p&gt;
+&lt;p&gt;The control panel in question was obtained was from the early 1980s, serving a more gentle service life in a datacenter and looks to be in a mostly good condition. That said, there was still enough to be done to make it work and undo the damage of its violent removal from the mainframe. Along the way we also learn how the system was used and how the control panel works.&lt;/p&gt;
+&lt;p&gt;Although similar in some ways to the System/370, it&amp;#8217;s still very different, and with only about 300 of these mainframes produced, it&amp;#8217;s worth saving whatever elements still remain today, along with the surviving documentation.&lt;/p&gt;
+&lt;p&gt;&lt;span id="more-1354304"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">159ee69a7e7cdfd4fd04a4df14954fe8d9294d6742cece5c1478235bd44df0cf</guid>
+      <pubDate>Fri, 23 Oct 2026 05:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>NASA Batteries Survive Extreme Cold and Heat - Hack a Day</title>
+      <link>https://hackaday.com/2026/10/22/nasa-batteries-survive-extreme-cold-and-heat/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="572" src="https://hackaday.com/wp-content/uploads/2026/10/cold-battery-main.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;One of the major limits of mass-produced batteries is the electrolyte. From lead-acid to lithium ion, there&amp;#8217;s some temperature where the electrolyte will freeze and cause all sorts of problems, from cracked casings to various non-favorable chemical changes in the battery itself. But if there&amp;#8217; a solid electrolyte available, many of the downsides of charging and discharging batteries in extreme cold disappear. &lt;a href="https://www.nasa.gov/centers-and-facilities/langley/nasa-develops-batteries-to-power-humanitys-return-to-moon/" target="_blank"&gt;These batteries developed by NASA, for example, can survive some wild temperature swings&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The electrolytes used for these batteries are either a ceramic or polymer electrolyte, both of which are solid. In testing, the batteries could meaningfully operate at temperatures of -60° C and up to 80&lt;span class="font-semibold"&gt;°&lt;/span&gt; C on the high end. Further, the solid electrolyte helps protect them even outside of these temperature ranges. Bringing the battery temperature down to -170&lt;span class="font-semibold"&gt;°&lt;/span&gt; C was not enough to damage the battery at all, and using a small heater to bring the temperature back up to its operating range showed no capacity losses or other issues.&lt;/p&gt;
+&lt;p&gt;These batteries are eventually intended for use in some of the coldest places outside of Earth still accessible to humans (in theory) such as the south pole of the Moon where the temperatures regularly get that cold and stay cold for long periods, especially in &lt;a href="https://science.nasa.gov/resource/shackleton-craters-illuminated-rim-shadowed-interior/" target="_blank"&gt;permanently-shadowed craters&lt;/a&gt; or places on the Moon &lt;a href="https://hackaday.com/2024/02/06/they-want-to-put-a-telescope-in-a-crater-on-the-moon/"&gt;we might want to put some telescopes eventually&lt;/a&gt;. There are other terrestrial situations where these batteries might be useful as well, since they don&amp;#8217;t need as much thermal management as other battery types.&lt;/p&gt;</description>
+      <guid isPermaLink="false">2a10e5c2fcb910a66c764af420a968d192304da4329bd25bcb88d9fcba3b8645</guid>
+      <pubDate>Fri, 23 Oct 2026 02:00:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>An Open Source Linear Capacitive Encoder - Hack a Day</title>
+      <link>https://hackaday.com/2026/10/22/an-open-source-linear-capacitive-encoder/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/10/Screenshot-2026-10-22-214534-e1792665961677.png?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;If you&amp;#8217;ve ever pulled apart a set of digital calipers, you&amp;#8217;ve probably marvelled at the capacitive encoder that does all the measuring work. There&amp;#8217;s nothing stopping you from using the same techniques yourself, as [Nick] demonstrates &lt;a href="https://hackaday.io/project/207104-open-source-40um16thou-capacitive-encoder" target="_blank"&gt;with an open-source capacitive encoder of his own design.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The sensor PCB works by by having a grid of eight transmitting antennas, etched into a PCB, beneath a larger receiving antenna. The transmitting antennas pulse out a pattern as the sensor PCB moves, with the signals bouncing back from the reflector PCB which is fixed in place. The varying capacitance caused by the position of the reflector elements relative to the sensor PCB varies the strength of the pulses hitting the receiving antenna. A microcontroller—in this case an STM32—can read those pulses to determine the displacement of the sensor PCB relative to the reflector down to a very fine degree. In this case, to an accuracy of 40 micrometers. Not bad!&lt;/p&gt;
+&lt;p&gt;If you need ultra-fine linear tracking for something you&amp;#8217;re building, you might find this project very useful. Files are available &lt;a href="https://github.com/nichlock/open-linear-scale" target="_blank"&gt;on Github&lt;/a&gt; for the curious, along with a great explainer on exactly how the capacitive coupling becomes a positional reading. You can also study previous teardowns we&amp;#8217;ve featured &lt;a href="https://hackaday.com/2026/08/13/tearing-down-a-cheap-digital-caliper/"&gt;on cheap digital calipers,&lt;/a&gt; just to round out your education further. If you&amp;#8217;re working on your own impressive workshop equipment, or subcomponents of such things therein, don&amp;#8217;t hesitate to let us know &lt;a href="http://hackaday.com/submit-a-tip"&gt;on the tipsline!&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">9d6e5a7f35df4b39da63405692c29099e9b6e53407d11fc60aee1a027cd199cb</guid>
+      <pubDate>Thu, 22 Oct 2026 20:00:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>Keeping Old Wi-Fi Radios Alive With Stream Conversion - Hack a Day</title>
+      <link>https://hackaday.com/2026/10/22/keeping-old-wi-fi-radios-alive-with-stream-conversion/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/10/itsthabigolboondogglah.webp?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;There are plenty of Wi-Fi radios out there that were built over the last two decades or so. However, many older models are now becoming less useful because many internet radio stations are switching to newer streaming formats that they don&amp;#8217;t support. [Clifford Farrugia] has been working on a little project &lt;a href="https://github.com/clifarr/HLS-Radio-Converter" target="_blank"&gt;to save these appliances from the e-waste bin.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The HLS Radio Converter is the result of that work. It&amp;#8217;s a small open-source tool that converts modern HTTP Live Streaming (HLS) protocol streams into regular old HTTP MP3 streams that older internet radio appliances are built to decode. You can run the tool on something as simple as an old Raspberry Pi. To make it work, you just give the tool the URL of the stream you&amp;#8217;re looking to convert, and it then spits out a new URL to point your radio to which has the stream in the old-school format instead.&lt;/p&gt;
+&lt;p&gt;It&amp;#8217;s a simple tool, but one that should prove very useful if you have a beloved old internet radio that can&amp;#8217;t handle modern streams. We&amp;#8217;ve featured lots of fun projects in this vein before, too, like this &lt;a href="https://hackaday.com/2026/10/02/is-this-the-smallest-internet-radio/"&gt;ultra-tiny internet radio build.&lt;/a&gt; If you&amp;#8217;re working on your own projects in this space, be sure to let us know &lt;a href="http://hackaday.com/submit-a-tip"&gt;via the tipsline.&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">bf38bbb938dae719a6a4032145df2823157c8b2cd53b3e62993802c65f1242f0</guid>
+      <pubDate>Thu, 22 Oct 2026 18:30:40 +0000</pubDate>
+    </item>
     <item>
       <title>Floating-Point Addition and Subtraction on Intel’s 8087 - Hack a Day</title>
       <link>https://hackaday.com/2026/10/22/floating-point-addition-and-subtraction-on-intels-8087/</link>
@@ -3027,646 +3091,6 @@ END&lt;/p&gt;
 &lt;p&gt;If you&amp;#8217;re interested in the electrical generating properties of falling water, check out &lt;a href="https://hackaday.com/2021/07/22/lord-kelvins-contraption-turns-drips-into-sparks/"&gt;Lord Kelvin&amp;#8217;s Generator&lt;/a&gt;! Hackaday&amp;#8217;s own &lt;a href="https://hackaday.com/2017/03/27/getting-sparks-from-water-with-lord-kelvins-thunderstorm/"&gt;[&lt;/a&gt;Steven Dufresne&lt;a href="https://hackaday.com/2017/03/27/getting-sparks-from-water-with-lord-kelvins-thunderstorm/"&gt;] explored this phenomenon a few years back&lt;/a&gt;.&lt;/p&gt;</description>
       <guid isPermaLink="false">8e5274c55d0630177d83e2afe8f089141af1bea21b492876ac4d893b361a8368</guid>
       <pubDate>Mon, 07 Sep 2026 02:00:49 +0000</pubDate>
-    </item>
-    <item>
-      <title>Hackaday Links: September 6, 2026 - Hack a Day</title>
-      <link>https://hackaday.com/2026/09/06/hackaday-links-september-6-2026/</link>
-      <description>&lt;div&gt;&lt;img alt="Hackaday Links Column Banner" class="attachment-large size-large wp-post-image" height="430" src="https://hackaday.com/wp-content/uploads/2014/11/had-links-banner.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;Yesterday, Isar Aerospace secured its place in the history books when the upper stage of their Spectrum rocket put a payload of CubeSats into low Earth orbit (LEO). Not only does this make them the &lt;a href="https://www.esa.int/Enabling_Support/Space_Transportation/Boost/Isar_Aerospace_achieves_first_launch_to_orbit_from_continental_Europe" target="_blank"&gt;first European company to achieve such a feat&lt;/a&gt;, but it also marks the first time a booster departing from continental Europe has reached orbit. Not bad for a second attempt.&lt;/p&gt;
-&lt;p&gt;Standing 28 meters (92 feet) tall, the two-stage Spectrum rocket is just shy of half the size of the SpaceX Falcon 9 and designed to put a maximum of 1,000 kilograms (2,200 pounds) into LEO and 700 kg (1,500 lb) into the Sun-synchronous orbits used by Earth observation satellites. That puts its performance considerably ahead of other commercial launchers such as Rocket Lab&amp;#8217;s Electron. Although the booster is not reusable, Isar Aerospace has stated they&amp;#8217;re targeting a respectable launch cost of €10,000 ($11,700) per kilogram. The German company notes there are &lt;a href="https://isaraerospace.com/press/history-for-european-spaceflight-isar-aerospace-reaches-orbit-and-deploys-payloads-on-second-flight" target="_blank"&gt;several more Spectrum vehicles currently in production&lt;/a&gt;, and when their new factory is operational, they&amp;#8217;ll have the capacity to produce up to 40 of them each year.&lt;/p&gt;
-&lt;p&gt;In other European space news, BepiColombo has now entered what the European Space Agency (ESA) is calling the &amp;#8220;arrival phase&amp;#8221; of its &lt;a href="https://www.esa.int/Science_Exploration/Space_Science/BepiColombo/Latest_updates_BepiColombo_s_arrival_at_Mercury" target="_blank"&gt;nearly decade-long journey to Mercury&lt;/a&gt;. On Thursday, the spacecraft &lt;a href="https://hackaday.com/2018/10/27/travel-to-mercury-on-ion-power/"&gt;jettisoned its ion propulsion module&lt;/a&gt; as it had achieved the necessary trajectory and velocity to be captured by the planet&amp;#8217;s gravitational field when it swoops by in November.&lt;/p&gt;
-&lt;p&gt;&lt;span id="more-1155373"&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://hackaday.com/wp-content/uploads/2026/09/links_090626_bepi.jpg" target="_blank"&gt;&lt;img alt="" class="aligncenter size-large wp-image-1155389" height="344" src="https://hackaday.com/wp-content/uploads/2026/09/links_090626_bepi.jpg?w=800" width="800" /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Launched in 2018, the BepiColombo mission is actually carrying two separate craft: the ESA&amp;#8217;s Mercury Planetary Orbiter and the Mercury Magnetospheric Orbiter from Japan. After the two separate from each other in December, they will operate independently to study their respective aspects of the solar system&amp;#8217;s innermost planet for the next year, &lt;a href="https://hackaday.com/2019/03/11/engineering-for-the-long-haul-the-nasa-way/"&gt;although, as is often the case for missions like this&lt;/a&gt;, an extension is always possible if things are still going well at that point.&lt;/p&gt;
-&lt;p&gt;On the subject of hardware outliving its original design lifetime, an active community of hackers has done a fantastic job of &lt;a href="https://bridgething.com/" target="_blank"&gt;keeping the Spotify Car Thing up and running&lt;/a&gt; after the company officially pulled the plug on it just two years after its 2022 release. They&amp;#8217;ve got a full Linux distribution running on it featuring a slick UI that can launch apps, check the weather, tap into Home Assistant, and of course, play music. The &lt;a href="https://bridgething.com/appjam/" target="_blank"&gt;community is currently running a contest&lt;/a&gt; with cash prizes to spur on development of new open source software for the liberated Car Thing, and we&amp;#8217;re eager to see what comes of it.&lt;/p&gt;
-&lt;figure class="wp-caption alignright" id="attachment_681881" style="width: 400px;"&gt;&lt;a href="https://hackaday.com/wp-content/uploads/2024/05/carthing_thumb.jpg"&gt;&lt;img alt="" class="size-medium wp-image-681881" height="400" src="https://hackaday.com/wp-content/uploads/2024/05/carthing_thumb.jpg?w=400" width="400" /&gt;&lt;/a&gt;&lt;figcaption class="wp-caption-text" id="caption-attachment-681881"&gt;The Car Thing, back when Spotify still cared.&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;p&gt;Speaking of keeping things open, the &lt;a href="https://www.fsf.org/blogs/community/2026-bluesky" target="_blank"&gt;Free Software Foundation (FSF) has joined Bluesky&lt;/a&gt; &amp;#8212; but they aren&amp;#8217;t exactly thrilled with it. Being federated and largely comprised of free and open-source software, the FSF admits that Bluesky is the lesser evil when compared to something like X or Facebook. But they still can&amp;#8217;t recommend others join the service, as the actual signup process requires your browser to run non-free JavaScript code.&lt;/p&gt;
-&lt;p&gt;One may wonder why the &lt;a href="https://bsky.app/profile/fsf.org" target="_blank"&gt;FSF would join Bluesky&lt;/a&gt; if they can&amp;#8217;t recommend the service to others, and the answer is simply because they want to get the word out to a wider audience. While the FSF already operates an account on &lt;a href="https://hostux.social/@fsf" target="_blank"&gt;Mastodon&lt;/a&gt;, there&amp;#8217;s a good chance that anyone who&amp;#8217;s &lt;del&gt;willingly&lt;/del&gt; regularly using said platform doesn&amp;#8217;t need any additional convincing when it comes to the evils of proprietary software.&lt;/p&gt;
-&lt;p&gt;This is as good a time as any to point out that Hackaday is on &lt;a href="https://bsky.app/profile/hackadayofficial.bsky.social" target="_blank"&gt;Bluesky&lt;/a&gt; and &lt;a href="https://hackaday.social/@hackaday" target="_blank"&gt;Mastodon&lt;/a&gt; as well, and unlike the FSF, we&amp;#8217;re &lt;em&gt;also&lt;/em&gt; on &lt;a href="https://www.facebook.com/hackaday.io/" target="_blank"&gt;Facebook&lt;/a&gt;, although the automatic sharing of new posts hasn&amp;#8217;t worked for quite some time and honestly we can&amp;#8217;t be bothered to figure out why. For our readers with a particular aversion to grass, we&amp;#8217;ve even got an official IRC channel on &lt;a href="https://libera.chat/" target="_blank"&gt;libera.chat&lt;/a&gt; where you and nearly 50 others can feel superior to the thousands of immoral heathens that have joined our &lt;a href="http://hackaday.com/discord"&gt;Discord&lt;/a&gt; server.&lt;/p&gt;
-&lt;p&gt;Finally, it&amp;#8217;s been 50 years since the introduction of the ColorChecker &amp;#8212; that little card with 24 blocks of colors that&amp;#8217;s placed in the frame of a picture or video to provide a visual reference point. In honor of the milestone, &lt;a href="https://calibrite.com/us/50-years/" target="_blank"&gt;Calibrite has put together a timeline&lt;/a&gt; that walks you through its history, starting with its inception in the 1976 paper “&lt;em&gt;A Color-Rendition Chart&lt;/em&gt;” by C.S. McCamy, H. Marcus, and J.G. Davidson and running up to how the handy tool evolved for the digital age.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://hackaday.com/wp-content/uploads/2026/09/links_090626_colorchecker.jpg" target="_blank"&gt;&lt;img alt="" class="aligncenter size-large wp-image-1155431" height="360" src="https://hackaday.com/wp-content/uploads/2026/09/links_090626_colorchecker.jpg?w=800" width="800" /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;There are plenty of facts and trivia about the ColorChecker that you can bring up the next time you want to impress a photographer, and we especially appreciated the breakdown of what each of the original 24 colors was meant to represent.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;See something interesting that you think would be a good fit for our weekly Links column? &lt;a href="https://hackaday.com/submit-a-tip/"&gt;Drop us a line&lt;/a&gt;; we&amp;#8217;d love to hear about it.&lt;/p&gt;</description>
-      <guid isPermaLink="false">4537844d3720a9f0d97aa9f4e4cb1a061a9ec4e392b2fa45c74468422936cf3b</guid>
-      <pubDate>Sun, 06 Sep 2026 23:00:31 +0000</pubDate>
-    </item>
-    <item>
-      <title>Saturn’s South Pole is Apparently Decagon-Shaped - Hack a Day</title>
-      <link>https://hackaday.com/2026/09/06/saturns-south-pole-is-apparently-decagon-shaped/</link>
-      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="351" src="https://hackaday.com/wp-content/uploads/2026/09/saturn_south_pole_decagon_sanchez-lavega_et_al_science_adv_2026.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;figure class="wp-caption alignright" id="attachment_1155375" style="width: 400px;"&gt;&lt;img alt="Saturn's north pole captured by Cassini in 2013. (Credit: NASA/JPL-Caltech/SSI/CICLOPS/Kevin M. Gill)" class="size-medium wp-image-1155375" height="400" src="https://hackaday.com/wp-content/uploads/2026/09/Saturn_-_July_24_2013_48594309686.jpg?w=400" width="400" /&gt;&lt;figcaption class="wp-caption-text" id="caption-attachment-1155375"&gt;Saturn&amp;#8217;s north pole captured by &lt;em&gt;Cassini&lt;/em&gt; in 2013. (Credit: NASA/JPL-Caltech/SSI/CICLOPS/&lt;a href="https://commons.wikimedia.org/wiki/File:Saturn_-_July_24_2013_(48594309686).jpg" target="_blank"&gt;Kevin M. Gill&lt;/a&gt;)&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;p&gt;Although some would argue that the hexagon is the bestagon, astronomers have discovered that Saturn appears to favor the ten-sided decagon on its south pole. This comes as its south pole has recently been confirmed to show a pattern that&amp;#8217;s oddly ten-sided, per a &lt;a href="https://www.science.org/doi/10.1126/sciadv.aee4251" target="_blank"&gt;recent research article&lt;/a&gt; by [Agustín Sánchez-Lavega] et al. in &lt;em&gt;Science Advances.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Because Saturn is a gas giant, this naturally isn&amp;#8217;t some gigantic planet-sized rock formation, but rather an interesting wave phenomenon in this massive gas bubble. The &lt;a href="https://en.wikipedia.org/wiki/Saturn's_hexagon" target="_blank"&gt;hexagon shape&lt;/a&gt; on its north pole had been known about for a while already, so it is perhaps not too surprising to find something similar on its south pole.&lt;/p&gt;
-&lt;p&gt;These shapes are generally the result of standing waves within a &lt;a href="https://en.wikipedia.org/wiki/Polar_vortex" target="_blank"&gt;polar vortex&lt;/a&gt;, through the interaction of waves in Saturn&amp;#8217;s atmosphere. For the north pole hexagon, the formation is driven by an intense eastward jet, but no similar wave had been reported for the planet&amp;#8217;s south pole.&lt;/p&gt;
-&lt;p&gt;While in this paper a decagon shape is identified based on multiple observations, they postulate that it&amp;#8217;s due to a meandering wave in the area rather than a jet as at the other pole. This clearly doesn&amp;#8217;t make this wave pattern as obvious as the one at the north pole, but it provides another fascinating insight into fluid dynamics scaled up to a planetary gas giant.&lt;/p&gt;</description>
-      <guid isPermaLink="false">bab182e5bb7adbe390f4f85dbcf20561c4fc3d3e85780bd33e8c29ad06c751c4</guid>
-      <pubDate>Sun, 06 Sep 2026 20:00:36 +0000</pubDate>
-    </item>
-    <item>
-      <title>avalanche technology - computers are bad</title>
-      <link>https://computer.rip/2026-09-05-avalanche.html</link>
-      <description>&lt;p&gt;One of the downsides of having written here for six years now is that my messy,
-ever-growing text file of topics for future articles contains a bunch of ideas
-that have been there for about six years. Part of the problem is that I just
-have to scroll so far up to even see them now, part of it is that some of them
-are on topics where I do not feel equipped to write a good formal treatment. So
-let's consider this an easy, breezy episode of Computers Are Bad as I knock out
-one of those items.&lt;/p&gt;
-&lt;p&gt;One of these O. G. topics, line three, is &amp;quot;avalanche technology.&amp;quot; I will admit
-that I am a little fuzzy on what this originally meant, but I have a few good
-guesses. First, though, let's just take a step back and talk a little bit about
-the practicalities of the avalanche. For a lot of you, avalanches are probably a
-pretty abstract issue.&lt;/p&gt;
-&lt;p&gt;For me, as well—I snowboard but I'm not that good at it, and the kind of
-mid-tier ski area where you will find me tumbling down the hill (Ski Santa Fe,
-towards Totemoff's)
-manages their slopes to avoid the potential for avalanche as much as possible.
-This requires some expertise in avalanche risks and it's never quite perfect,
-but it's pretty good. Snow that is regularly groomed by machines like
-PistenBullys will become coherently packed such that avalanches can't really
-propagate. The bigger risk on groomed ski slopes generally comes from up above,
-and here in New Mexico our mountains are of such a height that we're usually
-starting down from the very top anyway.&lt;/p&gt;
-&lt;p&gt;Still, avalanches pose a real hazard. The Department of Homeland Security, when
-it can be distracted from terrorizing well-meaning migrants, tells us that
-avalanches claim about 28 lives each year in the United States. Globally, the
-number is much larger, and avalanche fatalities seem to be generally more common
-in Europe. I'm not sure if that reflects European weather, geography, or
-recreation habits more, but it's the way things pan out and means that Northern
-Europe tends to be the center of avalanche technology (as it is in alpine
-technology in general).&lt;/p&gt;
-&lt;p&gt;We tend to associate avalanche hazard most of all with recreation, and that's
-definitely fair: the highest risk of avalanche probably comes about in
-cross-country skiing, where it's fairly common to traverse the lower part of
-slopes that have otherwise received very little disturbance. Most avalanches
-occur during storms, as the snow falls and piles up, which is of course not
-when recreationists are most likely to be present. You can't rely on this,
-though. One of the ways that an avalanche can initiate is when lots of snow is
-piled up on a slope on a nice sunny day—good recreation conditions! Various
-things like water following the ground or stratigraphic layers of different
-types of snow from different storms can create a condition of uneven melting.
-Snow that is under the surface might liquefy faster than snow that is closer
-to the surface. This &amp;quot;detaches&amp;quot; the upper level of snow from the ground, and
-when it happens over a wide area, that upper level of snow can let loose all at
-once. This type of avalanche is relatively rare, but they happen without warning
-in otherwise good weather, so it's much more likely that people will be caught.
-Further complicating the situation, the proximity of people can be a factor in
-initiating these avalanches.&lt;/p&gt;
-&lt;p&gt;Here in the Mountain States, though, avalanche risk often manifests in another
-context: transportation. As Americans, cars and highways are among our most
-esteemed achievements, and decades of engineering accomplishment allows us to
-drive through, over, and even under much of the Rocky Mountains even during the
-winter. Landscape modifications, chemical measures, and the brute force of
-snowplows keep roadways clear—but not the slopes above them. Avalanches
-cascading down onto highways are a major concern in the Mountain States,
-especially Colorado which has the most impressive set of mountains and
-mountainous highways.&lt;/p&gt;
-&lt;h2&gt;Forecasting&lt;/h2&gt;
-&lt;p&gt;Some of the things, then, that we might call &amp;quot;avalanche technology&amp;quot; are the
-techniques used to prevent, mitigate, and warn of potential avalanche. Much of
-the work is institutional. On the recreational front, this falls mostly with
-the US Forest Service's National Avalanche Center and a loose confederation of
-regional organizations such as our own Taos Avalanche Center, here in New
-Mexico. One of the main functions of these organizations is education: posting
-warning signs, spreading awareness, offering training courses and materials,
-and so on. They also tend to employ avalanche specialists, who use a combination
-of meteorology and specialized snow observations to determine when avalanches
-are most likely. This can lead to posting warnings or closing areas entirely.&lt;/p&gt;
-&lt;p&gt;Avalanche specialists in the recreational field are, in this area, joined by a
-substantial cadre of avalanche specialists employed by state Departments of
-Transportation. They apply the same techniques with an eye towards avalanches
-that could affect mountain pass highways. Those highways may be closed in
-extreme circumstances, but in transportation even more than in recreation it is
-common to use, shall we say, &amp;quot;active measures&amp;quot; to prevent avalanches. We will
-discuss this later, but first, let's briefly talk about how avalanche hazards
-are forecast.&lt;/p&gt;
-&lt;p&gt;I am not going to go into much detail here, because I frankly do not know much
-about it, but I do want to touch on a couple of things that are solidly in my
-wheelhouse. One of these is SNOTEL. Forecasting avalanche risk requires a solid
-understanding of the general amount of snowpack in the mountains, which can be
-very tricky to acquire since when snow is heavy getting up there to take
-measurements becomes a very time-consuming and potentially hazardous venture.&lt;/p&gt;
-&lt;p&gt;Avalanche forecasting is just one of many functions served by the SNOTEL or
-Snow Telemetry system, a 1960s-era network of hundreds of sensor sites
-throughout mountainous parts of the United States. SNOTEL was originally
-designed to help with forecasting spring meltwater flows, which is why it falls
-under the aegis of the Department of Agriculture, but as with any good sensor
-network there are now a lot of different stakeholders.&lt;/p&gt;
-&lt;p&gt;The tricky thing about SNOTEL, and remember here that it dates back 60 years,
-is the snow. SNOTEL sites are way up there, inaccessible during winter, so they
-are designed to be installed and serviced during summer and to operate
-autonomously until the next summer. SNOTEL instruments are solar powered, but
-more interesting are the communications arrangements. The initiation of the
-SNOTEL project predates a robust set of earth observation satellites, to say
-nothing of cellular or other digital radio networks. But the whole purpose of
-SNOTEL is to provide snowpack data when the snow is still there, so real-time
-reporting is critical.&lt;/p&gt;
-&lt;p&gt;SNOTEL was thus one of the first applications of meteor scatter, a fascinating
-form of radio communication that will probably get its whole own article one
-day. Here is the summary: SNOTEL data collection sites, in convenient locations
-like towns, transmit a VHF carrier or &amp;quot;pilot&amp;quot; signal up towards the sky.
-Occasionally, but more often than you would think, a meteor enters the Earth's
-atmosphere and burns up, leaving a trail of ionized gas behind it. This ionized
-gas is, if you remember previous discussion of troposcatter, reflective to RF
-energy. Some of the &amp;quot;pilot&amp;quot; signal is thus scattered back down towards earth.
-When a SNOTEL site receives the pilot signal, it knows that a meteor has just
-entered the atmosphere and this scattering is happening, so it quickly transmits
-a data packet towards the sky. Ideally, this data packet is reflected by the
-same meteor trail such that the data collection site can receive it. If this all
-sounds rather stochastic and chancey, it is, but enough meteors enter the
-atmosphere and data packets can be sent quickly enough (and tried multiple
-times) that it works pretty reliably for low-bandwidth telemetry data.&lt;/p&gt;
-&lt;p&gt;Unfortunately, as interesting as meteor scatter is, it's mostly been obsoleted
-by general technological advances in radio communications. SNOTEL was probably
-the largest meteor scatter network in the world&lt;sup class="footnote-ref" id="fnref-1"&gt;&lt;a href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;, but is no longer: all
-SNOTEL sites now use other means of reporting data. The most common is probably
-the generic data collection capability of GOES, NOAA's main fleet of &amp;quot;weather
-satellites.&amp;quot; GOES satellites actually serve many purposes related to earth
-observation, and one of them is telemetry collection from instruments on the
-ground. If you've ever come across a USGS stream gauging station or another
-mysterious hut in the middle of the woods with a cylindrical or conical antenna
-pointed at the sky, it's transmitting data upwards for reception by a GOES
-satellite. The GOES earth segment collects all of the little data packets the
-satellites receive into files which are distributed to the various organizations
-that report data this way. If you are so inclined, you can also receive this
-data yourself as the satellites rebroadcast it in batches, but most users don't
-bother since NOAA will do that part for you.&lt;/p&gt;
-&lt;p&gt;Even that might be fading away: newer SNOTEL sites apparently use the cellular
-network for data reporting, unless it's not possible to get a signal, but that's
-becoming less common over time even in the Colorado mountains. The major benefit
-here is that the cellular network is low latency and very high bandwidth, which
-makes it feasible for example to view cameras installed at the SNOTEL sites.&lt;/p&gt;
-&lt;p&gt;With the data part discussed, let's take a quick second look at the data
-collected. Temperature, humidity, pressure, wind, liquid precipitation are all
-measured as usual, but SNOTEL adds a couple of specialty features. Soil moisture
-and evapotranspiration (basically evaporation rate of water from soil) sensors
-provide more data on how saturated the ground is, an ultrasonic or optical
-instrument pointed down from atop a post measures how deep the snowpack is, and
-a funny looking contraption called a snow pillow takes perhaps the most
-important measurement. The snow pillow is basically a big rubber balloon that
-gets inflated on the ground, and then covered with snow. By measuring the air
-pressure from the snow pillow, the SNOTEL station effectively weighs the
-snowpack, which combined with its height gives the density or water content of
-the snow. This varies widely depending on the specific weather when the snow
-falls, and remember that stratigraphic differences in density are one of the
-factors that's important in the likelihood of a surprise avalanche, so
-collecting this water content information as snow falls allows forecasters to
-remotely estimate whether or not the snow conditions are hazardous.&lt;/p&gt;
-&lt;p&gt;That is, of course, supplemented by good old fashioned techniques like sending
-out avalanche specialists with shovels and meter sticks to take a look at the
-snow themselves. DOTs often have technicians doing a regular tour of mountain
-pass sites, where they curate plastic tubs and boxes of snow from various storms
-so that they can get a hands-on impression of what the different layers under
-the snowpack are like. They also take samples to weigh, perform some tests to
-measure mechanical properties of the snow, there's basically a whole bag of
-tricks, but ultimately there is also a subjective element of how &amp;quot;good&amp;quot; or &amp;quot;bad&amp;quot;
-things look. This is born of experience and is one of many reasons to value our
-state employees.&lt;/p&gt;
-&lt;h2&gt;Mitigation&lt;/h2&gt;
-&lt;p&gt;Within the recreational context, one common approach to mitigation is simply to
-avoid the area. Especially for backcountry skiing areas, avalanche centers might
-post warnings or work with the operator to close the area entirely when
-forecasting shows that conditions are favorable for an avalanche. Warnings might
-be more useful than you think, since besides reducing the number of people in
-the area they should also prime people to recognize particularly risky slopes or
-signs of snow that is becoming unstable. Avalanches can occur without any
-surface signs of instability, but in practice there often are some signs, so of
-course keeping an eye out is better than nothing. Warnings also make people more
-likely to carry safety equipment, discussed later, which improves the chance of
-self-rescue if things really do go wrong.&lt;/p&gt;
-&lt;p&gt;But there are also, shall we say, kinetic options. Many of the methods of modern
-alpinism evolved during the Second World War, and so did a good portion of the
-mitigation equipment. Once snow becomes unstable enough that an avalanche
-&lt;em&gt;could&lt;/em&gt; occur, it is basically waiting for something to set it off. Popular
-media concepts that loud noises will trigger avalanches are, well, fictional,
-but the point stands that people moving around or especially operating vehicles
-can trigger avalanches, as can basically random happenstance. You can mitigate
-the risk of an avalanche by going to unstable areas and intentionally triggering
-them, or at least trying to, basically the same way that a bomb squad might
-handle an unstable explosive by exploding it. Better that it go off when you
-expect it than when you don't.&lt;/p&gt;
-&lt;p&gt;A classic method, still in some use today, is repurposed artillery. State DOTs
-and ski area operators own a surprisingly large inventory of M101 Howitzers, a
-105mm artillery gun that dates more or less to a 1910s German design but was
-widely fielded by the US during the Second World War. The avalanche application
-is simple: when you find a slope with unstable conditions that could pose a
-hazard, you shoot at it. The concussion from the impact, and often from an
-explosive round, puts a lot of pressure on the snow that will likely break it
-loose if it's possible to do so. You just have to make sure you set up outside
-of the resulting avalanche.&lt;/p&gt;
-&lt;p&gt;The main problem with this method, which everyone agrees is a whole lot of fun,
-is that the M101 has not been manufactured since 1953 and, in general, the
-supply of cheap Army-surplus artillery has dried up. The Howitzers are aging
-out, and other methods are replacing them. Some of these are similarly dynamic:
-dropping small improvised bombs from helicopters, for example, which is a very
-common method in Colorado today. Even just hovering a helicopter over a slope
-can sometimes trigger an avalanche, although a bit of dynamite makes this a lot
-more reliable. If you have noticed the surfeit of high-explosives bunkers and
-unexploded ordnance warnings in some parts of the Colorado mountains, well, now
-you know why. It can feel a little bit like a very slow-running war.&lt;/p&gt;
-&lt;p&gt;Even these methods are being replaced by more modern and cost-effective ones,
-though. A French alpine engineering company called MND manufactures a system
-called Gazex, which is a bit like an airport bird canon on steroids. Gazex units
-are pre-installed in avalanche risk areas (by helicopter, for example), and
-then, under remote control, they mix oxygen and a combustible gas and set it
-off in a big tube pointed at the ground. The force created is similar to an
-explosion, but the whole thing is easier to handle (since it uses gas cylinders
-rather than high explosives) and remote control makes everything cheaper for
-the operators. MND recently introduced a new version of the system called
-O'bellx (I assume this reads better in French), which is even more portable,
-albeit comically egg-shaped. This seems to be catching on with ski areas, and
-MND also emphasizes that the portable design and low-impact installation makes
-it suitable for areas like national parks with acute natural preservation
-concerns. Basically, you can remove them at the end of every winter, so that you
-aren't leaving equipment scattered around your beautiful mountains.&lt;/p&gt;
-&lt;p&gt;There are also a number of other mitigation approaches that are less fun, so I
-will devote less attention to them, but you can find them done around here.
-Structures similar to snow fences, built high up on a slope, provide an &amp;quot;anchor&amp;quot;
-for the snow that prevents it coming loose enough for an avalanche. There are
-many variations on this idea, for example using steel cables supporting nets.
-Another approach is to permit the avalanches to start but prevent them from
-reaching areas where they cause harm, either by building wall or dam-like
-structures (I do not believe this is common in the US as I am not aware of any
-examples) or by putting corridors like highways inside of &amp;quot;snow sheds&amp;quot; that are
-sturdy enough to allow the avalanche to simply flow over. This latter method is
-much more common in Europe than here, but you can find some examples on US
-railroads, which are often in more difficult terrain than highways.&lt;/p&gt;
-&lt;h2&gt;Warning&lt;/h2&gt;
-&lt;p&gt;One of the more interesting developments in avalanche technology are warning
-systems. Avalanches wouldn't pose much hazard if people knew that they were
-coming; what makes melt-triggered avalanches so dangerous is that they can be
-very unexpected. One of the methods that avalanche safety courses teach is
-to recognize signs of snow masses that have already started to slide, shift, or
-collapse on themselves. This would indicate that conditions are favorable for
-an avalanche and that disturbing or going below the snow is quite dangerous.
-The usual surface signs are cracks, caused by the snow starting to slide apart,
-but these cracks can be tricky to see even when they are present.&lt;/p&gt;
-&lt;p&gt;Another indication of avalanche potential is subsidence, or the snow surface
-starting to drop in level, or any motion of the snow surface downslope. These
-effects can start minutes or hours before the real avalanche occurs, but they
-are subtle and often slow, so humans are unlikely to notice them. Fortunately,
-machines are well adapted to this task. Several vendors offer radar systems that
-monitor snow slopes for any shifting, and can sound a siren or another alert if
-things start to move. Like earthquake warning, the actual lead time provided by
-these systems is not very well known and could be quite short, but something is
-better than nothing.&lt;/p&gt;
-&lt;p&gt;Other technologies, like LIDAR and acoustics (e.g. geophones), can be applied
-to a similar task. I have even heard of older systems that used thin wires or
-brittle metal bars embedded in the snow, as part of an electrical circuit that
-would break if the snow started to move &lt;sup class="footnote-ref" id="fnref-2"&gt;&lt;a href="#fn-2"&gt;2&lt;/a&gt;&lt;/sup&gt;. Such systems can be quite
-sophisticated, and MND's sales materials suggest things like closing gates on
-highways when an avalanche is detected. The current state of the art in radar
-detection uses pulsed Doppler operation, which can be very sensitive to
-movement in all kinds of directions. All that said, these don't seem to be
-popular in the US. I couldn't readily find any installations in this country.&lt;/p&gt;
-&lt;p&gt;As a final note on this topic, national alerting systems like NAWAS and the
-Emergency Alert System have defined message types for avalanche warnings. In
-practice, these are very rare, as it doesn't usually make sense from a time or
-area perspective to put out an avalanche warning through mass media channels.
-That said, they do happen, usually on the (fortunately rare) occasion that
-forecasters predict a high risk of avalanche in a town or other populated area.
-In that case, the procedure is to evacuate the town, and that's exactly the kind
-of situation that NAWAS/EAS/NWS All Hazards/etc. are intended for.&lt;/p&gt;
-&lt;h2&gt;Rescue&lt;/h2&gt;
-&lt;p&gt;And finally, we reach the topic that I believe led me to put &amp;quot;avalanche
-technology&amp;quot; on the list to begin with: technical aids to rescue. Avalanches are,
-in a certain sense, not that dangerous. They can move at formidable speeds (60+
-miles per hour often reported), but snow is relatively soft and low-density.
-Injury from being crushed or striking against something is certainly a
-possibility, but the bigger hazard of avalanche is usually when you become
-buried.&lt;/p&gt;
-&lt;p&gt;If you are buried in snow, and there are no rescuers or they cannot find you,
-it can be extremely difficult to work your way out and you are likely to
-succumb to some combination of asphyiation, exhaustion, and hypothermia in the process. That
-might sound silly but keep in mind that you have just been buried by an
-avalanche, probably have a variety of minor injuries, have become disoriented,
-etc., and &lt;em&gt;you&lt;/em&gt; try to dig yourself out of feet of snow in that situation. You
-really need someone on the surface to come help you out. That's why standard
-avalanche safety equipment includes a probe and a shovel—a probe for finding
-people (just a metal rod you use to poke under the snow, basically), and a
-shovel for getting to them.&lt;/p&gt;
-&lt;p&gt;The problem is that probing a large area of snow is a very slow process, and
-even if you were right next to someone before an avalanche, you probably don't
-know where they ended up afterwards. This is an area where radio technology can
-be extremely helpful.&lt;/p&gt;
-&lt;p&gt;The concept of avalanche beacons or avalanche transponders dates back to at
-least 1968. Dr. John Lawton was an engineer at an aerospace research lab now
-known as the Calspan Corporation, where he worked on a variety of interesting
-aviation problems ranging from weapons targeting to meteorological research.
-Lawton was quite an aviation enthusiast, making the news in 2013 for celebrating
-his 90th birthday by flying his Cessna Skyhawk over the US-Canada border 90
-times. That's a bit of a peculiar way to entertain yourself, but anyone who is
-still flying themselves around at 90 has clearly found a way to stay vital. His
-lifelong investment in aviation is emphasized by the fact that he started his
-winding cross-border journey at the airport he owned. &lt;/p&gt;
-&lt;p&gt;What is not so well documented is his interest in alpinism, but he must have had
-some affection for the mountains. He did some kind of research work in Europe
-related to triggering avalanches by dropping explosives from light aircraft, and
-whether that put the topic on his mind or something else, he also came up with
-the first commercial avalanche beacon. Commercialized by his company Lawtronics,
-the &amp;quot;Skadi&amp;quot; transmitted a tone at 2.275 kHz. Groups of people traveling in the
-mountains could each carry a Skadi unit, and if anyone was lost in an avalanche,
-any of the other units could be switched to a receive mode and the person
-located by simple amplitude search. That is, walking around the snow until you
-find the spot where the tone comes in the loudest, at which you point you start
-probing and digging.&lt;/p&gt;
-&lt;p&gt;This same method is still used today, although the radio system has been
-standardized at 457 kHz. Modern avalanche rescue systems like the &amp;quot;Barryvox&amp;quot;
-from Mammut or the Black Diamond Recon X are direct descendants of Lawton's
-Skadi device, using 457 kHz and digital direction finding techniques (like the
-use of multiple perpendicular directional antennas to compute a likely heading
-to target) to speed things up and make radiolocation more user friendly. Because
-the 457 kHz system is an international standard, they ought to work about the
-same regardless of manufacturer. That's important in real-world scenarios where
-the people doing the rescuing might be from a whole different group than the one
-affected by the avalanche.&lt;/p&gt;
-&lt;p&gt;Modern avalanche beacons are probably one of the closest real-world
-products to the way that &amp;quot;radio beacons&amp;quot; tend to work in movies and videogames.
-The reality is of course messier, especially if there are multiple victims, but
-in principle a digital avalanche beacon in receive mode can show an arrow on
-screen that you follow until you are standing on top of the buried person. You
-know if you're getting closer when they beep more. Neat.&lt;/p&gt;
-&lt;p&gt;Technological development continues apace, and some newer avalanche beacons also
-support a second protocol called W-Link. W-Link is actually surprisingly poorly
-documented, presumably because it appears to be proprietary to Mammut (the only
-non-Mammut beacons that support it seem to have been joint venture projects with
-Mammut). W-Link is a digital protocol that operates in the ISM band, introducing
-the downside that ISM bands are not internationally standardized. This means
-that US and European-market beacons will always be compatible for conventional
-457 kHz operation, but two beacons with W-Link support may not be able to use
-that protocol if they were sold for different regulatory markets.&lt;/p&gt;
-&lt;p&gt;The upside of W-Link is that the digital protocol lets the beacon send
-significantly more information. This includes a unique serial number for the
-beacon, which allows the receiver to discriminate between pulses being received
-from two or more beacons at the same time—a radical improvement in the ease of
-locating multiple people, as conventional direction finding techniques really
-struggle when you cannot discriminate between multiple targets. You can end up
-with a &amp;quot;swinging needle,&amp;quot; while the W-Link devices are capable of locking to
-a single target at a time. As this implies, you can also determine how many
-people are buried, and ignore beacons that turn out to be unimportant (because
-they are discarded on the surface, or carried by a rescuer, etc).&lt;/p&gt;
-&lt;p&gt;Perhaps the most interesting feature of W-Link is that some W-Link beacons will
-use an accelerometer to detect motion, and report whether or not any motion is
-present. In theory, this allows rescuers to prioritize their efforts by focusing
-on beacons that report motion, meaning that they are carried by people who are
-still alive. These enhanced capabilities of W-Link seem to have led to enough
-controversy that the Wikipedia article devotes much of its length to ethics
-discussions, and manufacturers have put out position papers on their decisions
-to implement or not implement certain W-Link features. The concern is that
-W-Link may give rescuers more information on which to prioritize rescue in a
-discriminatory way, perhaps by searching for victims with (more expensive)
-W-Link beacons before less expensive conventional beacons, or by using knowledge
-of W-Link serial numbers to prioritize the search for specific people.&lt;/p&gt;
-&lt;p&gt;In practice, I think these ethical concerns are more theoretical than actual,
-because penetration of W-Link technology doesn't seem all that high and most
-actual beacons only implement the very most basic features. The ability to
-display the serial numbers of individual beacons, for example, is pretty much
-limited to a USB dongle/software package that Mammut sells to organizations
-like ski patrols that loan out avalanche beacons and need to keep track of their
-inventory, check battery levels, etc. &lt;/p&gt;
-&lt;p&gt;Avalanche beacons are not the only radio-based approach to avalanche rescue.
-Around a decade after Lawton developed Skadi, a Swiss engineer designed a system
-called RECCO. If you have read my articles on &lt;a href="https://computer.rip/2022-07-21-preventing-loss-dot-jpeg.html"&gt;loss&lt;/a&gt; &lt;a href="https://computer.rip/2022-08-22-preventing-loss-dot-jp2.html"&gt;prevention&lt;/a&gt;, I can succinctly explain RECCO by
-saying that it is just RF electronic article surveillance applied to the
-outdoors. If you have not, let's get into a little bit more detail.&lt;/p&gt;
-&lt;div class="beg"&gt;
-&lt;hr /&gt;
-&lt;p&gt;I put a lot of time into writing this, and I hope that you enjoy reading
-it. If you can spare a few dollars, consider &lt;a href="https://ko-fi.com/jbcrawford"&gt;supporting me on
-ko-fi&lt;/a&gt;. You'll receive an occasional extra,
-subscribers-only post, and defray the costs of providing artisanal, hand-built
-world wide web directly from Albuquerque, New Mexico.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;p&gt;If you make an antenna that is a small loop, and then put a nonlinear device
-like a p-n diode in it, you end up with an antenna that behaves asymmetrically
-with regards to the phase of the radio wave passing over it. Intuitively, we can
-say that energy freely flows one way around the antenna, but not the other. The
-energy going that way becomes trapped, and gets re-emitted at at a harmonic
-frequency to the one that excited the device. This general principle is known as
-non-linear junction detection, and it has all kinds of interesting applications
-in fields like technical security, but its most common application is as one of
-the common types of retail anti-theft tagging.&lt;/p&gt;
-&lt;p&gt;RECCO is basically a retail loss prevention system aimed at the ground. RECCO
-tags, called &amp;quot;reflectors&amp;quot; in RECCO parlance, are a simple foil antenna and
-diode, which makes them cheap and durable. They are so cheap, and compact, that
-some brands of alpine gear (especially in Europe) build RECCO tags right into
-products like snow pants and ski boots. Dainese even offers a bicycle helmet
-with one. The RECCO detector emits a powerful and very directional RF field in
-an ISM band, and then monitors for the characteristic harmonics emitted by an
-excited tag.&lt;/p&gt;
-&lt;p&gt;This technology is &lt;em&gt;not&lt;/em&gt; RFID, although it is conceptually similar, and has some
-of the same downsides such as a tendency for tags to be undetectable if they
-fall in the wrong point in the phase of the exciting field. For that reason,
-RECCO recommends that you have two reflectors at different locations on your
-person. The other main downside of RECCO is that it shifts most of the
-complexity into the detector, so they are relatively large and expensive. That's
-not so bad when you consider that detectors only need to be carried by ski
-patrol and SAR organizations. Rescuers basically aim the detector around until
-it picks up a signal, and then walk that way until they are aiming the detector
-straight down. That's where they dig.&lt;/p&gt;
-&lt;p&gt;RECCO has even designed a detector that can be underslung by a helicopter,
-although its 100 meter range will require some sporty flying. The RECCO system
-is generally much more popular in Europe than in the US, but penetration is
-increasing here, and RECCO publishes a &lt;a href="https://recco.com/wp-content/uploads/2025/12/reccodetectorsworldwide20251211.pdf"&gt;list of SAR organizations with detectors&lt;/a&gt; that now includes
-a number of helicopters in the US and many major ski areas.&lt;/p&gt;
-&lt;p&gt;I view RECCO as having a bit of a belt-and-suspenders relationship with
-traditional avalanche beacons. Avalanche beacons are more common, and all
-beacons also function as receivers, so &amp;quot;buddy rescue&amp;quot; by a bystander is far more
-likely with beacon technology. On the other hand, RECCO is usable over a longer
-range (although not &lt;em&gt;radically&lt;/em&gt; longer) and the detectors are more directional
-and potentially faster to use. Most avalanche centers seem to recommend that you
-carry both, although the traditional avalanche beacon is more important.&lt;/p&gt;
-&lt;p&gt;Finally, let's consider a couple of other pieces of avalanche safety equipment,
-which will lead us to consider efficacy.&lt;/p&gt;
-&lt;p&gt;The core avalanche PPE consists of a probe and a shovel, and both are available
-in collapsible form for portability. Besides locating technologies, though, the
-major innovation in avalanche safety is the avalanche airbag. These are
-backpacks that you wear with a parachute-like ripcord. When you pull it, the
-bag inflates into a big airbag behind you. There are two ways this is helpful:
-first, the airbag will tend to float on moving snow, making it less likely that
-you are buried. Second, if you do become buried, you can deflate the airbag to
-leave you with a void in the snow. This gives you more air to breath, and room
-to move, making it more likely that you can dig yourself out.&lt;/p&gt;
-&lt;p&gt;Avalanche airbags remind me a bit of the motorcycle airbags, as far as being
-very cutting-edge but also, you know, kind of questionable when it comes to
-efficacy. Manufacturers of airbags often advertise a 50% reduction in
-fatalities, but we have to take those numbers with a grain of salt.&lt;/p&gt;
-&lt;p&gt;One of the problems with safety technology for extreme risks is that the actual
-risk event just doesn't happen very often. In less abstract terms, people are
-not caught in avalanches all that often, so the total number of people who have
-been caught in an avalanche while wearing an avalanche airbag just isn't that
-big. This limits the confidence we can have in efficacy findings.&lt;/p&gt;
-&lt;p&gt;Well, I tracked down the paper that the 50% number comes from, and it's not
-actually that bad. They identified 424 people caught in severe avalanches,
-roughly half of which had avalanche airbags, and found that the airbags reduced
-mortality by 50% for people who successfully deployed them, and 41% overall
-given that there were various situations where they were not triggered or
-failed. The sample size is not huge, but it's bigger than I expected, and even
-at the bottom of the 95% confidence interval you still see a meaningful
-mortality reduction of around 10%.&lt;/p&gt;
-&lt;p&gt;So, avalanche airbags seem to work, but they do cost around $1,500, so make of
-that what you will. Another interesting number from that paper is actually a bit
-of an aside: of the sample of people considered, 99% had avalanche beacons! A
-basic avalanche beacon can be had for about $250, which is pretty similar to
-cheap satellite messenger or very basic PLB &lt;sup class="footnote-ref" id="fnref-3"&gt;&lt;a href="#fn-3"&gt;3&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
-&lt;p&gt;On the other hand, the passive nature of RECCO tags translates to a price
-advantage: a standalone reflector that you can clip to your pack only costs $30,
-which frankly still feels like a ripoff considering the simplicity of the
-design. I wonder if a RECCO detector would pick up enough RF EAS tags sewn into
-your clothing. Or shoplifted. One of the amusing things, though, is that despite
-being the cheap option (or perhaps beacuse of it), RECCO is relatively poorly
-backed by data. The number of actual rescues using RECCO remains small,
-although the development of the helicopter-based detector will probably lead to
-more successful uses.&lt;/p&gt;
-&lt;p&gt;Or, you know, just stay out of the mountains. They may be calling, but you don't
-&lt;em&gt;have&lt;/em&gt; to go.&lt;/p&gt;
-&lt;div class="footnotes"&gt;
-&lt;ol&gt;
-&lt;li id="fn-1"&gt;
-&lt;p&gt;Researching SNOTEL's history starts getting you into military R&amp;amp;D reports
-and formerly classified documents pretty quickly, and it's clear that both the
-US and other militaries have used meteor scatter for communications in the past.
-Possibly they still do today. If I were to place a wager, I'd say that SNOTEL is
-likely smaller than or on par with the military network that its equipment seems
-to have been adapted from. Unfortunately there is very little information in
-public about this military application (one of the reasons to suspect that
-meteor scatter is still relevant in the military context), so I can only
-speculate.&lt;a class="footnote" href="#fnref-1"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li id="fn-2"&gt;
-&lt;p&gt;This is at least vaguely similar to a common safety device employed on the
-towers of ski lifts, where a brittle metal bar is placed under the sheaves that
-support the rope. The lift's safety loop is passed through the bar. If the lift
-badly deropes at the tower (that is, the cable falls off of the sheaves), it
-falls on the bar, snapping it. That interrupts the loop of wire that runs from
-the drive end to the opposite end and back, which shuts off the motor and
-releases magnetic brakes.&lt;a class="footnote" href="#fnref-2"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li id="fn-3"&gt;
-&lt;p&gt;PLBs, or Portable Locator Beacons, are beacons made specifically for
-detection by the COSPAS-SARSAT satellite constellation. They are probably the
-gold standard in general search and rescue technology, and since they rely on a
-system operated as an international joint venture there are no service fees or
-subscriptions involved. Oddly, though, PLBs are actually pretty expensive.
-Here's the reason: authorities that mandate PLBs in various situations (e.g.
-the Coast Guard) have also specified rather exacting standards for service
-life, waterproofing, shock resistance, etc. This has the counter-intuitive result
-that two-way satellite messengers like Spot X or Garmin InReach can actually be
-cheaper to buy, but you will have to pay a service fee, and they are unlikely
-to survive the kind of &amp;quot;plane crash/sinking boat/car wreck&amp;quot; physical
-abuse that PLBs are tested for. As successive generations of more sophisticated
-COSPAS-SARSAT satellite payloads have launched, the system has also become very
-reliable, and in most circumstances PLBs are more likely to work than other
-types of satellite communicators. What I'm saying is that if you recreate in the
-middle of nowhere, you should consider buying a PLB, even though a good one can
-cost $500. At a five year rated lifespan, that's cheaper than a Spot or InReach
-plan even without the hardware purchase.&lt;a class="footnote" href="#fnref-3"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</description>
-      <guid isPermaLink="false">e24a6f475528ba4153dd5a7a968f25379d26e12a80647d6e66313802a57df480</guid>
-      <pubDate>Sat, 05 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>“I’m Not Dead Yet!” Reverse Polish Notation Calculators You Can Still Buy - Hack a Day</title>
-      <link>https://hackaday.com/2026/09/02/im-not-dead-yet-reverse-polish-notation-calculators-you-can-still-buy/</link>
-      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="484" src="https://hackaday.com/wp-content/uploads/2026/08/RPN.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;If you used a scientific calculator in the 1970s or 1980s, there was a fair chance that it worked differently from almost every calculator you see today. Instead of typing:&lt;/p&gt;
-&lt;pre&gt;2 + 3 =&lt;/pre&gt;
-&lt;p&gt;you entered:&lt;/p&gt;
-&lt;pre&gt;2 ENTER 3 +&lt;/pre&gt;
-&lt;p&gt;There wasn&amp;#8217;t even an equals key. Hewlett-Packard made this system — Reverse Polish Notation, or RPN — practically synonymous with serious scientific calculators until other players like TI and Casio got serious. Once you got used to it, ordinary algebraic calculators could feel annoyingly clumsy.&lt;/p&gt;
-&lt;p&gt;Today, RPN calculators look like a nearly extinct species. HP left the calculator market, licensing the HP calculator line to Moravia Consulting. Old HP-15Cs, 16Cs, 32Ss, 42Ss, and 48s have become collectibles. But RPN isn&amp;#8217;t dead. You can still buy new hardware, build your own, or turn almost any computer or phone into a very capable RPN machine. There are reasons some of us still want to.&lt;/p&gt;
-&lt;h2&gt;But Why Polish?&lt;/h2&gt;
-&lt;p&gt;The name goes back to Polish logician [Jan Łukasiewicz], who devised a notation in which operators precede their operands. Instead of writing:&lt;/p&gt;
-&lt;pre&gt;A + B&lt;/pre&gt;
-&lt;p&gt;you can write:&lt;/p&gt;
-&lt;pre&gt;+ A B&lt;/pre&gt;
-&lt;p&gt;The big advantage is that parentheses aren&amp;#8217;t required. The structure of the expression tells you exactly what operates on what. Reverse Polish notation simply puts the operator at the other end:&lt;/p&gt;
-&lt;pre&gt;A B +&lt;/pre&gt;
-&lt;p&gt;[Łukasiewicz] wasn&amp;#8217;t designing calculators, of course, but the same idea turned out to be extremely convenient for computers and calculators. Your software doesn’t have to remember what operation is in progress. Each operator is ready to go and can simply work on the operands that you’ve already read.&lt;/p&gt;
-&lt;p&gt;RPN isn&amp;#8217;t exactly the way people calculate with pencil and paper, and it certainly wasn&amp;#8217;t derived from the slide rule, but there is a similarity in the way you work. With a slide rule, you generally establish some value, operate on it, and continue from the result. When doing a long-hand calculation, you often calculate a subexpression, write down the answer, and use that answer in the next step. You will probably start with the inner parenthesis and work outward, just like someone with an RPN calculator does. RPN formalizes that process with a stack.&lt;/p&gt;
-&lt;p&gt;Suppose you want:&lt;/p&gt;
-&lt;pre&gt;(3 + 4) × (5 + 6)&lt;/pre&gt;
-&lt;p&gt;On a conventional calculator, you either need parentheses, or you have to calculate one result and remember it. On an RPN calculator:&lt;/p&gt;
-&lt;pre&gt;3 ENTER
-4 +
-5 ENTER
-6 +
-×&lt;/pre&gt;
-&lt;p&gt;The first + leaves 7 on the stack. The second leaves 11 above it. The multiply consumes both and leaves 77.&lt;/p&gt;
-&lt;p&gt;Notice what&amp;#8217;s missing: parentheses, an equals key, and any need to tell the calculator about precedence. This isn&amp;#8217;t much of a win for a five-key calculation. It becomes more apparent with something like computing the value of a bunch of parallel resistors:&lt;/p&gt;
-&lt;pre&gt;R=1/(1/R1+1/R2+1/R3…)&lt;/pre&gt;
-&lt;p&gt;An RPN user can calculate each reciprocal, add it to the running result on the stack, and finally take the reciprocal. Intermediate answers stay in the calculator naturally instead of being stuffed into memory registers or enclosed in increasingly impressive collections of parentheses.&lt;/p&gt;
-&lt;p&gt;Is RPN better? Calculator users have been arguing about that for half a century. But once RPN gets wired into your fingers, it can be surprisingly hard to give up.&lt;/p&gt;
-&lt;p&gt;&lt;span id="more-1146099"&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;h2&gt;RPN Before HP&lt;/h2&gt;
-&lt;p&gt;Although RPN and HP are nearly inseparable in popular memory, HP didn&amp;#8217;t invent the RPN calculator. That distinction generally goes to the Friden EC-130, introduced in 1964. It was a 44-pound transistorized desktop calculator costing $2,150, and its CRT actually displayed all four levels of its RPN stack at once. More than 18,000 were eventually made. You can even &lt;a href="https://github.com/drovak/friden" target="_blank"&gt;simulate it in Verilog&lt;/a&gt;, if you like.&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;HP entered the business in 1968 with the &lt;a href="https://www.hpmuseum.org/hp9100.htm" target="_blank"&gt;HP 9100A&lt;/a&gt;, a programmable desktop scientific calculator. It weighed about 40 pounds and sold for $4,900, but it provided logarithms, trigonometry, hyperbolic functions, coordinate conversion, programming, and RPN operation. HP famously called it a calculator rather than a computer partly because customers could often buy calculators without getting corporate computer departments involved.&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;Then came the machine that changed everything: 1972&amp;#8217;s HP-35, the first HP pocket scientific calculator. From there, RPN became a defining characteristic of HP calculators for decades.&lt;/p&gt;
-&lt;p&gt;There were financial calculators, programmer&amp;#8217;s calculators, scientific calculators, graphing calculators, and eventually the RPL machines such as the HP-28 and HP-48, which generalized the stack idea into an entire programming environment.&lt;/p&gt;
-&lt;p&gt;Eventually, though, algebraic entry won the mass market. Even HP began producing machines with algebraic modes, and some later calculators let you choose either system.&lt;/p&gt;
-&lt;p&gt;So did RPN die out? Are there any RPN machines left in 2026? Quite a few, as it turns out. The real question is do you want a calculator that pretends, in some way, to be your favorite old-fashioned RPN calculator, or do you want a more modern device that happens to use (or, at least, is able to use) RPN?&lt;/p&gt;
-&lt;h2&gt;RPN You Can Still Hold In Your Hand&lt;/h2&gt;
-&lt;figure class="wp-caption alignleft" id="attachment_1146109" style="width: 400px;"&gt;&lt;a href="https://hackaday.com/wp-content/uploads/2026/08/hp12c.jpg"&gt;&lt;img alt="" class="size-medium wp-image-1146109" height="250" src="https://hackaday.com/wp-content/uploads/2026/08/hp12c.jpg?w=400" width="400" /&gt;&lt;/a&gt;&lt;figcaption class="wp-caption-text" id="caption-attachment-1146109"&gt;You can still get an HP12C (public domain).&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;p&gt;The strange survivor is the HP-12C. Introduced in 1981 as a financial calculator, it remains available new more than four decades later. Depending on the retailer, expect something around $50 to $70. The 12C Platinum, which can operate in either RPN or algebraic mode, is also still available for roughly $80 to $110.&lt;/p&gt;
-&lt;p&gt;Then there is the HP Prime G2, generally around $150 to $170. The Prime is a graphing calculator with CAS, programming, symbolic mathematics, touch screen, and textbook-style input — but buried among all of that is an RPN entry mode. It isn&amp;#8217;t an old-fashioned HP RPN calculator, but it certainly qualifies.&lt;/p&gt;
-&lt;p&gt;The real center of new RPN hardware today, however, is SwissMicros. SwissMicros started by producing modern implementations of classic HP designs and has since moved well beyond simple reproduction. Its current machines include the DM15L, modeled after the HP-15C; the DM16L programmer&amp;#8217;s calculator; DM41L, DM41C, and DM41X machines inspired by the HP-41 family; and the DM32, which occupies roughly the territory once covered by the HP-32SII.&lt;/p&gt;
-&lt;p&gt;&lt;figure class="wp-caption alignright" id="attachment_1146121" style="width: 225px;"&gt;&lt;a href="https://hackaday.com/wp-content/uploads/2026/08/swiss.jpg"&gt;&lt;img alt="" class="size-medium wp-image-1146121" height="400" src="https://hackaday.com/wp-content/uploads/2026/08/swiss.jpg?w=225" width="225" /&gt;&lt;/a&gt;&lt;figcaption class="wp-caption-text" id="caption-attachment-1146121"&gt;The SwissMicros answer to the HP41C (thanks [Julian]).&lt;/figcaption&gt;&lt;/figure&gt;At the high end is the DM42n, a modern descendant of the HP-42S idea. It has a 400×240 display, USB-C, programmable operation, matrices, complex numbers, equation solving, numerical integration, and 34-digit decimal arithmetic. It currently sells for a bit more than $300.&lt;/p&gt;
-&lt;p&gt;Perhaps more interesting is the R47, at about the same price. Instead of recreating a particular HP calculator, it grew out of the WP34S/WP43 community projects and attempts to be a modern enthusiast&amp;#8217;s RPN calculator. It has an eight-level stack, matrices and vectors, complex arithmetic, base-N and bit operations, statistics, units, financial calculations, equation solving, integration, programming, and even built-in electrical engineering functions. Its firmware is still officially considered beta. This is probably the closest thing today to somebody asking, &amp;#8220;What calculator would an obsessive HP engineer build if we started over?&amp;#8221;&lt;/p&gt;
-&lt;p&gt;SwissMicros calculators aren&amp;#8217;t cheap. Depending on the model, you&amp;#8217;re generally looking at roughly $180 to more than $300 after currency conversion. But they are real, currently manufactured calculators rather than 40-year-old collectibles.&lt;/p&gt;
-&lt;h2 style="clear: none;"&gt;Heat Up The Soldering Iron&lt;/h2&gt;
-&lt;p&gt;There is also a suitably hacker-friendly route.&lt;/p&gt;
-&lt;p&gt;&lt;figure class="wp-caption alignleft" id="attachment_509455" style="width: 400px;"&gt;&lt;a href="https://hackaday.com/wp-content/uploads/2021/11/kitdone.png"&gt;&lt;img alt="" class="size-medium wp-image-509455" height="287" src="https://hackaday.com/wp-content/uploads/2021/11/kitdone.png?w=400" width="400" /&gt;&lt;/a&gt;&lt;figcaption class="wp-caption-text" id="caption-attachment-509455"&gt;Sure, a real HP41C is in portrait mode, but otherwise, [Garza&amp;#8217;s] is a pretty good clone.&lt;/figcaption&gt;&lt;/figure&gt;[Alex Garza&amp;#8217;s] &lt;a href="https://hackaday.com/2021/12/03/building-the-diy-hp41c-a-field-report/"&gt;PAXER calculator projects&lt;/a&gt; reproduce machines such as the HP-15C, HP-16C, and HP-41C using an ATmega328. They&amp;#8217;re available in kit form, use through-hole components, and aren&amp;#8217;t just empty cases containing old calculator electronics.&lt;/p&gt;
-&lt;p&gt;The ATmega scans the keyboard, drives the display, and emulates the original machine. The design adds such modern amenities as continuous memory, an LCD backlight, real-time clock, and considerably higher execution speed than the originals. Kits and assembled versions are typically under $100.&lt;/p&gt;
-&lt;p&gt;There is also the 10LC (and &lt;a href="https://github.com/riker2072)" target="_blank"&gt;related models&lt;/a&gt;), which approaches the problem from the other direction: take inexpensive ESP32-based M5Stack Cardputer hardware, add calculator firmware and key labels, and turn the whole thing into a pocket RPN calculator. Figure roughly $50-$60.&lt;/p&gt;
-&lt;p&gt;It isn&amp;#8217;t going to make a calculator collector forget an HP-42S keyboard, but it does show how little hardware is actually required to build an extraordinarily capable calculator today.&lt;/p&gt;
-&lt;h2&gt;There&amp;#8217;s An App For That&lt;/h2&gt;
-&lt;p&gt;CalcTastic is a modern RPN phone app.If physical keys aren&amp;#8217;t mandatory, RPN is actually thriving. You can get a host of RPN calculators on your Android or iPhone. There are many options for desktop computers, too. You can generally find these on your platform&amp;#8217;s program repositories.&lt;/p&gt;
-&lt;p&gt;One of the best places to start is Free42, [Thomas Okken&amp;#8217;s] free, clean-room implementation of the HP-42S. It runs on Android, iOS, Windows, macOS, and Linux. Plus42, from the same author, takes that foundation and expands it with equations, units, directories, plotting, financial functions, and other capabilities that the original HP-42S never had.&lt;/p&gt;
-&lt;p&gt;Android users also have CalcTastic, which can switch between algebraic and RPN modes and provides scientific calculation, complex numbers, fractions, statistics, conversions, and — in the paid version — programmer functions. The basic version is free, and the Plus version is only a few dollars.&lt;/p&gt;
-&lt;a href="https://hackaday.com/2026/09/02/im-not-dead-yet-reverse-polish-notation-calculators-you-can-still-buy/tastic/"&gt;&lt;img alt="" class="attachment-medium size-medium" height="400" src="https://hackaday.com/wp-content/uploads/2026/08/tastic.png?w=178" width="178" /&gt;&lt;/a&gt;
-&lt;a href="https://hackaday.com/2026/09/02/im-not-dead-yet-reverse-polish-notation-calculators-you-can-still-buy/go41/"&gt;&lt;img alt="" class="attachment-medium size-medium" height="400" src="https://hackaday.com/wp-content/uploads/2026/08/go41.png?w=178" width="178" /&gt;&lt;/a&gt;
-&lt;p&gt;For the HP-48 crowd, there is Droid48 on Android and several HP-48 implementations on iOS. If your idea of a calculator includes directories, symbolic objects, programs, lists, and an RPL command line, the phone in your pocket can impersonate a 48 far faster than the original hardware ever could. If you prefer the HP41C, go41C is the one I like.&lt;/p&gt;
-&lt;p&gt;Apple users have an especially large selection. i41CX recreates and extends the HP-41 environment. PCalc isn&amp;#8217;t primarily an RPN calculator, but has long offered a very good RPN mode. There are also modern RPN calculators including MathU, RPN Calc, RPN Calculator 48, and a growing number of simulations of individual classic HP machines.&lt;/p&gt;
-&lt;h2&gt;Real HP&lt;/h2&gt;
-&lt;p&gt;Even HP&amp;#8217;s current flagship environment is available in software. HP Prime Pro runs on Android and iOS and supports optional RPN input.&lt;/p&gt;
-&lt;p&gt;Desktop users aren&amp;#8217;t left out either. HP provides a free HP Prime Virtual Calculator for Windows, and there has also been a macOS version. Most unusually, HP once produced an actual native Linux version. The Linux release was packaged as an AppImage and survives as a 2019 technical preview — build 2.1.14288 in the copy sitting on my Linux machine. It isn&amp;#8217;t the Windows version hidden inside Wine; it&amp;#8217;s a native HP build, and it still works remarkably well. Unfortunately, it predates one particularly interesting addition to the Prime: Python programming.&lt;/p&gt;
-&lt;figure class="wp-caption alignright" id="attachment_1146124" style="width: 250px;"&gt;&lt;a href="https://hackaday.com/wp-content/uploads/2026/08/prime.png"&gt;&lt;img alt="" class="size-medium wp-image-1146124" height="400" src="https://hackaday.com/wp-content/uploads/2026/08/prime.png?w=250" width="250" /&gt;&lt;/a&gt;&lt;figcaption class="wp-caption-text" id="caption-attachment-1146124"&gt;The HP Prime needs a setting to change to RPN mode.&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;p&gt;There is a way to get that on Linux, although HP doesn&amp;#8217;t make it easy. I found that the December 2024 Windows release of the Virtual Calculator, version 2.2.15212, runs under Wine using the Soda 9 runner in Bottles. That version includes the Prime&amp;#8217;s Python app and reports MicroPython 1.9.4. The catch is that you don&amp;#8217;t want to accept its offer to upgrade. Updating to the current Windows version causes the simulator to stop working under the same setup, and Soda 11 doesn&amp;#8217;t appear to fare any better. So there is a slightly absurd sweet spot where an older Windows Prime under an older Wine runner provides a more up-to-date Prime on Linux than HP&amp;#8217;s own native Linux build.&lt;/p&gt;
-&lt;p&gt;Between Free42, Plus42, Prime, HP-48 emulators and innumerable smaller projects, software may actually be the easiest way to use RPN today.&lt;/p&gt;
-&lt;h2 style="clear: none;"&gt;The Used Option&lt;/h2&gt;
-&lt;p&gt;Of course, another source is available: millions of old calculators are already out there. If you&amp;#8217;ve always wanted an HP-11C, 15C, 16C, 28S, 32SII, 41CX, 42S, or 48GX, auction sites and used-equipment dealers will happily provide one. Sometimes you can still find a bargain, especially if you&amp;#8217;re willing to buy a cosmetically ugly machine or something outside the most desirable models. The problem is that the best old calculators aren&amp;#8217;t merely used calculators anymore. They&amp;#8217;re collectibles.&lt;/p&gt;
-&lt;p&gt;A calculator that originally lived in an engineer&amp;#8217;s shirt pocket may now be a pristine example with its case, manuals, and box — and priced accordingly. Even fairly ordinary examples of desirable models can sell for enough money that carrying one around every day starts to feel irresponsible. My treasured HP41C, for example, works fine, but is already scuffed up enough that I rarely risk using it at my desk these days.&lt;/p&gt;
-&lt;p&gt;That creates a slightly absurd situation. A perfectly functional 35- or 40-year-old calculator may cost considerably more than an astonishingly capable modern computer because one is being priced as a collectible and the other as a tool.&lt;/p&gt;
-&lt;p&gt;On the other hand, battered calculators exist. If you don&amp;#8217;t care about scratches, engraved names, missing battery doors, or someone&amp;#8217;s old asset-control sticker, those are often exactly the machines to buy. You&amp;#8217;re going to use it, after all.&lt;/p&gt;
-&lt;h2&gt;ENTER Isn&amp;#8217;t Dead&lt;/h2&gt;
-&lt;p&gt;RPN plainly lost the calculator wars. Walk into an office supply store, and almost every calculator on the shelf expects conventional algebraic input. But it didn&amp;#8217;t disappear.&lt;/p&gt;
-&lt;p&gt;You can still buy an HP-12C. You can buy sophisticated new RPN machines from SwissMicros. You can solder together your own HP-inspired calculator around an 8-bit AVR. You can turn an ESP32 gadget into one. Or you can install an app and have an HP-42S, HP-48, or modern RPN calculator in your pocket for anywhere from nothing to a few dollars.&lt;/p&gt;
-&lt;p&gt;That&amp;#8217;s a surprising amount of life for an input system the mainstream calculator industry decided we didn&amp;#8217;t want decades ago. Then again, people who like RPN tend to really like RPN.&lt;/p&gt;
-&lt;p&gt;If 2 ENTER 3 + looks more natural to you than 2 + 3 =, apparently somebody is still willing to sell you a calculator. If you want to see how easy it can be to parse RPN in a program, &lt;a href="https://hackaday.com/2023/06/21/in-praise-of-rpn-with-python-or-c/"&gt;we&amp;#8217;ve done that&lt;/a&gt;.&lt;/p&gt;</description>
-      <guid isPermaLink="false">5122767215e5547eab8e6773d239f71cb8ef9c7b9d6df708996f6889e8e0fec1</guid>
-      <pubDate>Wed, 02 Sep 2026 14:00:14 +0000</pubDate>
-    </item>
-    <item>
-      <title>HDMI For the Color Computer 2 - Hack a Day</title>
-      <link>https://hackaday.com/2026/09/02/hdmi-for-the-color-computer-2/</link>
-      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/08/HDMI-on-the-TRS-80-Color-Computer-2-COCO2-Vintage-Computer-0-10-screenshot.png?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;[Scott Baker] bought a TRS-80 Color Computer off eBay some five years ago. He&amp;#8217;d always intended to add a CoCoVGA or CoCoDV upgrade to hook it up to a monitor, but the device was sold out and his name never made it off the waitlist. &lt;a href="https://www.smbaker.com/hdmi-on-the-trs-80-color-computer-2" target="_blank"&gt;Thus, he decided to build his own solution to give the classic machine a proper HDMI output.&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;The concept behind the project is simple enough—grab the digital signals which feed the MC6847 IC responsible generates the analog video output, and use them to create an all-digital video output over HDMI. [Scott] achieved this by using a Tang Nano board, which hosts a Gowin GW1N-1 FPGA. It&amp;#8217;s able to snoop the signals heading to the MC6847 and, with some supporting components and level shifters, it can spit out video befitting modern screens. To make the system nicely complete, an analog-to-digital converter is also included to pick up the analog sound output from the TRS-80 and spit it out down the same HDMI cable. Such convenience!&lt;/p&gt;
-&lt;p&gt;There&amp;#8217;s something strangely anachronistic about grabbing a TRS-80 off the shelf and hooking it up to a flatscreen with a single HDMI cable. Regardless, it&amp;#8217;s a pretty great way to play with your old machine without having to futz with heavy old CRTs. &lt;a href="https://hackaday.com/2025/05/25/the-commodore-64-gets-an-hdmi-upgrade/"&gt;We&amp;#8217;ve featured plenty of similar projects before, too.&lt;/a&gt;&lt;span id="more-1145976"&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;</description>
-      <guid isPermaLink="false">d3833dfcf44b362d9aa585847666fe03010cbcf686d7ac6aa306a36616b34960</guid>
-      <pubDate>Wed, 02 Sep 2026 11:00:37 +0000</pubDate>
-    </item>
-    <item>
-      <title>Creating the Greenest Possible Clothing with Living Fungi - Hack a Day</title>
-      <link>https://hackaday.com/2026/09/02/creating-the-greenest-possible-clothing-with-living-fungi/</link>
-      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="462" src="https://hackaday.com/wp-content/uploads/2026/08/living_textiles_ke_li_et_al_science_advances_2026.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;Despite the wide variety of fabrics used for our clothing, they all share the property of not being living tissues. This could be due to them never having been part of an organism, or having been removed from said organism. Another approach here entails so-called engineered living materials (ELMs), with a &lt;a href="https://www.science.org/doi/10.1126/sciadv.aed6937" target="_blank"&gt;recent research article&lt;/a&gt; by [Ke Li] et al. in &lt;em&gt;Science Advances&lt;/em&gt; providing a good example of a fungal platform for such living textiles.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" class="size-medium wp-image-1146086 alignright" height="400" src="https://hackaday.com/wp-content/uploads/2026/08/living_textiles_sample_ke_li_et_al_science_advances_2026.jpg?w=400" width="400" /&gt;&lt;/p&gt;
-&lt;p&gt;Although it may seem frivolous to create something like this, the direct benefits would be to have a fabric that can self-heal and respond to its environment, including blocking UV radiation and changing its coloring through pigmentation.&lt;/p&gt;
-&lt;p&gt;The research demonstrated in this paper covers essentially a platform for creating a living textile that can be adapted to a wide variety of applications and colorizations. Of note is that the researchers have not yet tested aspects like washability, abrasion resistance, breathability and wearer comfort, so this should definitely be regarded as setting the stage for more research.&lt;/p&gt;
-&lt;p&gt;For the basic material the fungi &lt;em&gt;Cordyceps militaris&lt;/em&gt; was chosen, which were subsequently placed between films. To this additional microbial cultures were added, including the pigment-producing &lt;em&gt;S. cerevisiae&lt;/em&gt; and melanized &lt;em&gt;A. niger&lt;/em&gt; for UV blocking.&lt;/p&gt;
-&lt;p&gt;As for what it can look like with clothing, &lt;a href="https://www.dezeen.com/2026/08/05/dress-living-mycelium-renew-repair/" target="_blank"&gt;this article&lt;/a&gt; at De Zeen gives somewhat of an idea, as well as how the living textile is prepared.&lt;/p&gt;</description>
-      <guid isPermaLink="false">a1a4958595a108b9b3ba1f9b7c62deb013a92679a951677cc2451690a69427e7</guid>
-      <pubDate>Wed, 02 Sep 2026 08:00:08 +0000</pubDate>
     </item>
   </channel>
 </rss>

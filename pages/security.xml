@@ -5,7 +5,146 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Thu, 22 Oct 2026 14:01:11 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 14:01:05 +0000</lastBuildDate>
+    <item>
+      <title>PHP Warns of Another Unpatched RCE Two Days After Emergency PHP2Shell Patches - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/urgent-php-warns-of-another-unpatched.html</link>
+      <description>PHP has warned of another way an attacker could run code on a web server, two days after it shipped emergency fixes for the critical PHP2Shell flaws.
+The new issue, assigned CVE-2026-115560, affects only web applications configured in an unusual way, and PHP considers it an unlikely risk.The project is not issuing an emergency fix for it. Instead, it recommends turning off a feature called</description>
+      <guid isPermaLink="false">c889d8793c09977d6f3b370cbea7d0c71fbd7ef882626e3238048c72fccaf382</guid>
+      <pubDate>Fri, 23 Oct 2026 11:25:43 +0000</pubDate>
+    </item>
+    <item>
+      <title>Russian-Linked Hackers Used New Mesh Network Backdoor in Destructive Ukraine Attack - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/russian-linked-hackers-used-new-mesh.html</link>
+      <description>The Russian state-sponsored hacking group Sandworm teamed up with another threat actor to carry out a destructive wiping attack targeting a Ukrainian logistics company last year.
+According to ESET, the attack involved UAC-0099 (aka Earth Sirrush) obtaining initial access to the target on July 16, 2025, via a spear-phishing email bearing a malware-laced attachment that led to the deployment of</description>
+      <guid isPermaLink="false">918e5398c1040b30e0962a83ab0df5291c6577bac8d26f0cfe301824425dc65b</guid>
+      <pubDate>Fri, 23 Oct 2026 11:11:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>Five IDA Processor Modules for Uncommon Architectures — xCORE, C7x, PRU, MicroBlaze and NVIDIA SASS - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xd9l40/five_ida_processor_modules_for_uncommon/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/mr_wolf_is_me"&gt; /u/mr_wolf_is_me &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/Mr-wolf-is-me/IDA-Processor-Modules"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xd9l40/five_ida_processor_modules_for_uncommon/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">ae9e4d681ece34e488b91c1301b5b7a864378d7e60f54cc151bd4d58af41ecd1</guid>
+      <pubDate>Fri, 23 Oct 2026 09:44:26 +0000</pubDate>
+    </item>
+    <item>
+      <title>Critical Flaw in Python’s Popular Pillow Image Library Allows Code Execution via a Crafted Image - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/critical-flaw-in-pythons-popular-pillow.html</link>
+      <description>Pillow, the most widely used image library for Python, can be made to run operating system commands on a server by specifying the name of a file it is told to open.
+The flaw,&amp;nbsp;CVE-2026-112900, is in the way Pillow handles EPS images, which it opens by passing the file's name to Ghostscript, a separate program it runs to turn the image into pixels, without checking the name first.</description>
+      <guid isPermaLink="false">14b3021c427f9d3c9847b0ff0e015d44bb45671523f42d55380afa547f753f20</guid>
+      <pubDate>Fri, 23 Oct 2026 09:36:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Researchers Demonstrate Node2Shell RCE Exploit on Node.js Build Using Crafted Brotli Data - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/researchers-demonstrate-node2shell-rce.html</link>
+      <description>Malicious Brotli data can make an application on an official build of Node.js run attacker-supplied code, security researchers at Imperva have&amp;nbsp;demonstrated.
+Their "Node2Shell" proof of concept ran code on the official Node.js 24.22.0 image for Linux arm64, with no debugger or custom build, by feeding crafted data to the bundled Brotli decoder (CVE-2026-111497). Node.js disclosed the flaw</description>
+      <guid isPermaLink="false">0975de78fb10b5332f54962246bde7d7aee75dac95ffda652e222583d18f6b06</guid>
+      <pubDate>Fri, 23 Oct 2026 08:40:43 +0000</pubDate>
+    </item>
+    <item>
+      <title>Critical x402 SDK Flaw Could Let Malicious APIs Drain AI Agents’ Token Balances - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/critical-x402-sdk-flaw-could-let.html</link>
+      <description>AI agents paying for API calls with the&amp;nbsp;x402 SDKs&amp;nbsp;could sign a payment for their full balance of a supported token if a malicious API asked for it,&amp;nbsp;security firm V12 said&amp;nbsp;on October 22.
+The cause was the SDKs' default client, which set no spending limit until releases on August 18 added one. The risk was limited to agents who automatically signed payments and whose apps set</description>
+      <guid isPermaLink="false">2cfd8a68b3acf5367b92f75b75aeab4156beb8b2990d2408123b7dbc554a2779</guid>
+      <pubDate>Fri, 23 Oct 2026 08:35:45 +0000</pubDate>
+    </item>
+    <item>
+      <title>PHP2Shell Exploit Attempts Hit Millions as Attackers Try to Deploy Mirai Malware - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html</link>
+      <description>Threat actors have been observed unsuccessfully attempting to exploit the newly disclosed PHP2Shell vulnerabilities to rope infected systems into a Mirai botnet variant called Potassium, as it emerges that weaponizing the flaws may be harder than previously thought.
+The attacks aim to exploit CVE-2026-109618 and CVE-2026-109619 (CVSS scores: 9.2), which can result in unauthenticated remote</description>
+      <guid isPermaLink="false">90b0f2c7492f01e11fcae416454b78b115cf004e114beb50591fc5b17eb5c6c7</guid>
+      <pubDate>Fri, 23 Oct 2026 07:40:45 +0000</pubDate>
+    </item>
+    <item>
+      <title>Switch 2 Jailbreak - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xd2ug8/switch_2_jailbreak/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/tnavda"&gt; /u/tnavda &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://pepsipu.com/blog/2026-10-switch2-jailbreak-ns2jb/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xd2ug8/switch_2_jailbreak/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">bef37cf8c75e452f39abfd376f8f7a3399f448d42a1da59ed9967895be222372</guid>
+      <pubDate>Fri, 23 Oct 2026 03:12:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>mailpit -- Unbounded CPU and memory consumption in thumbnail endpoint via cyclic EXIF IFD chain - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/df4083bc-cea6-11f1-94b3-10ffe07f9334.html</link>
+      <description/>
+      <guid isPermaLink="false">dda236f503836404c5b73032f8d1177f08a6fa740144600d8d3acb02abfe3a70</guid>
+      <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Packet Tracer pka/pkt reverse engineered to fully build, export, or decrypt without running Packet Tracer - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xctyyu/packet_tracer_pkapkt_reverse_engineered_to_fully/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Hour_Ingenuity_1453"&gt; /u/Hour_Ingenuity_1453 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/aacanadaa/packet-tracer-pkt-format"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xctyyu/packet_tracer_pkapkt_reverse_engineered_to_fully/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">3ef1fbe219c7ab0b8a455592e06eff4fa82cb34ba7add15284fc67bd6a0b6376</guid>
+      <pubDate>Thu, 22 Oct 2026 20:32:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>[RESEARCH] SM-F956B (Z Fold 6) Bit-4: OEM-Unlock Flag Ignored by Bootloader + Bootchain Bug-Hunt &amp; Temp-Root Status - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xctphp/research_smf956b_z_fold_6_bit4_oemunlock_flag/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/getbacktoyahroots"&gt; /u/getbacktoyahroots &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/plomens/f956b-bootchain-research"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xctphp/research_smf956b_z_fold_6_bit4_oemunlock_flag/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">4344fe7b27e97f93b5a7e487429b29a1fe5a483b594f25fcbbf7a26b38fde085</guid>
+      <pubDate>Thu, 22 Oct 2026 20:22:29 +0000</pubDate>
+    </item>
+    <item>
+      <title>A stranger disassembled my mouse’s official app, fixed my checksum, and by accident gave me the idea for USB cable support - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xct5wd/a_stranger_disassembled_my_mouses_official_app/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/blakok14"&gt; /u/blakok14 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="http://github.com/blak0p/attack-shark-linux"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xct5wd/a_stranger_disassembled_my_mouses_official_app/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">fe48956f2110597e5dc662c745b050e734ca0fbc7eee2b69d1ef2eedb4390c50</guid>
+      <pubDate>Thu, 22 Oct 2026 20:02:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>Arista Warns of Critical VeloCloud SQL Injection Zero-Day Exploited in Attacks - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/arista-warns-of-critical-velocloud-sql.html</link>
+      <description>Attackers are exploiting a zero-day SQL injection flaw in Arista's VeloCloud Orchestrator (VCO), the&amp;nbsp;central management system&amp;nbsp;for VeloCloud SD-WAN networks, the company said in an&amp;nbsp;advisory&amp;nbsp;on October 22.
+The flaw lets anyone who can log in to the orchestrator, even with a read-only customer account, gain operator privileges, the top level of control over it.
+For</description>
+      <guid isPermaLink="false">e3d2095fb8450052e2a4f53129709e4de6060f2efbd6270184bcaf5a18268504</guid>
+      <pubDate>Thu, 22 Oct 2026 19:05:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>eMudhra to Exit Global SSL/TLS Business After 8 Intermediate CA Keys Found Easily Guessable - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/emudhra-to-exit-global-ssltls-business.html</link>
+      <description>eMudhra, an Indian certificate authority (CA), will withdraw from its global SSL/TLS certificate business,&amp;nbsp;its board decided on Thursday. The decision came five days after a researcher&amp;nbsp;reported recovering the private keys&amp;nbsp;of eight of its intermediate CA certificates.
+eMudhra said it will replace affected customers' certificates with free ones from partners, though its</description>
+      <guid isPermaLink="false">c73dd0c304e3232967403d83c955f10f398f59f110833b15a80ebb47353797e2</guid>
+      <pubDate>Thu, 22 Oct 2026 18:12:43 +0000</pubDate>
+    </item>
+    <item>
+      <title>Two CVSS 9.0 Linux KSMBD RCE Flaws Disclosed on Public Mailing Lists Before Kernel Fixes - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/two-cvss-90-linux-ksmbd-rce-flaws.html</link>
+      <description>Linux servers running KSMBD, the kernel's built-in SMB server, are exposed to two publicly reported remote code execution flaws rated 9.0 by&amp;nbsp;Trend Micro's Zero Day Initiative, with no fix yet in the mainline kernel.
+One of them, ZDI-CAN-33774, can be triggered before any network authentication. The other, ZDI-CAN-33549, requires the SMB Direct transport and an RDMA-capable network</description>
+      <guid isPermaLink="false">89ea908f7a8192ec08fd354cccd4241df4be7fad0b3085206cde518c6c097378</guid>
+      <pubDate>Thu, 22 Oct 2026 17:01:53 +0000</pubDate>
+    </item>
+    <item>
+      <title>Meta Ordered to Pay $25 Billion After Court Finds 43 Million Privacy Violations - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/meta-ordered-to-pay-25-billion-after.html</link>
+      <description>Social media giant Meta was ordered to pay 25 billion in penalties by a New Mexico court on Wednesday as part of a data privacy lawsuit that sprang from the company's Cambridge Analytica data scandal, which came to light in 2018.
+According to multiple reports from the Associated Press, the New York Times, Reuters, and the Wall Street Journal, state District Court Judge Francis J. Mathew called</description>
+      <guid isPermaLink="false">6f0f39c5e05fd169323aa505057869e2ba89c25594f37bd3c203cb17631b5504</guid>
+      <pubDate>Thu, 22 Oct 2026 16:12:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>I reverse engineered Black &amp; White with Astra and added LLM + voice support on top of the game's original AI. The environment is exposed to the LLM's context and the creature can select tools to inspect and interact with the world or answer questions about it. - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xcme97/i_reverse_engineered_black_white_with_astra_and/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/sedthh"&gt; /u/sedthh &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/sedthh/batch_and_vibe"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xcme97/i_reverse_engineered_black_white_with_astra_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">7d25237d23abaebde9245719ff11186cbc65bc7b53822d42b873387dab821328</guid>
+      <pubDate>Thu, 22 Oct 2026 15:54:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>INTERPOL Arrests 1,462 Suspects, Disrupts 10,909 Cybercrime Networks in Global Crackdown - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/interpol-arrests-1462-suspects-disrupts.html</link>
+      <description>INTERPOL on Thursday announced that a coordinated law enforcement action has disrupted 10,909 malicious networks and recovered more than $105 million in illicit funds.
+In tandem, the effort saw law enforcement agencies from 21 countries arrest 1,462 suspects. Codenamed Operation Serengeti III, the cybercrime crackdown took place between June 29 and August 31, 2026.
+"Authorities identified</description>
+      <guid isPermaLink="false">99376a4740f36f0a191263473911a6b7c47a80de82b6b5f8f7faeb33c6877e91</guid>
+      <pubDate>Thu, 22 Oct 2026 13:38:22 +0000</pubDate>
+    </item>
     <item>
       <title>Railway Says Intruder May Have Accessed Customer Secrets, Urges Credential Rotation - The Hacker News</title>
       <link>https://thehackernews.com/2026/10/railway-says-intruder-may-have-accessed.html</link>
@@ -96,6 +235,13 @@ During the incident, Storm-0940 used ARTEX, a Go-based agentic AI penetration te
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Thunjaya"&gt; /u/Thunjaya &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/yuatemycat/SuperGhidra"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xc3tz5/superghidra_an_improvised_agentfirst_re_tool_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">0fcfd8d0ab8a1cdb2a6d808d253c53eb7950eb0784428326338028da34b21021</guid>
       <pubDate>Thu, 22 Oct 2026 00:14:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>Keycloak -- multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/5101359e-ce3c-11f1-bf7a-3c7c3fba4204.html</link>
+      <description/>
+      <guid isPermaLink="false">d334b2fe332f4f807946b7586be3bc2682202fb519af7a50190132a70aac5dd6</guid>
+      <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Critical GitLab Flaw (CVSS 10.0) Could Allow Unauthenticated RCE Across 12 Years of Releases - The Hacker News</title>
@@ -1379,155 +1525,6 @@ The AI company said it identified four broad categories of unintended model acti
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/gilnett"&gt; /u/gilnett &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/gilnett/wstrace"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x1vsxm/github_gilnettwstrace_standalone_zerodriver/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">d70e6fd47776d0a29bd8898b909ad454cbcf2c055f3df1689a63cada2dac3a89</guid>
       <pubDate>Fri, 09 Oct 2026 20:16:40 +0000</pubDate>
-    </item>
-    <item>
-      <title>Credential-Stealing GitHub Actions Workflows Planted in Tens of Thousands of Repositories - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/credential-stealing-github-actions.html</link>
-      <description>Cybersecurity researchers have disclosed details of an ongoing credential-theft campaign that has compromised two high-profile open-source maintainer accounts to push a malicious workflow into over 340 repositories.
-"Using the account of Takashi Kitao, author of the 18,400-star game engine pyxel, the attacker pushed a malicious workflow to 27 repositories starting at 13:20 UTC," StepSecurity</description>
-      <guid isPermaLink="false">e5cfc8fa2a99746a1aa41e200fb596b883da068ed8f746e5d0eb90876c959357</guid>
-      <pubDate>Fri, 09 Oct 2026 19:14:28 +0000</pubDate>
-    </item>
-    <item>
-      <title>FBI Arrests Another ShinyHunters Suspect Reportedly Involved in Its Jobs Portal Hack - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/fbi-arrests-another-shinyhunters.html</link>
-      <description>The FBI has arrested another suspected co-conspirator of ShinyHunters, FBI Director Kash Patel said on October 9 in a&amp;nbsp;post on X.
-ShinyHunters is the extortion group that said in September it had&amp;nbsp;breached the FBI's jobs portal&amp;nbsp;and stolen sensitive data on almost all FBI agents and job applicants. The FBI has not named the suspect, and no charges have been made public.
-The</description>
-      <guid isPermaLink="false">1b379bbac6d913465a1bf518d4f582822a9a8fb7d630e05979857905ca966474</guid>
-      <pubDate>Fri, 09 Oct 2026 17:45:26 +0000</pubDate>
-    </item>
-    <item>
-      <title>Apple Watch connector for Android, Linux, Windows... It seems to be a world first - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x1r3rt/apple_watch_connector_for_android_linux_windows/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Prestigious_Intern50"&gt; /u/Prestigious_Intern50 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/LordixDemon/apple_watch_connector"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x1r3rt/apple_watch_connector_for_android_linux_windows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">54fcec59eb901c3831387351bd7a301f8b29055ea45618ace686f641c6ce99fe</guid>
-      <pubDate>Fri, 09 Oct 2026 17:14:39 +0000</pubDate>
-    </item>
-    <item>
-      <title>P7 DarkSword iOS Exploit Kit Adds Crypto Wallet Data Theft and Remote Commands - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/p7-darksword-ios-exploit-kit-adds.html</link>
-      <description>Cybersecurity researchers have disclosed details of a previously unseen variant of the DarkSword iOS exploit kit called P7 DarkSword.
-"Compared with the variants we usually observe, P7 reduces its on-device footprint, adds on-device keychain and crypto-wallet theft, and adds two way C2 communication with the attacker's infrastructure," iVerify said in a new report published Thursday.
-The name</description>
-      <guid isPermaLink="false">32ebcee7c30c8e20887513cd9d0776db2a5414030bc7eacf658d579e55243bb3</guid>
-      <pubDate>Fri, 09 Oct 2026 16:29:55 +0000</pubDate>
-    </item>
-    <item>
-      <title>TP-Link Sued by Four More U.S. States Over Router Security and China Ties - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/tp-link-sued-by-four-more-us-states.html</link>
-      <description>Four more U.S. states sued router maker TP-Link Systems on October 6, bringing the total to five, with &amp;nbsp;Texas filing a suit in February. Florida, Iowa, Montana and Nebraska allege the California company misled buyers about how secure its routers are and how separate it is from China. TP-Link&amp;nbsp;denies the claims&amp;nbsp;and says it will fight them in court.
-TP-Link Systems is based in</description>
-      <guid isPermaLink="false">81d5d3b99c75655ecd2fa6d27ae141a61e71b41292f6e08367d32a7e494e4acc</guid>
-      <pubDate>Fri, 09 Oct 2026 13:22:53 +0000</pubDate>
-    </item>
-    <item>
-      <title>Researchers Publish Working Exploit for Pre-Auth AnyDesk Linux Flaw That Gives Root Access - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/researchers-publish-working-exploit-for.html</link>
-      <description>Security researchers have&amp;nbsp;published a full working exploit&amp;nbsp;for a pre-authentication remote code execution flaw in AnyDesk Linux that gives attackers root access before anyone approves the connection.
-AnyDesk patched the flaw in version 8.0.3 in June, but its&amp;nbsp;changelog&amp;nbsp;described the fix only as "fixed a bug that could lead to a crash," with no CVE assigned and no security</description>
-      <guid isPermaLink="false">8cbfa9a2e4e3faa63f183741bec53322fdeaef26e5464d21772aeb0287005bb7</guid>
-      <pubDate>Fri, 09 Oct 2026 12:59:22 +0000</pubDate>
-    </item>
-    <item>
-      <title>Anthropic Launches Free AI Vulnerability Scanner for Open-Source Projects - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/anthropic-launches-free-ai.html</link>
-      <description>Anthropic on Thursday unveiled OSS Scanner as an opt-in vulnerability scanner to help secure the open-source ecosystem using artificial intelligence (AI).
-"It's an opt-in service informed by our experience using Claude to find vulnerabilities during Project Glasswing," Anthropic said. "Projects that join will receive thorough, periodic security scans by our strongest models at no cost."</description>
-      <guid isPermaLink="false">ca4223316ce2d8bb45c8cb4dd22f561b6b8bd81dc6f63a17a1c37b3f354e3d3e</guid>
-      <pubDate>Fri, 09 Oct 2026 12:47:28 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Exploit AhsayCBS Flaws to Deploy XMRig Miners Disguised as Microsoft Edge - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/attackers-exploit-ahsaycbs-flaws-to.html</link>
-      <description>Threat actors have been observed exploiting two recently disclosed flaws in the AhsayCBS backup utility to seize control of affected devices and deploy web shells and XMRig cryptocurrency miners.
-Details of the flaws are below -
-  CVE-2026-105133 (CVSS v4 score: 5.5) - An improper authentication vulnerability in the checkSysPwd() function in the "com/ahsay/obs/api/ApiStructsAction.java"</description>
-      <guid isPermaLink="false">d2cfc96279483bb9d25b4f2db5c9335f19abf0460e9b81252fa860672cd43f20</guid>
-      <pubDate>Fri, 09 Oct 2026 12:47:26 +0000</pubDate>
-    </item>
-    <item>
-      <title>GoBalance Flaw Lets Attackers Hijack .onion Addresses by Recovering Tor-Format Keys - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/gobalance-flaw-lets-attackers-hijack.html</link>
-      <description>A bug in GoBalance, a tool many dark-web sites use to stay reachable during attacks, lets anyone work out the secret key that controls a site's .onion address using only public information, and then take that address over.
-Searchlight Cyber, which&amp;nbsp;disclosed the flaw&amp;nbsp;on October 8, says an attacker who recovers the key can redirect the site's visitors to a copy of the site they control.</description>
-      <guid isPermaLink="false">820de150af6228213d14ca076a16899d3d9e9c31f54575ed1e4c320b5bd658a4</guid>
-      <pubDate>Fri, 09 Oct 2026 09:03:24 +0000</pubDate>
-    </item>
-    <item>
-      <title>Three Teams Demonstrate Remote Hacks of Fully Patched Google Pixel 10 at Pwn2Own - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/three-teams-demonstrate-remote-hacks-of.html</link>
-      <description>Three research teams broke into Google's Pixel 10 on October 8 at Pwn2Own Ireland, a hacking contest in Cork whose rules require every target to be fully patched. The contest pays researchers to show working exploits and passes the flaws to the vendors. One of the three Pixel exploits earned Ikotas Labs $300,000, the contest's top prize, and made the team the overall winner.
-Trend Micro's Zero</description>
-      <guid isPermaLink="false">124b8d5dcc35ebedac82856068abac84163d452c09c7ad59d6c67334261145ce</guid>
-      <pubDate>Fri, 09 Oct 2026 08:26:17 +0000</pubDate>
-    </item>
-    <item>
-      <title>Citrix Patches Critical NetScaler Flaw That Could Enable RCE in SAML Deployments - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/citrix-patches-critical-netscaler-flaw.html</link>
-      <description>Citrix has released patches for yet another critical security flaw impacting NetScaler ADC and NetScaler Gateway that could result in remote code execution or denial-of-service (DoS) under certain conditions.
-"CVE-2026-107406 is a memory overflow vulnerability that may lead to remote code execution or denial-of-service under specific configuration conditions," Citrix said.
-The vulnerability</description>
-      <guid isPermaLink="false">3735a4ce28bde85eb647e5b743ec5758b74a978be0d043fa534f4f44ffa68470</guid>
-      <pubDate>Fri, 09 Oct 2026 08:11:33 +0000</pubDate>
-    </item>
-    <item>
-      <title>Getting old Macromedia Director Games to run on modern Hardware - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x1ep2u/getting_old_macromedia_director_games_to_run_on/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/WerWolv"&gt; /u/WerWolv &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://werwolv.net/posts/macromedia_copy_protection/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x1ep2u/getting_old_macromedia_director_games_to_run_on/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">29b9903e1dd0552f1c0cdb9fdaf24b41c2eec03872ca311dbb4b9d00ae80cd92</guid>
-      <pubDate>Fri, 09 Oct 2026 07:09:55 +0000</pubDate>
-    </item>
-    <item>
-      <title>FBI Seizes 7 Domains, Disrupts Flax Typhoon Tools Used in Critical Infrastructure Intrusions - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/fbi-seizes-7-domains-disrupts-flax.html</link>
-      <description>The U.S. Federal Bureau of Investigation (FBI) and Department of Justice (DoJ) have announced the disruption of malicious tools used by a China-linked advanced persistent threat group known as Flax Typhoon.
-To that end, the agencies seized several domains and blocked access to platforms that were used to scan, and in some cases infiltrate, U.S. critical infrastructure. The list of seized</description>
-      <guid isPermaLink="false">d6ed859955b618d4b1b542f54bb113aff8ebbca3889c8cf7f3fe7a284a641558</guid>
-      <pubDate>Fri, 09 Oct 2026 06:39:29 +0000</pubDate>
-    </item>
-    <item>
-      <title>clamav -- Multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/2719a8da-c3f8-11f1-8da1-3497f65b111b.html</link>
-      <description/>
-      <guid isPermaLink="false">538a7a2325527cdc53bb6361ce87c60d7d6b19960a01b30d780e2ba8b92ddec6</guid>
-      <pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>mutt -- Heap out-of-bounds write via crafted Content-Header line - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/28c48cd9-e79a-4ad6-8e62-1317c2ec19a1.html</link>
-      <description/>
-      <guid isPermaLink="false">82c1d480d30787b1deff9744384beaafe12f6fdcba7b41c919e0c438aaee4791</guid>
-      <pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Reverse Engineering AirPods Self-Calibration Test - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x10lxd/reverse_engineering_airpods_selfcalibration_test/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Hot_Radio_2381"&gt; /u/Hot_Radio_2381 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://ateliti99.substack.com/p/reverse-engineering-airpods-self?utm_source=app-post-stats-page&amp;amp;r=wsh8o&amp;amp;utm_medium=ios"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x10lxd/reverse_engineering_airpods_selfcalibration_test/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">bd2acfd842bcd02b0fb32532e3e6ad85f0f201edf5fcc5e09dc0e8062f94cfad</guid>
-      <pubDate>Thu, 08 Oct 2026 19:41:32 +0000</pubDate>
-    </item>
-    <item>
-      <title>FBI Says China-Linked Hackers Ran Portal Giving Third Parties Access to Stolen Emails - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/fbi-says-china-linked-hackers-ran.html</link>
-      <description>Hackers tied to a Chinese cybersecurity company stole email from government organizations, law enforcement agencies, healthcare systems, and religious institutions in Southeast Asia, the FBI and agencies in 6 other countries said on October 8.
-The company, Integrity Technology Group, has been sanctioned by the U.S. and the UK. The hackers scanned websites for flaws using a tool containing more</description>
-      <guid isPermaLink="false">8f769821833d506d754bd616671eaaec2cdbb1aa8a84699d93c1f2de152589b3</guid>
-      <pubDate>Thu, 08 Oct 2026 18:32:21 +0000</pubDate>
-    </item>
-    <item>
-      <title>I have been building a javap replacement and a JVM in C++ - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x0vkvy/i_have_been_building_a_javap_replacement_and_a/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/samaxidervish"&gt; /u/samaxidervish &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/VuqarAhadli/DRVM/tree/main"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x0vkvy/i_have_been_building_a_javap_replacement_and_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">9cd4a1f946ec3707e72762d1df8486b3cee77ba9704493359232c7ac48830434</guid>
-      <pubDate>Thu, 08 Oct 2026 16:31:12 +0000</pubDate>
-    </item>
-    <item>
-      <title>ACE .qvm0 keeps RUNTIME_FUNCTION in the VM section tail; recovering entries and hidden jmp-reg edges - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x0uipj/ace_qvm0_keeps_runtime_function_in_the_vm_section/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/NeuroSaki987"&gt; /u/NeuroSaki987 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/NeuroSaki987/qvm-tool"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x0uipj/ace_qvm0_keeps_runtime_function_in_the_vm_section/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">fc853e87c72db8512c2a543122c53cb28829949cc52a5b7697ce048e799bd014</guid>
-      <pubDate>Thu, 08 Oct 2026 15:50:54 +0000</pubDate>
     </item>
   </channel>
 </rss>
