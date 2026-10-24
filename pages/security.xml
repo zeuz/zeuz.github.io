@@ -5,7 +5,117 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Fri, 23 Oct 2026 14:01:05 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 24 Oct 2026 14:00:58 +0000</lastBuildDate>
+    <item>
+      <title>Android: Promon Shield reversal &amp; bypass - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xe93em/android_promon_shield_reversal_bypass/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/0xd4000001"&gt; /u/0xd4000001 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://0xd4000001.com/posts/promon"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xe93em/android_promon_shield_reversal_bypass/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">40b50b2c616bf2bc7113fd06b21700c361e126c35618681a4018b5f06fd957b3</guid>
+      <pubDate>Sat, 24 Oct 2026 13:46:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[Writeup] Rooting a locked bootloader phone with Ghostlock - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xe70jy/writeup_rooting_a_locked_bootloader_phone_with/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Solid-AQUA"&gt; /u/Solid-AQUA &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://tusharpandey.com/blogs/ghostlock-somalia/index.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xe70jy/writeup_rooting_a_locked_bootloader_phone_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">36550215a0849f890a6cd4338d4c2642bbac79839de7f3ede94cb5ea1e15d296</guid>
+      <pubDate>Sat, 24 Oct 2026 12:09:45 +0000</pubDate>
+    </item>
+    <item>
+      <title>Full source: autonomous root chain for TCL Android TV via CVE-2022-22706 Mali GPU page-cache write — libc __cxa_atexit shellcode, SELinux bypass - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xe68bj/full_source_autonomous_root_chain_for_tcl_android/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/amnioticboy"&gt; /u/amnioticboy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://gitlab.com/c4psu13/mali-pagecache-root"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xe68bj/full_source_autonomous_root_chain_for_tcl_android/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">3f419b8330f07c79ee638a9af9e10042665e797430604ba6455880245007f3f4</guid>
+      <pubDate>Sat, 24 Oct 2026 11:28:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>Brotli Decoder Flaw Behind Node.js RCE Also Affects Bun, Python and Other Widely Used Software - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/brotli-decoder-flaw-behind-nodejs-rce.html</link>
+      <description>A memory-corruption flaw in Google's Brotli decoder sits in many programs that unpack Brotli-compressed data, among them Bun, the Python&amp;nbsp;Brotli&amp;nbsp;and&amp;nbsp;brotlicffi&amp;nbsp;packages, and Envoy proxies set up to decompress Brotli.
+Tracked as&amp;nbsp;CVE-2026-111497, the flaw allows crafted compressed data to overwrite past the end of a buffer and corrupt a program's memory, potentially</description>
+      <guid isPermaLink="false">62749836941e0792d9a4f2f098675d028339327fff3ef7b1a29ac2bf2cd27109</guid>
+      <pubDate>Sat, 24 Oct 2026 11:09:29 +0000</pubDate>
+    </item>
+    <item>
+      <title>Leaked LiteLLM Master Key Let Attackers Steal GitHub Tokens and Hijack Release Pipeline - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/leaked-litellm-master-key-let-attackers.html</link>
+      <description>LiteLLM on Friday revealed that an Agent Platform master key accidentally published to a public GitHub repository in late May 2026 ultimately allowed the threat actor to push a malicious version of the popular Python package.
+"On May 27, 2026, a configuration file was committed to the public LiteLLM-Labs/lite-harness repository which inadvertently contained the master key to a deployment of</description>
+      <guid isPermaLink="false">d4ad307a4e49a32497dc488e5b056023420279af998ae0392c7f2a3d343e7cfb</guid>
+      <pubDate>Sat, 24 Oct 2026 11:03:33 +0000</pubDate>
+    </item>
+    <item>
+      <title>Java vs Rust Ghidra in REA: early benchmarks from a work-in-progress Rust port - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xe5lol/java_vs_rust_ghidra_in_rea_early_benchmarks_from/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/nanashili"&gt; /u/nanashili &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/nanashili/rea-rust/blob/main/experiments/analysis-efficiency/runtime-comparison/GHIDRA.md"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xe5lol/java_vs_rust_ghidra_in_rea_early_benchmarks_from/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">1b67ad89134c70bbe3da519a6d14e0b878533318c9a93b52a6a2aae5d5f06f0d</guid>
+      <pubDate>Sat, 24 Oct 2026 10:52:38 +0000</pubDate>
+    </item>
+    <item>
+      <title>Google Says Gmail and Photos Data Shared With AI Search Could Be Used for Targeted Ads - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/google-says-gmail-and-photos-data.html</link>
+      <description>Google has updated its privacy policy to spell out that using personalized artificial intelligence (AI) features in Search or Gemini could allow the company to serve targeted ads to users based on their activity on other connected Google services.
+"You may choose to allow certain Google services, including services like Search or Gemini Apps, to access data from other Google services you use,</description>
+      <guid isPermaLink="false">9a5a1dcec806adb985b52f3022dfb127143995c8953ec687bb72866f0418734a</guid>
+      <pubDate>Sat, 24 Oct 2026 10:36:33 +0000</pubDate>
+    </item>
+    <item>
+      <title>Researchers Push Over 2 Million Updates to Remotely Disable Popcorn Time Updater That Could Fuel a Botnet - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/researchers-push-over-2-million-updates.html</link>
+      <description>Between November 2025 and March 2026, the Dutch security firm Eye Security pushed more than 2 million updates to computers it did not own to switch off a background updater that it said could have allowed an outsider to take over the machine.
+The updater belongs to Time4Popcorn, an abandoned copy of Popcorn Time, a free app that streamed pirated films and TV over BitTorrent.
+Popcorn Time was</description>
+      <guid isPermaLink="false">4f53b74c183fb2c085769865542dcf2736ddfe9aba201ed796f9450976c92b74</guid>
+      <pubDate>Sat, 24 Oct 2026 09:04:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>CISA Flags Two Actively Exploited Critical Flaws in Collabora Online and Arista VeloCloud - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/cisa-flags-two-actively-exploited.html</link>
+      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Friday added two vulnerabilities impacting Collabora Online Built-in CODE Server and Arista VeloCloud Orchestrator (VCO) to its Known Exploited Vulnerabilities (KEV), citing reports of active exploitation in the wild.
+The critical-severity vulnerabilities are listed below -
+  CVE-2026-110447 (CVSS score: 9.2) - An operating</description>
+      <guid isPermaLink="false">1d2db2256a14a8af1aac24d140302f825f0e1a63e95320e3ad173c1a57254383</guid>
+      <pubDate>Sat, 24 Oct 2026 06:25:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>BlackX UEFI Bootkit Bypasses Secure Boot on Patched Windows Systems Missing Revocations - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/blackx-uefi-bootkit-bypasses-secure.html</link>
+      <description>Diplomatic organizations in Central Asia have been targeted by a sophisticated new Unified Extensible Firmware Interface (UEFI) bootkit called BlackX.
+The activity, which singled out diplomatic entities in Tajikistan, Uzbekistan, and Turkmenistan in early 2026, is suspected to be orchestrated by a China-linked state-sponsored hacking group known as APT41, Kaspersky said in a technical report</description>
+      <guid isPermaLink="false">9ad5ee5b44635f6f2f5f3ee879a3e5b1866ab36a67627105620384e5fe1296b6</guid>
+      <pubDate>Fri, 23 Oct 2026 18:50:13 +0000</pubDate>
+    </item>
+    <item>
+      <title>GitHub - alltechdev/mtk-imei-switcheroo: Read and write IMEI records and WiFi/Bluetooth addresses in MediaTek NVRAM files or partition images. Includes interactive ADB tools for rooted devices and separate, version-specific modem/LK patchers for biloba. - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xdl4xm/github_alltechdevmtkimeiswitcheroo_read_and_write/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/rebzera"&gt; /u/rebzera &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/alltechdev/mtk-imei-switcheroo"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xdl4xm/github_alltechdevmtkimeiswitcheroo_read_and_write/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">29bd9fdc43b4a49114f7981719847088d3777f88e18fc39d1769ef4a4ff68c1e</guid>
+      <pubDate>Fri, 23 Oct 2026 17:56:19 +0000</pubDate>
+    </item>
+    <item>
+      <title>Ruby Fixes Three Regex Engine Bugs Responsible for Four Critical GitLab RCE Flaws - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/ruby-fixes-three-regex-engine-bugs.html</link>
+      <description>Ruby has released versions 4.0.9, 3.4.12, and 3.3.13 to fix three bugs in Onigmo, the regular expression engine built into the language. The bugs lie behind four critical security flaws that GitLab patched over the past month.
+GitLab found that a specially crafted pattern could corrupt memory while Ruby compiles it, potentially leading to code execution on its own servers.
+Ruby says any</description>
+      <guid isPermaLink="false">1447eabfe66bca114ae3a35902d5ab8bd284e8c63f113514bcb84f4ee33b9bb8</guid>
+      <pubDate>Fri, 23 Oct 2026 17:54:08 +0000</pubDate>
+    </item>
+    <item>
+      <title>Exposed Infrastructure Reveals How Ransomware Affiliates Used AI Agents to Execute Intrusions - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/exposed-infrastructure-reveals-how.html</link>
+      <description>Cybersecurity researchers have discovered an artificial intelligence (AI)-driven intrusion ecosystem run by affiliates of the INC and The Gentlemen ransomware groups.
+Central to the operation is an "Autonomous Red Team Kill Chain Framework" referred to as Phantom. The threat actor is assessed to be Russian-speaking and functions both as an intrusion and data-extortion operator, as well as an</description>
+      <guid isPermaLink="false">2d722d5b61905a47440fda538b08db7b7ce645294eab66843f6994b7eda7361a</guid>
+      <pubDate>Fri, 23 Oct 2026 17:50:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hackers Breach Enterprise Firewalls and VPNs, Exposing Over 70,000 Credentials - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/hackers-breach-enterprise-firewalls-and.html</link>
+      <description>Cybersecurity researchers have disclosed details of a large-scale campaign that has targeted exposed network edge devices such as Fortinet FortiGate and Palo Alto Networks GlobalProtect firewalls.
+"Artifacts from this investigation also indicate that operators in this campaign have obtained access to numerous organizations worldwide, and have attempted to further compromise some victims,</description>
+      <guid isPermaLink="false">84f7e4a1e7b66d30f0501d6d9bee759fe931167dfb6c2855349f0f91662eaeeb</guid>
+      <pubDate>Fri, 23 Oct 2026 13:50:56 +0000</pubDate>
+    </item>
     <item>
       <title>PHP Warns of Another Unpatched RCE Two Days After Emergency PHP2Shell Patches - The Hacker News</title>
       <link>https://thehackernews.com/2026/10/urgent-php-warns-of-another-unpatched.html</link>
@@ -73,6 +183,13 @@ The attacks aim to exploit CVE-2026-109618 and CVE-2026-109619 (CVSS scores: 9.2
       <link>http://www.vuxml.org/freebsd/df4083bc-cea6-11f1-94b3-10ffe07f9334.html</link>
       <description/>
       <guid isPermaLink="false">dda236f503836404c5b73032f8d1177f08a6fa740144600d8d3acb02abfe3a70</guid>
+      <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>ca_root_nss -- trusted root certificate from compromised CA eMudhra - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/b755b277-cf12-11f1-bae2-3497f65b111b.html</link>
+      <description/>
+      <guid isPermaLink="false">3cc3d66ffa78af9f86a4fd91febd35c9483bff494e017f1178c9383f364fbec7</guid>
       <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
@@ -1418,113 +1535,6 @@ The activity, which brings together commodity offensive tools like Cobalt Strike
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Pristine-Sign3680"&gt; /u/Pristine-Sign3680 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/dwexi/entropystrip"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x34rqb/entropystrip_finding_hidden_payloads_when_naive/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">8ec5550456d7641dbf734c2a21659d68b74f17d8ccb38c6e9cfb1bf6624809b0</guid>
       <pubDate>Sun, 11 Oct 2026 10:25:20 +0000</pubDate>
-    </item>
-    <item>
-      <title>Sniffing a Bricked Glucose Monitor with Codex - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x3416i/sniffing_a_bricked_glucose_monitor_with_codex/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/farhanhubble"&gt; /u/farhanhubble &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://medium.com/@farhanhubble/sniffing-a-bricked-glucose-monitor-with-codex-690c74229d02?sharedUserId=farhanhubble"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x3416i/sniffing_a_bricked_glucose_monitor_with_codex/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">54a5aa2e641679d6da9c002763b1da8f17e9a2726a534cc3520fc3500b39d8c0</guid>
-      <pubDate>Sun, 11 Oct 2026 09:41:23 +0000</pubDate>
-    </item>
-    <item>
-      <title>AI agents reconstruct 99% of MW2 functions, 83% byte-for-byte - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x33eqf/ai_agents_reconstruct_99_of_mw2_functions_83/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/ryanmerket"&gt; /u/ryanmerket &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://runtimewire.com/article/ai-agents-mw2-decompilation-byte-matching"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x33eqf/ai_agents_reconstruct_99_of_mw2_functions_83/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">ef6cbc112d41099d5eee6da089469bcacd7d3d1a491f7a482af5900571d5d3b1</guid>
-      <pubDate>Sun, 11 Oct 2026 09:01:57 +0000</pubDate>
-    </item>
-    <item>
-      <title>Reverse-engineered a cheap USB battery/charging tester (Qianli iBridge A3 "Tail-QL", HC32F460 Cortex-M4) — full protocol + SPI screen driver mapped, stuck on font bitmap format, looking for help [link: original firmware bin + official flashing tool + MCU datasheet] - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x2w7kz/reverseengineered_a_cheap_usb_batterycharging/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Apprehensive-Shoe492"&gt; /u/Apprehensive-Shoe492 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://end2end.tech/2fd56acaeb59"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x2w7kz/reverseengineered_a_cheap_usb_batterycharging/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">529d6e07cf50f29871b2749470ef3ea45f4eb453907359a61e7e7ee2f48c40fc</guid>
-      <pubDate>Sun, 11 Oct 2026 02:04:17 +0000</pubDate>
-    </item>
-    <item>
-      <title>py-WsgiDAV -- Multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/0f5aaca7-c4d5-11f1-96b4-74563cf85f9d.html</link>
-      <description/>
-      <guid isPermaLink="false">8feeaefde8690b239fd02662d24dde3acc0713d88639bf0f88b6cc3e76b31401</guid>
-      <pubDate>Sun, 11 Oct 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>libwasmtime -- Multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/371fc9b2-c543-11f1-b115-74563cf85f9d.html</link>
-      <description/>
-      <guid isPermaLink="false">d21f776d0e6cf687b227f5da07c08fd7c0db9a6de1c34e4a132150605489bdad</guid>
-      <pubDate>Sun, 11 Oct 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>asmsense: fine-tuning Qwen3-8B to name functions in stripped x86-64 binaries, with a memorization-resistant benchmark against large LLMs - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x2ik6a/asmsense_finetuning_qwen38b_to_name_functions_in/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/luxurycashew"&gt; /u/luxurycashew &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/krxi/asmsense"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x2ik6a/asmsense_finetuning_qwen38b_to_name_functions_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">547f501258dc6c4feaa93535c6d3a644a7e62806dfdf17d41432d73851cc5bca</guid>
-      <pubDate>Sat, 10 Oct 2026 15:49:30 +0000</pubDate>
-    </item>
-    <item>
-      <title>Overlord-RAT-Analysis-Keylogging-Browser-Injection-HTTP2-C2 - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x2fphe/overlordratanalysiskeyloggingbrowserinjectionhttp2/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/StructBreaker"&gt; /u/StructBreaker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/kaandemir993/Overlord-RAT-Reverse-Engineering-a-Go-Based-RAT-Injection-Keylogging-C2-Exfiltration-Analysis"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x2fphe/overlordratanalysiskeyloggingbrowserinjectionhttp2/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">cd201f4db9a1fb05e73130772eadf872a87843df93b85498490b6bf7ff87bc47</guid>
-      <pubDate>Sat, 10 Oct 2026 13:46:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>500+ Billion Tokens Later: Letting AI Agents Decompile A First-Person Shooter | MW2 (2009) 83% done final - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x2eizk/500_billion_tokens_later_letting_ai_agents/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/NXGZ"&gt; /u/NXGZ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://momo5502.com/posts/2026-10-09-game-decompilation/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x2eizk/500_billion_tokens_later_letting_ai_agents/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">3269b87bd1fdf86d2ab286f47345caa08ca2f141210655136eaf50b1a22b6acc</guid>
-      <pubDate>Sat, 10 Oct 2026 12:50:05 +0000</pubDate>
-    </item>
-    <item>
-      <title>Anthropic Cuts Live Internet Access for Internal AI Tests After Claude Exploits Injection Flaws - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/anthropic-cuts-live-internet-access-for.html</link>
-      <description>Anthropic on Friday said it's cutting off live internet access for all its internal evaluations following the discovery of new incidents in which its artificial intelligence (AI) models exhibited misaligned behavior and targeted real websites.
-The AI company said it identified four broad categories of unintended model actions during evaluations and internal use of Claude -
-  Claude Mythos</description>
-      <guid isPermaLink="false">2d0836bf9fdc3ef8afb264d31c259524a82ca9f5769afd898d74e6a31d69a0da</guid>
-      <pubDate>Sat, 10 Oct 2026 09:18:45 +0000</pubDate>
-    </item>
-    <item>
-      <title>There was no software for my mouse on Linux, so I captured the Windows app's USB traffic and built the configurator with AI - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x2ap0r/there_was_no_software_for_my_mouse_on_linux_so_i/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/blakok14"&gt; /u/blakok14 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="http://github.com/blak0p/attack-shark-linux"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x2ap0r/there_was_no_software_for_my_mouse_on_linux_so_i/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">a0eddb74a2566a7cfed4109bb293597215399e5919ebc0d8f8e4429113570d00</guid>
-      <pubDate>Sat, 10 Oct 2026 09:10:03 +0000</pubDate>
-    </item>
-    <item>
-      <title>`AetherVM` is an LLVM-native binary analysis and emulation platform built around instruction lifting to `LLVM IR`. It unifies static, dynamic, and symbolic analysis through a common intermediate representation, enabling advanced instrumentation, runtime recovery, deobfuscation, etc.... - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x29vzl/aethervm_is_an_llvmnative_binary_analysis_and/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/JesseVPAND"&gt; /u/JesseVPAND &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/AetherVM/AetherVM"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x29vzl/aethervm_is_an_llvmnative_binary_analysis_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">f3f88ad5363ba77b4189744b02f14c95ce5e1f2c238cb967872927f473be1326</guid>
-      <pubDate>Sat, 10 Oct 2026 08:18:15 +0000</pubDate>
-    </item>
-    <item>
-      <title>Open source firmware for a cheap USB C meter (KWS-X1) that shows way more PD info than stock - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x22l2f/open_source_firmware_for_a_cheap_usb_c_meter/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/kralonurdev"&gt; /u/kralonurdev &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/kralonur/kws-x1-standalone-rs"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x22l2f/open_source_firmware_for_a_cheap_usb_c_meter/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">a3a8d523ca63cb60e20039600e45334ffffa1d79eabe88a2098ce5fea12874de</guid>
-      <pubDate>Sat, 10 Oct 2026 01:23:05 +0000</pubDate>
-    </item>
-    <item>
-      <title>traefik -- Multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/049d88bb-c4a2-11f1-9d0b-5404a68ad561.html</link>
-      <description/>
-      <guid isPermaLink="false">4ebf719c7853290b5a0f795dce07cc0b3d7f807fdce8196c52d96327c8b8b270</guid>
-      <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>ejabberd -- Multiple security vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/ec9017a0-c4fe-11f1-bbb3-901b0e9408dc.html</link>
-      <description/>
-      <guid isPermaLink="false">a71c3d49b86018fb4ead3d436b2e68ad28886e76c3e4fa562b63195334a8fe09</guid>
-      <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>GitHub - gilnett/wstrace: Standalone zero-driver Windows system and API monitor in Rust - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x1vsxm/github_gilnettwstrace_standalone_zerodriver/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/gilnett"&gt; /u/gilnett &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/gilnett/wstrace"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x1vsxm/github_gilnettwstrace_standalone_zerodriver/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">d70e6fd47776d0a29bd8898b909ad454cbcf2c055f3df1689a63cada2dac3a89</guid>
-      <pubDate>Fri, 09 Oct 2026 20:16:40 +0000</pubDate>
     </item>
   </channel>
 </rss>

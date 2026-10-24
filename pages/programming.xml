@@ -5,7 +5,25 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Fri, 23 Oct 2026 14:01:05 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 24 Oct 2026 14:00:59 +0000</lastBuildDate>
+    <item>
+      <title>Go Deh: Finding Flaws in Technical Documentation - Planet Python</title>
+      <link>http://paddy3118.blogspot.com/2026/10/finding-flaws-in-technical-documentation.html</link>
+      <description>&lt;div class="separator"&gt;&lt;p&gt;&lt;img alt="" height="362" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgu5g28dYZwp3SCcSl7g2DiwSP39DVo0a9uKYvE5DNcU9avhj-W8dQQV9-unVdhZ9_3enUxZdJbGtOoLtPpaySsz3zAR3bo75Jal1k-sISgUbRhY5v5xHNSoYjJzO4mpS_VLwYmhe8_Ktcsj2aP4lS97zZTV365xbBrfUn9zUX-mi2EpP1ZVzSv/w661-h362/image.png" width="661" /&gt;&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;br /&gt;&lt;h2&gt;&lt;span&gt;An idea&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;&lt;span&gt;I spent some time on a project and had finished updating the tutorials and reference documentation I'd created as Markdown &lt;/span&gt;&lt;code&gt;&lt;span&gt;.md&lt;/span&gt;&lt;/code&gt;&lt;span&gt; files. Then I suddenly thought:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;&lt;span&gt;Why not use the AI to test the documentation?&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;So I asked ChatGPT if it could create an isolated new chat that read just the project's &lt;/span&gt;&lt;code&gt;&lt;span&gt;.md&lt;/span&gt;&lt;/code&gt;&lt;span&gt; documentation files and then tried to use the tool.&lt;/span&gt;&lt;/p&gt;&lt;h2&gt;&lt;span&gt;Putting it to the test&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;&lt;span&gt;My current chat session said it could, created a new chat, and expanded my sentence into an initial prompt that included a lot more detail on what to do and what it could not do.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;It came back to me and said it would run and monitor the new chat and report back on any documentation deficiencies it found.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;That led to several points, some valid and some not, that I then addressed.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;One example was that the documentation didn't explicitly state that the tool was intended for Linux use. It included setup details for Linux and WSL, but that hadn't stopped the AI from trying to work out how to run it in a Windows environment.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;An obvious assumption on my part, perhaps, but one worth making explicit.&lt;/span&gt;&lt;/p&gt;&lt;h2&gt;&lt;span&gt;A new, (to me), way to review documentation&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;&lt;span&gt;I like the idea of getting AI to act as someone new to a project, trying to get something done and reporting on any problems encountered along the way.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;It's a way of testing the documentation by actually trying to follow it, rather than just asking AI to review the wording.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;Of course, the AI won't always get it right. Some of the points it raised weren't valid, so you still need to use your own judgement when deciding what to change.&lt;/span&gt;&lt;/p&gt;&lt;h2&gt;&lt;span&gt;Documentation for humans and AI&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;&lt;span&gt;You still have to make documentation approachable for any user, without requiring them to use AI. But I'd expect more of my target audience to use AI to help them work with projects.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;That means documentation has to serve two purposes: it needs to be usable by people reading it directly, but also clear enough for an AI assistant to use when helping someone get things done.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;I'm not suggesting we should write documentation just for AI. But if AI is going to be another way people interact with our projects, it makes sense to consider how well our docs support that.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;Perhaps we should be testing documentation in much the same way we test code: by seeing whether someone, or something, can actually follow it and accomplish the intended task.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;Something worth trying on your next project?&lt;/span&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">bea08b8d42135690bfb9c4b7dc6121139e64a1164c4e9b82d6568ce8a0906461</guid>
+      <pubDate>Sat, 24 Oct 2026 13:39:22 +0000</pubDate>
+    </item>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: Pandas offset aliases for resample: ME, MS, and other codes - Planet Python</title>
+      <link>https://lernerpython.com/2026/10/23/pandas-offset-aliases-for-resample-me-ms-and-other-codes/</link>
+      <description>&lt;img alt="Pandas offset aliases for resample: ME, MS, and other codes" class="wp-image-18442" height="1205" src="https://lernerpython.com/wp-content/uploads/2026/10/2026-10-23-scaled.png" width="2560" /&gt;
+&lt;p class="wp-block-paragraph"&gt;Using resample in Python Pandas? You&amp;#8217;ll want a list of &amp;#8220;offset aliases,&amp;#8221; the codes that let you specify units.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Some are surprising, such as &amp;#8220;ME&amp;#8221; and &amp;#8220;MS&amp;#8221; for &amp;#8220;month end&amp;#8221; and &amp;#8220;month start&amp;#8221;.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;They&amp;#8217;re at: https://pandas.pydata.org/docs/user_guide/timeseries.html#offset-aliases&lt;/p&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/10/23/pandas-offset-aliases-for-resample-me-ms-and-other-codes/"&gt;Pandas offset aliases for resample: ME, MS, and other codes&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">782e2562e1847aa021e0293bbaa93e96ae11799e2b10611d3090a1e4e756f1c2</guid>
+      <pubDate>Fri, 23 Oct 2026 06:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Daniel Roy Greenfeld: TIL: How to extract subtitles from video - Planet Python</title>
       <link>https://daniel.feldroy.com/posts/til-2026-10-how-to-extract-subtitles-from-video</link>
@@ -33,6 +51,55 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       <guid isPermaLink="false">729e1466e9ae25987d6ab4d4ace266d4d3a6430757475dae0f5fb7ad5e66113a</guid>
       <pubDate>Thu, 22 Oct 2026 15:40:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>Rodrigo Girão Serrão: Module profiling overview - Planet Python</title>
+      <link>https://mathspp.com/blog/module-profiling-overview</link>
+      <description>&lt;img alt="" src="https://mathspp.com/images/4/6/b/6/2/46b62590c15912af246750abb89bda0b7e997d47-thumbnail.webp" /&gt;
+                                &lt;p&gt;Learn about the new module profiling that was introduced in Python 3.15 to organise the built-in profiling tools.&lt;/p&gt;
+&lt;p&gt;The standard library module &lt;code&gt;profiling&lt;/code&gt; organises the built-in profiling tools that Python has into a single namespace.
+Introduced in Python 3.15, it gives access to two different profilers: a sampling profiler called Tachyon, and a tracing profiler.&lt;/p&gt;
+&lt;p&gt;This article will present an overview of those two profilers.&lt;/p&gt;
+&lt;h2 id="15-days-of-python-3-15"&gt;15 days of Python 3.15&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#15-days-of-python-3-15"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;To &lt;a href="https://mathspp.com/python-315"&gt;celebrate the release of Python 3.15&lt;/a&gt;, over the next 15 business days I'll be writing about a new 3.15 feature every day.
+Explained clearly and with examples so you don't have to sift through the changelog.&lt;/p&gt;
+&lt;p&gt;Subscribe to receive this free email series:&lt;/p&gt;
+&lt;p&gt;
+&lt;/p&gt;&lt;div class="form-wrapper" id="enroll-wrapper"&gt;
+&lt;form action="https://mathspp.com/courses/uv" class=" " id="enroll" method="POST" name="enroll"&gt;
+                          &lt;input class="form-honeybear" name="data[honeypot]" tabindex="-1" type="text" value="" /&gt;&lt;div class="form-field form-group "&gt;
+          &lt;div class="form-data"&gt;
+                        &lt;div class="form-input-wrapper "&gt;
+                                    &lt;input class="form-input " name="data[email]" type="email" value="" /&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+  &lt;/div&gt;
+            &lt;div class="form-field form-group "&gt;
+            &lt;div class="form-label-wrapper"&gt;&lt;label class="form-label"&gt;&lt;/label&gt;
+      &lt;/div&gt;
+        &lt;div class="form-data"&gt;
+            &lt;div class="g-recaptcha-container"&gt;
+                                &lt;input name="data[token]" type="hidden" value="" /&gt;&lt;input name="data[action]" type="hidden" value="af8eed9d71978f32d3d439876cc79ea6" /&gt;&lt;/div&gt;
+            &lt;/div&gt;
+  &lt;/div&gt;
+        &lt;input name="__form-name__" type="hidden" value="enroll" /&gt;&lt;input name="__unique_form_id__" type="hidden" value="tgsfcpjelgbmrybqysjc" /&gt;&lt;input class="form-nonce-field" name="form-nonce" type="hidden" value="a0e3b961bf91da34346f598a7a90eff8" /&gt;&lt;div class="button-wrapper"&gt;
+  &lt;button class="btn " type="submit"&gt;Enroll for free &amp;#128013;&amp;#128640;&lt;/button&gt;
+        &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+&lt;p&gt;If you want, you can also &lt;a href="https://mathspp.com/python-315"&gt;check the schedule&lt;/a&gt; of the upcoming emails.&lt;/p&gt;
+&lt;h2 id="historical-note"&gt;Historical note&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#historical-note"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Before Python 3.15, Python had a module in the standard library called &lt;code&gt;profile&lt;/code&gt;.
+The module &lt;code&gt;profile&lt;/code&gt; was a pure-Python profiler that was of little practical use.
+This module was deprecated in Python 3.15 and is scheduled for removal in Python 3.17.&lt;/p&gt;
+&lt;p&gt;In addition to the pure-Python module &lt;code&gt;profile&lt;/code&gt;, Python 3.14 and earlier included a tracing profiler called cProfile.
+This profiler now lives under &lt;code&gt;profiling.tracing&lt;/code&gt; and it's one of the tools you'll learn about in this article.&lt;/p&gt;
+&lt;h2 id="understanding-the-two-python-profilers"&gt;Understanding the two Python profilers&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#understanding-the-two-python-profilers"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The Python standard library provides two profilers under the module &lt;code&gt;profiling&lt;/code&gt;:&lt;/p&gt;
+&lt;ol&gt;&lt;li&gt;&lt;code&gt;profiling.sampling&lt;/code&gt;: a statistical profiler that uses high-frequency sampling to profile your code with virtually zero overhead. This profiler is commonly known as Tachyon.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;profiling.tracing&lt;/code&gt;: a tracing profiler that instruments your code to profile your code deterministically but with some overhead. This profiler used to be called cProfile.&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;The key difference between...&lt;/p&gt;</description>
+      <guid isPermaLink="false">b736acdadb974acae4310f6ac7c85028019dcf1f8ba8d0ac3d056cc17f23f354</guid>
+      <pubDate>Thu, 22 Oct 2026 13:23:00 +0000</pubDate>
     </item>
     <item>
       <title>Tryton News: Information regarding eMudhra / emSign CA certificate security incident - Planet Python</title>
