@@ -5,7 +5,43 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sat, 24 Oct 2026 14:00:58 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 25 Oct 2026 14:00:43 +0000</lastBuildDate>
+    <item>
+      <title>I've partially reverse-engineered Oblivion Remastered with Claude to fix its performance (+40% FPS in my benchmark scenario) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xeyph9/ive_partially_reverseengineered_oblivion/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/LTSharpe"&gt; /u/LTSharpe &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/LTSharpe/OblivionRemasteredPerformanceFix/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xeyph9/ive_partially_reverseengineered_oblivion/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">d33ebcdb0673d5de4ba0772db0cb1e7ffd8d1bd5797badce774f3836775f1145</guid>
+      <pubDate>Sun, 25 Oct 2026 10:16:09 +0000</pubDate>
+    </item>
+    <item>
+      <title>scLock: A 256-Slot Polymorphic Non-Linear MBA (Z_2^64) VM Bound to the Apple Secure Enclave — Public macOS arm64 CrackMe &amp; Write-Up - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xew4z6/sclock_a_256slot_polymorphic_nonlinear_mba_z_264/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/relay_si"&gt; /u/relay_si &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/planners1490/sclock"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xew4z6/sclock_a_256slot_polymorphic_nonlinear_mba_z_264/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">1bababbb34d80cd04058aaa6d5b71e5fd5b50f0600ace7bf63fd478687fc3d1c</guid>
+      <pubDate>Sun, 25 Oct 2026 07:38:33 +0000</pubDate>
+    </item>
+    <item>
+      <title>OpenAI AI Agents Demonstrate VM Escapes and Secret Cross-Sandbox Communication - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/openai-ai-agents-demonstrate-vm-escapes.html</link>
+      <description>OpenAI has announced plans to conduct frontier model training with no live internet access, as it resumes reinforcement learning (RL) training and internal inference of its most advanced AI models.
+"Based on the current state of alignment research, monitoring systems, and the security of internet infrastructure, we believe the responsible approach is to conduct frontier model training with no</description>
+      <guid isPermaLink="false">aed8ce128380fc745639f67c260b45ebcc03da31c97807d78946b3f5e378714b</guid>
+      <pubDate>Sun, 25 Oct 2026 06:54:29 +0000</pubDate>
+    </item>
+    <item>
+      <title>I built a tiny multiplayer game whose only purpose is to be reverse engineered — Lab 1 (derive the whole protocol from a pcap) is free - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xepsq0/i_built_a_tiny_multiplayer_game_whose_only/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Possible-Visual-7909"&gt; /u/Possible-Visual-7909 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://merunefleuruwu.github.io/driftlight/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xepsq0/i_built_a_tiny_multiplayer_game_whose_only/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">6087092bd1c31f7d652b6404ca8d5d7b942a8dda6428661903193910d0bfc486</guid>
+      <pubDate>Sun, 25 Oct 2026 01:44:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>NativeMirror - PE-sieve functionality in pure Object Pascal, including HollowsHunter integration (as native Delphi written Dll) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xecayr/nativemirror_pesieve_functionality_in_pure_object/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/kargira"&gt; /u/kargira &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/habanada/NativeMirror"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xecayr/nativemirror_pesieve_functionality_in_pure_object/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">6fdeb97ded2051048a7b73b66f9d3a91819f18140bedca91b206f9dc47d542ac</guid>
+      <pubDate>Sat, 24 Oct 2026 15:59:13 +0000</pubDate>
+    </item>
     <item>
       <title>Android: Promon Shield reversal &amp; bypass - Reverse Engineering</title>
       <link>https://www.reddit.com/r/ReverseEngineering/comments/1xe93em/android_promon_shield_reversal_bypass/</link>
@@ -75,6 +111,20 @@ The critical-severity vulnerabilities are listed below -
   CVE-2026-110447 (CVSS score: 9.2) - An operating</description>
       <guid isPermaLink="false">1d2db2256a14a8af1aac24d140302f825f0e1a63e95320e3ad173c1a57254383</guid>
       <pubDate>Sat, 24 Oct 2026 06:25:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>Node.js -- multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/33a752ba-4cbe-46d8-abda-587011d90575.html</link>
+      <description/>
+      <guid isPermaLink="false">0d64c2bce45ca5d6d2f17d488a8072a635f7cebdf6595c8e20eaac19d26c69bd</guid>
+      <pubDate>Sat, 24 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>traefik -- ForwardAuth vulnerability - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/67ba2e09-cff9-11f1-a264-5404a68ad561.html</link>
+      <description/>
+      <guid isPermaLink="false">fc5ce6311b6c72a2120432422b9bc3af59d6d0d933316ee3e7d0a57aceb790c3</guid>
+      <pubDate>Sat, 24 Oct 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>BlackX UEFI Bootkit Bypasses Secure Boot on Patched Windows Systems Missing Revocations - The Hacker News</title>
@@ -1486,55 +1536,6 @@ The activity, which brings together commodity offensive tools like Cobalt Strike
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/raoarjun1234"&gt; /u/raoarjun1234 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/arjunprakash027/murmur/blob/main/docs/HOW_IT_WAS_BUILT.md"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x3gxbn/reverse_engineering_wispr_flows_dictation_flow/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">c22677a2683d6ecc10ad14514d239022420ae4a003f8abe686db16b27951e1d4</guid>
       <pubDate>Sun, 11 Oct 2026 19:20:43 +0000</pubDate>
-    </item>
-    <item>
-      <title>How Games Are Decompiled: Reverse Engineering Byte by Byte - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x3d2ko/how_games_are_decompiled_reverse_engineering_byte/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/r_retrohacking_mod2"&gt; /u/r_retrohacking_mod2 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.youtube.com/watch?v=Pl7ThC4PiVA"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x3d2ko/how_games_are_decompiled_reverse_engineering_byte/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">0c228ac97dd22a5584e6497f283d272d2f339e333a8472655806cfb5ce1a05f6</guid>
-      <pubDate>Sun, 11 Oct 2026 16:49:28 +0000</pubDate>
-    </item>
-    <item>
-      <title>APKX-Hunter: A C-Based Android Reverse Engineering &amp; Static Analysis Framework with an Interactive Shell, MASVS-oriented pattern checks and ML-Based Detection - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x3bssc/apkxhunter_a_cbased_android_reverse_engineering/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/SyscallX__18113"&gt; /u/SyscallX__18113 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/SyscallX-18113/Apkx-Hunter"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x3bssc/apkxhunter_a_cbased_android_reverse_engineering/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">36f9df042da92541fdbeac12cea772e9b9f2c654f4e07e2ba06b4a1efa468105</guid>
-      <pubDate>Sun, 11 Oct 2026 15:59:10 +0000</pubDate>
-    </item>
-    <item>
-      <title>just a collection of some undocumented anti debug tricks i've found while reversing and messing around with debuggers. - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x3bpp5/just_a_collection_of_some_undocumented_anti_debug/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Fine-Light-10"&gt; /u/Fine-Light-10 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/metixw/anti-debug"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x3bpp5/just_a_collection_of_some_undocumented_anti_debug/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">4245a4eb1a047a3330429f244c122cfb91dd0f6441349a441c43523b3bad6bc9</guid>
-      <pubDate>Sun, 11 Oct 2026 15:55:43 +0000</pubDate>
-    </item>
-    <item>
-      <title>Complete REPL for Hermes Bytecode Reverse-Engineering (React Native's apps). Includes disassembling, decompiling, patching, reassembling. Just published! - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x3b3lf/complete_repl_for_hermes_bytecode/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/X_vale_X"&gt; /u/X_vale_X &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/xV4L3x/hermit"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x3b3lf/complete_repl_for_hermes_bytecode/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">e3f021ac86be5d549b4112651a8743466b1c431a6fbc62e6d733d253ed95627a</guid>
-      <pubDate>Sun, 11 Oct 2026 15:30:17 +0000</pubDate>
-    </item>
-    <item>
-      <title>Reverse engineering a commercial spatial audio effect - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x3akof/reverse_engineering_a_commercial_spatial_audio/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/epestr"&gt; /u/epestr &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="http://epestr.com/blog/reverse-engineering-a-commercial-spatial-audio-effect/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x3akof/reverse_engineering_a_commercial_spatial_audio/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">ebd099f78134cf3b566024224e89f3bc24e57fc2d85a332cc791624f8276cd75</guid>
-      <pubDate>Sun, 11 Oct 2026 15:08:49 +0000</pubDate>
-    </item>
-    <item>
-      <title>Patched a local serial check in an old 32-bit game after registry fakes and injectors failed under EDR - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x35q5e/patched_a_local_serial_check_in_an_old_32bit_game/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/tianx9370"&gt; /u/tianx9370 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://gist.github.com/apacchi/da3bf9445a16f6fdc8c2c9c6be9ef944"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x35q5e/patched_a_local_serial_check_in_an_old_32bit_game/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">cd5d203ea050b2d4401e958ff98fa813ccf99a2ce8db8c34da3a62e5a323a55c</guid>
-      <pubDate>Sun, 11 Oct 2026 11:21:01 +0000</pubDate>
-    </item>
-    <item>
-      <title>EntropyStrip: finding hidden payloads when naive Shannon entropy misses them - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x34rqb/entropystrip_finding_hidden_payloads_when_naive/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Pristine-Sign3680"&gt; /u/Pristine-Sign3680 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/dwexi/entropystrip"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x34rqb/entropystrip_finding_hidden_payloads_when_naive/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">8ec5550456d7641dbf734c2a21659d68b74f17d8ccb38c6e9cfb1bf6624809b0</guid>
-      <pubDate>Sun, 11 Oct 2026 10:25:20 +0000</pubDate>
     </item>
   </channel>
 </rss>
