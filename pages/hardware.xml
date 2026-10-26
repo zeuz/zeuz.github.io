@@ -5,7 +5,86 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Hardware category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sun, 25 Oct 2026 14:00:44 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Oct 2026 14:00:42 +0000</lastBuildDate>
+    <item>
+      <title>Hiding Virtualization From Other Software - Hack a Day</title>
+      <link>https://hackaday.com/2026/10/26/hiding-virtualization-from-other-software/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="484" src="https://hackaday.com/wp-content/uploads/2017/10/computers.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;The Kernel-based Virtual Machine (KVM) allows Linux systems to function as hypervisors without needing any extra software, but VMs created with it don&amp;#8217;t behave exactly like real hardware does. Sometimes that&amp;#8217;s important, though, so [sandwich] built &lt;a href="https://git.archworks.co/sandwich/vfio-native" target="_blank"&gt;a tool called vfio-native that obscures the fact that software might be running in a virtual machine&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There are plenty of the ways that virtual hardware differs from bare metal. The VM may behave slightly differently for obscure instructions in ways that are measurable, it may take slightly longer to perform some tasks, or the hypervisor may simply announce itself directly. vfio-native includes some kernel patches that solve some bugs which address the different behaviors, changes the way that the kernel identifies itself, and attempts to force the CPUs to behave in ways that real hardware would behave. With all of this applied to the virtual machine, it scores a 1/85 against a VM detection tool, with a standard KVM virtual machine scoring 10/85.&lt;/p&gt;
+&lt;p&gt;For anyone looking to test this out, it&amp;#8217;s available in the AUR for Arch Linux. Also, it&amp;#8217;s probably worth mentioning that there are more reasons to use this than cheating at &lt;em&gt;Counter-Strike&lt;/em&gt;. For example, security researchers testing malware need to know how that software behaves when it thinks its on real hardware, and some may behave in benign ways when confined to virtual machines. Some licensed software also may disable itself when it detects its running in a VM, which can be a nuisance for things like software controlling industrial tools which only run on operating systems that are no longer maintained or hardware that can&amp;#8217;t be found anymore. &lt;a href="https://hackaday.com/2025/10/27/making-a-virtual-machine-look-like-real-hardware-to-malware/"&gt;Some other tools we&amp;#8217;ve seen before perform similar tasks&lt;/a&gt; as well.&lt;/p&gt;</description>
+      <guid isPermaLink="false">b1c93f8b47d2aa051e9610acb5a3fd42cf1378a3aabac2d2120311502749762b</guid>
+      <pubDate>Mon, 26 Oct 2026 11:00:56 +0000</pubDate>
+    </item>
+    <item>
+      <title>Name that Ware, October 2026 - bunnie's blog</title>
+      <link>https://www.bunniestudios.com/blog/2026/name-that-ware-october-2026/</link>
+      <description>&lt;p class="wp-block-paragraph"&gt;The Ware for October 2026 is shown below:&lt;/p&gt;
+&lt;figure class="wp-block-image size-large"&gt;&lt;a href="https://bunniefoo.com/ntw/ntw_oct_2026_front.jpg"&gt;&lt;img alt="" src="https://bunniefoo.com/ntw/ntw_oct_2026_front_sm.jpg" /&gt;&lt;/a&gt;&lt;/figure&gt;
+&lt;p class="wp-block-paragraph"&gt;Another contribution from FETguy and &lt;a href="https://renewcomputers.com/"&gt;Renew Computers&lt;/a&gt;! I found this board to be interesting mainly because I always wondered how these things &lt;em&gt;worked&lt;/em&gt;. The construction reveals a trick which ended up as a surprise, at least to me!&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;A couple of administrative notes &amp;#8211; I am counting my blessings that this site is still up despite the heightened level of CVE&amp;#8217;s. This is an aging WordPress blog (its origins pre-date &amp;#8220;the cloud&amp;#8221; and HTML5!), which uses PHP at its core, and kudos to &lt;a href="https://www.pair.com/"&gt;Pair Networks&lt;/a&gt; for being on top of it and keeping this bit of infrastructure up and running. That being said, I don&amp;#8217;t think we&amp;#8217;re out of the thick of it so I fully expect some downtime in the near future.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Also, if you&amp;#8217;re wondering what I&amp;#8217;m up to on Baochip, I do &lt;a href="https://discord.gg/YTCTZBTPNa"&gt;weekly updates&lt;/a&gt; on Discord in Baochip&amp;#8217;s #the-commit-log channel. I only cross-post long-read technimaterials and the monthly name that ware to the blog, keeping in line with my historical practices here.&lt;/p&gt;</description>
+      <guid isPermaLink="false">c72649f977746146edc429924b90900bc8ff94ebe09d3f8eac0392bec0318468</guid>
+      <pubDate>Mon, 26 Oct 2026 08:02:21 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hairy Armor For Combat Robot? It’s Not Terrible! - Hack a Day</title>
+      <link>https://hackaday.com/2026/10/26/hairy-armor-for-combat-robot-its-not-terrible/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/10/I-made-a-HAIRY-combat-robot-in-48hrs-26-38-screenshot.png?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;[Angus] of &lt;em&gt;Maker&amp;#8217;s Muse&lt;/em&gt; enjoys combat robotics, in which contenders zip about in an arena, attempting to disable one another with weapons that lift, spin, and smash. He got a funny idea a short while ago and wondered whether &lt;a href="https://www.youtube.com/watch?v=c0_OhAfTF-Q" target="_blank"&gt;a stiff mane of bristles could serve as lightweight, ablative, impact resistant armor&lt;/a&gt;?&lt;/p&gt;
+&lt;p&gt;Just to set the stage, [Angus]&amp;#8217;s new robot competes in the plastic antweight (or &amp;#8220;plant&amp;#8221;) division, in which robots are limited to 150 grams with both chassis and weapons made of plastic. In such circumstances, one can see how a mane of thick, rigid &amp;#8220;hairs&amp;#8221; might actually punch above its weight, so to speak.&lt;/p&gt;
+&lt;figure class="wp-caption alignright" id="attachment_1354545" style="width: 400px;"&gt;&lt;a href="https://hackaday.com/wp-content/uploads/2026/10/I-made-a-HAIRY-combat-robot-in-48hrs-19-53-screenshot-thumb.png" target="_blank"&gt;&lt;img alt="" class="wp-image-1354545 size-medium" height="400" src="https://hackaday.com/wp-content/uploads/2026/10/I-made-a-HAIRY-combat-robot-in-48hrs-19-53-screenshot-thumb.png?w=400" width="400" /&gt;&lt;/a&gt;&lt;figcaption class="wp-caption-text" id="caption-attachment-1354545"&gt;The green shape at the bottom is a spinning weapon. The bristles cover the sides and rear.&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;Nothing settles a question like a good experiment, so [Angus] sat down and redesigned his latest robot to replace its outer shell with a thick wad of bristles, in the style of a &lt;a href="https://hackaday.com/2017/02/13/ingenious-use-of-3d-printer-gives-simba-the-mane-he-deserves/"&gt;3D printed lion&amp;#8217;s mane&lt;/a&gt;. Filament is bridged between the model and an outer support structure, which is cut away afterwards to expose the &amp;#8220;hairs&amp;#8221;.&lt;/p&gt;
+&lt;p&gt;How well did it perform? Well enough to merit further study! Where past robots got their outer shells broken up, the hairy robot seems to have come through quite intact. It seems the idea might not be as silly as it first seemed, at least in the plastic antweight division.&lt;/p&gt;
+&lt;p&gt;3D printers have been fantastic in the field of combat robotics. First they were great because they made custom parts easier and more accessible to hobbyists, but things have evolved more since then. Now folks compete by putting motors and electronics inside almost entirely 3D printed robots. There&amp;#8217;s never been a better time to get into combat robotics, and experiment with unorthodox designs.&lt;/p&gt;
+&lt;p&gt;If you want to try a hairy robot for yourself, be sure to watch the followup in which [Angus] &lt;a href="https://www.youtube.com/watch?v=MbTFubw-354" target="_blank"&gt;improves the hair-generating process considerably&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">83cc63149b5a7dc9f3a9359aedbce6eeb2f2834429096bca03f9baea27eefbe1</guid>
+      <pubDate>Mon, 26 Oct 2026 08:00:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>Building a Swashplate-less Helicoper Rotor - Hack a Day</title>
+      <link>https://hackaday.com/2026/10/25/building-a-swashplate-less-helicoper-rotor/</link>
+      <description>&lt;div&gt;&lt;img alt="A 3D-printed propeller is shown mounted on a motor on a triangular test stand. Each corner has a load cell, and wires run from it to the right." class="attachment-large size-large wp-post-image" height="449" src="https://hackaday.com/wp-content/uploads/2026/10/helicopter_propeller.png?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;A helicopter blade uses a swash plate and a set of linkages to change the angle of the blades. Not only does it vary the collective pitch to increase or decrease thrust, but it varies each blade’s pitch throughout each rotation, letting it produce more lift on one side of the rotor. This presented a problem to [worked in theory] &amp;#8212; he’s building an RC helicopter from scratch, and this mechanism added both complexity and weight. Instead, he &lt;a href="https://www.youtube.com/watch?v=8z4W0IoFQ4g" target="_blank"&gt;started looking for a way to get around the problem&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There were two options to eliminate the linkages: a linkage-less swashplate design used in Black Hornet drones, and an under-actuated design using angled hinges to control the blade angle. [worked in theory] started with the Black Hornet design, which has the end of each blade run along the swashplate on wheels, while a central spring presses them down. Friction in the hinge and wheels proved too high, and it stopped responding at higher speeds. A second, lower-friction design seemed promising, but it still required actuators, and thus weight, to control the swashplate. [worked in theory] therefore moved on to the under-actuated approach. In this design, the blades are mounted on angled hinges &amp;#8212; by varying the motor’s speed throughout each rotation, inertia causes the blades to swing backwards or forwards, changing their pitch.&lt;/p&gt;
+&lt;p&gt;[worked in theory] tested two such rotor designs: one with one hinge per rotor, and one with one hinge for both rotors. The design using a single hinge seemed less sensitive to friction, was more responsive in testing, and had a more linear control response, so he used that. To actually make the blades, [worked in theory] 3D printed them as flat blanks, then thermoformed them using printed molds. During testing, the blades needed weights added to pull them back toward the standard angle under constant rotation; fortunately, though, this had the side effect of damping out unwanted vibrations.&lt;/p&gt;
+&lt;p&gt;There’s still a long way to go before the helicopter’s finished, but this is quite an impressive start. This is the second &lt;a href="https://hackaday.com/2026/10/17/building-a-flying-drone-with-a-single-propeller/"&gt;under-actuated propeller&lt;/a&gt; we’ve seen recently, both inspired by &lt;a href="https://hackaday.com/2020/06/25/building-and-flying-a-helicopter-with-a-virtual-swashplate/"&gt;[Tom Stanton]’s original design&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;span id="more-1243330"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">8a19994c1e68b9661263cf2b037b090195a5428a6619b2636f9683a77cbbd429</guid>
+      <pubDate>Mon, 26 Oct 2026 05:00:22 +0000</pubDate>
+    </item>
+    <item>
+      <title>Transforming a Tungsten Ditelluride Monolayer into a Transistor - Hack a Day</title>
+      <link>https://hackaday.com/2026/10/25/transforming-a-tungsten-ditelluride-monolayer-into-a-transistor/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="501" src="https://hackaday.com/wp-content/uploads/2026/10/tmdc_mosfet_seok_young_min_et_al_science_2026.jpg?w=701" style="margin: 0 auto; margin-bottom: 15px;" width="701" /&gt;&lt;/div&gt;&lt;p&gt;In the world of silicon semiconductors, the process of creating transistors and similar structures involves various rounds of modifications and additions in order to create the requisite functional layers. A less involved approach would simply create these structures in-situ, with research the past years having focused on transition-metal dichalcogenide (TMDC) monolayers to do exactly this. Recently [Seok Young Min] et al. &lt;a href="https://www.science.org/doi/10.1126/science.aei2693" target="_blank"&gt;reported&lt;/a&gt; (paywalled, &lt;em&gt;Phys.org&lt;/em&gt; &lt;a href="https://phys.org/news/2026-10-2d-crystal-transistor-built-insulation.html" target="_blank"&gt;summary&lt;/a&gt;) on creating transistors in-situ in a tungsten ditelluride (WTe&lt;sub&gt;2&lt;/sub&gt;) monolayer.&lt;/p&gt;
+&lt;p&gt;By selectively changing parts of the top layer into tungsten oxide (WO&lt;sub&gt;x&lt;/sub&gt;) as an insulator and other sections into n-type WS&lt;sub&gt;2&lt;/sub&gt; and p-type WSe&lt;sub&gt;2&lt;/sub&gt; the researchers were able to create functional MOSFETs, without the normally requisite grafting on of different materials. An obvious advantage of this is that this can be done at an atomic scale, potentially achieving densities significantly higher than with industry standard silicon semiconductor technology.&lt;/p&gt;
+&lt;p&gt;WTe&lt;sub&gt;2&lt;/sub&gt; is not the only &lt;a href="https://en.wikipedia.org/wiki/Transition_metal_dichalcogenide_monolayers" target="_blank"&gt;TMDC&lt;/a&gt; that could be viable here, of course, with other researchers investigating the use of MoSe&lt;sub&gt;2&lt;/sub&gt; for a similar purpose, as in &lt;a href="https://arxiv.org/abs/1403.3176" target="_blank"&gt;this research&lt;/a&gt; by [N. Lu] et al. from 2014. This being the creation of &lt;a href="https://en.wikipedia.org/wiki/Two-dimensional_semiconductor" target="_blank"&gt;2D semiconductors&lt;/a&gt;, referring to the thin layers of these monolayer TMDCs, along with potentially other materials such as graphene.&lt;/p&gt;</description>
+      <guid isPermaLink="false">34374951d3e038497ee0233ad0df277089d7459fbc54ebf6ac7d0d3eeb06926d</guid>
+      <pubDate>Mon, 26 Oct 2026 02:00:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>A 3D Printed Marble Clock, but it’s Scrolling Text - Hack a Day</title>
+      <link>https://hackaday.com/2026/10/25/a-3d-printed-marble-clock-but-its-scrolling-text/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="453" src="https://hackaday.com/wp-content/uploads/2026/10/scrolling_marble_text_ivan_miranda_youtube.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;With the topic of marble clocks having been quite well explored at this point, it raises the question of how easy it would be to take the basic principle and create a text display using black and white marbles. As [Ivan Miranda] found out in &lt;a href="https://www.youtube.com/watch?v=wKQOMW56auA" target="_blank"&gt;a recent marble text scroller project&lt;/a&gt;, this is far from easy.&lt;/p&gt;
+&lt;p&gt;The reason why a scrolling text display was picked comes down to not wanting to be limited to a fixed number of digits. This resulted in a round wheel design, with inner steel ball bearings and a stepper motor on both the wheel and an inner selector mechanism. These respectively align the marble channels and pick the right color of marbles to be dropped into any of the wheel&amp;#8217;s slots, creating the right sequence of marbles for the target text.&lt;/p&gt;
+&lt;p&gt;Perhaps the most amazing thing about it is that it&amp;#8217;s an absolutely massive structure, yet it&amp;#8217;s all 3D printed and bolted together. It took a number of trial-and-error cycles, and debugging issues like the IR sensors getting confused by daylight, but it now mostly seems to work all right.&lt;/p&gt;
+&lt;p&gt;There are still some remaining issues, such as having to manually home the wheel before starting, and the ratio of black vs white marbles can cause unexpected gaps in the final text. Despite this the text is quite legible and definitely infinite.&lt;/p&gt;
+&lt;p&gt;&lt;span id="more-1354588"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">d6ecd6008b6f6bd958d1856ad6e121a9a49d7a6210cbcb445f63f57d2b5bb768</guid>
+      <pubDate>Sun, 25 Oct 2026 20:00:33 +0000</pubDate>
+    </item>
+    <item>
+      <title>Mesh Network Telephony Over Bluetooth on Android Phones - Hack a Day</title>
+      <link>https://hackaday.com/2026/10/25/mesh-network-telephony-over-bluetooth-on-android-phones/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="412" src="https://hackaday.com/wp-content/uploads/2026/10/MeshLive-screenshot.png?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;Telephony is a bit of a mixed bag. On the one hand, being able to talk to people in far off places is kind of neat, at least in theory. On the other hand, you&amp;#8217;re usually reliant on a centralized network, which isn&amp;#8217;t ideal to the mindset of most hackers.[Gautam]&amp;#8217;s &lt;a href="https://github.com/MeshLive/meshlive-android" target="_blank"&gt;MeshLive project&lt;/a&gt; deals with that last one, offering a decentralized mesh network solution based on Bluetooth for Android phones that can handle both voice and video.&lt;/p&gt;
+&lt;p&gt;Rather than relying on dedicated hardware, this particular mesh piggybacks on your phone, and exists only as an Android application. Calls are end-to-end encrypted for both voice and video &amp;#8212; though two-way video calling is still experimental. More testing has gone into video broadcasting, where a stream goes out one-way. The capability is available for voice, as well.&lt;/p&gt;
+&lt;p&gt;Each user has a unique identifier that can be scanned to create contacts, but it isn&amp;#8217;t otherwise clearly identifiable to everybody. You&amp;#8217;ll only appear with a random name that changes every 15 minutes to other users in range who aren&amp;#8217;t your contacts. Range is of course the Achilles heel of this project, since it&amp;#8217;s using the Bluetooth hardware of ordinary smartphones. It&amp;#8217;s possible to &lt;a href="https://hackaday.com/2026/10/24/pushing-bluetooth-out-to-12-kilometers/"&gt;extend the range of Bluetooth significantly with the right hardware&lt;/a&gt;, but we imagine most folks aren&amp;#8217;t carrying directional antennas around with them. While every phone does forward the signal to as many others as it can, it can only do so for about 20 meters.&lt;/p&gt;
+&lt;p&gt;Of course LoRa remains the protocol of choice for mesh networking, though it&amp;#8217;s &lt;a href="https://hackaday.com/2025/12/06/lessons-learned-after-trying-meshcore-for-off-grid-text-messaging/"&gt;normally used for text messages only&lt;/a&gt;. We have seen &lt;a href="https://hackaday.com/2021/06/06/qmesh-lora-mesh-networked-voice-communications/"&gt;voice packets over LoRa,&lt;/a&gt; but anything LoRa requires dedicated hardware while this only requires an app.&lt;/p&gt;
+&lt;p&gt;&lt;span id="more-1354528"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">20abbdc3e8842f829d27dee7fac12c272de6f8bfad37cef5957619117ba8fe70</guid>
+      <pubDate>Sun, 25 Oct 2026 17:00:31 +0000</pubDate>
+    </item>
     <item>
       <title>Meshtastic Pet Tracking - Hack a Day</title>
       <link>https://hackaday.com/2026/10/25/meshtastic-pet-tracking/</link>
@@ -49,6 +128,457 @@
 &lt;p&gt;&lt;/p&gt;</description>
       <guid isPermaLink="false">96f97c55d23616bbb6b660297cd31d4a381bf0c785827ecb20b7cbc2c1e50a64</guid>
       <pubDate>Sun, 25 Oct 2026 02:00:01 +0000</pubDate>
+    </item>
+    <item>
+      <title>lighting the skies - computers are bad</title>
+      <link>https://computer.rip/2026-10-25-searchlights.html</link>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Someone stated in the early days of the war, a feeling that was reciprocated
+by the soldier in khaki and the sailor in blue, that a mechanical device would
+be the determining factor in ending the world conflict, favorably, of course,
+for the United States and her allies. &lt;sup class="footnote-ref" id="fnref-1"&gt;&lt;a href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;One of my common topics is the history of &lt;a href="https://computer.rip/2025-06-19-hydronuclear-testing.html"&gt;nuclear&lt;/a&gt;
+&lt;a href="https://computer.rip/2023-11-04-nuclear-safety.html"&gt;weapons&lt;/a&gt;. The &amp;quot;atom bomb&amp;quot;
+is a rich vein of history because its impact has been as much cultural as
+technical. Dramatic depictions like Christopher Nolan's &lt;em&gt;Oppenheimer&lt;/em&gt; have
+recently enforced, perhaps even revived, the perception of nuclear weapons as an
+innovation that forever changed warfare. More quietly, historians and
+strategists tend to wonder if that is still true today, or if it was ever as
+true as was supposed—the conventional firebombing of Tokyo probably claimed as
+many victims as the nuclear attacks on Hiroshima and Nagasaki, for example.
+Besides, it's not unusual to hear people overstate the significance of nuclear
+weapons to WWII in a way that is obvious with a brief inspection of the
+timeline. The technology became available only very late in the war, and for
+that reason if no other, it must have had less of an impact on the outcome than
+other revolutionary wartime developments like radar.&lt;/p&gt;
+&lt;p&gt;Why is it that radar, a complex technology that fundamentally changed the
+landscape of aerial combat, seems so pedestrian? Perhaps because the technology
+has far more non-military applications, and so is more familiar to our everyday
+lives. Perhaps because the development of radar was scattered between countries
+and institutions without the involvement of such intriguing figureheads as J.
+Robert Oppenheimer (although one wonders if this is because we have not looked
+as close; certainly radar figures like Henry Tizard had colorful lives as well).
+Perhaps because radar just isn't as exciting: it does not put on anything like
+the show of a nuclear detonation.&lt;/p&gt;
+&lt;p&gt;Today, we consider another such step in military technology. This is an
+invention that forever changed the battlefield, and it's one that &lt;em&gt;does&lt;/em&gt; put on
+a show. In fact, that has become the technology's main purpose. From the 1870
+siege of Paris to the modern used car lot, searchlights have marked many of
+history's great conflicts—and great deals.&lt;/p&gt;
+&lt;p&gt;The concept of electric light has been known since the very early 19th century.
+An electric arc lamp, or at least one of their ancestors, was demonstrated in
+1806. Because of the widely known story of Thomas Edison's incandescent lamp,
+most people know that electric light had a very difficult journey from idea to
+practical device. That path was not as simple as what we are taught in schools:
+besides the several other inventors with a good claim to the lightbulb,
+incandescent lights were just one of a few technologies that developed in
+parallel.&lt;/p&gt;
+&lt;p&gt;Before controlled incandescence, the principal form of electric light was still
+an arc. Arc lamps also did not fall to incandescent bulbs as quickly as you
+might think. Arc lamps remained the preferred choice for very bright, high-CRI
+lighting into the mid-20th century, and reached what will likely remain their
+ultimate form in the late 1960s, as the 15 kW Xenon arc lamps used by &lt;a href="https://computer.rip/2025-06-08-Omnimax.html"&gt;IMAX
+projectors&lt;/a&gt;. Along the way, arc
+lamps displaced many of the early forms of artificial lights: Oxy-hydrogen
+candles, known as &amp;quot;limelights,&amp;quot; fell out of theatrical use. &amp;quot;Moonlight towers&amp;quot;
+began the displacement of gas lights for street lighting.&lt;/p&gt;
+&lt;p&gt;And the military—the military readily adopted this new form of reliable,
+practical, powerful lighting.&lt;/p&gt;
+&lt;h2&gt;Calling In Light&lt;/h2&gt;
+&lt;p&gt;The effect of artificial lighting on military tactics could fill a book. I will
+focus on one narrow part of this story, but it will be helpful to set the stage
+with a few of the earlier developments. For much of the pre-electricity era of
+military history, artificial lighting was mostly a disadvantage. Fires, torches,
+and other practical sources of light were bright enough to reveal one's location
+but not bright enough to search anyone else out. Ironically, the main interest
+that military researchers had in light was often to suppress or conceal it.&lt;/p&gt;
+&lt;p&gt;The chemical light technology developed for theaters and displays had promise,
+though. One of the first recorded uses of a powerful light for a military
+venture (and, as far as I can tell, the very first recorded use of a
+searchlight) came in the context of the American Civil War. The Union Navy
+sought to economically attack the Confederacy by maintaining a persistent
+blockade on southern ports; the Confederacy sought to maintain trade, often by
+sending out &amp;quot;blockade runners&amp;quot; under cover of night. A Union ship, perhaps
+frustrated by firing aimlessly into the dark, improvised: a theatrical light
+was mounted to a crude reflector, forming the first naval searchlight. It wasn't
+a very good one, it was dim and unfocused and the sailors struggled even to keep
+it lit under maritime conditions. It was good enough, though. By first following
+the sound, and then casting the light, the Union ship was able to engage the
+Confederate vessel even on a moonless night. Amusingly, while this incident is
+widely described in histories of military signals and lights, I have found none
+that state the outcome. Perhaps it was unfavorable to the victors.&lt;/p&gt;
+&lt;p&gt;Electric arc lamps were far more suitable to military use: simpler to operate
+(although not as simple as we might today expect), more flexible in their
+placement, and by the end of the Civil War brighter. The 1870 Siege of Paris,
+part of the Franco-Prussian War, was a bellwether in the history of military
+aviation. Cut off on the ground, the French made extensive use of balloons (a
+technology they had pioneered in the 18th century) to move people and mail. In
+the process, several records for aerial travel were set. The French enjoyed air
+superiority and had little need for air defense, but the situation on the ground
+was much more troublesome. Prussian forces mounted lengthy artillery
+bombardments, causing devastation limited mostly by the range of their cannons.
+For the soldiers manning Paris's fortifications, it was important not only to
+keep attackers outside of the city, but to keep them as far away as possible.&lt;/p&gt;
+&lt;p&gt;Paris, not for nothing known as the &amp;quot;City of Light,&amp;quot; had seen demonstrations of
+arc lamps back to 1850. The invention of the arc regulator (which advanced the
+carbon rods to keep the arc intact) and improved batteries made the lights more
+practical by 1870, and during the early days of the siege &amp;quot;electricians&amp;quot; were
+hastily recruited to the city's defense. They manned a variety of arc lamps
+installed around the city, limiting the cover of darkness for nighttime
+assaults. At the summit of Montmartre hill, a position with a clear view over
+one of the most vulnerable parts of the city's defense, they installed one of
+the most impressive lights ever built. Not only was it larger than the others,
+it could operate for longer: the power supply was not a battery, but a dynamo
+powered by a steam engine. Besides that leap into modern design, the Montmartre
+light also presents an early example of &amp;quot;tipping and cueing&amp;quot; in intelligence
+gathering. French intelligence agents, having caught wind of a surprise attack,
+sent a message to Montmartre where the light's skilled operators aimed it by
+heading and elevation before applying power to catch the enemy in quite a
+compromising position.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Searchlight demonstration at the Pan-American Exposition" src="https://computer.rip/static/img/searchlight/1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;A decade later, the military searchlight had become a standard technology. The
+Royal Navy regularly equipped ships with dynamo-powered, carbon-arc searchlights
+starting around 1882. They found that, besides their role in aiming weapons,
+searchlights could be something of a weapon on their own. Aiming searchlights
+back at coast defense artillery positions not only exposed them to incoming
+fire, it also dazzled the gunners and frustrated their efforts to accurately aim
+at the ships. This principle was memorably demonstrated by a 1903 US joint
+maneuver exercise, in which the Navy's Atlantic Fleet mounted a simulated attack
+on Long Island Sound. All together, on cue, the ships trained their searchlights
+on the main defensive battery at Fort Michie. The soldiers at the fort didn't
+manage a single shot, they were so blinded by the lights—and limited in their
+ability to even move around the battlements, since they could so plainly be seen
+(and fired upon).&lt;/p&gt;
+&lt;p&gt;As the military developed searchlights, they were quickly applied to civilian
+use. Limited availability of electricity, and limited need for such powerful
+lighting, meant that searchlights wouldn't yet become part of the urban
+landscape. They were reserved for special events, especially those with an
+emphasis on technical demonstrations. Of course, such events were bounteous around
+the turn of the century in the form of various world fairs and expositions.
+Perhaps the first use of searchlights as a device for entertainment came at the
+1893 Chicago World's Fair, which was extensively lit by electricity. A total of
+17,000 horsepower of steam engines (so, yes, presumably steam horsepower, a
+curiously different unit from the one we are familiar with today) powered
+thousands of arc lights.&lt;/p&gt;
+&lt;p&gt;Most of these were for illuminating the fairgrounds and its many monuments, but
+some were installed for the sake of light itself. On the roof of the Liberal
+Arts Building, a searchlight claimed to be the most powerful yet made could
+light a newspaper well enough to comfortably read at a distance of eight miles.
+Of course, it was more than just a book light—it was a way to attract attention.
+Unlike the military context, civilian searchlights were deployed specifically to
+be seen. Rooftop searchlights became a common feature of large expositions, and
+by lazily searching the sky they established an atmosphere while guiding
+curious onlookers to the site of the event.&lt;/p&gt;
+&lt;p&gt;Even this early, it was known that searchlights could be a powerful form of
+advertising. At the Chicago World's Fair, the upstart Cloud Projector Company
+demonstrated a searchlight with a lens system that could focus a slide onto
+the cloud layer. It was literally a cloud projector, in the modern sense, and
+giant words floating ethereally in the sky announced the fair's upcoming special
+events.&lt;/p&gt;
+&lt;p&gt;In 1901, the Pan-American Exposition was underway at Niagara. Among the
+attractions was a demonstration of electrical arcs produced by a 40 kV
+transformer recently installed at the Niagara Falls power station. Alongside
+that light show, a second, more controlled form of arc was displayed:
+searchlights. These were described as an application of military technology,
+and specifically of military &lt;em&gt;signaling&lt;/em&gt; technology. Searchlights were installed
+atop the &amp;quot;Electric Tower&amp;quot; at the exposition grounds, and at a viewing tower
+erected at Niagara Falls proper. At night, the two lights—22 miles apart—were
+each plainly visible from the other tower. The military was, of course, well
+aware of this potential use and as soon as searchlights had been installed on
+Navy ships they came into use as a means of communication.&lt;/p&gt;
+&lt;p&gt;Extensive newspaper coverage of the Exposition means that we know more details
+of these machines. The searchlights used for the tower demonstrations had 30&amp;quot;
+reflectors, and consumed 80 amps at about 50 volts for 4 kW give or take. This
+was indeed a very bright light for the time, and at the Exposition, the
+searchlights were swung around among various targets. &amp;quot;As the beams of the
+projectors sweep across country,&amp;quot; &lt;em&gt;The Virginian-Pilot&lt;/em&gt; wrote, &amp;quot;the residents of
+the villages and country places will enjoy the illumination.&amp;quot; Excitement for the
+lights was such that newspapers throughout the region published Morse code
+tables, in the hope that anyone in the region could decipher news bulletins that
+were sent from the signal lights.&lt;/p&gt;
+&lt;h2&gt;Watching the Skies&lt;/h2&gt;
+&lt;p&gt;Electric light is far from the only invention to make a dual appeal to spectacle
+and the military. From the Wrights' first controlled flight in 1903, it only
+took about seven years for the Navy to envision the aircraft carrier. The 1911
+Italo-Turkish war featured armed biplanes, and as the hostilities of the First
+World War opened the US Army flew airplanes into Mexico, in pursuit of Pancho
+Villa. In 1915, the Austro-Hungarian Aviation Troops bombarded the Serbian city
+of Kragujevac from biplanes. Serbian soldiers fired on them with small arms, but
+had no success. A private, though, got a lucky shot with an artillery gun. This
+was the first instance of ground-air combat, and the first use of air defense.&lt;/p&gt;
+&lt;p&gt;By the latter part of WWI, aircraft were in routine use as both bombers and
+fighters. One tended to lead to the other: our 1915 takedown notwithstanding,
+bombers and reconnaissance planes enjoyed almost complete freedom of the skies in
+the first few years of the war, until Germany's fighters presented meaningful
+resistance. Ground-based air defense lagged behind, but in an interesting turn
+of aviation history, the held-over use of tethered balloons as observation
+posts provided a key motivation for improved anti-air artillery. These balloons
+were conspicuous and almost defenseless, so ground-based escorts accompanied
+them.&lt;/p&gt;
+&lt;p&gt;Balloons—and in the case of the Germans, Zeppelins—remained an important part of
+WWI air units. Besides their ability to hang around for an extended period of
+time, airships could carry much larger payloads than early bombers. Zeppelins
+occasionally loomed over London, raining down the era's most sophisticated
+destruction, from 1915 to 1917. These lumbering vessels had their
+vulnerabilities, though. Big, slow, and flammable, they were easy to take out
+with artillery fire if you could spot them. German air raids were conducted at
+night, and by the end of the war Zeppelins were being painted a non-reflective
+black.&lt;/p&gt;
+&lt;p&gt;By 1916, a network of 258 searchlights across England hunted the skies for
+airships. There were as many anti-aircraft guns, using the pencil-beams of the
+searchlights as aiming guides. Air defense was so new at the time that little
+military doctrine had developed around it, and Britain's first searchlight units
+were found in the Royal Engineers. As in France, the searchlight
+operators were known as electricians, specifically the Electrical Engineers.&lt;/p&gt;
+&lt;p&gt;These units had actually formed prior to the outbreak of WWI, for the purpose of
+coastal defense. None other than Chief Scout Lieutenant-General Robert
+Stephenson Smyth Baden-Powell (yes, the 1st Baron Baden-Powell) had improvised
+the use of a chemical searchlight to keep ships away from a besieged town during
+the Second Boer War; the Electrical Engineers had relieved the use of chemical
+lights in South Africa when they arrived with arc lights. By 1914, the
+Electrical Engineers had six companies in London as part of the Territorial
+Army. With the outbreak of the World War they were immediately put into service,
+as were other Anti-Aircraft Searchlight companies across Britain. Soon, other
+companies were deployed closer to the front in Europe.&lt;/p&gt;
+&lt;p&gt;1910s carbon arc search lamps were not always easy to operate. Most military
+searchlights by that time were built on the back of trucks, with combustion
+engine dynamos as a power supply. A typical WWI searchlight unit had three
+lights, five trucks, and 28 soldiers. Searchlight units became a natural home
+for other air defense technologies then under development, so that by the end of
+the war some units had acoustic reflectors (for detecting aircraft by sound) as
+well.&lt;/p&gt;
+&lt;p&gt;One of the lessons learned during the First World War was that searchlights were
+quite flexible. Portable searchlights could be used for air-defense, or could be
+positioned on a hill to light the battlefield (and even dazzle attackers). A
+technique called &amp;quot;artificial moonlight&amp;quot; took advantage of the enormous output of
+carbon arc lamps by pointing a searchlight up at clouds and letting the clouds
+reflect the light back to earth. This dim illumination could help an infantry
+unit move at night; commanders had the moon on demand.&lt;/p&gt;
+&lt;p&gt;On the other hand, searchlights were vulnerable. Experiments in mounting
+searchlights on airships to light the ground were of limited success, the
+lights made the position of the airship obvious and it would quickly be shot
+down. Similarly, as air-ground combat techniques evolved, searchlights became
+the first target for incoming enemy aircraft. Destroying the searchlights meant
+that anti-air guns were firing blind.&lt;/p&gt;
+&lt;p&gt;Even after the First World War established searchlights as a defensive
+technology—their sweeping beams portending destruction—the public didn't lose
+its affection for a bright display. In an apparent homage to the use of arc
+lamps for both stage plays and film projectors, Hollywood's Egyptian Theater
+had searchlights atop its facade from its opening day. Perhaps inspired by the
+1895 installation of an ex-Chicago World's Fair searchlight in Pasadena, the
+Egyptian Theater's lights announced premieres by sweeping the sky—promotional
+searchlights learned from air defense, and ironically, the post-WWI fashion for
+major events was to aim lights upwards, rather than downwards at terrain as had
+predominated before the war.&lt;/p&gt;
+&lt;p&gt;Grauman extended the concept to his other theaters, with both permanent and
+portable lights often used at the Chinese Theater. In 1930, for the opening of
+Howard Hughes's &amp;quot;Hell's Angels,&amp;quot; 200 searchlights lined Hollywood Boulevard.
+The scene could have easily been mistaken for a major air raid, but instead it
+became part of Hollywood culture. Three years later, 20th Century Pictures
+adopted its memorable emblem, surrounded by beams of light.&lt;/p&gt;
+&lt;p&gt;Hollywood's searchlights spread beyond just theaters. In 1931, Fisher Motors
+De Soto-Plymouth on Hollywood Boulevard opened under sweeping lights.
+Auto dealerships always wanted attention, and searchlights were the perfect
+combination of electrical modernity, show business spectacle, and mystery.&lt;/p&gt;
+&lt;h2&gt;Synchro Searchlights&lt;/h2&gt;
+&lt;p&gt;Searchlight technology advanced incrementally between the First and Second World
+Wars. Carbon-arc lamps remained the underlying technology, but features like
+automatic carbon regulators (that &amp;quot;fed&amp;quot; the carbon rods towards the arc as they
+burned away) and foot switches for easy control became standard. A common
+searchlight at the beginning of WWII might range from 8 to 24 kW, and by the
+end of the war the largest units reached over 100 kW.&lt;/p&gt;
+&lt;p&gt;The greater innovation of that war was the integration of searchlights into
+electromechanical fire control systems. New electrical technology, specifically
+a clever device called a &amp;quot;synchro&amp;quot; or &amp;quot;selsyn,&amp;quot; revolutionized searchlight
+units. A synchro is a way of electrically transmitting a position. Two devices,
+similar to AC motors, are coupled by a three-phase circuit such that rotating
+one will rotate the other in proportion. The two &amp;quot;ends&amp;quot; of the synchro will
+always have the same relative position, so that by putting a synchro transmitter
+in one place and a synchro receiver in another, you can remote control the
+position of a device like a searchlight.&lt;/p&gt;
+&lt;p&gt;Synchros were immediately applied to &amp;quot;distant electric control,&amp;quot; still a common
+term in marine searchlights. One of the main problems with the searchlight has
+always been its tendency to attract enemy fire. Early searchlights often had
+two operators sitting on chairs to the back or side, cranking wheels for azimuth
+and elevation. These two operators were often killed early in the engagement. By
+the use of distant electric control, a searchlight's operators could hide some
+distance from the searchlight or even operate it from a fortified position like
+a bunker. This turned out to be a superior way of using a searchlight anyway:
+operators directly beside later searchlights were practically blinded by the
+light reflected back by dust and vapor in the air. An operator some distance to
+the side had a much easier time seeing what was at the end of the beam.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="British Searchlight Control Radar" src="https://computer.rip/static/img/searchlight/2.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;Many US air defense searchlights offered a backup, as well: a control crank at
+the end of a metal arm, called an extended hand control. Were the electrical
+control system to fail, a searchlight operator could at least stand ten or so
+feet off to the side and be that much further from incoming fire. Practical use
+of searchlights for air defense by WWII required adaptation to the better
+ground-attack capability of aircraft. Searchlights might be stored in a concrete
+bunker and rolled out on tracks for use, by soldiers who would quickly retreat
+from the searchlight to a hidden control point. If the searchlight was struck,
+the operators at least survived, and a well-equipped unit would have a second
+light ready to go. The purpose of the concrete searchlight shelters was mostly
+to ensure that a &amp;quot;spare&amp;quot; searchlight would survive the shrapnel from an attack
+on the one in use.&lt;/p&gt;
+&lt;p&gt;The synchro could also integrate searchlights with other air defense equipment.
+Early in WWII, radar had not yet been fielded, and acoustic locators remained
+the state of the art. But they were now part of a unified system: two operators
+on a set of acoustic listening horns would spin cranks to adjust horizontal and
+vertical position until the sound of an airplane's engines was loudest. By
+synchros, this position was transferred to a searchlight control station. These
+stations resembled a large pair of binoculars on a sort of articulated mount.
+The base of the control station had readouts for the azimuth and elevation from
+the acoustic locator, and the operator started by turning wheels to aim the
+remote searchlight where the locator indicated an aircraft should be present.&lt;/p&gt;
+&lt;p&gt;Once the aircraft was caught in the beam, the searchlight operator threw a
+transfer switch that placed the searchlight under control of the synchros in the
+articulations of the binocular mount. From this point on, they tracked the
+aircraft through the binoculars, and the searchlight followed automatically.
+The azimuth and elevation from the binoculars could be sent by yet other
+synchros to readouts at an anti-air control station or even directly to a firing
+computer that aimed guns.&lt;/p&gt;
+&lt;p&gt;All of this required adjusting for the different locations of each of these
+components. A combination of old fashioned fire control techniques (placing each
+station along a common base line) and analog computers did that trick, already
+well-established technologies since similar computations were needed to aim guns
+in consideration of gravity and wind.&lt;/p&gt;
+&lt;p&gt;Speaking of a common baseline, it is also worthwhile to discuss the use of
+searchlights in coast defense during WWII. For a period of the war, the US
+feared a naval attack, particularly on the West Coast. Similar systems were
+widely deployed for firing artillery at attacking ships. A set of observation
+stations, placed along a common baseline, took azimuth readings to enemy ships.
+Those readings were reported by messenger, and later transmitted by synchros, to
+a plotting room where a mechanical and later analog computer determined the
+position of the ship. Yet other computers, at fire control points, determined
+how to aim the guns.&lt;/p&gt;
+&lt;p&gt;Because this whole system relied on baseline stations visually spotting ships
+through theodolites, it was much less effective at night. Searchlights were
+added to many installations, remote controlled by synchros from the baseline
+stations. Like the azimuth-indicating spotting scopes, two searchlights trained
+on a ship from a well-surveyed baseline gave enough information to compute a
+firing solution.&lt;/p&gt;
+&lt;p&gt;Advancing technology obsoleted the whimsical acoustic locating horns. Infrared
+heat detectors, looking much like searchlights but operating more or less in
+reverse, were the first electronic means of detecting aircraft in the night.
+They soon gave way to the first radar sets. The SCR-268, introduced in 1940, was
+the US Army's first fielded radar system. Its huge beam antenna had three
+operators on a bench hanging from the back, spinning cranks to adjust the
+antenna position until oscilloscopes showed the strongest possible return. The
+SCR-268 was a drop-in replacement for the acoustic locators in searchlight
+units, but it was far more effective. Skilled radar operators could place an
+aircraft accurately enough that it was centered in the searchlight beam before
+the light was turned on. Besides giving enemy pilots quite a surprise, this
+gave them little time to evade or return fire before anti-aircraft guns were
+zeroed in from the searchlight.&lt;/p&gt;
+&lt;p&gt;The British developed a more refined version of the SCR-268 called the
+Searchlight Control Radar. It is notable for its far more compact design, small
+enough that its antennas were mounted directly to the searchlight under control.
+The result is almost cyberpunk, a 1.5 meter light bristling with antennas,
+operators hanging from the sides. The SLC is said to have raised the chances of
+spotting an inbound aircraft with the searchlight from 1% to 90%.&lt;/p&gt;
+&lt;div class="beg"&gt;
+&lt;hr /&gt;
+&lt;p&gt;I put a lot of time into writing this, and I hope that you enjoy reading
+it. If you can spare a few dollars, consider &lt;a href="https://ko-fi.com/jbcrawford"&gt;supporting me on
+ko-fi&lt;/a&gt;. You'll receive an occasional extra,
+subscribers-only post, and defray the costs of providing artisanal, hand-built
+world wide web directly from Albuquerque, New Mexico.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;p&gt;Consider a typical World War II searchlight, the GE Model 1942, introduced the
+year that its model number suggests. This 60&amp;quot; searchlight came on a trailer,
+with a second trailer up to 600 feet away for the 12 kW diesel power plant and
+the control station up to 300 feet away. What we might now call accessory
+interfaces allowed the searchlight to receive synchro signals from a locator
+and send them to a firing computer. These searchlights still required quite a
+bit of maintenance, and they provided features to ease that work, like a work
+light inside the searchlight drum for replacing the carbon rods.&lt;/p&gt;
+&lt;p&gt;The Second World War also brought about a renaissance in aerial searchlights.
+Mostly abandoned in the First World War because of their tendency to attract
+fire, searchlights returned to aircraft for a decidedly nautical use.
+Submarines, all diesel-electric during WWII, typically surfaced at night to run
+their engines and charge their batteries. The first submarine-hunting aircraft
+used compact carbon arc searchlights to pick submarines out of the dark. The
+system was remarkably effective, and prompted a change in strategy for diesel
+submarines, which had to rely on their own anti-aircraft weapons rather than
+mere stealth.&lt;/p&gt;
+&lt;p&gt;Radar complemented the searchlight, but only for a short time. Radar locators
+for searchlights were basically an interim measure, making the best use of early
+radar sets that were sensitive enough to detect aircraft but lacked the
+spatial resolution to locate them precisely. Radar engineers, especially in
+Britain, made rapid improvements. For anti-submarine warfare, for example,
+shortwave radar systems were far more sensitive. It wasn't long before radar
+could directly guide anti-aircraft weapons, as well.&lt;/p&gt;
+&lt;p&gt;Military searchlights had a role to play all the way through the Korean War, but
+a much reduced one. Anti-aircraft detection and firing is now firmly the domain
+of electronic warfare: radio waves, not light beams, search our skies.&lt;/p&gt;
+&lt;h2&gt;Surplus Light&lt;/h2&gt;
+&lt;p&gt;The declining relevance of searchlights to the military proved an enormous boon
+to their civilian use. Searchlights were tremendously expensive, so promotional
+use had been limited to major events like world's fairs. During the war, on the
+other hand, the Army had built thousands of them. Afterwards, through the War
+Surplus Administration, it parted with most of them at bargain rates.&lt;/p&gt;
+&lt;p&gt;Entrepreneurial spirits, many of them veterans of the war, purchased secondhand
+air defense searchlights and offered them for advertising. Just about any auto
+dealership could afford to hire a searchlight for a sale, and many did. In
+California, it became traditional for dealerships to bring in searchlights to
+announce the new model year.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There is a bit of moth in every human being, operators of giant searchlights
+have found. Whenever a searchlight is probing into the night sky, motorists
+are apt to go blocks, even miles out of their way to track down the source.
+[^2]&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Growing up in Portland, I remember seeing strange lights in the sky and
+searching for their origin. The searchlights utterly fascinated me, even if the
+source inevitably turned out to be another car lot. In New Mexico, promotional
+searchlights are rare, although not unheard of. The predominant weather may be a
+factor, since cloud cover makes searchlights more obvious. But it's mostly a
+matter of geography: the largest concentration of military searchlights was on
+the West Coast, and many overseas units were returned to West Coast ports. Los
+Angeles became the capital of the searchlight because they were cheapest there.&lt;/p&gt;
+&lt;p&gt;There are still WWII military surplus searchlights in promotional use, but far
+fewer than there once were. Parts are hard to come by, and the operation of
+carbon arc lamps is a less familiar skill. Most of these searchlights are eighty
+years old, and built to designs that would have been familiar one hundred years
+ago. Because of radar's dominance, the military has little need for such
+powerful lights and no longer buys them in quantity. Promotional searchlights
+have once again detached themselves from air defense, developing as a separate
+industry.&lt;/p&gt;
+&lt;p&gt;Modern searchlights use Xenon lamps, similar to carbon arcs in their use of an
+electrical arc as the light source, but far more refined. The arc is confined in
+an environment of Xenon gas, which practically eliminates electrode wear.
+Companies like Luminator make several-kW Xenon searchlights that can be mounted
+to aircraft, the main remaining use of searchlights for tactical purposes.
+Promotional systems have become much more specialized: Sky Tracker makes a
+popular system that mounts four 2 kW or 4 kW Xenon searchlights in the bed of a
+pickup truck. The four lights are attached to a common cam that rotates them in
+a &amp;quot;clover leaf&amp;quot; pattern, quite nonsensical for the historic application of air
+defense. Nonetheless, that clover leaf or vortex pattern is probably what most
+people now think of when searchlights are mentioned.&lt;/p&gt;
+&lt;p&gt;Fixed searchlights, of the type that graced so many World's Fairs, are now rare.
+The most famous in the US, if not the world, is the Luxor Sky Beam in Las Vegas.
+Often said to be the brightest light in the world, the tip of the Luxor pyramid
+contains 39 7 kW Xenon searchlights for a total of over a quarter of a megawatt,
+all fixed straight upwards. Even that light may be in its twilight years: since
+2008, it has operated at only half power.&lt;/p&gt;
+&lt;p&gt;Today, concerns of light pollution, impact on aviation, and a general sense that
+auto dealerships should not lay claim to the sky have led to a decline in
+searchlight advertising. We are perhaps fortunate that the Cloud Projector
+Company's plans for on-cloud advertising didn't pan out; our present advertising
+industry is dystopian enough. Still, I am but a moth, or at least I have the
+impulses of one. There's nothing quite like a searchlight.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Searchlights over Gibraltar during a military exercise" src="https://computer.rip/static/img/searchlight/3.jpg" /&gt;&lt;/p&gt;
+&lt;div class="footnotes"&gt;
+&lt;ol&gt;
+&lt;li id="fn-1"&gt;
+&lt;p&gt;&amp;quot;The Daily Item,&amp;quot; Lynn, Massachusetts, May 7 1919 p. 9.
+[^2]: &amp;quot;The Plain Dealer,&amp;quot; Cleveland, Ohio, July 11 1961 p. 46&lt;a class="footnote" href="#fnref-1"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
+      <guid isPermaLink="false">9690991f71a4b43ba2739e63584e7b200a3aaeae86c33f8b74aed625babd0a68</guid>
+      <pubDate>Sun, 25 Oct 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>2026 Retrocomputing Challenge: I Would Do Anything For Serial Data - Hack a Day</title>
@@ -3001,95 +3531,6 @@ END&lt;/p&gt;
 &lt;p&gt;This interface is amazing in its simplicity, and we&amp;#8217;d love to see it in other E-ink devices. It reminds us somehow of &lt;a href="https://hackaday.com/2024/07/29/a-brief-history-of-alphasmart/"&gt;AlphaSmart word processors&lt;/a&gt; &amp;#8212; which are still relevant today in large part because their &amp;#8216;file transfer&amp;#8217; mechanism is to pretend to be a USB keyboard and type the document onto your computer. As long as IPP is available, so too will you be able to get documents onto this e-reader.&lt;/p&gt;</description>
       <guid isPermaLink="false">73c5aff1df0a92daa4fc88c62c7542735807ef0adbf22bff0d72e074669121e8</guid>
       <pubDate>Thu, 10 Sep 2026 08:00:49 +0000</pubDate>
-    </item>
-    <item>
-      <title>Origami Sensors That You Can Wear - Hack a Day</title>
-      <link>https://hackaday.com/2026/09/09/origami-sensors-that-you-can-wear/</link>
-      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/09/Screenshot-2026-09-09-202135-2.png?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;Origami is a wonderful art form, but as a new project from the Shibaura Institute of Technology demonstrates, &lt;a href="https://www.shibaura-it.ac.jp/en/headline/detail/2026903_7070_148.html" target="_blank"&gt;it can also have applications in the world of wearable tech.&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;The project involved creating paper-based sensors that could be worn on the body. These sensors were designed to be self-folding into helical forms, which would allow them to adapt neatly to the wearer over a wide range of body dimensions. This was achieved by using a standard inkjet printer to print patterns onto a flat piece of paper, with the printed patterns creating a self-folding behavior in the paper itself. Copper tape was then applied to the paper in order to act as an electrode for picking up triboelectric signals and measuring galvanic skin response. The idea is that these methods could be used to quickly and easily produce custom low-cost wearable sensors for a range of applications.&lt;/p&gt;
-&lt;p&gt;We&amp;#8217;ve featured all kinds of interesting wearable hacks over the years, from &lt;a href="https://hackaday.com/2024/11/04/power-over-skin-makes-powering-wearables-easier/"&gt;power delivery via skin&lt;/a&gt; to &lt;a href="https://hackaday.com/2026/08/29/wear-your-way-out-of-ai-surveilance/"&gt;shirts that will hide you from automated surveillance system.&lt;/a&gt; If you&amp;#8217;re working on your own fancy projects that hang, clip, or dangle from the human body, don&amp;#8217;t hesitate to let us know &lt;a href="http://hackaday.com/submit-a-tip"&gt;on the tipsline.&lt;/a&gt;&lt;/p&gt;</description>
-      <guid isPermaLink="false">a4f0eacc432b06bc53533e17d5bad5933737db2ae274aa69d966dfa3d6b16ea0</guid>
-      <pubDate>Thu, 10 Sep 2026 05:00:16 +0000</pubDate>
-    </item>
-    <item>
-      <title>Local LLMs Can Work Better Than Claude, At Least For Some - Hack a Day</title>
-      <link>https://hackaday.com/2026/09/09/local-llms-can-work-better-than-claude-at-least-for-some/</link>
-      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="484" src="https://hackaday.com/wp-content/uploads/2021/08/GithubCopilot.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;This is going to be a very personal question, because when you&amp;#8217;re talking cloud vs local anything, it comes down to this: how much are you willing to pay for independence? The local option might save you long term, or it might never pay off the capital investment. It will almost certainly cost you your time to set up and maintain your own system &amp;#8212; but what you get back is independence. With LLMs, traditionally you lose quite a bit of performance, but as [Anurag Singh] &lt;a href="https://www.xda-developers.com/ditched-claude-codes-20-plan-local-llm-vs-code-getting-more-done/" target="_blank"&gt;points out on XDA Developers&lt;/a&gt;, a lesser model might actually let you get more done, depending on your workflow.&lt;/p&gt;
-&lt;p&gt;[Anurag] had been on the 20$/month plan with Anthropic when he decided that the scratch just wasn&amp;#8217;t worth the sniff&amp;#8211; he was hitting usage limits he couldn&amp;#8217;t stand at that level, but couldn&amp;#8217;t justify a higher tier of access. So he decided to try a local LLM, even though all he had was a 16 GB MacBook Air M5, not a beefy workstation. Since his workflow isn&amp;#8217;t so much &amp;#8216;vibe code the whole thing for me&amp;#8217; as &amp;#8216;help me find where I went wrong here, electronic rubber duck&amp;#8217;, Qwen2.5 Coder 14B proved more than adequate for his use case.&lt;/p&gt;
-&lt;p&gt;It can&amp;#8217;t understand all the moving parts of a large project as well as Claude can &amp;#8212; not surprising given how old it is and how much memory it has to work with &amp;#8212; but that&amp;#8217;s [Anurag]&amp;#8217;s job. He&amp;#8217;s the programmer, it&amp;#8217;s just the assistant. For his use case, he can make use of his existing hardware and having the the LLM right in VS Code is allows for a speedy workflow.&lt;/p&gt;
-&lt;p&gt;Your millage may vary, but if you want to get into locally running LLMs, we can point you at &lt;a href="https://hackaday.com/2025/01/08/running-ai-locally-without-spending-all-day-on-setup/"&gt;the easy ways to get started. &lt;/a&gt;Depending on your hardware, you might want to grab &lt;a href="https://hackaday.com/2026/07/22/industrial-gpu-adapted-for-the-desktop/"&gt;another GPU&lt;/a&gt;.&lt;/p&gt;</description>
-      <guid isPermaLink="false">18931e29e021f8f20ac27167e23d3c55d81e1e0cd4578650a5c5aedfbd70e5ac</guid>
-      <pubDate>Wed, 09 Sep 2026 23:00:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>Reverse Engineering The Philips PM5139 - Hack a Day</title>
-      <link>https://hackaday.com/2026/09/09/reverse-engineering-the-philips-pm5139/</link>
-      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/09/Screenshot-2026-09-09-202135-1.png?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;The Philips PM5139 is not famous. It won no great victories on the battlefield, nor was instrumental in changing the political landscape. It was just a useful function generator that you might find on a workbench somewhere, doing its job quietly and relatively accurately. [doctormord] has been doing the work &lt;a href="https://github.com/doctormord/Philips-PM-5139-5138A-5136-Firmware-Project" target="_blank"&gt;to reverse engineer this humble piece of hardware&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The PM5139 is poorly documented; the only existing service manual out there is for the PM5138A, a less-capable sister model. Hence, there was some value in reverse engineering the device to understand it better. Work started with two EPROM dumps capturing what Philips put in the box all the way back in the early 1990s. From there, the code was examined and tinkered with until [doctormord] felt confident to modify it and improve upon what was already there. This was achieved with the aid of an 8051 emulator that could run the code to make it obvious what was going on. The result was a custom &amp;#8220;V2.0&amp;#8221; firmware that adds six arbitrary waveforms to the function generator and &lt;a href="https://www.youtube.com/shorts/Z7uDr8r39vI" target="_blank"&gt;the ability to play simple music&lt;/a&gt;, amongst other tweaks.&lt;/p&gt;
-&lt;p&gt;We love to see old hardware given new functionality, even decades down the line, and &lt;a href="https://hackaday.com/2026/06/30/hacking-a-reverse-osmosis-water-filter-through-its-smart-faucet/"&gt;we love some good reverse engineering, too&lt;/a&gt;. Video after the break.&lt;/p&gt;
-&lt;p&gt;&lt;span id="more-1160256"&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;</description>
-      <guid isPermaLink="false">697751604cbdac08f843d29ce528f8d543bf319025a72c285e487fdbab8ab773</guid>
-      <pubDate>Wed, 09 Sep 2026 20:00:40 +0000</pubDate>
-    </item>
-    <item>
-      <title>Decoding the NEC V20 Microcode ROM - Hack a Day</title>
-      <link>https://hackaday.com/2026/09/09/decoding-the-nec-v20-microcode-rom/</link>
-      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="454" src="https://hackaday.com/wp-content/uploads/2025/09/v20_feat.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;The NEC V20 is an Intel 8088-compatible processor that features the same use of microcode, though with its own characteristics. This makes it important to use this same microcode if your goal is to create a cycle-accurate emulator of this processor, as [GloriousCow]&amp;#8217;s goal is. Cue &lt;a href="https://martypc.blogspot.com/2026/09/decoding-nec-v20-microcode.html" target="_blank"&gt;decoding the microcode ROM in a die shot&lt;/a&gt; of this CPU, in order to create a usable ROM image.&lt;/p&gt;
-&lt;p&gt;As with any fabricated ROM you can technically do it by hand, the ROM section in the die shot contained 29,928 bits which even at a pretty zippy pace would take up a considerable amount of time to parse. Here you can divide-and-conquer by handing parts of the ROM off to good friends, or you can use automation and some machine vision and theoretically get an answer as soon as you have finished writing and testing the tool.&lt;/p&gt;
-&lt;figure class="wp-caption alignright" id="attachment_1155648" style="width: 400px;"&gt;&lt;img alt="Close-up of some of the microcode bits." class="size-medium wp-image-1155648" height="302" src="https://hackaday.com/wp-content/uploads/2026/09/nec_v20_microcode_bits_gloriouscow_blogger.png?w=400" width="400" /&gt;&lt;figcaption class="wp-caption-text" id="caption-attachment-1155648"&gt;Close-up of some of the microcode bits.&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;p&gt;Although [Travis Goodspeed]&amp;#8217;s &lt;a href="https://github.com/travisgoodspeed/maskromtool" target="_blank"&gt;MaskRomTool&lt;/a&gt; exists exactly to automate bit detection, it was found that there wasn&amp;#8217;t enough contrast in the die shot for it to work reliably. What it did provide were the locations of the bits and from it 42&amp;#215;42 pixel PNG files of each bit.&lt;/p&gt;
-&lt;p&gt;Next a convolutional neural network (CNN) was trained to determine the difference between a 0 and 1 bit. This still took the manual classifying of 1,000 images, but seemed to work fairly well. Although some bits were marked as ambiguous, it was easy enough to use Mark 1 eyeballs to run a classification on these handful of images than to tweak the CNN model.&lt;/p&gt;
-&lt;p&gt;With this microcode in hand it was then possible to match it against the V20&amp;#8217;s internal architecture to fully determine what each part does. Although not quite finished yet, there&amp;#8217;s a &lt;a href="https://github.com/dbalsom/x86_microcode/tree/main/v20" target="_blank"&gt;GitHub repository&lt;/a&gt; containing the progress so far.&lt;/p&gt;
-&lt;p&gt;The V20&amp;#8217;s microcode has been the focal point of &lt;a href="https://hackaday.com/2023/11/07/intel-v-nec-the-case-of-the-v20s-microcode/"&gt;much legal fighting&lt;/a&gt; back when NEC and Intel were still duking it out in how far one could make a CPU compatible with that of a competitor.&lt;/p&gt;</description>
-      <guid isPermaLink="false">f6969c23f1462b816758f0ca1c68b541a8e5e7973e64bab6b8199060eed3164d</guid>
-      <pubDate>Wed, 09 Sep 2026 11:00:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>Sick of Wayland vs. Xorg? How about GEM? - Hack a Day</title>
-      <link>https://hackaday.com/2026/09/09/sick-of-wayland-vs-xorg-how-about-gem/</link>
-      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="449" src="https://hackaday.com/wp-content/uploads/2026/09/gem_desktop_linux_169.png?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;Between lawsuits from Apple, and Microsoft being Microsoft, Digital Research&amp;#8217;s GEM desktop for DOS never really had a chance. It did have another life on Atari home computers, but it&amp;#8217;s the DOS version that provided the code for [Tomaz Stih]&amp;#8217;s Linux port of the &lt;a href="https://github.com/triglav-os/gem" target="_blank"&gt;GEM graphical desktop&lt;/a&gt; &amp;#8212; which isn&amp;#8217;t a WM or DE for X or Wayland, for the record. It is entirely it&amp;#8217;s own graphical display that will live in the framebuffer of a minimal Linux installation.&lt;/p&gt;
-&lt;p&gt;[Thomaz] is leveraging DR&amp;#8217;s original code &amp;#8212; or at least what started as DR&amp;#8217;s code before a series of acquisitions and open sourcing &amp;#8212; via OpenGEM and FreeGEM. Sample applications include the clock and calendar, but [Thomaz] says the APIs are compatible with Atari ST applications; presumably given the codebase the it will match the DOS version as well.&lt;/p&gt;
-&lt;p&gt;Much like when it was originally crushed betwixt Macintosh System and Microsoft Windows, we doubt many will be rushing out to use GEM instead of Wayland or XServer on Linux, but there may well be some use cases. If nothing else, it&amp;#8217;s got to be lightweight.&lt;/p&gt;
-&lt;p&gt;If you missed the Digital Research GEM saga, &lt;a href="https://hackaday.com/2025/09/18/a-gem-of-a-desktop-environment/"&gt;this might get you up to date&lt;/a&gt;. If the idea of it running on Linux tickles your funny bone, you might enjoy seeing &lt;a href="https://hackaday.com/2022/12/20/see-the-atari-gem-desktop-running-on-a-portable-word-processor-thing/"&gt;GEM on an AlphaSmart word processor.&lt;/a&gt;&lt;/p&gt;</description>
-      <guid isPermaLink="false">b90667d9a95b48730a3dffece1682640c2a2c1846888f6e700452bfb0d07f842</guid>
-      <pubDate>Wed, 09 Sep 2026 08:00:51 +0000</pubDate>
-    </item>
-    <item>
-      <title>One Bit Sound with the ZX Spectrum - Hack a Day</title>
-      <link>https://hackaday.com/2026/09/08/one-bit-sound-with-the-zx-spectrum/</link>
-      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="318" src="https://hackaday.com/wp-content/uploads/2026/09/zx.png?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;[Michael] has a thing for playing audio over beepers using a single bit. He&amp;#8217;s done it with the Apple ][ and the IBM PC. This time he turns to the &lt;a href="https://bumbershootsoft.wordpress.com/2026/09/05/zx-spectrum-experimenting-with-1-bit-sound/" target="_blank"&gt;ZX Spectrum&lt;/a&gt;. He didn&amp;#8217;t get quite as good a result &amp;#8212; at least not yet &amp;#8212; but he did manage to get some things working. He documents everything, so even though this wasn&amp;#8217;t a successful week, there&amp;#8217;s sometimes more to learn from reasonable failures than from unreasonable successes.&lt;/p&gt;
-&lt;p&gt;Of course, the whole thing relies on pulse code or pulse width modulation. Of the two techniques, PWM should produce better results. However, he wasn&amp;#8217;t able to get PWM working yet. Some other target computers drive the buzzer through a dedicated hardware timer. However, with the Spectrum, it is all software.&lt;/p&gt;
-&lt;p&gt;&lt;span id="more-1155675"&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Getting multichannel music was another algorithm, and that makes for an interesting read, too. We are sure next week there will be more, and if you are interested in this sort of thing, going back to some previous weeks will show you a lot more, too.&lt;/p&gt;
-&lt;p&gt;PCM is, of course, &lt;a href="https://hackaday.com/2025/11/14/2025-component-abuse-challenge-the-via-makes-noise-again/"&gt;nothing new&lt;/a&gt;. Sound output has come a &lt;a href="https://hackaday.com/2022/05/24/the-stm32-makes-for-a-cheap-diy-usb-soundcard/"&gt;long, long way&lt;/a&gt;.&lt;/p&gt;</description>
-      <guid isPermaLink="false">f24f8cc89e272bc45ae137bf2e85602e9fd4d600f81a06cfcba01870b726d1ec</guid>
-      <pubDate>Wed, 09 Sep 2026 05:00:40 +0000</pubDate>
-    </item>
-    <item>
-      <title>The Different Ways To Look at Negative Resistance - Hack a Day</title>
-      <link>https://hackaday.com/2026/09/08/the-different-ways-to-look-at-negative-resistance/</link>
-      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/09/negative-resistance.png?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;[lcamtuf] has &lt;a href="https://blog.coredump.cx/p/negative-resistance" target="_blank"&gt;an in-depth look at the concept of negative resistance&lt;/a&gt; that goes somewhat further than one might expect. Normally, as voltage across a resistance increases so too does the current. Negative resistance is the concept of current &lt;em&gt;decreasing&lt;/em&gt; as voltage increases. But beyond the raw concept, there are a few other ways to look at this idea.&lt;/p&gt;
-&lt;p&gt;The usual way to think about it is &lt;a href="https://hackaday.com/2019/05/08/fun-with-negative-resistance-jellybean-transistors/"&gt;negative differential resistance (NDR)&lt;/a&gt;. Not everything has a linear relationship between voltage and current, and for a device to exhibit NDR means that in certain ranges the I–V curve actually slopes downward; increasing one of voltage or current decreases the other. This kind of thing occurs in neon lamps. Once they are glowing, increasing current can result in decreasing voltage.&lt;/p&gt;
-&lt;p&gt;True negative resistance, that of a literal -100 Ω resistor, does not exist. Not in the sense of a &lt;em&gt;passive&lt;/em&gt; component, anyway. Such a device would supply power into a circuit rather than dissipating it, and would therefore require an external power source to do so. If that&amp;#8217;s not a deal breaker, then it&amp;#8217;s actually fairly simple to build one. [lcamtuf] provides a design for a device that uses an op-amp to exhibit ideal constant negative resistance. Naturally it only does so within its operating range; going beyond risks letting out the magic smoke.&lt;/p&gt;
-&lt;p&gt;Is making a literal negative resistor of practical use? Perhaps only in very specialized situations. But it is worth having a basic understanding if for no other reason than it rears its head in unusual places: the strange &lt;a href="https://hackaday.com/2019/05/16/fun-with-negative-resistance-ii-unobtanium-russian-tunnel-diodes/"&gt;tunnel diode&lt;/a&gt; comes to mind.&lt;/p&gt;</description>
-      <guid isPermaLink="false">4aa57c7eb74af04aa60b90118eb989e4bac93593696bab2644c32f7766bc46fa</guid>
-      <pubDate>Wed, 09 Sep 2026 02:00:38 +0000</pubDate>
-    </item>
-    <item>
-      <title>Are Desktop PC-ABS Prints Outperformed by Industrial FDM? Not Really - Hack a Day</title>
-      <link>https://hackaday.com/2026/09/08/are-desktop-pc-abs-prints-outperformed-by-industrial-fdm-not-really/</link>
-      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/09/Stratasys-vs-Polymaker-PC-ABS_-Industrial-vs-Desktop-3D-Printing-1-36-screenshot-banner.png?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;[Igor] of [My Tech Fun] set out to discover what differences, if any, can be found between parts printed in PC-ABS filament on an industrial 3D printer, and those from prosumer-grade machines and filament. His video is full of his usual attention to detail as he &lt;a href="https://www.youtube.com/watch?v=orRpDW-_Ehk" target="_blank"&gt;compares a test suite of parts&lt;/a&gt; printed at home in Polymaker PC-ABS with those from a Stratasys Fortus 450mc using proprietary PC-ABS filament.&lt;/p&gt;
-&lt;p&gt;PC-ABS is a filament that strives to deliver the benefits of both polycarbonate and ABS. It&amp;#8217;s durable and has fantastic impact resistance, but it costs a bit more than either PC or ABS and requires a heated chamber.&lt;/p&gt;
-&lt;figure class="wp-caption alignright" id="attachment_1155703" style="width: 400px;"&gt;&lt;a href="https://hackaday.com/wp-content/uploads/2026/09/Stratasys-vs-Polymaker-PC-ABS_-Industrial-vs-Desktop-3D-Printing-0-7-screenshot-thumb.png"&gt;&lt;img alt="" class="size-medium wp-image-1155703" height="400" src="https://hackaday.com/wp-content/uploads/2026/09/Stratasys-vs-Polymaker-PC-ABS_-Industrial-vs-Desktop-3D-Printing-0-7-screenshot-thumb.png?w=400" width="400" /&gt;&lt;/a&gt;&lt;figcaption class="wp-caption-text" id="caption-attachment-1155703"&gt;In the end, PC-ABS from a home printer compares favorably to an industrial system, at a fraction of the price.&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;p&gt;[Igor] has previously &lt;a href="https://hackaday.com/2026/06/06/stratasys-vs-bambu-lab-industrial-vs-consumer-abs-showdown/"&gt;compared industrial ABS with comsumer ABS&lt;/a&gt;, but what made him curious about PC-ABS in particular was the large difference in print temperatures between Polymaker PC-ABS, and Stratasys&amp;#8217;s own proprietary PC-ABS.&lt;/p&gt;
-&lt;p&gt;[Igor] prints Polymaker filament at 280º C in a 60-65º C  chamber, whereas the Stratasys filament prints at 325º C with a chamber temperature of 95º C. That&amp;#8217;s quite a difference. The industrial printer has over double the print time, to boot. Would test objects printed from the industrial filament, on an industrial machine, be noticeably different from those printed at home?&lt;/p&gt;
-&lt;p&gt;To find out, [Igor] orders a test suite of parts from a company with a Stratasys Fortus 450mc (who was also kind enough to take a short video of the machine in action) and prints his own on both a Prusa Core One L, and a Bambu Labs H2D. He then proceeds to compare them in a variety of ways while testing them to destruction.&lt;/p&gt;
-&lt;p&gt;What&amp;#8217;s the bottom line? The industrial prints have better dimensional accuracy, but the home prints have the edge in appearance. When it comes to performance the differences are mostly minor, and not always in the industrial system&amp;#8217;s favor. Broadly speaking, PC-ABS from the home workshop compares very favorably from an expensive industrial system and proprietary filament, at a fraction of the price. See it for yourself in the video, embedded just below.&lt;/p&gt;
-&lt;p&gt;&lt;span id="more-1155678"&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;</description>
-      <guid isPermaLink="false">b91467e1f901374c91d8aae6fe3aca0a730a488d64044624385549e490e46d96</guid>
-      <pubDate>Tue, 08 Sep 2026 20:00:26 +0000</pubDate>
     </item>
   </channel>
 </rss>

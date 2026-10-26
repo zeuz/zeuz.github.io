@@ -5,7 +5,107 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sun, 25 Oct 2026 14:00:43 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Oct 2026 14:00:42 +0000</lastBuildDate>
+    <item>
+      <title>I modified my Nikon Z7's firmware to add a 3×3 rule-of-thirds grid - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xfx0zn/i_modified_my_nikon_z7s_firmware_to_add_a_33/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Skulleton12"&gt; /u/Skulleton12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/tylermcm/WonderLanternZ7"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xfx0zn/i_modified_my_nikon_z7s_firmware_to_add_a_33/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">7d1f2439746cac512bb545d0ce4dd58874ead56df70cb55f10459b8cd731a07e</guid>
+      <pubDate>Mon, 26 Oct 2026 13:36:51 +0000</pubDate>
+    </item>
+    <item>
+      <title>RzWeb: Rizin compiled to WebAssembly, so you can do static analysis in a browser tab and nothing gets uploaded - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xfw6bd/rzweb_rizin_compiled_to_webassembly_so_you_can_do/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/IndAnony"&gt; /u/IndAnony &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/IndAlok/rzweb"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xfw6bd/rzweb_rizin_compiled_to_webassembly_so_you_can_do/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">7d9cb3ed2837731ee5e0c15ad4ea73bb83112bc0c9cdd605b5fd4519b624c28d</guid>
+      <pubDate>Mon, 26 Oct 2026 13:01:41 +0000</pubDate>
+    </item>
+    <item>
+      <title>Two Critical Wasmtime Flaws Could Let Malicious WebAssembly Modules Escape Sandboxes - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/two-critical-wasmtime-flaws-could-let.html</link>
+      <description>Two critical flaws in&amp;nbsp;Wasmtime, a WebAssembly runtime that can be built into other software, could allow a malicious WebAssembly module to escape the sandbox intended to contain it, the project's maintainers say.
+An attacker would first need a vulnerable Wasmtime build to compile a module they control, and one of the flaws affects only ARM64 systems. Fixed versions were released on</description>
+      <guid isPermaLink="false">117713dbc80386836449205d0a4f6dde4426a84e13367baae438a926280e4a5c</guid>
+      <pubDate>Mon, 26 Oct 2026 11:52:41 +0000</pubDate>
+    </item>
+    <item>
+      <title>How obfstr and litcrypt behave in compiled Rust: findings from a binary deobfuscation project - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xftajz/how_obfstr_and_litcrypt_behave_in_compiled_rust/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Odd-Sheepherder-8982"&gt; /u/Odd-Sheepherder-8982 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/VAHPEM/rust-deobf"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xftajz/how_obfstr_and_litcrypt_behave_in_compiled_rust/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">6c5ba01ab504ef6e76b634efe2ed6874d842f5669d0d7e4839b4861a9d10091e</guid>
+      <pubDate>Mon, 26 Oct 2026 10:39:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>uCreator Android Spyware Can Steal Telegram 2FA Passwords and Clone WeChat Accounts - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/ucreator-android-spyware-can-steal.html</link>
+      <description>A rentable Android spyware kit called uCreator takes over Telegram and WeChat accounts by hiding its code inside working copies of the two apps, researcher Ovi found. It only reaches people who install one of these tampered copies, spread outside the official app stores, or who run WeChat inside the kit makers' own container app.
+The kit's Telegram part matches Baohuo, a backdoor that Doctor</description>
+      <guid isPermaLink="false">3db2027dddd82e87f1c006db05ae3e03103aaf8fe9b58a0c9d3d423fd8ee3972</guid>
+      <pubDate>Mon, 26 Oct 2026 09:54:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>Microsoft 365 Token-Replay Attacks Compromise 97 Accounts at 79 Organizations - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/microsoft-365-token-replay-attacks.html</link>
+      <description>Cybersecurity researchers have disclosed a Microsoft 365 campaign that has been observed leveraging an adversary-in-the-middle (AitM) relay to capture sign-in sessions and then replay the stolen tokens to break into email accounts at 79 organizations.
+Huntress, which observed the activity between July 14 and September 22, 2026, said it detected 497 successful Microsoft 365 sign-in events across</description>
+      <guid isPermaLink="false">e5cf7f7f0893e2ebb9d14633ffcb4a3692965e8980610415cd10a84b4bd11014</guid>
+      <pubDate>Mon, 26 Oct 2026 08:35:51 +0000</pubDate>
+    </item>
+    <item>
+      <title>Gheist Uses Stolen GitHub Tokens to Steal Private Repository Secrets via Actions Logs - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/gheist-uses-stolen-github-tokens-to.html</link>
+      <description>An automated campaign is using stolen GitHub tokens to plant workflows that print a repository's secrets into its GitHub Actions logs, which the attackers then download before deleting the runs. The attacks have succeeded in private repositories and GitHub Enterprise environments, according to&amp;nbsp;an analysis&amp;nbsp;by cloud security company Wiz.
+A&amp;nbsp;GitHub safeguard&amp;nbsp;that pauses</description>
+      <guid isPermaLink="false">65b302ec36a79df7d9ac1f5ede7ccdfca1da679cd38829341c8c0ac75bc17539</guid>
+      <pubDate>Mon, 26 Oct 2026 07:49:46 +0000</pubDate>
+    </item>
+    <item>
+      <title>Malicious File in Downloads Folder Tries to Trick AI Coding Agent Into Installing Malware - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/malicious-file-in-downloads-folder.html</link>
+      <description>A malicious instruction file sitting in a developer's Downloads folder tried to make their AI coding agent install a known-malicious npm package, security firm&amp;nbsp;Forever Security said&amp;nbsp;in a report published last week.
+The company caught the attempt on a real customer's machine and stopped the agent before any code ran. It could not determine how the file got into the folder.
+The file</description>
+      <guid isPermaLink="false">e33541136a10506dbe12ef5fcd6d747f084f2a096497bb5739c788c9a821ca6a</guid>
+      <pubDate>Mon, 26 Oct 2026 06:03:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>An in-depth technical explanation of PHP2SHell - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xfbyb5/an_indepth_technical_explanation_of_php2shell/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Darmani"&gt; /u/Darmani &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.youtube.com/watch?v=6Kz4bWKoXhU&amp;amp;feature=youtu.be"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xfbyb5/an_indepth_technical_explanation_of_php2shell/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">35c2d46d45266e35b33fc43848f4b6bf5bb49a65564592e683ae9d91331559f5</guid>
+      <pubDate>Sun, 25 Oct 2026 19:51:14 +0000</pubDate>
+    </item>
+    <item>
+      <title>Unpatched Tailscale SSH Flaws Could Let a Hacked Device Reach Root on Other Servers - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/unpatched-tailscale-ssh-flaws-could-let.html</link>
+      <description>A single hacked device on a Tailscale network can be used to gain root access to other servers it can reach, according to a security researcher who published the findings this week.
+The attack requires two things: Tailscale SSH set up to allow port forwarding, and an attacker who already controls one device that the network's access rules permit to connect to the target.
+The findings were</description>
+      <guid isPermaLink="false">4f1f0d8474743d1d374bd6c34bf96320f06d3e824bacaab2903996d5e5ce209f</guid>
+      <pubDate>Sun, 25 Oct 2026 17:44:09 +0000</pubDate>
+    </item>
+    <item>
+      <title>PHP2Shell Exploitation Attempts Continue Amid Suspected N. Korea Global Scanning Activity - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/php2shell-exploitation-hits-government.html</link>
+      <description>In an update, Palo Alto Networks Unit 42 said it's retracting its earlier assessment that the post-compromise activity targeting the European government agency involved the exploitation of the PHP2Shell flaws.
+"What researchers saw was an attack against a European government agency executed in the context of a vulnerable PHP application," a spokesperson for the company told The Hacker News via</description>
+      <guid isPermaLink="false">4e51c0c07035f96a52ec0b42aa5b3c69659a7329cbd9e1828167c622049dd01b</guid>
+      <pubDate>Sun, 25 Oct 2026 17:19:46 +0000</pubDate>
+    </item>
+    <item>
+      <title>Five Open Source Ghidra SLEIGH Implementations - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xf817x/five_open_source_ghidra_sleigh_implementations/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/cascade_sparse"&gt; /u/cascade_sparse &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/aleph-void/Ghidra-Rare"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xf817x/five_open_source_ghidra_sleigh_implementations/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">bb47d984de8317afde15c8afb436016996b31d3a8e3267874ec3787ce26f2c4f</guid>
+      <pubDate>Sun, 25 Oct 2026 17:16:06 +0000</pubDate>
+    </item>
+    <item>
+      <title>Velum-VMM - Hook System Call on Modern Windows - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xf6xsk/velumvmm_hook_system_call_on_modern_windows/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/quicaa"&gt; /u/quicaa &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/Dovughs/velum-vmm"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xf6xsk/velumvmm_hook_system_call_on_modern_windows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">868ad30882b1181c801d64296cd9ef1cc296756a341f7262e7d7942aef1dc2da</guid>
+      <pubDate>Sun, 25 Oct 2026 16:33:32 +0000</pubDate>
+    </item>
     <item>
       <title>I've partially reverse-engineered Oblivion Remastered with Claude to fix its performance (+40% FPS in my benchmark scenario) - Reverse Engineering</title>
       <link>https://www.reddit.com/r/ReverseEngineering/comments/1xeyph9/ive_partially_reverseengineered_oblivion/</link>
@@ -1441,101 +1541,6 @@ The preinstalled</description>
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/tnavda"&gt; /u/tnavda &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://simonkoeck.com/writeups/google-devsite-flask-session-pickle-rce"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x45vr2/how_i_found_a_90000_remote_code_execution/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">beffac4cb3a2913cc9c7bb18ddbd7e85aa35f3315a2759ae8a3292166bfe758d</guid>
       <pubDate>Mon, 12 Oct 2026 16:05:42 +0000</pubDate>
-    </item>
-    <item>
-      <title>Ledger Finds Unauthorized Hardware Implant in CryptoBilis-Sold Wallet Amid Fund Theft Reports - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/ledger-finds-unauthorized-hardware.html</link>
-      <description>Cryptocurrency hardware maker Ledger has temporarily paused sales of its products via CryptoBilis following reports of stolen funds linked to devices sold by the reseller.
-On Friday, the company said it was investigating reports of loss of funds from users in Southeast Asia who had purchased products from CryptoBilis. The incident is said to have resulted in losses totaling more than $86</description>
-      <guid isPermaLink="false">0c99cb55222b335c24adea1ba244d6d53c1607546d30cfb77823a258a20baa03</guid>
-      <pubDate>Mon, 12 Oct 2026 11:21:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>numbat – Endpoint Visibility and Forensics for AI Coding Agents - Darknet - The Darkside</title>
-      <link>https://www.darknet.org.uk/2026/10/numbat-endpoint-visibility-and-forensics-for-ai-coding-agents/</link>
-      <description>numbat monitors Claude Code, Codex and other AI coding agents and rebuilds their sessions. Tested on a staged session; its blocking is opt-in and narrow.</description>
-      <guid isPermaLink="false">5748413c6095b2fa0ada3607241c391652e53c26a802cfea30231cffb9a29fcc</guid>
-      <pubDate>Mon, 12 Oct 2026 11:15:22 +0000</pubDate>
-    </item>
-    <item>
-      <title>Critical SonicWall SMA 1000 Flaw Targeted in 135 Exploitation Attempts After Patch - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/critical-sonicwall-sma-1000-flaw.html</link>
-      <description>Threat actors have been observed exploiting a recently disclosed critical security flaw in SonicWall Secure Mobile Access (SMA) 1000 appliances within days of public disclosure.
-The vulnerability, tracked as CVE-2026-102255 (CVSS score: 10.0), is a case of pre-authenticated server-side request forgery (SSRF) that could allow a remote attacker "to direct the appliance to issue requests on their</description>
-      <guid isPermaLink="false">74bb9af706a74c332a522e625b178633cb952c15e8e410055d55ffc27ed621a1</guid>
-      <pubDate>Mon, 12 Oct 2026 10:36:56 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Exploit CVSS 10.0 Bricksforge WordPress Flaw Enabling Unauthenticated RCE - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/attackers-exploit-cvss-100-bricksforge.html</link>
-      <description>A maximum-severity security flaw impacting the Bricksforge plugin for WordPress has come under active exploitation in the wild, according to Patchstack.
-The critical vulnerability in question is CVE-2026-85097 (CVSS score: 10.0), which allows unauthenticated attackers to upload and execute arbitrary PHP code on vulnerable WordPress websites, resulting in remote code execution (RCE). The</description>
-      <guid isPermaLink="false">37fd056a4ac53e45b4448a91af45a0dd7fb83b50f28c46800fcbe02e0f0a8cbc</guid>
-      <pubDate>Mon, 12 Oct 2026 09:02:14 +0000</pubDate>
-    </item>
-    <item>
-      <title>Writeup: getting MAXIO's MXMPTool to exclude a bad die on a MAP1202 SSD (two bugs in its die-exclusion path) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x3ws54/writeup_getting_maxios_mxmptool_to_exclude_a_bad/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/alpereinstein"&gt; /u/alpereinstein &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/sirSchrodinger/jd1024-recovery"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x3ws54/writeup_getting_maxios_mxmptool_to_exclude_a_bad/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">11242c52d640ead40b9ad66770db13840a914b2415a451e30ef72f0622a38db7</guid>
-      <pubDate>Mon, 12 Oct 2026 08:52:33 +0000</pubDate>
-    </item>
-    <item>
-      <title>CyberXero Uses Claude Code in Campaign That Stole Over 628,000 Ukrainian Records - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/cyberxero-uses-claude-code-in-campaign.html</link>
-      <description>Cybersecurity researchers have disclosed details of a two-pronged artificial intelligence (AI)-augmented initial access campaign targeting WordPress sites, e-commerce platforms, and critical infrastructure entities in Ukraine.
-The activity, which brings together commodity offensive tools like Cobalt Strike with an AI orchestration layer powered by Anthropic's Claude Code, has been attributed</description>
-      <guid isPermaLink="false">1db3e7a2a89251ffb553320485002e6aaf7a3c5f6cb9392e53b997eaf9c55814</guid>
-      <pubDate>Mon, 12 Oct 2026 07:26:12 +0000</pubDate>
-    </item>
-    <item>
-      <title>Ghidra and IDA Server! Don't need mcp bridge just run directly the script - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x3rnd2/ghidra_and_ida_server_dont_need_mcp_bridge_just/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/New_Blackberry8122"&gt; /u/New_Blackberry8122 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/oscarsantanaarias/IDA-Ghidra-bridge"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x3rnd2/ghidra_and_ida_server_dont_need_mcp_bridge_just/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">c4064413e8832e04e17251b2247254edb5f4e430b7e84ed0862a6558fdbc2e6c</guid>
-      <pubDate>Mon, 12 Oct 2026 03:43:40 +0000</pubDate>
-    </item>
-    <item>
-      <title>Korg SQ-64 Custom Firmware - Phase 1: An emulator that runs stock firmware in the browser - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x3qzmv/korg_sq64_custom_firmware_phase_1_an_emulator/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/cascade_sparse"&gt; /u/cascade_sparse &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://sq64.alephvoid.com/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x3qzmv/korg_sq64_custom_firmware_phase_1_an_emulator/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">b1872f920760de001463f1460a2a80225aac83d884a2b122d2ece80974d0c99f</guid>
-      <pubDate>Mon, 12 Oct 2026 03:07:36 +0000</pubDate>
-    </item>
-    <item>
-      <title>Reverse-engineered savegames of Planet's Edge RPG and created Bash editor - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x3q3o0/reverseengineered_savegames_of_planets_edge_rpg/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/bubblebrax"&gt; /u/bubblebrax &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://codeberg.org/weavr/planets-edge-utils"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x3q3o0/reverseengineered_savegames_of_planets_edge_rpg/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">f87fa61ed5be8017cbd0a165d4050f18b393e5ce985df02531e256d301addcac</guid>
-      <pubDate>Mon, 12 Oct 2026 02:21:31 +0000</pubDate>
-    </item>
-    <item>
-      <title>So yeah, I made a clone of Boom 3D. - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x3nmt8/so_yeah_i_made_a_clone_of_boom_3d/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Galex_The_Boomer"&gt; /u/Galex_The_Boomer &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/JVGS1111/open-boom"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x3nmt8/so_yeah_i_made_a_clone_of_boom_3d/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">9003b9b426cef50f343fb7fc5711e3477ef0ea0ea0e8334c944fad666d85dc64</guid>
-      <pubDate>Mon, 12 Oct 2026 00:15:02 +0000</pubDate>
-    </item>
-    <item>
-      <title>Timing leaks of the nonce in ECDSA, EdDSA and DSA signatures - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/07e99f22-c176-4c8f-9678-a57ba8114959.html</link>
-      <description/>
-      <guid isPermaLink="false">5124d9faea2aeb0048612b006a47cb1ca1c9bf3ce2a7da6200b3b37ddde1fd25</guid>
-      <pubDate>Mon, 12 Oct 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>ceasta: open-source disassembler, decompiler and debugger in one program. with a built-in MCP server for driving it from an AI (mac, windows, linux) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x3jhwy/ceasta_opensource_disassembler_decompiler_and/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Original-Delivery289"&gt; /u/Original-Delivery289 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/ngwg/ceasta"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x3jhwy/ceasta_opensource_disassembler_decompiler_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">812d451870af5855b4b605bd1cb50d95705addf8dde83ea2f455a2514a7b8747</guid>
-      <pubDate>Sun, 11 Oct 2026 21:04:47 +0000</pubDate>
-    </item>
-    <item>
-      <title>Reverse engineering Wispr Flow's dictation flow: Electron app, Swift helper over stdio, clipboard paste - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x3gxbn/reverse_engineering_wispr_flows_dictation_flow/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/raoarjun1234"&gt; /u/raoarjun1234 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/arjunprakash027/murmur/blob/main/docs/HOW_IT_WAS_BUILT.md"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x3gxbn/reverse_engineering_wispr_flows_dictation_flow/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">c22677a2683d6ecc10ad14514d239022420ae4a003f8abe686db16b27951e1d4</guid>
-      <pubDate>Sun, 11 Oct 2026 19:20:43 +0000</pubDate>
     </item>
   </channel>
 </rss>

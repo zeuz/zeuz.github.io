@@ -5,7 +5,101 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sun, 25 Oct 2026 14:00:43 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Oct 2026 14:00:42 +0000</lastBuildDate>
+    <item>
+      <title>The Python Coding Stack: A New Price Without Breaking the Old One • The O in SOLID - Planet Python</title>
+      <link>https://www.thepythoncodingstack.com/p/open-closed-principle-python-solid-series-ocp</link>
+      <description>&lt;p&gt;The potion shop has a special price for apprentices. They receive ten per cent off a potion&amp;#8217;s full price, including any rare-ingredient surcharge.&lt;/p&gt;&lt;p&gt;We&amp;#8217;ve visited this shop before. In &lt;a href="https://www.thepythoncodingstack.com/p/solid-single-responsibility-principle-srp-the-potion-shop-that-does-too-much"&gt;The Potion Shop That Does Too Much &amp;#8226; The S in SOLID&lt;/a&gt;, its &lt;code&gt;PotionShop&lt;/code&gt; class handled several jobs, from checking stock and recording sales to sending messages by owl. But you don&amp;#8217;t need the code in that article to follow along in this one.&lt;/p&gt;&lt;p&gt;This time, we&amp;#8217;ll stay at the same shop and focus on one part of its work: pricing. Before adding anything new, let&amp;#8217;s look at the apprentice rule the shop already has.&lt;/p&gt;&lt;p&gt;For a potion with a base price of &amp;#163;100 and a &amp;#163;20 surcharge, the calculation is:&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&lt;code&gt;&amp;#163;100 + &amp;#163;20 = &amp;#163;120
+10% off &amp;#163;120 = &amp;#163;108&lt;/code&gt;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Let&amp;#8217;s look at how this is implemented.&lt;/p&gt;&lt;h2&gt;Start with the Apprentice Price&lt;/h2&gt;&lt;p&gt;The shop&amp;#8217;s &lt;code&gt;PotionPricing&lt;/code&gt; class knows how to calculate the apprentice price. Its &lt;code&gt;.price()&lt;/code&gt; method accepts a customer type because that is part of each quote. But apprentices are the only special-price customers the shop supports so far.&lt;/p&gt;&lt;p&gt;You can follow along by putting this code in &lt;code&gt;pricing.py&lt;/code&gt;:&lt;/p&gt;&lt;div class="captioned-image-container"&gt;&lt;a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!SFiZ!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F743ae140-1078-4823-8a87-30239da6da5c_1200x924.png" target="_blank"&gt;&lt;div class="image2-inset"&gt;&lt;img height="924" src="src" width="1200" /&gt;&lt;div class="image-link-expand"&gt;&lt;div class="pencraft pc-display-flex pc-gap-8 pc-reset"&gt;&lt;button class="pencraft pc-reset pencraft icon-container restack-image buttonBase-GK1x3M" tabindex="0" type="button"&gt;&lt;/button&gt;&lt;button class="pencraft pc-reset pencraft icon-container view-image buttonBase-GK1x3M" tabindex="0" type="button"&gt;&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;All code blocks are available in text format at the end of this article &amp;#8226; #1&lt;/div&gt;&lt;p&gt;You&amp;#8217;ll get this output when you run the code:&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&lt;code&gt;108.00&lt;/code&gt;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The apprentice discount applies after adding the surcharge. That&amp;#8217;s the rule for apprentice discounts.&lt;/p&gt;&lt;h2&gt;A Few Months Later&amp;#8230;&lt;/h2&gt;&lt;p&gt;A few months pass. A different programmer is asked to add a price for members of the local guild. Guild members should receive five per cent off the base price, while the surcharge stays fixed. For the same potion, their price should be &amp;#163;115.&lt;/p&gt;&lt;p&gt;The new programmer sees that both rules involve a percentage discount and decides to avoid repeating logic by using one shared calculation.&lt;/p&gt;&lt;h2&gt;Add the Guild Price to the Same Class&lt;/h2&gt;&lt;p&gt;He adds the guild rule to &lt;code&gt;PotionPricing&lt;/code&gt; and generalises the calculation:&lt;/p&gt;&lt;div class="captioned-image-container"&gt;&lt;a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!4T7n!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff80b5a84-14ac-4839-8eae-a53da5ba808c_1200x1260.png" target="_blank"&gt;&lt;div class="image2-inset"&gt;&lt;img height="1260" src="src" width="1200" /&gt;&lt;div class="image-link-expand"&gt;&lt;div class="pencraft pc-display-flex pc-gap-8 pc-reset"&gt;&lt;button class="pencraft pc-reset pencraft icon-container restack-image buttonBase-GK1x3M" tabindex="0" type="button"&gt;&lt;/button&gt;&lt;button class="pencraft pc-reset pencraft icon-container view-image buttonBase-GK1x3M" tabindex="0" type="button"&gt;&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;#2&lt;/div&gt;&lt;p&gt;Run &lt;code&gt;pricing.py&lt;/code&gt; again:&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&lt;code&gt;110.00
+115.00&lt;/code&gt;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The guild price is right, but what happened to the apprentice price? It was &amp;#163;108. Now it is &amp;#163;110.&lt;/p&gt;&lt;p&gt;Apprentices are getting a worse deal now, and it&amp;#8217;s the fault of the new programmer. But should the original programmer share some of the blame, too? Yes. Let&amp;#8217;s see why.&lt;/p&gt;&lt;p&gt;The new calculation discounts only the &amp;#163;100 base price, then adds the &amp;#163;20 surcharge. That is the guild&amp;#8217;s rule, not the apprentice rule.&lt;/p&gt;&lt;p&gt;The new programmer did not have to make this mistake. A careful change could have preserved the &amp;#163;108 price.&lt;/p&gt;&lt;p&gt;But adding the guild pricing meant &lt;strong&gt;making changes to code that already produced the correct calculation&lt;/strong&gt; for the apprentice price. Because both rules were handled in one place, the change had an opportunity to disturb behaviour the shop had been getting right for months.&lt;/p&gt;&lt;p&gt;We could correct the &lt;code&gt;if&lt;/code&gt; branches and get both prices right. But each new customer rule would still send us back into &lt;code&gt;PotionPricing&lt;/code&gt;, where a future change could affect behaviour that already works.&lt;/p&gt;&lt;p&gt;Modifying existing code always carries risks. We should avoid this whenever possible. But we don&amp;#8217;t want to prevent extensions to the code. This is the key to what we&amp;#8217;re trying to achieve here. And that&amp;#8217;s where the &lt;strong&gt;Open-Closed Principle&lt;/strong&gt;, or OCP, comes in. This concept gives us a safer way to extend code without modifying what already works, as you&amp;#8217;ll see in the next section.&lt;/p&gt;&lt;p class="button-wrapper"&gt;&lt;a class="button primary" href="https://www.thepythoncodingstack.com/subscribe"&gt;&lt;span&gt;Subscribe now&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;h2&gt;Let Each Pricing Rule Handle Its Own Price&lt;/h2&gt;&lt;p&gt;Instead of asking one class to choose a rule, we can represent each rule separately. First, make an &lt;code&gt;ApprenticePricing&lt;/code&gt; class and a &lt;code&gt;quote()&lt;/code&gt; function that delegates to whichever pricing object it receives:&lt;/p&gt;&lt;div class="captioned-image-container"&gt;&lt;a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!AYMT!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6e5e8e31-2fa1-442e-a8a0-67340ada5fb3_1200x882.png" target="_blank"&gt;&lt;div class="image2-inset"&gt;&lt;img height="882" src="src" width="1200" /&gt;&lt;div class="image-link-expand"&gt;&lt;div class="pencraft pc-display-flex pc-gap-8 pc-reset"&gt;&lt;button class="pencraft pc-reset pencraft icon-container restack-image buttonBase-GK1x3M" tabindex="0" type="button"&gt;&lt;/button&gt;&lt;button class="pencraft pc-reset pencraft icon-container view-image buttonBase-GK1x3M" tabindex="0" type="button"&gt;&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;#3&lt;/div&gt;&lt;p&gt;Run &lt;code&gt;pricing.py&lt;/code&gt;:&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&lt;code&gt;108.00&lt;/code&gt;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The apprentice price is back to &amp;#163;108. The &lt;code&gt;quote()&lt;/code&gt; function does not need to know how the policy calculates its price. It only needs an object with a &lt;code&gt;.price()&lt;/code&gt; method.&lt;/p&gt;&lt;p&gt;Now add a class for the guild rule. Leave &lt;code&gt;ApprenticePricing&lt;/code&gt; and &lt;code&gt;quote()&lt;/code&gt; as they are, and add &lt;code&gt;GuildPricing&lt;/code&gt;:&lt;/p&gt;&lt;div class="captioned-image-container"&gt;&lt;a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!hlIn!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4069fc28-e3f8-42ba-8393-f2a83e68ec63_1200x1260.png" target="_blank"&gt;&lt;div class="image2-inset"&gt;&lt;img height="1260" src="src" width="1200" /&gt;&lt;div class="image-link-expand"&gt;&lt;div class="pencraft pc-display-flex pc-gap-8 pc-reset"&gt;&lt;button class="pencraft pc-reset pencraft icon-container restack-image buttonBase-GK1x3M" tabindex="0" type="button"&gt;&lt;/button&gt;&lt;button class="pencraft pc-reset pencraft icon-container view-image buttonBase-GK1x3M" tabindex="0" type="button"&gt;&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;#4&lt;/div&gt;&lt;p&gt;Run the file once more:&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&lt;code&gt;108.00
+115.00&lt;/code&gt;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The first price is still &amp;#163;108, and the guild price is &amp;#163;115. Adding the guild rule did not require us to change the apprentice calculation or the &lt;code&gt;quote()&lt;/code&gt; function. We added a new policy that works with the existing &lt;code&gt;quote()&lt;/code&gt; interface.&lt;/p&gt;&lt;p&gt;This is the safety gain here. Adding guild pricing does not send the programmer back to edit the code that produces the apprentice price. The new policy could still contain a mistake, but it is much harder for that mistake to change the established apprentice calculation by accident.&lt;/p&gt;&lt;h2&gt;Where OCP Appears in This Example&lt;/h2&gt;&lt;p&gt;The Open&amp;#8211;Closed Principle says that software should be open to extension but closed to modification. Here, &lt;code&gt;quote()&lt;/code&gt; is open to different pricing policies: it can use any object with the right &lt;code&gt;.price()&lt;/code&gt; method. When we add guild pricing, we extend the program with &lt;code&gt;GuildPricing&lt;/code&gt; instead of modifying &lt;code&gt;ApprenticePricing&lt;/code&gt; or teaching &lt;code&gt;quote()&lt;/code&gt; about a new customer type.&lt;/p&gt;&lt;p&gt;This is one way to apply OCP. The policy objects use a strategy-style design with Python&amp;#8217;s duck typing. They do not need a shared parent class.&lt;/p&gt;&lt;p&gt;However, it&amp;#8217;s possible to use abstract base classes or protocols to implement code using the OCP, too. Read &lt;a href="https://www.thepythoncodingstack.com/p/and-now-you-know-your-abc-python-abstract-base-classes"&gt;And Now You Know Your ABC&lt;/a&gt; for an example of abstract base classes. For protocols, see &lt;a href="https://docs.python.org/3/library/typing.html#typing.Protocol"&gt;the Python documentation for `typing.Protocol`&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Classes are not required by OCP, and separating responsibilities alone does not make a design open for extension. The important part is the boundary that lets us add a rule without changing the stable code that already handles another rule.&lt;/p&gt;&lt;p&gt;That boundary does not make bugs impossible. &lt;code&gt;GuildPricing&lt;/code&gt; could still calculate the wrong amount, or a caller could choose the wrong policy. OCP narrows which existing code needs to change when behaviour is added. It does not guarantee every new change is correct.&lt;/p&gt;&lt;p&gt;This extra structure is useful when pricing rules really do vary and new ones are likely. If the shop is unlikely to add more tiers, the separate classes may cost more to understand than they save. The useful question is not &amp;#8220;How can we prevent all modification?&amp;#8221; It is &amp;#8220;Which part is likely to vary, and can we add that variation without disturbing behaviour that already works?&amp;#8221;&lt;/p&gt;&lt;div&gt;&lt;hr /&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;This is the second article in a series on the SOLID principles. I&amp;#8217;ll look at what each principle means, but more importantly, why it matters and what can go wrong when we ignore it.&lt;/em&gt;&lt;/p&gt;&lt;div class="captioned-image-container"&gt;&lt;a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!TiOC!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F20b6d27c-a240-479c-8247-08a23f8c2f8c_1536x1024.png" target="_blank"&gt;&lt;div class="image2-inset"&gt;&lt;img height="971" src="src" width="1456" /&gt;&lt;div class="image-link-expand"&gt;&lt;div class="pencraft pc-display-flex pc-gap-8 pc-reset"&gt;&lt;button class="pencraft pc-reset pencraft icon-container restack-image buttonBase-GK1x3M" tabindex="0" type="button"&gt;&lt;/button&gt;&lt;button class="pencraft pc-reset pencraft icon-container view-image buttonBase-GK1x3M" tabindex="0" type="button"&gt;&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;hr /&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;Code in this article uses Python 3.15.&lt;/em&gt;&lt;/p&gt;&lt;p&gt;&lt;em&gt;Do you want to keep up with how Python programming and the art of making things are changing in this rapidly changing world? Then don&amp;#8217;t miss out on the exclusive content for premium members here on The Python Coding Stack.&lt;/em&gt;&lt;/p&gt;&lt;p class="button-wrapper"&gt;&lt;a class="button primary" href="https://www.thepythoncodingstack.com/subscribe"&gt;&lt;span&gt;Subscribe now&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;I&amp;#8217;ll be sharing more about how my programming, my daily work, and how everything has changed over the recent months.&lt;/p&gt;&lt;div&gt;&lt;hr /&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;Also, are you interested in technical writing? You&amp;#8217;d like to make your own writing more narrative, more engaging, more memorable? Have a look at &lt;a href="http://stephengruppetta.com/breaking-the-rules"&gt;Breaking the Rules&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;&lt;p&gt;&lt;em&gt;And you can find out more about me at &lt;a href="https://stephengruppetta.com/?utm_source=the-python-coding-stack"&gt;stephengruppetta.com&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;&lt;div&gt;&lt;hr /&gt;&lt;/div&gt;&lt;h2&gt;Appendix: Code Blocks&lt;/h2&gt;&lt;h5&gt;Code Block #1&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;&lt;code&gt;from decimal import Decimal
+class PotionPricing:
+    def price(self, customer_type, base_price, surcharge):
+        if customer_type == "apprentice":
+            subtotal = base_price + surcharge
+            return (subtotal * Decimal("0.90")).quantize(Decimal("0.01"))
+        raise ValueError(f"Unknown customer type: {customer_type}")
+base_price = Decimal("100.00")
+surcharge = Decimal("20.00")
+pricing = PotionPricing()
+print(pricing.price("apprentice", base_price, surcharge))
+&lt;/code&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h5&gt;Code Block #2&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;&lt;code&gt;from decimal import Decimal
+class PotionPricing:
+    def price(self, customer_type, base_price, surcharge):
+        if customer_type == "apprentice":
+            discount = Decimal("0.10")
+        elif customer_type == "guild":
+            discount = Decimal("0.05")
+        else:
+            raise ValueError(f"Unknown customer type: {customer_type}")
+        discounted_base = base_price * (Decimal("1.00") - discount)
+        return (discounted_base + surcharge).quantize(Decimal("0.01"))
+base_price = Decimal("100.00")
+surcharge = Decimal("20.00")
+pricing = PotionPricing()
+print(pricing.price("apprentice", base_price, surcharge))
+print(pricing.price("guild", base_price, surcharge))
+&lt;/code&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h5&gt;Code Block #3&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;&lt;code&gt;from decimal import Decimal
+class ApprenticePricing:
+    def price(self, base_price, surcharge):
+        subtotal = base_price + surcharge
+        return (subtotal * Decimal("0.90")).quantize(Decimal("0.01"))
+def quote(base_price, surcharge, policy):
+    return policy.price(base_price, surcharge)
+base_price = Decimal("100.00")
+surcharge = Decimal("20.00")
+apprentice_pricing = ApprenticePricing()
+print(quote(base_price, surcharge, apprentice_pricing))
+&lt;/code&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h5&gt;Code Block #4&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;&lt;code&gt;from decimal import Decimal
+class ApprenticePricing:
+    def price(self, base_price, surcharge):
+        subtotal = base_price + surcharge
+        return (subtotal * Decimal("0.90")).quantize(Decimal("0.01"))
+class GuildPricing:
+    def price(self, base_price, surcharge):
+        discounted_base = base_price * Decimal("0.95")
+        return (discounted_base + surcharge).quantize(Decimal("0.01"))
+def quote(base_price, surcharge, policy):
+    return policy.price(base_price, surcharge)
+base_price = Decimal("100.00")
+surcharge = Decimal("20.00")
+apprentice_pricing = ApprenticePricing()
+guild_pricing = GuildPricing()
+print(quote(base_price, surcharge, apprentice_pricing))
+print(quote(base_price, surcharge, guild_pricing))
+&lt;/code&gt;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;em&gt;&lt;a href="https://stephengruppetta.com/?utm_source=the-python-coding-stack"&gt;stephengruppetta.com&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">cd5ebe746c82d1b5d886a51bf5943347de1b42e62c719665d84b23e23dd8e003</guid>
+      <pubDate>Mon, 26 Oct 2026 10:40:34 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Insider: Python 3.15.2, 3.14.10, 3.13.18, 3.12.16 and 3.11.18 are out - Planet Python</title>
+      <link>https://blog.python.org/2026/10/python-3152-31410-31318-31216-31118/</link>
+      <description>Five expedited security releases to distrust the compromised eMudhra intermediate CA keys.</description>
+      <guid isPermaLink="false">4aff83582b4b6c001c5e2439b494bab594246e35be4de8df95faf10fc8c709f5</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Stein Magnus Jodal: Introduction to barcode parsing - Planet Python</title>
+      <link>https://jodal.dev/2026/10/26/barcode-parsing/</link>
+      <description>&lt;p&gt;Barcodes are everywhere.&lt;/p&gt;
+&lt;p&gt;They’re so omnipresent that we easily take them for granted,
+and rarely think about their existence and how they really work.
+Meanwhile,
+barcodes are extremely important for all kinds of logistics,
+the foundation of modern society.&lt;/p&gt;
+&lt;p&gt;This post is an introduction to barcode parsing,
+and to all the corner cases that make it a bad idea
+to write your own barcode parser.&lt;/p&gt;</description>
+      <guid isPermaLink="false">95ef0d8bef60dba50e061ec7bbdafc495f4d36ba44a15a9240e576f4029d6c5c</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>The No Title® Tech Blog: Just updated - Optimize Images v2.2.0 - Planet Python</title>
+      <link>https://no-title.victordomingos.com/articles/2026/updated_optimize-images-v2-2-0</link>
+      <description>&lt;p&gt;Optimize Images 2.2.0 has just been released, and it makes &lt;span class="caps"&gt;JPEG&lt;/span&gt; files even smaller by default, adds an optional &lt;span class="caps"&gt;SSIM&lt;/span&gt;-based quality check, and now keeps embedded colour profiles such as the Display P3 profile of iPhone photos. It also requires Pillow 13.0.0 for important security fixes, and makes batches and watch mode more&amp;nbsp;reliable.&lt;/p&gt;</description>
+      <guid isPermaLink="false">9539454e14be5dab4ec6a8ef20e1723c15fab3346ab1dcc583de8712ae09ff56</guid>
+      <pubDate>Sun, 25 Oct 2026 21:40:00 +0000</pubDate>
+    </item>
     <item>
       <title>Go Deh: Finding Flaws in Technical Documentation - Planet Python</title>
       <link>http://paddy3118.blogspot.com/2026/10/finding-flaws-in-technical-documentation.html</link>
