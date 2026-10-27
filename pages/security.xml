@@ -5,7 +5,133 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Mon, 26 Oct 2026 14:00:42 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 14:01:15 +0000</lastBuildDate>
+    <item>
+      <title>Microsoft Authenticator Flaw Let Permissionless Android Apps Steal Work Account Tokens - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/microsoft-authenticator-flaw-let.html</link>
+      <description>Microsoft has fixed a flaw in its Authenticator app for Android that let a malicious app with no permissions pose as a trusted Microsoft app, such as Teams, and collect sign-in tokens for a victim's work account.
+Microsoft tracks the flaw as&amp;nbsp;CVE-2026-80097&amp;nbsp;and fixed it in Authenticator for Android version 6.2606.4246, so anyone using the app should update.
+In the researchers' tests,</description>
+      <guid isPermaLink="false">42406ca84a0cdf972312af960b7085ac54f9833ee0f77fc1dff6889546756889</guid>
+      <pubDate>Tue, 27 Oct 2026 12:09:50 +0000</pubDate>
+    </item>
+    <item>
+      <title>Keystone to Destroy 18,835 Hardware Wallets After Hackers Steal Device Verification Key - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/keystone-to-destroy-18835-hardware.html</link>
+      <description>An attacker who gained access to Keystone's website obtained the key that its hardware wallets use to prove they are genuine, the company said in a&amp;nbsp;statement&amp;nbsp;on October 26.
+Someone with that key could build counterfeit devices that pass the online check owners use to verify a Keystone. A buyer who trusted a counterfeit could have their crypto stolen, but the incident did not involve</description>
+      <guid isPermaLink="false">d650a5f0e5dc254f92377bf787bc0625ba683fc4f66194fd08e13e6d706774f2</guid>
+      <pubDate>Tue, 27 Oct 2026 11:46:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>AI-Generated Fake Login Pages Are Making Account Takeovers Easier - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/ai-generated-fake-login-pages-are.html</link>
+      <description>Fake login pages are nothing new, but generative AI is making them easier to build and more convincing. Attackers can recreate familiar login screens, impersonate trusted brands and tailor phishing attempts to specific employees or organizations.&amp;nbsp;
+Some fake login pages go beyond stealing passwords. They can also capture MFA codes or hijack authenticated sessions, allowing attackers to gain</description>
+      <guid isPermaLink="false">47eb6a27fa221d9e685dc8885f4f25f56d618fb5d131674f417063415d553c1e</guid>
+      <pubDate>Tue, 27 Oct 2026 11:32:46 +0000</pubDate>
+    </item>
+    <item>
+      <title>Lazarus Abuses South Korean Security Software to Deploy Malware Using Post-Quantum Encryption - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/lazarus-abuses-south-korean-security.html</link>
+      <description>The North Korea-linked Lazarus Group has been attributed to a cyber espionage campaign dubbed Operation FlashHole targeting at least three organizations in South Korea spanning the construction, software, and wire-communication equipment manufacturing sectors.
+According to Russian cybersecurity company Kaspersky, the campaign has been active since at least July 2025. It's assessed to pick up</description>
+      <guid isPermaLink="false">809623ffdfbfcacc610ebd3393380269ffec11115d9e389f3bd2e819b887d862</guid>
+      <pubDate>Tue, 27 Oct 2026 11:32:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>Australia Gets Into Amadey Malware Backend, Cuts Off Access to 180,000 Infected Computers - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/australia-gets-into-amadey-malware.html</link>
+      <description>A criminal using the Amadey malware can no longer access or steal data from 180,000 infected computers around the world, including some in Australia, the Australian Signals Directorate (ASD) says. The agency's operators gained access to the criminal's operation's backend and cut it off from those computers.
+"The next steps that we took were to disconnect that Amadey controller from all those</description>
+      <guid isPermaLink="false">ddcca01900cb0c402a31e2276d7279b343819d02f141b4db7b262872a0751627</guid>
+      <pubDate>Tue, 27 Oct 2026 09:33:06 +0000</pubDate>
+    </item>
+    <item>
+      <title>Encrypted firmware and software RE: a 31-method survey with validation criteria (AI-assisted) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xgnh5h/encrypted_firmware_and_software_re_a_31method/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/JaredReabow"&gt; /u/JaredReabow &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/JaredReabow/reverse-engineering-with-ai"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xgnh5h/encrypted_firmware_and_software_re_a_31method/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">2d4a44047aa9b5e15fc532133d43b8c0e47214726099440c77566d755f6f2e38</guid>
+      <pubDate>Tue, 27 Oct 2026 09:03:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>OpenAI Compaction Flaw Let Researchers Bypass Hidden Reasoning Protections - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/openai-compaction-flaw-let-researchers.html</link>
+      <description>OpenAI's compaction feature, which shrinks a long conversation to save space, could be turned into a way to copy a model's hidden reasoning out in plain text,&amp;nbsp;security firm Xint&amp;nbsp;has shown.
+OpenAI's reasoning models work through a problem before answering, and the service normally returns only the raw reasoning as&amp;nbsp;an encrypted item&amp;nbsp;the user cannot read. The method got past</description>
+      <guid isPermaLink="false">01a8fd53d209eb3b8aad48f98cfd215774d459ff5f339260231f73de149884aa</guid>
+      <pubDate>Tue, 27 Oct 2026 08:22:43 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Hijack Dahua IP Cameras in Ukraine Using P2P Access and Auth Weaknesses - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/attackers-hijack-dahua-ip-cameras-in.html</link>
+      <description>The Computer Emergency Response Team of Ukraine (CERT-UA) has issued an alert warning of unauthorized remote access to video surveillance systems manufactured by Dahua.
+"Cases of compromising IP cameras and DVRs with access to the video stream, changing the device configuration and creating third-party accounts have been recorded," the State Special Communications Service of Ukraine (SSSCIP)</description>
+      <guid isPermaLink="false">7b0bacc210ce12df7209a1a1b6935755cdea851404f7cbf588f42149b6f016e8</guid>
+      <pubDate>Tue, 27 Oct 2026 06:34:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>CISA Confirms Active Exploitation of Two PHP2Shell Flaws Enabling Remote Code Execution - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/cisa-confirms-active-exploitation-of.html</link>
+      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Monday confirmed active exploitation of the recently patched PHP2Shell flaws by adding them to its Known Exploited Vulnerabilities (KEV) catalog.
+The PHP vulnerabilities, both rated 9.2 on the CVSS scoring system, facilitate unauthenticated remote code execution on affected deployments -
+  CVE-2026-109618 - An out-of-memory</description>
+      <guid isPermaLink="false">e6e1cf334c742f77cfa8288d944fe4a93d24f85735b0fd2befd5e562970bcb14</guid>
+      <pubDate>Tue, 27 Oct 2026 04:37:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>Running original ARM64 QOI instructions in a browser, with heap checkpoint and restore - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xgawmv/running_original_arm64_qoi_instructions_in_a/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Awkward_Conflict3990"&gt; /u/Awkward_Conflict3990 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/nazeeh111/Capsulith/blob/main/examples/qoi/README.md"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xgawmv/running_original_arm64_qoi_instructions_in_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">a6b1aa61dd31b021b533c5b69ae524a58ecfdb5748502ffc71b5dac2eda84e94</guid>
+      <pubDate>Mon, 26 Oct 2026 22:13:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>Heap overflow in EDK2’s Brotli decompressor: the CVE-2021-28211 fix was applied to LZMA and never to Brotli - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xg5kkt/heap_overflow_in_edk2s_brotli_decompressor_the/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/lcpjj_"&gt; /u/lcpjj_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/lukr54/edk2-security"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xg5kkt/heap_overflow_in_edk2s_brotli_decompressor_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">76024d445dc7bbb1ff6c6c433eaeedded9657a01e9bb0f87c7cb027b17f21be7</guid>
+      <pubDate>Mon, 26 Oct 2026 18:49:54 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hackers Infect 953 Online Stores With Scanner-Evading JavaScript, Mostly on Magento - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/hackers-infect-953-online-stores-with.html</link>
+      <description>An unknown threat actor has infected 953 online stores, most of them running Magento, as part of a long-running campaign active since July 2025.
+According to Dutch e-commerce security company Sansec, the activity is designed to add a small piece of code to the store's pages that, when visited by unsuspecting users, serves malicious JavaScript loader code through Magento CMS blocks.
+"When you</description>
+      <guid isPermaLink="false">959cd5a574ea22ecaae58ff2ac2713ed6516bdb79e137bbefaf1daf45276626a</guid>
+      <pubDate>Mon, 26 Oct 2026 18:12:22 +0000</pubDate>
+    </item>
+    <item>
+      <title>PHP Issues Second Windows Security Update in Five Days to Fix Brotli Code Execution Flaw - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/php-issues-second-windows-security.html</link>
+      <description>PHP has rebuilt its official Windows packages for PHP 8.2 through 8.5 to fix CVE-2026-111497, a flaw in the Brotli compression library that the packages include. The flaw can let an attacker corrupt memory and potentially run code.
+PHP says the flaw can be reached through the cURL extension when the extension decompresses HTTP responses automatically. cURL leaves that off by default, but</description>
+      <guid isPermaLink="false">ae933aa5453ce676853cbd1cb9a0b92d1fef626e3937db5f1577527407375ee0</guid>
+      <pubDate>Mon, 26 Oct 2026 17:45:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Use Microsoft Teams IT Support Scams to Deploy Malware and Ransomware - The Hacker News</title>
+      <link>https://thehackernews.com/2026/10/attackers-use-microsoft-teams-it.html</link>
+      <description>Cybersecurity researchers are calling attention to what they say is a "recurring social engineering pattern" across hundreds of cases in which threat actors use Microsoft Teams' external chat creation feature to conduct impersonation scams or to deliver malware.
+"A consistent pattern of attacker behavior has emerged across these incidents: the use of the same throwaway tenants, the same 'IT</description>
+      <guid isPermaLink="false">8cf3ea921f3782ee10b7b16afe643745fe493746a9a4642d1ed0cfc172b84bd2</guid>
+      <pubDate>Mon, 26 Oct 2026 15:52:40 +0000</pubDate>
+    </item>
+    <item>
+      <title>Indirect Syscall Rust Loader Analysis (Stream) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xg06n4/indirect_syscall_rust_loader_analysis_stream/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/jershmagersh"&gt; /u/jershmagersh &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://youtu.be/6X8DIN5VO8E"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xg06n4/indirect_syscall_rust_loader_analysis_stream/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">56b0edab831f98aa1a7502e40ebad9e37100b12e66aed85d03fe7084eb4aac34</guid>
+      <pubDate>Mon, 26 Oct 2026 15:35:08 +0000</pubDate>
+    </item>
+    <item>
+      <title>Maigret – OSINT Username Search Tool - Darknet - The Darkside</title>
+      <link>https://www.darknet.org.uk/2026/10/maigret-osint-username-search-tool/</link>
+      <description>Maigret's database lists 5,900 sites, but a default run checks 500 and the list updates itself. How to install it, use it and pin what you searched.</description>
+      <guid isPermaLink="false">5b7f2097c8f298a265992f2f63e5024218ce925bba1d4474e464743019ab724f</guid>
+      <pubDate>Mon, 26 Oct 2026 15:16:34 +0000</pubDate>
+    </item>
     <item>
       <title>I modified my Nikon Z7's firmware to add a 3×3 rule-of-thirds grid - Reverse Engineering</title>
       <link>https://www.reddit.com/r/ReverseEngineering/comments/1xfx0zn/i_modified_my_nikon_z7s_firmware_to_add_a_33/</link>
@@ -1416,131 +1542,6 @@ Abdulrahman Alfozan, 35, has been charged with using or endeavoring to use an el
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Macedonga"&gt; /u/Macedonga &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/macedonga/visor"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x56cps/i_reverseengineered_how_rayban_meta_glasses_talk/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">7d390763c924adb78f58d40761a8ecb074f75a4ebbf510a4d4bd097ddc4f0681</guid>
       <pubDate>Tue, 13 Oct 2026 19:32:51 +0000</pubDate>
-    </item>
-    <item>
-      <title>Anthropic Warns Small AI Models Could Soon Form Self-Propagating IoT Botnets - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/anthropic-warns-small-ai-models-could.html</link>
-      <description>Small artificial intelligence (AI) models may be months away from developing capabilities to self-replicate on IoT devices like smart ovens and off-brand Android TV boxes, according to a warning from Anthropic.
-The frontier AI lab said small AI models could form autonomous, self-propagating worm botnets that are "challenging to shut down," since "there's no centralized point to shut off."</description>
-      <guid isPermaLink="false">271ba22ca430418c38a2a4c866c72d9f6f092ddbaf5e10650b566dc427564685</guid>
-      <pubDate>Tue, 13 Oct 2026 18:20:57 +0000</pubDate>
-    </item>
-    <item>
-      <title>Docker Fixes Critical Two-Year-Old Hub Flaw That Let One User Push Images as Another - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/docker-fixes-critical-two-year-old-hub.html</link>
-      <description>A flaw in Docker Hub, the registry where container images are published and downloaded, let one user push, pull, or delete images as another user. Docker fixed the flaw on September 30 and says it found no evidence that anyone exploited it.
-The flaw was in the feature that&amp;nbsp;converts a personal account&amp;nbsp;into an organization, Docker said in a&amp;nbsp;security advisory&amp;nbsp;on October 12.</description>
-      <guid isPermaLink="false">61bf34d99b8aa7311ac84c4404f758aed4a21e648b1799dfc1852624990db2e5</guid>
-      <pubDate>Tue, 13 Oct 2026 18:03:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attacker Chains Three Ivanti Connect Secure Zero-Days for Root Access, Only Two Patched So Far - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/attacker-chains-three-ivanti-connect.html</link>
-      <description>An attacker chained three zero-day flaws in Ivanti Connect Secure, a VPN appliance, to run commands as root without logging in, security firm&amp;nbsp;Volexity said&amp;nbsp;on October 13. Ivanti has released fixes for two of the flaws and told customers on affected versions to "act immediately." A fix for the third is still pending, according to Volexity.
-Volexity, which reported the flaws to Ivanti,</description>
-      <guid isPermaLink="false">185c930454fa5431e6a7d13cfa04997ebea0667caa44855c966974a749c0be35</guid>
-      <pubDate>Tue, 13 Oct 2026 17:33:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>SAP Discloses Critical CVSS 10 Flaw in Cloud SDK for Python Allowing OAuth2 Credential Theft - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/sap-discloses-critical-cvss-10-flaw-in.html</link>
-      <description>A flaw in SAP's&amp;nbsp;Cloud SDK for Python&amp;nbsp;can send an application's OAuth2 client credentials to a server an attacker controls, SAP said in a&amp;nbsp;security advisory&amp;nbsp;on October 13. The flaw affects multi-tenant applications on SAP Business Technology Platform (BTP) that use the SDK, SAP's official Python client for BTP services. An attacker must be able to control the tenant subdomain,</description>
-      <guid isPermaLink="false">10bbbc2fb301842369d86cf5e872dfb13cd7ee3a82893592fad2bc1d174ec6f4</guid>
-      <pubDate>Tue, 13 Oct 2026 17:28:50 +0000</pubDate>
-    </item>
-    <item>
-      <title>GitHub Tightens npm Publishing After Flaw Left 1,500+ Packages Vulnerable to Hijacking - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/github-tightens-npm-publishing-after.html</link>
-      <description>GitHub has taken the step of expiring unvalidated npm trusted publishing configurations 48 hours after creation after researchers found that it was possible for an attacker to push new versions of a different user's package without having to steal their credentials.
-"Your configuration becomes validated and exempt from expiry after its first successful publish," the Microsoft-owned subsidiary</description>
-      <guid isPermaLink="false">db60504ad38e3cb2d973d685c43c04cbe23a7aaa22ebbe3bdc0f3949450a762f</guid>
-      <pubDate>Tue, 13 Oct 2026 16:18:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>Decoding the MIB of a Samsung Shannon baseband in Ghidra (Part 2) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x4yq32/decoding_the_mib_of_a_samsung_shannon_baseband_in/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Electronic_You_1199"&gt; /u/Electronic_You_1199 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://medium.com/@0x08102000/decoding-the-mib-of-a-samsung-shannon-baseband-in-ghidra-part-2-b7b570d60452"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x4yq32/decoding_the_mib_of_a_samsung_shannon_baseband_in/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">ae7d764caedd01f4beb605bc2dede32a426060cddede5855fe2475f4be402aa7</guid>
-      <pubDate>Tue, 13 Oct 2026 14:51:01 +0000</pubDate>
-    </item>
-    <item>
-      <title>Xandr Fined a Record €8.6 Million for Relaying Grindr Data Revealing Sexual Orientation - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/xandr-fined-record-86-million-for.html</link>
-      <description>The Norwegian Data Protection Authority (DPA) has fined Xandr, an advertising unit owned by Microsoft, €8.6 million ($9.62 million) for illegally relaying ​Grindr users' sensitive data to advertisers.
-The administrative penalty is the largest issued by the data protection watchdog, arguing the case merited a high fine because of the "very serious" nature of the breach. The infringements</description>
-      <guid isPermaLink="false">23eb86466b854814f55370e9788f3f57aba30a062f14cd4eb41b158d6c1906be</guid>
-      <pubDate>Tue, 13 Oct 2026 13:12:32 +0000</pubDate>
-    </item>
-    <item>
-      <title>LG Smart TVs Vulnerable to Pre-Auth Root Takeover From Local Network - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/lg-smart-tvs-vulnerable-to-pre-auth.html</link>
-      <description>Three vulnerabilities in LG's webOS can be chained to give an attacker on the same local network root access to certain smart TVs without a PIN or any interaction from the owner.
-LG has issued a fix, according to&amp;nbsp;an advisory published by SSD Secure Disclosure&amp;nbsp;on October 12.
-The chain was tested on two TV models, the 32LQ636BPSA and the 27TQ600SW, running webOS 7.5.7-25 on firmware</description>
-      <guid isPermaLink="false">cbd49149f26bb55d520963c0f9ef8aa4d0020ea9d9805bebe5f4e11fadd3b0b2</guid>
-      <pubDate>Tue, 13 Oct 2026 11:09:10 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Heat French Supermarket Fridges Up to 50°C by Hijacking Danfoss Controllers - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/attackers-heat-french-supermarket.html</link>
-      <description>Attackers took remote control of fridges and freezers at hundreds of French supermarkets on the night of October 11 and warmed them, forcing stores to throw food away, several retail chains said.
-The attackers reached them through the controller that runs all of a store's fridges and freezers, a device made by Danish company Danfoss that maintenance firms can manage remotely. Les Mousquetaires</description>
-      <guid isPermaLink="false">8e92f5de45f6bbd9f9afaea2b1ea3231dfb05749d4bec24548ae7c3468a218af</guid>
-      <pubDate>Tue, 13 Oct 2026 08:48:41 +0000</pubDate>
-    </item>
-    <item>
-      <title>Two Critical MarkLogic Flaws Could Give Delegated Managers Persistent Admin Control - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/two-critical-marklogic-flaws-could-give.html</link>
-      <description>Two of 31 newly disclosed flaws in Progress Software's&amp;nbsp;MarkLogic Server&amp;nbsp;database could let an account given only some management privileges take administrator control of the server, the company says.
-Progress published all 31 on October 12 and scored five of them critical. Fixes have been available since September 10, in&amp;nbsp;MarkLogic 11.3.7&amp;nbsp;and&amp;nbsp;MarkLogic 12.1.0.
-Affected</description>
-      <guid isPermaLink="false">cb0b9a8bda71dd558d441e3fc7838bdffda5c608ebde14d46730c57d51664682</guid>
-      <pubDate>Tue, 13 Oct 2026 08:44:01 +0000</pubDate>
-    </item>
-    <item>
-      <title>GitLab Patches CVSS 10.0 Flaw That Could Let Unauthenticated Users Run Server Code - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/gitlab-patches-cvss-100-flaw-that-could.html</link>
-      <description>GitLab has released patches for a maximum-severity security flaw impacting its Community Edition (CE) and Enterprise Edition (EE) software that could result in arbitrary code execution.
-"GitLab has remediated an issue that, under certain conditions, could have allowed an unauthenticated user to execute arbitrary code on the GitLab server via a specially crafted regular expression in a CI/CD</description>
-      <guid isPermaLink="false">0089d6a78cc8d8a22d9aca0132651b1fde1af2db3411cde3c136df91e5b91ed3</guid>
-      <pubDate>Tue, 13 Oct 2026 08:43:37 +0000</pubDate>
-    </item>
-    <item>
-      <title>Full reverse engineering of the PartyBox TWS wireless link (200/300) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x4qtnb/full_reverse_engineering_of_the_partybox_tws/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/nicocoow"&gt; /u/nicocoow &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/Nicooow/jbl-partybox-tws-re"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x4qtnb/full_reverse_engineering_of_the_partybox_tws/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">91a9d9477ab6703fc98e883f46b284f15728a1018da037f35e56b87676e9b850</guid>
-      <pubDate>Tue, 13 Oct 2026 08:06:10 +0000</pubDate>
-    </item>
-    <item>
-      <title>I made a tiny and embeddable shared library injector for Android - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x4pct6/i_made_a_tiny_and_embeddable_shared_library/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Few-Refuse3402"&gt; /u/Few-Refuse3402 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/crydafan/AndroidLibraryInjector"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x4pct6/i_made_a_tiny_and_embeddable_shared_library/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">132fed7ad21bce9dfb74185f239d043e0dc30ba95ba3ce4eb6d8ff390290bdd9</guid>
-      <pubDate>Tue, 13 Oct 2026 06:30:38 +0000</pubDate>
-    </item>
-    <item>
-      <title>Low-Cost Android Phones Ship With Preinstalled Malware That Turns Them Into Residential Proxies - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/low-cost-android-phones-ship-with.html</link>
-      <description>Low-cost Android smartphones have been shipped with malicious software baked into the device firmware, allowing bad actors to covertly install apps, conduct ad fraud, and turn devices into residential proxies.
-The activity, which targets Android devices built on MediaTek platforms across several brands, is being tracked by Bitdefender under the moniker Midnight Mimosa.
-The preinstalled</description>
-      <guid isPermaLink="false">8a41580883306fd2a5b0e05fa495879235435e960ff2a1ea935a0322a66fd219</guid>
-      <pubDate>Tue, 13 Oct 2026 06:00:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>Exoproc: Out-of-process Windows x64 instrumentation engine in pure TypeScript - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x4eczt/exoproc_outofprocess_windows_x64_instrumentation/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/woldann"&gt; /u/woldann &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/woldann/exoproc"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x4eczt/exoproc_outofprocess_windows_x64_instrumentation/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">e8695144bb55ad5ac718a6835e9cd8235c6efc65f4803ae152430b3380ec7fa0</guid>
-      <pubDate>Mon, 12 Oct 2026 21:21:27 +0000</pubDate>
-    </item>
-    <item>
-      <title>How I Found a $90,000 Remote Code Execution Vulnerability in Google - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x45vr2/how_i_found_a_90000_remote_code_execution/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/tnavda"&gt; /u/tnavda &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://simonkoeck.com/writeups/google-devsite-flask-session-pickle-rce"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x45vr2/how_i_found_a_90000_remote_code_execution/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">beffac4cb3a2913cc9c7bb18ddbd7e85aa35f3315a2759ae8a3292166bfe758d</guid>
-      <pubDate>Mon, 12 Oct 2026 16:05:42 +0000</pubDate>
     </item>
   </channel>
 </rss>
