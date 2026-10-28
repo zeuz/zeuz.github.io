@@ -5,7 +5,391 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 27 Oct 2026 14:01:15 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 28 Oct 2026 14:01:03 +0000</lastBuildDate>
+    <item>
+      <title>Python GUIs: Passing Arguments to Threaded Functions in PyQt6 — Understanding the difference between passing a function and calling a function when using QThreadPool and QRunnable - Planet Python</title>
+      <link>https://www.pythonguis.com/faq/delay-in-signal-from-thread/</link>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;I'm running a long-running function in a separate thread using &lt;code&gt;QThreadPool&lt;/code&gt; and a &lt;code&gt;QRunnable&lt;/code&gt; worker. When I pass the function without arguments, it runs correctly in the background. But when I try to pass arguments, the GUI freezes until the function finishes. What am I doing wrong?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This is a very common stumbling block when working with threads in PyQt6, and the good news is that it has a simple fix. The problem comes down to the difference between &lt;em&gt;passing a function&lt;/em&gt; and &lt;em&gt;calling a function&lt;/em&gt; &amp;mdash; two things that look similar in Python but behave very differently.&lt;/p&gt;
+&lt;h2 id="the-setup"&gt;The Setup&lt;/h2&gt;
+&lt;p&gt;Let's say you have a basic app with a main window, a push button, and a status bar. When the button is pressed, you want to start a long-running task on a background thread. That task should emit a signal to update the status bar, then carry on with its work.&lt;/p&gt;
+&lt;p&gt;Here's a minimal version of this pattern using &lt;code&gt;QThreadPool&lt;/code&gt; and &lt;code&gt;QRunnable&lt;/code&gt;, based on the approach covered in our &lt;a href="https://www.pythonguis.com/tutorials/multithreading-pyqt6-applications-qthreadpool/"&gt;Multithreading PyQt6 applications with QThreadPool&lt;/a&gt; tutorial:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;import sys
+import time
+from PyQt6.QtCore import QObject, QRunnable, QThreadPool, pyqtSignal, pyqtSlot
+from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton
+class WorkerSignals(QObject):
+    status = pyqtSignal(str)
+class Worker(QRunnable):
+    def __init__(self, fn, *args, **kwargs):
+        super().__init__()
+        self.fn = fn
+        self.args = args
+        self.kwargs = kwargs
+    @pyqtSlot()
+    def run(self):
+        self.fn(*self.args, **self.kwargs)
+class Model(QObject):
+    def __init__(self):
+        super().__init__()
+        self.signals = WorkerSignals()
+    def do_this(self):
+        self.signals.status.emit("Working on it...")
+        time.sleep(5)  # Simulating a long-running task
+        self.signals.status.emit("Done!")
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.model = Model()
+        self.model.signals.status.connect(self.update_status_bar)
+        button = QPushButton("Run Task")
+        button.pressed.connect(self.call_do_this)
+        self.setCentralWidget(button)
+        self.threadpool = QThreadPool()
+    def call_do_this(self):
+        worker = Worker(self.model.do_this)
+        self.threadpool.start(worker)
+    def update_status_bar(self, msg):
+        self.statusBar().showMessage(msg)
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+app.exec()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;This works perfectly. The function runs on a background thread, the status bar updates, and the GUI stays responsive.&lt;/p&gt;
+&lt;h2 id="where-things-go-wrong"&gt;Where Things Go Wrong&lt;/h2&gt;
+&lt;p&gt;Now suppose &lt;code&gt;do_this&lt;/code&gt; needs to accept a message as an argument. You might naturally try this:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;def call_do_this(self):
+    worker = Worker(self.model.do_this("This is a message"))
+    self.threadpool.start(worker)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Suddenly the GUI freezes for the entire duration of the task. The status bar doesn't update until everything is finished. What happened?&lt;/p&gt;
+&lt;h2 id="passing-a-function-vs-calling-a-function"&gt;Passing a Function vs. Calling a Function&lt;/h2&gt;
+&lt;p&gt;Look closely at what's being passed to &lt;code&gt;Worker&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;# This CALLS the function immediately and passes its return value
+Worker(self.model.do_this("This is a message"))
+# This PASSES the function itself, along with the argument separately
+Worker(self.model.do_this, "This is a message")
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;When you write &lt;code&gt;self.model.do_this("This is a message")&lt;/code&gt; with parentheses and arguments, Python executes that function &lt;em&gt;right then and there&lt;/em&gt;, on the main thread. The function runs to completion &amp;mdash; including the long-running part &amp;mdash; and then its return value (which is &lt;code&gt;None&lt;/code&gt;, since the function doesn't explicitly return anything) gets passed to &lt;code&gt;Worker&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;So &lt;code&gt;Worker&lt;/code&gt; receives &lt;code&gt;None&lt;/code&gt; as its &lt;code&gt;fn&lt;/code&gt; parameter. The actual work already happened on the main thread, blocking the GUI the whole time.&lt;/p&gt;
+&lt;p&gt;When you write &lt;code&gt;self.model.do_this&lt;/code&gt; without parentheses, you're passing a reference to the function itself. The &lt;code&gt;Worker&lt;/code&gt; then calls it later, inside &lt;code&gt;run()&lt;/code&gt;, which executes on a background thread. The arguments &lt;code&gt;"This is a message"&lt;/code&gt; are passed separately and stored until &lt;code&gt;run()&lt;/code&gt; is called.&lt;/p&gt;
+&lt;h2 id="the-fix"&gt;The Fix&lt;/h2&gt;
+&lt;p&gt;Pass the function and its arguments as separate items to &lt;code&gt;Worker&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;def call_do_this(self):
+    worker = Worker(self.model.do_this, "This is a message")
+    self.threadpool.start(worker)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;The &lt;code&gt;Worker.__init__&lt;/code&gt; method is set up to handle exactly this pattern using &lt;code&gt;*args&lt;/code&gt; and &lt;code&gt;**kwargs&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;class Worker(QRunnable):
+    def __init__(self, fn, *args, **kwargs):
+        super().__init__()
+        self.fn = fn
+        self.args = args
+        self.kwargs = kwargs
+    @pyqtSlot()
+    def run(self):
+        self.fn(*self.args, **self.kwargs)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;The function reference is stored in &lt;code&gt;self.fn&lt;/code&gt;, and any additional positional or keyword arguments are captured and stored in &lt;code&gt;self.args&lt;/code&gt; and &lt;code&gt;self.kwargs&lt;/code&gt;. When &lt;code&gt;run()&lt;/code&gt; is called on the worker thread, it calls the function with those stored arguments.&lt;/p&gt;
+&lt;h2 id="complete-working-example"&gt;Complete Working Example&lt;/h2&gt;
+&lt;p&gt;Here's a full working example that demonstrates passing arguments to a threaded function, with proper &lt;a href="https://www.pythonguis.com/tutorials/pyqt6-signals-slots-events/"&gt;signal handling&lt;/a&gt; for status updates:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;import sys
+import time
+from PyQt6.QtCore import QObject, QRunnable, QThreadPool, pyqtSignal, pyqtSlot
+from PyQt6.QtWidgets import (
+    QApplication,
+    QLabel,
+    QMainWindow,
+    QPushButton,
+    QVBoxLayout,
+    QWidget,
+)
+class WorkerSignals(QObject):
+    """Signals available from a running worker thread."""
+    status = pyqtSignal(str)
+    finished = pyqtSignal()
+class Worker(QRunnable):
+    """Worker thread using QRunnable to run a function in the background."""
+    def __init__(self, fn, *args, **kwargs):
+        super().__init__()
+        self.fn = fn
+        self.args = args
+        self.kwargs = kwargs
+    @pyqtSlot()
+    def run(self):
+        self.fn(*self.args, **self.kwargs)
+class Model(QObject):
+    """Holds the application logic."""
+    def __init__(self):
+        super().__init__()
+        self.signals = WorkerSignals()
+    def do_this(self, msg):
+        self.signals.status.emit(msg)
+        # Simulate a long-running task
+        for i in range(5):
+            time.sleep(1)
+            self.signals.status.emit(f"Processing step {i + 1} of 5...")
+        self.signals.status.emit("Task complete!")
+        self.signals.finished.emit()
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Thread Arguments Example")
+        self.model = Model()
+        self.model.signals.status.connect(self.update_status_bar)
+        self.model.signals.finished.connect(self.task_finished)
+        self.label = QLabel("Press the button to start a background task.")
+        self.button = QPushButton("Run Task")
+        self.button.pressed.connect(self.call_do_this)
+        layout = QVBoxLayout()
+        layout.addWidget(self.label)
+        layout.addWidget(self.button)
+        container = QWidget()
+        container.setLayout(layout)
+        self.setCentralWidget(container)
+        self.threadpool = QThreadPool()
+    def call_do_this(self):
+        self.button.setEnabled(False)
+        # Pass the function and its argument separately
+        worker = Worker(self.model.do_this, "Starting task...")
+        self.threadpool.start(worker)
+    def update_status_bar(self, msg):
+        self.statusBar().showMessage(msg)
+        self.label.setText(msg)
+    def task_finished(self):
+        self.button.setEnabled(True)
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+app.exec()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;When you run this and click the button, you'll see the status bar and label update in real time as the background task progresses. The GUI stays responsive throughout because the work is happening on a separate thread.&lt;/p&gt;
+&lt;h2 id="quick-reference"&gt;Quick Reference&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;What you write&lt;/th&gt;
+&lt;th&gt;What happens&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Worker(self.model.do_this)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Passes the function &amp;mdash; it runs on the worker thread&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Worker(self.model.do_this, "hello")&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Passes the function and an argument &amp;mdash; both used on the worker thread&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Worker(self.model.do_this("hello"))&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;Calls&lt;/em&gt; the function immediately on the main thread, passes &lt;code&gt;None&lt;/code&gt; to Worker - don't do this!&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;The key thing to remember is to pass the function by name, and pass the arguments separately after it. This keeps the function from running until the worker thread is ready.&lt;/p&gt;
+&lt;p&gt;If you're new to building PyQt6 applications and want to understand the fundamentals first, check out our guide to &lt;a href="https://www.pythonguis.com/tutorials/pyqt6-creating-your-first-window/"&gt;creating your first window with PyQt6&lt;/a&gt;.&lt;/p&gt;
+            &lt;p&gt;For an in-depth guide to building Python GUIs with PyQt6 see my book, &lt;a href="https://www.pythonguis.com/pyqt6-book/"&gt;Create GUI Applications with Python &amp;amp; Qt6.&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">ef64f8915f10648bb292f403194bc5b1d276e083334bd1c48f62ebe373d49590</guid>
+      <pubDate>Wed, 28 Oct 2026 06:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>"Michael Kennedy's Thoughts on Technology": Chameleon templates, modernized: chameleon-rs - Planet Python</title>
+      <link>https://mkennedy.codes/posts/chameleon-templates-modernized-chameleon-rs/</link>
+      <description>&lt;p&gt;&lt;a href="https://mkennedy.codes/docs/chameleon-rs/assets/chameleon-rs-slogan.png"&gt;&lt;img alt="Chameleon templates, modernized: chameleon-rs" src="https://mkennedy.codes/docs/chameleon-rs/assets/chameleon-rs-slogan.png" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;tl;dr;&lt;/strong&gt; &lt;a href="https://mkennedy.codes/docs/chameleon-rs/"&gt;chameleon-rs&lt;/a&gt; is my Rust implementation of Chameleon for Python web apps. It runs existing templates unchanged, with faster rendering, async support, and support for free-threaded Python.&lt;/p&gt;
+&lt;p&gt;The Chameleon HTML (template) language is one of my favorites. It was the default in Pyramid when I used to use that framework for my projects. I&amp;rsquo;ve since created &lt;a href="https://mkennedy.codes/docs/fastapi-chameleon/"&gt;fastapi-chameleon&lt;/a&gt; and &lt;a href="https://mkennedy.codes/docs/chameleon-flask/"&gt;chameleon-flask&lt;/a&gt; to allow you to easily use Chameleon on these more modern web frameworks.&lt;/p&gt;
+&lt;h2 id="why-modernize-chameleon-for-free-threaded-python"&gt;Why modernize Chameleon for free-threaded Python?&lt;/h2&gt;
+&lt;p&gt;But the world has changed. With &lt;a href="https://docs.python.org/3.14/whatsnew/3.14.html#free-threaded-python-is-officially-supported"&gt;official support for free-threaded Python in Python 3.14&lt;/a&gt; and continued evolution in 3.15, &lt;strong&gt;we need to start expecting more from our web apps&lt;/strong&gt;. Is the Chameleon package updated for multi-threaded Python? Not at all. In fact, the &lt;a href="https://github.com/malthe/chameleon"&gt;repository&lt;/a&gt; shows support only up to Python 3.13 and a failing build. It&amp;rsquo;s not keeping up with the times.&lt;/p&gt;
+&lt;p&gt;And there are many more features that belong in modern templating languages for Python apps. Partial template support for excellent libraries like &lt;a href="https://htmx.org"&gt;HTMX&lt;/a&gt;. Faster performance. Markdown support. And much more.&lt;/p&gt;
+&lt;p&gt;I wanted more performance, parallelism, and modern features from &lt;strong&gt;all&lt;/strong&gt; the major templating languages like Chameleon, Jinja2, or Django templates. Amazingly, they have all failed to deliver. That changes today (at least for Chameleon, for now).&lt;/p&gt;
+&lt;h2 id="what-is-chameleon-rs"&gt;What is chameleon-rs?&lt;/h2&gt;
+&lt;p&gt;I &lt;a href="https://mkennedy.codes/docs/chameleon-rs/"&gt;reimplemented the Chameleon template language&lt;/a&gt; almost 100% in Rust. The core goals were compatibility, performance, modernization, and thread safety.&lt;/p&gt;
+&lt;p&gt;Existing templates and code run unchanged, with &lt;a href="https://mkennedy.codes/docs/chameleon-rs/user-guide/compatibility.html"&gt;byte-identical output&lt;/a&gt;, several times faster. It also adds what a modern Python web app expects:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Async rendering:&lt;/strong&gt; keeps the event loop free while awaiting data.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Built-in framework integrations:&lt;/strong&gt; Flask/Quart, FastAPI, Starlette, Robyn, and Litestar.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Template features:&lt;/strong&gt; partials and Markdown.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Free-threaded Python support:&lt;/strong&gt; thread-safe rendering without the GIL.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;No runtime dependencies.&lt;/p&gt;
+&lt;h2 id="how-much-faster-is-chameleon-rs"&gt;How much faster is chameleon-rs?&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Measured result:&lt;/strong&gt; In my web app, switching to chameleon-rs cut median response times by roughly 20% across the site.&lt;/p&gt;
+&lt;p&gt;chameleon-rs compiles a template to a native program and runs it in Rust. The template’s own work (the loops, conditions, escaping, macro and slot calls, partials and output assembly) happens without Python bytecode. Python only runs where the template calls into your code: an attribute lookup, a method call, a helper.&lt;/p&gt;
+&lt;p&gt;You can see our synthetic benchmarks on &lt;a href="https://mkennedy.codes/docs/chameleon-rs/user-guide/performance.html"&gt;the performance page&lt;/a&gt; of the docs. But the graph below is much more convincing. It shows the median response time when running on traditional Chameleon (the package) or chameleon-rs.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Median response times with Chameleon and chameleon-rs" src="https://mkennedy.codes/tags/python/perf-chameleon-vs-chameleon-rs.webp" /&gt;&lt;/p&gt;
+&lt;p&gt;This is not &amp;ldquo;templates render 20% faster&amp;rdquo;. This is the entire web app, with user authentication, significant database work, logging, ecommerce, etc., seeing roughly 20% lower response times by using chameleon-rs!&lt;/p&gt;
+&lt;h2 id="how-do-i-switch-from-chameleon-to-chameleon-rs"&gt;How do I switch from Chameleon to chameleon-rs?&lt;/h2&gt;
+&lt;p&gt;chameleon-rs runs code written for Chameleon unchanged. There are two ways to switch: install the compatibility alias and change nothing else, or change your imports.&lt;/p&gt;
+&lt;p&gt;One line: &lt;a href="https://mkennedy.codes/docs/chameleon-rs/reference/compat.install.html#chameleon_rs.compat.install"&gt;compat.install()&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Add this at the very top of your app’s entry point (the module your server imports, or &lt;code&gt;__main__&lt;/code&gt;), before anything imports Chameleon:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="chroma" tabindex="0"&gt;&lt;code class="language-python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;chameleon_rs.compat&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;chameleon_rs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;compat&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;install&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Or adopt more of the API and change the imports. Every public name is available from &lt;code&gt;chameleon_rs&lt;/code&gt; directly:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="chroma" tabindex="0"&gt;&lt;code class="language-python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Before&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;chameleon&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;PageTemplate&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PageTemplateFile&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PageTemplateLoader&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;chameleon_partials&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;chameleon_flask&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# After&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;chameleon_rs&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;PageTemplate&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PageTemplateFile&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PageTemplateLoader&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;chameleon_rs.partials&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;chameleon_partials&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;chameleon_rs.flask&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;chameleon_flask&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="what-modern-features-does-chameleon-rs-add"&gt;What modern features does chameleon-rs add?&lt;/h2&gt;
+&lt;p&gt;Performance itself is a feature. Compatibility is a feature. But why stop there? I added partials support, Markdown support, and asyncio support directly inside the template, as well as automatic event loop support for any &lt;code&gt;async def&lt;/code&gt; view function. That&amp;rsquo;s the modernization part. And it was achieved by making chameleon-rs a superset of what Chameleon offered before, not by changing it.&lt;/p&gt;
+&lt;h3 id="built-in-template-partials"&gt;Built-in template partials&lt;/h3&gt;
+&lt;p&gt;A partial is a template file rendered inside another template, with its own small model. Use them for anything you repeat: a card in a listing, a form field, a table row, a fragment you also return on its own to HTMX (see &lt;a href="https://mkennedy.codes/docs/chameleon-rs/user-guide/htmx.html"&gt;HTMX&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;chameleon-rs has partials built in. Every template can call &lt;a href="https://mkennedy.codes/docs/chameleon-rs/reference/render_partial.html#chameleon_rs.render_partial"&gt;render_partial&lt;/a&gt;, with nothing to register or pass in:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="chroma" tabindex="0"&gt;&lt;code class="language-html"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="na"&gt;tal:repeat&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"video videos"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;  ${render_partial('shared/partials/video_card.pt', video=video, show_date=True)}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="markdown-inside-chameleon-templates"&gt;Markdown inside Chameleon templates&lt;/h3&gt;
+&lt;p&gt;chameleon-rs can convert Markdown to HTML while it renders, with a &lt;code&gt;markdown:&lt;/code&gt; expression:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="chroma" tabindex="0"&gt;&lt;code class="language-html"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;article&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;${markdown: episode.notes}&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;article&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="na"&gt;tal:content&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"markdown: comment.text"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;It’s opt-in: Chameleon has nothing like it, so you turn it on with &lt;a href="https://mkennedy.codes/docs/chameleon-rs/reference/configure.html#chameleon_rs.configure"&gt;configure()&lt;/a&gt; and use it in new templates. The converter is built into chameleon-rs (comrak, in Rust), so there’s no Markdown package to install. And because it entirely happens in Rust, it&amp;rsquo;s &lt;a href="https://mkennedy.codes/docs/chameleon-rs/user-guide/markdown.html#speed-and-the-cache"&gt;roughly 26x faster than mistune with the same extensions&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Turning it on&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="chroma" tabindex="0"&gt;&lt;code class="language-python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;chameleon_rs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;chameleon_rs&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;PageTemplate&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;chameleon_rs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;configure&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;markdown&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;PageTemplate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'&amp;lt;article&amp;gt;${markdown: notes}&amp;lt;/article&amp;gt;'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;page&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;notes&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'# Show notes&lt;/span&gt;&lt;span class="se"&gt;\n\n&lt;/span&gt;&lt;span class="s1"&gt;We talked about **templates** and `Rust`.'&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="async-rendering-with-render_async"&gt;Async rendering with render_async()&lt;/h3&gt;
+&lt;p&gt;Chameleon renders synchronously. In an async web app (FastAPI, Starlette, Quart, Litestar, Robyn) that means a render runs on the event loop, and nothing else in that worker runs until it finishes. chameleon-rs keeps &lt;a href="https://mkennedy.codes/docs/chameleon-rs/reference/flask.render.html#chameleon_rs.flask.render"&gt;render()&lt;/a&gt; exactly as it was and adds &lt;a href="https://mkennedy.codes/docs/chameleon-rs/reference/robyn.render_async.html#chameleon_rs.robyn.render_async"&gt;render_async()&lt;/a&gt;, which renders on the event loop without holding it while it waits for data.&lt;/p&gt;
+&lt;p&gt;The framework integrations use it for you: an &lt;code&gt;async def&lt;/code&gt; view decorated with &lt;code&gt;@template&lt;/code&gt; renders with &lt;a href="https://mkennedy.codes/docs/chameleon-rs/reference/robyn.render_async.html#chameleon_rs.robyn.render_async"&gt;render_async&lt;/a&gt;. See the &lt;a href="https://mkennedy.codes/docs/chameleon-rs/user-guide/async.html"&gt;async rendering guide&lt;/a&gt; for the details and opt-in extras.&lt;/p&gt;
+&lt;h3 id="thread-safety-for-free-threaded-python"&gt;Thread safety for free-threaded Python&lt;/h3&gt;
+&lt;p&gt;chameleon-rs has been tested extensively to be thread-safe. I have repeatedly profiled and optimized it to share as little data and take as few locks as possible. So when you&amp;rsquo;re ready to move to a truly multi-threaded (no GIL) web framework, your template library won&amp;rsquo;t hold you back.&lt;/p&gt;
+&lt;h2 id="how-can-i-test-chameleon-rs-before-switching"&gt;How can I test chameleon-rs before switching?&lt;/h2&gt;
+&lt;p&gt;If this sounds interesting, you can use shadow mode to try it out. &lt;a href="https://mkennedy.codes/docs/chameleon-rs/reference/shadow.install.html"&gt;Shadow mode&lt;/a&gt; renders a sample of real traffic with both engines (existing Chameleon and chameleon-rs) and reports any difference, while Chameleon keeps serving. Your users won&amp;rsquo;t see a difference, and you can check that the sampled requests get exactly the same output.&lt;/p&gt;</description>
+      <guid isPermaLink="false">d001ba164084d15a7c72b19ddab0fb8fe25fcd6061b8f1ac84edf31afb96c850</guid>
+      <pubDate>Wed, 28 Oct 2026 03:01:10 +0000</pubDate>
+    </item>
+    <item>
+      <title>Talk Python to Me: #567: Personal AI Agents for Pythonistas - Planet Python</title>
+      <link>https://talkpython.fm/episodes/show/567/personal-ai-agents-for-pythonistas</link>
+      <description>The most popular Python project you've probably never heard of has 252,000 GitHub stars and merged over 1,800 pull requests in a single week. It's Hermes, a self-hosted AI agent you program just by talking to it. And it never clocks out. It runs 24/7 on a box in your house, wakes up every 15 minutes, keeps your YouTube channel in sync, and has your morning briefing ready before you're up. Mine started as a few config files. A few months later, it's 16,000 files of skills, memories, and tools it built for itself, all while I wasn't watching. Jeff Triplett joins me to explore this honestly weird but kind of amazing world. And yes, Hermes has a few words for you, too.&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Episode sponsors&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;a href='https://talkpython.fm/talk-python-membership-inner-circle'&amp;gt;Talk Python Membership&amp;lt;/a&amp;gt;&amp;lt;br&amp;gt;
+&amp;lt;a href='https://talkpython.fm/talk-python-membership-inner-circle'&amp;gt;Talk Python Membership&amp;lt;/a&amp;gt;&amp;lt;br&amp;gt;
+&amp;lt;a href='https://talkpython.fm/training'&amp;gt;Talk Python Courses&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;h2 class="links-heading mb-4"&amp;gt;Links from the show&amp;lt;/h2&amp;gt;
+&amp;lt;div&amp;gt;&amp;lt;strong&amp;gt;Talk Python Tech Talks&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/meetups" target="_blank" &amp;gt;talkpython.fm/meetups&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Hermes&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://github.com/NousResearch/hermes-agent?featured_on=talkpython" target="_blank" &amp;gt;github.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Ollama cloud models&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://ollama.com/search?c=cloud&amp;amp;amp;featured_on=talkpython" target="_blank" &amp;gt;ollama.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;https\://hermes-agent.nousresearch.com&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://hermes-agent.nousresearch.com?featured_on=talkpython" target="_blank" &amp;gt;hermes-agent.nousresearch.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Hermes Web UI&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://get-hermes.ai/setup/?featured_on=talkpython" target="_blank" &amp;gt;get-hermes.ai&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;built my own UI&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://blobs.talkpython.fm/hermes-iris-example.webp?cache_id=a338c4" target="_blank" &amp;gt;blobs.talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;the Hermes Dashboard&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://blobs.talkpython.fm/hermes-dashboard.png?cache_id=931bf5" target="_blank" &amp;gt;blobs.talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;the audio from the chat example&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://blobs.talkpython.fm/hermes-greets-talk-python-listeners.mp3?cache_id=9c1669" target="_blank" &amp;gt;blobs.talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;the CLI&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://blobs.talkpython.fm/hermes-cli.webp?cache_id=4f8b2c" target="_blank" &amp;gt;blobs.talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Tailscale&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://tailscale.com?featured_on=talkpython" target="_blank" &amp;gt;tailscale.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Hindsight&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://hindsight.vectorize.io?featured_on=talkpython" target="_blank" &amp;gt;hindsight.vectorize.io&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;trmnl display&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://trmnl.com?featured_on=talkpython" target="_blank" &amp;gt;trmnl.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;JEV&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev?featured_on=talkpython" target="_blank" &amp;gt;typesafe.ai&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Home Assistant Green&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.home-assistant.io/green/?featured_on=talkpython" target="_blank" &amp;gt;www.home-assistant.io&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;QMD - Query Markup Documents&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://github.com/tobi/qmd?featured_on=talkpython" target="_blank" &amp;gt;github.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;OrangePi&amp;lt;/strong&amp;gt;: &amp;lt;a href="http://www.orangepi.org?featured_on=talkpython" target="_blank" &amp;gt;www.orangepi.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Watch this episode on YouTube&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.youtube.com/watch?v=ZfV5G5EsJa8" target="_blank" &amp;gt;youtube.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Episode #567 deep-dive&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/episodes/show/567/personal-ai-agents-for-pythonistas#takeaways-anchor" target="_blank" &amp;gt;talkpython.fm/567&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Episode transcripts&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/episodes/transcript/567/personal-ai-agents-for-pythonistas" target="_blank" &amp;gt;talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Theme Song: Developer Rap&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;🥁 Served in a Flask 🎸&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/flasksong" target="_blank" &amp;gt;talkpython.fm/flasksong&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;---==  Don't be a stranger  ==---&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;YouTube&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/youtube" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-youtube"&amp;gt;&amp;lt;/i&amp;gt; youtube.com/@talkpython&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Bluesky&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://bsky.app/profile/talkpython.fm" target="_blank" &amp;gt;@talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Mastodon&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://fosstodon.org/web/@talkpython" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-mastodon"&amp;gt;&amp;lt;/i&amp;gt; @talkpython@fosstodon.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;X.com&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://x.com/talkpython" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-twitter"&amp;gt;&amp;lt;/i&amp;gt; @talkpython&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Michael on Bluesky&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://bsky.app/profile/mkennedy.codes?featured_on=talkpython" target="_blank" &amp;gt;@mkennedy.codes&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Michael on Mastodon&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://fosstodon.org/web/@mkennedy" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-mastodon"&amp;gt;&amp;lt;/i&amp;gt; @mkennedy@fosstodon.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Michael on X.com&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://x.com/mkennedy?featured_on=talkpython" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-twitter"&amp;gt;&amp;lt;/i&amp;gt; @mkennedy&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;/div&amp;gt;</description>
+      <guid isPermaLink="false">9ca7358153c2c1ec6f18a7ef0b92a61495ccca10c1f6c6c8e26716c4e1c9e6ca</guid>
+      <pubDate>Tue, 27 Oct 2026 22:27:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>Rodrigo Girão Serrão: Typing improvements in Python 3.15 - Planet Python</title>
+      <link>https://mathspp.com/blog/typing-improvements-in-python-315</link>
+      <description>&lt;img alt="" src="https://mathspp.com/images/7/6/3/e/b/763ebeb8ae3be527f2214297370d051a70e8028e-thumbnail.webp" /&gt;
+                                &lt;p&gt;This article goes over the major improvements made to the typing module in Python 3.15.&lt;/p&gt;
+&lt;p&gt;Since static type hinting is becoming more and more popular in the Python world, every Python release brings with it major improvements to the world of typing.
+This article goes over the main improvements made to typing in Python 3.15 like the improvements to &lt;code&gt;TypedDict&lt;/code&gt;, the addition of &lt;code&gt;typing.TypeForm&lt;/code&gt;, or the addition of the decorator &lt;code&gt;typing.disjoint_base&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id="15-days-of-python-3-15"&gt;15 days of Python 3.15&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#15-days-of-python-3-15"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;To &lt;a href="https://mathspp.com/python-315"&gt;celebrate the release of Python 3.15&lt;/a&gt;, over the next 15 business days I'll be writing about a new 3.15 feature every day.
+Explained clearly and with examples so you don't have to sift through the changelog.&lt;/p&gt;
+&lt;p&gt;Subscribe to receive this free email series:&lt;/p&gt;
+&lt;p&gt;
+&lt;/p&gt;&lt;div class="form-wrapper" id="enroll-wrapper"&gt;
+&lt;form action="https://mathspp.com/courses/uv" class=" " id="enroll" method="POST" name="enroll"&gt;
+                          &lt;input class="form-honeybear" name="data[honeypot]" tabindex="-1" type="text" value="" /&gt;&lt;div class="form-field form-group "&gt;
+          &lt;div class="form-data"&gt;
+                        &lt;div class="form-input-wrapper "&gt;
+                                    &lt;input class="form-input " name="data[email]" type="email" value="" /&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+  &lt;/div&gt;
+            &lt;div class="form-field form-group "&gt;
+            &lt;div class="form-label-wrapper"&gt;&lt;label class="form-label"&gt;&lt;/label&gt;
+      &lt;/div&gt;
+        &lt;div class="form-data"&gt;
+            &lt;div class="g-recaptcha-container"&gt;
+                                &lt;input name="data[token]" type="hidden" value="" /&gt;&lt;input name="data[action]" type="hidden" value="09dc2d03f087c147995d59316c9e38c9" /&gt;&lt;/div&gt;
+            &lt;/div&gt;
+  &lt;/div&gt;
+        &lt;input name="__form-name__" type="hidden" value="enroll" /&gt;&lt;input name="__unique_form_id__" type="hidden" value="wif7y4hqcmxxobuzdgaa" /&gt;&lt;input class="form-nonce-field" name="form-nonce" type="hidden" value="cc456ffc2ee08cfa00e6a017f486291b" /&gt;&lt;div class="button-wrapper"&gt;
+  &lt;button class="btn " type="submit"&gt;Enroll for free &amp;#128013;&amp;#128640;&lt;/button&gt;
+        &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+&lt;p&gt;If you want, you can also &lt;a href="https://mathspp.com/python-315"&gt;check the schedule&lt;/a&gt; of the upcoming emails.&lt;/p&gt;
+&lt;h2 id="new-class-parameters-for-typeddict"&gt;New class parameters for &lt;code&gt;TypedDict&lt;/code&gt;&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#new-class-parameters-for-typeddict"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Python 3.15 added two class parameters to &lt;code&gt;TypedDict&lt;/code&gt;: &lt;code&gt;extra_items&lt;/code&gt; and &lt;code&gt;closed&lt;/code&gt;.
+The gist of it is that &lt;code&gt;extra_items&lt;/code&gt; allows specifying that your dictionary may have other, unknown keys whose values have the specified type:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-py"&gt;from typing import TypedDict
+class Movie(TypedDict, extra_items=str):
+    title: str
+    year: int&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The definition above means that a variable of type &lt;code&gt;Movie&lt;/code&gt; might have other keys, as long as their values are assignable to the type &lt;code&gt;str&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-py"&gt;movie: Movie = {
+    "title": "Forrest Gump",
+    "year": 1994,
+    "genre": "Comedy / Romance",
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The extra item &lt;code&gt;"genre": "Comedy / Romance"&lt;/code&gt; is allowed because the value is a string and &lt;code&gt;extra_items=str&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;To completely disallow extra items, regardless of their type, you can set &lt;code&gt;closed=True&lt;/code&gt; as a class parameter.&lt;/p&gt;
+&lt;p&gt;There's an article dedicated to &lt;a href="https://mathspp.com/blog/typeddict-with-extra-items"&gt;the improvements made to &lt;code&gt;TypedDict&lt;/code&gt; in Python 3.15&lt;/a&gt; that...&lt;/p&gt;</description>
+      <guid isPermaLink="false">1514bc127883213e3d3f258fdbf7e6b13a564d2c91354c52cbd691a8680ce670</guid>
+      <pubDate>Tue, 27 Oct 2026 10:54:00 +0000</pubDate>
+    </item>
     <item>
       <title>PyPy: The Shift of Theseus — Toy Bit Provenance Abstract Domain - Planet Python</title>
       <link>https://www.pypy.org/posts/2026/10/toy-bit-provenance.html</link>
