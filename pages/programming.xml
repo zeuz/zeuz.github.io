@@ -5,7 +5,438 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Wed, 28 Oct 2026 14:01:03 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2026 14:01:43 +0000</lastBuildDate>
+    <item>
+      <title>"Michael Kennedy's Thoughts on Technology": Your GitHub language bar is lying (how to fix it) - Planet Python</title>
+      <link>https://mkennedy.codes/posts/your-github-language-bar-is-lying-and-how-to-fix-it/</link>
+      <description>&lt;p&gt;&lt;strong&gt;tl;dr;&lt;/strong&gt; GitHub&amp;rsquo;s language bar counts every byte in your repo, including generated docs and test suites. A few lines in &lt;code&gt;.gitattributes&lt;/code&gt; tell it what to skip. For my project, that took it from &amp;ldquo;75% HTML&amp;rdquo; to roughly 62% Rust and 38% Python, which is what the project really is.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;You know that colorful bar on every GitHub repo&amp;rsquo;s page, the one &lt;strong&gt;that says what the project is written in&lt;/strong&gt;? I just learned you can tell it what to count. On one of my projects, it made a big difference.&lt;/p&gt;
+&lt;h2 id="why-does-github-think-my-rust-project-is-html"&gt;Why does GitHub think my Rust project is HTML?&lt;/h2&gt;
+&lt;p&gt;My project &lt;a href="https://github.com/mikeckennedy/chameleon-rs"&gt;chameleon-rs&lt;/a&gt; is a Rust re-implementation of the Chameleon template engine, shipped as a Python package (I &lt;a href="https://mkennedy.codes/posts/chameleon-templates-modernized-chameleon-rs/"&gt;wrote about it here&lt;/a&gt;). Most of the engine is Rust, with a Python layer for the public API and framework integrations. Here&amp;rsquo;s what GitHub said it was:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;span&gt;HTML: 75.5%&lt;/span&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Python: 12.4%&lt;/li&gt;
+&lt;li&gt;Rust: 9.1%&lt;/li&gt;
+&lt;li&gt;JavaScript: 2.8%&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;HTML? &lt;strong&gt;Three quarters&lt;/strong&gt; of it? There&amp;rsquo;s barely any hand-written HTML in the whole repo. Yes, it&amp;rsquo;s a templating engine, but the templates live in the tests and docs.&lt;/p&gt;
+&lt;p&gt;The documentation site was to blame. I build the docs with &lt;a href="https://talkpython.fm/episodes/show/549/great-docs"&gt;Great Docs&lt;/a&gt; and commit the output to &lt;code&gt;site/&lt;/code&gt; so it can be served straight from the repo. That&amp;rsquo;s about 9 MB of generated HTML, JavaScript and CSS, and GitHub counted every byte of it as if I&amp;rsquo;d written it by hand.&lt;/p&gt;
+&lt;h2 id="how-does-github-decide-what-language-a-repo-is"&gt;How does GitHub decide what language a repo is?&lt;/h2&gt;
+&lt;p&gt;The bar comes from &lt;a href="https://github.com/github-linguist/linguist"&gt;Linguist&lt;/a&gt;, GitHub&amp;rsquo;s language detection library. Linguist goes over every tracked file, works out its language, and adds up the bytes. More bytes, bigger slice. It already skips some things on its own, like well-known vendor folders, minified files and common generated files. But it has no way to know that &lt;em&gt;your&lt;/em&gt; &lt;code&gt;site/&lt;/code&gt; folder is build output.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;You tell it with a &lt;code&gt;.gitattributes&lt;/code&gt; file at the root of your repo&lt;/strong&gt;. It&amp;rsquo;s the same file Git uses for line endings and diff settings, and Linguist reads a few attributes of its own from it:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;linguist-generated&lt;/code&gt; marks build output. It&amp;rsquo;s left out of the stats, and GitHub collapses its diffs in pull requests too (nice).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;linguist-vendored&lt;/code&gt; marks third-party code you&amp;rsquo;ve copied in. Also left out of the stats.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;linguist-documentation&lt;/code&gt; marks docs, which are left out as well.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;linguist-detectable=false&lt;/code&gt; just says &amp;ldquo;don&amp;rsquo;t count this toward the languages&amp;rdquo; and means nothing else.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Each line is a path pattern followed by attributes. Think of a &lt;code&gt;.gitignore&lt;/code&gt; line with some settings tacked on the end.&lt;/p&gt;
+&lt;h2 id="round-one-the-docs"&gt;Round one: the docs&lt;/h2&gt;
+&lt;p&gt;Two lines took care of the worst of it:&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;site/** linguist-generated
+tests/upstream/** linguist-vendored
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The second line covers Chameleon&amp;rsquo;s own test suite, which I vendor unmodified to measure compatibility. It&amp;rsquo;s not my code, so it shouldn&amp;rsquo;t count either.&lt;/p&gt;
+&lt;p&gt;After pushing, the bar read 55.9% Python, 43.3% Rust. Much better, but still not right.&lt;/p&gt;
+&lt;h2 id="round-two-the-tests"&gt;Round two: the tests&lt;/h2&gt;
+&lt;p&gt;The engine is mostly Rust, so why was Python winning? I measured the bytes:&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Where&lt;/th&gt;
+					&lt;th&gt;Size&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Python package&lt;/td&gt;
+					&lt;td&gt;420 KB&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Python tests&lt;/td&gt;
+					&lt;td&gt;685 KB&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Rust, everything&lt;/td&gt;
+					&lt;td&gt;950 KB&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;The Python &lt;em&gt;tests&lt;/em&gt; were bigger than the Python &lt;em&gt;package&lt;/em&gt;! It&amp;rsquo;s nice to have a thorough test suite. But it was making a Rust engine look like a Python project.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The tests are coming out too&lt;/strong&gt;. To keep things fair, I excluded the Rust tests and benchmarks along with the Python tests, otherwise I&amp;rsquo;d just be skewing it the other way. Here&amp;rsquo;s the final file:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="chroma" tabindex="0"&gt;&lt;code class="language-bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# GitHub's language statistics (Linguist) skip these: the Great Docs build output (`make docs`)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# is generated, and Chameleon's test suite is vendored unmodified.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;site/** linguist-generated
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tests/upstream/** linguist-vendored
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Tests and benchmarks aren't the product: the Python tests outweigh the Python package, so&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# counting them makes a mostly-Rust engine read as mostly Python. The Rust ones are left out&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# too, to measure both languages alike (inline `#[cfg(test)]` modules still count).&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tests/** linguist-detectable&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;crates/*/tests/** linguist-detectable&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;crates/*/benches/** linguist-detectable&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;crates/chameleon-core/src/tests.rs linguist-detectable&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can check your patterns before pushing with &lt;code&gt;git check-attr&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="chroma" tabindex="0"&gt;&lt;code class="language-bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git check-attr linguist-generated linguist-detectable -- site/index.html tests/test_api.py
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="where-did-it-end-up"&gt;Where did it end up?&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="" src="https://mkennedy.codes/tags/python/git-language-breakdown.webp" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The bar should land around 62% Rust and 38% Python&lt;/strong&gt;. That matches what chameleon-rs is: a Rust engine with a Python API on top. GitHub recalculates a few minutes after you push to the default branch.&lt;/p&gt;
+&lt;p&gt;That bar is one of the first things people see when they land on your project. If yours is off because of a docs build, vendored code, or a big test suite, it&amp;rsquo;s a few lines of &lt;code&gt;.gitattributes&lt;/code&gt; to fix. I&amp;rsquo;m off to do the same for some of my other projects now.&lt;/p&gt;</description>
+      <guid isPermaLink="false">0c0262e86844c17b4e3a0a6c25e4f75ee1675134c523c4460533a35f548eee05</guid>
+      <pubDate>Fri, 30 Oct 2026 05:19:37 +0000</pubDate>
+    </item>
+    <item>
+      <title>Rodrigo Girão Serrão: Thread-safe iterators - Planet Python</title>
+      <link>https://mathspp.com/blog/threadsafe-iterators</link>
+      <description>&lt;img alt="" src="https://mathspp.com/images/f/e/d/7/a/fed7a1066c67f273a000f07033ce6f62b1dec504-thumbnail.webp" /&gt;
+                                &lt;p&gt;Learn how to write and use thread-safe iterators in Python 3.15.&lt;/p&gt;
+&lt;p&gt;This article shows how to write and use iterators in a thread-safe manner using the new tools from Python 3.15:&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;&lt;code&gt;threading.serialize_iterator&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;threading.synchronized_iterator&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h2 id="15-days-of-python-3-15"&gt;15 days of Python 3.15&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#15-days-of-python-3-15"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;To &lt;a href="https://mathspp.com/python-315"&gt;celebrate the release of Python 3.15&lt;/a&gt;, over the next 15 business days I'll be writing about a new 3.15 feature every day.
+Explained clearly and with examples so you don't have to sift through the changelog.&lt;/p&gt;
+&lt;p&gt;Subscribe to receive this free email series:&lt;/p&gt;
+&lt;p&gt;
+&lt;/p&gt;&lt;div class="form-wrapper" id="enroll-wrapper"&gt;
+&lt;form action="https://mathspp.com/courses/uv" class=" " id="enroll" method="POST" name="enroll"&gt;
+                          &lt;input class="form-honeybear" name="data[honeypot]" tabindex="-1" type="text" value="" /&gt;&lt;div class="form-field form-group "&gt;
+          &lt;div class="form-data"&gt;
+                        &lt;div class="form-input-wrapper "&gt;
+                                    &lt;input class="form-input " name="data[email]" type="email" value="" /&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+  &lt;/div&gt;
+            &lt;div class="form-field form-group "&gt;
+            &lt;div class="form-label-wrapper"&gt;&lt;label class="form-label"&gt;&lt;/label&gt;
+      &lt;/div&gt;
+        &lt;div class="form-data"&gt;
+            &lt;div class="g-recaptcha-container"&gt;
+                                &lt;input name="data[token]" type="hidden" value="" /&gt;&lt;input name="data[action]" type="hidden" value="0a381a07214bdfc7adeadc72f0207303" /&gt;&lt;/div&gt;
+            &lt;/div&gt;
+  &lt;/div&gt;
+        &lt;input name="__form-name__" type="hidden" value="enroll" /&gt;&lt;input name="__unique_form_id__" type="hidden" value="xyvo65bctupj0scrlpid" /&gt;&lt;input class="form-nonce-field" name="form-nonce" type="hidden" value="0dd54dcdbe857117c1214abf5b5c131a" /&gt;&lt;div class="button-wrapper"&gt;
+  &lt;button class="btn " type="submit"&gt;Enroll for free &amp;#128013;&amp;#128640;&lt;/button&gt;
+        &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+&lt;p&gt;If you want, you can also &lt;a href="https://mathspp.com/python-315"&gt;check the schedule&lt;/a&gt; of the upcoming emails.&lt;/p&gt;
+&lt;h2 id="iterators-are-not-thread-safe"&gt;Iterators are not thread-safe&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#iterators-are-not-thread-safe"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Most iterators are not thread-safe by default.
+For example, generator iterators can raise a &lt;code&gt;ValueError&lt;/code&gt; if accessed simultaneously from two different threads, as you'll see now.&lt;/p&gt;
+&lt;p&gt;First, you're going to define a slow generator:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-py"&gt;import time
+def slow_counter():
+    idx = 0
+    while True:
+        time.sleep(1)
+        idx += 1
+        yield idx
+counter = slow_counter()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The generator &lt;code&gt;counter&lt;/code&gt; takes a second to produce each successive number.
+Then, you're going to write a function that is going to try to consume a value out of the counter in a dedicated thread:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-py"&gt;def count_consumer(name, counter):
+    try:
+        idx = next(counter)
+    except ValueError as e:
+        print(f"ValueError in {name}: {e}")
+    else:
+        print(f"{name} got {idx = }")&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The function &lt;code&gt;count_consumer&lt;/code&gt; will run in two different threads at the same time.
+The idea is that the second thread will try to fetch a value out of &lt;code&gt;counter&lt;/code&gt; while the first thread is still waiting for the first slow result.&lt;/p&gt;
+&lt;p&gt;By passing &lt;code&gt;count_consumer&lt;/code&gt; to two different threads, you'll see that the second thread triggers an exception:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-py"&gt;t1 = threading.Thread(target=count_consumer, args=("t1", counter))
+t2 = threading.Thread(target=count_consumer, args=("t2", counter))
+t1.start()
+t2.start()
+t1.join()...&lt;/code&gt;&lt;/pre&gt;</description>
+      <guid isPermaLink="false">4640ac4290b11700e25755fb840e5b21defd7bd3e16305a99c989bcbb418e39e</guid>
+      <pubDate>Thu, 29 Oct 2026 17:09:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>The Python Coding Stack: 3. How can words turn into actions? - Planet Python</title>
+      <link>https://www.thepythoncodingstack.com/p/3-how-can-words-turn-into-actions-agents-unpacked</link>
+      <description>&lt;p&gt;In previous chapters of &lt;em&gt;Agents Unpacked&lt;/em&gt;, we explored &lt;a href="https://www.thepythoncodingstack.com/p/1-what-makes-an-ai-agent-different"&gt;what makes an AI agent different from a chatbot&lt;/a&gt; and &lt;a href="https://www.thepythoncodingstack.com/p/2-who-actually-does-the-work-the"&gt;how the model, its tools, and the software connecting them work together&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;You ask an AI agent whether you&amp;#8217;ll need a raincoat tomorrow. To check the forecast, it can't rely on its knowledge. It needs up-to-date information. It needs to turn your question into a request that a weather service can understand.&lt;/p&gt;&lt;p&gt;This time, we look inside the request itself. How does a large language model (LLM) turn everyday wording into a named operation with specific inputs? And why can a request contain all the right fields yet still ask for the wrong thing?&lt;/p&gt;&lt;p&gt;&lt;em&gt;Who&amp;#8217;s Monty? Monty is my personal AI agent. Read &lt;a href="https://www.thepythoncodingstack.com/p/stephens-preface-to-agents-unpacked"&gt;the introduction to this series&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;&lt;div class="captioned-image-container"&gt;&lt;a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!kUFK!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe11675c9-254a-4e42-8fb8-91433f4b6039_1200x630.png" target="_blank"&gt;&lt;div class="image2-inset"&gt;&lt;img height="630" src="src" width="1200" /&gt;&lt;div class="image-link-expand"&gt;&lt;div class="pencraft pc-display-flex pc-gap-8 pc-reset"&gt;&lt;button class="pencraft pc-reset pencraft icon-container restack-image buttonBase-GK1x3M" tabindex="0" type="button"&gt;&lt;/button&gt;&lt;button class="pencraft pc-reset pencraft icon-container view-image buttonBase-GK1x3M" tabindex="0" type="button"&gt;&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;&lt;p class="button-wrapper"&gt;&lt;a class="button primary" href="https://www.thepythoncodingstack.com/subscribe"&gt;&lt;span&gt;Subscribe now&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;h2&gt;In conversation &amp;#8226; Chapter 3&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Suppose you ask an assistant:&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&amp;#8220;Will I need a raincoat in Oxford next Saturday?&amp;#8221;&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;It has a weather-lookup tool available, but &amp;#8220;Oxford next Saturday&amp;#8221; isn&amp;#8217;t quite as precise as it looks.&lt;/p&gt;&lt;p&gt;What might the assistant need to clarify before requesting the forecast?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;You got me here. I can't figure out why this is not precise. The only thing I'd pick is that "next Saturday" can be ambiguous. It sometimes refers to the Saturday coming up, and sometimes to the next one after the one coming up. Is that the ambiguity?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Yes, that&amp;#8217;s exactly the ambiguity. A specific date, such as &amp;#8220;24 October 2026&amp;#8221;, avoids those two readings.&lt;/p&gt;&lt;p&gt;I also had the place in mind. There&amp;#8217;s an Oxford in England, but there are Oxfords elsewhere, too. Context might make the intended one obvious, so the assistant needn&amp;#8217;t ask unnecessarily. My opening made that sound more mysterious than it was. I&amp;#8217;ve managed to turn choosing a coat into a geography test.&lt;/p&gt;&lt;p&gt;The useful point is that the assistant needs to turn our everyday wording into the particular location and date it will send to the weather tool. That involves interpreting what we mean, not just copying our words.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Got it.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Suppose we&amp;#8217;ve settled on Oxford in England and Saturday, 24 October.&lt;/p&gt;&lt;p&gt;As we saw in Chapter 2, the surrounding software, or harness, tells the model what tools are available and what information each needs. For our weather example, a tool description could say:&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;code&gt;get_weather&lt;/code&gt;&lt;strong&gt;:&lt;/strong&gt; Look up a forecast. Requires a location and a date written as year-month-day.&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;It can then produce a request like this:&lt;/p&gt;&lt;p&gt;&lt;em&gt;(Illustrative request, not a real lookup)&lt;/em&gt;&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&lt;code&gt;{
+  "name": "get_weather",
+  "arguments": {
+    "location": "Oxford, UK",
+    "date": "2026-10-24"
+  }
+}&lt;/code&gt;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This format is called &lt;strong&gt;JSON&lt;/strong&gt;. You don&amp;#8217;t need to learn its punctuation. Here, &lt;code&gt;name&lt;/code&gt; identifies the tool, and &lt;code&gt;arguments&lt;/code&gt; contains the inputs supplied to it.&lt;/p&gt;&lt;p&gt;Notice that the request doesn&amp;#8217;t mention a raincoat even though that&amp;#8217;s what your prompt asked. The model has translated your question into a request for information it can use to answer you.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;So, let's see if I follow. The harness receives this response from the LLM and it recognises it's not text but it's a tool call. The harness has all the information it needs, so it can choose to call the &lt;code&gt;get_weather&lt;/code&gt; tool and pass the location and date to it. The tool then fetches the weather forecast for that location and date, presumably by accessing some online service that provides this information.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Yes, that&amp;#8217;s the sequence for our example. The weather tool could contact an online forecasting service using those inputs.&lt;/p&gt;&lt;p&gt;One refinement: &lt;strong&gt;the JSON is still text&lt;/strong&gt;. In a typical tool-use interface, the model&amp;#8217;s response is explicitly marked as a tool request. The harness isn&amp;#8217;t simply spotting curly brackets in an ordinary reply. Our mock-up represents that request, rather than showing a particular provider&amp;#8217;s exact format.&lt;/p&gt;&lt;p&gt;After any checks the software implements, it can run the tool. Here&amp;#8217;s a hypothetical successful result (&lt;em&gt;not a real forecast&lt;/em&gt;):&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&lt;code&gt;{
+  "location": "Oxford, UK",
+  "date": "2026-10-24",
+  "forecast": "Rain likely",
+  "temperature_c": 12
+}&lt;/code&gt;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;That gives the model evidence for its raincoat recommendation. Notice that the forecast comes from the tool&amp;#8217;s result, not from the model generating a plausible answer about October weather.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;So the tool returns this output. Then the harness sends this to the model, which makes sense of it and uses it to provide text for the user. Makes sense, yes. So, to pick up on something you said earlier, does the LLM label each thing it sends to the harness as either text or a tool call, which is how the harness knows what type of output comes from the LLM?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Broadly, yes. The model communicates through an interface that distinguishes &lt;strong&gt;ordinary text&lt;/strong&gt; from &lt;strong&gt;requests to use tools&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Think of the response as arriving in labelled sections. A text section contains words to show the user. A tool-request section identifies the tool and supplies its inputs. The harness reads those section types rather than guessing from the wording.&lt;/p&gt;&lt;p&gt;The exact arrangement varies between systems. A single response can also contain both, such as &amp;#8220;I&amp;#8217;ll check the forecast&amp;#8221; followed by a tool request. It needn&amp;#8217;t be entirely one or the other.&lt;/p&gt;&lt;p&gt;That&amp;#8217;s why showing you our JSON example doesn&amp;#8217;t trigger a weather lookup. It&amp;#8217;s inside an ordinary text reply, not sent as an actual tool request.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Got it. What's next?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;There&amp;#8217;s a useful question hiding behind our example: &lt;strong&gt;how did the model know how to ask for the weather?&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Two things come together:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;Learned behaviour:&lt;/strong&gt; a tool-capable model has learned how to use supplied tool definitions to choose an operation and construct a request.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;Information supplied now:&lt;/strong&gt; the harness tells it which tools are available, what they do, and what inputs they accept.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;The model needn&amp;#8217;t have encountered our particular &lt;code&gt;get_weather&lt;/code&gt; tool during training. Its description might be enough for it to use the tool, much as you can follow instructions for an unfamiliar appliance.&lt;/p&gt;&lt;p&gt;But that isn&amp;#8217;t guaranteed. Understanding a description, choosing the right tool, and supplying sensible inputs can all go wrong.&lt;/p&gt;&lt;p&gt;Supplying a new tool description isn&amp;#8217;t retraining the model. It&amp;#8217;s giving the existing model information to work with.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;So the model sees the tool as a black box. It doesn't know how it works, but it knows what it's meant to do and what it needs as input. This means that whoever creates tools needs to write a good description for the tool. However, this is not something that a user needs to worry about, right?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Yes. &lt;strong&gt;The model doesn&amp;#8217;t need to know how the tool works internally.&lt;/strong&gt; It needs enough information to understand what the tool offers and how to request it. &amp;#8220;Black box&amp;#8221; is a useful way to think about that, although the model might know something about its workings.&lt;/p&gt;&lt;p&gt;And generally, you&amp;#8217;re right about the user. If you&amp;#8217;re using a ready-made assistant, its builders or whoever connects the tools should supply clear descriptions and input requirements. You shouldn&amp;#8217;t need to write those yourself.&lt;/p&gt;&lt;p&gt;Your part is usually to explain what you want and clarify anything the assistant can&amp;#8217;t reasonably infer.&lt;/p&gt;&lt;p&gt;But a good description isn&amp;#8217;t a safeguard by itself. Saying &amp;#8220;a date is required&amp;#8221; tells the model what to provide. Software that rejects a request with no date actually checks that requirement.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;If I recall correctly, in the early days of LLMs, when they first hit the mainstream, they could only provide text, right? Presumably tool calling came later.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Yes, broadly, if you mean the early mainstream &lt;strong&gt;chat interfaces&lt;/strong&gt;. You typed text, and they replied with text. Dedicated tool-calling support became more common later.&lt;/p&gt;&lt;p&gt;But text output wasn&amp;#8217;t an absolute barrier to using tools. A developer could instruct a model:&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;If you need a forecast, write &lt;code&gt;WEATHER_REQUEST&lt;/code&gt;, followed by the location and date.&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;Software could watch for that convention, interpret it, and run the tool. Whether the model followed the convention reliably was another matter.&lt;/p&gt;&lt;p&gt;Dedicated tool-calling interfaces make that distinction explicit, rather than requiring developers to invent their own conventions. Models can also be trained specifically to produce appropriate tool requests.&lt;/p&gt;&lt;p&gt;So it wasn&amp;#8217;t a jump from &amp;#8220;words&amp;#8221; to an entirely different ability to act. &lt;strong&gt;Software could already treat generated words as instructions.&lt;/strong&gt; Dedicated support made that exchange more structured, though not automatically correct.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;And I assume the harnesses around those first chat interfaces, like the first ChatGPT, were fairly basic and mostly just relayed the text to the user and kept the messages together to form the full conversation. So, the harnesses have also evolved to allow tool calls, right?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Yes. &lt;strong&gt;The surrounding software has evolved too&lt;/strong&gt;, not just the models.&lt;/p&gt;&lt;p&gt;Your description captures the visible interaction in an early text-only chat product: pass the conversation to the model, receive its reply, and display it. I&amp;#8217;d avoid calling the whole system basic, though. There were also accounts, safety measures, and other machinery behind that simple interface.&lt;/p&gt;&lt;p&gt;To support tools, the software needs additional responsibilities: supply tool definitions, recognise tool requests, arrange execution, and return the results. It also needs to handle whatever checks, approvals, and errors its builders choose to support.&lt;/p&gt;&lt;p&gt;The two sides have to fit together. A model capable of requesting tools can&amp;#8217;t use them through software that only displays its output. Equally, adding tools to the software doesn&amp;#8217;t guarantee that a particular model will request them correctly.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Understood. I'm ready to move on.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Let&amp;#8217;s look at what the software can actually check.&lt;/p&gt;&lt;p&gt;Suppose the model requests a forecast for Oxford but leaves out the date. If the software checks that all required inputs are present, it can reject that request before attempting a lookup. The model then needs to supply the missing date, asking you if necessary.&lt;/p&gt;&lt;p&gt;Now suppose both inputs are present:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;Location: &lt;strong&gt;Oxford, Mississippi, US&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Date: &lt;strong&gt;24 October 2026&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;That&amp;#8217;s a real place and a valid date. But you meant Oxford in England.&lt;/p&gt;&lt;p&gt;Would checking that the request contains an acceptable location and date catch that mistake?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;No, in this case the harness and the tool won&amp;#8217;t catch this error. This was the model that made an assumption without checking.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Right. &lt;strong&gt;Those input checks wouldn&amp;#8217;t catch a valid location that wasn&amp;#8217;t the one you meant.&lt;/strong&gt; If the context didn&amp;#8217;t justify choosing Mississippi, the model should have clarified rather than silently committing to it. Additional software checks could help, but checking the required fields alone wouldn&amp;#8217;t.&lt;/p&gt;&lt;p&gt;Now suppose it requests the correct Oxford and date, but receives:&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&amp;#8220;No forecast available for that date.&amp;#8221;&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;That&amp;#8217;s different again. The request was accepted, and the service answered, but the answer lacks the information needed.&lt;/p&gt;&lt;p&gt;The model shouldn&amp;#8217;t treat that as &amp;#8220;no rain expected&amp;#8221;. &lt;strong&gt;Missing information isn&amp;#8217;t a negative forecast.&lt;/strong&gt; It might try another suitable source or explain that it couldn&amp;#8217;t obtain the forecast, rather than invent a raincoat recommendation.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;That makes sense.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Two other outcomes call for different responses:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;&amp;#8220;Access denied&amp;#8221;&lt;/strong&gt; means the request wasn&amp;#8217;t permitted. Repeating it unchanged won&amp;#8217;t solve that, and the assistant shouldn&amp;#8217;t try to evade the restriction.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;&amp;#8220;Service temporarily unavailable&amp;#8221;&lt;/strong&gt; means the lookup couldn&amp;#8217;t be completed. A limited retry might help.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Neither tells us what the weather will be.&lt;/p&gt;&lt;p&gt;Now let&amp;#8217;s contrast that lookup with a calculation. Suppose you ask:&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&amp;#8220;Calculate the fuel cost for a 100-mile journey, assuming fuel costs 15p per mile.&amp;#8221;&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;A calculator tool returns &lt;strong&gt;&amp;#163;15&lt;/strong&gt;. Unlike the weather tool, it hasn&amp;#8217;t fetched an external fact. It has calculated from supplied inputs.&lt;/p&gt;&lt;p&gt;What does that result establish, and what does it leave unconfirmed about the journey&amp;#8217;s actual fuel cost?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;It doesn&amp;#8217;t check what assumptions are behind the 15p per mile estimate.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Exactly. The calculator establishes that &lt;strong&gt;100 miles at 15p per mile comes to &amp;#163;15&lt;/strong&gt;. It doesn&amp;#8217;t establish whether 15p is realistic for that car and journey, or whether the journey is actually 100 miles. Correct arithmetic can rest on inaccurate assumptions.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;But the request from the user was clear about calculating the cost of the journey. Why would the agent need to doubt the user? It wasn&amp;#8217;t asked to confirm that the values used make sense?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;You&amp;#8217;re right. &lt;strong&gt;For that request, the agent should use the supplied assumptions and calculate &amp;#163;15.&lt;/strong&gt; It wasn&amp;#8217;t asked to investigate whether 15p per mile was realistic.&lt;/p&gt;&lt;p&gt;My question was about what the result proves, but I blurred that into what the agent ought to check. Those are different things. You asked for arithmetic. I&amp;#8217;d apparently decided to conduct an inquiry.&lt;/p&gt;&lt;p&gt;&amp;#8220;Using your figures, the fuel cost is &amp;#163;15&amp;#8221; answers the request accurately. It needn&amp;#8217;t challenge your figures or add a disclaimer.&lt;/p&gt;&lt;p&gt;The distinction matters if the agent supplies the assumptions itself, or presents &amp;#163;15 as a verified real-world cost rather than a calculation from your inputs.&lt;/p&gt;&lt;p&gt;Now consider our third example, purely hypothetically:&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&amp;#8220;Add &amp;#8216;Trip to Oxford&amp;#8217; to my calendar next Saturday at nine.&amp;#8221;&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;A calendar tool would need more precise inputs, just as the weather tool did. But there&amp;#8217;s a new distinction: &lt;strong&gt;this request would change something stored&lt;/strong&gt;, rather than retrieve information or calculate an answer.&lt;/p&gt;&lt;p&gt;Even if the model supplies an exact date and time, what else might need settling before that request should go ahead?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;The harness would need to make sure that it has permission to make changes to the user&amp;#8217;s calendar.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Yes. &lt;strong&gt;A request can be correctly formed without being authorised.&lt;/strong&gt; Software needs to check whether this system is allowed to write to that calendar. Merely showing the model a calendar tool doesn&amp;#8217;t grant that permission.&lt;/p&gt;&lt;p&gt;In our hypothetical example, the user has explicitly asked for an event to be added. Whether separate confirmation is needed depends on the system&amp;#8217;s rules, not on a universal requirement to ask again.&lt;/p&gt;&lt;p&gt;There are also practical details to settle: which calendar, whether &amp;#8220;nine&amp;#8221; means morning or evening, the time zone, and the event&amp;#8217;s duration. Context or agreed defaults may supply those. Otherwise, the assistant should ask only for what&amp;#8217;s missing.&lt;/p&gt;&lt;p&gt;Permission answers &lt;strong&gt;&amp;#8220;May this change be made?&amp;#8221;&lt;/strong&gt; Precise inputs answer &lt;strong&gt;&amp;#8220;Which change should be made?&amp;#8221;&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Which part of the agent deals with permission? The model or the harness? And how is permission set?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Both have a role, but they do different jobs. The model can interpret your instructions. Software must enforce access restrictions.&lt;/p&gt;&lt;p&gt;The calendar service might give the connected account read-only access. The harness might also block changes or require approval. Those controls are set by whoever connects the account or configures the assistant.&lt;/p&gt;&lt;p&gt;Your request can authorise a particular action within those limits. It can&amp;#8217;t turn a read-only connection into a writable one.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;So the protection level depends on where that permission is set. If you ask the model not to write in a calendar, it may or may not do so. If the harness has rules to prevent calling the tool to update the calendar, it&amp;#8217;s safer, but presumably a model may send a request that could bypass that protection, in theory. However, if the tool to write to a calendar is not present in the system, then nothing can possibly write to the calendar. The third option is the strictest and safest.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Broadly, yes, but &lt;strong&gt;the important question is whether another route to the calendar remains open.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;A properly enforced harness rule can reject a write request regardless of how the model phrases it. Sending a different request doesn&amp;#8217;t automatically bypass that rule. A bypass would require a gap, such as another tool that can make the same change without passing through the check.&lt;/p&gt;&lt;p&gt;That also qualifies your third option. Removing the dedicated calendar-writing tool isn&amp;#8217;t enough if a general-purpose tool can still contact the calendar service using credentials that permit changes.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;If the system genuinely has no route capable of writing to the calendar, it can&amp;#8217;t write to it.&lt;/strong&gt; A read-only calendar connection provides a strong boundary because the service itself refuses writes through that connection, even if the model requests one.&lt;/p&gt;&lt;p&gt;We&amp;#8217;ll explore permissions and safeguards more fully in a later chapter. For now, the key distinction is that a request can contain all the right details without the system being allowed to carry it out.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Got it.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Let&amp;#8217;s bring that back to the contents of a request.&lt;/p&gt;&lt;p&gt;Suppose the user has specified &lt;strong&gt;a one-hour &amp;#8220;Trip to Oxford&amp;#8221; event at 9 a.m., UK time, on 24 October, in their work calendar&lt;/strong&gt;:&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&lt;code&gt;{
+  "name": "create_event",
+  "arguments": {
+    "calendar": "work",
+    "title": "Trip to Oxford",
+    "date": "2026-10-24",
+    "start_time": "09:00",
+    "time_zone": "Europe/London",
+    "duration_minutes": 30
+  }
+}&lt;/code&gt;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Suppose the tool accepts all those values and the system has permission to create events. Does this request match what the user asked for?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Not quite since the duration in the request sent to the tool is 30 minutes not one hour as requested by the user. But why would such an error happen?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Exactly. The model supplied a valid duration, but not the one requested.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Generating a tool request isn&amp;#8217;t guaranteed to be an exact translation.&lt;/strong&gt; The model might carry over 30 minutes from an earlier example, use a familiar default instead of the stated duration, or simply make a mistake when producing that value. We couldn&amp;#8217;t tell which happened from this request alone.&lt;/p&gt;&lt;p&gt;In effect, it has translated &amp;#8220;one hour&amp;#8221; incorrectly. The tidy structure doesn&amp;#8217;t prevent that, just as a neatly completed form can contain the wrong answer.&lt;/p&gt;&lt;p&gt;A check that says &amp;#8220;duration must be a positive number&amp;#8221; would accept 30. Catching this error requires comparing the requested duration with the user&amp;#8217;s instruction, not merely checking whether the tool accepts it.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;And presumably a better LLM is less likely to make such a mistake, and more likely to call the correct tool, right?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Yes, &lt;strong&gt;a model that&amp;#8217;s better at tool use should make those mistakes less often&lt;/strong&gt;. That includes choosing an appropriate tool, following its input requirements, and preserving details such as &amp;#8220;one hour&amp;#8221;.&lt;/p&gt;&lt;p&gt;But &amp;#8220;better&amp;#8221; needs to mean better at those particular tasks. A model that writes excellent prose isn&amp;#8217;t necessarily better at using tools. Performance also depends on how clearly the tools are described and how much competing information is in the conversation.&lt;/p&gt;&lt;p&gt;You&amp;#8217;d compare models on realistic tasks, checking both which tool they choose and the values they supply. A request can run successfully yet still contain the wrong duration.&lt;/p&gt;&lt;p&gt;So model quality matters, but a more capable model reduces the risk. It doesn&amp;#8217;t remove the need for appropriate checks.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Understood.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Let&amp;#8217;s close the article conversation here. How an agent checks its work deserves its own conversation, rather than being squeezed into the end of this one.&lt;/p&gt;&lt;p class="button-wrapper"&gt;&lt;a class="button primary" href="https://www.thepythoncodingstack.com/subscribe"&gt;&lt;span&gt;Subscribe now&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;h2&gt;What we&amp;#8217;ve unpacked in this chapter&lt;/h2&gt;&lt;p&gt;Turning words into an action involves interpretation. The model has to choose an available tool and translate what we mean into the inputs that tool expects. A neatly structured request can still contain the wrong place, date, or duration.&lt;/p&gt;&lt;p&gt;The key points:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;A tool request is marked as such by the interface. Showing JSON in an ordinary reply doesn&amp;#8217;t, by itself, run a tool.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;The model brings learned tool-use behaviour to the task. The supplied tool descriptions tell it what is available now. Supplying a new description isn&amp;#8217;t retraining.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Everyday phrases may need clarifying before they become precise inputs. The model performs this clarification, asking the user if necessary. Required fields and acceptable values don&amp;#8217;t establish that those inputs match the user&amp;#8217;s intention.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;A weather lookup retrieves information, a calculator works from supplied assumptions, and a calendar-writing tool changes stored information. Those are different jobs.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;A request can be precise without being permitted. It can also fail or return too little information to answer the question. Those outcomes call for different responses.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Tool choice and input values both matter. Better tool-use performance can reduce mistakes, but doesn&amp;#8217;t remove the need for appropriate checks.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Next, we&amp;#8217;ll move from a single request to a sequence of actions and ask whether an agent needs a plan.&lt;/p&gt;&lt;p class="button-wrapper"&gt;&lt;a class="button primary" href="https://www.thepythoncodingstack.com/subscribe"&gt;&lt;span&gt;Subscribe now&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;em&gt;&amp;lt;&amp;lt; Previous Post: &lt;a href="https://www.thepythoncodingstack.com/p/2-who-actually-does-the-work-the"&gt;2. Who actually does the work, the model or the software?&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;&lt;p&gt;&lt;em&gt;&amp;gt;&amp;gt; Next Post: Coming soon&amp;#8230;&lt;/em&gt;&lt;/p&gt;&lt;p&gt;&lt;em&gt;&lt;a href="https://www.thepythoncodingstack.com/p/agents-unpacked-table-of-contents"&gt;Table of Contents&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">b3adc97fdc460dfe410ed0c5302c27d20e5f3039f70b66c9f7036716ce237539</guid>
+      <pubDate>Thu, 29 Oct 2026 09:27:10 +0000</pubDate>
+    </item>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: Pandas xs: Keep the dropped level with drop_level=False - Planet Python</title>
+      <link>https://lernerpython.com/2026/10/29/pandas-xs-keep-the-dropped-level-with-drop-level-false/</link>
+      <description>&lt;img alt="Pandas xs: Keep the dropped level with drop_level=False" class="wp-image-18462" height="1422" src="https://lernerpython.com/wp-content/uploads/2026/10/2026-10-29.png" width="2166" /&gt;
+&lt;p class="wp-block-paragraph"&gt;Using xs on a multi-indexed Python Pandas data frame drops the named level — unless you use drop_level=False:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;(
+  pd
+  .read_parquet('taxi_2025-11.parquet')
+  .groupby(['passenger_count', 'VendorID'])['total_amount'].mean()
+  .xs(1, level=1, axis='index', drop_level=False)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/10/29/pandas-xs-keep-the-dropped-level-with-drop-level-false/"&gt;Pandas xs: Keep the dropped level with drop_level=False&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">d8774263c766411fee221d0781b1f4a7d2f42a45fda524ed110a0723aa6c3601</guid>
+      <pubDate>Thu, 29 Oct 2026 07:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Armin Ronacher: Custom Voices With Qwen3-TTS - Planet Python</title>
+      <link>https://lucumr.pocoo.org/2026/10/29/qwen3-custom-voices/</link>
+      <description>&lt;p&gt;With my kids I&amp;#8217;m currently building a little &lt;a href="https://github.com/mitsuhiko/dungeon-crawler"&gt;dungeron
+crawler&lt;/a&gt; and we&amp;#8217;re trying to
+&lt;a href="https://mitsuhiko.github.io/dungeon-crawler/learn/"&gt;learn a bit about game
+development&lt;/a&gt; along the way.
+However given that we live in the modern times of increasing capabilities we
+wanted to get a narrator and voice over.&lt;/p&gt;
+&lt;p&gt;But we also wanted it to not sound like everyone&amp;#8217;s standard AI voices so I
+looked into what options there are on the table.  After some investigation I
+narrowed down to using &lt;a href="https://github.com/QwenLM/Qwen3-TTS"&gt;Qwen3-TTS&lt;/a&gt; which
+uses voice embeddings for custom voices.&lt;/p&gt;
+&lt;p&gt;With a bit of creativity you can also do more with those custom voices than
+appears initially.  In case this is of interest to you, this post just covers
+what we learned and with some examples.  You can probably point your agent to
+it and it can do something with it.&lt;/p&gt;
+&lt;h2&gt;What Qwen Offers&lt;/h2&gt;
+&lt;p&gt;Qwen3 is not the only TTS model in town, and it wans&amp;#8217;t even my first choice.  We
+initially used &lt;a href="https://huggingface.co/hexgrad/Kokoro-82M"&gt;Kokoro&lt;/a&gt;.  However
+Qwen3 supports voice cloning and we wanted to have it feel a bit more unique.&lt;/p&gt;
+&lt;p&gt;In practice it&amp;#8217;s a bit tricker though. Qwen3 ships three kinds of models:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;1.7B-Base&lt;/code&gt; (and 0.6B): clones a voice from a few seconds of reference audio&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1.7B-CustomVoice&lt;/code&gt;: comes with nine built-in speakers and instructions&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1.7B-VoiceDesign&lt;/code&gt;: invents a voice from a text description&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The base model clones either in context or from the speaker embedding alone but
+there is no documented way to clone a voice and direct it with instructions.
+That means unlike the custom voice and voice design models you cannot say &amp;#8220;speak
+sad&amp;#8221; or &amp;#8220;whisper&amp;#8221; with a cloned base model.&lt;/p&gt;
+&lt;p&gt;At present the official options for a custom voice are fine-tuning Base on a
+single speaker or to make a clip with VoiceDesign and clone it with Base.  That
+is not all that bad, but it means instructions are gone.&lt;/p&gt;
+&lt;h2&gt;Playing With It&lt;/h2&gt;
+&lt;p&gt;For this blog post I took 28 seconds of me from my talk at &lt;a href="https://www.youtube.com/watch?v=8RHYyRUxVrA"&gt;PyAI
+Conf&lt;/a&gt;, cut between two pauses so
+that it starts and ends on a full sentence, and transcribed it with Whisper.
+The transcript is really only needed for baking but to compare against an
+already existing voice it&amp;#8217;s useful to have it say the same thing as the original
+recording.&lt;/p&gt;
+&lt;p&gt;Note that a conference talk recording is not ideal but it works anyways.  Which
+is also a good reminder that you really don&amp;#8217;t need a particularly clean
+recording (or a very long one) to get a halfway convincing version of a person.
+Particularly when then presented to you on a low quality phone call, it won&amp;#8217;t be
+very hard to trick your grandmother.&lt;/p&gt;
+&lt;p&gt;The first thing you can do is to blend that recording with another voice.  For
+instance you can use VoiceDesign to make up a voice from a description.  For this blog
+post the designed voice was created like this, with Qwen&amp;#8217;s own Python package
+&lt;a href="https://pypi.org/project/qwen-tts/"&gt;&lt;code&gt;qwen-tts&lt;/code&gt;&lt;/a&gt; (&lt;code&gt;pip install qwen-tts&lt;/code&gt;, I used
+0.1.1), which the rest of the code in this post uses too:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;torch&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;qwen_tts&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Qwen3TTSModel&lt;/span&gt;
+&lt;span class="n"&gt;kw&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;device_map&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;mps&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bfloat16&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;attn_implementation&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;sdpa&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;design&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Qwen3TTSModel&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_pretrained&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kw&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;wavs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;design&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;generate_voice_design&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;voices/transcript.txt&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;language&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;English&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;instruct&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;A man in his forties with a warm, natural, medium-low voice, speaking &amp;quot;&lt;/span&gt;
+             &lt;span class="s2"&gt;&amp;quot;clearly and calmly at an easy conversational pace, like someone reading &amp;quot;&lt;/span&gt;
+             &lt;span class="s2"&gt;&amp;quot;aloud to a friend.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You can see how the two different voices behave, particularly when blended together:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href="https://lucumr.pocoo.org/2026/10/29/qwen3-custom-voices/"&gt;Interactive demo: see the post on the website.&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;Voice Embeddings&lt;/h2&gt;
+&lt;p&gt;What Base takes from a recording when cloning from the embedding alone is a
+speaker embedding which is basically 2048 numbers out of a speaker encoder that
+was trained.  The same voice gets similar numbers and different voices get
+different ones.  Which btw, is also a convenient way to do speaker detection
+from recordings if you want to!  It&amp;#8217;s not perfect, but it&amp;#8217;s quite helpful for a
+single audio track recording to tell two speakers apart if you do some basic
+slicing and dicing (more on that below).&lt;/p&gt;
+&lt;p&gt;Because it is just a vector, you can do arithmetic on it.  For instance a
+weighted average of two embeddings is a spaker that is somewhere between two
+voices:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;base&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Qwen3TTSModel&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_pretrained&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Qwen/Qwen3-TTS-12Hz-1.7B-Base&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kw&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;fingerprint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;prompt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;base&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create_voice_clone_prompt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ref_audio&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x_vector_only_mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;prompt&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ref_spk_embedding&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;blend&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;float&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;float&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;mixed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mixed&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;mixed&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;norm&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;norm&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;norm&lt;/span&gt;&lt;span class="p"&gt;()))&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bfloat16&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;armin&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;designed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;fingerprint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;voices/armin.flac&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;fingerprint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;voices/designed.flac&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Here is the same sentence in eleven blends:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href="https://lucumr.pocoo.org/2026/10/29/qwen3-custom-voices/"&gt;Interactive demo: see the post on the website.&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Note that it stops sounding like me quite quickly, but it retains some of my
+features.  And it for sure ends up with creating a unique voice regardless.
+I found some better successes when ensuing that the two voices have similar
+spectograms (eg: similar &amp;#8220;recording setups&amp;#8221;).  In this recording you can hear
+that one voice picked up by the lapel mic was a bit hollow compared to the
+designed voice.&lt;/p&gt;
+&lt;p&gt;If you like a a voice that comes out, you can bake it back into a new recording
+that you can then use as reference:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;soundfile&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;sf&lt;/span&gt;
+&lt;span class="n"&gt;mixed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;blend&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;armin&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;designed&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;audio&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;rate&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;say&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;voices/transcript.txt&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;mixed&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# say() is shown further down&lt;/span&gt;
+&lt;span class="n"&gt;sf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;voices/final.flac&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;audio&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;rate&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;final&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;fingerprint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;voices/final.flac&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The baked voice does not come back exactly as the blend but it makes handling it
+easier if you want to.  It&amp;#8217;s just one voice reference file.&lt;/p&gt;
+&lt;p&gt;So on the question of using those embeddings for speaker recognition: how good
+does that work?  I took an episode of &lt;a href="https://www.youtube.com/watch?v=qCpY4K9jtOg"&gt;State of Agentic
+Coding&lt;/a&gt;, the podcast Ben and I
+record, cut it into 2-second windows one second apart and compared each with an
+embedding of me form the conference.&lt;/p&gt;
+&lt;p&gt;Somewhat surprising, but maybe not too surprising using my conference recording
+clip as the reference this does not work at all with Qwen3.  If instead I take
+the 20 seconds where I introduce myself at the start of the episode as the
+reference, it gets 98% of the rest right. &lt;/p&gt;
+&lt;p&gt;On the other hand using a model that was trained for speaker verification
+instead does manage to pick me up from the conference recording clip.  For
+instance &lt;a href="https://huggingface.co/speechbrain/spkrec-ecapa-voxceleb"&gt;ECAPA&lt;/a&gt;,
+finds me from the conference clip in 97% of the windows.&lt;/p&gt;
+&lt;p&gt;Here are 20 minutes of that podcast, classified by speaker with the different
+approaches:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href="https://lucumr.pocoo.org/2026/10/29/qwen3-custom-voices/"&gt;Interactive demo: see the post on the website.&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;Instructed Cloned Voices&lt;/h2&gt;
+&lt;p&gt;But the embeddings a very useful for the voice cloning!  But how to give them
+instructions?  Base and CustomVoice manipulate the speaker the same way: one
+vector inserted into the talker&amp;#8217;s input sequence.  In CustomVoice that vector is
+a row of the embedding table.  In Base it is the x-vector from the speaker
+encoder, which only Base has.  The generation code takes either
+(&lt;code&gt;voice_clone_prompt&lt;/code&gt; is a regular argument of &lt;code&gt;generate&lt;/code&gt;), and the transformer
+weights of the two models are nearly identical.  So take the embedding with
+Base, then hand it to CustomVoice instead of one of its speakers:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;cv&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Qwen3TTSModel&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_pretrained&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kw&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;say&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;xvec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;instruct&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;language&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;English&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;ids&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_tokenize_texts&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;cv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_build_assistant_text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)])&lt;/span&gt;
+    &lt;span class="n"&gt;told&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;cv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_tokenize_texts&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;cv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_build_instruct_text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;instruct&lt;/span&gt;&lt;span class="p"&gt;)])[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;instruct&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="n"&gt;voice&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ref_code&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ref_spk_embedding&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;xvec&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+             &lt;span class="s2"&gt;&amp;quot;x_vector_only_mode&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;icl_mode&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;]}&lt;/span&gt;
+    &lt;span class="n"&gt;codes&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;generate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;input_ids&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;ids&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;instruct_ids&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;told&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;voice_clone_prompt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;voice&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;languages&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;language&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;non_streaming_mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;cv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_merge_generate_kwargs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;temperature&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;subtalker_temperature&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.7&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;wavs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;rate&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;speech_tokenizer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode&lt;/span&gt;&lt;span class="p"&gt;([{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;audio_codes&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;codes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]}])&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;wavs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;rate&lt;/span&gt;
+&lt;span class="n"&gt;wav&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;rate&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;say&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;I really thought this would work.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;armin&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="s2"&gt;&amp;quot;Speak in a sad, sorrowful tone, voice low and heavy, on the verge of tears.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Pick a speaker for the slot, a model and an instruction:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href="https://lucumr.pocoo.org/2026/10/29/qwen3-custom-voices/"&gt;Interactive demo: see the post on the website.&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Instructions work on cloned voices, but less reliably than on the built-in
+speakers, and it depends on the emotion, but honestly, it came out better than I
+anticipated.  Definitely good enough to have some true custom voices for a voice
+over that don&amp;#8217;t necessarily sound like something, someone else has in their
+game.&lt;/p&gt;
+&lt;h2&gt;Other Fun Math&lt;/h2&gt;
+&lt;p&gt;If a voice is a point in a 2048-dimensional space and blending works we can maybe
+do some other funny math on it.  The obvious one is to try to see if some math can
+be used to manipulate gender.&lt;/p&gt;
+&lt;p&gt;To find it I had VoiceDesign create 14 different voices for men and women each.
+When you then take the average woman minus the average man you can then move any
+voice along that direction:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;women&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stack&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;fingerprint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;design/f&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;.wav&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;)])&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;float&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;men&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stack&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;fingerprint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;design/m&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;.wav&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;)])&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;float&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;middle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;women&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;men&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;span class="n"&gt;axis&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;women&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;men&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;axis&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;axis&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;axis&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;norm&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;move&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;xvec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Put the voice at position t along the gender axis, keep the rest.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;xvec&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;float&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;middle&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;@&lt;/span&gt; &lt;span class="n"&gt;axis&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;axis&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bfloat16&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Here is the result for my clone:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href="https://lucumr.pocoo.org/2026/10/29/qwen3-custom-voices/"&gt;Interactive demo: see the post on the website.&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Anyways, that&amp;#8217;s that.  If you want to play around with Qwen3 TTS I hope this was
+of some help, and maybe you got some ideas of what to do with the voice
+embeddings.  Use it for good, not evil.&lt;/p&gt;</description>
+      <guid isPermaLink="false">1f48f39bf3a302a18ec6eb7d9d92dd3da85265412cb6a4f51304174eb6466379</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Rodrigo Girão Serrão: 4 upgrades to the Python standard library in 3.15 - Planet Python</title>
+      <link>https://mathspp.com/blog/4-upgrades-to-the-python-standard-library-in-315</link>
+      <description>&lt;img alt="" src="https://mathspp.com/images/3/b/0/8/b/3b08bbc93293d4de7e480d866ebe2f7b61f0c002-thumbnail.webp" /&gt;
+                                &lt;p&gt;Learn about 4 of the most exciting updates made to the Python standard library in 3.15.&lt;/p&gt;
+&lt;p&gt;This article highlights 4 of the most exciting updates made to the Python standard library in 3.15:&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;&lt;strong&gt;new &lt;code&gt;object_hook&lt;/code&gt; in &lt;code&gt;json.load&lt;/code&gt;&lt;/strong&gt;: together with &lt;code&gt;frozendict&lt;/code&gt; this unlocks a very powerful use case&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;new module &lt;code&gt;math.integer&lt;/code&gt;&lt;/strong&gt;: new module that introduces integer arithmetic functions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;new &lt;code&gt;re.prefixmatch&lt;/code&gt; function&lt;/strong&gt;: clarifies some confusion that typically arises when using &lt;code&gt;re.match&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;new &lt;code&gt;asyncio.TaskGroup.cancel&lt;/code&gt; function&lt;/strong&gt;: ergonomic way of cancelling all the tasks in a task group&lt;/li&gt;
+&lt;/ul&gt;&lt;h2 id="15-days-of-python-3-15"&gt;15 days of Python 3.15&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#15-days-of-python-3-15"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;To &lt;a href="https://mathspp.com/python-315"&gt;celebrate the release of Python 3.15&lt;/a&gt;, over the next 15 business days I'll be writing about a new 3.15 feature every day.
+Explained clearly and with examples so you don't have to sift through the changelog.&lt;/p&gt;
+&lt;p&gt;Subscribe to receive this free email series:&lt;/p&gt;
+&lt;p&gt;
+&lt;/p&gt;&lt;div class="form-wrapper" id="enroll-wrapper"&gt;
+&lt;form action="https://mathspp.com/courses/uv" class=" " id="enroll" method="POST" name="enroll"&gt;
+                          &lt;input class="form-honeybear" name="data[honeypot]" tabindex="-1" type="text" value="" /&gt;&lt;div class="form-field form-group "&gt;
+          &lt;div class="form-data"&gt;
+                        &lt;div class="form-input-wrapper "&gt;
+                                    &lt;input class="form-input " name="data[email]" type="email" value="" /&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+  &lt;/div&gt;
+            &lt;div class="form-field form-group "&gt;
+            &lt;div class="form-label-wrapper"&gt;&lt;label class="form-label"&gt;&lt;/label&gt;
+      &lt;/div&gt;
+        &lt;div class="form-data"&gt;
+            &lt;div class="g-recaptcha-container"&gt;
+                                &lt;input name="data[token]" type="hidden" value="" /&gt;&lt;input name="data[action]" type="hidden" value="9e1cf1509cdd397a6aba267cb029b0c6" /&gt;&lt;/div&gt;
+            &lt;/div&gt;
+  &lt;/div&gt;
+        &lt;input name="__form-name__" type="hidden" value="enroll" /&gt;&lt;input name="__unique_form_id__" type="hidden" value="xyvo65bctupj0scrlpid" /&gt;&lt;input class="form-nonce-field" name="form-nonce" type="hidden" value="0dd54dcdbe857117c1214abf5b5c131a" /&gt;&lt;div class="button-wrapper"&gt;
+  &lt;button class="btn " type="submit"&gt;Enroll for free &amp;#128013;&amp;#128640;&lt;/button&gt;
+        &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+&lt;p&gt;If you want, you can also &lt;a href="https://mathspp.com/python-315"&gt;check the schedule&lt;/a&gt; of the upcoming emails.&lt;/p&gt;
+&lt;h2 id="new-object-hook-in-json-load"&gt;New &lt;code&gt;object_hook&lt;/code&gt; in &lt;code&gt;json.load&lt;/code&gt;&lt;a class="toc-anchor after" href="https://mathspp.com/blog/tags/python.rss#new-object-hook-in-json-load"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The function &lt;code&gt;json.load&lt;/code&gt; now has a parameter &lt;code&gt;object_hook&lt;/code&gt;, which can be set to a callable.
+When set, JSON objects that are decoded into dictionaries are passed to &lt;code&gt;object_hook&lt;/code&gt; and replaced by their result.&lt;/p&gt;
+&lt;p&gt;For example, suppose you have the following JSON data in a file &lt;code&gt;data.json&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-json"&gt;{
+  "name": {
+    "first": "Rodrigo",
+    "last": "Gir&amp;atilde;o Serr&amp;atilde;o"
+  },
+  "interests": [
+    "Python",
+    "Rust",
+    "AI"
+  ]
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Define an object hook and use it when loading the data:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-py"&gt;import json
+def object_hook(d):
+    print(f"Inside object_hook with {d = }.")
+    return d
+with open("data.json", "r") as f:
+    data = json.load(f, object_hook=object_hook)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Running this code produces two lines of output:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-text"&gt;Inside object_hook with d = {'first': 'Rodrigo', 'last': 'Gir&amp;atilde;o Serr&amp;atilde;o'}.
+Inside object_hook with d = {'name': {'first': 'Rodrigo', 'last': 'Gir&amp;atilde;o...&lt;/code&gt;&lt;/pre&gt;</description>
+      <guid isPermaLink="false">ddb4e87c6f750d26882da7a9d5896632513ea21d88e3c7e856342be1718b9eea</guid>
+      <pubDate>Wed, 28 Oct 2026 11:10:00 +0000</pubDate>
+    </item>
     <item>
       <title>Python GUIs: Passing Arguments to Threaded Functions in PyQt6 — Understanding the difference between passing a function and calling a function when using QThreadPool and QRunnable - Planet Python</title>
       <link>https://www.pythonguis.com/faq/delay-in-signal-from-thread/</link>

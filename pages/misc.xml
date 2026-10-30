@@ -5,7 +5,24 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Misc category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 27 Oct 2026 14:01:16 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2026 14:01:44 +0000</lastBuildDate>
+    <item>
+      <title>XKCD and Fourier - And now it's all this</title>
+      <link>https://leancrew.com/all-this/2026/10/xkcd-and-fourier/</link>
+      <description>&lt;p&gt;[Equations in this post may not look right (or appear at all) in your RSS reader. Go to &lt;a href="https://leancrew.com/all-this/2026/10/xkcd-and-fourier/"&gt;the original article&lt;/a&gt; to see them rendered properly.]&lt;/p&gt;
+  &lt;hr /&gt;
+  &lt;p&gt;If you’ve done Fourier series approximations of functions, you had three reactions to &lt;a href="https://xkcd.com/"&gt;today’s XKCD comic&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="https://imgs.xkcd.com/comics/gravitational_square_wave.png" class="ss" src="https://imgs.xkcd.com/comics/gravitational_square_wave.png" title="https://imgs.xkcd.com/comics/gravitational_square_wave.png" width="100%" /&gt;&lt;/p&gt;
+&lt;p&gt;First, of course, was a smile of recognition. Then came a “wait a minute” as you realized that the &lt;a href="https://leancrew.com/all-this/2023/02/swings-and-roundabouts/"&gt;Gibbs phenomenon&lt;/a&gt; doesn’t get smaller as you add more terms to the Fourier expansion; it just concentrates itself at the corners:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Gibbs phenomenon examples for square wave" class="ss" src="https://leancrew.com/all-this/images2023/20230213-Gibbs%20phenomenon%20examples%20for%20square%20wave.png" title="Gibbs phenomenon examples for square wave" width="100%" /&gt;&lt;/p&gt;
+&lt;p&gt;That ringing never goes away. Here, for example, is the plot for&lt;/p&gt;
+&lt;p&gt;&lt;!-- $$ \sum_{k = 1, 3, 5, \ldots}^n \frac{4}{k \pi} \sin (k \pi x) $$ --&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;munderover&gt;&lt;mo&gt;∑&lt;/mo&gt;&lt;mrow&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;5&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;…&lt;/mi&gt;&lt;/mrow&gt;&lt;mn&gt;99&lt;/mn&gt;&lt;/munderover&gt;&lt;mfrac&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mrow&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;mi&gt;π&lt;/mi&gt;&lt;/mrow&gt;&lt;/mfrac&gt;&lt;mrow&gt;&lt;mi mathvariant="normal"&gt;sin&lt;/mi&gt;&lt;mo&gt;⁡&lt;/mo&gt;&lt;/mrow&gt;&lt;mo form="prefix" stretchy="false"&gt;(&lt;/mo&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;mi&gt;π&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo form="postfix" stretchy="false"&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Square wave approximation" class="ss" src="https://leancrew.com/all-this/images2026/20261029-Square%20wave%20approximation.png" title="Square wave approximation" width="80%" /&gt;&lt;/p&gt;
+&lt;p&gt;Finally, you realized that thinking like this ruins the joke.&lt;/p&gt;</description>
+      <guid isPermaLink="false">78433c73cd1ec5871cef954e0c4a74c40c6cc9432c959dad021cf9b134139465</guid>
+      <pubDate>Fri, 30 Oct 2026 01:45:58 +0000</pubDate>
+    </item>
     <item>
       <title>Squaring the triangle with help - And now it's all this</title>
       <link>https://leancrew.com/all-this/2026/10/squaring-the-triangle-with-help/</link>
