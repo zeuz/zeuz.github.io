@@ -5,7 +5,126 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Misc category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Fri, 30 Oct 2026 14:01:44 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 14:01:16 +0000</lastBuildDate>
+    <item>
+      <title>Images, the clipboard, and AppleScript - And now it's all this</title>
+      <link>https://leancrew.com/all-this/2026/11/images-the-clipboard-and-applescript/</link>
+      <description>&lt;p&gt;Last week, &lt;a href="https://leancrew.com/all-this/2025/12/tweaking-my-screenshot-macro/"&gt;my SnapClip macro&lt;/a&gt; crapped out with an error message. In the process of fixing it, I learned something about AppleScript that probably won’t ever help me in the future.&lt;/p&gt;
+&lt;p&gt;SnapClip is a Keyboard Maestro macro that puts a graphical user interface on a Python script, &lt;code&gt;process-screenshot&lt;/code&gt;. The problem that led to the error was a particular branch of &lt;code&gt;process-screenshot&lt;/code&gt;: the branch that puts the screenshot onto the clipboard. I’m not going to rehash the design of SnapClip or &lt;code&gt;process-screenshot&lt;/code&gt; here—you can read the &lt;a href="https://leancrew.com/all-this/2025/12/tweaking-my-screenshot-macro/"&gt;old post&lt;/a&gt; about them if you want the details.&lt;/p&gt;
+&lt;p&gt;The branch of &lt;code&gt;process-screenshot&lt;/code&gt; that failed runs the &lt;a href="https://www.alecjacobson.com/weblog/3816.html"&gt;&lt;code&gt;impbcopy&lt;/code&gt;&lt;/a&gt; command-line utility written by Alec Jacobson over a decade ago. I’ve had &lt;code&gt;impbcopy&lt;/code&gt; running successfully on my Macs for many years, but last week it failed with the error message&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Bad CPU type in executable
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I assumed the problem was that &lt;code&gt;impbcopy&lt;/code&gt; had been compiled back when I was using an Intel Mac, and it had continued to work because of &lt;a href="https://support.apple.com/en-us/102527"&gt;Rosetta&lt;/a&gt;. I thought that because I had Rosetta installed before, it would be updated along with macOS 27, but it wasn’t. Running&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;softwareupdate --install-rosetta
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;as described on the &lt;a href="https://support.apple.com/en-us/102527"&gt;Rosetta page&lt;/a&gt; got SnapClip working again.&lt;/p&gt;
+&lt;p&gt;But macOS 27 is the end of the road for Rosetta, so it seemed like a change was due. I installed the &lt;a href="https://developer.apple.com/documentation/xcode/installing-the-command-line-tools"&gt;Xcode Command Line Tools&lt;/a&gt; and tried to recompile &lt;code&gt;impbcopy&lt;/code&gt; for Apple Silicon, but that failed with error messages that I couldn’t interpret because I’m not an Objective-C programmer. So I had four options:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Learn enough about &lt;code&gt;gcc&lt;/code&gt;/Objective-C/&lt;code&gt;clang&lt;/code&gt; to get the compilation to work. Even if I could do this, I assumed it would be a lot of work with no future value for me.&lt;/li&gt;
+&lt;li&gt;See if I could rewrite the SnapClip macro to use Keyboard Maestro features to put the image on the clipboard. This was more appealing, but I really liked the way the macro was structured and preferred to leave it as a GUI wrapper.&lt;/li&gt;
+&lt;li&gt;Look into using Shortcuts to put the image on the clipboard and—if it can—replace the call to &lt;code&gt;impbcopy&lt;/code&gt; with an equivalent call to the &lt;a href="https://leancrew.com/all-this/man/man1/shortcuts.html"&gt;&lt;code&gt;shortcuts&lt;/code&gt; utility&lt;/a&gt;. But I &lt;em&gt;hate&lt;/em&gt; Shortcuts and would rather avoid it if possible.&lt;/li&gt;
+&lt;li&gt;Work out an AppleScript solution and put a call to &lt;a href="https://leancrew.com/all-this/man/man1/osascript.html"&gt;&lt;code&gt;osascript&lt;/code&gt;&lt;/a&gt; into &lt;code&gt;process-screenshot&lt;/code&gt;. I knew that AppleScript has commands for reading files and putting things on the clipboard, so I went with this, even though AppleScript may be more of a dead end than Objective-C.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Apple’s online documentation for AppleScript sucks, but I have three old AppleScript books that collectively weigh over nine pounds:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://lccn.loc.gov/2006274517"&gt;&lt;em&gt;AppleScript: The Definitive Guide&lt;/em&gt;&lt;/a&gt; by Matt Neuburg.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://lccn.loc.gov/2009278244"&gt;&lt;em&gt;AppleScript 1-2-3&lt;/em&gt;&lt;/a&gt; by Sal Soghoian and Bill Cheeseman.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://lccn.loc.gov/2010485146"&gt;&lt;em&gt;Learn AppleScript&lt;/em&gt;&lt;/a&gt; by Hamish Sanderson and Hanaan Rosenthal.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The answer (more or less) was in &lt;em&gt;Learn AppleScript&lt;/em&gt; and led to just a couple of changes to &lt;code&gt;process-screenshot&lt;/code&gt;. Here’s the new version:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;python:
+ 1:  #!/usr/bin/env python3
+ 2:  
+ 3:  import tempfile
+ 4:  from PIL import Image
+ 5:  import os
+ 6:  import subprocess
+ 7:  import shutil
+ 8:  from datetime import datetime
+ 9:  import urllib.parse
+10:  import argparse
+11:  
+12:  # Handle the arguments
+13:  desc = 'Process a screenshot saved to a file.'
+14:  ep = '''If a title is given, it saves the image to a file on the
+15:  Desktop with a filename of the form yyyymmdd-title.png.
+16:  If no title is given, the image is put on the clipboard and the
+17:  upload option is ignored.'''
+18:  parser = argparse.ArgumentParser(description=desc, epilog=ep,
+19:            formatter_class=argparse.RawDescriptionHelpFormatter)
+20:  parser.add_argument('-b', '--background', help='add desktop background border', action='store_true')
+21:  parser.add_argument('-u', '--upload', help='upload to images directory and print URL', action='store_true')
+22:  parser.add_argument('-t', '--title', help='image title', type=str)
+23:  parser.add_argument('ssfile', help='path to screenshot file')
+24:  args = parser.parse_args()
+25:  
+26:  # Parameters
+27:  type = "png"
+28:  bgcolor = (85, 111, 137)
+29:  border = 32
+30:  optimizer = '/Applications/ImageOptim.app/Contents/MacOS/ImageOptim'
+31:  ascript = f'set the clipboard to (read POSIX file "{args.ssfile}" as picture)'
+32:  
+33:  # Add a desktop background border if asked for
+34:  if args.background:
+35:    snap = Image.open(args.ssfile)
+36:    # Make a solid-colored background bigger than the screenshot.
+37:    snapsize = tuple([ x + 2*border for x in snap.size ])
+38:    bg = Image.new('RGBA', snapsize, bgcolor)
+39:    bg.alpha_composite(snap, dest=(border, border))
+40:    bg.save(args.ssfile)
+41:  
+42:  # Optimize the file
+43:  subprocess.run([optimizer, args.ssfile], stderr=subprocess.DEVNULL)
+44:  
+45:  # Save it to a Desktop file if a title was given; otherwise,
+46:  # save it to the clipboard
+47:  if args.title:
+48:    sdate = datetime.now().strftime("%Y%m%d")
+49:    desktop = os.environ['HOME'] + "/Desktop/"
+50:    fname = f'{desktop}{sdate}-{args.title}.{type}'
+51:    shutil.copyfile(args.ssfile, fname)
+52:    bname = os.path.basename(fname)
+53:  
+54:    # Upload the file and print the URL if asked
+55:    if args.upload:
+56:      year = datetime.now().strftime("%Y")
+57:      server = f'user@server.com:path/to/images{year}/'
+58:      port = '123456789'
+59:      subprocess.run(['scp', '-P', port, fname, server])
+60:      bname = urllib.parse.quote(bname)
+61:      print(f'https://leancrew.com/all-this/images{year}/{bname}')
+62:  else:
+63:    subprocess.run(['osascript', '-e', ascript])
+64:  
+65:  # Delete the temporary file
+66:  os.remove(args.ssfile)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The changes are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Line 31, which is an added line that defines the AppleScript command that does what &lt;code&gt;impbcopy&lt;/code&gt; used to do; and&lt;/li&gt;
+&lt;li&gt;Line 63, which runs the &lt;code&gt;ascript&lt;/code&gt; command via &lt;code&gt;osascript&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The AppleScript that does the work is just one line:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;set the clipboard to (read POSIX file "&amp;lt;name of file&amp;gt;" as picture)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Very simple, and I suspect it will work for quite a while. I feel certain that Apple would like to kill AppleScript, but I don’t think it can—too many valuable customers (a group that doesn’t include me) would get very angry at having their longstanding automations die.&lt;/p&gt;
+&lt;p&gt;One thing that kind of surprised me was the &lt;code&gt;as picture&lt;/code&gt; part of the command. &lt;em&gt;Learn AppleScript&lt;/em&gt; says that you typically have to include an image type in the command: &lt;code&gt;as GIF picture&lt;/code&gt; or &lt;code&gt;as JPEG picture&lt;/code&gt; or &lt;code&gt;as TIFF picture&lt;/code&gt;. The book suggests that a bare &lt;code&gt;as picture&lt;/code&gt; is supposed to work only on &lt;code&gt;PICT&lt;/code&gt; images. Never heard of a &lt;code&gt;PICT&lt;/code&gt; image? That’s probably because it was the native Mac image format back in the classic days. It was one of Bill Atkinson’s contributions to the Macintosh Toolbox. Nobody saves image files as &lt;code&gt;PICT&lt;/code&gt;s anymore.&lt;/p&gt;
+&lt;p&gt;And yet the unadorned &lt;code&gt;as picture&lt;/code&gt; works. I created this test image in Acorn,&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Test image" class="ss" src="https://leancrew.com/all-this/images2026/20261106-Test%20image.png" title="Test image" width="80%" /&gt;&lt;/p&gt;
+&lt;p&gt;and saved it in several formats: &lt;code&gt;BMP&lt;/code&gt;, &lt;code&gt;GIF&lt;/code&gt;, &lt;code&gt;HEIC&lt;/code&gt;, &lt;code&gt;JPEG&lt;/code&gt;, &lt;code&gt;JPEG 2000&lt;/code&gt;, &lt;code&gt;PNG&lt;/code&gt;, and &lt;code&gt;TIFF&lt;/code&gt;. I put the files in a folder named &lt;code&gt;clipboard-test&lt;/code&gt; on my Desktop,&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Folder of images" class="ss" src="https://leancrew.com/all-this/images2026/20261106-Folder%20of%20images.png" title="Folder of images" width="100%" /&gt;&lt;/p&gt;
+&lt;p&gt;and ran this AppleScript for each of the different file extensions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;applescript:
+set filePath to path to desktop folder as text
+set imageFile to (filePath &amp;amp; "clipboard-test:Test image.bmp") as alias
+set the clipboard to (read file imageFile as picture)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Each time I ran the script, the clipboard was loaded with the image, no matter which file was being read. I didn’t have to specify the format.&lt;/p&gt;
+&lt;p&gt;I suspect that if I were using AppleScript to write image data to a file, it wouldn’t be as forgiving. But &lt;code&gt;process-screenshot&lt;/code&gt; uses Python and &lt;a href="https://pypi.org/project/pillow/"&gt;Pillow&lt;/a&gt; to save image files, so I don’t need to worry about AppleScript’s idiosyncrasies for that aspect of the script.&lt;/p&gt;</description>
+      <guid isPermaLink="false">c02f5cb5f994c857648b013a58de19d4100929e23efe6a08877325ae44590b15</guid>
+      <pubDate>Tue, 10 Nov 2026 00:18:11 +0000</pubDate>
+    </item>
     <item>
       <title>XKCD and Fourier - And now it's all this</title>
       <link>https://leancrew.com/all-this/2026/10/xkcd-and-fourier/</link>

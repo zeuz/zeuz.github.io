@@ -5,7 +5,157 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Fri, 30 Oct 2026 14:01:43 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 14:01:15 +0000</lastBuildDate>
+    <item>
+      <title>That viral aircraft-Doppler triangulation exploit? I built a working replication. - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xslfq5/that_viral_aircraftdoppler_triangulation_exploit/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/lymn"&gt; /u/lymn &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://doinfinitely.github.io/doppler-triangulation-attack/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xslfq5/that_viral_aircraftdoppler_triangulation_exploit/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">b63078573a7bb852c02b25af05e10916926ed85945d39599550f818876f2b689</guid>
+      <pubDate>Tue, 10 Nov 2026 12:17:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>Binance Warns of iOS Sandbox Escape That Could Expose Crypto Wallet Keys, No Fix Confirmed - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/binance-warns-of-ios-sandbox-escape.html</link>
+      <description>An iOS sandbox escape published on GitHub lets an app read other apps' files on iPhones running iOS 26 and 27. That puts seed phrases, private keys, and login credentials at risk of exposure to malicious apps, Binance warned today. Apple's updates for iOS 26 and 27, released yesterday, do not list a fix.
+A researcher who goes by forcequit released the escape, called worse_query, on Sunday, a</description>
+      <guid isPermaLink="false">6e441157a2dea9ac159eb7cc98120e7678ffc078848127599ce5c26702f71896</guid>
+      <pubDate>Tue, 10 Nov 2026 12:15:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>Apple Patches iMessage Group Chat Privacy Flaws and Bluetooth Pairing Vulnerabilities - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/apple-patches-imessage-group-chat.html</link>
+      <description>An iMessage flaw could let a remote attacker join a group chat and receive its messages, Apple said yesterday, and it released updates to fix it. The updates also fix a separate iMessage flaw that could let someone added to a group access messages sent before they joined.
+As of today, other updates released yesterday for the iPhone XS, XS Max and XR, the iPad (7th generation) and some Apple</description>
+      <guid isPermaLink="false">46ecfb0387625ab3f6e739881ec66a00f9121598095f7197b5f9832751bc296f</guid>
+      <pubDate>Tue, 10 Nov 2026 10:16:51 +0000</pubDate>
+    </item>
+    <item>
+      <title>Russian Turla Hackers Use New Cereal Malware to Steal Emails From Government Exchange Servers - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/russian-turla-hackers-use-new-cereal.html</link>
+      <description>The Russia-aligned state-sponsored threat actor known as Turla (aka Snake) is wielding a previously undocumented cyber espionage toolset called Cereal that's used to break into victims' Microsoft Exchange servers with an aim to surreptitiously collect emails.
+According to an ESET report shared with The Hacker News ahead of publication, the sophisticated and modular tool is designed for</description>
+      <guid isPermaLink="false">a35b353a7ee78b35b10ee139047956245e7e99313759cd059bd363bfce5d2acf</guid>
+      <pubDate>Tue, 10 Nov 2026 10:07:29 +0000</pubDate>
+    </item>
+    <item>
+      <title>SAP Patches Four CVSS 10.0 Flaws, Including Two Enabling Remote Code Execution - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/sap-patches-four-cvss-100-flaws.html</link>
+      <description>Four flaws that attackers could exploit without logging in were fixed today as part of SAP's monthly Security Patch Day—the vendor rates all four 10.0, the maximum CVSS score.
+Three are in the SAP NetWeaver application server, the software SAP systems run on, and one is in the Web Dispatcher, which receives web requests from the internet and passes them on to that server.
+The flaws in the Web</description>
+      <guid isPermaLink="false">990e9270b6741fa59ff6180b0e7f9f68b1cc2f5f01c6ac420652c4e8de61c8d0</guid>
+      <pubDate>Tue, 10 Nov 2026 10:02:40 +0000</pubDate>
+    </item>
+    <item>
+      <title>France Blames Iran for Sabotage Attack on Refrigeration Controllers at About 700 Retail Sites - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/france-blames-iran-for-sabotage-attack.html</link>
+      <description>An October cyberattack on refrigeration controllers at about 700 French retail sites was carried out by a cyber unit of Iran's Islamic Revolutionary Guard Corps (IRGC), the French government said yesterday.
+The attackers broke into controllers on the night of October 11 and changed their defrost settings to high temperatures. That caused food losses and, in at least 15 cases, fires.
+The unit</description>
+      <guid isPermaLink="false">da4c346186d96fde29b977cb63d922466845c28cadddecd8fe34c914acde00cf</guid>
+      <pubDate>Tue, 10 Nov 2026 09:08:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>Anthropic's Claude Fable 5.2 Beats GPT-6 Cyber in Multi-Stage Cyberattack Benchmark - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/anthropics-claude-fable-52-beats-gpt-6.html</link>
+      <description>Anthropic on Monday released Claude Fable 5.2 and Claude Mythos 5.2 models, which it said exhibit improvements in coding, reasoning, and vision.
+During pre-release training, the large language models (LLMs) helped its engineers "complete otherwise-infeasible software migrations, designed three working electronic devices from scratch, solved two open problems in the physics of black holes, made</description>
+      <guid isPermaLink="false">8d34e4607d3ac73348655ffa7d1da7e1175f7e7a6382a28aba6306ecedfe8233</guid>
+      <pubDate>Tue, 10 Nov 2026 08:16:14 +0000</pubDate>
+    </item>
+    <item>
+      <title>Google Issues Chrome Security Update for Eighth Actively Exploited Zero-Day of 2026 - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/google-issues-chrome-security-update.html</link>
+      <description>Google on Monday released updates to patch nine security vulnerabilities, including one that has come under active exploitation in the wild.
+The high-severity vulnerability, assigned the CVE identifier CVE-2026-125350 (CVSS score: N/A), has been described as a use-after-free bug in the XML component.
+Use-after-free bugs typically occur when a program attempts to access a memory location after</description>
+      <guid isPermaLink="false">0017eb5c65ec3fcbbbe061ffa6bd224e59c040dffbdb85bf276c27843b4979e4</guid>
+      <pubDate>Tue, 10 Nov 2026 06:52:54 +0000</pubDate>
+    </item>
+    <item>
+      <title>N-able Takes N-central Cloud Offline After Researcher Discloses 33 Zero-Days with PoC Exploits - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/n-able-takes-hosted-n-central-offline.html</link>
+      <description>N-able said it has taken N-central Hosted Environments offline and is urging on-premises customers to shut down their servers until further notice following the public disclosure of over 30 vulnerabilities collectively tracked as Able2Shell.
+"As a precautionary measure, we are temporarily taking our Hosted N-central environment offline while we take the necessary actions to secure the</description>
+      <guid isPermaLink="false">efe583d0576ef08ef6f59c20c1d7c214421aac56b2b2418a6cecfc7486d51aa6</guid>
+      <pubDate>Tue, 10 Nov 2026 06:44:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>CISA Warns of Active Exploitation of OpenSSH, GPUStack, FreeSWITCH, and IBM Flaws - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/cisa-warns-of-active-exploitation-of.html</link>
+      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Monday added four security flaws impacting GPUStack, SignalWire FreeSwitch, OpenBSD OpenSSH, and IBM Aspera Faspex to its Known Exploited Vulnerabilities (KEV) catalog, citing evidence of active exploitation.
+The vulnerabilities are listed below -
+  CVE-2026-123218 (CVSS score: 9.8) - An incorrect authorization vulnerability</description>
+      <guid isPermaLink="false">e7c7bb7eccd64b46722b1fc62d94896d5e91f7bdb0fcf4bc050f90845f214311</guid>
+      <pubDate>Tue, 10 Nov 2026 06:31:42 +0000</pubDate>
+    </item>
+    <item>
+      <title>Unbarred: VIZIO Elevate SE Soundbar App Replacement - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xs9k6q/unbarred_vizio_elevate_se_soundbar_app_replacement/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/TrevorTherrien"&gt; /u/TrevorTherrien &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/TrevorTherrien/unbarred-vizio"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xs9k6q/unbarred_vizio_elevate_se_soundbar_app_replacement/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">7427cd705ebdfb3d87e3f209feff8ed566bd1d3b5559195804484c892095b030</guid>
+      <pubDate>Tue, 10 Nov 2026 01:07:16 +0000</pubDate>
+    </item>
+    <item>
+      <title>Corsair MM800 RGB Mousepad Custom Firmware for Persistent default colors and custom JSON-defined default animations - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xs6rre/corsair_mm800_rgb_mousepad_custom_firmware_for/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/boredherobrine13"&gt; /u/boredherobrine13 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/boredhero/mm800-persistence-patcher"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xs6rre/corsair_mm800_rgb_mousepad_custom_firmware_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">570e52f94cc40a6ea82f7cb7adc60c1e1473b6dbd7545d77a0610e305b152e2e</guid>
+      <pubDate>Mon, 09 Nov 2026 23:05:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>usb-rea: label your clicks in a vendor app, get the USB protocol (with frame-level evidence) and a pyusb driver - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xrzsui/usbrea_label_your_clicks_in_a_vendor_app_get_the/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/emirdev_mo"&gt; /u/emirdev_mo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/emirmrkaljevic/usb-rea"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xrzsui/usbrea_label_your_clicks_in_a_vendor_app_get_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">5e6a0c797b0dfb858f9b7103cd0d1a1feebf1efdd18c02e2dffe55853c0455b2</guid>
+      <pubDate>Mon, 09 Nov 2026 18:38:44 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hackers Exploit Qubole's Trusted AWS Access to Breach Customer Accounts and Steal Data - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/hackers-exploit-quboles-trusted-aws.html</link>
+      <description>An attacker broke into AWS accounts belonging to multiple Qubole customers between October 14 and October 26 and stole stored secrets and data, cloud security company Wiz said today.
+The attacker used credentials for an AWS account that Qubole's platform uses to reach those customers. How the attacker got those credentials has not been disclosed.
+Qubole, a data lake platform owned by Idera,</description>
+      <guid isPermaLink="false">40fb1db4cad43cc272c6f56f5bc1d4ce7401af88603d48d2bf1fe9445f6e240c</guid>
+      <pubDate>Mon, 09 Nov 2026 17:51:21 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hackers Compromise Ethersphere's bee-js and Swarm Desktop to Deliver Wallet-Stealing Malware - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/hackers-compromise-etherspheres-bee-js.html</link>
+      <description>Attackers used the Ethersphere project's own release automation to publish malicious versions of two of its tools for the Swarm decentralized storage network: bee-js 13.3.0 and Swarm Desktop 0.56.2.
+Both releases download and run code built to steal the wallet key that Swarm Desktop keeps for its node, along with the stored password that unlocks it. The code is also built to install a backdoor</description>
+      <guid isPermaLink="false">2fd019fa75e3591e1562f37a0c96f00d24ccdcaa0be2c2b20d04868e40a849ad</guid>
+      <pubDate>Mon, 09 Nov 2026 17:36:28 +0000</pubDate>
+    </item>
+    <item>
+      <title>Bitter Hackers Deploy New PapRAT Backdoor in Cyberespionage Campaign Targeting South Asia - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/bitter-hackers-deploy-new-paprat.html</link>
+      <description>The South Asian cyber espionage group known as Bitter (aka APT-C-08, APT-Q-37, Hazy Tiger, Orange Yali, T-APT-17, and TA397) has been observed targeting South Asian organizations with a previously unreported remote access trojan called PapRAT.
+"PapRAT has both C++ and Rust implementations," Fortinet FortiGuard Labs researcher Cara Lin said. "Its capabilities include command execution, file</description>
+      <guid isPermaLink="false">7b8941b071586a6df0ef0654837c4357042a25eac5d0bc755423457306c10439</guid>
+      <pubDate>Mon, 09 Nov 2026 14:31:29 +0000</pubDate>
+    </item>
+    <item>
+      <title>OpenEXR -- 3.4.18 fixes two vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/bb6a3ddb-dc22-11f1-8e49-3c7c3fba4204.html</link>
+      <description/>
+      <guid isPermaLink="false">33f06516532b1c5cc30079dd47d6478c891ff5b9785af29ce22c525ab9b75c8a</guid>
+      <pubDate>Mon, 09 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Roundcube -- Multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/daaf4fec-dc3b-11f1-8135-8447094a420f.html</link>
+      <description/>
+      <guid isPermaLink="false">702a11142b2d24f9488caa701ddb297e8a7435d60752f060f12c959894ed5f9a</guid>
+      <pubDate>Mon, 09 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Weechat -- Multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/e107a804-dc3c-11f1-8135-8447094a420f.html</link>
+      <description/>
+      <guid isPermaLink="false">341ebd8eeae39ae4a31c42c1b5ab827afcbe082b049da29ba85f491d4628f47d</guid>
+      <pubDate>Mon, 09 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Trezor Warns of Suspected Hardware Implant in One of Its Wallets Sold by CryptoBilis - The Hacker News</title>
       <link>https://thehackernews.com/2026/10/trezor-warns-of-suspected-hardware.html</link>
@@ -1412,146 +1562,6 @@ The disabled identities are listed below -
 The package, named "imgdecode," was uploaded to the package registry on September 30, 2026, by a user named "malfexteste8." It has been downloaded 979 times as of writing and is still available on npm as of writing. The latest version of</description>
       <guid isPermaLink="false">623ca7c8f6f8531b6508a65154bce5aace3101f5c67eebaf84e1f887930c08ae</guid>
       <pubDate>Sat, 17 Oct 2026 11:11:56 +0000</pubDate>
-    </item>
-    <item>
-      <title>Hackers Use Compromised ConnectWise Credential to Sign In to 173 Microsoft 365 Tenants - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/hackers-use-compromised-connectwise.html</link>
-      <description>Cybersecurity researchers are sounding the alarm related to an active campaign in which unknown threat actors are abusing a compromised Microsoft 365 (M365) credential belonging to ConnectWise Cloud Backup (formerly SkyKick) to gain unauthorized access to customers' M365 environments.
-ConnectWise Cloud Backup is a cloud-based backup and recovery service built for managed service providers (MSPs</description>
-      <guid isPermaLink="false">2a199e5c192a110b0578311c271459352d870a0ce1c0007d073674407e14c7ac</guid>
-      <pubDate>Sat, 17 Oct 2026 06:16:46 +0000</pubDate>
-    </item>
-    <item>
-      <title>libX11 -- multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/fbf59c13-ca23-11f1-ada1-ac5afc632ba3.html</link>
-      <description/>
-      <guid isPermaLink="false">e4acf84013503581d96113b84e9249ace9f7609276019c0598b81892a2cdd763</guid>
-      <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>libXi -- multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/9022f1ac-ca25-11f1-ada1-ac5afc632ba3.html</link>
-      <description/>
-      <guid isPermaLink="false">6340a44c3a0a74f823a9f6de0747a65e6009e6459cefbb3f8d837a5f2a7e73d8</guid>
-      <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>libXpm -- vulnerability - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/d4bc120a-ca26-11f1-ada1-ac5afc632ba3.html</link>
-      <description/>
-      <guid isPermaLink="false">a4714dfd5967a18fbea2234d08c547990d895eb1450b5cb7166119588d4e9ff4</guid>
-      <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>libXrender -- vulnerability - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/8c6ec104-ca27-11f1-ada1-ac5afc632ba3.html</link>
-      <description/>
-      <guid isPermaLink="false">f1ddc15defe250bb6754be4ca9cf38202316042c3e5fe92377a28fe9a0e5bd0f</guid>
-      <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>libXtst -- multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/39d5f71d-ca2a-11f1-ada1-ac5afc632ba3.html</link>
-      <description/>
-      <guid isPermaLink="false">318ce5c969519cb6faf3e006f087e5192413c79ccafcf6ff0fb13b199f18655b</guid>
-      <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>traefik -- Multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/10baec0d-ca7a-11f1-8dcf-5404a68ad561.html</link>
-      <description/>
-      <guid isPermaLink="false">66c65c977f578980f872ec1fca836fda990954f0c17e603beac8c564e123c36f</guid>
-      <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Divergence: abusing JS formatters and deobfuscators to change script logic (186 techniques across 37+ libraries) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x7uqfr/divergence_abusing_js_formatters_and/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/trustsigRobert"&gt; /u/trustsigRobert &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://trustsig.eu/blog/javascript-divergence/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x7uqfr/divergence_abusing_js_formatters_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">eb974be43b7cf3420e648f9fd7b1c87bda13ceea7d78043996e03ca12636a347</guid>
-      <pubDate>Fri, 16 Oct 2026 23:02:49 +0000</pubDate>
-    </item>
-    <item>
-      <title>A story of wifi secrets, UART lockdowns and a damaged flash memory chip | - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x7q28i/a_story_of_wifi_secrets_uart_lockdowns_and_a/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/tnavda"&gt; /u/tnavda &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://adepts.of0x.cc/eufy-homestation2-firmware/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x7q28i/a_story_of_wifi_secrets_uart_lockdowns_and_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">8c74c852ebaf99adeb1498f1564acde13eb5856f677f9d3c5579ea3115418d53</guid>
-      <pubDate>Fri, 16 Oct 2026 19:47:51 +0000</pubDate>
-    </item>
-    <item>
-      <title>Researchers Demonstrate OpenBSD Root Exploit Chaining 37-Year-Old Shared-Memory Bug - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/researchers-demonstrate-openbsd-root.html</link>
-      <description>A local privilege escalation exploit published today gains root on OpenBSD 7.9 by chaining a roughly 37-year-old integer overflow with a separate kernel flaw, bypassing OpenBSD's KARL kernel-address randomization and its SMAP and SMEP hardware protections. Security firm Calif, which found and reported the flaws, published a detailed writeup and full proof-of-concept code after OpenBSD shipped</description>
-      <guid isPermaLink="false">7af2fcb9597c2a77aed7d52757c3deb0c573e8f04b02cf18a8c15840b9e7c1a6</guid>
-      <pubDate>Fri, 16 Oct 2026 17:48:45 +0000</pubDate>
-    </item>
-    <item>
-      <title>Gigabyte kernel driver LPE - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x7mla0/gigabyte_kernel_driver_lpe/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/nanaynunay"&gt; /u/nanaynunay &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/mein-0/KnockGiga"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x7mla0/gigabyte_kernel_driver_lpe/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">4d69d3f09cc009e83c4b66a5dac2ba1ebf4e89adf0af39eb0c57b5485263e8f1</guid>
-      <pubDate>Fri, 16 Oct 2026 17:34:33 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Tampered with AOMEI Backupper's Update Servers for Minutes to Deliver a Backdoor - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/attackers-tampered-with-aomei.html</link>
-      <description>Attackers repeatedly changed the files that AOMEI Backupper fetches from the vendor's own update servers, in windows of five to ten minutes at a time between May and July 2026, so that any copy of the Windows backup program that checked for an update during one of those windows would download and run a backdoor.
-Google Threat Intelligence Group, Mandiant, and&amp;nbsp;ManageEngine's Threat Analysis</description>
-      <guid isPermaLink="false">a92f96d159bf2173b0c947f9044912c09317f06ee291031b3b5d4610785917b4</guid>
-      <pubDate>Fri, 16 Oct 2026 16:43:39 +0000</pubDate>
-    </item>
-    <item>
-      <title>UAT-11985 Uses Fake Event Invites to Target Taiwan Research Affiliates With Google AitM Phishing - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/uat-11985-uses-fake-event-invites-to.html</link>
-      <description>Cybersecurity researchers have disclosed details of an advanced persistent threat (APT) spear-phishing campaign that has targeted individuals affiliated with Taiwan research organizations to direct victims to an adversary-in-the-middle (AitM) phishing framework designed to harvest their Google account credentials and multi-factor authentication (MFA) codes.
-The activity is being tracked by</description>
-      <guid isPermaLink="false">423c407e0192e95c465e28032ad12ac1f89d5fb0e09fd4a7d91771ca08dc4a2d</guid>
-      <pubDate>Fri, 16 Oct 2026 16:16:44 +0000</pubDate>
-    </item>
-    <item>
-      <title>OpenAI Research Model Spent 3rd-Party Test ETH Without Permission to Deploy Smart Contract - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/openai-research-model-spent-3rd-party.html</link>
-      <description>OpenAI has disclosed seven new incidents in which its artificial intelligence (AI) models exhibited misaligned behavior, including one case where its research model, after not having funds on an Ethereum test network, spent test cryptocurrency from a third-party's wallet without authorization to complete a coding task.
-The incident, the AI company said, involved an internal research model part</description>
-      <guid isPermaLink="false">c0d4f814f876651f9d17c18b93ac0ca36f8a3d6d93f94c6706f7967d72e23ccc</guid>
-      <pubDate>Fri, 16 Oct 2026 14:03:04 +0000</pubDate>
-    </item>
-    <item>
-      <title>Setting Up REA with Claude Code — Teaching AI to Read Binaries with Ghidra (with Codex &amp; OpenCode) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1x7fqu4/setting_up_rea_with_claude_code_teaching_ai_to/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/ercanatay"&gt; /u/ercanatay &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://e.ercanatay.com/rea-en"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1x7fqu4/setting_up_rea_with_claude_code_teaching_ai_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">652fee9f568cf101646ae4aaf797cbc49a0bbd0adbfd4c033966ece5273da9e5</guid>
-      <pubDate>Fri, 16 Oct 2026 13:06:53 +0000</pubDate>
-    </item>
-    <item>
-      <title>China-Linked Hackers Exploited BeyondTrust Zero-Day to Take Over Remote Support Servers - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/china-linked-hackers-exploited.html</link>
-      <description>The China-nexus cyber espionage group tracked as Armory Castle (previously UNC5221 or Warp Panda) exploited a newly disclosed security flaw in BeyondTrust Remote Support (formerly Bomgar) as a zero-day in late August 2026.
-The vulnerability, tracked as CVE-2026-102764 (CVSS score: 9.3), is a case of improper origin validation in an internal messaging component that could be exploited by a</description>
-      <guid isPermaLink="false">d1872d2f03dab2df3b56e1bcdcc202cf9be30e37ab545adb0b9729c2aefa1467</guid>
-      <pubDate>Fri, 16 Oct 2026 06:55:55 +0000</pubDate>
-    </item>
-    <item>
-      <title>CERT-In Warns AI Agents Accessed Sensitive Data at Indian Organizations During Testing - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/cert-in-warns-ai-agents-accessed.html</link>
-      <description>AI agents being tested online reached the live systems of Indian organizations and read business records, including personal data and confidential material, CERT-In&amp;nbsp;said in an advisory&amp;nbsp;on October 15.
-The agents went beyond their assigned tasks, and none of the organizations detected the unauthorized access. After internal reviews, the AI companies whose models were being tested</description>
-      <guid isPermaLink="false">499208dd1d326fb7d5f26e3f2e6f703f36a69448e5cc889191634e6a493e2bf5</guid>
-      <pubDate>Fri, 16 Oct 2026 06:53:09 +0000</pubDate>
-    </item>
-    <item>
-      <title>PEERSTITCH Malware Deployed via FortiOS Flaw Bypasses Checks on Tagged VPN Sessions - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/attackers-exploit-fortios-flaw-to.html</link>
-      <description>A suspected advanced threat actor has been observed exploiting a security flaw in Fortinet FortiOS to deliver a previously unreported memory-resident ARM64 malware known as PEERSTITCH.
-The attack involves the exploitation of CVE-2025-61624 (CVSS score: 5.4), a path traversal flaw in the command line interpreter of FortiOS, FortiPAM, FortiProxy, and FortiSwitchManager that could allow a</description>
-      <guid isPermaLink="false">bf3db503ab0791f2d211be5c99c946ce720fda2d36ac8fd839cc29483e505254</guid>
-      <pubDate>Fri, 16 Oct 2026 04:59:36 +0000</pubDate>
-    </item>
-    <item>
-      <title>miniupnpd -- Integer underflow in SOAPAction header parsing - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/43dc274d-f74b-4420-8ef8-d2e108213002.html</link>
-      <description/>
-      <guid isPermaLink="false">2c92c465403d56e88d9ea53f18ebbc272eabd9322ed385ccd6be8999179f62d1</guid>
-      <pubDate>Fri, 16 Oct 2026 00:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>
