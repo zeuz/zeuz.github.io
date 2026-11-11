@@ -5,7 +5,326 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 10 Nov 2026 14:01:15 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 14:01:35 +0000</lastBuildDate>
+    <item>
+      <title>Python GUIs: Keeping Your Main Window Open After Closing a Dialog in PyQt6 — Why your app closes when you dismiss a dialog, and how to fix it - Planet Python</title>
+      <link>https://www.pythonguis.com/faq/dialogs-question-accept-cancel/</link>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;I'm working with dialogs in PyQt6, and when I press either Accept or Cancel, the entire application closes. How can I prevent this?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;When you create and display a dialog (for example, using &lt;code&gt;QDialog.exec()&lt;/code&gt;), the dialog runs its own local event loop. Once you click &lt;strong&gt;OK&lt;/strong&gt; or &lt;strong&gt;Cancel&lt;/strong&gt;, the dialog closes and &lt;code&gt;exec()&lt;/code&gt; returns a result. At that point, your code continues executing whatever comes after the dialog call.&lt;/p&gt;
+&lt;p&gt;If there's no main window being shown and no main event loop running, the application simply has nothing left to do &amp;mdash; so it exits.&lt;/p&gt;
+&lt;p&gt;In other words, the dialog &lt;em&gt;is&lt;/em&gt; your entire application. Once it's gone, everything shuts down.&lt;/p&gt;
+&lt;h2 id="the-solution-run-a-main-window-with-an-event-loop"&gt;The Solution: Run a Main Window with an Event Loop&lt;/h2&gt;
+&lt;p&gt;To keep your application alive after the dialog closes, you need a main window that stays open and a properly running event loop. The dialog should be launched &lt;em&gt;from&lt;/em&gt; that main window, so that when the dialog is dismissed, control returns to the main window which is still visible and active.&lt;/p&gt;
+&lt;p&gt;Here's a minimal complete example that demonstrates the correct setup:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;import sys
+from PyQt6.QtWidgets import (
+    QApplication, QDialog, QDialogButtonBox,
+    QMainWindow, QPushButton, QVBoxLayout,
+)
+class CustomDialog(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setWindowTitle("My Dialog")
+        buttons = QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel
+        self.button_box = QDialogButtonBox(buttons)
+        self.button_box.accepted.connect(self.accept)
+        self.button_box.rejected.connect(self.reject)
+        layout = QVBoxLayout()
+        layout.addWidget(self.button_box)
+        self.setLayout(layout)
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Main Window")
+        button = QPushButton("Open Dialog")
+        button.clicked.connect(self.open_dialog)
+        self.setCentralWidget(button)
+    def open_dialog(self):
+        dialog = CustomDialog(self)
+        result = dialog.exec()
+        if result == QDialog.DialogCode.Accepted:
+            print("User clicked OK")
+        else:
+            print("User clicked Cancel")
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.show()
+    sys.exit(app.exec())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Let's walk through what's happening here.&lt;/p&gt;
+&lt;h2 id="the-main-window"&gt;The Main Window&lt;/h2&gt;
+&lt;p&gt;The &lt;code&gt;MainWindow&lt;/code&gt; class creates a simple window with a single button. When you click that button, it calls &lt;code&gt;open_dialog()&lt;/code&gt;, which creates an instance of &lt;code&gt;CustomDialog&lt;/code&gt; and displays it using &lt;code&gt;exec()&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Once you accept or cancel the dialog, &lt;code&gt;exec()&lt;/code&gt; returns and you're back inside the &lt;code&gt;open_dialog&lt;/code&gt; method. The main window is still visible and responsive &amp;mdash; you can click the button again to reopen the dialog as many times as you like. If you're new to building windows in PyQt6, see our tutorial on &lt;a href="https://www.pythonguis.com/tutorials/pyqt6-creating-your-first-window/"&gt;creating your first window&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="the-event-loop"&gt;The Event Loop&lt;/h2&gt;
+&lt;p&gt;The block at the bottom of the script is what keeps everything running:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.show()
+    sys.exit(app.exec())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;QApplication&lt;/code&gt; manages the main event loop for your application. Calling &lt;code&gt;app.exec()&lt;/code&gt; starts that loop, which keeps the application alive, processing user input, repainting widgets, and handling &lt;a href="https://www.pythonguis.com/tutorials/pyqt6-signals-slots-events/"&gt;signals and slots&lt;/a&gt;. The application will only exit when you close the main window (or explicitly call &lt;code&gt;app.quit()&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Without this event loop, your script runs top-to-bottom and exits as soon as it reaches the end &amp;mdash; which is exactly the behavior you'd see if a dialog was the only thing in your script.&lt;/p&gt;
+&lt;h2 id="passing-self-as-parent"&gt;Passing &lt;code&gt;self&lt;/code&gt; as Parent&lt;/h2&gt;
+&lt;p&gt;You might have noticed that we pass &lt;code&gt;self&lt;/code&gt; when creating the dialog:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;dialog = CustomDialog(self)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;This sets the main window as the dialog's parent. It means the dialog will appear centered over the main window and will be properly tied to it in terms of window management. It's a good habit to set a parent for your dialogs whenever you can.&lt;/p&gt;
+&lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
+&lt;p&gt;If your app is closing when you dismiss a dialog, make sure you have:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;A &lt;code&gt;QApplication&lt;/code&gt; instance with its event loop running via &lt;code&gt;app.exec()&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;A main window that is shown using &lt;code&gt;.show()&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Your dialog launched from within that main window, so control returns to it after the dialog is dismissed.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;With this structure in place, your &lt;a href="https://www.pythonguis.com/tutorials/pyqt6-dialogs/"&gt;dialogs&lt;/a&gt; will open and close without affecting the rest of your application. If you want to open additional windows beyond dialogs, take a look at our guide on &lt;a href="https://www.pythonguis.com/tutorials/pyqt6-creating-multiple-windows/"&gt;creating multiple windows&lt;/a&gt; in PyQt6.&lt;/p&gt;
+            &lt;p&gt;For an in-depth guide to building Python GUIs with PyQt6 see my book, &lt;a href="https://www.pythonguis.com/pyqt6-book/"&gt;Create GUI Applications with Python &amp;amp; Qt6.&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">80a6e816caa7f5dbddcdaf3d516b74f8b456f2060b4071639cdbf787faabc309</guid>
+      <pubDate>Wed, 11 Nov 2026 06:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Graham Dumpleton: AI as a lifestyle choice - Planet Python</title>
+      <link>https://grahamdumpleton.me/posts/2026/11/ai-as-a-lifestyle-choice/</link>
+      <description>&lt;p&gt;When I wrote about &lt;a href="https://grahamdumpleton.me/posts/2026/11/twenty-years-of-mod-wsgi/"&gt;twenty years of mod_wsgi&lt;/a&gt;, I mentioned that I was on sabbatical, that AI coding tools had changed what I was prepared to take on, and that I was hoping people would tell me what they think is missing from the current options for hosting Python web applications. Each of those only got a sentence or two in a post which was mostly about Apache, and I want to expand on them here.&lt;/p&gt;
+&lt;p&gt;I should start by clarifying my situation, or at least try to. I would like to call it retirement. My better half would like to see me still working. Nothing is official either way, and negotiations continue. Some people in my position would buy a caravan and head off around Australia, but I already travelled the outback a lot when I was much younger. What I seem to have chosen to do instead is spend my days building software with AI, and I am having about as much fun creating software as I have ever had.&lt;/p&gt;
+&lt;h2&gt;What the lifestyle looks like&lt;/h2&gt;
+&lt;p&gt;It is only a month since I decided I would start on Muru. There were a few days of planning and thinking before any code got written, and since then I have been working on it seven days a week, days and evenings. Nobody is making me do this. I can't remember the last time something was engaging, fulfilling and fun all at the same time.&lt;/p&gt;
+&lt;p&gt;Before that sounds too alarming, it doesn't mean I am chained to a desk. AI coding tools have turned out to fit quite well around the rest of life. I can set something going, then head out for a walk, do some gardening, or deal with whatever else needs doing around the house, and come back to see how it went. When I was writing all the code myself, stepping away meant the work stopped. My better half may even be prepared to count that in my favour during the negotiations.&lt;/p&gt;
+&lt;p&gt;That is what I mean by a lifestyle choice. I said in that earlier post that the coding is the part I find a chore these days, which might seem odd coming from someone who has never really stopped creating software. The making of things was always the point though, not the typing. AI gets rid of the grunt work that can be so frustrating, and leaves me with the ideas and the satisfaction of seeing them work.&lt;/p&gt;
+&lt;h2&gt;Getting away from the meter&lt;/h2&gt;
+&lt;p&gt;It took me a while to realise how much the price of these tools was affecting how I used them. When I was paying $20 a month I was always worried I would run out, and as a result I actually held back from relying on it. Moving up to $200 a month produced the opposite problem. Paying that much, I felt I had to make the most of it, and so would end up using it for a crazy number of hours just to get my money's worth. Neither is a great way to go about something you are meant to be doing for fun.&lt;/p&gt;
+&lt;p&gt;Right now I don't have that problem, because I have been accepted into the Claude for Open Source Program for a second round. I very much appreciate that, and it has made a huge difference. More than anything it has released me from worrying about the cost, and I feel free to do whatever I want without feeling constrained.&lt;/p&gt;
+&lt;p&gt;Obviously there is the question of what happens when I go back to having to pay for it, and I don't have a good answer to that yet. For now I am taking as much advantage of it as I can.&lt;/p&gt;
+&lt;h2&gt;Everything starts out as mud&lt;/h2&gt;
+&lt;p&gt;I will acknowledge that AI may not always generate the best code out of the box. To be frank though, neither did I when I started on mod_wsgi. The early versions had plenty wrong with them. I made lots of mistakes and had to go back and do things differently, and it took years of fixing and rethinking to get it to where it is now.&lt;/p&gt;
+&lt;p&gt;All developers are like this when they start out on something. People seem to forget that as soon as AI is involved, and expect instant perfection of a kind they would never have been able to achieve themselves.&lt;/p&gt;
+&lt;p&gt;Writing software is an incremental process of improvement, and in some respects can be likened to making a dorodango. This is a Japanese craft where you take ordinary dirt and water and form it into a ball. It starts out as a crude lump of mud. You shape it, let it dry, add layers of fine dust and keep working at the surface, over and over, until you end up with a sphere with a shine on it that looks nothing like what it was made from.&lt;/p&gt;
+&lt;p&gt;I &lt;a href="https://grahamdumpleton.me/posts/2026/10/ai-slop-is-the-new-tldr/"&gt;wrote recently&lt;/a&gt; about how calling something &amp;quot;AI slop&amp;quot; is often just a way of saying you didn't read it. Well, slop is more or less what a dorodango starts out as. The insult only sticks if you stop there. The AI may be doing a lot of the work on the surface, but deciding what isn't good enough yet is still down to me, and twenty years of getting things wrong with mod_wsgi turns out to be useful for that. I am prepared to put in the hard work to keep polishing Muru until it is something I would trust, and something you would too.&lt;/p&gt;
+&lt;h2&gt;Tinkering in the back room&lt;/h2&gt;
+&lt;p&gt;I have been programming for over 40 years now, and have been involved in free or open source software for nearly all of that time. Even as I head towards retirement, or whatever we end up calling it, I still want to do more. The Python community has always been the most welcoming community I have ever interacted with, and Muru is my way of giving something back to it.&lt;/p&gt;
+&lt;p&gt;There are many ways of contributing to a community like that. A lot of people give their time to the PSF and to running Python conferences, and we are all better off for the work they do. It just wouldn't suit me, as bureaucracy and organising things are not where my strengths lie. Back room tinkering and creating software has always been my thing, and I expect always will be.&lt;/p&gt;
+&lt;p&gt;I also know how badly AI written code being handed to open source projects can go, with maintainers left to deal with what lands on them. The difference here, I hope, is that I am not throwing anything over the fence for someone else to look after. If Muru has problems, they are my problems.&lt;/p&gt;
+&lt;h2&gt;The things you never had time to build&lt;/h2&gt;
+&lt;p&gt;I know how a month old project written largely by AI sounds. Muru is not a weekend of vibe coding that will be forgotten about by Christmas though. The code may be new, but the thinking behind it has been accumulating for twenty years. Muru is my thing for the foreseeable future, and I intend to commit to it and see how far I can take it.&lt;/p&gt;
+&lt;p&gt;I am not doing this only to see what I can achieve based on my own ideas. Part of the reason for putting it out there is so people can see those ideas and come back with their own, about what they would like to see in a system for hosting Python web applications.&lt;/p&gt;
+&lt;p&gt;A few people have already left comments on my social media posts about the series, showing an interest in specific things Muru is doing. That has been encouraging, and suggests I am at least on the right track. I would like a lot more of that feedback though, especially about what isn't there yet.&lt;/p&gt;
+&lt;p&gt;If you work with Python web applications for a living, I suspect you have a list. There will be points of friction in your day to day development work that you would love to see gone. There will be things you need to do in production which are much harder than they should be. Some of it you have wanted to fix for years, but you never had the time, or your employer wasn't interested. I know that list well, as I had one of my own for most of my working life.&lt;/p&gt;
+&lt;p&gt;That is where my situation is now different. Not having a job, I have the time. Open source has always said &amp;quot;patches welcome&amp;quot;, which isn't much use when lack of time is the whole problem. So don't send me a patch, just describe the problem.&lt;/p&gt;
+&lt;p&gt;If you aren't sure where to start, think about the scripts you have written around your deployments that you wish you didn't need, or the thing you end up explaining to every new person who joins the team. Maybe there is something that keeps getting pushed down the backlog, or a production task you put off because of how painful it is. I can't promise everything will make it in, as an idea needs to fit within the overall system I am trying to develop, but if it does then I am happy to look at it.&lt;/p&gt;
+&lt;p&gt;In that earlier post I said I wasn't going to point to where Muru lives just yet. It is time to change that. To see what Muru can already do, which is a lot more than the posts so far have covered, have a look through the &lt;a href="https://docs.muruhq.dev/"&gt;documentation&lt;/a&gt;. The place to tell me what you would like to see is the &lt;a href="https://github.com/muruhq/muru/discussions/categories/ideas"&gt;ideas section of the Muru discussions on GitHub&lt;/a&gt;. I am not a huge fan of online discussion forums like this, but there don't seem to be any other good choices these days. If they aren't your thing either, then just leave a comment on one of my social media posts when something sounds like it is what you would use or need. Even that much helps me work out where to put the effort.&lt;/p&gt;
+&lt;h2&gt;Polishing in public&lt;/h2&gt;
+&lt;p&gt;You will have to put up with me posting about Muru every day for a while yet. Sorry about that. The posts are actually part of the polishing process, as are the online interactive workshops I have been creating for it using the &lt;a href="https://grahamdumpleton.me/posts/2026/09/introducing-jupyterlab-workshop/"&gt;workshop extension I wrote for JupyterLab&lt;/a&gt;. If I can't write a post which explains something easily, or create a workshop which makes it usable for the people who may want to use it, then its design and implementation were bad to start with. Having to explain it is what shows me where it needs more work.&lt;/p&gt;
+&lt;p&gt;The ball is still pretty muddy in places. I have the time though, I am having fun, and whatever my better half and I end up deciding to call this, I plan to keep polishing. Fingers crossed it ends up with a shine.&lt;/p&gt;</description>
+      <guid isPermaLink="false">2d1793983b01e0b1f48c2d355b9b08621caeb6d7312ad6203edf5f5c451b0e1a</guid>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Graham Dumpleton: Muru: WSGI and ASGI together - Planet Python</title>
+      <link>https://grahamdumpleton.me/posts/2026/11/muru-wsgi-and-asgi-together/</link>
+      <description>&lt;p&gt;The &lt;a href="https://grahamdumpleton.me/posts/2026/11/muru-https-in-development/"&gt;previous post&lt;/a&gt; was about serving HTTPS from a development run. This time I want to get back to something I mentioned in passing when I &lt;a href="https://grahamdumpleton.me/posts/2026/11/twenty-years-of-mod-wsgi/"&gt;first talked about Muru&lt;/a&gt;, which is that it isn't limited to WSGI, and that WSGI and ASGI can be mixed in the one application.&lt;/p&gt;
+&lt;p&gt;The case where this matters most is an existing WSGI application which now needs websockets. WSGI has no way of doing websockets, so the usual answer is to stand up a separate ASGI server beside the WSGI one, put a proxy in front to route the websocket paths to it, and then work out how the two halves are going to share things like sessions and configuration. The other answer is to port the whole application to ASGI, which for a large application is rarely something anyone wants to do just to get one feature.&lt;/p&gt;
+&lt;p&gt;With Muru, neither is necessary. The WSGI application can hand a request over to an ASGI application running in the same worker process.&lt;/p&gt;
+&lt;h2&gt;An existing WSGI application&lt;/h2&gt;
+&lt;p&gt;To show how this works I will use a small Flask application, standing in for an application which has been around for years. The project has Flask installed with &lt;code&gt;uv add flask&lt;/code&gt;, and the &lt;code&gt;pyproject.toml&lt;/code&gt; file names the entrypoint:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[tool.muru]
+entrypoint = &amp;quot;shop.app:app&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The application itself has the existing page, plus a new &lt;code&gt;/chat&lt;/code&gt; view where the websocket is to live:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;from flask import Flask, request
+from shop.chat import chat
+app = Flask(__name__)
+@app.route(&amp;quot;/&amp;quot;)
+def index():
+    return &amp;quot;Welcome to the shop\n&amp;quot;
+@app.route(&amp;quot;/chat&amp;quot;)
+def chat_view():
+    bridge = request.environ[&amp;quot;muru.wsgi_to_asgi&amp;quot;]
+    if not bridge.is_websocket:
+        return &amp;quot;websocket required\n&amp;quot;, 426
+    return bridge.handoff(chat)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Every WSGI request Muru passes to an application has a &lt;code&gt;muru.wsgi_to_asgi&lt;/code&gt; object in the WSGI environ. This is the bridge across to the ASGI side. It can say whether the request is a websocket upgrade, and its &lt;code&gt;handoff()&lt;/code&gt; method takes an ASGI application, not a WSGI one. Calling &lt;code&gt;handoff()&lt;/code&gt; marks the request so that, once the WSGI side has returned, Muru carries on with the request by passing it to that ASGI application.&lt;/p&gt;
+&lt;p&gt;What &lt;code&gt;handoff()&lt;/code&gt; returns is there for convenience, and is designed to suit both raw WSGI applications and web frameworks. It is an empty iterable, which is what a WSGI application returns for a response with no body, so a raw WSGI application can return it straight away. The same object can also be called as if it were a WSGI application, in which case it responds with a 200 status and returns itself as an empty body. Between them, these cover what web frameworks will accept from a view. Current versions of Flask take an iterator returned from a view as the body of a response, while older versions instead run a callable returned from a view as a WSGI application. Either way, a Flask view can return what &lt;code&gt;handoff()&lt;/code&gt; gives back, as the example above does.&lt;/p&gt;
+&lt;p&gt;For any other framework, how you return from the handler doesn't matter. Once a request has been handed off, Muru ignores whatever response the WSGI side produces, so all that is needed is to call &lt;code&gt;handoff()&lt;/code&gt; and then return whatever response the framework expects.&lt;/p&gt;
+&lt;h2&gt;Websockets as callbacks&lt;/h2&gt;
+&lt;p&gt;What the request is handed off to, &lt;code&gt;chat&lt;/code&gt;, has to be an ASGI application. You could write that as a raw ASGI coroutine, but if your application is WSGI, the people working on it are probably more at home with synchronous code. For that Muru provides &lt;code&gt;muru.asgi.websocket.Handler&lt;/code&gt;, an ASGI application which turns the events of a websocket into method calls on an object of your own. Here is a minimal chat room in &lt;code&gt;shop/chat.py&lt;/code&gt;, where every message received is sent on to everyone connected:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;from muru.asgi import websocket
+class Chat:
+    def __init__(self):
+        self.sockets = set()
+    def on_connect(self, ws):
+        self.sockets.add(ws)
+    def on_receive(self, ws, message):
+        for peer in list(self.sockets):
+            try:
+                peer.send(message)
+            except websocket.ConnectionClosed:
+                self.sockets.discard(peer)
+    def on_disconnect(self, ws, code, reason):
+        self.sockets.discard(ws)
+chat = websocket.Handler(Chat())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The methods are called on the worker's application threads, the same threads the WSGI application uses. Calls for any one socket happen one at a time and in order, while different sockets can be handled at the same time. The important part, which I will come back to, is that a socket sitting there waiting for its next message isn't holding on to a thread while it waits.&lt;/p&gt;
+&lt;h2&gt;Turning handoff on&lt;/h2&gt;
+&lt;p&gt;Start this with &lt;code&gt;muructl run&lt;/code&gt; and the ordinary page works, but a websocket client connecting to &lt;code&gt;/chat&lt;/code&gt; is turned away. The access log shows why, with the view having answered with a 426 status:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;426 GET /chat 19B 0.5ms queue=0.0ms app=0.5ms worker=0 id=01M6JWP0E8W9FQ721K81F9AJ9H
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Handing requests to ASGI has to be enabled, as it means the worker needs to run an event loop beside its threads. Without the setting, a websocket upgrade is just an ordinary request, so &lt;code&gt;is_websocket&lt;/code&gt; is false and the view turns it away. Enabling it is one more line in &lt;code&gt;pyproject.toml&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[tool.muru]
+entrypoint = &amp;quot;shop.app:app&amp;quot;
+handoff = &amp;quot;asgi&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Run it again and the start-up output confirms the worker now has an event loop as well as its threads:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;muru: serving shop.app:app on http://127.0.0.1:8080 with 1 worker of 4 threads and an event loop of concurrency 1000
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To check the chat room really works, I used a small client written with the &lt;code&gt;websockets&lt;/code&gt; package, installed into a separate virtual environment, which connects as two users and has each of them say something:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;import asyncio
+from websockets.asyncio.client import connect
+URL = &amp;quot;ws://127.0.0.1:8080/chat&amp;quot;
+async def main():
+    async with connect(URL) as alice, connect(URL) as bob:
+        await alice.send(&amp;quot;hello from alice&amp;quot;)
+        print(&amp;quot;alice got:&amp;quot;, await alice.recv())
+        print(&amp;quot;bob got:&amp;quot;, await bob.recv())
+        await bob.send(&amp;quot;hi alice, bob here&amp;quot;)
+        print(&amp;quot;alice got:&amp;quot;, await alice.recv())
+        print(&amp;quot;bob got:&amp;quot;, await bob.recv())
+asyncio.run(main())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Running this the output is:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;alice got: hello from alice
+bob got: hello from alice
+alice got: hi alice, bob here
+bob got: hi alice, bob here
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The access log has a line for each websocket when it is accepted, and another when it closes, recording who closed it, how, and how many messages went each way. Both are marked with &lt;code&gt;handoff=asgi&lt;/code&gt; so you can tell the request was handed across:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;101 GET /chat 0B 1.8ms queue=0.0ms app=0.5ms worker=0 handoff=asgi id=01M6JWPC691F8KMJB3TQH8CKSK
+101 GET /chat 0B 0.3ms queue=0.1ms app=0.2ms worker=0 handoff=asgi id=01M6JWPC6B1F8KMJB3TQH8CKSK
+101 GET /chat 34B 1.7ms websocket=closed by=client code=1000 received=1 sent=2 worker=0 handoff=asgi id=01M6JWPC6B1F8KMJB3TQH8CKSK
+101 GET /chat 34B 2.9ms websocket=closed by=client code=1000 received=1 sent=2 worker=0 handoff=asgi id=01M6JWPC691F8KMJB3TQH8CKSK
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Sockets don't hold threads&lt;/h2&gt;
+&lt;p&gt;The reason this isn't just a party trick is what happens to the thread the WSGI view ran on. Once the view hands the request off and returns, the thread goes back to the pool to handle other requests. The websocket now lives on the worker's event loop, and only borrows a thread for the brief time it takes to run one of the callback methods.&lt;/p&gt;
+&lt;p&gt;That matters, because this worker only has four threads. If each open websocket tied up a thread, the fifth person to open the chat would stop the rest of the site from responding. To check, I changed the client to open fifty websockets to &lt;code&gt;/chat&lt;/code&gt;, leave them all open, and then make an ordinary request to the home page:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;50 websockets open
+GET / answered b'Welcome to the shop\n' in 6.2ms
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Fifty open websockets on a worker with four threads, and the rest of the site carries on as normal.&lt;/p&gt;
+&lt;h2&gt;Side by side by path&lt;/h2&gt;
+&lt;p&gt;Handing off in code is the right tool when the decision about which side a request goes to belongs in the application, such as wanting the Flask view to check the user is logged in before accepting the websocket. When the decision is simply about the path, Muru can instead mount an ASGI application beside the WSGI one.&lt;/p&gt;
+&lt;p&gt;Say newer parts of the shop are being written as async code under &lt;code&gt;/api&lt;/code&gt;. Here is a stand-in for that in &lt;code&gt;shop/api.py&lt;/code&gt;, where the sleep pretends to be waiting on some other service:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;import asyncio
+import json
+async def app(scope, receive, send):
+    if scope[&amp;quot;type&amp;quot;] != &amp;quot;http&amp;quot;:
+        return
+    await asyncio.sleep(1)  # stand in for waiting on another service
+    body = json.dumps({&amp;quot;root_path&amp;quot;: scope[&amp;quot;root_path&amp;quot;], &amp;quot;path&amp;quot;: scope[&amp;quot;path&amp;quot;]}).encode()
+    await send({&amp;quot;type&amp;quot;: &amp;quot;http.response.start&amp;quot;, &amp;quot;status&amp;quot;: 200, &amp;quot;headers&amp;quot;: [(b&amp;quot;content-type&amp;quot;, b&amp;quot;application/json&amp;quot;)]})
+    await send({&amp;quot;type&amp;quot;: &amp;quot;http.response.body&amp;quot;, &amp;quot;body&amp;quot;: body})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Mounting it at &lt;code&gt;/api&lt;/code&gt; is a table in &lt;code&gt;pyproject.toml&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[tool.muru.mounts.api]
+path = &amp;quot;/api&amp;quot;
+entrypoint = &amp;quot;shop.api:app&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;On start-up, Muru says what each entrypoint is being served as, and where each mount is:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;muru.host[89570]: shop.app:app is served as WSGI
+muru.host[89570]: mount api: shop.api:app is served as ASGI
+...
+muru: mount api serves /api from shop.api:app
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Anything under &lt;code&gt;/api&lt;/code&gt; now goes to the ASGI application, and everything else to Flask. The ASGI application sees the mount path as its &lt;code&gt;root_path&lt;/code&gt;, as the ASGI specification asks:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl http://127.0.0.1:8080/api/orders
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;{&amp;quot;root_path&amp;quot;: &amp;quot;/api&amp;quot;, &amp;quot;path&amp;quot;: &amp;quot;/api/orders&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Both applications run in the same worker processes, imported by the same preload, from the one project.&lt;/p&gt;
+&lt;p&gt;Requests to the ASGI application run on the worker's event loop, so they aren't held back by the four threads the WSGI application has. Firing off twenty requests to &lt;code&gt;/api&lt;/code&gt; at once, each awaiting that one second sleep, they all finished together in 1.06 seconds, rather than queuing up four at a time behind the threads.&lt;/p&gt;
+&lt;p&gt;Left alone, a mount shares the worker's event loop, and so its concurrency, with everything else running on it, such as the websockets handed off from Flask. If one part of the site shouldn't be able to take all of that, a mount can be given a concurrency of its own:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[tool.muru.mounts.api]
+path = &amp;quot;/api&amp;quot;
+entrypoint = &amp;quot;shop.api:app&amp;quot;
+concurrency = 500
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Muru confirms this when it starts:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;muru: mount api serves /api from shop.api:app with concurrency 500 of its own
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There is a similar &lt;code&gt;max_connections&lt;/code&gt; setting to put a limit on how many websockets an ASGI mount can hold open.&lt;/p&gt;
+&lt;h2&gt;And back the other way&lt;/h2&gt;
+&lt;p&gt;Handing off works in the other direction too. An ASGI application can hand a request to WSGI code, which is useful when moving an application to ASGI a piece at a time, leaving the parts not yet converted as they are. In the scope given to an ASGI application, Muru's extensions include an &lt;code&gt;asgi_to_wsgi&lt;/code&gt; bridge, whose &lt;code&gt;handoff()&lt;/code&gt; runs a WSGI application for the rest of the request:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;def legacy_report(environ, start_response):
+    body = f&amp;quot;report generated by WSGI code for {environ['SCRIPT_NAME']}{environ['PATH_INFO']}\n&amp;quot;.encode()
+    start_response(&amp;quot;200 OK&amp;quot;, [(&amp;quot;Content-Type&amp;quot;, &amp;quot;text/plain&amp;quot;)])
+    return [body]
+async def app(scope, receive, send):
+    if scope[&amp;quot;type&amp;quot;] != &amp;quot;http&amp;quot;:
+        return
+    if scope[&amp;quot;path&amp;quot;].startswith(&amp;quot;/api/reports/&amp;quot;):
+        return scope[&amp;quot;extensions&amp;quot;][&amp;quot;muru&amp;quot;][&amp;quot;asgi_to_wsgi&amp;quot;].handoff(legacy_report)
+    ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As before, this has to be enabled, and if you forget, the error says exactly what to add:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;muru.HandoffNotEnabled: mount api does not enable handing requests to WSGI; set handoff = &amp;quot;wsgi&amp;quot; on the mount
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;WSGI code needs threads to run on, so as well as setting &lt;code&gt;handoff&lt;/code&gt;, the mount here is given two threads of its own:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[tool.muru.mounts.api]
+path = &amp;quot;/api&amp;quot;
+entrypoint = &amp;quot;shop.api:app&amp;quot;
+concurrency = 500
+handoff = &amp;quot;wsgi&amp;quot;
+threads = 2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The start-up output now shows the mount with its own threads as well as its own concurrency:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;muru: mount api serves /api from shop.api:app on 2 threads of its own with concurrency 500 of its own
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now a request for a report goes to the old WSGI code, while everything else under &lt;code&gt;/api&lt;/code&gt; stays with the ASGI application:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl http://127.0.0.1:8080/api/reports/daily
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;report generated by WSGI code for /api/reports/daily
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;with the access log marking it with &lt;code&gt;handoff=wsgi&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;200 GET /api/reports/daily 53B 0.4ms queue=0.0ms app=0.4ms mount=api worker=0 handoff=wsgi id=01M6JWRJ0DQ38194C2WQX2KDCJ
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;gRPC as well&lt;/h2&gt;
+&lt;p&gt;The same mount mechanism also takes care of the third kind of service I mentioned in the first post, which is gRPC. A gRPC mount doesn't have a path. Instead, calls are recognised by their content type and service name, so gRPC and ordinary HTTP share the same port. The entrypoint is a function which registers the servicers generated by &lt;code&gt;grpcio-tools&lt;/code&gt;, just as you would with a grpcio server:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;class Greeter(greeter_pb2_grpc.GreeterServicer):
+    def SayHello(self, request, context):
+        return greeter_pb2.HelloReply(message=f&amp;quot;Hello {request.name}&amp;quot;)
+def register(server):
+    greeter_pb2_grpc.add_GreeterServicer_to_server(Greeter(), server)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[tool.muru.mounts.api]
+interface = &amp;quot;grpc&amp;quot;
+entrypoint = &amp;quot;svc.app:register&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;muru.host[91221]: mount api: svc.app:register is served as gRPC
+...
+muru: mount api serves the gRPC services of svc.app:register
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With that, a grpcio client calling &lt;code&gt;SayHello&lt;/code&gt; and a browser fetching the home page can talk to the same port of the same development run, and both show up in the one access log:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;200 GET / 30B 0.2ms queue=0.0ms app=0.2ms worker=0 id=01M6JWS8HV7NK43EP3VYEA225P
+200 POST /greet.Greeter/SayHello 14B 0.9ms queue=0.0ms app=0.8ms worker=0 id=01M6JWS8KT7NK43EP3VYEA225P
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;One catch is that grpcio doesn't provide wheels for free-threaded Python, so for gRPC I had to use a regular build of Python. There is a lot more to gRPC in Muru, such as streaming calls and gRPC-Web, which I may come back to in a post of its own.&lt;/p&gt;
+&lt;h2&gt;What's next&lt;/h2&gt;
+&lt;p&gt;What I like about all of this is that you don't have to make a big decision up front. An application can start as WSGI, take websockets when it needs them, grow async parts under a path, and move across to ASGI piece by piece if that ever makes sense, all without becoming more than one deployment.&lt;/p&gt;
+&lt;p&gt;That wraps up what I wanted to show of Muru in development mode. Next it is time to move on to the daemon, starting with deploying an application to a server, where the releases that a reload creates in development mode become deploys that can run side by side, take a share of the traffic, and be rolled back.&lt;/p&gt;</description>
+      <guid isPermaLink="false">790d709becbcd95c36d81752dc9ca040f24205d9b5a4f93c7ab32b306607dae6</guid>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>The Python Coding Stack: Generalist vs Specialist in the After AI Era - Planet Python</title>
       <link>https://www.thepythoncodingstack.com/p/generalists-specialists-ai</link>
@@ -83,6 +402,25 @@ hosts = [&amp;quot;shop.localhost&amp;quot;]
 &lt;p&gt;None of this is especially complicated, but it is the sort of thing which only gets tested if it is easy, and getting it for free is a consequence of the edge doing all the work of facing clients. Next up I will look at what else Muru lets a single application do, which is to mix WSGI and ASGI, including handing a request from one to the other so an existing WSGI application can take on websockets.&lt;/p&gt;</description>
       <guid isPermaLink="false">896a404b6c682dce3ef0c893814cca4b14de49e3fcc4a82ed5e1555369ccfb18</guid>
       <pubDate>Tue, 10 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Insider: Python 3.16.0 alpha 2 is now available - Planet Python</title>
+      <link>https://blog.python.org/2026/11/python-3160-alpha-2-is-now-available/</link>
+      <description>The second developer preview of Python 3.16 is ready for testing.</description>
+      <guid isPermaLink="false">6c011e23c49282bcc7723d5bb043e351f9835c0782d55a39d665ce0754c2d863</guid>
+      <pubDate>Tue, 10 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: Pandas 3.1 CSV loading: Multi-threaded, but PyArrow is still faster - Planet Python</title>
+      <link>https://lernerpython.com/2026/11/09/pandas-3-1-csv-loading-multi-threaded-but-pyarrow-is-still-faster/</link>
+      <description>&lt;img alt="Pandas 3.1 CSV loading: Multi-threaded, but PyArrow is still faster" class="wp-image-18809" height="438" src="https://lernerpython.com/wp-content/uploads/2026/11/2026-11-09.png" width="1356" /&gt;
+&lt;p class="wp-block-paragraph"&gt;Reading a CSV into a Python Pandas data frame?&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Before version 3.1, loading CSV was single-threaded and slow. My test file took 1.03s.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;In 3.1, it&amp;#8217;s now multi-threaded and much faster, taking 252 ms.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;However, it&amp;#8217;s still far slower than PyArrow, which took 25.5 ms.&lt;/p&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/11/09/pandas-3-1-csv-loading-multi-threaded-but-pyarrow-is-still-faster/"&gt;Pandas 3.1 CSV loading: Multi-threaded, but PyArrow is still faster&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">279e97c8b3f3d0ffd2c82e9c544715c6ae3cab59afdd9aac46364b5ebd44a411</guid>
+      <pubDate>Mon, 09 Nov 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Armin Ronacher: AI and Irontown - Planet Python</title>
