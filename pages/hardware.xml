@@ -5,7 +5,184 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Hardware category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Wed, 11 Nov 2026 14:01:35 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2026 14:01:20 +0000</lastBuildDate>
+    <item>
+      <title>Tiny Transmitters Track Monarch Butterflies - Hack a Day</title>
+      <link>https://hackaday.com/2026/11/12/tiny-transmitters-track-monarch-butterflies/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/11/butterfly.png?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;Miniaturization is one thing, but how would you like to design a transmitter that attaches to a butterfly? That&amp;#8217;s what the &lt;a href="https://www.begiant.ca/stories/places/monarch-butterflies-tracking-conservation" target="_blank"&gt;BlūMorpho&lt;/a&gt; transmitter is made to do, according to [Tom Jokinen] writing for &lt;em&gt;Be Giant&lt;/em&gt;. Apparently, most of these butterflies have a two- to six-week life, but periodically a &amp;#8220;super generation&amp;#8221; spawns and lives up to nine months. This is enough time to migrate from Canada and the United States to Mexico. In Mexico, they spend the winter, and then return when the weather is more hospitable. Scientists wanted to study this migration pattern, and the tiny transmitter is exactly what they needed.&lt;/p&gt;
+&lt;p&gt;You can even &lt;a href="https://projectmonarch.org/#app" target="_blank"&gt;download an app&lt;/a&gt; to track the butterflies yourself. The transmitter looks like a tadpole and weighs 60 milligrams. There&amp;#8217;s no battery, but there is a tiny solar cell. The transmitter emits a Bluetooth signal that your phone&amp;#8217;s location services can relay.&lt;/p&gt;
+&lt;p&gt;To affix the transmitter, researchers put a glassine envelope over the butterfly, weigh its wings down with something slightly heavy, and then apply eyelash glue to the transmitter. You can see the process in the video below.&lt;/p&gt;
+&lt;p&gt;What else could you do with a virtually weightless Bluetooth tracker? It is possible that dedicated tracking stations could &lt;a href="https://hackaday.com/2026/10/24/pushing-bluetooth-out-to-12-kilometers/"&gt;have a longer range&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;span id="more-1424900"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">ec634c5f81974cfae24366e72a9bbdbb2a7956a14f8b71866de811a537292d14</guid>
+      <pubDate>Thu, 12 Nov 2026 12:00:29 +0000</pubDate>
+    </item>
+    <item>
+      <title>Espresso, Meet Custom-Machined Stainless Steel Boiler - Hack a Day</title>
+      <link>https://hackaday.com/2026/11/12/espresso-meet-custom-machined-stainless-steel-boiler/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="421" src="https://hackaday.com/wp-content/uploads/2026/11/brewing-banner.png?w=749" style="margin: 0 auto; margin-bottom: 15px;" width="749" /&gt;&lt;/div&gt;&lt;p&gt;While pondering some repairs for his Gaggia Classic Pro espresso machine, [Hans Gaensbauer] ended up &lt;a href="https://hansgaensbauer.com/espresso.html" target="_blank"&gt;machining an entirely new boiler&lt;/a&gt; from stainless steel.&lt;/p&gt;
+&lt;p&gt;It was a nontrivial undertaking, since the boiler is an assembly that integrates not only heaters and pump connections, but one end is also the group head into which the portafilter interfaces. [Hans] had to deal with machining out the contours and pockets necessary for a portafilter to lock in securely, complete with the little screen and perforated plate responsible for even water distribution. And of course, the whole thing still has to fit into the original machine. All in all, [Hans] had some constraints to work around, making it a considerably more complex job than just milling a chamber out of a block of stainless steel.&lt;/p&gt;
+&lt;p&gt;&lt;span id="more-1424902"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Overall he matches the original as much as possible, but since the original was cast from a mold and not designed with machining in mind, the operation is a bit tricky. This is a common issue when one changes manufacturing methods: a part designed to be molded will tend to have features that prove inconvenient for machining.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://hackaday.com/wp-content/uploads/2026/11/machined_parts-banner.png" target="_blank"&gt;&lt;img alt="" class="alignleft size-large wp-image-1424928" height="450" src="https://hackaday.com/wp-content/uploads/2026/11/machined_parts-banner.png?w=800" width="800" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In the end it&amp;#8217;s a success, complete with brand new seals and some upgraded electric components to address an original thermostat failure. If you want to see the insides of [Hans]&amp;#8217; espresso machine as well as loads of pictures showing the process of machining a whole new boiler and group head, check it out.&lt;/p&gt;
+&lt;p&gt;Coffee is a topic near and dear to many hackers, so there are plenty of retrofits and repairs but we&amp;#8217;ve also seen folks go right back to square one and &lt;a href="https://hackaday.com/2024/09/15/an-espresso-machine-for-the-diy-crowd/"&gt;re-imagine entire espresso machines&lt;/a&gt;, rather than just single parts.&lt;/p&gt;</description>
+      <guid isPermaLink="false">023e81af000106577a7c1eb379bffdc5cd968e8318a97988a5d7b2c901d88fa6</guid>
+      <pubDate>Thu, 12 Nov 2026 09:00:33 +0000</pubDate>
+    </item>
+    <item>
+      <title>A LEGO 3D Printer - Hack a Day</title>
+      <link>https://hackaday.com/2026/11/11/a-lego-3d-printer/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/11/Studprint-lego-3dprinter-feat.jpeg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;LEGO building blocks are a great toy, but every so often a hacker decides to take the little bricks outside of the toy room and make them an integral part of a build. [Adam Turaj] took that idea further than most with his Studprint, a &lt;a href="https://github.com/AdamTuraj/StudPrint" target="_blank"&gt;3D printer that&amp;#8217;s 92% LEGO&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We aren&amp;#8217;t just talking LEGO bricks making up part of the frame here, or even the bed &amp;#8212; though that&amp;#8217;s obviously the case &amp;#8212; but [Adam] goes so far that even the motion system is using LEGO leadscrews to drive the axes of this printer. Is it particularly capable? Well, no. He&amp;#8217;s not boasting of a remarkable bed size or high speeds here because that&amp;#8217;s really not the point. The point is that he made a printer in LEGO and if you don&amp;#8217;t see the fun in that, we don&amp;#8217;t know what to tell you.&lt;/p&gt;
+&lt;p&gt;The whole project is open source, and includes the CAD files for the handful of non-LEGO bits you&amp;#8217;ll need to mount the electronics, steppers and such. With an unheated bed of ABS bricks, you&amp;#8217;re going to be limited in filament choices, but [Adam] has at least made a Benchy, which is all anyone really needs, right?&lt;/p&gt;
+&lt;p&gt;In light of recent work, we can might suggest that the printer is also &lt;a href="https://hackaday.com/2026/11/10/print-place-add-embedded-electronics-while-fdm-printing/"&gt;a pick-and-place machine&lt;/a&gt;. If you want to turn the phrase &amp;#8220;LEGO 3D Printer&amp;#8221; around, &lt;a href="https://hackaday.com/2024/04/30/3d-printed-macro-pad-plate-is-lego-compatible/"&gt;we have seen 3D Printed LEGO before as well&lt;/a&gt;. We&amp;#8217;d be remiss not to note that this isn&amp;#8217;t &lt;a href="https://hackaday.com/2013/07/18/is-a-lego-3d-printer-by-definition-self-replicating/"&gt;the first printer&lt;/a&gt; to use the ubiquitous building blocks we&amp;#8217;ve seen, though this one keeps with the regular filament and extruder rather than hot glue like the 2013 version.&lt;/p&gt;</description>
+      <guid isPermaLink="false">4d30bfa04006969386cd6db1cc7bdc40e169307c21ccc87a8d467ee3ad28a18b</guid>
+      <pubDate>Thu, 12 Nov 2026 06:00:42 +0000</pubDate>
+    </item>
+    <item>
+      <title>It’s Elite, For The Commodore Pet - Hack a Day</title>
+      <link>https://hackaday.com/2026/11/11/its-elite-for-the-commodore-pet/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/11/pet-elite-featured.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;A few times in the life of someone interested in technology, there comes along something which after seeing it, you know the field is never going to be the same again. For a teenage future Hackaday writer this came in seeing &lt;em&gt;Elite&lt;/em&gt;, on a BBC Micro. Nowadays an open world game is normal, but in the mid-1980s it was mind-blowing. Of course, such a powerful piece of software couldn&amp;#8217;t be ported to any old computer, so owners of less capable machines were left envious of their more well-heeled friends.&lt;/p&gt;
+&lt;p&gt;It will be a surprise to Commodore Pet owners then, that over four decades later, [David Given] &lt;a href="https://github.com/davidgiven/pet-elite/" target="_blank"&gt;has ported the game to their platform&lt;/a&gt;. It&amp;#8217;s not such a leap, as the Pet has the same (albeit slower) 6502 as the BBC Micro, and the game requires the Commodore machine to have 32k of memory.&lt;/p&gt;
+&lt;p&gt;So what you get is &lt;em&gt;Elite&lt;/em&gt;, but with the Pet&amp;#8217;s block graphics rather than the higher-resolution you&amp;#8217;d have seen on the newer machines. He admits it doesn&amp;#8217;t play well and that the code is something of a mess, but we suspect 32k Pet owners in 2026 won&amp;#8217;t be too bothered by this. All the code and disk images are there in the repository, and you can see it at work in the video below the break. Meanwhile if you&amp;#8217;re curious about the &lt;em&gt;Elite&lt;/em&gt; codebase, &lt;a href="https://hackaday.com/2024/12/15/documented-source-code-for-elite-on-the-c64-bbc-micro-and-others/"&gt;you can take a look at it yourself&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;span id="more-1424870"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Thanks [Stephen Walters] for the tip.&lt;/p&gt;</description>
+      <guid isPermaLink="false">86c4de7c18c205d0bd397730d98f9b299f3c12fcd24e8a43c0770b9aeb87205d</guid>
+      <pubDate>Thu, 12 Nov 2026 03:00:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>Modular, 3D Printed Train Whistles For Everyone - Hack a Day</title>
+      <link>https://hackaday.com/2026/11/11/modular-3d-printed-train-whistles-for-everyone/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/11/3D-printed-whistle-modular.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;If the word &amp;#8220;train&amp;#8221; didn&amp;#8217;t grab your attention, you&amp;#8217;re probably not the target audience for this project. If it did, then there is no need to explain why [AeroKoi] has come up with a modular 3&amp;#8243; train whistle, &lt;a href="https://www.thingiverse.com/thing:7432815" target="_blank"&gt;available on Thingiverse&lt;/a&gt; and well explained &lt;a href="https://www.youtube.com/watch?v=GEs5LPFBVps" target="_blank"&gt;in the video&lt;/a&gt; embedded below. It&amp;#8217;s a train whistle. Who doesn&amp;#8217;t want their own train whistle?&lt;/p&gt;
+&lt;p&gt;The great part of this design&amp;#8211; aside from requiring less air than his &lt;a href="https://hackaday.com/2026/05/07/3d-printed-train-whistles-sound-out-at-full-scale/"&gt;earlier, larger-diameter iterations&lt;/a&gt;&amp;#8211;is the modularity. With adjustable bell caps, you can alter the size of the resonant chamber and thus the notes the whistle plays on the fly. That&amp;#8217;s the key difference between a train whistle, as used in the steam era, and a train horn as you find on a modern diesel or electric&amp;#8211; whistles use a resonant chamber, while a horn uses a diaphragm to create the vibrations we call sound. By using the movable chamber caps to change the resonance, you can go from a Santa Fe 5 chime to a B&amp;amp;O 3 chime whistle by matching the measurements in the &lt;a href="https://docs.google.com/spreadsheets/d/1g7Vm-dtfl4iZWgO_r81MwvOLpOF7vebeTpq_uoNbZxA/edit?gid=0#gid=0" target="_blank"&gt;handy-dandy spreadsheet&lt;/a&gt; [TrainArtisan] provided&amp;#8211; and doubling up on a couple of chimes.&lt;/p&gt;
+&lt;p&gt;One excellent tip he gives in the video is to grease all the mating surfaces of the whistles with petroleum jelly, but it&amp;#8217;s worth watching the whole thing on YouTube for both full build and tuning instructions, and to learn more than you ever thought you needed to know about whistles&amp;#8211; he gets right into the physics of sound waves to explain exactly the limitations of trying to replicate the sound of brass steam whistles with plastic and compressed air. If you just want to hear a bunch of train whistles to see how well it works, jump to the ten minute mark. The disappointing part comes later, where he explains the airflow requirements: if you don&amp;#8217;t have a compressor with a big tank, you can&amp;#8217;t expect more than one short toot at a time.&lt;/p&gt;
+&lt;p&gt;Interestingly enough it looks like most of &lt;a href="https://hackaday.com/tag/whistle/"&gt;the whistles we&amp;#8217;ve written about&lt;/a&gt; are locomotive-adjacent, including [AeroKoi]&amp;#8217;s &lt;a href="https://hackaday.com/2026/05/07/3d-printed-train-whistles-sound-out-at-full-scale/"&gt;earlier work&lt;/a&gt;, and a true cast-brass &lt;a href="https://hackaday.com/2019/01/21/to-make-reproduction-train-whistles-the-old-ways-are-best/"&gt;replica for the purists. &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span id="more-1424831"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">608a53775c1834036af0578fcd07a53cb1d4bf414c9f111debfbeb9cf882d771</guid>
+      <pubDate>Wed, 11 Nov 2026 21:00:39 +0000</pubDate>
+    </item>
+    <item>
+      <title>CHIP 8: The Pong Game’s Afoot! - Hack a Day</title>
+      <link>https://hackaday.com/2026/11/11/chip-8-the-pong-games-afoot/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="320" src="https://hackaday.com/wp-content/uploads/2026/10/Iconic_COSMAC_Elf_spaceship_scene.png?w=640" style="margin: 0 auto; margin-bottom: 15px;" width="640" /&gt;&lt;/div&gt;&lt;p&gt;Writing a computer game has always been hard. It is only the nature of the difficulty that changes. A modern game is as much about graphics, sound, and storytelling as it is about programming. But in the early days of computers, writing a game was a challenge because of limited graphics, slow CPUs, and tiny memory capacity. If you wanted to write a game for an early microcomputer, you generally wrote it in assembly language. BASIC was available on many machines, but it was usually too slow for anything requiring fast animation. Assembly language was fast, but it was also difficult to write, debug, and port to another machine.&lt;/p&gt;
+&lt;p&gt;RCA &amp;#8212; in particular [&lt;a href="https://hackaday.com/2026/09/04/cosmac-elf-turns-50/"&gt;Joseph Weisbecker&lt;/a&gt;], the architect of the 1802 &amp;#8212; introduced the COSMAC VIP into the primordial 1977 home video game market. In addition to using ready-made games, the idea was that you could create your own. But writing games in 1802 assembly language would be beyond most of RCA&amp;#8217;s customers. [Weisbecker] devised CHIP-8, a tiny virtual machine. It wasn&amp;#8217;t quite a programming language. Instead, it was a simple instruction set implemented by an interpreter running on a real computer. You wrote programs for the imaginary CHIP-8 processor, and the interpreter made them run on the actual hardware. CHIP-8 is perfect for the kind of games you&amp;#8217;d see in those days and still has a following among those who love retro games.&lt;/p&gt;
+&lt;h2&gt;A Different Time: Tiny Interpreters&lt;/h2&gt;
+&lt;p&gt;Today, when we think of interpreters, we often imagine something like Python, where the interpreter reads source code and figures out what to do. However, there&amp;#8217;s another approach that was particularly attractive when memory and processor cycles were precious: threaded code.&lt;/p&gt;
+&lt;p&gt;In a threaded-code interpreter, a program consists of references (like indices into a command table) to routines that perform operations. Instead of decoding complicated instructions, the interpreter follows these references, executing the corresponding routines. There are several variations, including direct threading, indirect threading, and token threading. Forth is probably the best-known example of a language that commonly uses threaded code. In a typical Forth implementation, a program is compiled into a sequence of references to words, and a compact inner interpreter executes them.&lt;/p&gt;
+&lt;p&gt;Why bother? Because the implementation can be remarkably small. Instead of generating native machine code, a compiler can produce a compact representation that is relatively easy to execute. CHIP-8 belongs to the same general family of ideas, although it is more accurately described as a bytecode interpreter than a conventional threaded-code system. Its instructions are two bytes long, and the interpreter decodes each instruction and executes the corresponding operation. The original implementation was written in RCA 1802 machine code.&lt;/p&gt;
+&lt;h2&gt;History Of CHIP-8&lt;/h2&gt;
+&lt;p&gt;&lt;figure class="wp-caption alignright" id="attachment_1397234" style="width: 311px;"&gt;&lt;a href="https://hackaday.com/wp-content/uploads/2026/10/RCA_Cosmac_VIP.jpg"&gt;&lt;img alt="" class="size-medium wp-image-1397234" height="400" src="https://hackaday.com/wp-content/uploads/2026/10/RCA_Cosmac_VIP.jpg?w=311" width="311" /&gt;&lt;/a&gt;&lt;figcaption class="wp-caption-text" id="caption-attachment-1397234"&gt;The VIP ([Dave Ruske] CC-BY-SA-2.0)&lt;/figcaption&gt;&lt;/figure&gt;The &lt;a href="https://hackaday.com/2020/12/07/inside-chip-8/"&gt;COSMAC VIP&lt;/a&gt; was an interesting machine. A basic system had 2 KB of RAM, a hexadecimal keypad, and a monochrome video display. Programs were generally entered as hexadecimal bytes using the keypad, although expansion options were available. The 1802 CPU inside wasn&amp;#8217;t exactly a speed demon. It was an 8-bit processor with sixteen 16-bit registers and an unusual architecture that made it well suited to certain embedded applications. There were versions that were also well-suited for spacecraft, and so the chip is in Magellan, Galileo, and even some parts of the Hubble.&lt;/p&gt;
+&lt;p&gt;CHIP-8 made programming the VIP considerably easier, especially for games. Rather than dealing with the peculiarities of the 1802 and the VIP&amp;#8217;s display hardware, programmers could use a small, consistent instruction set designed around graphics and keypad input.&lt;/p&gt;
+&lt;p&gt;The CHIP-8 virtual machine provides sixteen 8-bit registers, conventionally named V0 through VF. It also has a 16-bit index register, a program counter, a stack for subroutine calls, and two timers.&lt;/p&gt;
+&lt;p&gt;The display is 64 pixels wide and 32 pixels high. Pixels are either on or off. There&amp;#8217;s no color, no hardware sprites, and no sophisticated graphics processor. There are, however, instructions specifically intended to make games easier to write. You can draw a sprite with a single instruction, test whether a key is pressed, generate a random number, and use timers to control animation.&lt;/p&gt;
+&lt;p&gt;A sprite is simply a sequence of bytes, with each bit representing a pixel. A typical sprite can be up to eight pixels wide and fifteen pixels high. The instruction set is tiny, with only a few dozen basic operations. Yet it is sufficient to implement games such as Pong, Breakout, and Space Invaders-like shooters.&lt;/p&gt;
+&lt;p&gt;CHIP-8 subsequently appeared on other systems, and later variants extended its capabilities. The best-known extension is Super-CHIP, which added features including higher-resolution graphics. Today, CHIP-8 survives largely because it is an excellent target for emulator projects. Writing a CHIP-8 interpreter is a manageable exercise, and there are thousands of small programs available to test one. But you don&amp;#8217;t need to write an interpreter to experiment with CHIP-8.&lt;/p&gt;
+&lt;p&gt;&lt;span id="more-1397178"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Modern Octo&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://johnearnest.github.io/Octo/" target="_blank"&gt;Octo&lt;/a&gt; is a modern CHIP-8 development environment created by [John Earnest]. It runs in a web browser and includes an assembler, an emulator, a debugger, and tools for working with CHIP-8 programs. You can write code, assemble it, and run it without installing anything. Octo also supports extensions to the original instruction set, although we&amp;#8217;ll stick with ordinary CHIP-8 for this project. Using a higher-level assembly syntax than the hexadecimal opcodes used by early CHIP-8 programmers is handy enough.&lt;/p&gt;
+&lt;p&gt;You still have to think like an assembly language programmer. There are registers, jumps, subroutines, and a very small instruction set. However, you don&amp;#8217;t have to remember that &lt;code&gt;6A05&lt;/code&gt; means load register VA with the value 5. Instead, you can write &lt;code&gt;va := 5&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;That&amp;#8217;s much easier to read. Octo also provides labels, constants, expressions, and other conveniences that make it practical to write programs of reasonable complexity.&lt;/p&gt;
+&lt;h2&gt;A Little CHIP-8 Assembly&lt;/h2&gt;
+&lt;p&gt;CHIP-8 has sixteen general-purpose registers, V0 through VF. Most instructions operate on these registers.&lt;/p&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;pre&gt;
+v0 := 10
+v1 := 20
+v0 += v1
+&lt;/pre&gt;
+&lt;p&gt;This loads 10 into V0, 20 into V1, and adds V1 to V0. Afterward, V0 contains 30. However, Octo also allows :alias and :const keywords to make things easier:&lt;/p&gt;
+&lt;pre&gt;
+:const RETRY 10
+:alias trycount v0
+trycount := RETRY
+&lt;/pre&gt;
+&lt;p&gt;There are also bitwise operations:&lt;/p&gt;
+&lt;pre&gt;
+v0 &amp;= v1
+v0 |= v1
+v0 ^= v1
+&lt;/pre&gt;
+&lt;p&gt;You can compare registers and values using conditional instructions. One thing that takes some getting used to is that CHIP-8 doesn&amp;#8217;t really have conventional conditional branches. Instead, conditional instructions skip the following instruction when the condition is satisfied. Luckily, Octo hides some of that awkwardness with syntax such as:&lt;/p&gt;
+&lt;pre&gt;
+if v0 == 10 then jump somewhere
+&lt;/pre&gt;
+&lt;p&gt;Underneath, this is still a conditional skip followed by a jump.&lt;/p&gt;
+&lt;p&gt;Subroutines are straightforward:&lt;/p&gt;
+&lt;pre&gt;: main
+v0 := 10
+do_something
+jump main
+: do_something
+v0 += 1
+return
+&lt;/pre&gt;
+&lt;p&gt;Drawing is particularly interesting. To draw a sprite, you first load the index register, &lt;code&gt;i&lt;/code&gt;, with the address of the sprite data. Then you use the &lt;code&gt;sprite&lt;/code&gt; instruction.&lt;/p&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;pre&gt;
+i := ball_sprite ; load address
+sprite v0 v1 1
+; address of sprint for ball
+: ball_sprite 
+0x80
+&lt;/pre&gt;
+&lt;p&gt;Each sprite is one byte high and eight bits wide. Since only the most significant bit is set, it draws a single pixel. The V0 and V1 registers specify the X and Y coordinates.&lt;/p&gt;
+&lt;h2&gt;Let&amp;#8217;s Play Pong&lt;/h2&gt;
+&lt;figure class="wp-caption alignright" id="attachment_1397236" style="width: 400px;"&gt;&lt;a href="https://hackaday.com/wp-content/uploads/2026/10/ponglg.gif"&gt;&lt;img alt="" class="size-medium wp-image-1397236" height="200" src="https://hackaday.com/wp-content/uploads/2026/10/ponglg.gif?w=400" width="400" /&gt;&lt;/a&gt;&lt;figcaption class="wp-caption-text" id="caption-attachment-1397236"&gt;Pong in action!&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;A simple Pong game is a good demonstration of CHIP-8 programming because it requires very little graphics capability but exercises most of the interesting parts of the virtual machine. This version has two paddles, one on each side of the screen, and a single-pixel ball. The left paddle uses keys 1 and 4 to move up and down. The right paddle uses C and D. If you use Octo, this maps to the 1 and Q keys along with the 4 and R keys.&lt;/p&gt;
+&lt;p&gt;The ball moves across the screen, bouncing off the top and bottom walls. When it strikes a paddle, it reverses direction. If a player misses, the ball returns to the center. The ball doesn&amp;#8217;t always bounce straight back. Its vertical direction depends on where it strikes the paddle. A hit in the center produces a horizontal trajectory. Hits above or below the center produce progressively steeper angles.&lt;/p&gt;
+&lt;p&gt;Since CHIP-8 doesn&amp;#8217;t have floating-point arithmetic, we approximate the angles using integer counters. For example, a five-degree trajectory moves vertically approximately one pixel for every eleven pixels of horizontal movement. For a ten-degree trajectory, we move vertically about once every six horizontal pixels. This isn&amp;#8217;t a sophisticated physics simulation, but it works well enough for Pong. You can play it directly &lt;a href="https://johnearnest.github.io/Octo/index.html?key=Z_owXYVc" target="_blank"&gt;using Octo in your browser&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The game loop is conceptually simple:&lt;/p&gt;
+&lt;pre&gt;
+: main
+erase_objects
+move_paddles
+move_ball
+draw_objects
+wait_for_frame
+jump main
+&lt;/pre&gt;
+&lt;p&gt;The actual program is a little more complicated because we have to handle input, collisions, and boundary conditions. Still, the basic structure is familiar to anyone who has written a simple video game.&lt;/p&gt;
+&lt;p&gt;You can find the complete Octo source on &lt;a href="https://github.com/wd5gnr/chip8pong" target="_blank"&gt;GitHub&lt;/a&gt;. The program uses ordinary CHIP-8 instructions and should run in Octo or another compatible interpreter.&lt;/p&gt;
+&lt;h2&gt;Detecting Collisions&lt;/h2&gt;
+&lt;p&gt;CHIP-8 has a clever feature that makes sprite collisions particularly easy to detect. Whenever you execute a sprite instruction, the interpreter sets register VF to indicate whether any pixels were erased by the XOR drawing operation. If no pixels were erased, VF is zero. If one or more pixels were erased, VF is one. Suppose the display contains a pixel that is already on. If you draw another sprite over that pixel, the pixel turns off. If you draw over it again, it turns back on. This makes it possible to erase sprites simply by drawing them again.&lt;/p&gt;
+&lt;p&gt;It also provides a simple collision detection mechanism. If you draw a ball over a paddle, some of the ball&amp;#8217;s pixels will overlap the paddle&amp;#8217;s pixels. The XOR operation erases those pixels, and VF becomes one. In our Pong game, we can use this to determine whether the ball has struck a paddle.&lt;/p&gt;
+&lt;p&gt;Conceptually, the code looks like this:&lt;/p&gt;
+&lt;pre&gt;
+i := ball_sprite
+sprite v0 v1 1
+if vf == 1 then jump collision
+&lt;/pre&gt;
+&lt;p&gt;There&amp;#8217;s a subtlety here. VF doesn&amp;#8217;t tell us what the ball collided with, only that the drawing operation erased at least one pixel. For Pong, we can use the ball&amp;#8217;s position and direction to determine which paddle is involved. We can then calculate the ball&amp;#8217;s position relative to the paddle to determine its new trajectory.&lt;/p&gt;
+&lt;p&gt;For example, suppose the paddle occupies five vertical pixels. If the ball strikes the middle pixel, it travels horizontally. If it strikes one pixel above the middle, it moves upward at approximately five degrees. Two pixels above produces ten degrees. The same idea applies below the center, except the ball moves downward. This is a simple way to add a little variety to the game without requiring complicated mathematics.&lt;/p&gt;
+&lt;p&gt;XOR drawing also gives us a way to avoid flicker when drawing. Instead of clearing the entire screen, we can erase the old objects by drawing them again. Then we update their coordinates and draw them at their new positions. This approach avoids repeatedly blanking the entire display and generally produces smoother animation.&lt;/p&gt;
+&lt;p&gt;However, there is a catch. Remember that drawing a sprite sets VF when pixels are erased? When we intentionally erase the old sprites, VF may also become one. That won&amp;#8217;t indicate a collision. It simply means the XOR operation did exactly what we wanted. Consequently, we ignore VF during the erase pass. We only examine it when performing the drawing operation intended to detect a collision. Another important detail is that VF is updated by each sprite instruction. If you draw the ball and then draw a paddle, the second drawing operation overwrites VF. Therefore, you need to test or save VF immediately after the relevant instruction.&lt;/p&gt;
+&lt;h2&gt;How Fast Is CHIP-8?&lt;/h2&gt;
+&lt;p&gt;The original CHIP-8 interpreter ran on a 1970s microprocessor, so nobody was expecting spectacular performance. Modern computers can execute CHIP-8 instructions almost instantaneously. However, running the interpreter as fast as possible would make many old games unplayable.&lt;/p&gt;
+&lt;p&gt;CHIP-8 has two timers, a delay timer and a sound timer, that decrement at 60 Hz when they are nonzero. Programs can use the delay timer to control animation independently of the interpreter&amp;#8217;s instruction execution rate. For example:&lt;/p&gt;
+&lt;pre&gt;
+v0 := 2
+delay := v0
+: wait
+v0 := delay
+if v0 != 0 then jump wait
+&lt;/pre&gt;
+&lt;p&gt;This waits until the delay timer reaches zero. With a 60 Hz timer, two ticks correspond to approximately 33 milliseconds, or 30 frames per second.&lt;/p&gt;
+&lt;p&gt;Octo also lets you adjust the interpreter&amp;#8217;s execution speed. This is important because CHIP-8 never had a single universally standardized instruction execution rate. Different historical implementations ran at different speeds, and programs sometimes depended on those differences. If you run the interpreter too slowly, the game may become sluggish. If you run it too quickly, the game may run much faster than intended.&lt;/p&gt;
+&lt;p&gt;For our Pong game, the delay timer provides the primary frame pacing, so the exact instruction execution rate is less critical. However, the interpreter still needs to execute enough instructions between timer ticks to complete each frame. There is also an interesting interaction between interpreter speed and display behavior. Some CHIP-8 implementations synchronize drawing operations with the display refresh, while others don&amp;#8217;t. These differences can affect animation smoothness and the apparent speed of a program.&lt;/p&gt;
+&lt;p&gt;If you&amp;#8217;re experimenting with Octo, it&amp;#8217;s worth adjusting the speed settings to see how they affect the game.&lt;/p&gt;
+&lt;h2&gt;Everything Old&amp;#8230;&lt;/h2&gt;
+&lt;p&gt;CHIP-8 is almost fifty years old, but the underlying idea remains familiar. Consider the Java Virtual Machine. Java source code is compiled into bytecode, which executes on a virtual machine rather than directly on the host processor. CHIP-8 does essentially the same thing at a much smaller scale. Of course, the JVM is vastly more sophisticated. It supports a large instruction set, complex data types, object-oriented programming, garbage collection, security mechanisms, and often just-in-time compilation. Before that, the &lt;a href="https://hackaday.com/2025/04/21/remembering-ucsd-p-system-the-pascal-virtual-machine/"&gt;UCSD P-code system&lt;/a&gt; offered a bigger abstraction for early computers.&lt;/p&gt;
+&lt;p&gt;CHIP-8 has only sixteen 8-bit registers, a few dozen instructions, and a 64-by-32 monochrome display. But all of these systems attempt to separate the programmer&amp;#8217;s view of the machine from the actual hardware. CHIP-8 also demonstrates how much can be accomplished with very little. Its instruction set is small enough to learn in an afternoon, and writing an interpreter for it is a reasonable weekend project.&lt;/p&gt;
+&lt;p&gt;If you want to understand virtual machines, emulators, or even the design of instruction sets, CHIP-8 is a particularly approachable place to start. And if nothing else, it&amp;#8217;s a reminder that you don&amp;#8217;t need millions of lines of code, gigabytes of memory, or a graphics processor to write a video game. It has even inspired some &lt;a href="https://hackaday.com/2022/02/27/esp32-virtual-machine-lets-you-change-programs-on-the-fly/"&gt;newer systems&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Featured image: &amp;#8220;&lt;a href="https://commons.wikimedia.org/wiki/File:Iconic_COSMAC_Elf_spaceship_scene.png" target="_blank"&gt;Iconic COSMAC Elf spaceship scene&lt;/a&gt;&amp;#8221; by [William Donnelly]&lt;/p&gt;</description>
+      <guid isPermaLink="false">3741998dc0023f2dc46deb4e544c4f95a62894e37e9d8ec7521f6202a5f555da</guid>
+      <pubDate>Wed, 11 Nov 2026 18:00:12 +0000</pubDate>
+    </item>
     <item>
       <title>Why Engineers are Forced to Create Junk Designs - Hack a Day</title>
       <link>https://hackaday.com/2026/11/11/why-engineers-are-forced-to-create-junk-designs/</link>
@@ -3341,74 +3518,6 @@ otherwise.&lt;a class="footnote" href="#fnref-2"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&
 &lt;p&gt;&lt;/p&gt;</description>
       <guid isPermaLink="false">e39d67146327df2f093f31eb904187c89482d24df5b8bb163933df31333ed885</guid>
       <pubDate>Wed, 16 Sep 2026 11:00:15 +0000</pubDate>
-    </item>
-    <item>
-      <title>Round AMOLED Badge Does All Kinds Of Cool Stuff - Hack a Day</title>
-      <link>https://hackaday.com/2026/09/16/round-amoled-badge-does-all-kinds-of-cool-stuff/</link>
-      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="405" src="https://hackaday.com/wp-content/uploads/2026/09/Screenshot-2026-09-16-160518-e1789538747588.png?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;[curisama] has put together a project simply entitled The Badge. It&amp;#8217;s simple enough, being a little round screen that you wear. Only, &lt;a href="https://github.com/curisama/The-Badge" target="_blank"&gt;it does a wide variety of rather interesting things.&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;The build is based on the Waveshare ESP32-S3-Touch-AMOLED-1.75C. It&amp;#8217;s not a very fun part number, but it describes a device which combines a 466&amp;#215;466 round display with a milled aluminium case and an ESP32-S3 to drive everything.&lt;/p&gt;
-&lt;figure class="wp-caption alignright" id="attachment_1161515" style="width: 320px;"&gt;&lt;img alt="" class="size-medium wp-image-1161515" height="320" src="https://hackaday.com/wp-content/uploads/2026/09/water.gif?w=320" width="320" /&gt;&lt;figcaption class="wp-caption-text" id="caption-attachment-1161515"&gt;Neat, right?&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;p&gt;[curisama] started building a custom firmware for the device, intending to use it as an air mouse. Soon enough it had a touchpad, too, a bunch of extra keys, as well as a clock and some games. It was given the ability to record audio too, up to 52 minutes in WAV format. From there, it also gained a rather fetching liquid simulation, with water sloshing around the round display with a little boat riding around on it. This took some optimization, with [curisama] pushing the animation from 3 FPS all the way up to 18 fps, making it much more fluid and satisfying to watch. There were other optimizations too, with [curisama] figuring out how enabling the CONFIG_PM_ENABLE flag and some other tweaks could push standby battery life from 11.9 to 19.6 hours. Not a bad gain at all.&lt;/p&gt;
-&lt;p&gt;If you need a handy yet unassuming round object to act as a human interface device and some other stuff besides, consider buying the Waveshare part and flashing it yourself. You can do so right from your browser. We&amp;#8217;ve featured plenty of other interesting projects &lt;a href="https://hackaday.com/2023/12/18/hacking-an-nfc-e-paper-display-from-waveshare-with-mystery-mcu/"&gt;with Waveshare parts in recent years, too&lt;/a&gt;. The integrated-display-and-microcontroller market is booming for makers right now, and it&amp;#8217;s one we&amp;#8217;ll continue to follow with interest. If you&amp;#8217;re doing innovative stuff in this space, be sure to &lt;a href="http://hackaday.com/submit-a-tip"&gt;notify the tipsline!&lt;/a&gt;&lt;/p&gt;</description>
-      <guid isPermaLink="false">be3a95a3b15b1919b6b99043a71d79cfcc07f7c6cf109d71913d83aa96480de7</guid>
-      <pubDate>Wed, 16 Sep 2026 08:00:37 +0000</pubDate>
-    </item>
-    <item>
-      <title>A Super-Accurate Clock Using a Tiny Microcontroller - Hack a Day</title>
-      <link>https://hackaday.com/2026/09/15/a-super-accurate-clock-using-a-tiny-microcontroller/</link>
-      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/09/attiny814-featured.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;DCF77 is a German VLF transmitting station that broadcasts a time signal across Europe on 77.5 kHz. Thus a common sight in a European home is a clock emblazoned with the words &amp;#8220;Radio controlled&amp;#8221;. With the timing broadcast in a simple and low speed digital format it doesn&amp;#8217;t require the greatest of hardware to decode, and a small microcontroller can handle the task with ease. And there are few smaller than &lt;a href="https://github.com/kwolf1909/DCF77-clock" target="_blank"&gt;an ATtiny as used in [kwolf1909]&amp;#8217;s decoder&lt;/a&gt;. It takes a DCF77 bitstream from a receiver, and shows the time on an I2C display.&lt;/p&gt;
-&lt;p&gt;The receiver isn&amp;#8217;t part of this project, however a single-frequency longwave receiver is not a difficult thing to build. The interface is a push-button, for which a short press cycles between display modes and a long press triggers a DCF77 reset. It also supports an external temperature sensor and real time clock module, if you&amp;#8217;re using an ATtiny with enough pins.&lt;/p&gt;
-&lt;p&gt;We like this project; it&amp;#8217;s simple and does one thing well, and it&amp;#8217;s a welcome reminder that not every device needs a powerhouse of a processor. If you&amp;#8217;re interested enough to build your own, &lt;a href="https://hackaday.com/2012/12/04/dcf77-signal-filtering-and-decoding/"&gt;we&amp;#8217;ve featured someone doing a deep dive into the signal before&lt;/a&gt;.&lt;/p&gt;</description>
-      <guid isPermaLink="false">d9ccf3d33d727a47be53df42f3a010581aa7eccbf0cf8f04b2554e864a764e1b</guid>
-      <pubDate>Wed, 16 Sep 2026 05:00:10 +0000</pubDate>
-    </item>
-    <item>
-      <title>Tips To Model Your Next CNC Cabinet in CAD Before Buying Anything - Hack a Day</title>
-      <link>https://hackaday.com/2026/09/15/tips-to-model-your-next-cnc-cabinet-in-cad-before-buying-anything/</link>
-      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="364" src="https://hackaday.com/wp-content/uploads/2026/09/Why-and-How-I-Model-Every-CNC-Cabinet-in-Fusion-First-28-3-screenshot-1-banner-e1789502404553.png?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;[Clough42] has started a new CNC control cabinet build, and uses it as an opportunity to demonstrate &lt;a href="https://www.youtube.com/watch?v=gNaCxllfb3U" target="_blank"&gt;why he models the whole thing out in CAD&lt;/a&gt; before ordering parts or physically building anything. One may wonder why to bother, and the simple answer is to ensure there are no surprises or waste. [Clough42] has built plenty of these cabinets and there&amp;#8217;s always &lt;em&gt;something&lt;/em&gt; that isn&amp;#8217;t as expected.&lt;/p&gt;
-&lt;p&gt;Modeling out an entire cabinet sounds like it should be easy, because today one can obtain 3D models for components from industrial suppliers with ease. In practice, it&amp;#8217;s a process fraught with little gotchas.&lt;/p&gt;
-&lt;p&gt;For example, a STEP file of a component can lack convenient geometric snap points. An enclosure will be a single entity, without a separate door (and certainly not articulated at the hinge). [Clough42] shows ways to deal with all of these, and more, in Fusion 360. With a few simple techniques laying out an entire cabinet in CAD can be easy.&lt;/p&gt;
-&lt;p&gt;Planning before buying or building is a form of prototyping, and prototyping helps surface problems so they can be avoided before they become costly. This concept extents to design work as well; model everything out to avoid simple goofs like &lt;a href="https://hackaday.com/2020/03/31/fail-of-the-week-in-cad-remember-to-model-the-environment/"&gt;a screwdriver handle trapped by its surrounding bits&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;span id="more-1161378"&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;</description>
-      <guid isPermaLink="false">a96d781c6643ef8763b2f2ec60e12456efe18c3db2ac4fb4b5dd9de1a2d7fc1d</guid>
-      <pubDate>Wed, 16 Sep 2026 02:00:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>Coffee Maker Steam Wand Gets a Safe Outlet - Hack a Day</title>
-      <link>https://hackaday.com/2026/09/15/coffee-maker-steam-wand-gets-a-safe-outlet/</link>
-      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="405" src="https://hackaday.com/wp-content/uploads/2026/09/steam-wand-purge-capture-tool-2.png?w=720" style="margin: 0 auto; margin-bottom: 15px;" width="720" /&gt;&lt;/div&gt;&lt;p&gt;Sometimes a hacker has a specific sort of problem, and uses the tools they have to solve it in a way that just might be helpful to someone else. That&amp;#8217;s the case with [Matvey Kukuy]&amp;#8217;s &lt;a href="https://www.printables.com/model/1049796-coffee-steam-dryer-v2" target="_blank"&gt;Coffee Steam Dryer (V2)&lt;/a&gt;, which performs the very specific job of safely swallowing up expelled steam and water from an espresso machine&amp;#8217;s steam wand.&lt;/p&gt;
-&lt;figure class="wp-caption alignright" id="attachment_1161352" style="width: 400px;"&gt;&lt;a href="https://hackaday.com/wp-content/uploads/2026/09/steam-wand-purge-capture-tool-1.png"&gt;&lt;img alt="" class="size-medium wp-image-1161352" height="400" src="https://hackaday.com/wp-content/uploads/2026/09/steam-wand-purge-capture-tool-1.png?w=400" width="400" /&gt;&lt;/a&gt;&lt;figcaption class="wp-caption-text" id="caption-attachment-1161352"&gt;Steam purges into the top inlet and passes through expansion chambers, dragging cool air along with it, until it exits safely.&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;p&gt;Steam wands are used to froth milk into a velvety texture, and some machines require purging the wand before using it for best results. Where does the resulting jet of steam and spatter of superhot water droplets go? Not the machine&amp;#8217;s problem. That&amp;#8217;s for the user to deal with, and [Matvey] decided to address it by designing and 3D printing a tool.&lt;/p&gt;
-&lt;p&gt;The pipe-like object works by having steam jet into the open top (printed in ABS or ASA for heat resistance) where the device redirects the hot gas and captures any expelled water in the process. The steam flows through expansion chambers, dragging cool air along with it in the process, until it ultimately gets redirected away from the user.&lt;/p&gt;
-&lt;p&gt;By the time steam exits the outlet, some has condensed and the remainder has cooled and slowed down enough to not be a worry.&lt;/p&gt;
-&lt;p&gt;It&amp;#8217;s the second version of the device, and we like how it has no moving parts and can be disassembled for cleaning and drying.&lt;/p&gt;
-&lt;p&gt;Coffee is an area that is rich with hacker activity, from &lt;a href="https://hackaday.com/2021/05/15/3d-printing-espresso-parts/"&gt;3D-printed micro-brew machines&lt;/a&gt; to &lt;a href="https://hackaday.com/2018/01/23/build-an-excellent-coffee-roaster-with-a-satisfyingly-low-price-tag/"&gt;completely DIY roasters&lt;/a&gt; but tools like this show how improving the coffee workflow can also be beneficial.&lt;/p&gt;</description>
-      <guid isPermaLink="false">525a1a65f852f6a1ffeb2f1828122d068d08b59326435fac0f1bea9a7824317e</guid>
-      <pubDate>Tue, 15 Sep 2026 23:00:23 +0000</pubDate>
-    </item>
-    <item>
-      <title>After 6 Years as Road Ornament a Widescreen Sony Trinitron Lives Again - Hack a Day</title>
-      <link>https://hackaday.com/2026/09/15/after-6-years-as-road-ornament-a-widescreen-sony-trinitron-lives-again/</link>
-      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="491" src="https://hackaday.com/wp-content/uploads/2026/09/road_side_crt_tv_fixed_happychoice_youtube.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;&lt;img alt="" class="size-medium wp-image-1161266 alignright" height="400" src="https://hackaday.com/wp-content/uploads/2026/09/road_side_crt_tv_psu_board_happychoice_youtube.jpg?w=400" width="400" /&gt;After previously adopting a big Sony Trinitron CRT TV that had been trying to hitch a ride along the side of a road in Italy for at least six years, [Happychoice] didn&amp;#8217;t give up on trying to fix it, with the second part showing the TV being &lt;a href="https://www.youtube.com/watch?v=Ypquw7PV4co" target="_blank"&gt;more or less fully fixed up&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;In &lt;a href="https://hackaday.com/2026/08/09/the-stages-of-grief-in-repairing-a-trinitron-found-in-the-trash/"&gt;the first part&lt;/a&gt; of this mini-series, the TV had been salvaged and had most of the dirt as well as local flora and fauna evicted before an attempt was made to fix it. Unfortunately despite the insides looking remarkably clean and intact considering its use as a road-side ornament, that video ended with the controller refusing to power up due to issues with the power supply.&lt;/p&gt;
-&lt;p&gt;In this sequel we get to see what six years of weather exposure means in terms of what components to replace in a CRT TV like this. Unsurprisingly this means mostly replacing most of the capacitors, at least on the power supply board, as well as the neck board for the actual CRT. A couple of MOSFETs also tested open, so they were replaced too.&lt;/p&gt;
-&lt;p&gt;With those fresh new parts the TV fired right up again, and with a Wii console connected it looks pretty spiffy running games like Persona 4. Fortunately modern CRT TVs like these have a built-in service menu that you can access with the remote, so that you can tweak picture alignment and other settings without having to stick a screwdriver into the back of the TV to fiddle with a potentiometer whilst also keeping an eye on the picture.&lt;/p&gt;
-&lt;p&gt;Although there are undoubtedly more components on the PCBs and of course one grimy speaker to give some TLC, it does show that as long as the tube itself is intact, it&amp;#8217;s definitely worth it to give repairing a shot.&lt;/p&gt;
-&lt;p&gt;&lt;span id="more-1161164"&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;</description>
-      <guid isPermaLink="false">3a0ab2d59faf4671d8c8a788c8d3a55905f70fb759e94fb578e331b865f7b607</guid>
-      <pubDate>Tue, 15 Sep 2026 20:00:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>Every ZX81 Expansion Card You Ever Wanted, All At Once - Hack a Day</title>
-      <link>https://hackaday.com/2026/09/15/every-zx81-expansion-card-you-ever-wanted-all-at-once/</link>
-      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/09/openspand-featured.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;The Sinclair ZX81 was a masterpiece of Sir Clive&amp;#8217;s desire to get the most out of the least hardware, being about as minimalist as it was possible to get and still &lt;em&gt;be&lt;/em&gt; a home computer in 1981. As such it has a keyboard, a Z80, TC and cassette interfaces, 1K of memory, and that was it. There were any number of add-ons for it, but if you were a 1980s kid the chances are you couldn&amp;#8217;t afford them. So 45 years later here&amp;#8217;s &lt;a href="https://codeberg.org/NollKollTroll/OpenSpand" target="_blank"&gt;[adam.klotblixt] with OpenSpand&lt;/a&gt; &amp;#8212; every ZX81 expansion you could think of, all in one!&lt;/p&gt;
-&lt;p&gt;For a start there&amp;#8217;s a RAM expansion. Not the paltry 16K of old, this is user-configurable and has the whole 64K address space minus the ROM to play with. Then there&amp;#8217;s SD card storage, hijacking Sinclair BASIC&amp;#8217;s LOAD and SAVE commands. It&amp;#8217;s got high-res graphics, emulated sound chips, a joystick port, serial ports, a choice of ROMs, and a composite video output. Perhaps the only thing it doesn&amp;#8217;t have from back in the day is a printer interface, but we&amp;#8217;re sure the serial port could be pressed into service somehow.&lt;/p&gt;
-&lt;p&gt;It does this all as you might expect these days, with an RP2350 emulating the real parts. The microcontroller disables the onboard RAM and ROM and emulates those too, such is the disparity in power between it and a Z80. We would have done anything for this expansion, back in the day.&lt;/p&gt;
-&lt;p&gt;The &amp;#8217;81 features here quite often, most recently in &lt;a href="https://hackaday.com/2026/09/02/how-a-1981-ram-expansion-worked/"&gt;a look at Sinclair&amp;#8217;s own RAM expansion&lt;/a&gt;.&lt;/p&gt;</description>
-      <guid isPermaLink="false">9226f3786ce15ba184043acba6d04f8559fdab6714ad40399b3b76689b69923a</guid>
-      <pubDate>Tue, 15 Sep 2026 11:00:04 +0000</pubDate>
     </item>
   </channel>
 </rss>

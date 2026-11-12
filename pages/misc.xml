@@ -5,7 +5,108 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Misc category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 10 Nov 2026 14:01:16 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2026 14:01:20 +0000</lastBuildDate>
+    <item>
+      <title>Steve, Monty, and Julia - And now it's all this</title>
+      <link>https://leancrew.com/all-this/2026/11/steve-monty-and-julia/</link>
+      <description>&lt;p&gt;[Equations in this post may not look right (or appear at all) in your RSS reader. Go to &lt;a href="https://leancrew.com/all-this/2026/11/steve-monty-and-julia/"&gt;the original article&lt;/a&gt; to see them rendered properly.]&lt;/p&gt;
+  &lt;hr /&gt;
+  &lt;p&gt;I don’t make a habit of reading obituaries, but I’m glad I clicked the link to &lt;a href="https://www.nytimes.com/2026/11/10/obituaries/steve-selvin-dead.html?unlocked_article_code=1.PlE.9nGH.gb9j1EYSKKB-&amp;amp;smid=nytcore-ios-share"&gt;this one&lt;/a&gt; in yesterday’s &lt;em&gt;New York Times&lt;/em&gt; (that should be a gift link). Steve Selvin was a statistician who got his Ph.D. at the University of California, Berkeley, and taught there for many years. He got into the &lt;em&gt;Times&lt;/em&gt; because of a probability puzzle he came up with in 1975: the &lt;a href="https://en.wikipedia.org/wiki/Monty_Hall_problem"&gt;Monty Hall Problem&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I won’t explain the problem here. Most of you already know it, and those who don’t can read the setup in the &lt;a href="https://en.wikipedia.org/wiki/Monty_Hall_problem"&gt;Wikipedia article&lt;/a&gt;. I do want to praise the &lt;em&gt;Times&lt;/em&gt; for the cute little interactive game they included in Selvin’s obituary. It allows you to be a &lt;em&gt;Let’s Make a Deal&lt;/em&gt; contestant and run through the problem again and again (with your computer playing the Monty Hall role) until you’re convinced that the “switching my choice” strategy is distinctly better than the “sticking with my original choice” strategy. I doubt you have the patience to play it enough times to confirm that switching wins 2/3 of the time and sticking wins 1/3 of the time.&lt;/p&gt;
+&lt;p&gt;I was less pleased with the explanation the &lt;em&gt;Times&lt;/em&gt; gave for the probabilities:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;After the first reveal, you have two doors, so you should have a 50-50 chance. Right? But you don’t. The host hasn’t randomly eliminated a door; he has deliberately revealed a goat, using his knowledge of where the car is. Your original door still has a one-in-three chance of hiding the car, while switching gives you a two-in-three chance of winning.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It’s right, of course, but it doesn’t strike me as an actual explanation—it sounds more like a restatement of the answer. To me, the way to think of it is to consider the winning strategy:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If you chose the door with a car behind it on your first guess—which will happen 1/3 of the time—you will win by sticking with that door. If you chose one of the doors with a goat behind it on your first guess—which will happen 2/3 of the time—you will win by switching to the door that Monty didn’t open. Therefore, switching gives you a 2/3 chance of winning.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Everyone’s different, so maybe you don’t need those extra words and the &lt;em&gt;Times&lt;/em&gt; explanation is sufficient. Not for me, though.&lt;/p&gt;
+&lt;p&gt;I mentioned above that although you could play the game in the obituary enough times to get a decent estimate of the probabilities, most of us don’t have that kind of patience. The better way to run lots of simulations in a short time is to use a random number generator to have the computer do all the selecting. I’ve been meaning to try out the &lt;a href="https://julialang.org/"&gt;Julia programming language&lt;/a&gt; for quite a while; this seemed like a good problem to start with.&lt;/p&gt;
+&lt;p&gt;Here’s my script, &lt;code&gt;switch.jl&lt;/code&gt;, for running 10,000 simulations using the “switch” strategy:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; 1:  #!/usr/bin/env julia
+ 2:  
+ 3:  # Parameters
+ 4:  N = 10_000    # Number of trials
+ 5:  m = 0         # Number of wins
+ 6:  
+ 7:  # Loop through N trials, counting the number of wins
+ 8:  for i in 1:N
+ 9:    # Behind-the-scenes preparation
+10:    carDoor = rand(1:3)
+11:    goatDoors = [j for j in 1:3 if j != carDoor]
+12:    
+13:    # Player makes initial choice
+14:    playerDoor = rand(1:3)
+15:    
+16:    # Monty chooses an available goat door
+17:    if playerDoor == carDoor
+18:      # Pick either of the two available
+19:      montyDoor = goatDoors[rand(1:2)]
+20:    else
+21:      # Pick the one available
+22:      montyDoor = [j for j in goatDoors if j != playerDoor][1]
+23:    end
+24:    
+25:    # Player switches to the other door
+26:    playerDoor = [j for j in 1:3 if (j != montyDoor) &amp;amp;&amp;amp; (j != playerDoor)][1]
+27:    
+28:    # Increment m if the player wins
+29:    if playerDoor == carDoor
+30:      global m += 1
+31:    end
+32:  end
+33:  
+34:  # Print the winning fraction for this strategy
+35:  println(m/N)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Because I’m new to Julia, I put in lots of comments, so I doubt there’s much need for more explanation. I will say, though, that I suspect a real Julia programmer wouldn’t use list comprehensions as often as I did. There’s probably a function for removing items from a list that’s more elegant than what I did in Lines 11, 22, and 26. I just don’t know what that is yet.&lt;/p&gt;
+&lt;p&gt;My script for running 10,000 simulations of the “stick” strategy, cleverly named &lt;code&gt;stick.jl&lt;/code&gt;, is basically the same:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; 1:  #!/usr/bin/env julia
+ 2:  
+ 3:  # Parameters
+ 4:  N = 10_000    # Number of trials
+ 5:  m = 0         # Number of wins
+ 6:  
+ 7:  # Loop through the N trials, counting the number of wins
+ 8:  for i in 1:N
+ 9:    # Behind-the-scenes preparation
+10:    carDoor = rand(1:3)
+11:    goatDoors = [j for j in 1:3 if j != carDoor]
+12:    
+13:    # Player makes initial choice
+14:    playerDoor = rand(1:3)
+15:    
+16:    # Monty chooses an available goat door
+17:    if playerDoor == carDoor
+18:      # Pick either of the two available
+19:      montyDoor = goatDoors[rand(1:2)]
+20:    else
+21:      # Pick the one available
+22:      montyDoor = [j for j in goatDoors if j != playerDoor][1]
+23:    end
+24:    
+25:    # Player sticks with original choice; do nothing
+26:    playerDoor = playerDoor
+27:    
+28:    # Increment m if the player wins
+29:    if playerDoor == carDoor
+30:      global m += 1
+31:    end
+32:  end
+33:  
+34:  # Print the winning fraction for this strategy
+35:  println(m/N)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The only difference is in Lines 25–26, where I’m basically doing a no-op.&lt;/p&gt;
+&lt;p&gt;These scripts give different answers each time they’re run because the random number generator starts with a different seed, but the answers are always close to 0.67 for &lt;code&gt;switch.jl&lt;/code&gt; and 0.33 for &lt;code&gt;stick.jl&lt;/code&gt;. As expected.&lt;/p&gt;
+&lt;p&gt;Are 10,000 simulations enough? Well, the 95% confidence interval can be calculated through this formula:&lt;/p&gt;
+&lt;p&gt;&lt;!-- $$ \pm 1.96\, \sqrt{\frac{p \, (1 - p)}{N}} $$ --&gt;
+&lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mrow&gt;&lt;mi&gt;±&lt;/mi&gt;&lt;mn&gt;1.96&lt;/mn&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;msqrt&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mspace width="0.167em"&gt;&lt;/mspace&gt;&lt;mo form="prefix" stretchy="false"&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo form="postfix" stretchy="false"&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;/mfrac&gt;&lt;/msqrt&gt;&lt;/mrow&gt;&lt;/math&gt;&lt;/p&gt;
+&lt;p&gt;which works out to ±0.009 for both strategies. So 10,000 simulations is fine as long as we’re willing to accept the second decimal place to be off by one every now and then.&lt;/p&gt;</description>
+      <guid isPermaLink="false">665f85d5fd8b8880d22da6223b85c644072122d62a7bf8acc39e177a4ca6073b</guid>
+      <pubDate>Wed, 11 Nov 2026 20:34:19 +0000</pubDate>
+    </item>
     <item>
       <title>Images, the clipboard, and AppleScript - And now it's all this</title>
       <link>https://leancrew.com/all-this/2026/11/images-the-clipboard-and-applescript/</link>

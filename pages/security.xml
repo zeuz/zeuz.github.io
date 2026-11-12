@@ -5,7 +5,139 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Wed, 11 Nov 2026 14:01:35 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2026 14:01:20 +0000</lastBuildDate>
+    <item>
+      <title>Vyrulix: An open-source desktop workbench for static PE triage and threat intelligence - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xubsmz/vyrulix_an_opensource_desktop_workbench_for/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/bakhishovismv2"&gt; /u/bakhishovismv2 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/bakhishovism/Vyruli"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xubsmz/vyrulix_an_opensource_desktop_workbench_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">936f831eb44daf4def0047ca5f29a552de979188ab9910b3adc2a8426ae23da6</guid>
+      <pubDate>Thu, 12 Nov 2026 12:43:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>Google Cloud Warns Three AMD Turin CPU Flaws Could Leak Data Across Processes in VMs - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/google-cloud-warns-three-amd-turin-cpu.html</link>
+      <description>Google Cloud VMs on AMD Turin chips need a guest OS patch and a stop-and-start to protect against three CPU side-channel flaws, Google said this week.
+The company has already applied mitigations against attacks between VMs, and between VMs and the host. Inside a VM, the flaws may let an attacker with code on the same processor core infer data from other processes or the kernel.
+The affected</description>
+      <guid isPermaLink="false">83ffedf1d8f002e78f312f45b113632ebc54458f42bbf50744b29620fa0c5cd9</guid>
+      <pubDate>Thu, 12 Nov 2026 12:09:14 +0000</pubDate>
+    </item>
+    <item>
+      <title>New N-central Exploits Work Against Patched Servers, Enable Root RCE and Windows SYSTEM Access - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/new-n-central-exploits-work-against.html</link>
+      <description>N-able on Thursday said it's investigating a new public disclosure containing claims of additional vulnerabilities in on-premise versions of N-central running version 2026.4.1 HF2.
+"Based on our initial review, the server issue described depends on a non-default configuration in which the Legacy API is turned on and exposed to the public internet," N-able said in a new advisory. "Legacy API is</description>
+      <guid isPermaLink="false">553d2d6fbf58552e417ec5f7a29aeeb657d789e8e8e148c4a6973e10b2f0bd3d</guid>
+      <pubDate>Thu, 12 Nov 2026 11:51:43 +0000</pubDate>
+    </item>
+    <item>
+      <title>Calendar Invites and Live Proxies: Inside a Google Session Hijacking Campaign - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/calendar-invites-and-live-proxies.html</link>
+      <description>Since mid-August 2026, a phishing operation has been stealing live Google sessions from corporate users. Every check defenders normally lean on to judge a link came back clean, and the operator designed it that way on purpose.
+The Threat Research team at Material Security spotted the campaign and has since taken down hundreds of attacker domains in an effort the team calls Operation CloudFire.</description>
+      <guid isPermaLink="false">53a54dbabff0ba88373b080eca0e183d55bdcbea93c97d6452be9785ef6233a1</guid>
+      <pubDate>Thu, 12 Nov 2026 11:51:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>PTC Patches Critical Windchill and FlexPLM Flaw That Could Enable Remote Code Execution - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/ptc-patches-critical-windchill-and.html</link>
+      <description>PTC has released patches for a new critical vulnerability impacting Windchill and FlexPLM software that, if successfully exploited, could result in remote code execution.
+The security flaw, tracked as CVE-2026-126325, carries a CVSS v4 score of 9.2 out of a maximum of 10.0.
+It has been described as a case of improper input validation and deserialization of untrusted data that could result in</description>
+      <guid isPermaLink="false">08debfc970ea13e84d23b1324b27a96548a5da362921af8a6f39feb4529fad43</guid>
+      <pubDate>Thu, 12 Nov 2026 11:33:15 +0000</pubDate>
+    </item>
+    <item>
+      <title>Critical Pre-Auth MongoDB Flaw (CVE-2026-118383) Can Crash Lagging Servers on Failover - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/critical-pre-auth-mongodb-flaw-cve-2026.html</link>
+      <description>A critical flaw in MongoDB Server allows an unauthenticated attacker to send two requests that trigger a crash on the database server. The crash occurs only if that server is later chosen to take over as the main server while it still lacks some recent changes.
+MongoDB, the company that makes the database, released fixed versions earlier this week.
+The affected servers are members of a replica</description>
+      <guid isPermaLink="false">df2dfe9879491707fb7a40eeefc7b1203c10e20f4d6982c964a4452747d4c703</guid>
+      <pubDate>Thu, 12 Nov 2026 09:25:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Node.js Fixes 16 Flaws, Including HTTP/2 Bugs That Crash Servers and Leak Other Connections' Data - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/nodejs-fixes-16-flaws-including-http2.html</link>
+      <description>A flaw fixed in Node.js this week lets unauthenticated clients crash servers that use the runtime's built-in HTTP/2 support on the 24.x and 26.x release lines. A second HTTP/2 flaw can cause a server to send a client pieces of its memory, including responses intended for other connections.
+Fixed versions were released for all three supported lines: 22.23.5, 24.22.3, and 26.13.1.
+The crash</description>
+      <guid isPermaLink="false">ad4367dfb1c829dfa72eef078604d2ddf133f0fdce875b646d008299f6eb4e7b</guid>
+      <pubDate>Thu, 12 Nov 2026 08:20:37 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attacker Used 4,837 Hijacked GitHub Accounts to Run a CI Secret Stealer in 1,806+ Repositories - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/4837-hijacked-github-accounts-ran-ci.html</link>
+      <description>Starting Tuesday, an attacker used stolen credentials for 4,837 GitHub accounts to plant a secret stealer in repositories those accounts could write to, according to Aikido Security, a security software company.
+The stealer is built to take the secrets and cloud credentials that a repository's CI workflows can reach. It ran in at least 1,806 repositories, where the attacker has likely collected</description>
+      <guid isPermaLink="false">7fa7cd94168dcb2261286c67dfc8b7653684ae54a218b4023a67f33f7487ce50</guid>
+      <pubDate>Thu, 12 Nov 2026 06:42:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>Critical Apache HTTP/2 Flaw Could Let Unauthenticated Attackers Execute Code Remotely - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/critical-apache-http2-flaw-could-let.html</link>
+      <description>A critical flaw in Apache HTTP Server's HTTP/2 module, mod_http2, can let a remote attacker run code on the server. Tracked as CVE-2026-119618, it affects versions 2.4.55 through 2.4.70 and is fixed in version 2.4.71, released yesterday.
+Only servers with HTTP/2 enabled are affected, according to Red Hat, which ships the server as part of Red Hat Enterprise Linux.
+An attacker who can reach the</description>
+      <guid isPermaLink="false">413f8c32dc2e5b0dad7db954fc15a69a515298b97837e43c5aee32a649183e8d</guid>
+      <pubDate>Thu, 12 Nov 2026 05:12:26 +0000</pubDate>
+    </item>
+    <item>
+      <title>ScreenConnect Attacks Target at Least 288 Endpoints Across 48 Organizations With Rogue Clients - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/screenconnect-attacks-target-at-least.html</link>
+      <description>ConnectWise has taken the precautionary step of disabling five third-party extensions in partner environments following reports of unauthorized access.
+In an advisory posted on its site, the company said there is no evidence that the incident involves a compromise of its infrastructure or a vulnerability in the ScreenConnect software.
+"Our initial assessment suggests the activity may involve</description>
+      <guid isPermaLink="false">93b4a4b08f9b211a73124bcd693655079f0ae0ff63e2458663539aed2b194123</guid>
+      <pubDate>Thu, 12 Nov 2026 04:39:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>EDB 1.6.0 released - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xtyugc/edb_160_released/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/eteran"&gt; /u/eteran &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/eteran/edb-debugger/releases/tag/1.6.0"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xtyugc/edb_160_released/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">95bebc82d9d1a666aea9db7446bed0670a7e55f303e2d3b8ff417ab5278e1e8f</guid>
+      <pubDate>Thu, 12 Nov 2026 00:46:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>ReAgentLive: an in-process agent that lets AI agents inspect a running game (live memory, xrefs, disasm, Unreal reflection) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xtv7ou/reagentlive_an_inprocess_agent_that_lets_ai/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/KriXxPlay"&gt; /u/KriXxPlay &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/Krixx1337/ReAgentLive"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xtv7ou/reagentlive_an_inprocess_agent_that_lets_ai/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">62a3952e974fb870e28642df8619637ecc9287936a005a8071b70106d1ecf239</guid>
+      <pubDate>Wed, 11 Nov 2026 22:08:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>Reverse engineering the Kendryte K230 NPU toolchain: compiler plugin, simulator runtime and ISA - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xtrpwv/reverse_engineering_the_kendryte_k230_npu/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Salt_Speech_506"&gt; /u/Salt_Speech_506 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/el3tty/nncase/blob/k230/docs/k230-branch.md"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xtrpwv/reverse_engineering_the_kendryte_k230_npu/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">9ad1dd571af5cdac06dff026a2196786dcf665d5b41ffeec6f3bad260196e6ff</guid>
+      <pubDate>Wed, 11 Nov 2026 19:50:18 +0000</pubDate>
+    </item>
+    <item>
+      <title>Critical Zoom Workplace Flaw Could Allow Unauthenticated Remote Privilege Escalation - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/critical-zoom-workplace-flaw-could.html</link>
+      <description>Zoom has released software updates to address two security flaws impacting Zoom Workplace for Windows, including a critical bug that could result in privilege escalation on affected systems.
+The vulnerabilities are listed below -
+  CVE-2026-108186 (CVSS score: 9.6) - An improper input validation vulnerability that could allow an unauthenticated user to conduct an escalation of privilege via</description>
+      <guid isPermaLink="false">39949d59372c671e820c81a803aad45cf930eda42c27224e7cacaeffaaf19b51</guid>
+      <pubDate>Wed, 11 Nov 2026 16:12:46 +0000</pubDate>
+    </item>
+    <item>
+      <title>AntiFox AI Pentesting Platform Linked to Attacks That Accessed AWS Production Secrets - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/antifox-ai-pentesting-platform-linked.html</link>
+      <description>Cybersecurity researchers have disclosed details of a campaign in which an emerging agentic penetration testing platform called AntiFox has been used to steal Amazon Web Services (AWS) credentials and pivot laterally into compromised environments.
+"In several recently observed intrusions, Alibaba Cloud systems hosting AntiFox interfaces were associated with confirmed malicious actions against</description>
+      <guid isPermaLink="false">39677f5a7a1e2eb8ef960cf18e8fbc0525f8492cb5d13c29ccbac8f57be1915e</guid>
+      <pubDate>Wed, 11 Nov 2026 15:34:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hackers Target Qlik Sense Servers With Reverse Shells, Stage ActiveMQ and Veeam Exploits - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/hackers-target-qlik-sense-servers-with.html</link>
+      <description>Threat actors have been observed targeting Qlik Sense servers to unsuccessfully deliver PowerShell reverse shell commands against multiple environments in October 2026.
+Cynet's CyOps and Research teams said they identified the suspicious activity in October 2026 against several E.U.-based customers within a narrow window of just over three minutes.
+The activity has been found to share some</description>
+      <guid isPermaLink="false">7d24f92ac03173ef2ec13dec9b3864c07ecbc443d022f708cb9f48f5a2f375ce</guid>
+      <pubDate>Wed, 11 Nov 2026 14:01:00 +0000</pubDate>
+    </item>
     <item>
       <title>Over 35,000 Grok-Built Apps Exposed Online, Some Leaking Confidential Data and Passwords - The Hacker News</title>
       <link>https://thehackernews.com/2026/11/over-35000-grok-built-apps-exposed.html</link>
@@ -69,6 +201,41 @@ Details of the vulnerabilities are below -
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/SnooPeanuts4040"&gt; /u/SnooPeanuts4040 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/IcyModz420/nfsu2-network-rce"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xt9hhv/github_icymodz420nfsu2networkrce_nfs_underground/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">becd49e26b515cb5e145af40728254132ef170bfced7e950662ccc090b308e3e</guid>
       <pubDate>Wed, 11 Nov 2026 05:26:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Apache httpd -- Multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/f2904526-ddd3-11f1-8135-8447094a420f.html</link>
+      <description/>
+      <guid isPermaLink="false">2973276a508a8cd8930fbdb7ea9022dcddddc912f3e4ec8627a3bbb5cb1da8da</guid>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>conduit -- e2ee signing keys vulnerability - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/05286f93-de01-11f1-bbb3-901b0e9408dc.html</link>
+      <description/>
+      <guid isPermaLink="false">99d7aab1f7d8cb223ab3d079c5f6b71a25ab3206f601b3b1a7f86bdc2bc8e150</guid>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>immich -- multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/9e9c6e36-dd9f-11f1-bae2-3497f65b111b.html</link>
+      <description/>
+      <guid isPermaLink="false">5a2677bafdf52f359086db41fde072c6f70768414458dc7aaf1457b2165da665</guid>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>LibreSSL -- Out of bounds read - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/3047b511-dde7-11f1-8135-8447094a420f.html</link>
+      <description/>
+      <guid isPermaLink="false">40d2f4b007aa32fc9127a0aa29de9c2cc311c93c5425d06945c9e89c9e81a1e3</guid>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Mbed TLS -- multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/9e2564aa-ddb8-11f1-adaa-3c7c3fba4204.html</link>
+      <description/>
+      <guid isPermaLink="false">bfb24e5757851f7a449c4ba66daf7e864c60f8cef082ba376a376d317c6884b2</guid>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>My Linux app changed the DPI on my mouse, but the LED kept the old color. The firmware only repaints on one specific report. - Reverse Engineering</title>
@@ -1404,172 +1571,6 @@ The vulnerabilities are listed below -
   CVE-2026-96652 (CVSS score: 5.3) - Plex Media Server Server-Side Request Forgery (SSRF)</description>
       <guid isPermaLink="false">86f6043205fd4c1c4cb06b083348006967fe986f4179f576f181050d9df8120d</guid>
       <pubDate>Wed, 21 Oct 2026 07:26:49 +0000</pubDate>
-    </item>
-    <item>
-      <title>Hackers Hid Vasilek Backdoor in VMware Tools During 2-Year Russian Healthcare Intrusion - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/hackers-hid-vasilek-backdoor-in-vmware.html</link>
-      <description>A Belarus-aligned hacktivist group spent nearly two years within the network of a Russian healthcare organization.
-According to a report published by Russian cybersecurity firm Solar, the activity has been attributed to a threat cluster dubbed Partisan Zmiy, which is also known as the Cyber Partisans.
-Known to be active since at least 2020, the group has a track record of striking industrial</description>
-      <guid isPermaLink="false">033e99a96a0ef89a855174da4e71ddfeaf71d8f44ac99bcd142bdbe7cf5ff7c9</guid>
-      <pubDate>Wed, 21 Oct 2026 06:05:15 +0000</pubDate>
-    </item>
-    <item>
-      <title>FreeBSD -- TLS certificate store update due to eMudhra compromise - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/070a35ef-cd22-11f1-ada3-bc241121aa0a.html</link>
-      <description/>
-      <guid isPermaLink="false">4c2cf54b2898dd8e747393bddacd3507d490796479babf5883c7a3119beb4aa7</guid>
-      <pubDate>Wed, 21 Oct 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Reverse Engineering Pokémon Sprites (LGPE) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xazbye/reverse_engineering_pokémon_sprites_lgpe/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Efficient-Hawk3568"&gt; /u/Efficient-Hawk3568 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://triyan.dev/blog/reverse-engineering-pokemon-sprites-lgpe"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xazbye/reverse_engineering_pokémon_sprites_lgpe/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">b726c55bf1fcd807e884e2c113591443ce1a57a478f528deb1a746e21f971b92</guid>
-      <pubDate>Tue, 20 Oct 2026 18:01:28 +0000</pubDate>
-    </item>
-    <item>
-      <title>Eight eMudhra CA Keys Compromised, Triggering Emergency Fixes Across Browsers and Software - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/eight-emudhra-ca-keys-compromised.html</link>
-      <description>The private keys of eight eMudhra intermediate certificate authority (CA) certificates are compromised,&amp;nbsp;Mozilla&amp;nbsp;and&amp;nbsp;Google's Chrome Root Program&amp;nbsp;confirms on October 20.
-An intermediate CA signs the certificates that websites present, so anyone holding one of these keys could issue a certificate for any website that a browser would accept.
-A researcher reported the</description>
-      <guid isPermaLink="false">c1c511f3c210ff7c4dd6c1afe028458c4995d7230bf7473fd4fa6f048e27834a</guid>
-      <pubDate>Tue, 20 Oct 2026 17:09:53 +0000</pubDate>
-    </item>
-    <item>
-      <title>Critical FortiSIEM Flaw Gets Public Exploit PoC for Unauthenticated Remote Code Execution - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/critical-fortisiem-flaw-gets-public.html</link>
-      <description>Cybersecurity researchers have released a proof-of-concept (PoC) exploit for a recently patched critical security flaw impacting Fortinet FortiSIEM that could result in arbitrary code execution.
-The vulnerability, tracked as CVE-2026-106173 (CVSS score: 9.4), is a critical path traversal flaw that could allow an unauthenticated attacker to execute unauthorized code or commands via specially</description>
-      <guid isPermaLink="false">2c05f712f3f0c94bbee57f1e8503811b3280312d2442fa1d098a60329512d11a</guid>
-      <pubDate>Tue, 20 Oct 2026 15:38:52 +0000</pubDate>
-    </item>
-    <item>
-      <title>Qilin and INC Ransomware Groups Exploit Palo Alto Networks Flaw to Bypass MFA - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/qilin-and-inc-ransomware-groups-exploit.html</link>
-      <description>Palo Alto Networks has disclosed that it's continuing to observe exploitation of a now-patched security flaw impacting&amp;nbsp; PAN-OS and Prisma Access by ransomware actors.
-The activity relates to CVE-2026-0257 (CVSS score: 7.8), an authentication bypass flaw that could be exploited by bad actors to set up unauthorized VPN connections. It was patched by Palo Alto Networks in May 2026 and was</description>
-      <guid isPermaLink="false">26e39f3b45374da468e32a3f21a94fc0feb1752980a8b0cae4801bba1268ef05</guid>
-      <pubDate>Tue, 20 Oct 2026 15:32:27 +0000</pubDate>
-    </item>
-    <item>
-      <title>Hackers Use Autonomous AI Agents to Breach Company Websites, Target Over 1,200 Sites - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/hackers-use-autonomous-ai-agents-to.html</link>
-      <description>A Chinese-speaking criminal pointed autonomous AI agents at company websites and let them break in with almost no help, and a security researcher watched it happen because the operators left their control panels open on the internet.
-The agents tried more than 1,200 sites and reached websites belonging to more than 100 companies, including farm-equipment maker Deere, appliance company</description>
-      <guid isPermaLink="false">f631556ba11eaff118d5f6046788cf499c73c8c0f7cce974343f446b0ec5bd56</guid>
-      <pubDate>Tue, 20 Oct 2026 14:07:17 +0000</pubDate>
-    </item>
-    <item>
-      <title>Pegasus Spyware Infection Confirmed on Serbian University Rector's iPhone Days Before Election - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/pegasus-spyware-infection-confirmed-on.html</link>
-      <description>The iPhone of Vladan Đokić, rector of the University of Belgrade and a prominent supporter of Serbia's student protest movement, was infected with NSO Group's Pegasus spyware in 2026, the&amp;nbsp;Citizen Lab said&amp;nbsp;on October 19.
-The finding came six days before Serbia's October 25 snap parliamentary election. The infection used a zero-click exploit, meaning Đokić did not have to tap a link or</description>
-      <guid isPermaLink="false">bd2f6f66ee4e540c93fb1eb25f6b9081662a9e92d42701b0d862b0882c66764e</guid>
-      <pubDate>Tue, 20 Oct 2026 12:59:44 +0000</pubDate>
-    </item>
-    <item>
-      <title>WhatsApp Hid Instructions in Help Pages Telling Its AI Chatbot Not to Recommend Privacy Regulators - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/whatsapp-hid-instructions-in-help-pages.html</link>
-      <description>WhatsApp's help pages carried hidden instructions for its support chatbot that told it not to recommend a data protection authority or regulator to users who could no longer delete their accounts, even though WhatsApp's own privacy policy for Europe tells users they can complain to one.
-The text sat in the pages' code, never shown on screen, until it was removed by October 18. Whether the</description>
-      <guid isPermaLink="false">acfaa656f1f80d1f421f9011b585e39ea5d879c1fa1dd05cd07d0fb29df94ee3</guid>
-      <pubDate>Tue, 20 Oct 2026 11:41:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>Go Issues Emergency Update Blocking Eight CA Keys Over Undisclosed Security Concerns - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/go-issues-emergency-update-blocking.html</link>
-      <description>Go 1.27.3 and Go 1.26.10, released on October 20, make Go's certificate verifier reject any certificate chain that passes through one of&amp;nbsp;eight intermediate certificate authority keys.
-Programs built on the new release will refuse connections to sites and services whose certificates were issued under those keys. The Go team says the keys belong to one certificate authority it has not</description>
-      <guid isPermaLink="false">dd606db4ed268abe2b18b83fb238f006c34db83da2c3b86a3eb2673480630dfe</guid>
-      <pubDate>Tue, 20 Oct 2026 11:32:59 +0000</pubDate>
-    </item>
-    <item>
-      <title>Russian APT28 Breaches NATO Naval Shipbuilder in NATO Country, Deploys New Reflective Loader - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/russian-apt28-breaches-nato-naval.html</link>
-      <description>The Russia-linked state-sponsored threat actor tracked as APT28 (aka BlueDelta, Fancy Bear, and Forest Blizzard) has been attributed to attacks targeting two member states of the North Atlantic Treaty Organization (NATO).
-The Symantec Threat Hunter Team, which is tracking the activity cluster under the moniker Swallowtail, involved the use of a backdoor called HOOKEDGE and a previously</description>
-      <guid isPermaLink="false">e983e9c2a6d27dab4820982d6e1f1fcbc6a7cca10265f1144989269d015fa594</guid>
-      <pubDate>Tue, 20 Oct 2026 11:06:25 +0000</pubDate>
-    </item>
-    <item>
-      <title>ConnectWise Resets Credentials as Cloud Backup Remains Offline After Security Incident - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/connectwise-resets-credentials-as-cloud.html</link>
-      <description>ConnectWise on Monday said it has taken remediation measures, including strengthening administrative-access protections and resetting accounts and replacing application credentials, as it continues to respond to a security incident that led to unauthorized access to application identities associated with Cloud Backup.
-The company said it has completed the following actions since it began</description>
-      <guid isPermaLink="false">2f46f4fbd75138dca993f63b75eb0cbbce723ceb4d986367788ebaad0b63e805</guid>
-      <pubDate>Tue, 20 Oct 2026 10:56:08 +0000</pubDate>
-    </item>
-    <item>
-      <title>Reverse-engineering Sony NW-A910 firmware: language patches, resource formats, and homebrew - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xaoj5x/reverseengineering_sony_nwa910_firmware_language/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Infinite-Zombie5875"&gt; /u/Infinite-Zombie5875 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://youtube.com/watch?v=A5f6_2eZAiA&amp;amp;si=vsk-oAHelpnMVAtj"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xaoj5x/reverseengineering_sony_nwa910_firmware_language/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">a2046efb24f57ed4c8664370248ec2e4a7c7e645da3ae78757c332540dac0c45</guid>
-      <pubDate>Tue, 20 Oct 2026 10:28:41 +0000</pubDate>
-    </item>
-    <item>
-      <title>Hackers Hijack Five OVHcloud CLI Releases to Distribute Secret-Stealing Malware - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/hackers-hijack-five-ovhcloud-cli.html</link>
-      <description>An attacker used a contributor's GitHub account to replace the download archives on five existing releases of OVHcloud's command-line tool on Monday, October 19. The account had been hijacked, and the new files were a build designed to steal secrets stored on the disk of any machine that runs it, the cloud provider says.
-They were live on GitHub for up to 94 minutes, from 12:47 to 14:21 UTC,</description>
-      <guid isPermaLink="false">65377acc13c703c3e2db21b482cc9e4933590c2df9c39f50a1a3f782b87b7d1b</guid>
-      <pubDate>Tue, 20 Oct 2026 08:21:29 +0000</pubDate>
-    </item>
-    <item>
-      <title>ClickFix Attackers Exploit Siemens Software Center Flaw to Deploy Remote Access Trojan - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/clickfix-attackers-exploit-siemens.html</link>
-      <description>Siemens has addressed a DLL sideloading vulnerability impacting Siemens Software Center that it said has been exploited in ClickFix attacks.
-The high-severity vulnerability, tracked as CVE-2026-110936 (CVSS v4 score: 8.4), could allow an attacker to place a specially-crafted DLL in a directory the application searches, resulting in execution of malicious code with the same privileges as the</description>
-      <guid isPermaLink="false">aa3e3e97ae78d54c7b8249bf843c1e7a8bacb2421a1749921ae24e905bf4f34b</guid>
-      <pubDate>Tue, 20 Oct 2026 07:11:45 +0000</pubDate>
-    </item>
-    <item>
-      <title>Ex-OpenAI Engineer Detained in Spy Device Case as Saudi Royal Contacts Emerge - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/ex-openai-engineer-detained-in-spy.html</link>
-      <description>A U.S. court on Monday granted the U.S. government's request to detain a former OpenAI engineer accused of planting a recording device in an executive conference room at the company's San Francisco office to allegedly steal sensitive secrets.
-In a new court filing Sunday, prosecutors revealed that Abdulrahman Alfozan, a 35-year-old Saudi national, was "in frequent communications via WhatsApp</description>
-      <guid isPermaLink="false">c1084fa8ede6bf6d6e14c2acb29be7705941a855907254bb8de33b36ee8434a0</guid>
-      <pubDate>Tue, 20 Oct 2026 05:53:16 +0000</pubDate>
-    </item>
-    <item>
-      <title>Playing Chromatron Again, Twenty Years Later - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xaj3hl/playing_chromatron_again_twenty_years_later/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/h1994st"&gt; /u/h1994st &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://shengtuo.me/blog/chromatron-remake/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xaj3hl/playing_chromatron_again_twenty_years_later/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">f46115d391c43102d08fe995eeea2d0eb275f738d0ba25b35fa5eafa82ae8dd2</guid>
-      <pubDate>Tue, 20 Oct 2026 04:52:45 +0000</pubDate>
-    </item>
-    <item>
-      <title>Hackers Use New ROMULUS ClickFix Platform to Deliver LegionLoader and Other Malware - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/romulus-clickfix-platform-tricks-users.html</link>
-      <description>Cybersecurity researchers have disclosed details of a ClickFix delivery platform called ROMULUS that's being used to distribute malware such as Legion Loader.
-According to Forescout Research - Vedere Labs, ROMULUS is akin to a malware delivery service that employs ClickFix-style lures on bogus landing pages to trick unsuspecting users into running malicious commands and infecting their own</description>
-      <guid isPermaLink="false">44e0afd85403e765953c611d8847afecef33180d338417f253a4f02d097c83b6</guid>
-      <pubDate>Tue, 20 Oct 2026 04:05:58 +0000</pubDate>
-    </item>
-    <item>
-      <title>subfinder – Passive Subdomain Enumeration Tool - Darknet - The Darkside</title>
-      <link>https://www.darknet.org.uk/2026/10/subfinder-passive-subdomain-enumeration-tool/</link>
-      <description>subfinder 2.17.0 tested on darknet.org.uk with no API keys: 17 subdomains in 14 seconds, and only one resolved in DNS. What needs keys, and how to install it.</description>
-      <guid isPermaLink="false">9b91236f30af270c681a765c1280fc690a1a1bad600e02089dcc1eda06eafe4d</guid>
-      <pubDate>Mon, 19 Oct 2026 18:58:47 +0000</pubDate>
-    </item>
-    <item>
-      <title>Hackers Exploit Plex2Shell Flaws to Install Crypto Miners and Linux Proxy Backdoor - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/hackers-exploit-plex2shell-flaws-to.html</link>
-      <description>Threat actors have begun to exploit a chain of vulnerabilities in Plex Media Server to deploy cryptocurrency miners and reverse proxy software, a day after a proof-of-concept (PoC) went public.
-According to a researcher who goes by the online alias boredhackerblog, the exploitation activity involves chaining four different vulnerabilities, collectively called Plex2Shell.
-The vulnerabilities</description>
-      <guid isPermaLink="false">9c9647e4067ed2a9f2a33e61b2a83dca2d9b8eeff40dfd33be90fa6ac401430f</guid>
-      <pubDate>Mon, 19 Oct 2026 17:32:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>Popular WordPress SEO Plugin Rank Math PRO Hijacked to Deliver Self-Restoring Backdoor - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/popular-wordpress-seo-plugin-rank-math.html</link>
-      <description>Copies of Rank Math PRO, the paid version of the Rank Math SEO plugin for WordPress, that were downloaded from rankmath.com or delivered as updates between 20:02 UTC on October 15 and 07:12 UTC on October 16 contained malware, Rank Math said in a&amp;nbsp;security notice&amp;nbsp;published on October 16.
-Any site that installed and activated one of those copies should be treated as compromised, and the</description>
-      <guid isPermaLink="false">077aa2705e202fa2c1eb51ca0b6b1c829df08933857f974584e1122e3cb72791</guid>
-      <pubDate>Mon, 19 Oct 2026 16:28:47 +0000</pubDate>
     </item>
   </channel>
 </rss>
