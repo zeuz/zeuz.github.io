@@ -5,7 +5,338 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Fri, 13 Nov 2026 14:01:13 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Nov 2026 14:00:51 +0000</lastBuildDate>
+    <item>
+      <title>Graham Dumpleton: Muru: a better tenant in a container - Planet Python</title>
+      <link>https://grahamdumpleton.me/posts/2026/11/muru-a-better-tenant-in-a-container/</link>
+      <description>&lt;p&gt;The last two posts, on &lt;a href="https://grahamdumpleton.me/posts/2026/11/muru-releases-not-restarts/"&gt;releases&lt;/a&gt; and &lt;a href="https://grahamdumpleton.me/posts/2026/11/muru-canaries-without-a-service-mesh/"&gt;canaries&lt;/a&gt;, were all about the Muru daemon running more than one release of an application side by side and moving traffic between them. When the application runs in a container, Muru deliberately does none of that. A container image is already a fixed release of an application, and starting new containers, moving traffic to them and putting the old ones back is the job of whatever runs the containers. Doing the same thing again inside the container would only get in its way.&lt;/p&gt;
+&lt;p&gt;So in a container Muru runs as &lt;code&gt;muructl serve&lt;/code&gt;, which serves the single application held in the image. The edge, the controller, the host and its workers are all still there, as in development mode, but releases and traffic policies aren't. Instead, it concentrates on being a good main process for a container, which mostly means handling things people otherwise end up doing by hand when using gunicorn or uvicorn.&lt;/p&gt;
+&lt;h2&gt;An image&lt;/h2&gt;
+&lt;p&gt;The image for this post holds a small WSGI application with a few pages which misbehave in different ways, which I will get to later. The &lt;code&gt;Dockerfile&lt;/code&gt; follows the pattern from the Muru documentation:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-dockerfile"&gt;FROM python:3.13-slim AS build
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
+RUN UV_TOOL_BIN_DIR=/usr/local/bin uv tool install muructl
+WORKDIR /app
+COPY pyproject.toml uv.lock ./
+RUN muructl build --deployment --deps-only --no-runtime --target /app/.venv
+COPY . .
+RUN muructl build --deployment --target /app/.venv --runtime-dir /opt/muru
+FROM python:3.13-slim
+COPY --from=build /usr/local/bin/muructl /usr/local/bin/muructl
+COPY --from=build /app /app
+COPY --from=build /opt/muru /opt/muru
+WORKDIR /app
+RUN useradd --uid 10001 app &amp;amp;&amp;amp; install -d -o 10001 -g 0 -m 0770 /run/muru
+USER 10001
+EXPOSE 8080 9090
+CMD [&amp;quot;muructl&amp;quot;, &amp;quot;serve&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;muructl&lt;/code&gt; is a single executable, so the final image copies just the binary. The two &lt;code&gt;muructl build&lt;/code&gt; steps install the application's environment from &lt;code&gt;uv.lock&lt;/code&gt;. The first installs only the dependencies, so that its layer can be reused until they change. Each says what it is running:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;muru: building /app/.venv with uv sync --frozen --no-dev --no-build --compile-bytecode --no-install-project
+...
+muru: building /app/.venv with uv sync --frozen --no-dev --no-build --compile-bytecode
+muru: built /app/.venv on Python 3.13.18 (cp313)
+muru: fetched the runtime library muru-1.0.0-cp313-cp313-manylinux_2_28_aarch64.whl from PyPI into /opt/muru
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The last line is the part which is specific to Muru. The runtime library which runs inside the workers has to match both the version of &lt;code&gt;muructl&lt;/code&gt; and the interpreter, so it is fetched when the image is built. It is kept outside the application's environment, so the application doesn't need to list Muru as a dependency.&lt;/p&gt;
+&lt;p&gt;The important thing is that this is the only point at which anything is fetched or installed. When the container starts, &lt;code&gt;muructl serve&lt;/code&gt; never builds an environment, downloads a Python or fetches the runtime library, and anything it runs gets &lt;code&gt;UV_OFFLINE=1&lt;/code&gt; and &lt;code&gt;UV_PYTHON_DOWNLOADS=never&lt;/code&gt; in its environment. If something is missing, it stops with a message naming the build step which would have provided it. For example, pointing it at the wrong runtime directory gives:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;muru: error: no runtime library for /app/.venv/bin/python (cp313): build the image with muructl build --runtime-dir /nowhere, or add muru 1.0.0 to the environment
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That matters more than it might seem. It isn't unusual to find images where an entrypoint script pip installs something, or where a missing package is quietly downloaded at start. That works until the network is unavailable or the package index changes, at which point two containers started from the same image are no longer the same.&lt;/p&gt;
+&lt;h2&gt;Telling it how many workers&lt;/h2&gt;
+&lt;p&gt;Starting the image with limits of two CPUs and a gigabyte of memory, with no swap, on a Docker host with ten CPUs, I gave it the number of worker processes and the threads in each:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run --name shop --cpus 2 --memory 1g --memory-swap 1g \
+  -e MURU_SERVE_PROCESSES=2 -e MURU_SERVE_THREADS=4 -p 8080:8080 -p 9090:9090 shop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The output says what it found and what it is running:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;muru: container limits: 2 CPUs from cpu.max 200000 100000, memory.max 1.0GB with 128MB of headroom
+...
+muru.host[12]: preloaded app:application in 1 ms
+muru.host[12]: app:application is served as WSGI
+muru.host[12]: worker 0 started as pid 15
+muru.host[12]: worker 1 started as pid 16
+...
+muru: serving app:application on http://0.0.0.0:8080 with 2 workers of 4 threads
+...
+muru: the host holds 34MB once the application is imported
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;These settings should always be supplied, chosen to suit the resources given to the container. If they are left out, Muru runs a single worker. Two processes for two CPUs suits an application whose requests mostly use the CPU, while one whose requests spend most of their time waiting on a database can use more threads in each. The memory has to fit as well. Two workers, along with the host which imported the application, leave plenty of room in a gigabyte, but an application whose workers each need 750MB would have to run a single process in a container this size, or be given a bigger container. The other examples in this post start the container with the same settings, which I leave out to keep the commands short.&lt;/p&gt;
+&lt;p&gt;Muru doesn't try to choose these numbers itself, because they can't be reliably worked out from inside the container. Asking Python how many CPUs it has, in the same container, gives:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run --rm --cpus 2 shop python3 -c &amp;quot;import os; print(os.cpu_count(), os.process_cpu_count())&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;10 10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A CPU limit set with &lt;code&gt;--cpus&lt;/code&gt;, or &lt;code&gt;resources.limits.cpu&lt;/code&gt; in Kubernetes, is a CFS quota in the cgroup's &lt;code&gt;cpu.max&lt;/code&gt; file, which neither of those functions reads. Gunicorn's default is a single worker unless &lt;code&gt;WEB_CONCURRENCY&lt;/code&gt; says otherwise, and uvicorn's is the same. Gunicorn's documentation suggests &lt;code&gt;(2 x CPU cores) + 1&lt;/code&gt;, and the &lt;a href="https://gunicorn.org/guides/docker/"&gt;image the Gunicorn project publishes&lt;/a&gt; uses that formula by default, working out the count with &lt;code&gt;nproc&lt;/code&gt;, which also says 10 here, so it would start 21 workers in a container allowed two CPUs. On a large Kubernetes node, with a pod limited to a couple of CPUs, it is far worse. Even a count which got the CPUs right would say nothing about how much memory each worker needs, or whether the requests use much CPU at all.&lt;/p&gt;
+&lt;p&gt;Muru does read the limits from the cgroup, as the first line of its output showed, but only to check the settings against them. Asking for four workers in the same container still starts four, but with a warning:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;muru: warning: 4 workers is more than the 2 CPUs cpu.max allows; see https://docs.muruhq.dev/en/latest/howto/containers.html#container-limits
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It also warns if the workers wouldn't fit in memory once each holds its own copy of what the host imported. A forked Python process tends to end up with such a copy over time, as it gradually stops sharing memory with the process it was forked from.&lt;/p&gt;
+&lt;h2&gt;Running short of memory&lt;/h2&gt;
+&lt;p&gt;A Python process tends to hang on to memory it has used, whether through a cache, a leak or one unusually large request. In a container, the usual outcome of this is that the container runs out of memory and the kernel kills a process outright.&lt;/p&gt;
+&lt;p&gt;When the container has a memory limit, Muru gets in first. Every few seconds it checks how much memory is left under the limit. If that drops below a margin it keeps in reserve, which it calls the headroom, it takes the largest worker out of service and replaces it with a fresh one. The old worker finishes the requests it already has before it goes, so nobody sees an error, and its memory is given back. Nothing needs to be set for this beyond the container's memory limit.&lt;/p&gt;
+&lt;p&gt;To see it in action, I used a page of the application which holds on to another 10MB each time it is requested, and asked for it once a second:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;muru.host[12]: worker 0 (pid 15) the container was short of memory, 102MB left under memory.max 1.0GB, less than the headroom of 128MB; it was the largest worker, uss 424MB; replacing it
+muru.host[12]: worker 0 (pid 15) stops before its replacement starts: 101MB is left under the memory limit, less than its size
+muru.host[12]: worker 0 started as pid 38
+muru.host[12]: worker.recycled: worker 0 (pid 15) replaced by pid 38: the container was short of memory, 102MB left under memory.max 1.0GB, less than the headroom of 128MB; it was the largest worker, uss 424MB; most objects: cell 31, tuple 20, builtin_function_or_method 16, function 11, list 11
+muru.host[12]: worker 0 (pid 38) is ready
+...
+muru.host[12]: worker 1 (pid 16) the container was short of memory, 100MB left under memory.max 1.0GB, less than the headroom of 128MB; it was the largest worker, uss 645MB; replacing it
+muru.host[12]: worker 1 (pid 16) stops before its replacement starts: 100MB is left under the memory limit, less than its size
+muru.host[12]: worker 1 started as pid 49
+muru.host[12]: worker.recycled: worker 1 (pid 16) replaced by pid 49: the container was short of memory, 100MB left under memory.max 1.0GB, less than the headroom of 128MB; it was the largest worker, uss 645MB; most objects: cell 31, tuple 20, builtin_function_or_method 16, function 11, list 11
+muru.host[12]: worker 1 (pid 49) is ready
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Both workers had been growing at the same rate, so when the container first ran short, worker 0 was only just the larger of the two, at 424MB. Replacing it gave that memory back, which left room for worker 1 to keep growing. By the time the container ran short again, worker 1 was at 645MB, and it was replaced in turn.&lt;/p&gt;
+&lt;p&gt;Normally Muru starts the new worker before the old one leaves, so there is never a gap. Here less memory was left in the container than the old worker was using, so rather than risk two large workers at once, the old worker stopped first, finishing the requests it already had, and its replacement started once it had gone. The other worker carried on serving in the meantime, and all 150 requests succeeded.&lt;/p&gt;
+&lt;p&gt;Without this, the first anyone knows of a worker growing is when the kernel's out-of-memory killer picks a process in the container to kill, and that can just as easily be one in the middle of a perfectly good request. Neither gunicorn nor uvicorn keeps any watch on memory. The best either offers is restarting a worker after a set number of requests, however much memory it is using.&lt;/p&gt;
+&lt;p&gt;Muru calls this its memory guard. Running &lt;code&gt;muructl status&lt;/code&gt; inside the container shows the limits, how much memory is used and left, and what the guard last did:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker exec shop muructl status
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;...
+cpu      2 CPUs from cpu.max
+memory   memory.max 1.0GB, 402MB used, 622MB left, headroom 128MB
+         workers 329MB, host 34MB
+guard    watching; it last replaced shop@r1 worker 1 (pid 16) at 07:31:18 UTC
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The guard looks at the container as a whole. If a single worker should never grow beyond a certain size, however much room is left, it can also be given a hard memory limit, such as &lt;code&gt;MURU_SERVE_MEMORY=hard_limit=300MB&lt;/code&gt;. A worker which goes over that limit is replaced in the same way. The value is chosen to suit the application, and should be low enough that all the workers together still fit in the container.&lt;/p&gt;
+&lt;p&gt;Memory is only checked every five seconds, so if it grows by more than the headroom between checks, the out-of-memory killer can still strike first. A request which allocated a gigabyte all at once showed what happens then:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;502 Bad Gateway
+reason: worker_crashed
+request id: 01M6TF11TNSGS7R9AW4G704V4X
+The worker sent no response head.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;muru.host[12]: worker.oom_killed: worker 0 (pid 15) was killed by the kernel for memory, restarting
+muru.host[12]: worker 0 started as pid 47
+muru.host[12]: worker 0 (pid 47) is ready
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Each worker raises its own &lt;code&gt;oom_score_adj&lt;/code&gt; as it starts, which makes the workers the processes the kernel picks first. So it was the worker which was killed, rather than the host or &lt;code&gt;muructl&lt;/code&gt;, and the host started a new one. The kill is also reported for what it was, as a &lt;code&gt;worker.oom_killed&lt;/code&gt; event and in the &lt;code&gt;muru_worker_exits_total&lt;/code&gt; metric with the reason &lt;code&gt;oom_killed&lt;/code&gt;, rather than leaving a worker which mysteriously went away.&lt;/p&gt;
+&lt;h2&gt;Probes on their own port&lt;/h2&gt;
+&lt;p&gt;The output when it started also included this line:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;muru: admin port on http://0.0.0.0:9090/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Port 9090 is separate from the application's port and answers the questions a container platform asks. &lt;code&gt;/livez&lt;/code&gt; says whether the process is alive, &lt;code&gt;/readyz&lt;/code&gt; whether enough workers are ready to take requests, and &lt;code&gt;/startupz&lt;/code&gt; whether the application has finished loading. &lt;code&gt;/metrics&lt;/code&gt; has the metrics in Prometheus format.&lt;/p&gt;
+&lt;p&gt;Gunicorn and uvicorn have nothing like this. The usual answer is to add a &lt;code&gt;/health&lt;/code&gt; view to the application, which means the health check is served by the same workers as everything else. When the application is slow, perhaps because its database is, every worker is busy. The health check then queues behind real requests and times out, and the platform restarts containers which were doing nothing wrong, just when they are needed most.&lt;/p&gt;
+&lt;p&gt;To check that Muru doesn't suffer from this, I sent twelve requests to a page which takes six seconds to answer, more than the two workers with four threads each could handle at once, and then queried the admin port:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;livez 200 0.001336s
+readyz 200 0.001337s
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The metrics confirmed every slot was busy, with requests queuing:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;muru_queue_depth{app=&amp;quot;shop&amp;quot;,release=&amp;quot;r1&amp;quot;,group=&amp;quot;default&amp;quot;} 4
+muru_slots_busy{app=&amp;quot;shop&amp;quot;,release=&amp;quot;r1&amp;quot;,group=&amp;quot;default&amp;quot;,side=&amp;quot;threads&amp;quot;} 8
+muru_slots_total{app=&amp;quot;shop&amp;quot;,release=&amp;quot;r1&amp;quot;,group=&amp;quot;default&amp;quot;,side=&amp;quot;threads&amp;quot;} 8
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The probes are answered by &lt;code&gt;muructl&lt;/code&gt; itself, from what it knows about the host and its workers, without a request having to go through a worker. A container whose workers are all busy is still alive, so it isn't killed for being busy. Having a port of their own also keeps the probes and metrics out of reach of the application's Ingress or load balancer.&lt;/p&gt;
+&lt;p&gt;An image without &lt;code&gt;curl&lt;/code&gt;, such as one based on the slim Python images, can use &lt;code&gt;muructl&lt;/code&gt; itself for a health check:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-dockerfile"&gt;HEALTHCHECK --interval=5s CMD [&amp;quot;muructl&amp;quot;, &amp;quot;probe&amp;quot;, &amp;quot;ready&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Process 1&lt;/h2&gt;
+&lt;p&gt;Looking at the processes inside the container (by reading &lt;code&gt;/proc&lt;/code&gt;, since the slim image has no &lt;code&gt;ps&lt;/code&gt;), each of Muru's processes has set a title saying what it is:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    1     0 S  muructl serve
+    7     1 S  muru serve shop
+   11     7 S  muru relay shop@r1
+   12     7 S  muru host shop@r1
+   15    12 S  muru worker shop@r1 default/0
+   16    12 S  muru worker shop@r1 default/1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Process 1 is &lt;code&gt;muructl&lt;/code&gt; acting as an init, in the way &lt;code&gt;tini&lt;/code&gt; or &lt;code&gt;docker run --init&lt;/code&gt; would. It forwards signals to the real &lt;code&gt;muructl serve&lt;/code&gt;, which is its child, and collects any process in the container which exits, so nothing is left as a zombie. Process 1 in a container has to do this, because orphaned processes are handed to it, and if it never collects them, zombies fill up the process table. Below &lt;code&gt;muructl serve&lt;/code&gt; are the host and its two workers, and a log relay which passes on what they write.&lt;/p&gt;
+&lt;p&gt;The application has a page which starts a report by running a shell command, which leaves a process running in the background. That happens in real applications more often than anyone would like. Just after I requested the page three times, &lt;code&gt;muructl status --processes --all&lt;/code&gt;, where &lt;code&gt;--all&lt;/code&gt; adds the processes Muru didn't start itself, showed them:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker exec shop muructl status --processes --all
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;edge  3.0 req/s  0 err/s  p50 2.1 ms  p95 4.6 ms  in flight 0  ws 0  conns 0  tls 0/s  in 0B/s  out 53B/s
+PID   ROLE           WHAT                         UP    CPU      RSS   REQ/S   BUSY   QUEUE      P95   GIL/LAG
+7     serve          controller and edge, :8080   5s   2.3%   19.5MB
+12    └─ host        app:application (r1)         5s   0.0%   34.7MB     3.0    0/8       0   4.6 ms
+11       ├─ relay    output to muructl            5s   0.0%   11.4MB
+15       ├─ worker   worker 0                     5s   0.0%   28.7MB     2.0    0/4           4.8 ms
+16       ├─ worker   worker 1                     5s   0.0%   28.9MB     1.0    0/4           2.4 ms
+54       ├─ other    sleep 1                      1s           1.5MB
+56       ├─ other    sleep 1                      1s           1.5MB
+58       └─ other    sleep 1                      1s           1.5MB
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The orphaned &lt;code&gt;sleep&lt;/code&gt; processes were taken over by the host, which collects any process its workers leave behind, and a couple of seconds later they were gone, with no zombies. Gunicorn does collect any child that exits, including ones it didn't start. Uvicorn doesn't, so when run as process 1 it leaves a zombie behind for each one. Neither project's documentation says anything about &lt;code&gt;tini&lt;/code&gt; or &lt;code&gt;--init&lt;/code&gt;. An image which uses its own init can turn off Muru's by setting &lt;code&gt;MURU_NO_INIT=1&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Stopping in order&lt;/h2&gt;
+&lt;p&gt;When &lt;code&gt;docker stop&lt;/code&gt; or Kubernetes wants a container gone, it sends SIGTERM, waits, and then sends SIGKILL. Docker waits ten seconds and Kubernetes thirty by default. For a server, what happens in between decides whether anyone sees an error.&lt;/p&gt;
+&lt;p&gt;I started four requests to the page which takes three seconds, and half a second later ran &lt;code&gt;docker stop&lt;/code&gt;, while checking &lt;code&gt;/readyz&lt;/code&gt; every 300 milliseconds:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;readyz 200
+readyz 503
+readyz 503
+readyz 503
+readyz 503
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The four requests all completed:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; 200 3.004430s
+ 200 3.004411s
+ 200 3.004890s
+ 200 3.004973s
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and &lt;code&gt;docker stop&lt;/code&gt; returned after 2.76 seconds, with the container's exit status 0. On SIGTERM, readiness starts failing at once, so nothing new is sent to the container. The listener then closes, the requests in flight finish, and the workers stop. All of that has to happen within a budget, eight seconds unless &lt;code&gt;--shutdown-budget&lt;/code&gt; changes it. That is less than the ten seconds &lt;code&gt;docker stop&lt;/code&gt; allows, so anything still running at the end is stopped by Muru rather than killed by Docker.&lt;/p&gt;
+&lt;p&gt;Compare that with the defaults elsewhere. Gunicorn's &lt;code&gt;graceful_timeout&lt;/code&gt; is 30 seconds, so under &lt;code&gt;docker stop&lt;/code&gt; a slow request is cut off by SIGKILL at ten seconds and gunicorn never gets to finish shutting down. Uvicorn has no graceful shutdown timeout by default, so it waits as long as it takes, which under Docker means until the SIGKILL arrives. With either, the fix is to remember to set a timeout which fits within the platform's.&lt;/p&gt;
+&lt;p&gt;Kubernetes adds a wrinkle, as a pod can keep receiving new connections for a few seconds after SIGTERM, while the endpoints catch up. That is what &lt;code&gt;--shutdown-delay&lt;/code&gt; is for, and I will come back to it in the next post.&lt;/p&gt;
+&lt;h2&gt;A read-only root and any user&lt;/h2&gt;
+&lt;p&gt;A security conscious platform will run the container with a read-only root filesystem, and OpenShift will run it as an arbitrary user ID in group 0, with no entry for it in &lt;code&gt;/etc/passwd&lt;/code&gt;. Everything &lt;code&gt;muructl serve&lt;/code&gt; writes at run time goes under one directory, &lt;code&gt;/run/muru&lt;/code&gt;. With a read-only root and nothing mounted there, it stops at once and says what it needs:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run --rm --read-only --user 123456:0 shop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;muru: error: the run directory /run/muru cannot be written (Read-only file system (os error 30)); with a read-only root filesystem give it a writable volume, a tmpfs or an emptyDir mounted at /run/muru, or name another with --run-dir
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Giving it what it asks for:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run --read-only --tmpfs /run/muru --tmpfs /tmp --user 123456:0 ... -p 8080:8080 -p 9090:9090 shop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;it runs as normal under a user ID which doesn't exist in the image:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hello from pid 15
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Gunicorn in the same situation fails at start, with &lt;code&gt;No usable temporary directory found&lt;/code&gt;, as it writes a heartbeat file for each worker to the temporary directory. That can be fixed with a &lt;code&gt;tmpfs&lt;/code&gt; on &lt;code&gt;/tmp&lt;/code&gt;, or by pointing &lt;code&gt;--worker-tmp-dir&lt;/code&gt; at &lt;code&gt;/dev/shm&lt;/code&gt;, but you have to know to do it.&lt;/p&gt;
+&lt;h2&gt;Settings in layers&lt;/h2&gt;
+&lt;p&gt;Every setting of &lt;code&gt;muructl serve&lt;/code&gt; can be given as a command line flag. An image can also set defaults in the project's &lt;code&gt;pyproject.toml&lt;/code&gt;, under &lt;code&gt;[tool.muru.serve]&lt;/code&gt;, and a deployment can override any of them with an environment variable named after the flag. &lt;code&gt;--print-config&lt;/code&gt; shows the settings in force and where each came from, and works inside a running container too:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run --name shop -e MURU_SERVE_PROCESSES=3 -e MURU_SERVE_LOG_FORMAT=json ... shop
+docker exec shop muructl serve --print-config
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;processes = 3                     # MURU_SERVE_PROCESSES
+...
+log_format = &amp;quot;json&amp;quot;              # MURU_SERVE_LOG_FORMAT
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;--config&lt;/code&gt;, or &lt;code&gt;MURU_SERVE_CONFIG&lt;/code&gt;, names a settings file to read instead of the one in the image, such as a file mounted from a ConfigMap.&lt;/p&gt;
+&lt;h2&gt;Logs a collector can use&lt;/h2&gt;
+&lt;p&gt;With the JSON log format, every line is a JSON object. When the environment has &lt;code&gt;POD_NAME&lt;/code&gt;, &lt;code&gt;POD_NAMESPACE&lt;/code&gt; and &lt;code&gt;NODE_NAME&lt;/code&gt;, which the Kubernetes Downward API can provide, each line also says where it came from. I set those by hand for this run. More useful is what happens to a traceback. The application has a page which raises an exception, and the error shows up as a single record, with the whole traceback in its &lt;code&gt;exception&lt;/code&gt; field, alongside the request, release and worker it happened in:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-json"&gt;{&amp;quot;time&amp;quot;:&amp;quot;2026-11-07T07:37:52.296Z&amp;quot;,&amp;quot;kind&amp;quot;:&amp;quot;app&amp;quot;,&amp;quot;source&amp;quot;:&amp;quot;muru.worker[0]&amp;quot;,&amp;quot;app&amp;quot;:&amp;quot;shop&amp;quot;,&amp;quot;exception&amp;quot;:&amp;quot;Traceback (most recent call last):\n  File \&amp;quot;/app/app.py\&amp;quot;, line 25, in application\n    raise RuntimeError(\&amp;quot;something went wrong\&amp;quot;)\nRuntimeError: something went wrong&amp;quot;,&amp;quot;group&amp;quot;:&amp;quot;default&amp;quot;,&amp;quot;level&amp;quot;:&amp;quot;ERROR&amp;quot;,&amp;quot;logger&amp;quot;:&amp;quot;muru&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;the application raised an exception&amp;quot;,&amp;quot;release&amp;quot;:&amp;quot;r1&amp;quot;,&amp;quot;request_id&amp;quot;:&amp;quot;01M6TF2DXFEHAEQZN1C1JEXGBE&amp;quot;,&amp;quot;worker&amp;quot;:0,&amp;quot;pod&amp;quot;:&amp;quot;shop-7d4b9c-x2k8p&amp;quot;,&amp;quot;namespace&amp;quot;:&amp;quot;shop&amp;quot;,&amp;quot;node&amp;quot;:&amp;quot;worker-2&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Anyone who has had to piece a Python traceback back together from a log system which treated each line as a separate entry will appreciate that.&lt;/p&gt;
+&lt;h2&gt;Inside the container&lt;/h2&gt;
+&lt;p&gt;Finally, the commands from &lt;a href="https://grahamdumpleton.me/posts/2026/11/muru-looking-inside-the-workers/"&gt;looking inside the workers&lt;/a&gt; work inside the container through &lt;code&gt;docker exec&lt;/code&gt;, talking to &lt;code&gt;muructl serve&lt;/code&gt; over its admin socket. With a slow request under way:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker exec shop muructl debug stacks
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;muru-app-0 in worker 0:
+  serving GET /slow?seconds=4 for 1.2 s (request 01M6TF2SRXPXTHSAPPDG6MVNJQ)
+  File &amp;quot;/opt/muru/muru/_pool.py&amp;quot;, line 30, in serve_jobs
+    serve()
+  File &amp;quot;/app/app.py&amp;quot;, line 15, in application
+    time.sleep(seconds)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;What's next&lt;/h2&gt;
+&lt;p&gt;None of this needs anything outside the image. There is no init to add, no health check view to write, no timeouts to line up with the platform's and no temporary directory to remember. What it does need to be told is how many workers of how many threads to run, chosen to fit the resources the container is given.&lt;/p&gt;
+&lt;p&gt;Most containers end up on Kubernetes though, and there are a few more things there where Muru can work with what the platform provides rather than around it, such as the shutdown delay in place of the usual &lt;code&gt;preStop&lt;/code&gt; hook, autoscaling on how busy the workers really are rather than on CPU, and running migrations as a Job from the new image. That is the subject of the next post, working with Kubernetes, not around it.&lt;/p&gt;</description>
+      <guid isPermaLink="false">b4ed389ce3b9e4e7b208c10d53cb96ecaa5d670956aca33fc2351438dda28b2e</guid>
+      <pubDate>Sat, 14 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Robin Wilson: I released Cloud-Native Environment Agency DEM data! - Planet Python</title>
+      <link>https://blog.rtwilson.com/i-released-cloud-native-environment-agency-dem-data/</link>
+      <description>&lt;p&gt;At the &lt;a href="https://uk.osgeo.org/foss4guk2026/"&gt;FOSS4G UK 2026 conference&lt;/a&gt; in October, I gave a talk announcing that I&amp;#8217;d re-released the Environment Agency DEM data for England in cloud-native formats. This was covering some work I did for my client &lt;a href="https://rebalance.earth/"&gt;Rebalance Earth&lt;/a&gt; and that we&amp;#8217;ve decided to release openly.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="file" src="https://blog.rtwilson.com/wp-content/uploads/2026/11/image-1794595869997.png" /&gt;&lt;/p&gt;
+&lt;p&gt;If you already know what I&amp;#8217;m talking about then you can find the data on &lt;a href="https://source.coop/rebalance-earth/ea-dem"&gt;Source Cooperative&lt;/a&gt; as COGs with STAC indexes. The README on that page will explain how to access the data, and you can access an interactive &lt;a href="https://data.source.coop/rebalance-earth/ea-dem/webmap/index.html"&gt;webmap&lt;/a&gt; of the data too. If that didn&amp;#8217;t make full sense to you, then read on&amp;#8230;&lt;/p&gt;
+&lt;p&gt;I&amp;#8217;m not going to go into full details here, as sometime soon the video recording of my talk at the conference should be released, and I can link to that here. In the meantime, my &lt;a href="https://speakerdeck.com/robintw/open-cloud-native-access-to-environment-agency-dem-data-using-stac-and-cog"&gt;slides are available&lt;/a&gt; and may help with understanding some of what I explain below.&lt;/p&gt;
+&lt;p&gt;So, basically, the Environment Agency (EA) collect LiDAR data across England and process it to produce Digital Elevation Model (DEMs). DEMs are rasters where every pixel contains a height value, and the EA produce two types: a Digital Terrain Model which is just the height of the terrain, and a Digital Surface Model which includes the height of everything on top of the ground &amp;#8211; like buildings, trees and so on.&lt;/p&gt;
+&lt;p&gt;The EA provide access to this data under the Open Government License, but their web interface for getting hold of the data is a bit of a pain &amp;#8211; you can&amp;#8217;t download much data at once. You can ask for bulk access to the data, but even then you have to work out exactly what OS 5x5km grid squares you want, and the whole thing is a pain.&lt;/p&gt;
+&lt;p&gt;As the data is released under the OGL, people are allowed to re-release processed versions of it under the same license. So, I converted the files to modern cloud-native formats, specifically &lt;a href="https://cogeo.org/"&gt;Cloud Optimized GeoTIFF&lt;/a&gt; with a &lt;a href="https://stacspec.org/en"&gt;Spatio-Temporal Asset Catalog&lt;/a&gt;. These formats store the data efficiently, allowing small parts of the image to be easily downloaded, as well as &amp;#8216;zoomed-out&amp;#8217; lower-resolution versions of the data.&lt;/p&gt;
+&lt;p&gt;The upshot of all of this is that you can use a few lines of Python or a GDAL command-line to download and mosaic the DEM over any area you choose, and you can also display the data easily on a web map. The latter is quite impressive &amp;#8211; you can see an example webmap &lt;a href="https://data.source.coop/rebalance-earth/ea-dem/webmap/index.html"&gt;here&lt;/a&gt;, which does live rescaling in the browser, along with hillshading and colour blending, producing a far nicer output than the EA&amp;#8217;s viewer &amp;#8211; the example below is the DSM over Bristol (the location of next year&amp;#8217;s FOSS4G international conference!)&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.rtwilson.com/wp-content/uploads/2026/11/DEM.png"&gt;&lt;img alt="" src="https://blog.rtwilson.com/wp-content/uploads/2026/11/DEM.png" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I&amp;#8217;ll leave the detailed documentation on how to use this to the README file in the &lt;a href="https://source.coop/rebalance-earth/ea-dem"&gt;data repository&lt;/a&gt;, but a few quick examples will show how easy it is to use.&lt;/p&gt;
+&lt;p&gt;You can use a command like this to download and mosaic all of the DSM data in a particular bounding box:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;gdal raster clip \
+  --bbox 438000,108000,446000,116000 \
+  GTI:/vsicurl/https://data.source.coop/rebalance-earth/ea-dem/ea-lidar-fz-dsm-1m-items.parquet output.tif&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can also do similarly in Python using the &lt;a href="https://developmentseed.org/lazycogs/"&gt;lazycogs&lt;/a&gt; library:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;import lazycogs
+da = lazycogs.open(
+            “items.parquet”,
+            bbox=lonlat_to_bng_bbox(bbox_lonlat),
+            crs=&amp;quot;EPSG:27700&amp;quot;, 
+            resolution=1.0, 
+            chunks=chunks)
+da = da.squeeze([&amp;quot;band&amp;quot;, &amp;quot;time&amp;quot;], drop=True)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;which gives you a nice &lt;a href="https://docs.xarray.dev/en/stable/"&gt;xarray&lt;/a&gt; DataArray to play with.&lt;/p&gt;
+&lt;p&gt;The talk went down very well, and was described by some people as the &amp;quot;highlight of the conference&amp;quot; (including Alastair Graham on the &lt;a href="https://thegeomob.com/podcast/episode-361"&gt;Geomob Podcast&lt;/a&gt;). The data has also been downloaded quite a lot since the conference &amp;#8211; there have been over 1 million individual downloads, with over 4TB of data transferred. Given that each tile of DEM data is only around 80MB in size then that&amp;#8217;s the equivalent of half a million full tiles (the whole of England is only around 5,500 tiles).&lt;/p&gt;
+&lt;p&gt;I&amp;#8217;m quite chuffed with this &amp;#8211; it&amp;#8217;s something I&amp;#8217;ve wanted to do for ages but never quite got round to, until we found that my client Rebalance Earth needed something like this, and decided we could release it openly. I want to thank Rebalance Earth for paying me to work on this (alongside lots of other stuff) and covering my costs of attending the conference to present it.&lt;/p&gt;</description>
+      <guid isPermaLink="false">ce1f77b3dd9b3654fe1a60934e049a5d19db2e21261cde51a9e2d824e85b365c</guid>
+      <pubDate>Fri, 13 Nov 2026 19:13:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>Mike C. Fletcher: PyOpenGL 4.0.0b1 Released - Planet Python</title>
+      <link>http://blog.vrplumber.com/b/2026/11/13/pyopengl-400b1-released/</link>
+      <description>&lt;p&gt;So we seem to have reached mostly-stable state for the PyOpenGL 4.0.0 release. There's no other planned major changes to the core library, so unless we see significant regressions we'll likely release 4.0.0 final over the next few weeks.&lt;/p&gt;
+&lt;p&gt;Changes since the 4.0.0a5 release last mentioned here:&lt;/p&gt;
+&lt;p&gt;Bug/crash fixes:&lt;/p&gt;
+&lt;p&gt;* OSMesa -- a dropped OffscreenContext cleans up and prevents further writes&lt;br /&gt;* Buffers -- a memoryview upload sent the wrapper instead of the data; this is fixed&lt;br /&gt;* Buffers -- use-after-free in the buffers format handler is fixed&lt;br /&gt;* Offsets -- an integer where a const void* is wanted is treated as a buffer offset (regression)&lt;br /&gt;* Arrays -- bare numbers are accepted as input types again (regression)&lt;br /&gt;* Arrays -- an input array is checked against the length count&lt;br /&gt;* Dispatch -- a function derived from a C entry point keeps its own customisations&lt;br /&gt;* Dispatch -- define() applies the annotation table to every command&lt;br /&gt;* Dispatch -- context handles now compares equal to themselves&lt;br /&gt;* Bindings -- glGetUniformIndices takes names and returns indices&lt;br /&gt;* Bindings -- GL 3.0 pixel formats (GL_RG and similar) are sized without importing their extension module &lt;br /&gt;* Bindings -- A wrapper that names a parameter its entry point lacks is handled&lt;br /&gt;* OpenGL.GLES2 imports with error checking switched off (regression)&lt;br /&gt;* Errors -- error messages are bounded size for all wrappers&lt;br /&gt;* Errors -- NullFunctionError says which of three things went wrong&lt;br /&gt;* Errors -- a platform plugin or format handler that will not import now reports which one and why&lt;br /&gt;* Errors -- a config flag set too late says so rather than silently failing to activate&lt;br /&gt;* Python 3.15 -- no longer reads ctypes.__version__ and 3.15 is added to CI/tox&lt;/p&gt;
+&lt;p&gt;VBO Helper&lt;/p&gt;
+&lt;p&gt;* References and aliases -- VBO attributes hold their own references&lt;br /&gt;* VBO and VBOOffset are accepted by every array alias&lt;br /&gt;* vbo.VBO is a class to type checkers&lt;br /&gt;* Context sharing -- dispatch.share_context, gives contexts that share objects one identity&lt;/p&gt;
+&lt;p&gt;Platform Support&lt;/p&gt;
+&lt;p&gt;* Tk GLFrame for macOS (Aqua), working on Apple silicon (only tested in CI however)&lt;br /&gt;* Tk Contexts take a swapInterval&lt;br /&gt;* OSMesa now runs on Windows&lt;br /&gt;* EGL -- the gbm render node is opened read-write&lt;br /&gt;* Windows -- a GL library beside the interpreter is preferred to the system one (ANGLE support)&lt;br /&gt;* Windows -- user-installed freeglut is found by its own name&lt;br /&gt;* Windows -- opengl32 is loaded from Windows rather than from PATH&lt;br /&gt;* Windows -- freeglut and GLE binaries left the main wheel. &lt;code&gt;pip install PyOpenGL[glut]&lt;/code&gt; brings them back&lt;br /&gt;* Namespaces -- a platform-specific API says which platform serves it&lt;/p&gt;
+&lt;p&gt;Packaging and CI&lt;/p&gt;
+&lt;p&gt;* Wheels -- arm64, aarch64 and Intel Mac wheels are built&lt;br /&gt;* PyOpenGL_accelerate now has the same version as PyOpenGL, run-time checks it&lt;br /&gt;* sdist no longer ships Cython output&lt;br /&gt;* Test and CI setup -- the suite runs on OSMesa, and CI runs it there&lt;br /&gt;* macOS test suite that never ran is not counted as a failing suite.&lt;/p&gt;
+&lt;p&gt;Tests, tooling and docs&lt;/p&gt;
+&lt;p&gt;* Tests -- a large batch of added tests. Many are tickets from the github tracker&lt;br /&gt;* Lint -- ruff cleanups, typing cleanups&lt;br /&gt;* Docs -- lots of updates, particularly around how we're generating them&lt;/p&gt;</description>
+      <guid isPermaLink="false">3c069e487b93b742ae1451110e4ca94e296da7d6af5315a1f6a1ca5df51fa8cd</guid>
+      <pubDate>Fri, 13 Nov 2026 16:11:40 +0000</pubDate>
+    </item>
+    <item>
+      <title>PyCharm: What’s Fixed and Improved in PyCharm 2026.3 - Planet Python</title>
+      <link>https://blog.jetbrains.com/pycharm/2026/11/what-s-fixed-and-improved-in-pycharm-2026-3/</link>
+      <description>&lt;p&gt;&lt;a href="https://www.jetbrains.com/pycharm/" rel="noopener" target="_blank"&gt;PyCharm 2026.3&lt;/a&gt; is here! Alongside major features like&lt;a href="https://www.jetbrains.com/pycharm/whatsnew/2026-3/" rel="noopener" target="_blank"&gt; JetBrains Air, workspaces, Python 3.15 lazy imports, and the redesigned interpreter widget&lt;/a&gt;, this release includes &lt;a href="https://youtrack.jetbrains.com/issues?q=%23py%20type:%20bug,%20feature%20Planned%20for:%202026.3.0,%20%7B2026.3%20*%7D%20visible%20to:%20%7BAll%20Users%7D%20state:%20fixed,%20merged" rel="noopener" target="_blank"&gt;303 fixes and improvements&lt;/a&gt; to everyday Python development.&lt;/p&gt;
+&lt;p&gt;From smarter code completion to more reliable environments and debugging, here are some of the changes worth knowing about—including fixes for issues reported more than a decade ago.&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;&lt;strong&gt;Smarter code insight and type inference&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3 class="wp-block-heading"&gt;&lt;strong&gt;Better support for &lt;/strong&gt;&lt;strong&gt;functools.partial&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;functools.partial&lt;/code&gt; lets you create a new callable by supplying some of a function’s arguments in advance. Previously, PyCharm could struggle to infer the resulting signature, leading to missing parameter information and incorrect warnings.&lt;/p&gt;
+&lt;p&gt;PyCharm now understands the remaining parameters, checks their types, and recognizes partial objects as valid &lt;code&gt;Callable&lt;/code&gt; instances. In the example below, PyCharm correctly identifies the remaining parameter and flags an incompatible argument.&lt;/p&gt;
+&lt;img alt="" class="wp-image-757144" src="https://blog.jetbrains.com/wp-content/uploads/2026/11/Screenshot_1.png" /&gt;
+&lt;p&gt;&lt;em&gt;PyCharm understands the remaining parameters of a &lt;code&gt;functools.partial&lt;/code&gt; object.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This resolves several long-standing issues with completion, parameter information, and type checking (&lt;a href="https://youtrack.jetbrains.com/issue/PY-35363" rel="noopener" target="_blank"&gt;PY-35363&lt;/a&gt;,&lt;a href="https://youtrack.jetbrains.com/issue/PY-33618" rel="noopener" target="_blank"&gt; PY-33618&lt;/a&gt;,&lt;a href="https://youtrack.jetbrains.com/issue/PY-25698" rel="noopener" target="_blank"&gt; PY-25698&lt;/a&gt;,&lt;a href="https://youtrack.jetbrains.com/issue/PY-36385" rel="noopener" target="_blank"&gt; PY-36385&lt;/a&gt;).&lt;/p&gt;
+&lt;h3 class="wp-block-heading"&gt;&lt;strong&gt;Fewer false positives for generics and collections&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;PyCharm now provides more accurate type inference for generic classes, bounded and constrained type variables, overloaded constructors, and generic &lt;code&gt;__getattr__&lt;/code&gt; methods. For example, calling a method on a bounded type variable now preserves its return type instead of falling back to &lt;code&gt;Any&lt;/code&gt; (&lt;a href="https://youtrack.jetbrains.com/issue/PY-89863" rel="noopener" target="_blank"&gt;PY-89863&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Collection inference has improved, too. Nested lists, optional values, dictionary literals, and tuple unpacking produce fewer false warnings (&lt;a href="https://youtrack.jetbrains.com/issue/PY-89564" rel="noopener" target="_blank"&gt;PY-89564&lt;/a&gt;,&lt;a href="https://youtrack.jetbrains.com/issue/PY-91999" rel="noopener" target="_blank"&gt; PY-91999&lt;/a&gt;). There are also improvements to &lt;code&gt;Literal&lt;/code&gt;, &lt;code&gt;Enum&lt;/code&gt;, and &lt;code&gt;TypedDict&lt;/code&gt;, along with support for PEP 747&amp;#8217;s &lt;code&gt;TypeForm[T]&lt;/code&gt; and intersection types through &lt;code&gt;ty_extensions.Intersection&lt;/code&gt; (&lt;a href="https://youtrack.jetbrains.com/issue/PY-90287" rel="noopener" target="_blank"&gt;PY-90287&lt;/a&gt;,&lt;a href="https://youtrack.jetbrains.com/issue/PY-62524" rel="noopener" target="_blank"&gt; PY-62524&lt;/a&gt;,&lt;a href="https://youtrack.jetbrains.com/issue/PY-89043" rel="noopener" target="_blank"&gt; PY-89043&lt;/a&gt;,&lt;a href="https://youtrack.jetbrains.com/issue/PY-87024" rel="noopener" target="_blank"&gt; PY-87024&lt;/a&gt;).&lt;/p&gt;
+&lt;h3 class="wp-block-heading"&gt;&lt;strong&gt;Clearer type warnings and suppression comments&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;When PyCharm finds a type mismatch, its tooltips now provide clearer explanations, improved formatting, and links to the relevant types. Call and control-flow analysis also handles more cases involving optional callables, bound methods, and paths that never return, reducing false warnings (&lt;a href="https://youtrack.jetbrains.com/issue/PY-90555" rel="noopener" target="_blank"&gt;PY-90555&lt;/a&gt;,&lt;a href="https://youtrack.jetbrains.com/issue/PY-83644" rel="noopener" target="_blank"&gt; PY-83644&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;When a warning is intentional, you have more control over suppressing it. PyCharm now supports shorter codes in &lt;code&gt;# type: ignore[...]&lt;/code&gt; comments and introduces &lt;code&gt;# pycharm: ignore[...]&lt;/code&gt; for individual PyCharm inspections. There’s also a &lt;em&gt;Suppress with &amp;#8216;type: ignore&amp;#8217; comment&lt;/em&gt; action, and unknown suppression codes are flagged to catch typos (&lt;a href="https://youtrack.jetbrains.com/issue/PY-90787" rel="noopener" target="_blank"&gt;PY-90787&lt;/a&gt;,&lt;a href="https://youtrack.jetbrains.com/issue/PY-92114" rel="noopener" target="_blank"&gt; PY-92114&lt;/a&gt;).&lt;/p&gt;
+&lt;img alt="" class="wp-image-757155" src="https://blog.jetbrains.com/wp-content/uploads/2026/11/Screenshot_2.png" /&gt;
+&lt;p&gt;&lt;em&gt;PyCharm 2026.3 introduces a new action to suppress individual type warnings using &lt;code&gt;# type: ignore[...] &lt;/code&gt;comments.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;&lt;strong&gt;Testing and developer tools&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3 class="wp-block-heading"&gt;&lt;strong&gt;Better completion for pytest and mocks&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Mocks and fixtures can be tricky for an IDE to understand. PyCharm now provides completion for the &lt;code&gt;pytest-mock mocker&lt;/code&gt; fixture, navigation for &lt;code&gt;mocker.patch()&lt;/code&gt; targets, and completion based on classes passed to &lt;code&gt;Mock(spec=...)&lt;/code&gt; or &lt;code&gt;Mock(spec_set=...)&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class="EnlighterJSRAW"&gt;from unittest.mock import Mock
+class Client:
+    def fetch(self, url: str) -&amp;gt; str:
+        return &amp;quot;OK&amp;quot;
+client = Mock(spec=Client)
+client.fetch(&amp;quot;https://example.com&amp;quot;)&lt;/pre&gt;
+&lt;img alt="" class="wp-image-757166" src="https://blog.jetbrains.com/wp-content/uploads/2026/11/Screenshot_3.png" /&gt;
+&lt;p&gt;&lt;em&gt;PyCharm 2026.3 provides completion for methods defined in classes passed to &lt;code&gt;Mock(spec=...)&lt;/code&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;PyCharm also flags invalid &lt;code&gt;unittest.mock.patch()&lt;/code&gt; targets and improves completion and documentation for pytest fixtures (&lt;a href="https://youtrack.jetbrains.com/issue/PY-36260" rel="noopener" target="_blank"&gt;PY-36260&lt;/a&gt;,&lt;a href="https://youtrack.jetbrains.com/issue/PY-32282" rel="noopener" target="_blank"&gt; PY-32282&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;For projects with custom test infrastructure, you can configure a unittest runner script, such as&lt;a href="https://github.com/django/django/blob/main/tests/runtests.py" rel="noopener" target="_blank"&gt; Django’s tests/runtests.py&lt;/a&gt;. If it uses &lt;code&gt;unittest.TextTestRunner&lt;/code&gt;, test results appear in PyCharm’s test tree (&lt;a href="https://youtrack.jetbrains.com/issue/PY-26068" rel="noopener" target="_blank"&gt;PY-26068&lt;/a&gt;).&lt;/p&gt;
+&lt;h3 class="wp-block-heading"&gt;&lt;strong&gt;More capable type-checker and Ruff integrations&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Zuban, a mypy-compatible type checker and language server, joins ty, Pyrefly, and basedpyright as a supported external tool. Its integration provides diagnostics, completion, hover information, inlay hints, and quick fixes. Pyrefly also receives fixes for custom import roots and missing-package installation (&lt;a href="https://youtrack.jetbrains.com/issue/PY-85009" rel="noopener" target="_blank"&gt;PY-85009&lt;/a&gt;,&lt;a href="https://youtrack.jetbrains.com/issue/PY-89805" rel="noopener" target="_blank"&gt; PY-89805&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;With Ruff, &lt;em&gt;Optimize Imports&lt;/em&gt; now removes unused imports and organizes them. Ruff fixes can run automatically on save or before a commit, and the new &lt;em&gt;Apply Ruff Fixes &lt;/em&gt;action works across a selected scope, including an entire project. Configuration discovery is also more reliable in multi-root, network, and WSL projects (&lt;a href="https://youtrack.jetbrains.com/issue/PY-85534" rel="noopener" target="_blank"&gt;PY-85534&lt;/a&gt;,&lt;a href="https://youtrack.jetbrains.com/issue/PY-86352" rel="noopener" target="_blank"&gt; PY-86352&lt;/a&gt;).&lt;/p&gt;
+&lt;img alt="" class="wp-image-757177" src="https://blog.jetbrains.com/wp-content/uploads/2026/11/Screenshot_4.png" /&gt;
+&lt;p&gt;&lt;em&gt;Apply Ruff fixes to an individual file, custom scope, or entire project directly from PyCharm.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;&lt;strong&gt;Django, FastAPI, and SQLAlchemy&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Django:&lt;/strong&gt; You can create run configurations for Django 6.0 tasks, and &lt;code&gt;TextChoices&lt;/code&gt; members defined with value-and-label tuples no longer trigger false type errors (&lt;a href="https://youtrack.jetbrains.com/issue/PY-86368" rel="noopener" target="_blank"&gt;PY-86368&lt;/a&gt;,&lt;a href="https://youtrack.jetbrains.com/issue/PY-92177" rel="noopener" target="_blank"&gt; PY-92177&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;In Django REST framework, &lt;code&gt;rest_framework.reverse.reverse()&lt;/code&gt; now offers URL-name completion and navigation, just like Django’s built-in &lt;code&gt;reverse()&lt;/code&gt; (&lt;a href="https://youtrack.jetbrains.com/issue/PY-78900" rel="noopener" target="_blank"&gt;PY-78900&lt;/a&gt;).&lt;/p&gt;
+&lt;img alt="" class="wp-image-757188" src="https://blog.jetbrains.com/wp-content/uploads/2026/11/Screenshot_5.png" /&gt;
+&lt;p&gt;&lt;em&gt;PyCharm 2026.3 provides URL-name completion for Django REST framework&amp;#8217;s &lt;code&gt;reverse()&lt;/code&gt; function.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;FastAPI:&lt;/strong&gt; Alongside the new&lt;a href="https://www.jetbrains.com/pycharm/whatsnew/2026-3/" rel="noopener" target="_blank"&gt; interactive dependency graphs&lt;/a&gt;, path parameters supplied through dependencies no longer cause incorrect warnings about missing endpoint parameters (&lt;a href="https://youtrack.jetbrains.com/issue/PY-88935" rel="noopener" target="_blank"&gt;PY-88935&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SQLAlchemy:&lt;/strong&gt; Expanded ORM support improves completion, navigation, and type inference for declarative models. Fixes also cover attributes added through &lt;code&gt;relationship()&lt;/code&gt; and columns that use SQLAlchemy’s &lt;code&gt;ENUM&lt;/code&gt; type (&lt;a href="https://youtrack.jetbrains.com/issue/PY-79736" rel="noopener" target="_blank"&gt;PY-79736&lt;/a&gt;,&lt;a href="https://youtrack.jetbrains.com/issue/PY-29212" rel="noopener" target="_blank"&gt; PY-29212&lt;/a&gt;).&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;&lt;strong&gt;Editing and refactoring&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Several small fixes make editing more predictable. Pressing Enter after a comment introducing a block now inserts the correct indentation, while moving lines in tab-indented files no longer causes false &lt;em&gt;Unexpected indent&lt;/em&gt; warnings (&lt;a href="https://youtrack.jetbrains.com/issue/PY-15693" rel="noopener" target="_blank"&gt;PY-15693&lt;/a&gt;,&lt;a href="https://youtrack.jetbrains.com/issue/PY-78251" rel="noopener" target="_blank"&gt; PY-78251&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;A new &lt;em&gt;Align consecutive assignments formatter&lt;/em&gt; option lines up assignment operators. You can enable it under &lt;em&gt;Settings | Editor | Code Style | Python | Wrapping and Braces&lt;/em&gt;. The formatter also does a better job preserving configured blank lines (&lt;a href="https://youtrack.jetbrains.com/issue/PY-34006" rel="noopener" target="_blank"&gt;PY-34006&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Refactoring is safer, too. &lt;em&gt;Inline Function&lt;/em&gt; preserves fallback behavior for omitted optional arguments, while &lt;em&gt;Implement abstract methods&lt;/em&gt; generates valid implementations of asynchronous abstract methods (&lt;a href="https://youtrack.jetbrains.com/issue/PY-81983" rel="noopener" target="_blank"&gt;PY-81983&lt;/a&gt;,&lt;a href="https://youtrack.jetbrains.com/issue/PY-53074" rel="noopener" target="_blank"&gt; PY-53074&lt;/a&gt;).&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;&lt;strong&gt;More reliable environments and faster startup&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;conda:&lt;/strong&gt; Environment variables configured using &lt;code&gt;conda env config vars set&lt;/code&gt; or &lt;code&gt;activate.d&lt;/code&gt; scripts are now available when you run scripts, tests, and the Python console from PyCharm. Previously, variables could work in a terminal but be missing inside the IDE—particularly frustrating for projects using GDAL, QGIS, PyMC, or compiler toolchains (&lt;a href="https://youtrack.jetbrains.com/issue/PY-55405" rel="noopener" target="_blank"&gt;PY-55405&lt;/a&gt;,&lt;a href="https://youtrack.jetbrains.com/issue/PY-38751" rel="noopener" target="_blank"&gt; PY-38751&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;uv:&lt;/strong&gt; Workspaces using a shared root &lt;code&gt;.venv&lt;/code&gt; retain their interpreter after upgrading from PyCharm 2026.1. Projects that use &lt;code&gt;uv pip&lt;/code&gt; without a &lt;code&gt;pyproject.toml&lt;/code&gt; now use the correct installation command, creating a uv environment no longer requires &lt;code&gt;uv init&lt;/code&gt;, and new environments can optionally access system site-packages (&lt;a href="https://youtrack.jetbrains.com/issue/PY-91108" rel="noopener" target="_blank"&gt;PY-91108&lt;/a&gt;,&lt;a href="https://youtrack.jetbrains.com/issue/PY-85589" rel="noopener" target="_blank"&gt; PY-85589&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Performance:&lt;/strong&gt; Python scripts start faster thanks to reduced helper overhead. In particular, simply having &lt;code&gt;matplotlib&lt;/code&gt; installed no longer adds approximately 100 milliseconds to the startup of an otherwise empty script (&lt;a href="https://youtrack.jetbrains.com/issue/PY-92211" rel="noopener" target="_blank"&gt;PY-92211&lt;/a&gt;).&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;&lt;strong&gt;Debugging improvements&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;The &lt;em&gt;debugpy&lt;/em&gt; debugger mode now supports &lt;em&gt;Set Value&lt;/em&gt; and &lt;em&gt;Jump to Cursor&lt;/em&gt;. Other improvements include sorting variables by type, displaying plots in the Plots tool window, accepting interactive input with terminal emulation, and using &lt;em&gt;Drop into debugger&lt;/em&gt; for failed tests.&lt;/p&gt;
+&lt;p&gt;In the example below, we&amp;#8217;ve paused execution and changed &lt;code&gt;discount&lt;/code&gt; from &lt;code&gt;0.10&lt;/code&gt; to &lt;code&gt;0.25&lt;/code&gt;, allowing us to test a different result without restarting the program.&lt;/p&gt;
+&lt;img alt="" class="wp-image-757199" src="https://blog.jetbrains.com/wp-content/uploads/2026/11/Screenshot_6.png" /&gt;
+&lt;p&gt;&lt;em&gt;Changing a variable&amp;#8217;s value while debugging in debugpy mode.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Debugging also works more reliably for tests in WSL, applications launched with &lt;code&gt;fastapi dev&lt;/code&gt;, and long-running IDE sessions on macOS (&lt;a href="https://youtrack.jetbrains.com/issue/PY-90157" rel="noopener" target="_blank"&gt;PY-90157&lt;/a&gt;,&lt;a href="https://youtrack.jetbrains.com/issue/PY-90281" rel="noopener" target="_blank"&gt; PY-90281&lt;/a&gt;,&lt;a href="https://youtrack.jetbrains.com/issue/PY-90588" rel="noopener" target="_blank"&gt; PY-90588&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Elsewhere in the debugger, dictionary keys appear in insertion order, Python 3.15’s &lt;code&gt;frozendict&lt;/code&gt; can be expanded, and the debug console supports a configurable starting script (&lt;a href="https://youtrack.jetbrains.com/issue/PY-75697" rel="noopener" target="_blank"&gt;PY-75697&lt;/a&gt;,&lt;a href="https://youtrack.jetbrains.com/issue/PY-21419" rel="noopener" target="_blank"&gt; PY-21419&lt;/a&gt;).&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;&lt;strong&gt;Easier Jupyter notebook workflows&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Find&lt;/em&gt; now searches cell outputs as well as source code, so you can locate a result without scrolling through the notebook. You can also move several selected cells together or use &lt;em&gt;Extract to Python File&lt;/em&gt; to copy them into a regular Python file. A bug that caused scripts embedded in HTML outputs to execute twice has been fixed, too (&lt;a href="https://youtrack.jetbrains.com/issue/PY-84634" rel="noopener" target="_blank"&gt;PY-84634&lt;/a&gt;,&lt;a href="https://youtrack.jetbrains.com/issue/PY-89385" rel="noopener" target="_blank"&gt; PY-89385&lt;/a&gt;).&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;&lt;strong&gt;Thank you for your feedback&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Not every meaningful improvement is a headline feature. Sometimes it’s a false warning disappearing, completion working where it didn’t before, or a debugger behaving as expected. Some fixes in this release trace back to issues reported more than a decade ago.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.jetbrains.com/pycharm/download/" rel="noopener" target="_blank"&gt;Download PyCharm 2026.3&lt;/a&gt; and try these improvements in your projects. And if PyCharm gets something wrong,&lt;a href="https://youtrack.jetbrains.com/issues/PY" rel="noopener" target="_blank"&gt; report it in YouTrack&lt;/a&gt;. Your reports and votes help us decide what to improve next.&lt;/p&gt;
+&lt;p&gt;Thanks for using PyCharm, and happy coding!&lt;/p&gt;</description>
+      <guid isPermaLink="false">5528cae944064cc5a73686dade0e058043d835aa124e1395bc6cbde37a08a4eb</guid>
+      <pubDate>Fri, 13 Nov 2026 14:28:09 +0000</pubDate>
+    </item>
     <item>
       <title>Graham Dumpleton: Muru: canaries without a service mesh - Planet Python</title>
       <link>https://grahamdumpleton.me/posts/2026/11/muru-canaries-without-a-service-mesh/</link>
@@ -19888,380 +20219,6 @@ where Haskell was Python. &lt;a class="footnote-backref" href="https://glyph.tw
 &lt;/div&gt;</description>
       <guid isPermaLink="false">fb7dac2b84b715595902eeab52eaedade58c7f0dd5efc8e15b9aadec02141952</guid>
       <pubDate>Thu, 04 Jul 2024 19:54:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Moshe Zadka: The Prehistory of Kubernetes: From Cubic Equations to Cloud Orchestration</title>
-      <link>https://orbifold.xyz/cubic-k8s.html</link>
-      <description>&lt;p&gt;The story of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Kubernetes"&gt;Kubernetes&lt;/a&gt;, the leading container orchestration platform, is a tale of mathematical innovation, wartime necessity, and the open-source revolution. It begins, perhaps unexpectedly, with the work of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Omar_Khayyam"&gt;Omar Khayyam&lt;/a&gt;, the 11th-century Persian polymath known for his contributions to mathematics, astronomy, and poetry.&lt;/p&gt;
-&lt;p&gt;Khayyam's work on solving &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Cubic_equation"&gt;cubic equations&lt;/a&gt; laid the foundation for the development of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Algebraic_geometry"&gt;algebraic geometry&lt;/a&gt;, which in turn led to the invention of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Cartesian_coordinate_system"&gt;Cartesian coordinates&lt;/a&gt; by &lt;a class="reference external" href="https://en.wikipedia.org/wiki/René_Descartes"&gt;René Descartes&lt;/a&gt; in the 17th century. This "algebrization of geometry" allowed for the mathematical description of physical phenomena, such as planetary motion, and paved the way for &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Isaac_Newton"&gt;Isaac Newton&lt;/a&gt;'s development of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Calculus"&gt;calculus&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;However, Newton's calculus, while groundbreaking, lacked a rigorous mathematical foundation. It took the work of 19th-century mathematicians like &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Augustin-Louis_Cauchy"&gt;Augustin-Louis Cauchy&lt;/a&gt; and &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Karl_Weierstrass"&gt;Karl Weierstrass&lt;/a&gt; to establish the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/(%CE%B5,_%CE%B4)-definition_of_limit"&gt;epsilon-delta definition of limits&lt;/a&gt; and place calculus on a solid footing. This development also opened up new questions about infinity, leading to &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Georg_Cantor"&gt;Georg Cantor&lt;/a&gt;'s work on &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Set_theory"&gt;set theory&lt;/a&gt; and the discovery of paradoxes, such as &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Russell%27s_paradox"&gt;Russell's paradox&lt;/a&gt; by &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Bertrand_Russell"&gt;Bertrand Russell&lt;/a&gt;, that threatened the foundations of mathematics.&lt;/p&gt;
-&lt;p&gt;The quest to resolve these paradoxes and establish a secure foundation for mathematics led to &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Kurt_Gödel"&gt;Kurt Gödel&lt;/a&gt;'s &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Gödel%27s_incompleteness_theorems"&gt;incompleteness theorems&lt;/a&gt;, published in 1931. Gödel's first incompleteness theorem showed that in any consistent axiomatic system that includes arithmetic, there are statements that can neither be proved nor disproved within the system. The second incompleteness theorem demonstrated that such a system cannot prove its own consistency.&lt;/p&gt;
-&lt;p&gt;Crucially, Gödel's theorems relied on the concept of computability, which he used to construct a formal system representing arithmetic. However, Gödel's definition of computability was not entirely convincing, as it relied on the intuitive notion of a "finite procedure." This left open the possibility that a non-computable axiomatization of number theory, capturing "all that is true about the natural numbers," could exist and potentially sidestep the incompleteness theorems.&lt;/p&gt;
-&lt;p&gt;It was &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Alan_Turing"&gt;Alan Turing&lt;/a&gt; who took up the challenge of formalizing the concept of computability. In his groundbreaking 1936 paper "&lt;a class="reference external" href="https://en.wikipedia.org/wiki/On_Computable_Numbers,_with_an_Application_to_the_Entscheidungsproblem"&gt;On Computable Numbers, with an Application to the Entscheidungsproblem&lt;/a&gt;," Turing introduced the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Turing_machine"&gt;Turing machine&lt;/a&gt;, a simple yet powerful mathematical model of computation. Turing's work not only provided a more rigorous foundation for Gödel's ideas but also proved that certain problems, such as the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Halting_problem"&gt;halting problem&lt;/a&gt;, are undecidable by Turing machines.&lt;/p&gt;
-&lt;p&gt;Turing's formalization of computability had far-reaching implications beyond the foundations of mathematics. It laid the groundwork for the development of modern &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Computer_science"&gt;computer science&lt;/a&gt; and played a crucial role in the birth of the digital age. Turing's work took on new urgency with the outbreak of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/World_War_II"&gt;World War II&lt;/a&gt;, as the need to break the German &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Enigma_machine"&gt;Enigma machine&lt;/a&gt; led to the development of early computing machines based on the principles he had established.&lt;/p&gt;
-&lt;p&gt;After the war, the individuals who had worked on these machines helped to establish the first computing companies, leading to the industrialization of computing and the development of programming languages and operating systems. One notable example is &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Alan_Turing"&gt;Alan Turing&lt;/a&gt; himself, who joined the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/National_Physical_Laboratory_(United_Kingdom)"&gt;National Physical Laboratory&lt;/a&gt; (NPL) in London, where he worked on the design of the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Automatic_Computing_Engine"&gt;Automatic Computing Engine&lt;/a&gt; (ACE), one of the first stored-program computers.&lt;/p&gt;
-&lt;p&gt;Another key figure was &lt;a class="reference external" href="https://en.wikipedia.org/wiki/John_von_Neumann"&gt;John von Neumann&lt;/a&gt;, a mathematician and physicist who made significant contributions to the design of the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/EDVAC"&gt;EDVAC&lt;/a&gt; (Electronic Discrete Variable Automatic Computer), an early stored-program computer. Von Neumann's work on the EDVAC and his subsequent report, "&lt;a class="reference external" href="https://en.wikipedia.org/wiki/First_Draft_of_a_Report_on_the_EDVAC"&gt;First Draft of a Report on the EDVAC&lt;/a&gt;," laid the foundation for the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Von_Neumann_architecture"&gt;von Neumann architecture&lt;/a&gt;, which became the standard design for modern computers.&lt;/p&gt;
-&lt;p&gt;In the United Kingdom, &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Maurice_Wilkes"&gt;Maurice Wilkes&lt;/a&gt;, who had worked on radar systems during the war, led the development of the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/EDSAC"&gt;EDSAC&lt;/a&gt; (Electronic Delay Storage Automatic Calculator) at the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/University_of_Cambridge"&gt;University of Cambridge&lt;/a&gt;. The EDSAC, which became operational in 1949, was the first practical stored-program computer and inspired the development of similar machines in the United States and elsewhere.&lt;/p&gt;
-&lt;p&gt;In the United States, &lt;a class="reference external" href="https://en.wikipedia.org/wiki/J._Presper_Eckert"&gt;J. Presper Eckert&lt;/a&gt; and &lt;a class="reference external" href="https://en.wikipedia.org/wiki/John_Mauchly"&gt;John Mauchly&lt;/a&gt;, who had worked on the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/ENIAC"&gt;ENIAC&lt;/a&gt; (Electronic Numerical Integrator and Computer) during the war, founded the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Eckert–Mauchly_Computer_Corporation"&gt;Eckert-Mauchly Computer Corporation&lt;/a&gt; in 1946. The company developed the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/UNIVAC_I"&gt;UNIVAC&lt;/a&gt; (Universal Automatic Computer), which became the first commercially available general-purpose computer in the United States.&lt;/p&gt;
-&lt;p&gt;The UNIVAC was followed by the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/IBM_7030_Stretch"&gt;Multiprocessing Automatic Computer&lt;/a&gt; (Multivac), developed by IBM in the late 1950s. The Multivac introduced several innovative features, such as multiprogramming and memory protection, which allowed multiple users to share the same machine and provided a degree of isolation between their programs. These features would later inspire both positive and negative lessons for the creators of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Unix"&gt;Unix&lt;/a&gt;, the influential operating system developed at &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Bell_Labs"&gt;Bell Labs&lt;/a&gt; in the 1970s.&lt;/p&gt;
-&lt;p&gt;Due to antitrust pressures, Bell Labs made Unix available to universities, where it became a standard teaching tool. This decision led to the development of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Minix"&gt;Minix&lt;/a&gt;, a simplified Unix-like system, and eventually to the creation of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Linux"&gt;Linux&lt;/a&gt; by &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Linus_Torvalds"&gt;Linus Torvalds&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;As Linux grew in popularity, thanks to its open-source nature and ability to run on cheap hardware, it caught the attention of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Google"&gt;Google&lt;/a&gt;, which was looking for an operating system to power its "cloud-native" approach to computing. Google's engineers contributed key features to the Linux kernel, such as &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Cgroups"&gt;cgroups&lt;/a&gt; and &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Linux_namespaces"&gt;namespaces&lt;/a&gt;, which laid the groundwork for the development of containerization technologies like &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Docker_(software)"&gt;Docker&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Google, recognizing the potential of containers and the need for a robust orchestration platform, developed Kubernetes as an open-source system based on its experience with &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Borg_(Google)"&gt;Borg&lt;/a&gt; and other orchestration tools. By establishing Kubernetes as the standard for container orchestration, Google aimed to reduce the barrier to entry for users looking to switch between cloud providers, challenging the dominance of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Amazon_Web_Services"&gt;Amazon Web Services&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Today, Kubernetes has become the de facto standard for managing containerized applications. As in previous improvements, this led to a new open problem: generating and deploying manifests. Tools for generating manifests range from general templating solutions like Bash variable substitution, Sed, and Jinja, through full fledged programming languages, like using Jsonnet and Python, all the way to using dedicated tools like Kustomize and Helm. Meanwhile, deploying the manifests to Kubernetes can be done through continuous integration platforms running "helm upgrade" or "kubectl apply" or using dedicated platforms like ArgoCD or FluxCD. ArgoCD or Flagger also support gradual roll-outs.&lt;/p&gt;
-&lt;p&gt;From cubic equations to cloud orchestration, the story of Kubernetes is a reminder that the path of progress is rarely straightforward, but rather a winding journey through the realms of mathematics, computer science, and human ingenuity.&lt;/p&gt;</description>
-      <guid isPermaLink="false">2acc2478ecf0cfdfb302e5a435dd7515b36c4a3f99a6a1dd12ae3c6410f7e363</guid>
-      <pubDate>Thu, 20 Jun 2024 04:30:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Glyph Lefkowitz: A Grand Unified Theory of the AI Hype Cycle</title>
-      <link>https://blog.glyph.im/2024/05/grand-unified-ai-hype.html</link>
-      <description>&lt;h2 id="the-cycle"&gt;The Cycle&lt;/h2&gt;
-&lt;p&gt;The history of AI goes in cycles, each of which looks at least a &lt;em&gt;little&lt;/em&gt; bit like this:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Scientists do some basic research and develop a promising novel mechanism, &lt;code&gt;N&lt;/code&gt;. One important detail is that &lt;code&gt;N&lt;/code&gt; has a specific name; it may or may not be carried out under the general umbrella of “AI research” but it is not itself “AI”.  &lt;code&gt;N&lt;/code&gt; always has a few properties, but the most common and salient one is that it &lt;em&gt;initially&lt;/em&gt; tends to require about 3x the specifications of the average computer available to the market at the time; i.e., it requires three times as much RAM, CPU, and secondary storage as is shipped in the average computer.&lt;/li&gt;
-&lt;li&gt;Research and development efforts begin to get funded on the hypothetical potential of &lt;code&gt;N&lt;/code&gt;.  Because &lt;code&gt;N&lt;/code&gt; is so resource intensive, this funding is used to purchase more computing capacity (RAM, CPU, storage) for the researchers, which leads to immediate results, as the technology was previously resource constrained.&lt;/li&gt;
-&lt;li&gt;Initial successes in the refinement of &lt;code&gt;N&lt;/code&gt; hint at truly revolutionary possibilities for its deployment.  These revolutionary possibilities include a dimension of cognition that has not previously been machine-automated.&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Leaders&lt;/em&gt; in the field of this new development — specifically leaders, like lab administrators, corporate executives, and so on, as opposed to practitioners like engineers and scientists — recognize the sales potential of referring to this newly-“thinking” machine as “Artificial Intelligence”, often speculating about science-fictional levels of societal upheaval (specifically in a period of 5-20 years), now that the “hard problem” of machine cognition has been solved by &lt;code&gt;N&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Other technology leaders, in related fields, also recognize the sales potential and begin adopting elements of the novel mechanism to combine with their own areas of interest, also referring to their projects as “AI” in order to access the pool of cash that has become available to that label.  In the course of doing so, they incorporate &lt;code&gt;N&lt;/code&gt; in increasingly unreasonable ways.&lt;/li&gt;
-&lt;li&gt;The scope of “AI” balloons to include pretty much all of computing technology. Some things that do not even include &lt;code&gt;N&lt;/code&gt; start getting labeled this way.&lt;/li&gt;
-&lt;li&gt;There’s a massive economic boom within the field of “AI”, where “the field of AI” means any software development that is plausibly adjacent to &lt;code&gt;N&lt;/code&gt; in any pitch deck or grant proposal.&lt;/li&gt;
-&lt;li&gt;Roughly 3 years pass, while those who control the flow of money gradually become skeptical of the overblown claims that recede into the indeterminate future, where &lt;code&gt;N&lt;/code&gt; precipitates a robot apocalypse somewhere between 5 and 20 years away.  Crucially, because of the aforementioned resource-intensiveness, the &lt;a href="https://wiki.c2.com/?GoldOwner"&gt;gold owners&lt;/a&gt; skepticism grows &lt;em&gt;slowly&lt;/em&gt; over this period, because their own personal computers or the ones they have access to do not have the requisite resources to actually run the technology in question and it is challenging for them to observe its performance directly.  Public critics begin to appear.&lt;/li&gt;
-&lt;li&gt;Competent &lt;em&gt;practitioners&lt;/em&gt; — not leaders — who have been successfully using &lt;code&gt;N&lt;/code&gt; in research or industry quietly stop calling their tools “AI”, or at least stop emphasizing the “artificial intelligence” aspect of them, and start getting funding under other auspices.  Whatever &lt;code&gt;N&lt;/code&gt; does that &lt;em&gt;isn’t&lt;/em&gt; “thinking” starts getting applied more seriously as its limitations are better understood. Users begin using more specific terms to describe the things they want, rather than calling everything “AI”.&lt;/li&gt;
-&lt;li&gt;Thanks to the relentless march of Moore’s law, the specs of the average computer improve. The CPU, RAM, and disk resources required to actually run the software locally come down in price, and everyone upgrades to a new computer that can actually run the new stuff.&lt;/li&gt;
-&lt;li&gt;The investors and grant funders update their personal computers, and they start personally running the software they’ve been investing in.  Products with long development cycles are finally released to customers as well, but they are disappointing.  The investors quietly get mad. They’re not going to publicly trash their own investments, but they stop loudly boosting them and they stop writing checks.  They &lt;a href="https://en.wikipedia.org/wiki/Theranos"&gt;pivot to biotech&lt;/a&gt; for a while.&lt;/li&gt;
-&lt;li&gt;The field of “AI” becomes increasingly desperate, as it becomes the label applied to uses of &lt;code&gt;N&lt;/code&gt; which are &lt;em&gt;not&lt;/em&gt; productive, since the productive uses are marketed under their application rather than their mechanism. Funders lose their patience, the polarity of the “AI” money magnet rapidly reverses.  Here, the AI winter is finally upon us.&lt;/li&gt;
-&lt;li&gt;The remaining AI researchers who still have funding via mechanisms less vulnerable to hype, who are genuinely thinking about automating aspects of cognition rather than simply &lt;code&gt;N&lt;/code&gt;, quietly move on to the next impediment to a truly thinking machine, and in the course of doing so, they discover a &lt;em&gt;new&lt;/em&gt; novel mechanism, &lt;code&gt;M&lt;/code&gt;.  Go to step 1, with &lt;code&gt;M&lt;/code&gt; as the new &lt;code&gt;N&lt;/code&gt;, and our current &lt;code&gt;N&lt;/code&gt; as a thing that is now “not AI”, called by its own, more precise name.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id="the-history"&gt;The History&lt;/h2&gt;
-&lt;p&gt;A non-exhaustive list of previous values of &lt;code&gt;N&lt;/code&gt; have been:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Neural networks and symbolic reasoning in the 1950s.&lt;/li&gt;
-&lt;li&gt;Theorem provers in the 1960s.&lt;/li&gt;
-&lt;li&gt;Expert systems in the 1980s.&lt;/li&gt;
-&lt;li&gt;Fuzzy logic and hidden Markov models in the 1990s.&lt;/li&gt;
-&lt;li&gt;Deep learning in the 2010s.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Each of these cycles has been larger and lasted longer than the last, and I want to be clear: each cycle has produced &lt;em&gt;genuinely useful technology&lt;/em&gt;.  It’s just that each follows the progress of a &lt;a href="https://en.wikipedia.org/wiki/Sigmoid_function"&gt;sigmoid curve&lt;/a&gt; that everyone mistakes for an &lt;a href="https://en.wikipedia.org/wiki/Exponential_growth"&gt;exponential one&lt;/a&gt;.  There is an initial burst of rapid improvement, followed by gradual improvement, followed by a plateau.  Initial promises imply or even state outright “if we pour more {compute, RAM, training data, money} into this, we’ll get improvements forever!” The reality is always that these strategies inevitably have a limit, usually one that does not take too long to find.&lt;/p&gt;
-&lt;h2 id="where-are-we-now"&gt;Where Are We Now?&lt;/h2&gt;
-&lt;p&gt;So where are we in the current hype cycle?&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=dDUC-LqVrPU"&gt;Here’s a Computerphile video which explains some recent research into LLM performance&lt;/a&gt;.  I’d highly encourage you to have &lt;a href="https://arxiv.org/pdf/2404.04125"&gt;a look at the paper itself&lt;/a&gt;, particularly Figure 2, “Log-linear relationships between concept frequency and CLIP zero-shot performance”.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://simonwillison.net/series/llms-on-personal-devices/"&gt;Here’s a series of posts by Simon Willison explaining the trajectory of the practicality of actually-useful LLMs on personal devices&lt;/a&gt;.  He hasn’t written much about it recently because it is now fairly pedestrian for an AI-using software developer to have a bunch of local models, and although we haven’t quite broken through the price floor of &lt;a href="https://www.youtube.com/watch?v=8bhsUO2D938"&gt;the gear-acquisition-syndrome prosumer market&lt;/a&gt; in terms of the requirements of doing so, we are getting close.&lt;/li&gt;
-&lt;li&gt;The Rabbit R1 and Humane AI Pin were both released; were they disappointments to their customers and investors? I think &lt;a href="https://techcrunch.com/2024/04/17/mkbhd-humane-ai-review-fisker/"&gt;we all know how that went&lt;/a&gt; at this point.&lt;/li&gt;
-&lt;li&gt;I hear &lt;a href="https://www.crunchbase.com/organization/karius/company_financials"&gt;Karius just raised a series C&lt;/a&gt;, and they’re an “emerging unicorn”.&lt;/li&gt;
-&lt;li&gt;It does appear that &lt;a href="https://trends.google.com/trends/explore?date=today%205-y&amp;amp;geo=US&amp;amp;q=large%20language%20model,artificial%20intelligence&amp;amp;hl=en"&gt;we are all still resolutely calling these things “AI” for now, though&lt;/a&gt;, much as I wish, as a semasiology enthusiast, that we would be more precise.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="some-qualifications"&gt;Some Qualifications&lt;/h2&gt;
-&lt;p&gt;History does not repeat itself, but it does rhyme. This hype cycle is unlike any that have come before in various ways. There is more money involved now. It’s much more commercial; I had to phrase things above in very general ways because many previous hype waves have been based on research funding, some really being &lt;em&gt;exclusively&lt;/em&gt; a phenomenon at one department in &lt;a href="https://en.wikipedia.org/wiki/DARPA"&gt;DARPA&lt;/a&gt;, and not, like, the &lt;a href="https://www.statista.com/statistics/1446052/worldwide-spending-on-ai-by-industry/"&gt;entire economy&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I cannot tell you when the current mania will end and this bubble will burst. If I could, you’d be reading this in my $100,000 per month subscribers-only trading strategy newsletter and not a public blog. What I &lt;em&gt;can&lt;/em&gt; tell you is that computers cannot think, and that the problems of the current instantation of the nebulously defined field of “AI” will not all be solved within “5 to 20 years”.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h2 id="acknowledgments"&gt;Acknowledgments&lt;/h2&gt;
-&lt;p class="update-note"&gt;Thank you to &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;my patrons&lt;/a&gt; who are supporting my writing on
-this blog.  Special thanks also to Ben Chatterton for a brief pre-publication
-review; any errors remain my own.  If you like what you’ve read here and you’d
-like to read more of it, or you’d like to support my &lt;a href="https://github.com/glyph/"&gt;various open-source
-endeavors&lt;/a&gt;, you can &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;support my work as a
-sponsor&lt;/a&gt;!  I am also &lt;a href="mailto:consulting@glyph.im"&gt;available for consulting
-work&lt;/a&gt; if you think your organization could benefit
-from expertise on topics like “what are &lt;strong&gt;we&lt;/strong&gt; doing that history will condemn us
-for”.  Or, you know, Python programming.&lt;/p&gt;</description>
-      <guid isPermaLink="false">d4a3c9376c91eb985bcd5e03faddb6f9f79253c31e85266f3707a1f3ff7a4322</guid>
-      <pubDate>Wed, 22 May 2024 16:58:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Hynek Schlawack: You Can Build Portable Binaries of Python Applications</title>
-      <link>https://hynek.me/til/python-portable-binaries/</link>
-      <description>&lt;p&gt;Contrary to popular belief, it’s possible to ship portable executables of Python applications without sending your users to Python packaging hell.&lt;/p&gt;</description>
-      <guid isPermaLink="false">538747a7d1210b2e1eb43f9e942241c02ee071569953b11f5a690d3aa45657a1</guid>
-      <pubDate>Tue, 19 Mar 2024 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Glyph Lefkowitz: Unsigned Commits</title>
-      <link>https://blog.glyph.im/2024/01/unsigned-commits.html</link>
-      <description>&lt;p&gt;I am going to tell you why I don’t think you should sign your Git commits, even
-though doing so with SSH keys is now easier than ever.  But first, to
-contextualize my objection, I have a brief hypothetical for you, and then a bit
-of history from the evolution of security on the web.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;img alt="paper reading “Sign Here:” with a pen poised over it" src="https://blog.glyph.im/images/just-sign-here.jpeg" /&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;It seems like these days, everybody’s signing all different kinds of papers.&lt;/p&gt;
-&lt;p&gt;Bank forms, permission slips, power of attorney; it seems like if you want to
-securely validate a document, you’ve gotta sign it.&lt;/p&gt;
-&lt;p&gt;So I have invented a machine that automatically signs every document on your
-desk, just in case it needs your signature.  Signing is good for security, so
-you should probably get one, and turn it on, just in case something needs your
-signature on it.&lt;/p&gt;
-&lt;p&gt;We also want to make sure that verifying your signature is easy, so we will
-have them all notarized and duplicates stored permanently and publicly for
-future reference.&lt;/p&gt;
-&lt;p&gt;No?  Not interested?&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Hopefully, that sounded like a silly idea to you.&lt;/p&gt;
-&lt;p&gt;Most adults in modern civilization have learned that signing your name to a
-document has an &lt;em&gt;effect&lt;/em&gt;.  It is not merely decorative; the words in the
-document being signed have some specific meaning and can be enforced against
-you.&lt;/p&gt;
-&lt;p&gt;In some ways the metaphor of “signing” in cryptography is bad.  One does not
-“sign” things with “keys” in real life.  But here, it is spot on: a
-cryptographic signature can have an effect.&lt;/p&gt;
-&lt;p&gt;It should be an &lt;em&gt;input&lt;/em&gt; to some software, one that is acted upon.  Software
-does a thing differently depending on the presence or absence of a signature.
-If it doesn’t, the signature probably shouldn’t be there.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Consider the most venerable example of encryption and signing that we all deal
-with every day: HTTPS.  Many years ago, browsers would happily display
-unencrypted web pages.  The browser would also encrypt the connection, if the
-server operator had paid for an expensive certificate and correctly configured
-their server. If that operator messed up the encryption, it would pop up a
-helpful dialog box that would tell the user “This website did something wrong
-that you cannot possibly understand.  Would you like to ignore this and keep
-working?” with buttons that said “Yes” and “No”.&lt;/p&gt;
-&lt;p&gt;Of course, these are not the precise words that were written.  The words, as
-written, said things about “information you exchange” and “security
-certificate” and “certifying authorities” but “Yes” and “No” were the words
-that most users &lt;em&gt;read&lt;/em&gt;.  Predictably, most users just clicked “Yes”.&lt;/p&gt;
-&lt;p&gt;In the usual case, where users ignored these warnings, it meant that no user
-ever got meaningful security from HTTPS.  It was a component of the web stack
-that did nothing but funnel money into the pockets of certificate authorities
-and occasionally present annoying interruptions to users.&lt;/p&gt;
-&lt;p&gt;In the case where the user carefully read and honored these warnings in the
-spirit they were intended, adding any sort of transport security to your
-website was a potential liability.  If you got everything perfectly correct,
-nothing happened except the browser would display a picture of a &lt;a href="https://www.wired.com/2016/11/googles-chrome-hackers-flip-webs-security-model/"&gt;small green
-purse&lt;/a&gt;. If
-you made any small mistake, it would scare users off and thereby directly harm
-your business.  You would only want to do it if you were doing something that
-put a big enough target on your site that you became unusually interesting to
-attackers, or were required to do so by some contractual obligation like credit
-card companies.&lt;/p&gt;
-&lt;p&gt;Keep in mind that the second case here is the &lt;em&gt;best&lt;/em&gt; case.&lt;/p&gt;
-&lt;p&gt;In 2016, the browser makers noticed this problem and started taking some
-&lt;a href="https://security.googleblog.com/2016/09/moving-towards-more-secure-web.html"&gt;pretty aggressive
-steps&lt;/a&gt;
-towards actually enforcing the security that HTTPS was supposed to provide, by
-fixing the user interface to do the right thing.  If your site didn’t have
-security, it would be shown as “Not Secure”, a subtle warning that would
-gradually escalate in intensity as time went on, correctly incentivizing site
-operators to adopt transport security certificates.  On the user interface
-side, certificate errors would be significantly harder to disregard, making it
-so that users who didn’t understand what they were seeing would actually be
-stopped from doing the dangerous thing.&lt;/p&gt;
-&lt;p&gt;Nothing fundamental&lt;sup id="fnref:1:unsigned-commits-2024-1"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:1:unsigned-commits-2024-1" id="fnref:1"&gt;1&lt;/a&gt;&lt;/sup&gt; changed about the technical aspects of the
-cryptographic primitives or constructions being used by HTTPS in this time
-period, but &lt;em&gt;socially&lt;/em&gt;, the meaning of an HTTP server signing and encrypting
-its requests changed a lot.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Now, let’s consider signing Git commits.&lt;/p&gt;
-&lt;p&gt;You may have heard that in some abstract sense you “should” be signing your
-commits.  GitHub puts a little green “verified” badge next to commits that are
-signed, which is neat, I guess.  They provide “security”.  1Password provides a
-&lt;a href="https://developer.1password.com/docs/ssh/git-commit-signing/"&gt;nice UI&lt;/a&gt; for
-setting it up. If you’re not a 1Password user, GitHub itself recommends you
-&lt;a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key#telling-git-about-your-ssh-key"&gt;put in just a few lines of
-configuration&lt;/a&gt;
-to do it with either a GPG, SSH, or even an S/MIME key.&lt;/p&gt;
-&lt;p&gt;But while GitHub’s documentation quite lucidly tells you &lt;em&gt;how&lt;/em&gt; to sign your
-commits, its explanation of
-&lt;a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification"&gt;why&lt;/a&gt;
-is somewhat less clear.  Their purse is the word “Verified”; it’s still green.
-If you enable “&lt;a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/displaying-verification-statuses-for-all-of-your-commits"&gt;vigilant
-mode&lt;/a&gt;”,
-you can make the blank “no verification status” option say “Unverified”, but
-not much else changes.&lt;/p&gt;
-&lt;p&gt;This is like the old-style HTTPS verification “Yes”/“No” dialog, except that
-there is not even an interruption to your workflow.  They might put the
-“Unverified” status on there, but they’ve gone ahead and clicked “Yes” for you.&lt;/p&gt;
-&lt;p&gt;It is tempting to think that the “HTTPS” metaphor will map neatly onto Git
-commit signatures.  It was bad when the web wasn’t using HTTPS, and the next
-step in that process was for &lt;a href="https://en.wikipedia.org/wiki/Let%27s_Encrypt"&gt;Let’s
-Encrypt&lt;/a&gt; to come along and for
-the browsers to fix their implementations.  Getting your certificates properly
-set up in the meanwhile and becoming familiar with the tools for properly doing
-HTTPS was unambiguously a &lt;em&gt;good&lt;/em&gt; thing for an engineer to do.  I did, and I’m
-quite glad I did so!&lt;/p&gt;
-&lt;p&gt;However, there is a significant difference: signing and encrypting an HTTPS
-request is ephemeral; signing a Git commit is functionally permanent.&lt;/p&gt;
-&lt;p&gt;This ephemeral nature meant that errors in the early HTTPS landscape were
-easily fixable.  Earlier I mentioned that there was a time where you might
-&lt;em&gt;not&lt;/em&gt; want to set up HTTPS on your production web servers, because any small
-screw-up would break your site and thereby your business.  But if you were
-really skilled and you could see the future coming, you could set up
-monitoring, avoid these mistakes, and rapidly recover.  These mistakes didn’t
-need to badly break your site.&lt;/p&gt;
-&lt;p&gt;We &lt;em&gt;can&lt;/em&gt; extend the analogy to HTTPS, but we have to take a detour into one of
-the more unpleasant mistakes in HTTPS’s history: &lt;a href="https://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning"&gt;HTTP Public Key
-Pinning&lt;/a&gt;, or “HPKP”.
-The idea with HPKP was that you could publish a record in an HTTP header where
-your site commits&lt;sup id="fnref:2:unsigned-commits-2024-1"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:2:unsigned-commits-2024-1" id="fnref:2"&gt;2&lt;/a&gt;&lt;/sup&gt; to using certain certificate authorities for a period of
-time, where that period of time could be “forever”.  Attackers gonna attack,
-and &lt;a href="https://scotthelme.co.uk/using-security-features-to-do-bad-things/#usinghpkpforevil"&gt;attack they
-did&lt;/a&gt;.
-Even without getting attacked, a site could easily commit “HPKP Suicide” where
-they would pin the wrong certificate authority with a long timeline, and their
-site was effectively gone for every browser that had ever seen those pins.  As
-a result, after a few years, HPKP was &lt;a href="https://scotthelme.co.uk/hpkp-is-no-more/"&gt;completely removed from all
-browsers&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Git commit signing is even worse.  With HPKP, you could easily make terrible
-mistakes with permanent consequences even though you knew the &lt;em&gt;exact&lt;/em&gt; meaning
-of the data you were putting into the system at the time you were doing it.
-With signed commits, you are saying something permanently, but you don’t really
-know &lt;em&gt;what&lt;/em&gt; it is that you’re saying.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;em&gt;Today&lt;/em&gt;, what is the benefit of signing a Git commit?  GitHub might present it
-as “Verified”.  It’s worth noting that only &lt;em&gt;GitHub&lt;/em&gt; will do this, since they
-are the root of trust for this signing scheme.  So, by signing commits and
-registering your keys with GitHub, you are, at best, helping to lock in GitHub
-as a permanent piece of infrastructure that is even harder to dislodge because
-they are not only where your code is stored, but also the arbiters of whether
-or not it is trustworthy.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;In the future&lt;/em&gt;, what is the possible security benefit?  If we all collectively
-decide we want Git to be more secure, then we will need to meaningfully treat
-signed commits differently from unsigned ones.&lt;/p&gt;
-&lt;p&gt;There’s a long tail of unsigned commits several billion entries long.  And
-those are in the permanent record as much as the signed ones are, so future
-tooling will have to be able to deal with them.  If, as stewards of Git, we
-wish to move towards a more secure Git, as the stewards of the web moved
-towards a more secure web, we do &lt;em&gt;not&lt;/em&gt; have the option that the web did.  In
-the browser, the meaning of a plain-text HTTP or incorrectly-signed HTTPS site
-changed, in order to encourage the site’s operator to &lt;em&gt;change&lt;/em&gt; the site to be
-HTTPS.&lt;/p&gt;
-&lt;p&gt;In contrast, the meaning of an unsigned commit cannot change, because there are
-zillions of unsigned commits lying around in critical infrastructure and we
-need them to remain there.  Commits cannot meaningfully be changed to become
-signed retroactively.  Unlike an online website, they are part of a historical
-record, not an operating program.  So we cannot establish the difference in
-treatment by changing how unsigned commits are treated.&lt;/p&gt;
-&lt;p&gt;That means that tooling maintainers will need to provide some difference in
-behavior that provides some incentive.  With HTTPS where the binary choice was
-clear: don’t present sites with incorrect, potentially compromised
-configurations to users.  The question was just &lt;em&gt;how&lt;/em&gt; to achieve that.  With
-Git commits, the difference in treatment of a “trusted” commit is far less
-clear.&lt;/p&gt;
-&lt;p&gt;If you will forgive me a slight straw-man here, one possible naive
-interpretation is that a “trusted” signed commit is that it’s OK to run in CI.
-Conveniently, it’s not simply “trusted” in a general sense.  If you signed it,
-it’s trusted to be &lt;em&gt;from you&lt;/em&gt;, specifically.  Surely it’s fine if we bill the
-CI costs for validating the PR that includes that signed commit to your GitHub
-account?&lt;/p&gt;
-&lt;p&gt;Now, someone can piggy-back off a 1-line typo fix that you made on top of an
-unsigned commit to some large repo, making you implicitly responsible for
-transitively signing all unsigned parent commits, even though you haven’t
-looked at any of the code.&lt;/p&gt;
-&lt;p&gt;Remember, also, that the only central authority that is practically trustable
-at this point is your GitHub account.  That means that if you are using a
-third-party CI system, even if you’re using a third-party Git host, you can
-only run “trusted” code if GitHub is online and responding to requests for its
-“get me the trusted signing keys for this user” API.  This also adds a lot of
-value to a GitHub credential breach, strongly motivating attackers to sneakily
-attach their own keys to your account so that their commits in unrelated repos
-can be “Verified” by you.&lt;/p&gt;
-&lt;p&gt;Let’s review the pros and cons of turning on commit signing &lt;em&gt;now&lt;/em&gt;, before you
-know what it is going to be used for:&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align="left"&gt;Pro&lt;/th&gt;
-&lt;th align="left"&gt;Con&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align="left"&gt;Green “Verified” badge&lt;/td&gt;
-&lt;td align="left"&gt;&lt;strong&gt;Unknown, possibly unlimited future liability&lt;/strong&gt; for the consequences of running code in a commit you signed&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align="left"&gt;&lt;div&gt;&lt;/div&gt;&lt;/td&gt;
-&lt;td align="left"&gt;Further implicitly cementing GitHub as a  centralized trust authority in the open source world&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align="left"&gt;&lt;/td&gt;
-&lt;td align="left"&gt;Introducing unknown reliability problems into infrastructure that relies on commit signatures&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align="left"&gt;&lt;/td&gt;
-&lt;td align="left"&gt;Temporary breach of your GitHub credentials now lead to potentially permanent consequences if someone can smuggle a new trusted key in there&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align="left"&gt;&lt;/td&gt;
-&lt;td align="left"&gt;New kinds of ongoing process overhead as commit-signing keys become new permanent load-bearing infrastructure, like “what do I do with expired keys”, “how often should I rotate these”, and so on&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;I feel like the “Con” column is coming out ahead.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;That probably seemed like increasingly unhinged hyperbole, and it was.&lt;/p&gt;
-&lt;p&gt;In reality, the consequences are unlikely to be nearly so dramatic.  The status
-quo has a very high amount of inertia, and probably the “Verified” badge will
-remain the only visible difference, except for a few repo-specific esoteric
-workflows, like pushing trust verification into offline or sandboxed build
-systems.  I do still think that there is &lt;em&gt;some&lt;/em&gt; potential for nefariousness
-around the “unknown and unlimited” dimension of any future plans that might
-rely on verifying signed commits, but any flaws are likely to be subtle attack
-chains and not anything flashy and obvious.&lt;/p&gt;
-&lt;p&gt;But I think that one of the biggest problems in information security is a lack
-of &lt;a href="https://owasp.org/www-community/Threat_Modeling"&gt;threat modeling&lt;/a&gt;.  We
-encrypt things, we sign things, we institute &lt;a href="https://cryptosmith.com/password-sanity/exp-harmful/"&gt;rotation
-policies&lt;/a&gt; and
-&lt;a href="https://neal.fun/password-game/"&gt;elaborate&lt;/a&gt; useless
-&lt;a href="https://xkcd.com/936/"&gt;rules&lt;/a&gt; for passwords, because we are looking for a
-“best practice” that is going to save us from having to think about what our
-actual security problems are.&lt;/p&gt;
-&lt;p&gt;I think the actual harm of signing git commits is to perpetuate an engineering
-culture of unquestioningly cargo-culting sophisticated and complex tools like
-cryptographic signatures into new contexts where they have no use.&lt;/p&gt;
-&lt;p&gt;Just from a baseline utilitarian philosophical perspective, for a given action
-A, all else being equal, it’s always better &lt;em&gt;not&lt;/em&gt; to do A, because taking an
-action always has &lt;em&gt;some&lt;/em&gt; non-zero opportunity cost even if it is just the time
-taken to do it.  Epsilon cost and zero benefit is still a net harm.  This is
-even more true in the context of a complex system.  Any action taken in
-response to a rule in a system is going to interact with all the other rules in
-that system.  You have to pay complexity-rent on every new rule.  So an
-apparently-useless embellishment like signing commits can have potentially
-far-reaching consequences in the future.&lt;/p&gt;
-&lt;p&gt;Git commit signing itself is not particularly consequential.  I have probably
-spent more time writing this blog post than the sum total of all the time
-wasted by all programmers configuring their git clients to add useless
-signatures; even the relatively modest readership of this blog will likely
-transfer more data reading this post than all those signatures will take to
-transmit to the various git clients that will read them.  If I just convince
-you not to sign your commits, I don’t think I’m coming out ahead in the
-&lt;a href="https://en.wikipedia.org/wiki/Felicific_calculus"&gt;felicific calculus&lt;/a&gt; here.&lt;/p&gt;
-&lt;p&gt;What I am actually trying to point out here is that it is useful to &lt;em&gt;carefully
-consider how to avoid adding junk complexity to your systems&lt;/em&gt;.  One area where
-junk tends to leak in to designs and to cultures particularly easily is in
-intimidating subjects like trust and safety, where it is easy to get anxious
-and convince ourselves that piling on more &lt;em&gt;stuff&lt;/em&gt; is safer than leaving things
-simple.&lt;/p&gt;
-&lt;p&gt;If I can help you avoid adding even a little bit of unnecessary complexity, I
-think it will have been well worth the cost of the writing, and the reading.&lt;/p&gt;
-&lt;h2 id="acknowledgments"&gt;Acknowledgments&lt;/h2&gt;
-&lt;p class="update-note"&gt;Thank you to &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;my patrons&lt;/a&gt; who are
-supporting my writing on this blog.  If you like what you’ve read here and
-you’d like to read more of it, or you’d like to support my &lt;a href="https://github.com/glyph/"&gt;various open-source
-endeavors&lt;/a&gt;, you can &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;support my work as a sponsor&lt;/a&gt;!  I am also &lt;a href="mailto:consulting@glyph.im"&gt;available for
-consulting work&lt;/a&gt; if you think your organization
-could benefit from expertise on topics such as “What &lt;em&gt;else&lt;/em&gt; should I &lt;em&gt;not&lt;/em&gt; apply a cryptographic signature to?”.&lt;/p&gt;
-&lt;div class="footnote"&gt;
-&lt;hr /&gt;
-&lt;ol&gt;
-&lt;li id="fn:1:unsigned-commits-2024-1"&gt;
-&lt;p id="fn:1"&gt;Yes yes I know about &lt;a href="https://heartbleed.com"&gt;heartbleed&lt;/a&gt; and
-&lt;a href="https://en.wikipedia.org/wiki/Daniel_Bleichenbacher#RSA_Attacks"&gt;Bleichenbacher
-attacks&lt;/a&gt;
-and adoption of &lt;a href="https://en.wikipedia.org/wiki/Forward_secrecy"&gt;forward-secret
-ciphers&lt;/a&gt; and
-&lt;a href="https://en.wikipedia.org/wiki/CRIME"&gt;CRIME&lt;/a&gt; and
-&lt;a href="https://breachattack.com"&gt;BREACH&lt;/a&gt; and none of that is relevant here, okay?
-Jeez. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:1:unsigned-commits-2024-1" title="Jump back to footnote 1 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:2:unsigned-commits-2024-1"&gt;
-&lt;p id="fn:2"&gt;Do you see what I did there. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:2:unsigned-commits-2024-1" title="Jump back to footnote 2 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</description>
-      <guid isPermaLink="false">3c3eacaf09adb606379ed75acda072d59eb1a644db4f24d570f64094cdef40ca</guid>
-      <pubDate>Thu, 25 Jan 2024 00:29:00 +0000</pubDate>
     </item>
   </channel>
 </rss>

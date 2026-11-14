@@ -5,13 +5,88 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Fri, 13 Nov 2026 14:01:13 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Nov 2026 14:00:51 +0000</lastBuildDate>
+    <item>
+      <title>Attackers Exploit UnrealIRCd Flaw That Enables Server-Level Command Injection - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/attackers-exploit-unrealircd-flaw-that.html</link>
+      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Friday added a high-severity security flaw impacting UnrealIRCd, an open-source Internet Relay Chat (IRC) server, to its Known Exploited Vulnerabilities (KEV) catalog, following reports of active exploitation.
+The vulnerability, tracked as CVE-2026-114713 (CVSS score: 8.6), is a case of improper neutralization of delimiters</description>
+      <guid isPermaLink="false">1d96c9985621f798d053508fc43331f2427d3f2380efa9438be6d96aebe73080</guid>
+      <pubDate>Sat, 14 Nov 2026 12:38:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>How I received a job offer, and they hid a way to launch malicious code through Git inside the ZIP - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xw0l9z/how_i_received_a_job_offer_and_they_hid_a_way_to/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/ievkz"&gt; /u/ievkz &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://igumnoff.com/2026/11/14/zip-trap-git-status.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xw0l9z/how_i_received_a_job_offer_and_they_hid_a_way_to/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">9cf82fe8507738e0099c3ac8361dd719f112fc0fc675c51f4fb79e1fdb2ea3d2</guid>
+      <pubDate>Sat, 14 Nov 2026 11:52:22 +0000</pubDate>
+    </item>
+    <item>
+      <title>Verifying a matching decompilation of Scarface: The World Is Yours (2006, MSVC 7.1): byte comparison with relocation targets checked. - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xvu0w1/verifying_a_matching_decompilation_of_scarface/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/ruth_04d"&gt; /u/ruth_04d &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/scarface-decomp/scarface_decomp/blob/main/docs/METHODOLOGY.md"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xvu0w1/verifying_a_matching_decompilation_of_scarface/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">3a352b012563891acce140861270d61321c171913d5c8cf9c28bb3599e74368a</guid>
+      <pubDate>Sat, 14 Nov 2026 05:13:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeIPA -- multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/4d2a90c7-df51-11f1-a655-3497f65b111b.html</link>
+      <description/>
+      <guid isPermaLink="false">6f8a793439540073d97792574769fb61519c158323b92542b62f9c8f2caa30ea</guid>
+      <pubDate>Sat, 14 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>PostgreSQL Patches 52 Flaws, Including 22-Year-Old Bug Enabling Authenticated RCE - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/postgresql-patches-52-flaws-including.html</link>
+      <description>A type confusion flaw in PostgreSQL lets a database user who can create objects run code on the server. Updates released yesterday fix it, along with 51 other security flaws. Full protection from this flaw also requires rebuilding any C-language extensions installed on the server.
+The flaw, tracked as CVE-2026-6460, has a CVSS score of 8.8. Any code run this way has the rights of the operating</description>
+      <guid isPermaLink="false">2ec84a60fa31d92d5249ae905fed9679f0ce3d4620da53a3e1f3eabf8396d1ec</guid>
+      <pubDate>Fri, 13 Nov 2026 16:53:08 +0000</pubDate>
+    </item>
+    <item>
+      <title>New Mior and Skyfall Attacks Let Rogue Cloud Hosts Steal Secrets From AMD SEV-SNP VMs - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/new-mior-and-skyfall-attacks-let-rogue.html</link>
+      <description>Two attacks made public this week allow a malicious host to read data inside AMD SEV-SNP-protected virtual machines (VMs), which are built to keep the server's operator out.
+One of them, Mior, can also modify a VM's memory and fake the signed report confirming which software it runs. Both need control of the server's hypervisor, and Mior also needs control of the server's BIOS. Researchers</description>
+      <guid isPermaLink="false">93dc906b3c8ce0ba3c99e28bff97c4158e1c12806657f4c5fc1ec01f5eb3f061</guid>
+      <pubDate>Fri, 13 Nov 2026 15:27:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>Rebuilt Super Mario Forever 2012 from GM8.1 bytecode to run natively on the web (WebGL + TypeScript) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xv9ht5/rebuilt_super_mario_forever_2012_from_gm81/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Enough_Clerk_6502"&gt; /u/Enough_Clerk_6502 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/ChinmayaGit/Mario-Forever-2012-Rebuild"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xv9ht5/rebuilt_super_mario_forever_2012_from_gm81/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">74469e29879a8fdf52f3cb625a45b884916354c4a1d7a222eead1ed7c3106e00</guid>
+      <pubDate>Fri, 13 Nov 2026 14:35:41 +0000</pubDate>
+    </item>
+    <item>
+      <title>FBI Says North Korean Hackers Stole Over $400 Million in Crypto Using Deepfake Video Calls - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/fbi-says-north-korean-hackers-stole.html</link>
+      <description>The U.S. Federal Bureau of Investigation (FBI) has established that threat actors tied to the Democratic People's Republic of Korea (DPRK aka North Korea) have stolen more than $400 million worth of cryptocurrency as part of a social engineering scheme codenamed FaceStealer in the last 18 months.
+As part of a coordinated set of actions announced by the U.S. government, the cloud-based</description>
+      <guid isPermaLink="false">96535d8b2daf7e0d75d0eb946a387de21654e26a6421e8e060899f5b7bcf8b02</guid>
+      <pubDate>Fri, 13 Nov 2026 14:28:58 +0000</pubDate>
+    </item>
+    <item>
+      <title>Trezor Confirms Hidden Implants in CryptoBilis-Sold Wallets That Can Steal Recovery Phrases - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/trezor-confirms-hidden-hardware.html</link>
+      <description>Three Trezor Safe 5 wallets bought from the reseller CryptoBilis contain an implant, an extra circuit board that can copy their recovery phrases, hardware wallet maker Trezor said yesterday.
+The implant reads the phrase from the wallet's screen and sends it over the mobile network to a server controlled by the attackers. The company examined one of the wallets in its lab, identified the other</description>
+      <guid isPermaLink="false">ec9e57403acd1899ba3cd9a35f003bb9b8f3795c5278d6fbd58e4a8203c43e80</guid>
+      <pubDate>Fri, 13 Nov 2026 13:54:20 +0000</pubDate>
+    </item>
     <item>
       <title>In 2013, I reverse-engineered Operation7 and rewrote it. I’ve only released the launcher and its internal system so far; I’ll upload the private server later on. (19 years... maybe it’s time to rest?) - Reverse Engineering</title>
       <link>https://www.reddit.com/r/ReverseEngineering/comments/1xv7u4s/in_2013_i_reverseengineered_operation7_and/</link>
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/AsturiasTV"&gt; /u/AsturiasTV &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/VassaMadness/Operation7Launcher"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xv7u4s/in_2013_i_reverseengineered_operation7_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">bb39aa09e36a86f4f8adc22e3e05281dfa77582d0e680001b0a162e7202d84da</guid>
       <pubDate>Fri, 13 Nov 2026 13:26:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>Phone Phreaking – The Blind Teenager Who Whistled Free Calls - Darknet - The Darkside</title>
+      <link>https://www.darknet.org.uk/2026/11/phone-phreaking-joe-engressia-john-draper/</link>
+      <description>Phone phreaking explained through Joe Engressia, the blind teenager the AP reported in 1968 had whistled free calls, plus Captain Crunch and the blue box.</description>
+      <guid isPermaLink="false">ad7c31744bcdafb7371fd6d7b02e0e58ceb4ced1fad8a3e81a026015eac54b90</guid>
+      <pubDate>Fri, 13 Nov 2026 13:10:56 +0000</pubDate>
     </item>
     <item>
       <title>When an AI Agent Goes Wrong, Can You Stop It? - The Hacker News</title>
@@ -1490,84 +1565,6 @@ One of them, ZDI-CAN-33774, can be triggered before any network authentication. 
 According to multiple reports from the Associated Press, the New York Times, Reuters, and the Wall Street Journal, state District Court Judge Francis J. Mathew called</description>
       <guid isPermaLink="false">6f0f39c5e05fd169323aa505057869e2ba89c25594f37bd3c203cb17631b5504</guid>
       <pubDate>Thu, 22 Oct 2026 16:12:31 +0000</pubDate>
-    </item>
-    <item>
-      <title>I reverse engineered Black &amp; White with Astra and added LLM + voice support on top of the game's original AI. The environment is exposed to the LLM's context and the creature can select tools to inspect and interact with the world or answer questions about it. - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xcme97/i_reverse_engineered_black_white_with_astra_and/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/sedthh"&gt; /u/sedthh &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/sedthh/batch_and_vibe"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xcme97/i_reverse_engineered_black_white_with_astra_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">7d25237d23abaebde9245719ff11186cbc65bc7b53822d42b873387dab821328</guid>
-      <pubDate>Thu, 22 Oct 2026 15:54:07 +0000</pubDate>
-    </item>
-    <item>
-      <title>INTERPOL Arrests 1,462 Suspects, Disrupts 10,909 Cybercrime Networks in Global Crackdown - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/interpol-arrests-1462-suspects-disrupts.html</link>
-      <description>INTERPOL on Thursday announced that a coordinated law enforcement action has disrupted 10,909 malicious networks and recovered more than $105 million in illicit funds.
-In tandem, the effort saw law enforcement agencies from 21 countries arrest 1,462 suspects. Codenamed Operation Serengeti III, the cybercrime crackdown took place between June 29 and August 31, 2026.
-"Authorities identified</description>
-      <guid isPermaLink="false">99376a4740f36f0a191263473911a6b7c47a80de82b6b5f8f7faeb33c6877e91</guid>
-      <pubDate>Thu, 22 Oct 2026 13:38:22 +0000</pubDate>
-    </item>
-    <item>
-      <title>Railway Says Intruder May Have Accessed Customer Secrets, Urges Credential Rotation - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/railway-says-intruder-may-have-accessed.html</link>
-      <description>Platform-as-a-Service (PaaS) provider Railway on Wednesday disclosed "anomalous activity" related to systems that store customer environment variables.
-Upon further investigation, the company found that an unauthorized third party may have gained access to encrypted environment variables, and, in some cases, obtained the decrypted contents. The impact, it said, is limited to a "subset of users,</description>
-      <guid isPermaLink="false">81674abe976990534bd72302278d267d1c55f0350ca0be65415e4c2925761dd6</guid>
-      <pubDate>Thu, 22 Oct 2026 11:15:42 +0000</pubDate>
-    </item>
-    <item>
-      <title>OpenCode Flaw Lets Malicious MCP Servers Execute Code During Sign-In on Windows and WSL - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/opencode-flaw-lets-malicious-mcp.html</link>
-      <description>A flaw in the OpenCode AI coding agent allowed a malicious or hijacked MCP server to run code on a developer's Windows or WSL machine when the developer signed in. OpenCode connects to MCP (Model Context Protocol) servers to add outside tools, and such code would run with the developer's own access.
-Anomaly, the company behind OpenCode, fixed the flaw in&amp;nbsp;version 1.18.33&amp;nbsp;on September</description>
-      <guid isPermaLink="false">deb20e867a912132f91a6696b109e3762acabee1c7c7b797ff9f4dadf991b80d</guid>
-      <pubDate>Thu, 22 Oct 2026 10:44:05 +0000</pubDate>
-    </item>
-    <item>
-      <title>Vidar Stealer — Chrome Injection &amp; Malicious JS Targeting Google &amp; Reddit Sessions - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xce5kl/vidar_stealer_chrome_injection_malicious_js/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/StructBreaker"&gt; /u/StructBreaker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/kaandemir993/Vidar-Stealer-Chrome-Injection-Malicious-JS-Targeting-Google-Reddit-Sessions-Analysis"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xce5kl/vidar_stealer_chrome_injection_malicious_js/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">4b3105040a4b8e39af9d64b418877cc1645bc2a5b67178a838add892c5f39678</guid>
-      <pubDate>Thu, 22 Oct 2026 09:45:47 +0000</pubDate>
-    </item>
-    <item>
-      <title>Ghidra 12.2 has been released! - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xcd0rm/ghidra_122_has_been_released/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/ryanmkurtz"&gt; /u/ryanmkurtz &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/NationalSecurityAgency/ghidra/releases/tag/Ghidra_12.2_build"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xcd0rm/ghidra_122_has_been_released/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">947b1f97a8558c0ca9a39ac78e5c08d3e1e9f13fb1f060082a449173cff50944</guid>
-      <pubDate>Thu, 22 Oct 2026 08:33:08 +0000</pubDate>
-    </item>
-    <item>
-      <title>LiteLLM Suspects GitHub Token Leak in AI Gateway Logs Behind Malicious Package Release - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/litellm-suspects-github-token-leak-in.html</link>
-      <description>LiteLLM on Wednesday disclosed that threat actors compromised "multiple independent security controls" to push a malicious version of the Python package containing a credential stealer and a backdoor.
-On October 21, 2026, LiteLLM's release pipeline was compromised to push 1.107.0 to the Docker Hub registry and the Python Package Index (PyPI) repository. The incident took place around 4:00 a.m.</description>
-      <guid isPermaLink="false">7a0d439f60faa7754eff89ed46301a1d329613fb9615ad2169d13387d3be8b0f</guid>
-      <pubDate>Thu, 22 Oct 2026 08:28:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>Node.js Brotli Decoder Bug Could Allow Remote Code Execution in All Supported Versions - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/nodejs-brotli-decoder-bug-could-allow.html</link>
-      <description>Node.js released&amp;nbsp;security updates&amp;nbsp;on October 21 for its three supported release lines, 22.x, 24.x and 26.x, fixing 10 flaws. The most serious is a bug in the Brotli decompression code that Node.js bundles, which the project says can allow remote code execution, meaning an attacker could run code of their choosing on the affected system.
-Each supported line has one fixed version:&amp;nbsp;</description>
-      <guid isPermaLink="false">2c83c5ac18db9bd8d8ac19fc83146e793bb414e597a9a31b825ed3de58094821</guid>
-      <pubDate>Thu, 22 Oct 2026 07:47:22 +0000</pubDate>
-    </item>
-    <item>
-      <title>New QPACK Flaws Can Crash HTTP/3 Servers, Trigger Up to 4,000-Fold Memory Amplification - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/new-qpack-flaws-can-crash-http3-servers.html</link>
-      <description>A remote attacker who has not logged in can crash many HTTP/3 web servers with a single connection, security firm FoxIO&amp;nbsp;disclosed, releasing working proof-of-concept code.
-By sending a small batch of compressed HTTP headers that expands in memory to a much larger set, the attacker can force the server to use thousands of times more memory than it received, enough to run a default server</description>
-      <guid isPermaLink="false">ad80e812aaedec100dd4bd3b5ce48c89035828fdb19e92132a74e5200e2c7e88</guid>
-      <pubDate>Thu, 22 Oct 2026 06:38:31 +0000</pubDate>
-    </item>
-    <item>
-      <title>Someone Tried to Exploit PHP2Shell 4 Days Before the Vulnerabilities Were Publicly Disclosed - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/someone-tried-to-exploit-php2shell-4.html</link>
-      <description>Amazon's Threat Intelligence team on Wednesday said it detected an attempt to exploit the newly disclosed PHP2Shell vulnerabilities on October 17, 2026, against its MadPot honeypot service, as the flaws come under broad exploitation in the wild following the release of the patches.
-"The exploit attempt originated from an IP address associated with a commercial anonymization network," CJ Moses,</description>
-      <guid isPermaLink="false">f3c4720b573a1027bfe0edb72d14386ebf5076041a6ec46f5a2e3787e6d548d1</guid>
-      <pubDate>Thu, 22 Oct 2026 06:34:10 +0000</pubDate>
     </item>
   </channel>
 </rss>
