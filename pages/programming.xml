@@ -5,7 +5,162 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sat, 14 Nov 2026 14:00:51 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 16 Nov 2026 14:00:40 +0000</lastBuildDate>
+    <item>
+      <title>Graham Dumpleton: Muru: scaling from what the workers report - Planet Python</title>
+      <link>https://grahamdumpleton.me/posts/2026/11/muru-scaling-from-what-the-workers-report/</link>
+      <description>&lt;p&gt;In the &lt;a href="https://grahamdumpleton.me/posts/2026/11/muru-working-with-kubernetes-not-around-it/"&gt;Kubernetes post&lt;/a&gt; the scaling was done from outside. Muru published how busy its worker slots were, and a HorizontalPodAutoscaler added pods when the number went over a target. That works, but it can only ever add pods, and it has no idea why the slots were busy. Back on a host running the Muru daemon, Muru decides for itself how many worker processes each release has, and because it sits between the requests and the workers, it can say rather more about why requests are waiting than a single number. The same scaling policy also applies under &lt;code&gt;muructl serve&lt;/code&gt; in a container, where another worker is only added if it fits under the container's memory limit, but here I am back with the daemon.&lt;/p&gt;
+&lt;p&gt;Most Python web servers don't scale the number of processes at all. Gunicorn starts the number of workers it is told to, and the only way to change that while it runs is to send it SIGTTIN or SIGTTOU, which add or remove one worker. Uvicorn and granian both take a fixed &lt;code&gt;--workers&lt;/code&gt; count, and mod_wsgi's daemon mode has a fixed number of processes set in the Apache configuration. The exception is uWSGI, whose cheaper subsystem can spawn and stop workers based on how many are busy, or on the backlog of connections waiting to be accepted.&lt;/p&gt;
+&lt;p&gt;So adding workers when they are all busy isn't new, and if that were all Muru did it wouldn't be worth a post. What is different is what Muru does with everything else it knows about the workers, and whether more workers is even the right answer.&lt;/p&gt;
+&lt;h2&gt;Growing and shrinking&lt;/h2&gt;
+&lt;p&gt;The application for this post has a few pages which each misbehave in a different way. The first, &lt;code&gt;/orders&lt;/code&gt;, sleeps for a fifth of a second as if waiting on a database. The release starts with one worker of two threads, and has a scaling policy in spare mode, which tries to keep between one and three idle workers in hand, much as Apache httpd does with spare processes or threads:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[tool.muru]
+entrypoint = &amp;quot;app:application&amp;quot;
+processes = 1
+threads = 2
+[tool.muru.scaling]
+mode = &amp;quot;spare&amp;quot;
+min_workers = 1
+max_workers = 12
+min_spare = 1
+max_spare = 3
+scale_in_window = &amp;quot;30s&amp;quot;
+hold_after_growth = &amp;quot;30s&amp;quot;
+reap_interval = &amp;quot;5s&amp;quot;
+min_lifetime = &amp;quot;10s&amp;quot;
+idle_reap_after = &amp;quot;45s&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The last five settings shorten windows which default to minutes, so it all happens quickly enough to watch. I deployed it to a daemon and set sixteen clients asking for &lt;code&gt;/orders&lt;/code&gt; over and over for a minute. Three seconds in, &lt;code&gt;muructl scale status&lt;/code&gt; showed the group to be well short:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;shop@r1
+GROUP        WORKERS      SLOTS      IDLE    QUEUE-P95     REAPS      POLICY
+default      1            2/2        -7.00   under 2.5 s   0/6        spare 1-12 workers, 1-3 idle
+  workers: cpu -, gc -, gil wait p95 -, loop lag p95 -
+  diagnosis: waiting for the workers' first report
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Both slots were busy, the requests waiting at the edge were counted as seven workers' worth of slots wanted, and the 95th percentile of the time requests waited for a slot was in the seconds. The workers hadn't yet sent their first report, so the diagnosis had to wait for it. Once the shortage had held for the five second scale-out window, the daemon forked more workers, at most four at a time:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;default: scale out from 1 to 5 workers: short by 7.00 workers for 5999ms; diagnosis: waiting for the workers' first report
+default: scale out from 5 to 9 workers: short by 3.00 workers for 5999ms; diagnosis: I/O bound with exhausted slots; ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Each new worker is a fork of the host which already imported the application, as covered in the &lt;a href="https://grahamdumpleton.me/posts/2026/11/muru-import-once-fork-many/"&gt;import once, fork many&lt;/a&gt; post, so the second step came only seven seconds after the first. From then on the group sat at nine workers, sixteen of eighteen slots busy and one worker in hand, and the queue wait was under a millisecond.&lt;/p&gt;
+&lt;p&gt;After the load stopped, the workers were taken away again, but slowly, one at a time:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;default: scale in from 9 to 8 workers: at least 9.00 idle workers over the last 30s, over max_spare 3; diagnosis: idle
+default: scale in from 8 to 7 workers: at least 8.00 idle workers over the last 30s, over max_spare 3; diagnosis: idle
+...
+default: scale in from 4 to 3 workers: at least 4.00 idle workers over the last 30s, over max_spare 3; diagnosis: idle
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and then stopped at three, with more than it needed:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;default      3            0/6        3.00    -             6/6 halt   spare 1-12 workers, 1-3 idle
+  ...
+  last: suspended: 6 workers reaped in the last hour, the churn budget; scale-in is suspended and the scale-in window doubled until it recovers (1s ago)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Each release has a churn budget of six reaps an hour. I had shortened every window but left that alone, so it was spent and scale-in was suspended. It is there so that a badly tuned policy can't keep a group swinging up and down all day.&lt;/p&gt;
+&lt;h2&gt;When the answer is more threads&lt;/h2&gt;
+&lt;p&gt;Once the workers had reported, the status had more to say. This is from while the group was still growing:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;default      5            10/10      -1.00   under 2.5 s   0/6        spare 1-12 workers, 1-3 idle
+  workers: cpu 0%, gc 0%, gil wait p95 under 0.1 ms, loop lag p95 -
+  diagnosis: I/O bound with exhausted slots; for the next release, more threads per worker, or more concurrency for an ASGI application
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The group's slots were all busy, but its workers were using no CPU at all. That is what waiting on a database looks like, and nine processes is a costly way to hold sixteen requests that are each just waiting. The suggestion was more threads per worker, and that can't be done by the autoscaler. A release's processes and threads are fixed when it starts, so the change goes into the next release.&lt;/p&gt;
+&lt;p&gt;I deployed the same application with &lt;code&gt;threads = 8&lt;/code&gt; and ran the same load. Instead of nine workers it settled at three:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;default      3            16/24      1.00    under 1 ms    0/6        spare 1-12 workers, 1-3 idle
+  workers: cpu 1%, gc 0%, gil wait p95 under 0.1 ms, loop lag p95 -
+  diagnosis: within capacity
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Over the minute it served 4440 requests compared with 4007, the 99th percentile response time was 0.409 seconds where before it was 1.623, as it needed only one step to scale out rather than two, and each of the three workers had 12MB of memory of its own:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;WORKER  PID      GROUP      UP       REQUESTS   THREADS  THREAD-OLDEST  RSS     USS     ROUTED  STATE
+0       67546    default    38s      1090       6/8      0.2s           18MB    12MB    yes     ready
+1       67729    default    31s      813        5/8      0.0s           17MB    12MB    yes     ready
+2       67730    default    31s      790        5/8      0.2s           17MB    12MB    yes     ready
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;When the answer is fewer threads&lt;/h2&gt;
+&lt;p&gt;More threads isn't always the answer. In the import once, fork many post I showed four threads of CPU bound code running four times slower than one, because they had to take turns holding the global interpreter lock, and said Muru kept track of time spent waiting for the GIL. This is where that comes in.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;/prices&lt;/code&gt; page does about 13 milliseconds of pure Python arithmetic. With the eight thread release still serving, and running on CPython 3.15 with the GIL, eight clients asking for it gave:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;default      3            8/24       2.00    under 1 ms    0/6        spare 1-12 workers, 1-3 idle
+  workers: cpu 100%, gc 0%, gil wait p95 under 50 ms, loop lag p95 -
+  diagnosis: GIL bound; for the next release, more processes with fewer threads each
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;By the measure the autoscaler uses, there was nothing to do. Only eight of the twenty-four slots were busy and there were two idle workers in hand. Yet the three workers were each using all of the one core the GIL lets them have, and the 95th percentile of the time threads with work to run waited for their turn was put at under 50 milliseconds. A request which takes 13 milliseconds on its own had a median time of 20 milliseconds.&lt;/p&gt;
+&lt;p&gt;An autoscaler working from busy slots or a connection backlog, Muru's own or uWSGI's, can't see this. Adding threads would make it worse, and adding workers wouldn't happen because the slots aren't full. The diagnosis says what would help, which is more processes with fewer threads each. I deployed the release again with one thread per worker:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;default      9            8/9        1.00    under 1 ms    0/6        spare 1-12 workers, 1-3 idle
+  workers: cpu 86%, gc 0%, gil wait p95 under 0.1 ms, loop lag p95 -
+  diagnosis: CPU bound; for the next release, more processes, up to the node's cores; more threads will not help
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now each request occupied a whole worker, the slots filled, and the autoscaler took the group to nine workers on this ten core machine. It served 24863 requests in the 45 seconds compared with 18626, and the median time was 13 milliseconds.&lt;/p&gt;
+&lt;p&gt;The other way around the GIL is to not have one. I deployed the eight thread release again, with nothing changed but a &lt;code&gt;.python-version&lt;/code&gt; of &lt;code&gt;3.15t&lt;/code&gt;, so uv built its environment with the free-threaded build of Python 3.15:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;default      2            7/16       1.12    under 1 ms    0/6        spare 1-12 workers, 1-3 idle
+  workers: cpu 48%, gc 0%, gil wait p95 under 0.1 ms, loop lag p95 -
+  diagnosis: within capacity
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Two workers of eight threads served 26040 requests in the same 45 seconds, a little more than the nine single threaded processes, with nothing waiting for a GIL. The CPU figure is now a share of a core per thread, as threads on a free-threaded build really can run in parallel.&lt;/p&gt;
+&lt;h2&gt;When the answer is less garbage&lt;/h2&gt;
+&lt;p&gt;The &lt;code&gt;/search&lt;/code&gt; page makes short lived objects, 40,000 dictionaries per request, in pairs which refer to each other. With a release of four threads per worker and four clients:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;default      2            4/8        1.00    under 1 ms    0/6        spare 1-12 workers, 1-3 idle
+  workers: cpu 100%, gc 73%, gil wait p95 under 5 ms, loop lag p95 -
+  diagnosis: paused by garbage collection of short-lived reference cycles; for the next release, break the cycles, or use weakref for the references back
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Close to three quarters of the workers' time was going into garbage collection. A collection stops every thread in the process, so that time is lost to every request in flight.&lt;/p&gt;
+&lt;p&gt;The diagnosis says why. A dictionary only needs the garbage collector, rather than being freed as soon as nothing refers to it, when it is part of a reference cycle, and &lt;code&gt;muructl debug memory&lt;/code&gt; showed the youngest generation's collections freeing hundreds of millions of objects. Long lived objects being scanned over and over don't get freed, so this was garbage being made and collected. Removing the reference back was a one line change:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;default      2            4/8        1.00    under 1 ms    0/6        spare 1-12 workers, 1-3 idle
+  workers: cpu 100%, gc 0%, gil wait p95 under 1 ms, loop lag p95 -
+  diagnosis: CPU bound; for the next release, more processes, up to the node's cores; more threads will not help
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The garbage collection share went to zero, and in 40 seconds the release served 73637 requests where before it had served 17977, with the median time down from 8 milliseconds to 2. The diagnosis then moved on to the next thing holding the group back, which was now plain CPU.&lt;/p&gt;
+&lt;h2&gt;When the event loop is blocked&lt;/h2&gt;
+&lt;p&gt;An ASGI application has one event loop per worker rather than a pool of threads, and one blocking call in a coroutine holds up everything else on that loop. This release had an &lt;code&gt;/invoice&lt;/code&gt; page calling a function which blocks for a fifth of a second, as a synchronous client library would, directly from the coroutine. With eight clients on a page which awaits for 50 milliseconds, and one client on &lt;code&gt;/invoice&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;default      2            9/2000     1.99    under 1 ms    0/6        spare 1-12 workers, 1-3 idle
+  workers: cpu 2%, gc 0%, gil wait p95 under 0.5 ms, loop lag p95 under 500 ms
+  diagnosis: event loop held by blocking code; for the next release, await blocking calls, or run them in a thread, so the loop keeps serving
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Each worker's event loop has a heartbeat twice a second, and the lag is how late it runs. Here it was hundreds of milliseconds late. The slots barely registered, nine busy of two thousand, which is the concurrency limit of two event loops, so nothing based on slots would ever have noticed. The page which should have taken 50 milliseconds had a 95th percentile of 0.410 seconds, as it kept getting stuck behind an invoice.&lt;/p&gt;
+&lt;p&gt;Changing the one line to &lt;code&gt;body = await asyncio.to_thread(render_invoice)&lt;/code&gt;, so the blocking call ran in a thread, brought the loop lag down to under 5 milliseconds and the 95th percentile back to 0.054 seconds. The eight clients got through 6064 requests in 40 seconds instead of 2960.&lt;/p&gt;
+&lt;h2&gt;When the answer is a worker group&lt;/h2&gt;
+&lt;p&gt;The last case is one slow endpoint making everything else wait. Here &lt;code&gt;/reports&lt;/code&gt; takes two seconds and is used in bursts, ten requests at once every six seconds, alongside two clients steadily asking for &lt;code&gt;/orders&lt;/code&gt;. The release had two workers of four threads and no scaling policy, but even a static release gets a diagnosis. Every few seconds it read:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;default      2            2/8        1.50    under 2.5 s   -          static
+  workers: cpu 0%, gc 0%, gil wait p95 under 0.1 ms, loop lag p95 -
+  diagnosis: a few heavy requests; for the next release, a worker group of their own for the slow paths
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Most of the time the slots were mostly free, but the queue wait was in the seconds, because each burst of reports took every slot and &lt;code&gt;/orders&lt;/code&gt; requests arriving then waited behind them. For &lt;code&gt;/orders&lt;/code&gt; the median response time was fine at 0.208 seconds, but one in a hundred requests took over two seconds.&lt;/p&gt;
+&lt;p&gt;Scaling out would help for a moment, until the next burst took all the extra slots as well. What the diagnosis suggests is separating the slow paths, so I gave them a worker group of their own, forked from the same host:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[tool.muru]
+entrypoint = &amp;quot;app:application&amp;quot;
+processes = 2
+threads = 4
+[tool.muru.groups.reports]
+paths = [&amp;quot;/reports&amp;quot;]
+processes = 1
+threads = 12
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Each group then gets its own line, and its own diagnosis:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;default      2            2/8        1.50    under 1 ms    -          static
+  workers: cpu 0%, gc 0%, gil wait p95 under 0.1 ms, loop lag p95 -
+  diagnosis: within capacity
+reports      1            10/12      0.17    -             -          static
+  workers: cpu 0%, gc 0%, gil wait p95 under 0.1 ms, loop lag p95 -
+  diagnosis: I/O bound with exhausted slots; for the next release, more threads per worker, or more concurrency for an ASGI application
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The reports now only compete with each other. For &lt;code&gt;/orders&lt;/code&gt;, the slowest of the 389 requests took 0.212 seconds, where before the 99th percentile was 2.093. Each group can have its own scaling policy too, so a group like &lt;code&gt;reports&lt;/code&gt; could be allowed to grow on its own when a burst arrives.&lt;/p&gt;
+&lt;h2&gt;Scaling to a target&lt;/h2&gt;
+&lt;p&gt;Spare mode is about keeping idle workers in hand. The other mode, target mode, keeps the share of busy slots near a target, and can also scale on how long requests wait:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[tool.muru.scaling]
+mode = &amp;quot;target&amp;quot;
+min_workers = 1
+max_workers = 8
+slot_utilization = 0.6
+queue_wait_p95 = &amp;quot;100ms&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With eight threads per worker and the same sixteen clients on &lt;code&gt;/orders&lt;/code&gt;, it went straight to the count which would carry the load at the target:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;default      4            16/32      2.00    under 1 ms    0/6        target 1-8 workers, 60% of slots busy, queue wait p95 100 ms
+  workers: cpu 0%, gc 0%, gil wait p95 under 0.1 ms, loop lag p95 -
+  diagnosis: within capacity
+  last: scaled out to 4: 100% of slots busy, over the target of 60% for 6s (19s ago)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Sixteen busy slots at 60 percent needs about 27 slots, which is four workers of eight threads. This is much the same rule the HorizontalPodAutoscaler applied in the Kubernetes post, except that adding a worker here costs a fork rather than a new pod, and the diagnosis comes along with it.&lt;/p&gt;
+&lt;h2&gt;What's next&lt;/h2&gt;
+&lt;p&gt;What the daemon does about the worker count is fairly conventional. Grow quickly when requests wait, shrink slowly, and don't thrash. The part I find more useful is the diagnosis, because in every case above except the first, adding workers was either not going to happen or not going to help. Whether the answer was more threads, fewer threads, a free-threaded interpreter, less garbage, a thread for a blocking call or a group of its own for a slow path, it was a change to the next release, and you only know which by measuring what the workers are actually doing.&lt;/p&gt;
+&lt;p&gt;Scaling also goes the other way. A server with many small sites, previews or staging copies doesn't want each of them holding workers while nobody is using it. The next post, scaling to zero, is about taking a release all the way down to no workers, and what it then costs for the next request to wake it up again.&lt;/p&gt;</description>
+      <guid isPermaLink="false">e1109743a1e9d7bfaa6bf2522e9b71c70a57624452197b5bd7bd442f86682c55</guid>
+      <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Graham Dumpleton: Muru: a better tenant in a container - Planet Python</title>
       <link>https://grahamdumpleton.me/posts/2026/11/muru-a-better-tenant-in-a-container/</link>
@@ -19882,343 +20037,6 @@ with Python”.&lt;/p&gt;</description>
       <description>&lt;p&gt;Whenever I publish &lt;a href="https://hynek.me/articles/docker-uv/"&gt;something&lt;/a&gt; about my Python Docker workflows, I invariably get challenged about whether it makes sense to use &lt;a href="https://docs.python.org/3/library/venv.html"&gt;&lt;em&gt;virtual environments&lt;/em&gt;&lt;/a&gt; in Docker containers. As always, it’s a trade-off, and I err on the side of standards and predictability.&lt;/p&gt;</description>
       <guid isPermaLink="false">57885e311c8122bd0365a7d9210e256dd9ad962efcd1c5a4bbf868fffca23194</guid>
       <pubDate>Mon, 02 Sep 2024 11:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Glyph Lefkowitz: Against Innovation Tokens</title>
-      <link>https://blog.glyph.im/2024/07/against-innovation-tokens.html</link>
-      <description>&lt;p class="update-note"&gt;Updated 2024-07-04: After some discussion, added an &lt;a href="https://glyph.twistedmatrix.com/feeds/atom.xml#epilogue"&gt;epilogue&lt;/a&gt; going
-into more detail about the value of the distinction between the two types of
-tokens.&lt;/p&gt;
-&lt;p&gt;In 2015, &lt;a href="https://mcfunley.com/choose-boring-technology"&gt;Dan McKinley laid out a model for software teams selecting
-technologies&lt;/a&gt;.  He proposed that
-each team have a limited supply of “innovation tokens”, and, when selecting a
-technology, they can choose boring ones for free but “innovative” ones cost a
-token.  This implies that we all know which technologies are innovative, and we
-assume that they are inherently costly, so we want to restrict their supply.&lt;/p&gt;
-&lt;p&gt;That model has become popular to the point that it is now part of the
-vernacular.  In many discussions, it is accepted as received wisdom, or even
-common sense.&lt;/p&gt;
-&lt;p&gt;In this post I aim to show you that despite being superficially helpful, this
-model is wrong, and in fact, may be counterproductive.  I believe it is an
-&lt;a href="https://en.wikipedia.org/wiki/Attractive_nuisance_doctrine"&gt;attractive
-nuisance&lt;/a&gt; in
-computer programming discourse.&lt;/p&gt;
-&lt;p&gt;In fairness to Mr. McKinley, the model he described in this post is:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;nearly a decade old at this point, and&lt;/li&gt;
-&lt;li&gt;much more nuanced in its description of the problem with “innovation” than
-   the subsequent memetic mutation of the concept.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;While I will be referencing McKinley’s post, and I do take some issue with it,
-I am reacting more strongly to the life of its own that this idea has taken on
-once it escaped its original context.  There are a zillion &lt;em&gt;worse&lt;/em&gt; posts
-rehashing this concept, on blogs and LinkedIn, but I won’t be linking to them
-because the goal is not to call anybody out.&lt;/p&gt;
-&lt;p&gt;To some extent I am re-raising McKinley’s own caveats and reinforcing them.  So
-I may be arguing with a strawman, but it’s a strawman I have seen deployed with
-some regularity over the years.&lt;/p&gt;
-&lt;p&gt;To reduce it to its core, this strawman is “don’t use new or interesting
-technology, and if you have to, only use a little bit”.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Within the broader culture of programmers, an “innovation token” has become a
-shorthand to smear any technology perceived — almost always based on vibes, not
-data — as risky, and the adoption of novel approaches as pretentious and
-unserious.  Speaking of programmer culture though, I do have to acknowledge
-there is &lt;em&gt;also&lt;/em&gt; a pervasive tendency for us to get distracted by novelty and
-waste time on puzzles rather than problem-solving, so I understand where the
-reactionary attitude represented by the concept of an innovation token comes
-from.&lt;/p&gt;
-&lt;p&gt;But it &lt;em&gt;is&lt;/em&gt; reactionary.&lt;/p&gt;
-&lt;p&gt;At its worst, it borders on anti-intellectualism.  I have heard it used on more
-than one occasion as a thought-terminating cliche to discard a potentially
-promising new tool.  But before I get into that, let me try to give a
-sympathetic summary of the idea, because the model is not &lt;em&gt;entirely&lt;/em&gt; bad.&lt;/p&gt;
-&lt;p&gt;It has been popular for a long time because it &lt;em&gt;does&lt;/em&gt; work okay as an
-heuristic.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;The real problem that McKinley is describing is &lt;em&gt;operational overhead&lt;/em&gt;.  When
-programmers make a technology selection, we are often considering how difficult
-it will make the &lt;em&gt;programming&lt;/em&gt;.  Innovative technology selections are, by
-definition, less mature.&lt;/p&gt;
-&lt;p&gt;That lack of maturity — particularly in the open source world — often means
-that the project is in a part of its lifecycle where it is concerned with
-&lt;em&gt;development&lt;/em&gt; affordances more than &lt;em&gt;operational&lt;/em&gt; ones.  Therefore, the
-stereotypical innovative project, even one which might legitimately be a big
-improvement to development velocity, will create more operational
-overhead. That operational overhead creates a &lt;em&gt;hidden&lt;/em&gt; cost for the operations
-team later on.&lt;/p&gt;
-&lt;p&gt;This is a point I emphatically agree with.  When selecting a technology, you
-should consider its ease of operation &lt;em&gt;more&lt;/em&gt; than its ease of development. If
-your team is successful, they will be operating and maintaining it far longer
-than they are initially integrating and deploying it.&lt;/p&gt;
-&lt;p&gt;Furthermore, some operational overhead is inevitable.  You will need to hire
-people to mitigate it.  More popular, more mature projects will have
-a bigger talent pool to hire from, so your training costs will be lower, and
-those training costs are part of your operational cost too.&lt;/p&gt;
-&lt;p&gt;Rationing innovation tokens therefore &lt;em&gt;can&lt;/em&gt; work as a reasonable heuristic,
-or proxy metric, for avoiding a mess of complex operational problems associated
-with dependencies that are expensive to operate and hard to hire for.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;There are some minor issues I want to point out before getting to the
-overarching one.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;“has a lot of operational overhead” is a &lt;em&gt;stereotype&lt;/em&gt; of a new technology,
-   not an inherent property.  If you want to reject a technology on the basis
-   of being too high-overhead, at least look into its &lt;em&gt;actual&lt;/em&gt; overhead a
-   little bit.  Sometimes, especially in 2024 as opposed to 2015, the point of
-   a new, shiny piece of tech &lt;em&gt;is to address operational issues&lt;/em&gt; that the more
-   boring, older one had.&lt;/li&gt;
-&lt;li&gt;“hard to learn” is also a stereotype; if “newer” meant “harder” then we
-   would all be using &lt;a href="https://en.wikipedia.org/wiki/Troff"&gt;&lt;code&gt;troff&lt;/code&gt;&lt;/a&gt; rather
-   than Google Docs. Actually ask if the innovativeness is making things harder
-   or easier; don’t assume.&lt;/li&gt;
-&lt;li&gt;You are going to have to train people on your stack no matter what.  If a
-   technology is adding a lot of value, it’s absolutely worth hiring for
-   general ability and making a plan to teach people about it.  You are going
-   to have to do this with the core technology of your product anyway.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;As I said, though, these are minor issues. The &lt;em&gt;big&lt;/em&gt; problem with modeling
-operational overhead as an “innovation token” is that an even bigger concern
-than selecting an innovative tool is selecting &lt;em&gt;too many tools&lt;/em&gt;.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;The impulse to select more tools and make your operational environment more
-complex can be made &lt;em&gt;worse&lt;/em&gt; by trying to avoid innovative tools.  The important
-thing is not “less innovation”, but &lt;em&gt;more consistency&lt;/em&gt;.  To illustrate this,
-let’s do a simple thought experiment.&lt;/p&gt;
-&lt;p&gt;Let’s say you’re going to make a web app.  There’s a tool in Haskell that you
-really like for a critical part of your app’s problem domain. You don’t want to
-spend more than one innovation token though, and everything in Haskell is
-&lt;a href="https://discourse.haskell.org/t/what-does-avoid-success-at-all-costs-mean-to-you/5832"&gt;inherently
-innovative&lt;/a&gt;,
-so you write a little service that just does that one part and you write the
-rest of your app in Ruby, calling into that service whenever you need to use
-that thing.  This will appropriately restrict your “innovation token”
-expenditure.&lt;/p&gt;
-&lt;p&gt;Does doing this actually reduce your operational overhead, though?&lt;/p&gt;
-&lt;p&gt;First, you will have to find a team that likes both Ruby and Haskell and sees
-no problem using both. If you are not familiar with the cultural proclivities
-of these languages, suffice it to say that this is &lt;em&gt;unlikely&lt;/em&gt;.  Hiring for
-Haskell programmers is hard because there are fewer of them than Ruby
-programmers, but hiring for polyglot Haskell/Ruby programmers who are happy to
-do either is going to be &lt;em&gt;really&lt;/em&gt; hard.&lt;/p&gt;
-&lt;p&gt;Since you will need to find different people to write in the different
-languages, even in the best case scenario, you will have two teams: the Haskell
-team and the Ruby team.  Even if you are incredibly disciplined about
-inter-service responsibilities, there will be &lt;em&gt;some&lt;/em&gt; areas where duplication of
-code is necessary across those services.  Disagreements will arise and every
-one of these disagreements will be a source of social friction and software
-defects.&lt;/p&gt;
-&lt;p&gt;Then, you need to set up separate CI pipelines for each language, separate
-deployment systems, and of course, &lt;a href="https://martinfowler.com/articles/microservices.html#DecentralizedDataManagement"&gt;separate
-databases&lt;/a&gt;.
-Right away you are effectively doubling your workload.&lt;/p&gt;
-&lt;p&gt;In the worse, and unfortunately more likely scenario, there will be enormous
-infighting between these two teams. Operational incidents will be more
-difficult to manage because rather than learning the Haskell tools for
-operational visibility and disseminating that institutional knowledge amongst
-your team, you will be half-learning the lessons from two separate ecosystems
-and attempting to integrate them.  Every on-call engineer will be frantically
-trying to learn a language ecosystem they don’t use regularly, or you will
-double the size of your on-call rotation.  The Ruby team may start to resent
-the Haskell team for getting to exclusively work on the fun parts of the
-problem while they are doing things that look more like rote grunt work.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;A better way to think about the problem of managing operational overhead is,
-rather than “innovation tokens”, consider “boundary tokens”.&lt;/p&gt;
-&lt;p&gt;That is to say, rather than evaluating the general sense of weird vibes from
-your architecture, consider the &lt;em&gt;consistency&lt;/em&gt; of that architecture. If you’re
-using Haskell, use Haskell. You should be all-in on Haskell web frameworks,
-Haskell ORMs, Haskell OAuth integrations, and so on.&lt;sup id="fnref:1:against-innovation-tokens-2024-7"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:1:against-innovation-tokens-2024-7" id="fnref:1"&gt;1&lt;/a&gt;&lt;/sup&gt;  To cross the boundary out
-of Haskell, you need to spend a boundary token, and you shouldn’t have many of
-those.&lt;/p&gt;
-&lt;p&gt;I submit that the increased operational overhead that you might experience with
-an all-Haskell tool selection will be dwarfed by the savings that you get by
-having a team that is aligned with each other, that can communicate easily, and
-that can share programs with each other without needing to first strategize
-about a channel for the two pieces of work to establish bidirectional
-communication.  The ability to simply call a function when you need to call it
-is very powerful, and extremely underrated.&lt;/p&gt;
-&lt;p&gt;Consistency ought to apply at each layer of the stack; it is perhaps most
-obvious with programming languages, but it is true of web frameworks, test
-frameworks, cryptographic libraries, you name it.  Make a choice and stick with
-it, because every deviation from that choice carries a significant cost.
-Moreover this cost is a &lt;em&gt;hidden&lt;/em&gt; cost, in the same way that the operational
-downsides of an “innovative” tool that hasn’t seen much production use might be
-hidden.&lt;/p&gt;
-&lt;p&gt;Discarding a more standard tool in favor of a tool more consistent with your
-architecture extends even to fairly uncontroversial, ubiquitous tools.  For
-example, one of my favorite architectural patterns is to forego the use of the
-venerable — and very boring – Cron, the UNIX task-scheduler.  Instead of Cron,
-it can make a lot of sense to have hand-written bespoke code for scheduling
-tasks within the application.  Within the “innovation tokens” model, this is a
-very silly waste of a token!&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Just use Cron! Everybody knows how to use Cron!&lt;/p&gt;
-&lt;p&gt;Except… &lt;em&gt;does&lt;/em&gt; everybody know how to use Cron? Here are some questions to
-consider, if you’re about to roll out a big dependency on Cron:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;How do you write a unit test for a scheduling rule with Cron?&lt;/li&gt;
-&lt;li&gt;Can you even &lt;a href="https://crontab.guru"&gt;remember how to write a cron rule&lt;/a&gt; that
-   runs at the times you want?&lt;/li&gt;
-&lt;li&gt;How do you inject secrets and configuration variables into the distinct and
-   somewhat idiosyncratic runtime execution environment of Cron?&lt;/li&gt;
-&lt;li&gt;How do you know that you did that variable-injection &lt;em&gt;properly&lt;/em&gt; until the
-   job actually runs, possibly in the middle of the night?&lt;/li&gt;
-&lt;li&gt;How do you deploy your monitoring and error-logging frameworks to observe
-   your scripts run under Cron?&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Granted, this architectural choice is less controversial than it once was. Cron
-used to be ambiently available on whatever servers you happened to be
-running. As container-based deployments have increased in popularity, this
-sense that Cron is just kinda &lt;em&gt;around&lt;/em&gt; has gone away, and if you need to run a
-container that &lt;em&gt;just&lt;/em&gt; runs Cron, much of the jankiness of its deployment is a
-lot more immediately visible.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;There is friction at the boundary between things.  That friction is a cost, but
-sometimes it’s a cost worth paying.&lt;/p&gt;
-&lt;p&gt;If there’s a really good library in Haskell and a really good library in Ruby
-and you really do want to use them both, maybe it makes sense to actually have
-multiple services.  As your team gets larger and more mature, the need to bring
-in more tools, and the ability to handle the associated overhead, will only
-increase over time.  But the place that the cost comes in the most is at the
-boundary between tools, not in the operational deficiencies of any one
-particular tool.&lt;/p&gt;
-&lt;p&gt;Even in a bog-standard web application with the most boring, least innovative
-tech stack imaginable (PHP, MySQL, HTML, CSS, JavaScript), many of the annoying
-points of friction are where different, inconsistent technologies make contact.
-If you are a programmer working on the web yourself, consider your own
-impression of the level of controversy of these technologies:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;CSS frameworks that attempt to bridge the gap between CSS and JavaScript,
-  like
-  &lt;a href="https://nsemboo.medium.com/to-those-saying-devs-who-use-bootstrap-are-lazy-shut-your-smelly-mouth-1bd95f9364e4"&gt;Bootstrap&lt;/a&gt;
-  or
-  &lt;a href="https://www.aleksandrhovhannisyan.com/blog/why-i-dont-like-tailwind-css/"&gt;Tailwind&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.codinghorror.com/object-relational-mapping-is-the-vietnam-of-computer-science/"&gt;ORMs&lt;/a&gt;
-  that
-  &lt;a href="https://dev.to/harshhhdev/why-orms-arent-always-a-great-idea-41kg"&gt;attempt&lt;/a&gt;
-  to &lt;a href="https://chanind.github.io/2020/01/13/awesome-orms.html"&gt;bridge&lt;/a&gt; the gap
-  between SQL and your backend language of choice&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://apievangelist.com/2019/12/02/grpcs-potentially-fatal-weakness/"&gt;RPC
-  systems&lt;/a&gt;
-  that attempt to
-  &lt;a href="https://stackoverflow.blog/2022/11/28/when-to-use-grpc-vs-graphql/"&gt;connect&lt;/a&gt;
-  disparate services
-  &lt;a href="https://blog.logrocket.com/graphql-vs-rest-api-why-you-shouldnt-use-graphql/"&gt;together&lt;/a&gt;
-  using &lt;a href="https://cohost.org/tef/post/1601060-restful-is-antimemet"&gt;simple
-  abstractions&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Consider that there are far more complex technical tools in terms of required
-skills to implement them, like &lt;a href="https://opencv.org"&gt;computer vision&lt;/a&gt; or
-&lt;a href="https://github.com/bulletphysics/bullet3"&gt;physics simulation&lt;/a&gt;, tools which are
-also pretty widely used, which consistently generate lower levels of
-controversy. People do have strong feelings about these things as well, of
-course, and it’s hard to find things to link to that show “this &lt;em&gt;isn’t&lt;/em&gt;
-controversial”, but, like, search your feelings, you know it to be true.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;You can see the benefits of the boundary token approach in programming language
-design.  Many of the most influential and best-loved programming languages had
-an impact not by bundling together lots of tools, but by making everything into
-&lt;em&gt;one thing&lt;/em&gt;:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;LISP: everything is a list&lt;/li&gt;
-&lt;li&gt;Smalltalk: everything is an object&lt;/li&gt;
-&lt;li&gt;ML: everything is an algebraic data type&lt;/li&gt;
-&lt;li&gt;Forth: everything is a stack&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;There is a tremendous power in thinking about everything as a single kind of
-thing, because then you don’t have to juggle lots of different ideas about
-&lt;em&gt;different&lt;/em&gt; kinds of things; you can just think about your problem.&lt;/p&gt;
-&lt;p&gt;When people
-&lt;a href="https://eev.ee/blog/2012/04/09/php-a-fractal-of-bad-design/"&gt;complain&lt;/a&gt; about
-&lt;a href="https://en.wikipedia.org/wiki/Criticism_of_C%2B%2B#Uniform_initialization_syntax"&gt;programming
-languages&lt;/a&gt;,
-they’re often complaining about how many &lt;em&gt;different kinds of thing&lt;/em&gt; they have
-to remember in order to use it.&lt;/p&gt;
-&lt;p&gt;If you keep your boundary-token budget small, and allow your developers to
-accomplish as much as possible while staying within a solution space delineated
-by a single, clean cognitive boundary, I promise you can innovate as much as
-you want and your operational costs will remain manageable.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h2 id="epilogue"&gt;Epilogue&lt;/h2&gt;
-&lt;p&gt;In &lt;a href="https://mastodon.social/@meejah/112729335630376894"&gt;subsequent Mastodon discussion of this
-post&lt;/a&gt; on with &lt;a href="https://toot.cafe/@matt"&gt;Matt
-Campbell&lt;/a&gt; and
-&lt;a href="https://mastodon.social/@meejah"&gt;Meejah&lt;/a&gt;, I realized that I may not have made
-it entirely clear why I feel the distinction between “boundary” and
-“innovation” tokens is &lt;em&gt;important&lt;/em&gt;.  I do say above that the “innovation token”
-model can be a useful heuristic, so why bother with a new, but slightly
-different heuristic?  Especially since most experienced engineers - indeed,
-McKinley himself - would budget “innovation” quite similarly to “boundaries”,
-and might even consider the use of more “innovative” Haskell tools in my
-hypothetical scenario to &lt;a href="https://lobste.rs/s/mk05nz/against_innovation_tokens#c_4iqsbs"&gt;not even be an expenditure of innovation tokens at
-all&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;To answer that, I need to highlight the purpose of having heuristics like this
-in the first place.  These are vague, nebulous guidelines, not hard and fast
-rules.  I cannot give you a token calculator to plug your technical decisions
-into.  The purpose of either token heuristic is to &lt;em&gt;facilitate discussions
-among a team&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;With a team of skilled and experienced engineers, the distinction is
-meaningless.  Senior and staff engineers (at least, the ones who deserve their
-level) will intuit the goals behind “innovation tokens” and inherently consider
-things like operational overhead anyway.  In practice, a high-performing,
-well-aligned team discussing innovation tokens and one discussing boundary
-tokens will look functionally indistinguishable.&lt;/p&gt;
-&lt;p&gt;The distinction starts to be important when you have management pressures,
-nervous executives, inexperienced engineers, a fresh team without existing
-consensus about core technology choices, and so on.  That is to say, most teams
-that exist in the messy, perpetually &lt;em&gt;in medias res&lt;/em&gt; world of the software
-industry.&lt;/p&gt;
-&lt;p&gt;If you are just getting started on a project and you have a bunch of competent
-but disagreeable engineers, the words “innovation” and “boundaries” function
-very differently.&lt;/p&gt;
-&lt;p&gt;If you ask, “is this an innovation” about a particular technical tool, you are
-asking your interlocutor to pull in a bunch of their skills and experience to
-subjectively evaluate the relative industry-wide, or maybe company-wide, or
-maybe team-wide&lt;sup id="fnref:2:against-innovation-tokens-2024-7"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:2:against-innovation-tokens-2024-7" id="fnref:2"&gt;2&lt;/a&gt;&lt;/sup&gt; newness of the thing being discussed.  The discussion of
-whether it counts as boring or innovative is immediately fraught with a ton of
-subjective, difficult-to-quantify information about costs of hiring, difficulty
-of learning, and your impression of the feelings of hundreds or thousands of
-people outside of your team.  And, yes, ultimately you do need to have an
-estimate of all that stuff, but starting your “is it OK to use this”
-conversation by simultaneously arguing about all those subjective judgments is
-setting yourself up for failure.&lt;/p&gt;
-&lt;p&gt;Instead, if you ask “does this introduce a boundary between two different
-technologies with different conceptual models”, while that is not a &lt;em&gt;perfectly&lt;/em&gt;
-objective question, it is much easier for your team to answer, with much
-crisper intermediary factual questions.  What are the two technologies?  What
-are the models? How much do they differ? You can just hash out the answers to
-each one within the team directly, rather than needing to sift through the last
-few years of Stack Overflow developer surveys to determine relative adoption or
-popularity of technologies in the world at large.&lt;/p&gt;
-&lt;p&gt;Restricting your supply of either boundary or innovation tokens is a good idea,
-but achieving unanimity within your team about what your boundaries are is
-always going to be easier than deciding what your innovations are.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h2 id="acknowledgments"&gt;Acknowledgments&lt;/h2&gt;
-&lt;p class="update-note"&gt;Thank you to &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;my patrons&lt;/a&gt; who are supporting my writing on
-this blog.  If you like what you’ve read here and you’d like to read more of
-it, or you’d like to support my &lt;a href="https://github.com/glyph/"&gt;various open-source
-endeavors&lt;/a&gt;, you can &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;support my work as a
-sponsor&lt;/a&gt;!  I am also &lt;a href="mailto:consulting@glyph.im"&gt;available for consulting
-work&lt;/a&gt; if you think your organization could benefit
-from expertise on topics like “how can we make our architecture more
-consistent”.&lt;/p&gt;
-&lt;div class="footnote"&gt;
-&lt;hr /&gt;
-&lt;ol&gt;
-&lt;li id="fn:1:against-innovation-tokens-2024-7"&gt;
-&lt;p id="fn:1"&gt;&lt;a href="https://pyvideo.org/djangocon-us-2011/djangocon-2011--keynote---glyph-lefkowitz.html"&gt;I gave a talk about this once, a very long time
-ago&lt;/a&gt;,
-where Haskell was Python. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:1:against-innovation-tokens-2024-7" title="Jump back to footnote 1 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:2:against-innovation-tokens-2024-7"&gt;
-&lt;p id="fn:2"&gt;It’s not clear, that’s a big part of the problem. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:2:against-innovation-tokens-2024-7" title="Jump back to footnote 2 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</description>
-      <guid isPermaLink="false">fb7dac2b84b715595902eeab52eaedade58c7f0dd5efc8e15b9aadec02141952</guid>
-      <pubDate>Thu, 04 Jul 2024 19:54:00 +0000</pubDate>
     </item>
   </channel>
 </rss>

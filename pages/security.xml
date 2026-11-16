@@ -5,7 +5,78 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sat, 14 Nov 2026 14:00:51 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 16 Nov 2026 14:00:40 +0000</lastBuildDate>
+    <item>
+      <title>Six Unpatched Danfoss Refrigeration Controller Flaws Could Allow Remote Takeover Without Login - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/six-unpatched-danfoss-refrigeration.html</link>
+      <description>Six flaws in Danfoss AK-SM800A refrigeration controllers could let a remote attacker take over a controller without logging in, Dutch security consultancy Midnight Blue said earlier this week.
+No patch is available, and the researchers say the newest firmware, version 5.4.0, does not fix the flaws.
+Government cybersecurity agencies in Belgium, Ireland and Germany told operators this week to</description>
+      <guid isPermaLink="false">5486b51591d2c037c2f1f07135bd92cf19638f7f8422a496f1435715371a9ac3</guid>
+      <pubDate>Mon, 16 Nov 2026 12:34:21 +0000</pubDate>
+    </item>
+    <item>
+      <title>Retadup Worm Resurfaces 7 Years After Takedown to Spread CoffeeLoader Malware - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/retadup-worm-resurfaces-7-years-after.html</link>
+      <description>Cybersecurity researchers have disclosed details of a new variant of CoffeeLoader, a malware designed to deliver additional payloads to infected machines.
+"On launch, the NSIS-based installer executable dropped a file named '7z.dll' into a temporary directory and ran it through rundll32.exe," Kaspersky said in an analysis published today.
+"The '7z.dll' file was a patched version of the</description>
+      <guid isPermaLink="false">5dfcb9fa14946f75f5f7dede2febfdd78032316c916b80493d97b05e85a94543</guid>
+      <pubDate>Mon, 16 Nov 2026 12:33:18 +0000</pubDate>
+    </item>
+    <item>
+      <title>SANSAR Linux Cryptomining Malware Uses Modified NVIDIA Library to Hide GPU Activity - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/sansar-linux-cryptomining-malware-uses.html</link>
+      <description>A financially motivated threat activity cluster tracked as REF3364 has been attributed to a Linux-focused cryptocurrency mining operation that tampers with the readings used to detect high GPU workloads.
+Central to the intrusion is a toolkit called SANSAR, a Rust-based orchestrator that receives commands over the TOR anonymity network to manage CPU and GPU miners. The activity was observed in</description>
+      <guid isPermaLink="false">b25c3b4ba2c8242de7a6a9a823b3100f19d3b20b9454c5c66f6c7f806335ab59</guid>
+      <pubDate>Mon, 16 Nov 2026 09:32:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>Mapping defensive countermeasures to each step of an AI-assisted RE workflow (open-source harness, every defense rated with a named bypass) - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xxjool/mapping_defensive_countermeasures_to_each_step_of/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/seif_tamer_06"&gt; /u/seif_tamer_06 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/seifheakal/blue-harness"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xxjool/mapping_defensive_countermeasures_to_each_step_of/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">39c71fa444c81c85c531fd6fc083f6b6d8608d9260a0b88cb3ec66d96d483e95</guid>
+      <pubDate>Mon, 16 Nov 2026 07:57:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>Amazon Uncovers AI Agent Campaign Targeting LiteLLM, Dify, and Other Apps for API Keys - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/amazon-uncovers-ai-agent-campaign.html</link>
+      <description>Attackers' AI agents have been hunting for weak spots in internet-exposed AI apps such as LiteLLM, One API, and Dify to steal the AI provider keys stored inside, according to the agents' own records.
+The records, which Amazon's threat intelligence team captured with decoy servers, describe stolen keys being used to run the AI models that powered the search for more keys.
+The team said this</description>
+      <guid isPermaLink="false">efbb13c0ae714e7e4a5a8d19349d2992dcb6be61e55fce24252cefbac8d964ad</guid>
+      <pubDate>Mon, 16 Nov 2026 07:34:21 +0000</pubDate>
+    </item>
+    <item>
+      <title>BO Team Exploits Log4Shell in VMware vCenter, Compromises Russian Firm's Code-Signing Server - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/bo-team-exploits-log4shell-in-vmware.html</link>
+      <description>An investigation into suspicious activity within a Russian software developer's network has uncovered a months-long compromise of its development infrastructure and a software code-signing server.
+The activity, documented by Kaspersky's ICS CERT team after it was contacted by the affected developer in June 2025, has been attributed to a threat actor named BO Team (aka Black Owl, Hoody Hyena,</description>
+      <guid isPermaLink="false">f268e88b658758cbd0dd39850459b17342b7fee4fb69f91b115616a5b55da75b</guid>
+      <pubDate>Mon, 16 Nov 2026 06:53:34 +0000</pubDate>
+    </item>
+    <item>
+      <title>Frida + Burp on a rooted Android emulator on Apple Silicon, including the Android 14+ system CA store - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xx17pk/frida_burp_on_a_rooted_android_emulator_on_apple/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Usual_Paramedic_7640"&gt; /u/Usual_Paramedic_7640 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://jidr.ly/blog/frida-burp-android-emulator-apple-silicon/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xx17pk/frida_burp_on_a_rooted_android_emulator_on_apple/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">cc13751ec85592af8722689f60f53c932742fc995d1d2b4fdda8f7943f51bf51</guid>
+      <pubDate>Sun, 15 Nov 2026 17:24:58 +0000</pubDate>
+    </item>
+    <item>
+      <title>A Unicode Escape Can Turn a Java Comment Into Executable Code - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xwzxos/a_unicode_escape_can_turn_a_java_comment_into/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Cool-Click1253"&gt; /u/Cool-Click1253 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://octri.dev/blog/java-unicode-escape-comment"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xwzxos/a_unicode_escape_can_turn_a_java_comment_into/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">adc8fced528e7beccc4a8c89801e940a3917d0defc9b0475929e8d96907d3b9a</guid>
+      <pubDate>Sun, 15 Nov 2026 16:35:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>FortiClient, FortiShield_74.sys kernel driver oob - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xwzr5v/forticlient_fortishield_74sys_kernel_driver_oob/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/nanaynunay"&gt; /u/nanaynunay &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/mein-0/FortiLess"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xwzr5v/forticlient_fortishield_74sys_kernel_driver_oob/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">13ce0d7bdebea96969affecb1548f44fd075dab15056536c709b7352f6e6943b</guid>
+      <pubDate>Sun, 15 Nov 2026 16:28:29 +0000</pubDate>
+    </item>
     <item>
       <title>Attackers Exploit UnrealIRCd Flaw That Enables Server-Level Command Injection - The Hacker News</title>
       <link>https://thehackernews.com/2026/11/attackers-exploit-unrealircd-flaw-that.html</link>
@@ -1497,74 +1568,6 @@ The attacks aim to exploit CVE-2026-109618 and CVE-2026-109619 (CVSS scores: 9.2
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/tnavda"&gt; /u/tnavda &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://pepsipu.com/blog/2026-10-switch2-jailbreak-ns2jb/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xd2ug8/switch_2_jailbreak/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">bef37cf8c75e452f39abfd376f8f7a3399f448d42a1da59ed9967895be222372</guid>
       <pubDate>Fri, 23 Oct 2026 03:12:04 +0000</pubDate>
-    </item>
-    <item>
-      <title>mailpit -- Unbounded CPU and memory consumption in thumbnail endpoint via cyclic EXIF IFD chain - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/df4083bc-cea6-11f1-94b3-10ffe07f9334.html</link>
-      <description/>
-      <guid isPermaLink="false">dda236f503836404c5b73032f8d1177f08a6fa740144600d8d3acb02abfe3a70</guid>
-      <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>ca_root_nss -- trusted root certificate from compromised CA eMudhra - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/b755b277-cf12-11f1-bae2-3497f65b111b.html</link>
-      <description/>
-      <guid isPermaLink="false">3cc3d66ffa78af9f86a4fd91febd35c9483bff494e017f1178c9383f364fbec7</guid>
-      <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Packet Tracer pka/pkt reverse engineered to fully build, export, or decrypt without running Packet Tracer - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xctyyu/packet_tracer_pkapkt_reverse_engineered_to_fully/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Hour_Ingenuity_1453"&gt; /u/Hour_Ingenuity_1453 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/aacanadaa/packet-tracer-pkt-format"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xctyyu/packet_tracer_pkapkt_reverse_engineered_to_fully/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">3ef1fbe219c7ab0b8a455592e06eff4fa82cb34ba7add15284fc67bd6a0b6376</guid>
-      <pubDate>Thu, 22 Oct 2026 20:32:27 +0000</pubDate>
-    </item>
-    <item>
-      <title>[RESEARCH] SM-F956B (Z Fold 6) Bit-4: OEM-Unlock Flag Ignored by Bootloader + Bootchain Bug-Hunt &amp; Temp-Root Status - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xctphp/research_smf956b_z_fold_6_bit4_oemunlock_flag/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/getbacktoyahroots"&gt; /u/getbacktoyahroots &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/plomens/f956b-bootchain-research"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xctphp/research_smf956b_z_fold_6_bit4_oemunlock_flag/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">4344fe7b27e97f93b5a7e487429b29a1fe5a483b594f25fcbbf7a26b38fde085</guid>
-      <pubDate>Thu, 22 Oct 2026 20:22:29 +0000</pubDate>
-    </item>
-    <item>
-      <title>A stranger disassembled my mouse’s official app, fixed my checksum, and by accident gave me the idea for USB cable support - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xct5wd/a_stranger_disassembled_my_mouses_official_app/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/blakok14"&gt; /u/blakok14 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="http://github.com/blak0p/attack-shark-linux"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xct5wd/a_stranger_disassembled_my_mouses_official_app/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">fe48956f2110597e5dc662c745b050e734ca0fbc7eee2b69d1ef2eedb4390c50</guid>
-      <pubDate>Thu, 22 Oct 2026 20:02:07 +0000</pubDate>
-    </item>
-    <item>
-      <title>Arista Warns of Critical VeloCloud SQL Injection Zero-Day Exploited in Attacks - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/arista-warns-of-critical-velocloud-sql.html</link>
-      <description>Attackers are exploiting a zero-day SQL injection flaw in Arista's VeloCloud Orchestrator (VCO), the&amp;nbsp;central management system&amp;nbsp;for VeloCloud SD-WAN networks, the company said in an&amp;nbsp;advisory&amp;nbsp;on October 22.
-The flaw lets anyone who can log in to the orchestrator, even with a read-only customer account, gain operator privileges, the top level of control over it.
-For</description>
-      <guid isPermaLink="false">e3d2095fb8450052e2a4f53129709e4de6060f2efbd6270184bcaf5a18268504</guid>
-      <pubDate>Thu, 22 Oct 2026 19:05:17 +0000</pubDate>
-    </item>
-    <item>
-      <title>eMudhra to Exit Global SSL/TLS Business After 8 Intermediate CA Keys Found Easily Guessable - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/emudhra-to-exit-global-ssltls-business.html</link>
-      <description>eMudhra, an Indian certificate authority (CA), will withdraw from its global SSL/TLS certificate business,&amp;nbsp;its board decided on Thursday. The decision came five days after a researcher&amp;nbsp;reported recovering the private keys&amp;nbsp;of eight of its intermediate CA certificates.
-eMudhra said it will replace affected customers' certificates with free ones from partners, though its</description>
-      <guid isPermaLink="false">c73dd0c304e3232967403d83c955f10f398f59f110833b15a80ebb47353797e2</guid>
-      <pubDate>Thu, 22 Oct 2026 18:12:43 +0000</pubDate>
-    </item>
-    <item>
-      <title>Two CVSS 9.0 Linux KSMBD RCE Flaws Disclosed on Public Mailing Lists Before Kernel Fixes - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/two-cvss-90-linux-ksmbd-rce-flaws.html</link>
-      <description>Linux servers running KSMBD, the kernel's built-in SMB server, are exposed to two publicly reported remote code execution flaws rated 9.0 by&amp;nbsp;Trend Micro's Zero Day Initiative, with no fix yet in the mainline kernel.
-One of them, ZDI-CAN-33774, can be triggered before any network authentication. The other, ZDI-CAN-33549, requires the SMB Direct transport and an RDMA-capable network</description>
-      <guid isPermaLink="false">89ea908f7a8192ec08fd354cccd4241df4be7fad0b3085206cde518c6c097378</guid>
-      <pubDate>Thu, 22 Oct 2026 17:01:53 +0000</pubDate>
-    </item>
-    <item>
-      <title>Meta Ordered to Pay $25 Billion After Court Finds 43 Million Privacy Violations - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/meta-ordered-to-pay-25-billion-after.html</link>
-      <description>Social media giant Meta was ordered to pay 25 billion in penalties by a New Mexico court on Wednesday as part of a data privacy lawsuit that sprang from the company's Cambridge Analytica data scandal, which came to light in 2018.
-According to multiple reports from the Associated Press, the New York Times, Reuters, and the Wall Street Journal, state District Court Judge Francis J. Mathew called</description>
-      <guid isPermaLink="false">6f0f39c5e05fd169323aa505057869e2ba89c25594f37bd3c203cb17631b5504</guid>
-      <pubDate>Thu, 22 Oct 2026 16:12:31 +0000</pubDate>
     </item>
   </channel>
 </rss>
