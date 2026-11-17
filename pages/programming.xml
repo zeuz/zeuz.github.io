@@ -5,7 +5,205 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Mon, 16 Nov 2026 14:00:40 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 17 Nov 2026 14:01:39 +0000</lastBuildDate>
+    <item>
+      <title>Graham Dumpleton: Muru: scaling to zero - Planet Python</title>
+      <link>https://grahamdumpleton.me/posts/2026/11/muru-scaling-to-zero/</link>
+      <description>&lt;p&gt;The &lt;a href="https://grahamdumpleton.me/posts/2026/11/muru-scaling-from-what-the-workers-report/"&gt;last post&lt;/a&gt; was about a busy release, and what the Muru daemon does when requests start to wait. The opposite problem is just as common. A server hosting a dozen small sites, a few preview deployments and a staging copy or two will spend most of its time with nearly all of them idle, and each one sitting there with its workers started is holding memory nobody is using.&lt;/p&gt;
+&lt;p&gt;Most Python web servers don't do anything about this. Gunicorn, uvicorn and granian keep the workers they started for as long as they run. mod_wsgi has long had an &lt;code&gt;inactivity-timeout&lt;/code&gt; option for its daemon processes, which restarts a process once it has had no requests for a while, so its memory drops back to what it was before the application was loaded, and the next request waits while the application is loaded again. uWSGI has a cheap mode, where workers aren't spawned until the first request arrives, and an &lt;code&gt;idle&lt;/code&gt; option to go back into cheap mode after a period of inactivity. Platforms such as Knative or Cloud Run scale whole containers to zero, and the next request waits for a new container to start and the application to be imported in it.&lt;/p&gt;
+&lt;p&gt;Muru does this in two stages, and the first is cheap because of how the daemon starts workers.&lt;/p&gt;
+&lt;h2&gt;No workers, but the host stays&lt;/h2&gt;
+&lt;p&gt;Every release under the Muru daemon has a host process which imports the application once, and workers which are forked from it, as covered in the &lt;a href="https://grahamdumpleton.me/posts/2026/11/muru-import-once-fork-many/"&gt;import once, fork many&lt;/a&gt; post. With a scaling policy whose &lt;code&gt;min_workers&lt;/code&gt; is zero, the daemon will drain the last worker once nothing has needed it for a while, but leave the host running.&lt;/p&gt;
+&lt;p&gt;To make the difference between the stages obvious, the application for this post sleeps for three seconds when it is imported, standing in for a large application whose import is slow:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[tool.muru]
+entrypoint = &amp;quot;app:application&amp;quot;
+processes = 1
+threads = 4
+[tool.muru.scaling]
+mode = &amp;quot;spare&amp;quot;
+min_workers = 0
+max_workers = 4
+idle_reap_after = &amp;quot;20s&amp;quot;
+scale_in_window = &amp;quot;20s&amp;quot;
+hold_after_growth = &amp;quot;10s&amp;quot;
+reap_interval = &amp;quot;5s&amp;quot;
+min_lifetime = &amp;quot;5s&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As in the last post, the windows are shortened so this happens in seconds. By default &lt;code&gt;idle_reap_after&lt;/code&gt; is ten minutes. Twenty seconds after the last request, the daemon took the worker away:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;default: scale in from 1 to 0 workers: no request for 20s; diagnosis: idle
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The release still shows as ready and serving, with no workers:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docs@r1
+GROUP        WORKERS      SLOTS      IDLE    QUEUE-P95     REAPS      POLICY
+default      0            0/0        0.00    -             1/6        spare 0-4 workers, 1-3 idle
+  workers: cpu -, gc -, gil wait p95 -, loop lag p95 -
+  diagnosis: idle
+  last: scaled in to 0: no request for 20s (8s ago)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and of its processes, only the host and its log relay were left. Asking for the release's processes with &lt;code&gt;muructl status --processes --app docs&lt;/code&gt; while it was serving gave:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;edge  0 req/s  0 err/s  p50 0.0 ms  p95 0.0 ms  in flight 0  ws 0  conns 0  tls 0/s  in 0B/s  out 0B/s
+PID     ROLE           WHAT                                                    USER     UP    CPU      RSS   REQ/S   BUSY   QUEUE   P95   GIL/LAG
+55119   daemon         user daemon, state ~/Library/Application Support/muru   graham   4s   0.0%   38.1MB
+55130   └─ host        docs@r1 serving                                         graham   4s   0.0%   54.4MB            0/4       0
+55129      ├─ relay    docs@r1 output to apps/docs/r1.log                      graham   4s   0.0%   17.8MB
+55141      └─ worker   group default, worker 0                                 graham   0s   0.0%   20.9MB            0/4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and once it was at zero workers:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;edge  0 req/s  0 err/s  p50 0.0 ms  p95 0.0 ms  in flight 0  ws 0  conns 0  tls 0/s  in 0B/s  out 0B/s
+PID     ROLE          WHAT                                                    USER      UP    CPU      RSS   REQ/S   BUSY   QUEUE   P95   GIL/LAG
+55119   daemon        user daemon, state ~/Library/Application Support/muru   graham   26s   0.7%   39.5MB
+55130   └─ host       docs@r1 serving                                         graham   25s   0.0%   54.4MB       0              0
+55129      └─ relay   docs@r1 output to apps/docs/r1.log                      graham   25s   0.0%   17.8MB
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That saving is modest for one worker, and the host still holds the imported application. The point of this stage is what the next request costs. The edge holds the request as queued, the daemon forks a worker from the host, and the request is served by it:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;default: scale out from 0 to 1 workers: a request is waiting for a group scaled to zero
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;docs from pid 55198
+0.005145s
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Five milliseconds, compared with a fraction of a millisecond once the worker was there. Nobody visiting a site will notice that, and it is only possible because the application was already imported in the host. A server which has to load the application again, as mod_wsgi does once its inactivity timeout has restarted the process, makes this first request wait for the import.&lt;/p&gt;
+&lt;h2&gt;No host either&lt;/h2&gt;
+&lt;p&gt;For a site which might not see a request for hours, the host's memory can be given back as well. Adding &lt;code&gt;host_idle_timeout&lt;/code&gt; to the release's scaling policy has the host stop once every worker group of the release has been at zero for that long:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;host_idle_timeout = &amp;quot;30s&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Thirty seconds after the last worker went, the daemon stopped the host:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;release.idle         docs@r2                  every worker group has been at zero for 30s: its host stopped, and the next request starts it again
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The release has no processes at all now, but stays in the routing as ready, and &lt;code&gt;muructl release list&lt;/code&gt; says what state it is in:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;RELEASE                  STATE      SERVING  WORKERS               DISK SOURCE
+docs@r2                  ready      yes      - (1x4)              4.7MB ...
+                         idle: its host has stopped, and the next request starts it
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This time the next request has to wait for the host to start and import the application:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docs from pid 55280
+200 3.351380s
+docs from pid 55280
+200 0.000661s
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;release.woken        docs@r2                  a request is waiting: starting its host again
+release.ready        docs@r2                  1 worker ready in 3.3 s
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So there is a choice to make per release. Scaling to zero workers and keeping the host is nearly free for the next visitor. Stopping the host as well gives back everything, but the next visitor waits through the import. For a preview deployment nobody has looked at in a day, that is probably a fair trade. For a small site with occasional visitors, probably not.&lt;/p&gt;
+&lt;h2&gt;The queue timeout still applies&lt;/h2&gt;
+&lt;p&gt;While a request waits for a worker to be forked, or for a host to start, it is in the edge's queue like any other request, and the queue timeout still applies. The default is five seconds. I set this release's to two seconds, less than its import takes:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[tool.muru]
+entrypoint = &amp;quot;app:application&amp;quot;
+processes = 1
+threads = 4
+timeouts = { queue_timeout = &amp;quot;2s&amp;quot; }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The request which woke the idle release got a 503 after exactly the queue timeout:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;HTTP/1.1 503 Service Unavailable
+content-type: text/plain; charset=utf-8
+content-length: 155
+cache-control: no-store
+retry-after: 1
+x-request-id: 01M6ZMF2Y40K8S7W1FVPQARCZD
+503 Service Unavailable
+reason: cold_start_timeout
+request id: 01M6ZMF2Y40K8S7W1FVPQARCZD
+No worker had started for the request within the queue timeout.
+2.003713s
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The host went on starting regardless, and a request a second and a half later was served in about a millisecond. The &lt;code&gt;Retry-After&lt;/code&gt; header tells a well behaved client to come back after a second, which is the right answer. The body says no worker had started in time, and the access log records the reason &lt;code&gt;cold_start_timeout&lt;/code&gt;, so this can be told apart from an overloaded release.&lt;/p&gt;
+&lt;p&gt;The lesson is that once a release's host can stop, its queue timeout has to cover its import, or the first visitor after a quiet spell gets an error.&lt;/p&gt;
+&lt;h2&gt;Many sites on one node&lt;/h2&gt;
+&lt;p&gt;Scaling to zero is mostly about many applications sharing a server, and the daemon has a budget which caps what all the releases on the node hold between them. It goes in the daemon's configuration file:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[daemon.budget]
+workers = 6
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Memory and CPU can be capped the same way, and on Linux, when the daemon itself runs under a limit, as under a systemd unit with &lt;code&gt;MemoryMax=&lt;/code&gt; or &lt;code&gt;CPUQuota=&lt;/code&gt;, those two default to that limit. I deployed four applications, each behind its own virtual host. One was a shop with the spare mode policy from the last post, and the other three were sites like the one above, two of them previews. With the three small sites idle, the budget showed only the shop's worker in use:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;budget   1 of 6 workers
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With sixteen clients asking for the shop's slow page, its scale-out stopped at the budget:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;default      6            12/12      -1.50   under 250 ms  0/6        spare 1-12 workers, 1-3 idle
+  ...
+  last: held at 6: the node's worker budget (6 of 6 workers) (3s ago)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;scaling.denied_by_budget shop@r1                  default: 1 of the 4 more workers asked for fit the node's worker budget (5 of 6 workers), at priority 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That is the budget doing its job. Workers already running are never stopped to make room for another application, and when several releases want more at the same time, an application's &lt;code&gt;priority&lt;/code&gt; decides which goes first. What happens to the sites scaled to zero while the budget is full is less obvious.&lt;/p&gt;
+&lt;p&gt;Neither kind of wake is held back by the workers limit. One preview had been idle long enough for its host to stop. A request for it woke it in the usual three seconds or so, with the event saying it went over the budget:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;release.woken        preview-b@r1             a request is waiting: starting its host again, over the node's budget of 6 workers
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;budget   7 of 6 workers
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The other preview still had its host, with zero workers, so it needed only a fork, and was served in six milliseconds:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;scaling.decision     preview-a@r1             default: scale out from 0 to 1 workers: a request is waiting for a group scaled to zero, over the node's budget of 6 workers
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A site which can't answer its first request is a worse outcome than a busy site not getting one more worker, so the node goes over its limit for the moment. Retained releases holding workers are stopped, oldest first, to bring it back under, and until then other releases' scale-out is refused. The memory limit still applies to both kinds of wake.&lt;/p&gt;
+&lt;p&gt;Deploys fit in with this too. When a new release replaces an old one, the old one is kept for half an hour so that a rollback can go back to it. For a group whose &lt;code&gt;min_workers&lt;/code&gt; is zero it is kept without workers, so it holds none of the node's budget, and &lt;code&gt;muructl release list&lt;/code&gt; says what a rollback to it would cost:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;RELEASE                  STATE      SERVING  WORKERS               DISK SOURCE
+docs@r2                  ready      yes      1 (1x4)              4.7MB ...
+docs@r1                  retained            0 (1x4)              4.7MB ...
+                         host kept until 08:16 UTC; a rollback to it forks a worker
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;An explicit &lt;code&gt;--retain-workers&lt;/code&gt; on the deploy keeps that many workers in every group instead.&lt;/p&gt;
+&lt;p&gt;There is one more case where scaling to zero doesn't fit. Muru matches gRPC calls by the services a worker has registered, so a release with a gRPC mount needs at least one worker running for its calls to be routed at all.&lt;/p&gt;
+&lt;h2&gt;What's next&lt;/h2&gt;
+&lt;p&gt;The first stage is what makes this worthwhile. Because the host has already imported the application, getting from no workers back to one costs a fork, so a release can drop to zero workers whenever it is idle without its next visitor really paying for it. Stopping the host as well is there for when memory matters more than the first request.&lt;/p&gt;
+&lt;p&gt;Scaling is something the daemon works out for itself from moment to moment, but some changes to how a site is served are planned ahead, such as a read-only period while the database is backed up, a maintenance window, or a switch to a new release at a set time. The next post, overlays on a schedule, is about how Muru lays changes like these over a site's configuration for a while, and then takes them away again.&lt;/p&gt;</description>
+      <guid isPermaLink="false">df42d34e2dc9ec0b45dccfdc6e2c94baa3a328388150b1192b3dc2e7caecb3a8</guid>
+      <pubDate>Tue, 17 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Talk Python to Me: #569: Connecting Agents to Data via MCP, CLI, and More - Planet Python</title>
+      <link>https://talkpython.fm/episodes/show/569/connecting-agents-to-data-via-mcp-cli-and-more</link>
+      <description>Should your agent call an MCP server or just run a CLI? Pamela Fox joins us to share how she thinks about connecting AI and her data. She’s taught MCP workshops from PyCon to WeAreDevelopers. And, every week, an agent combs her Gmail, Outlook, and X history to build her news roundup. She uses MCP all day. Yet, there are still times you when to skip it. You'll hear how her colleague pitted the GitHub CLI against the GitHub MCP server on a real bug fix. The CLI used fewer tokens. It succeeded more often. So do we choose CLIs, MCPs, or even just APIs for connecting our agents to our data and services? Let's find out.&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Episode sponsors&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;a href='https://talkpython.fm/talk-python-membership-continue-conversation'&amp;gt;Talk Python Membership&amp;lt;/a&amp;gt;&amp;lt;br&amp;gt;
+&amp;lt;a href='https://talkpython.fm/talk-python-membership-inner-circle'&amp;gt;Talk Python Membership&amp;lt;/a&amp;gt;&amp;lt;br&amp;gt;
+&amp;lt;a href='https://talkpython.fm/training'&amp;gt;Talk Python Courses&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;h2 class="links-heading mb-4"&amp;gt;Links from the show&amp;lt;/h2&amp;gt;
+&amp;lt;div&amp;gt;&amp;lt;strong&amp;gt;Guest&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Pamela Fox&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://pamelafox.org?featured_on=talkpython" target="_blank" &amp;gt;pamelafox.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Meetup: SQLite Might *Actually* Be All You Need&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/meetups/sqlite-might-actually-be-all-you-need" target="_blank" &amp;gt;talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;MCP&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro?featured_on=talkpython" target="_blank" &amp;gt;modelcontextprotocol.io&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;WeAreDevelopers workshop&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://pamelafox.github.io/github-copilot-mcp-skills-workshop/?featured_on=talkpython" target="_blank" &amp;gt;pamelafox.github.io&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;slide 16&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://pamelafox.github.io/github-copilot-mcp-skills-workshop/#/16" target="_blank" &amp;gt;pamelafox.github.io&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;To MCP or not to MCP&amp;lt;/strong&amp;gt;: &amp;lt;a href="http://blog.pamelafox.org/2025/07/to-mcp-or-not-to-mcp.html?featured_on=talkpython" target="_blank" &amp;gt;blog.pamelafox.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;MCP: Bringing mashups back&amp;lt;/strong&amp;gt;: &amp;lt;a href="http://blog.pamelafox.org/2025/07/mcp-bringing-mashups-back.html?featured_on=talkpython" target="_blank" &amp;gt;blog.pamelafox.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;MCP auth session&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.youtube.com/watch?v=_Redi3ChzFA" target="_blank" &amp;gt;www.youtube.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Pydantic AI \+ Playwright&amp;lt;/strong&amp;gt;: &amp;lt;a href="http://blog.pamelafox.org/2026/08/browser-automation-with-pydantic-ai.html?featured_on=talkpython" target="_blank" &amp;gt;blog.pamelafox.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;post&amp;lt;/strong&amp;gt;: &amp;lt;a href="http://blog.pamelafox.org/2026/03/do-stricter-mcp-tool-schemas-increase.html?featured_on=talkpython" target="_blank" &amp;gt;blog.pamelafox.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;PyAI talk&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.youtube.com/watch?v=l0McGgmngeU" target="_blank" &amp;gt;www.youtube.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;post&amp;lt;/strong&amp;gt;: &amp;lt;a href="http://blog.pamelafox.org/2026/08/building-safe-mcp-servers-for-your.html?featured_on=talkpython" target="_blank" &amp;gt;blog.pamelafox.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;POSETTE talk&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.youtube.com/watch?v=3_JPHuXgDyQ" target="_blank" &amp;gt;www.youtube.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;post&amp;lt;/strong&amp;gt;: &amp;lt;a href="http://blog.pamelafox.org/2025/09/filter-tools-from-mcp-servers.html?featured_on=talkpython" target="_blank" &amp;gt;blog.pamelafox.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Can MCP choose my outfit&amp;lt;/strong&amp;gt;: &amp;lt;a href="http://blog.pamelafox.org/2026/03/can-mcp-choose-my-outfit.html?featured_on=talkpython" target="_blank" &amp;gt;blog.pamelafox.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Talk Python now has a CLI&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/blog/posts/talk-python-now-has-a-cli/" target="_blank" &amp;gt;talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;FastMCP&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://gofastmcp.com?featured_on=talkpython" target="_blank" &amp;gt;gofastmcp.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Typer&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://typer.tiangolo.com?featured_on=talkpython" target="_blank" &amp;gt;typer.tiangolo.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Click CLI&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://click.palletsprojects.com/en/stable/?featured_on=talkpython" target="_blank" &amp;gt;click.palletsprojects.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Boldin&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.boldin.com?featured_on=talkpython" target="_blank" &amp;gt;www.boldin.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Sentry MCP&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://mcp.sentry.dev?utm_source=talkpython" target="_blank" &amp;gt;mcp.sentry.dev&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;X.com MCP&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://docs.x.com/tools/mcp?featured_on=talkpython" target="_blank" &amp;gt;docs.x.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Watch this episode on YouTube&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://www.youtube.com/watch?v=F5-DtOl-9oM" target="_blank" &amp;gt;youtube.com&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Episode #569 deep-dive&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/episodes/show/569/connecting-agents-to-data-via-mcp-cli-and-more#takeaways-anchor" target="_blank" &amp;gt;talkpython.fm/569&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Episode transcripts&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/episodes/show/569/connecting-agents-to-data-via-mcp-cli-and-more#transcript-section" target="_blank" &amp;gt;talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Theme Song: Developer Rap&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;🥁 Served in a Flask 🎸&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/flasksong" target="_blank" &amp;gt;talkpython.fm/flasksong&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;---==  Don't be a stranger  ==---&amp;lt;/strong&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;YouTube&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://talkpython.fm/youtube" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-youtube"&amp;gt;&amp;lt;/i&amp;gt; youtube.com/@talkpython&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Bluesky&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://bsky.app/profile/talkpython.fm" target="_blank" &amp;gt;@talkpython.fm&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Mastodon&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://fosstodon.org/web/@talkpython" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-mastodon"&amp;gt;&amp;lt;/i&amp;gt; @talkpython@fosstodon.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;X.com&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://x.com/talkpython" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-twitter"&amp;gt;&amp;lt;/i&amp;gt; @talkpython&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Michael on Bluesky&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://bsky.app/profile/mkennedy.codes?featured_on=talkpython" target="_blank" &amp;gt;@mkennedy.codes&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Michael on Mastodon&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://fosstodon.org/web/@mkennedy" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-mastodon"&amp;gt;&amp;lt;/i&amp;gt; @mkennedy@fosstodon.org&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;strong&amp;gt;Michael on X.com&amp;lt;/strong&amp;gt;: &amp;lt;a href="https://x.com/mkennedy?featured_on=talkpython" target="_blank" &amp;gt;&amp;lt;i class="fa-brands fa-twitter"&amp;gt;&amp;lt;/i&amp;gt; @mkennedy&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;/div&amp;gt;</description>
+      <guid isPermaLink="false">0c3d3ee79cdb2d50c408f659dab7c1bcec5f35c91224eeebeafff47013fc76c7</guid>
+      <pubDate>Mon, 16 Nov 2026 20:21:45 +0000</pubDate>
+    </item>
     <item>
       <title>Graham Dumpleton: Muru: scaling from what the workers report - Planet Python</title>
       <link>https://grahamdumpleton.me/posts/2026/11/muru-scaling-from-what-the-workers-report/</link>
@@ -19831,212 +20029,6 @@ maintainability, and make sure that such a PR would be welcome. &lt;a class="fo
       <description>&lt;p&gt;One of my &lt;a href="https://hynek.me/til/python-project-local-venvs"&gt;first TIL entries&lt;/a&gt; was about how you can imitate Node’s &lt;code&gt;node_modules&lt;/code&gt; semantics in Python on UNIX-like operating systems. A lot has happened since then (to the better!) and it’s time for an update. &lt;em&gt;direnv&lt;/em&gt; still rocks, though.&lt;/p&gt;</description>
       <guid isPermaLink="false">65f936d1ee1ab0f0a5def0b2ff15449017c1008408e09dd383be43c0206628fc</guid>
       <pubDate>Mon, 23 Sep 2024 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Glyph Lefkowitz: Python macOS Framework Builds</title>
-      <link>https://blog.glyph.im/2024/09/python-macos-framework-builds.html</link>
-      <description>&lt;p&gt;When you build Python, you can pass various options to &lt;code&gt;./configure&lt;/code&gt; that
-change aspects of how it is built.  There is &lt;a href="https://docs.python.org/3.12/using/configure.html"&gt;documentation for all of these
-options&lt;/a&gt;, and they are
-things like &lt;code&gt;--prefix&lt;/code&gt; to tell the build where to install itself,
-&lt;code&gt;--without-pymalloc&lt;/code&gt; if you have some esoteric need for everything to go
-through a custom memory allocator, or &lt;code&gt;--with-pydebug&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;One of these options only matters on macOS, and its effects are generally
-poorly understood.  The official documentation just says “Create a
-Python.framework rather than a traditional Unix install.”  But… do you need a
-Python.framework?  If you’re used to running Python on Linux, then a
-“traditional Unix install” might sound pretty good; more consistent with what
-you are used to.&lt;/p&gt;
-&lt;p&gt;If you use a non-Framework build, most stuff seems to work, so why should
-anyone care?  I have mentioned it as a detail &lt;a href="https://blog.glyph.im/2023/08/get-your-mac-python-from-python-dot-org.html"&gt;in my previous post about Python
-on macOS&lt;/a&gt;, but even I
-didn’t really explain why you’d want it, just that it was generally desirable.&lt;/p&gt;
-&lt;p&gt;The
-&lt;a href="https://www.mail-archive.com/pythonmac-sig@python.org/msg08954.html"&gt;traditional&lt;/a&gt;
-answer to this question is that you need a Framework build “if you want to use
-a GUI”, but this is demonstrably not true.  At first it might not seem so,
-since the go-to Python GUI test is “run IDLE”; many non-Framework builds also
-omit Tkinter because they don’t ship a Tk dependency, so IDLE won’t start. But
-other GUI libraries work fine.  For example, &lt;code&gt;uv tool install runsnakerun&lt;/code&gt; /
-&lt;code&gt;runsnake&lt;/code&gt; will happily pop open a GUI window, Framework build or not.  So it bears some explaining&lt;/p&gt;
-&lt;h2 id="wait-what-is-a-framework-anyway"&gt;Wait, what is a “Framework” anyway?&lt;/h2&gt;
-&lt;p&gt;Let’s back up and review an important detail of the mac platform.&lt;/p&gt;
-&lt;p&gt;On macOS, GUI applications are not just an executable file, they are organized
-into a &lt;em&gt;bundle&lt;/em&gt;, which is a directory with a particular layout, that includes
-metadata, that launches an executable.  A thing that, on Linux, might live in a
-combination of &lt;code&gt;/bin/foo&lt;/code&gt; for its executable and &lt;code&gt;/share/foo/&lt;/code&gt; for its
-associated data files, is instead on macOS bundled together into &lt;code&gt;Foo.app&lt;/code&gt;, and
-those components live in specified locations within that directory.&lt;/p&gt;
-&lt;p&gt;A
-&lt;a href="https://developer.apple.com/documentation/xcode/bundles-and-frameworks"&gt;framework&lt;/a&gt;
-is also a bundle, but one that contains a &lt;em&gt;library&lt;/em&gt;.  Since they are
-directories, Applications can contain their own Frameworks and Frameworks can
-contain helper Applications.  If &lt;code&gt;/Applications&lt;/code&gt; is roughly equivalent to the
-Unix &lt;code&gt;/bin&lt;/code&gt;, then &lt;code&gt;/Library/Frameworks&lt;/code&gt; is roughly equivalent to the Unix
-&lt;code&gt;/lib&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;App bundles are contained in a directory with a &lt;code&gt;.app&lt;/code&gt; suffix, and frameworks
-are a directory with a &lt;code&gt;.framework&lt;/code&gt; suffix.&lt;/p&gt;
-&lt;h2 id="so-what-do-you-need-a-framework-for-in-python"&gt;So what do you need a Framework for in Python?&lt;/h2&gt;
-&lt;p&gt;The truth about Framework builds is that there is not really one specific thing
-that you can point to that works or doesn’t work, where you “need” or “don’t
-need” a Framework build.  I was not able to quickly construct an example that
-trivially fails in a non-framework context for this post, but I didn’t try that
-many different things, and there are a &lt;em&gt;lot&lt;/em&gt; of different things that might
-fail.&lt;/p&gt;
-&lt;p&gt;The &lt;em&gt;biggest&lt;/em&gt; issue is not actually the &lt;code&gt;Python.framework&lt;/code&gt; itself.  The
-metadata on the framework is not used for much outside of a build or linker
-context.  However, Python’s Framework builds also ship with a &lt;em&gt;stub application
-bundle&lt;/em&gt;, which places your Python process into a normal application(-ish)
-execution context all the time, which allows for various platform APIs like
-&lt;a href="https://developer.apple.com/documentation/foundation/nsbundle/1410786-mainbundle?language=objc"&gt;&lt;code&gt;[NSBundle
-mainBundle]&lt;/code&gt;&lt;/a&gt;
-to behave in the normal, predictable ways that &lt;a href="https://developer.apple.com/documentation?language=objc"&gt;&lt;em&gt;all&lt;/em&gt; of the numerous, various
-frameworks included on Apple platforms
-expect&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Various Apple platform features might want to ask a process questions like
-“what is your unique &lt;a href="https://developer.apple.com/documentation/bundleresources/information_property_list/cfbundleidentifier?language=objc"&gt;bundle
-identifier&lt;/a&gt;?”
-or “&lt;a href="https://developer.apple.com/documentation/bundleresources/entitlements?language=objc"&gt;what entitlements are you authorized to
-access&lt;/a&gt;”
-and even beginning to answer those questions requires information stored in the
-application’s bundle.&lt;/p&gt;
-&lt;p&gt;Python does not ship with a wrapper around the core macOS “cocoa” API itself,
-but we can use pyobjc to interrogate this.  After installing
-&lt;code&gt;pyobjc-framework-cocoa&lt;/code&gt;, I can do this&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
-&lt;span class="normal"&gt;2&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="go"&gt;&amp;gt;&amp;gt;&amp;gt; import AppKit&lt;/span&gt;
-&lt;span class="go"&gt;&amp;gt;&amp;gt;&amp;gt; AppKit.NSBundle.mainBundle()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;On a non-Framework build, it might look like this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="go"&gt;NSBundle &amp;lt;/Users/glyph/example/.venv/bin&amp;gt; (loaded)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;But on a Framework build (even in a venv in a similar location), it might look
-like this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="go"&gt;NSBundle &amp;lt;/Library/Frameworks/Python.framework/Versions/3.12/Resources/Python.app&amp;gt; (loaded)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;This is why, at various points in the past, GUI access &lt;em&gt;required&lt;/em&gt; a framework
-build, since connections to the window server would just be rejected for
-Unix-style executables.  But that was an annoying restriction, so it was
-removed at some point, or at least, the behavior was changed.  As far as I can
-tell, this change was not documented.  But other things like &lt;a href="https://developer.apple.com/documentation/usernotifications?language=objc"&gt;user
-notifications&lt;/a&gt;
-or
-&lt;a href="https://developer.apple.com/documentation/CoreLocation?language=objc"&gt;geolocation&lt;/a&gt;
-might need to identity an application for preferences or permissions purposes,
-respectively.  Even something as basic as “what is your app icon” for what to
-show in alert dialogs is information contained in the bundle.  So if you use a
-library that wants to make use of any of these features, it might work, or it
-might behave oddly, or it might silently fail in an undocumented way.&lt;/p&gt;
-&lt;p&gt;This might seem like undocumented, unnecessary cruft, but it is that way
-because it’s just &lt;em&gt;basic stuff the platform expects to be there&lt;/em&gt; for a lot of
-different features of the platform.&lt;/p&gt;
-&lt;h2 id="etc-builds"&gt;&lt;code&gt;/etc/&lt;/code&gt; builds&lt;/h2&gt;
-&lt;p&gt;Still, this might seem like a strangely vague description of this feature, so
-it might be helpful to examine it by a metaphor to something you are more
-familiar with.  If you’re familiar with more Unix style application development,
-consider a junior developer — let’s call him Jim — asking you if they should
-use an “&lt;code&gt;/etc&lt;/code&gt; build” or not as a basis for their Docker containers.&lt;/p&gt;
-&lt;p&gt;What is an “&lt;code&gt;/etc&lt;/code&gt; build”?  Well, base images like &lt;code&gt;ubuntu&lt;/code&gt; come with a bunch
-of files in &lt;code&gt;/etc&lt;/code&gt;, and Jim just doesn’t see the point of any of them, so he
-likes to delete everything in &lt;code&gt;/etc&lt;/code&gt; just to make things simpler.  It seems to
-work so far.  More experienced Unix engineers that he has asked react
-negatively and make a face when he tells them this, and seem to think that
-things will break.  But their app seems to work fine, and none of these
-engineers can demonstrate some simple function breaking, so what’s the problem?&lt;/p&gt;
-&lt;p&gt;Off the top of your head, can you list all the features that all the files that
-&lt;code&gt;/etc&lt;/code&gt; is needed for?  Why not?  Jim thinks it’s weird that all this stuff is
-undocumented, and it must just be unnecessary cruft.&lt;/p&gt;
-&lt;p&gt;If Jim were to come back to you later with a problem like “it seems like
-hostname resolution doesn’t work sometimes” or “&lt;code&gt;ls&lt;/code&gt; says all my files are
-owned by &lt;code&gt;1001&lt;/code&gt; rather than the user name I specified in my Dockerfile” you’d
-probably say “please, put &lt;code&gt;/etc&lt;/code&gt; back, I don’t know exactly what file you need
-but lots of things just expect it to be there”.&lt;/p&gt;
-&lt;p&gt;This is what a framework vs. a non-Framework build is like.  A Framework build
-just includes all the pieces of the build that the macOS platform expects to be
-there.  What pieces do what features need?  It depends.  It changes over time.
-And the stub that Python’s Framework builds include may not be sufficient for
-some more esoteric stuff anyway.  For example, if you want to use a feature
-that needs a bundle that has been &lt;a href="https://developer.apple.com/documentation/bundleresources/entitlements?language=objc"&gt;signed with custom
-entitlements&lt;/a&gt;
-to access something specific, like &lt;a href="https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_virtualization?language=objc"&gt;the virtualization
-API&lt;/a&gt;,
-you might need to build &lt;a href="https://blog.glyph.im/2023/03/py-mac-app-for-real.html"&gt;your own&lt;/a&gt; app
-bundle.  To extend our analogy with Jim, the fact that &lt;code&gt;/etc&lt;/code&gt; exists and has
-the default files in it won’t always be sufficient; sometimes you have to add
-&lt;em&gt;more&lt;/em&gt; files to &lt;code&gt;/etc&lt;/code&gt;, with quite specific contents, for some features to work
-properly.  But “don’t get rid of &lt;code&gt;/etc&lt;/code&gt; (or your application bundle)” is pretty
-good advice.&lt;/p&gt;
-&lt;h2 id="do-you-ever-want-a-non-framework-build"&gt;Do you ever want a non-Framework build?&lt;/h2&gt;
-&lt;p&gt;macOS does have a Unix subsystem, and many Unix-y things work, for Unix-y
-tasks.  If you are developing a web application that mostly runs on Linux
-anyway and never care about using any features that touch the macOS-specific
-parts of your mac, then you probably don’t have to care all &lt;em&gt;that&lt;/em&gt; much about
-Framework builds.  You’re not going to be surprised one day by non-framework
-builds suddenly being unable to use some basic Unix facility like sockets or
-files.  As long as you are aware of these limitations, it’s fine to install
-non-Framework builds.  I have a dozen or so Pythons on my computer at any given
-time, and many of them are not Framework builds.&lt;/p&gt;
-&lt;p&gt;Framework builds do have some small drawbacks.  They tend to be larger, they
-can be a bit more annoying to relocate, they typically want to live in a
-location like &lt;code&gt;/Library&lt;/code&gt; or &lt;code&gt;~/Library&lt;/code&gt;.  You can move &lt;code&gt;Python.framework&lt;/code&gt; into
-an application bundle according to certain rules, as any bundling tool for
-macOS will have to do, but it &lt;em&gt;might&lt;/em&gt; not work in random filesystem locations.
-This may make managing really large number of Python versions more annoying.&lt;/p&gt;
-&lt;p&gt;Most of all, the main reason to use a non-Framework build is if you are
-building a tool that manages a fleet of Python installations to perform some
-automation that needs to know about Python installs, and you want to write one
-simple tool that does stuff on Linux and on macOS.  If you &lt;em&gt;know&lt;/em&gt; you don’t
-need any platform-specific features, don’t want to spend the (&lt;a href="https://github.com/indygreg/python-build-standalone/issues/274"&gt;not
-insignificant!&lt;/a&gt;)
-effort to cover those edge cases, and you get a lot of value from that level of
-consistency (for example, a teaching environment or interdisciplinary
-development team with a lot of platform diversity) then a non-framework build
-might be a better option.&lt;/p&gt;
-&lt;h2 id="why-do-i-care"&gt;Why do &lt;em&gt;I&lt;/em&gt; care?&lt;/h2&gt;
-&lt;p&gt;Personally, I think it’s important for Framework builds to be the default &lt;em&gt;for
-most users&lt;/em&gt;, because I think that as much stuff should work out of the box as
-possible.  Any user who sees a neat library that lets them get control of some
-chunk of data stored on their mac - map data, health data, game center high
-scores, whatever it is - should be empowered to call into those APIs and deal
-with that data for themselves.&lt;/p&gt;
-&lt;p&gt;Apple already makes it hard enough with their thicket of code-signing and
-notarization requirements for distributing software, aggressive privacy
-restrictions which prevents API access to some of this data in the first place,
-all these weird Unix-but-not-Unix filesystem layout idioms, sandboxing that
-restricts access to various features, and the use of esoteric abstractions like
-mach ports for communications behind the scenes.  We don't need to make it even
-harder by making &lt;em&gt;the way that you install your Python&lt;/em&gt; be a surprise gotcha
-variable that determines &lt;em&gt;whether or not you can use&lt;/em&gt; an API like “show me a
-user notification when my data analysis is done” or “don’t do a power-hungry
-data analysis when I’m on battery power”, especially if it kinda-sorta works
-most of the time, but only fails on certain patch-releases of certain versions
-of the operating system, becuase an implementation detail of a proprietary
-framework changed in the meanwhile to require an application bundle where it
-didn’t before, or vice versa.&lt;/p&gt;
-&lt;p&gt;More generally, I think that we should care about empowering users with local
-computation and platform access on &lt;em&gt;all&lt;/em&gt; platforms, Linux and Windows included.
-This just happens to be one particular quirk of how native platform integration
-works on macOS specifically.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h2 id="acknowledgments"&gt;Acknowledgments&lt;/h2&gt;
-&lt;p class="update-note"&gt;Thank you to &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;my patrons&lt;/a&gt; who are supporting my writing on
-this blog.  For this one, &lt;a href="https://hynek.me"&gt;thanks especially to long-time patron
-Hynek&lt;/a&gt; who requested it specifically.  If you like what you’ve
-read here and you’d like to read more of it, or you’d like to support my
-&lt;a href="https://github.com/glyph/"&gt;various open-source endeavors&lt;/a&gt;, you can &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;support my
-work as a sponsor&lt;/a&gt;!  I am also &lt;a href="mailto:consulting@glyph.im"&gt;available for consulting
-work&lt;/a&gt; if you think your organization could benefit
-from expertise on topics like “how can we set up our Mac developers’ laptops
-with Python”.&lt;/p&gt;</description>
-      <guid isPermaLink="false">c913733cb74cc893873c0ea0fa6903bb3b081da723c14987c153629e0cf45330</guid>
-      <pubDate>Wed, 11 Sep 2024 19:43:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Hynek Schlawack: Why I Still Use Python Virtual Environments in Docker</title>
-      <link>https://hynek.me/articles/docker-virtualenv/</link>
-      <description>&lt;p&gt;Whenever I publish &lt;a href="https://hynek.me/articles/docker-uv/"&gt;something&lt;/a&gt; about my Python Docker workflows, I invariably get challenged about whether it makes sense to use &lt;a href="https://docs.python.org/3/library/venv.html"&gt;&lt;em&gt;virtual environments&lt;/em&gt;&lt;/a&gt; in Docker containers. As always, it’s a trade-off, and I err on the side of standards and predictability.&lt;/p&gt;</description>
-      <guid isPermaLink="false">57885e311c8122bd0365a7d9210e256dd9ad962efcd1c5a4bbf868fffca23194</guid>
-      <pubDate>Mon, 02 Sep 2024 11:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>

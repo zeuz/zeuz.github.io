@@ -5,7 +5,231 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Misc category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Thu, 12 Nov 2026 14:01:20 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 17 Nov 2026 14:01:40 +0000</lastBuildDate>
+    <item>
+      <title>Some new Typinator abbreviations - And now it's all this</title>
+      <link>https://leancrew.com/all-this/2026/11/some-new-typinator-abbreviations/</link>
+      <description>&lt;p&gt;I mentioned in &lt;a href="https://leancrew.com/all-this/2026/11/steve-monty-and-julia/"&gt;my last post&lt;/a&gt; that I’m learning &lt;a href="https://julialang.org/"&gt;Julia&lt;/a&gt;. I intend to use it for mathematical work, and because Greek letters are used in formulas I’ll be turning into programs, it seemed like a good idea to make it easier to include Greek letters in my code as variable names. Over the weekend, I made a simple Typinator set for that purpose.&lt;sup id="fnref:editor"&gt;&lt;a href="#fn:editor" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;You can &lt;a href="https://leancrew.com/all-this/downloads/Greek%20letters.tyset.zip"&gt;download the Typinator set&lt;/a&gt; if you think it would be helpful to you. Here’s a list of the Greek letters and their abbreviations.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="center"&gt;Letter&lt;/th&gt;
+&lt;th align="center"&gt;Abbrev&lt;/th&gt;
+&lt;th align="center"&gt;Letter&lt;/th&gt;
+&lt;th align="center"&gt;Abbrev&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;α&lt;/td&gt;
+&lt;td align="center"&gt;,,a&lt;/td&gt;
+&lt;td align="center"&gt;Α&lt;/td&gt;
+&lt;td align="center"&gt;,,A&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;β&lt;/td&gt;
+&lt;td align="center"&gt;,,b&lt;/td&gt;
+&lt;td align="center"&gt;Β&lt;/td&gt;
+&lt;td align="center"&gt;,,B&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;γ&lt;/td&gt;
+&lt;td align="center"&gt;,,g&lt;/td&gt;
+&lt;td align="center"&gt;Γ&lt;/td&gt;
+&lt;td align="center"&gt;,,G&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;δ&lt;/td&gt;
+&lt;td align="center"&gt;,,d&lt;/td&gt;
+&lt;td align="center"&gt;Δ&lt;/td&gt;
+&lt;td align="center"&gt;,,D&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;ε&lt;/td&gt;
+&lt;td align="center"&gt;,,e&lt;/td&gt;
+&lt;td align="center"&gt;Ε&lt;/td&gt;
+&lt;td align="center"&gt;,,E&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;ζ&lt;/td&gt;
+&lt;td align="center"&gt;,,z&lt;/td&gt;
+&lt;td align="center"&gt;Ζ&lt;/td&gt;
+&lt;td align="center"&gt;,,Z&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;η&lt;/td&gt;
+&lt;td align="center"&gt;,,y&lt;/td&gt;
+&lt;td align="center"&gt;Η&lt;/td&gt;
+&lt;td align="center"&gt;,,Y&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;θ&lt;/td&gt;
+&lt;td align="center"&gt;,,th&lt;/td&gt;
+&lt;td align="center"&gt;Θ&lt;/td&gt;
+&lt;td align="center"&gt;,,TH&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;ι&lt;/td&gt;
+&lt;td align="center"&gt;,,io&lt;/td&gt;
+&lt;td align="center"&gt;Ι&lt;/td&gt;
+&lt;td align="center"&gt;,,IO&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;κ&lt;/td&gt;
+&lt;td align="center"&gt;,,k&lt;/td&gt;
+&lt;td align="center"&gt;Κ&lt;/td&gt;
+&lt;td align="center"&gt;,,K&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;λ&lt;/td&gt;
+&lt;td align="center"&gt;,,l&lt;/td&gt;
+&lt;td align="center"&gt;Λ&lt;/td&gt;
+&lt;td align="center"&gt;,,L&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;μ&lt;/td&gt;
+&lt;td align="center"&gt;,,m&lt;/td&gt;
+&lt;td align="center"&gt;Μ&lt;/td&gt;
+&lt;td align="center"&gt;,,M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;ν&lt;/td&gt;
+&lt;td align="center"&gt;,,n&lt;/td&gt;
+&lt;td align="center"&gt;Ν&lt;/td&gt;
+&lt;td align="center"&gt;,,N&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;ξ&lt;/td&gt;
+&lt;td align="center"&gt;,,x&lt;/td&gt;
+&lt;td align="center"&gt;Ξ&lt;/td&gt;
+&lt;td align="center"&gt;,,X&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;ο&lt;/td&gt;
+&lt;td align="center"&gt;,,on&lt;/td&gt;
+&lt;td align="center"&gt;Ο&lt;/td&gt;
+&lt;td align="center"&gt;,,ON&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;π&lt;/td&gt;
+&lt;td align="center"&gt;,,pi&lt;/td&gt;
+&lt;td align="center"&gt;Π&lt;/td&gt;
+&lt;td align="center"&gt;,,PI&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;ρ&lt;/td&gt;
+&lt;td align="center"&gt;,,r&lt;/td&gt;
+&lt;td align="center"&gt;Ρ&lt;/td&gt;
+&lt;td align="center"&gt;,,R&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;σ&lt;/td&gt;
+&lt;td align="center"&gt;,,s&lt;/td&gt;
+&lt;td align="center"&gt;Σ&lt;/td&gt;
+&lt;td align="center"&gt;,,S&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;τ&lt;/td&gt;
+&lt;td align="center"&gt;,,tt&lt;/td&gt;
+&lt;td align="center"&gt;Τ&lt;/td&gt;
+&lt;td align="center"&gt;,,TT&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;υ&lt;/td&gt;
+&lt;td align="center"&gt;,,u&lt;/td&gt;
+&lt;td align="center"&gt;Υ&lt;/td&gt;
+&lt;td align="center"&gt;,,U&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;φ&lt;/td&gt;
+&lt;td align="center"&gt;,,ph&lt;/td&gt;
+&lt;td align="center"&gt;Φ&lt;/td&gt;
+&lt;td align="center"&gt;,,PH&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;χ&lt;/td&gt;
+&lt;td align="center"&gt;,,ch&lt;/td&gt;
+&lt;td align="center"&gt;Χ&lt;/td&gt;
+&lt;td align="center"&gt;,,CH&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;ψ&lt;/td&gt;
+&lt;td align="center"&gt;,,ps&lt;/td&gt;
+&lt;td align="center"&gt;Ψ&lt;/td&gt;
+&lt;td align="center"&gt;,,PS&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;ω&lt;/td&gt;
+&lt;td align="center"&gt;,,om&lt;/td&gt;
+&lt;td align="center"&gt;Ω&lt;/td&gt;
+&lt;td align="center"&gt;,,OM&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;I never use many of these symbols because they’re too easy to confuse with Latin letters that look the same; this is especially true for the capitals. But once I got started, I just did the whole alphabet anyway. Maybe I’ll delete some of them as time goes on.&lt;/p&gt;
+&lt;p&gt;The set is defined with a double comma as the common prefix, and the abbreviations expand immediately—no waiting for a word break character.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Greek letters group information" class="ss" src="https://leancrew.com/all-this/images2026/20261116-Greek%20letters%20group%20information.png" title="Greek letters group information" width="80%" /&gt;&lt;/p&gt;
+&lt;p&gt;You may be wondering why I use &lt;code&gt;,,y&lt;/code&gt; as the abbreviation for η. When I need to deal with a rotated coordinate system, ξ and η are typically the symbols I use for the rotated x and y coordinates, so it made sense (to me, anyway) for η to be &lt;code&gt;,,y&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Coordinate systems" class="ss" src="https://leancrew.com/all-this/images2026/20261116-Coordinate%20systems.png" title="Coordinate systems" width="80%" /&gt;&lt;/p&gt;
+&lt;p&gt;Other symbols I often use are in another set, &lt;a href="https://leancrew.com/all-this/downloads/Math%20symbols.tyset.zip"&gt;Math symbols&lt;/a&gt;:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="center"&gt;Symbol&lt;/th&gt;
+&lt;th align="center"&gt;Abbrev&lt;/th&gt;
+&lt;th align="center"&gt;Symbol&lt;/th&gt;
+&lt;th align="center"&gt;Abbrev&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;×&lt;/td&gt;
+&lt;td align="center"&gt;,,*&lt;/td&gt;
+&lt;td align="center"&gt;÷&lt;/td&gt;
+&lt;td align="center"&gt;,,/&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;∞&lt;/td&gt;
+&lt;td align="center"&gt;,,8&lt;/td&gt;
+&lt;td align="center"&gt;∴&lt;/td&gt;
+&lt;td align="center"&gt;,,…&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;⇒&lt;/td&gt;
+&lt;td align="center"&gt;,,&amp;gt;&lt;/td&gt;
+&lt;td align="center"&gt;⇔&lt;/td&gt;
+&lt;td align="center"&gt;,,&amp;lt;&amp;gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;′&lt;/td&gt;
+&lt;td align="center"&gt;,,ft&lt;/td&gt;
+&lt;td align="center"&gt;″&lt;/td&gt;
+&lt;td align="center"&gt;,,in&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;I tend to use the prime and double prime symbols for feet and inches, hence the &lt;code&gt;ft&lt;/code&gt; and &lt;code&gt;in&lt;/code&gt; in their abbreviations. In the past, I’ve used different abbreviations for some of these, like &lt;code&gt;;times&lt;/code&gt; and &lt;code&gt;;divide&lt;/code&gt; for × and ÷.&lt;/p&gt;
+&lt;p&gt;A note on the downloads: The two Typinator sets are saved on the server as zip files. Depending on how your browser is configured, they may or may not expand immediately when downloaded. Once they’re expanded, you can add them to your Typinator setup by double-clicking or dragging them into the Typinator window.&lt;/p&gt;
+&lt;p&gt;Simple little automations like this often save me more time than the more complex ones I often write about. We’ll see how these work out.&lt;/p&gt;
+&lt;div class="footnotes"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:editor"&gt;
+&lt;p&gt;The &lt;a href="https://docs.julialang.org/en/v1/manual/unicode-input/"&gt;Julia REPL&lt;/a&gt; has a LaTeX-like way to enter Greek letters, but I want to be able to enter them in my text editor, BBEdit, too. &lt;a href="#fnref:editor" rev="footnote"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
+      <guid isPermaLink="false">d74e6b228049f5580aefdcf036a054eb55dca988243fb20adb547dea69c1722c</guid>
+      <pubDate>Mon, 16 Nov 2026 22:40:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Light-Day - xkcd.com</title>
+      <link>https://xkcd.com/3325/</link>
+      <description>&lt;img alt="After 49 years, NASA is considering shutting down Voyager 1's multiplayer gaming server; the 172800000ms ping has just become too annoying for players." src="https://imgs.xkcd.com/comics/light_day.png" title="After 49 years, NASA is considering shutting down Voyager 1's multiplayer gaming server; the 172800000ms ping has just become too annoying for players." /&gt;</description>
+      <guid isPermaLink="false">7a201271325aa37c153b3530a61450470fb34a68477ba1a8279a3c622e9953de</guid>
+      <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Steve, Monty, and Julia - And now it's all this</title>
       <link>https://leancrew.com/all-this/2026/11/steve-monty-and-julia/</link>

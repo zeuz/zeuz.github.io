@@ -5,7 +5,88 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Mon, 16 Nov 2026 14:00:40 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 17 Nov 2026 14:01:39 +0000</lastBuildDate>
+    <item>
+      <title>Researchers Detail iPhone Flaw That Let Apps Record Audio Despite Denied Microphone Permission - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/researchers-detail-iphone-flaw-that-let.html</link>
+      <description>A now-patched flaw in Apple's audio service let apps on iPhones and iPads record audio even after the user tapped "Don't Allow" on the microphone prompt.
+The first security updates with the fix came out on August 17. Neither Apple nor the two researchers who found the flaw report that it was used in attacks.
+Nik Tsytsarkin of Meta Red Team X published the technical details last week. Mustafa</description>
+      <guid isPermaLink="false">a98c08d4e7e2c0aeeda832cc5e0194ec43fe9284941abe55a06e6f76dc5f4ae4</guid>
+      <pubDate>Tue, 17 Nov 2026 12:14:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>New GitDoor and GraphDoor Backdoors Turn GitHub and SharePoint Into Covert C2 Channels - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/new-gitdoor-and-graphdoor-backdoors.html</link>
+      <description>Government sectors in Asia and Africa have been targeted by an active cyber intrusion campaign that delivers to previously undocumented backdoors that leverage legitimate services like Microsoft SharePoint and GitHub for command‑and‑control (C2).
+The activity has been codenamed Operation ShadowCloud by Kaspersky. The Russian cybersecurity company said it identified the campaign in early 2026.</description>
+      <guid isPermaLink="false">3cc1baca747bad2f7214eabe37b40e2cc3b9e79838c879560873023da10f518a</guid>
+      <pubDate>Tue, 17 Nov 2026 11:20:18 +0000</pubDate>
+    </item>
+    <item>
+      <title>Apple Tightens macOS App Permissions to Limit Data Access Amid AI Agent Security Risks - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/apple-tightens-macos-app-permissions-to.html</link>
+      <description>Apple on Monday introduced new controls that allow Mac users to give more granular access to data they give to apps, including those that use artificial intelligence (AI) agents.
+The changes, currently previewed in macOS 27.3 beta 2, relate to increased transparency and more options for two of its APIs: Device Control and Data Access, and Full Disk Access.
+"Before granting an app such</description>
+      <guid isPermaLink="false">92f28bb92326891f62b6ec664775483b0119438da56b720ef1b3a68037fe3987</guid>
+      <pubDate>Tue, 17 Nov 2026 11:07:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>Ryanair forces you to install their app for a boarding pass, so I reverse engineered it to get the pass without the app - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xyh8e9/ryanair_forces_you_to_install_their_app_for_a/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Ok-Highway7466"&gt; /u/Ok-Highway7466 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/bigtajine/no-ryanair-app"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xyh8e9/ryanair_forces_you_to_install_their_app_for_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">686227f7a0c43a7b63d3abade7b1ea6f3a978a83375b950081f4ee0ff14b9575</guid>
+      <pubDate>Tue, 17 Nov 2026 10:39:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hijacked Optimizely Scripts Served Card Skimmer and iOS Exploit Kits to CNN, BBC and Zoom Visitors - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/hijacked-optimizely-scripts-served-card.html</link>
+      <description>An attacker exploited a flaw in Optimizely Web Experimentation to plant malicious code in some of the scripts that customers' websites load from the service, Optimizely said early today.
+Visitors to sites run by at least 178 organizations, including CNN, the BBC and Zoom, received the code yesterday, according to Report URI, a firm that monitors the scripts websites run.
+The code was built to</description>
+      <guid isPermaLink="false">4e396e1c6381eeb093c898ad020a60764d3dc04bd859be6488271ba136979789</guid>
+      <pubDate>Tue, 17 Nov 2026 07:12:13 +0000</pubDate>
+    </item>
+    <item>
+      <title>ConnectWise Warns ScreenConnect Attacks Continue as SCKit Targets Unpatched Systems - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/connectwise-warns-screenconnect-attacks.html</link>
+      <description>ConnectWise on Monday said it completed its investigation into unauthorized access targeting partner ScreenConnect environments, and recommended customers to ensure that the technician client is running version 26.6.5 or later.
+The company said additional activity targeting on-premises environments continues to be reported where the identified third-party extensions remain enabled, and</description>
+      <guid isPermaLink="false">d51e3b4cee64a7c861163a50a1805c725cd8b5e5e55077d7ac106c073de87855</guid>
+      <pubDate>Tue, 17 Nov 2026 06:29:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>Reimplementing an old iPad Plants vs. Zombies game for the web: reverse engineering an Adobe AIR AOT binary - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xyd08e/reimplementing_an_old_ipad_plants_vs_zombies_game/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Ok-Insurance-3229"&gt; /u/Ok-Insurance-3229 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/debugpro/pvz-pinyin"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xyd08e/reimplementing_an_old_ipad_plants_vs_zombies_game/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">0ae781c3674aa5bf30463c80da85f34ed59633db1718c60607d49eaeedd91e00</guid>
+      <pubDate>Tue, 17 Nov 2026 06:15:28 +0000</pubDate>
+    </item>
+    <item>
+      <title>N-able Patches 17 N-central Flaws as Attackers Exploit Earlier Bugs to Deploy Crypto Miners - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/n-able-patches-17-n-central-flaws-as.html</link>
+      <description>N-able has released a new security update to address additional critical security flaws impacting N-central.
+Describing N-central 2026.4 Hotfix 3 as a critical security update, the company said it includes a number of security patches and fixes that enhance the security of the Remote Monitoring and Management (RMM) and Unified Endpoint Management (UEM) platform.
+"HF3 builds on the</description>
+      <guid isPermaLink="false">b314c8f61445ec8a37fbb16899e1b37ee4470d47e7a93f70bdd41f8bab4532c9</guid>
+      <pubDate>Tue, 17 Nov 2026 05:00:34 +0000</pubDate>
+    </item>
+    <item>
+      <title>I read Mirai's source code line by line so beginners can follow - what main.c reveals about how the botnet works - Reverse Engineering</title>
+      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xy9ya9/i_read_mirais_source_code_line_by_line_so/</link>
+      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/PassengerKnown4806"&gt; /u/PassengerKnown4806 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://iotsec.in/t/mirai-source-code-analysis-what-main-c-reveals-about-the-botnet-s-design/20"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xy9ya9/i_read_mirais_source_code_line_by_line_so/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">86340079961e549d3ea58a934d955e013fef07858c0adb3b579c16bbef2284e5</guid>
+      <pubDate>Tue, 17 Nov 2026 03:30:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>Google Finds Hackers Using AI Agents to Build and Run Exploits From Software Patches - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/google-finds-hackers-using-ai-agents-to.html</link>
+      <description>Google on Monday revealed that adversarial use of artificial intelligence (AI) by threat actors has gone beyond manual prompting to deploying autonomous multi-agent offensive frameworks like ARTEX, CAIRN, CyberStrikeAI, and PentAGI to execute multi-stage intrusions at greater operational velocity.
+In tandem, threat actors are leveraging the power and capabilities of large language models (LLMs)</description>
+      <guid isPermaLink="false">c466e7eb1ae8ee938a7207d20297fad14de3381380dbea2481cad5c41af77f3e</guid>
+      <pubDate>Mon, 16 Nov 2026 14:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Six Unpatched Danfoss Refrigeration Controller Flaws Could Allow Remote Takeover Without Login - The Hacker News</title>
       <link>https://thehackernews.com/2026/11/six-unpatched-danfoss-refrigeration.html</link>
@@ -1490,84 +1571,6 @@ GitLab found that a specially crafted pattern could corrupt memory while Ruby co
 Ruby says any</description>
       <guid isPermaLink="false">1447eabfe66bca114ae3a35902d5ab8bd284e8c63f113514bcb84f4ee33b9bb8</guid>
       <pubDate>Fri, 23 Oct 2026 17:54:08 +0000</pubDate>
-    </item>
-    <item>
-      <title>Exposed Infrastructure Reveals How Ransomware Affiliates Used AI Agents to Execute Intrusions - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/exposed-infrastructure-reveals-how.html</link>
-      <description>Cybersecurity researchers have discovered an artificial intelligence (AI)-driven intrusion ecosystem run by affiliates of the INC and The Gentlemen ransomware groups.
-Central to the operation is an "Autonomous Red Team Kill Chain Framework" referred to as Phantom. The threat actor is assessed to be Russian-speaking and functions both as an intrusion and data-extortion operator, as well as an</description>
-      <guid isPermaLink="false">2d722d5b61905a47440fda538b08db7b7ce645294eab66843f6994b7eda7361a</guid>
-      <pubDate>Fri, 23 Oct 2026 17:50:47 +0000</pubDate>
-    </item>
-    <item>
-      <title>Hackers Breach Enterprise Firewalls and VPNs, Exposing Over 70,000 Credentials - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/hackers-breach-enterprise-firewalls-and.html</link>
-      <description>Cybersecurity researchers have disclosed details of a large-scale campaign that has targeted exposed network edge devices such as Fortinet FortiGate and Palo Alto Networks GlobalProtect firewalls.
-"Artifacts from this investigation also indicate that operators in this campaign have obtained access to numerous organizations worldwide, and have attempted to further compromise some victims,</description>
-      <guid isPermaLink="false">84f7e4a1e7b66d30f0501d6d9bee759fe931167dfb6c2855349f0f91662eaeeb</guid>
-      <pubDate>Fri, 23 Oct 2026 13:50:56 +0000</pubDate>
-    </item>
-    <item>
-      <title>PHP Warns of Another Unpatched RCE Two Days After Emergency PHP2Shell Patches - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/urgent-php-warns-of-another-unpatched.html</link>
-      <description>PHP has warned of another way an attacker could run code on a web server, two days after it shipped emergency fixes for the critical PHP2Shell flaws.
-The new issue, assigned CVE-2026-115560, affects only web applications configured in an unusual way, and PHP considers it an unlikely risk.The project is not issuing an emergency fix for it. Instead, it recommends turning off a feature called</description>
-      <guid isPermaLink="false">c889d8793c09977d6f3b370cbea7d0c71fbd7ef882626e3238048c72fccaf382</guid>
-      <pubDate>Fri, 23 Oct 2026 11:25:43 +0000</pubDate>
-    </item>
-    <item>
-      <title>Russian-Linked Hackers Used New Mesh Network Backdoor in Destructive Ukraine Attack - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/russian-linked-hackers-used-new-mesh.html</link>
-      <description>The Russian state-sponsored hacking group Sandworm teamed up with another threat actor to carry out a destructive wiping attack targeting a Ukrainian logistics company last year.
-According to ESET, the attack involved UAC-0099 (aka Earth Sirrush) obtaining initial access to the target on July 16, 2025, via a spear-phishing email bearing a malware-laced attachment that led to the deployment of</description>
-      <guid isPermaLink="false">918e5398c1040b30e0962a83ab0df5291c6577bac8d26f0cfe301824425dc65b</guid>
-      <pubDate>Fri, 23 Oct 2026 11:11:23 +0000</pubDate>
-    </item>
-    <item>
-      <title>Five IDA Processor Modules for Uncommon Architectures — xCORE, C7x, PRU, MicroBlaze and NVIDIA SASS - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xd9l40/five_ida_processor_modules_for_uncommon/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/mr_wolf_is_me"&gt; /u/mr_wolf_is_me &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/Mr-wolf-is-me/IDA-Processor-Modules"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xd9l40/five_ida_processor_modules_for_uncommon/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">ae9e4d681ece34e488b91c1301b5b7a864378d7e60f54cc151bd4d58af41ecd1</guid>
-      <pubDate>Fri, 23 Oct 2026 09:44:26 +0000</pubDate>
-    </item>
-    <item>
-      <title>Critical Flaw in Python’s Popular Pillow Image Library Allows Code Execution via a Crafted Image - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/critical-flaw-in-pythons-popular-pillow.html</link>
-      <description>Pillow, the most widely used image library for Python, can be made to run operating system commands on a server by specifying the name of a file it is told to open.
-The flaw,&amp;nbsp;CVE-2026-112900, is in the way Pillow handles EPS images, which it opens by passing the file's name to Ghostscript, a separate program it runs to turn the image into pixels, without checking the name first.</description>
-      <guid isPermaLink="false">14b3021c427f9d3c9847b0ff0e015d44bb45671523f42d55380afa547f753f20</guid>
-      <pubDate>Fri, 23 Oct 2026 09:36:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Researchers Demonstrate Node2Shell RCE Exploit on Node.js Build Using Crafted Brotli Data - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/researchers-demonstrate-node2shell-rce.html</link>
-      <description>Malicious Brotli data can make an application on an official build of Node.js run attacker-supplied code, security researchers at Imperva have&amp;nbsp;demonstrated.
-Their "Node2Shell" proof of concept ran code on the official Node.js 24.22.0 image for Linux arm64, with no debugger or custom build, by feeding crafted data to the bundled Brotli decoder (CVE-2026-111497). Node.js disclosed the flaw</description>
-      <guid isPermaLink="false">0975de78fb10b5332f54962246bde7d7aee75dac95ffda652e222583d18f6b06</guid>
-      <pubDate>Fri, 23 Oct 2026 08:40:43 +0000</pubDate>
-    </item>
-    <item>
-      <title>Critical x402 SDK Flaw Could Let Malicious APIs Drain AI Agents’ Token Balances - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/critical-x402-sdk-flaw-could-let.html</link>
-      <description>AI agents paying for API calls with the&amp;nbsp;x402 SDKs&amp;nbsp;could sign a payment for their full balance of a supported token if a malicious API asked for it,&amp;nbsp;security firm V12 said&amp;nbsp;on October 22.
-The cause was the SDKs' default client, which set no spending limit until releases on August 18 added one. The risk was limited to agents who automatically signed payments and whose apps set</description>
-      <guid isPermaLink="false">2cfd8a68b3acf5367b92f75b75aeab4156beb8b2990d2408123b7dbc554a2779</guid>
-      <pubDate>Fri, 23 Oct 2026 08:35:45 +0000</pubDate>
-    </item>
-    <item>
-      <title>PHP2Shell Exploit Attempts Hit Millions as Attackers Try to Deploy Mirai Malware - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html</link>
-      <description>Threat actors have been observed unsuccessfully attempting to exploit the newly disclosed PHP2Shell vulnerabilities to rope infected systems into a Mirai botnet variant called Potassium, as it emerges that weaponizing the flaws may be harder than previously thought.
-The attacks aim to exploit CVE-2026-109618 and CVE-2026-109619 (CVSS scores: 9.2), which can result in unauthenticated remote</description>
-      <guid isPermaLink="false">90b0f2c7492f01e11fcae416454b78b115cf004e114beb50591fc5b17eb5c6c7</guid>
-      <pubDate>Fri, 23 Oct 2026 07:40:45 +0000</pubDate>
-    </item>
-    <item>
-      <title>Switch 2 Jailbreak - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xd2ug8/switch_2_jailbreak/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/tnavda"&gt; /u/tnavda &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://pepsipu.com/blog/2026-10-switch2-jailbreak-ns2jb/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xd2ug8/switch_2_jailbreak/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">bef37cf8c75e452f39abfd376f8f7a3399f448d42a1da59ed9967895be222372</guid>
-      <pubDate>Fri, 23 Oct 2026 03:12:04 +0000</pubDate>
     </item>
   </channel>
 </rss>
