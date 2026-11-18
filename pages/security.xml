@@ -5,7 +5,210 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 17 Nov 2026 20:37:36 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 14:01:34 +0000</lastBuildDate>
+    <item>
+      <title>New Attack Bypasses TPM Lockout to Crack Windows Hello and BitLocker PINs in Days, Not Years - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/flash-chip-attack-bypasses-tpm-lockout.html</link>
+      <description>On AMD-based PCs and some Intel PCs, the TPM lockout for Windows Hello and BitLocker PINs can be reset by someone who opens the PC's case, researchers at Technische Universität Berlin say.
+That leaves short PINs open to guessing. In lab tests, the researchers found a four-digit Hello PIN on an AMD laptop and a 6-digit BitLocker PIN on an Intel laptop this way.
+Both PINs were set by the</description>
+      <guid isPermaLink="false">bd2e6a34c69a9dc6c9947066e666e2bd85251652957e7543293c543f3022aeff</guid>
+      <pubDate>Wed, 18 Nov 2026 12:28:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>Java4Shell Flaw (CVE-2026-114938) Enables Pre-Auth RCE in Jira, Jenkins, Keycloak and More - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/java4shell-cve-2026-114938-enables-pre.html</link>
+      <description>A Java flaw called Java4Shell can let attackers without an account run their own code on Jira, Jenkins, Keycloak, and three other widely used applications, says Calif, the security research firm that disclosed it this week.
+The flaw is present in Java 17.0.6 and later, and the vulnerable code runs only on x86-64 Intel and AMD chips that support the AVX-512 VBMI feature.
+Tracked as</description>
+      <guid isPermaLink="false">7cfcfa9f75e7e78660515e8107ca687cbda68f4378f3b8dc8b929472a211b4a6</guid>
+      <pubDate>Wed, 18 Nov 2026 11:55:49 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hackers Exploiting Critical Puppet RCE Flaw Affecting Enterprise Management Servers - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/hackers-exploiting-critical-puppet-rce.html</link>
+      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Tuesday added a critical security flaw impacting Perforce Puppet, an enterprise infrastructure-as-code (IaC) and configuration management platform, to its Known Exploited Vulnerabilities (KEV) catalog, citing reports of active exploitation.
+The vulnerability, tracked as CVE-2026-115731 (CVSS score: 9.4), is a case of</description>
+      <guid isPermaLink="false">c017f21637fb3213ec72b2d9dedf5eac3b13516b99d5781ee9424a59f1ca1653</guid>
+      <pubDate>Wed, 18 Nov 2026 08:24:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>Attackers Compromise Microsoft's Agent Framework PyPI Package to Steal Cloud Credentials - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/attackers-compromise-microsofts-agent.html</link>
+      <description>Threat actors have compromised Microsoft's agent-framework package to push a credential stealer, according to reports from Aikido, Chainguard, Endor Labs, OX Security, SafeDep, Socket, StepSecurity, and Google-owned Wiz.
+The malicious versions, 1.26.1 and 1.26.2, were published 33 minutes apart on November 17, 2026, and are designed to run a credential stealer on every Python start. As of</description>
+      <guid isPermaLink="false">9ce5ba942af5172006d0410efb9d811a52240505293312689d360660d1327648</guid>
+      <pubDate>Wed, 18 Nov 2026 06:45:26 +0000</pubDate>
+    </item>
+    <item>
+      <title>Russian COLD RELIC Hackers Use Stolen Google Workspace Data to Breach Second U.S. Organization - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/russian-cold-relic-hackers-use-stolen.html</link>
+      <description>The Russia-linked cyber espionage group known as Cold Relic (formerly COLDRIVER and UNC4057) has been observed weaponizing a single cloud compromise into a launchpad for a series of linked intrusions resulting in third-party compromise.
+Google's Mandiant and Threat Intelligence Group (GTIG) said it investigated a 2026 compromise at a U.S.-based organization in which the adversary leveraged</description>
+      <guid isPermaLink="false">16487b4c1afd181213ac2dc58a7ca964903d55a57b6e884eec4d75a5b5237e61</guid>
+      <pubDate>Wed, 18 Nov 2026 05:58:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- bhyve guests can panic the host on Intel CPUs - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/21b00ba9-e312-11f1-a3e1-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">566ce8e8b41b88a09ea77d4251725b597d4d375c806640b92b9d8601615e4c29</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Capsicum and O_RESOLVE_BENEATH bypass at mount roots - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/b1803084-e311-11f1-a3e1-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">c03aa0cae4694ef0bb6e93a84e125c37e9a05230c43dc02b95160d3a0834a62c</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Directory permission bypass via open(2) - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/8aedf1a9-e313-11f1-a3e1-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">9aba713ea016e789c85a3c65c4d53731281fa0956411bf092955c61221d64b27</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- gssd maps unrecognized Kerberos principals to UID 0 - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/e58b4598-e310-11f1-a3e1-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">48ff7d3740455ced70dbfa6d93574902ed6334585ebf3163b29361c76b421605</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- IPsec stream cipher counter reuse - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/d57900fc-e311-11f1-a3e1-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">ff3ec49e2936c62521dd3bb84f054e65c41b4a702678ba920e71ed985d30f767</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Kernel memory disclosure via KTLS control messages - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/8f936426-e30f-11f1-a3e1-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">7375a1a29e93bb6d25ec2403fef0cdf4d9452b36236bc99264231478d4a7061c</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Kernel memory disclosure via Linuxulator extattr syscalls - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/41f92d57-e310-11f1-a3e1-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">e0b97862be8a3d564d2c3f9e055c31c0813e6619293271a25add6fb04a7a4695</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Local privilege escalation via netlink heap buffer overflow - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/baab8eb5-e310-11f1-a3e1-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">cc2b5fcc947e5d6ed6fdfacad29892c46fe2e3eb328d9520d4eddd2842e6d684</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Local privilege escalation via TCP MSG_OOB handling - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/a55d3c3a-e313-11f1-a3e1-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">325db4be1eca98334973d790e7040d2048a5f73986b41b714e9462645a779612</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Multiple vulnerabilities in bsnmpd(1) - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/ecd494c5-e312-11f1-a3e1-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">724ab5e790d90a5fdc0c67a08e40f357f0983e28285cfe8fac684a3f2b5433f6</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Multiple vulnerabilities in kevent(2) - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/42294611-e312-11f1-a3e1-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">6315bac29f6a54711c32b8fabdddb3efdcb87d21cdc423e80bebb4a0e0c93904</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Multiple vulnerabilities in the ocs_fc(4) driver - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/6a6aaf64-e310-11f1-a3e1-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">6fec6f67c7f7c99850a6756a2f847c48be6f5bdbfe491071e7fd6902e09199f2</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- NFSv4 server remote code execution via stateid type confusion - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/07d484a7-e311-11f1-a3e1-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">66eace1f6022d4cd1886b34db8d6d8c838b457bada5e0bb0aaf04bc19555d181</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Privilege escalation via compat32 recvmsg(2) control messages - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/707d112d-e312-11f1-a3e1-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">ddf9dbd520b0f8d5bdf2d33056e44a8df88882ee45aaab1d2736b3929e853698</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Privilege escalation via inotify watch descriptor wraparound - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/35d11826-e311-11f1-a3e1-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">7a53be895c53f64423d93770b00969166cf0d3cc9a5c08cf6452d4f04769233d</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Privilege escalation via missing fdescfs(4) access checks - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/694ec2f0-e313-11f1-a3e1-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">7f40f04e36f2b7ea6b58520c0b24d6c1d1f62cbf8849c0548f03a5c6df1efa16</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Privilege escalation via prefaulting on largepage mappings - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/272af53f-e313-11f1-a3e1-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">9d6c31633ca2443bf717ebd6970c44cffcae47d13a918fd7a3e0a563be642828</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Privilege escalation via shutdown(2) race on unix sockets - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/f783a9ba-e311-11f1-a3e1-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">78c8ee7ed0467590a77b4edc2eb1c49660832706a95856ee0e64816c3c48785c</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Privilege escalation via socket unsplice timeout - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/8ff9bae6-e312-11f1-a3e1-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">12b0ac202e6c66833510a96cb53589550ddd95ed0f35c003c4dc0f5d17d81429</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- Privilege escalation via sound software buffer resizing - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/ac524394-e312-11f1-a3e1-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">74ec3c553a73d82fd8e1c723581aca29f4fc2b29f513a7c4f67a88772f84b71c</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>FreeBSD -- tmpfs(4) fails to clear set-group-ID bit on new files - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/c0ecba9d-e313-11f1-a3e1-bc241121aa0a.html</link>
+      <description/>
+      <guid isPermaLink="false">757c4c614f52ce63b5ca6d25488a7310a8e43735270324177103bd95ba8c9f1b</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>libfontenc -- Parsing validation failure - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/e561f892-e2f5-11f1-97f8-589cfc10a683.html</link>
+      <description/>
+      <guid isPermaLink="false">5baaf1f8f9d9b076cb1d3adf33c6e6cbdbcfddab9156487ac0b3503cb48939c1</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>libXfont2 -- Multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/c26f4a22-e2f6-11f1-97f8-589cfc10a683.html</link>
+      <description/>
+      <guid isPermaLink="false">b7d27a36415f73bcc75ebdb38e5c56063d95e710a8df5c685fb0286334fd246d</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Researchers Claim Two RCE Exploits That Bypass Telegram’s New Android Defenses - The Hacker News</title>
       <link>https://thehackernews.com/2026/11/researchers-claim-two-rce-exploits-that.html</link>
@@ -115,6 +318,13 @@ Describing N-central 2026.4 Hotfix 3 as a critical security update, the company 
       <link>http://www.vuxml.org/freebsd/142f0839-e259-11f1-ab7d-10ffe07f9334.html</link>
       <description/>
       <guid isPermaLink="false">79ef166911211aa1bf0168cb6f742561c814533f3b3abba16e4c69572353ef23</guid>
+      <pubDate>Tue, 17 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>OpenSSL -- Multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/297e3635-e276-11f1-8135-8447094a420f.html</link>
+      <description/>
+      <guid isPermaLink="false">72d3136f9b8675894246ffc7dec173bdb718dc896c867f03188f58b05b2f1a75</guid>
       <pubDate>Tue, 17 Nov 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
@@ -1349,224 +1559,6 @@ According to Dutch e-commerce security company Sansec, the activity is designed 
 "When you</description>
       <guid isPermaLink="false">959cd5a574ea22ecaae58ff2ac2713ed6516bdb79e137bbefaf1daf45276626a</guid>
       <pubDate>Mon, 26 Oct 2026 18:12:22 +0000</pubDate>
-    </item>
-    <item>
-      <title>PHP Issues Second Windows Security Update in Five Days to Fix Brotli Code Execution Flaw - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/php-issues-second-windows-security.html</link>
-      <description>PHP has rebuilt its official Windows packages for PHP 8.2 through 8.5 to fix CVE-2026-111497, a flaw in the Brotli compression library that the packages include. The flaw can let an attacker corrupt memory and potentially run code.
-PHP says the flaw can be reached through the cURL extension when the extension decompresses HTTP responses automatically. cURL leaves that off by default, but</description>
-      <guid isPermaLink="false">ae933aa5453ce676853cbd1cb9a0b92d1fef626e3937db5f1577527407375ee0</guid>
-      <pubDate>Mon, 26 Oct 2026 17:45:57 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Use Microsoft Teams IT Support Scams to Deploy Malware and Ransomware - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/attackers-use-microsoft-teams-it.html</link>
-      <description>Cybersecurity researchers are calling attention to what they say is a "recurring social engineering pattern" across hundreds of cases in which threat actors use Microsoft Teams' external chat creation feature to conduct impersonation scams or to deliver malware.
-"A consistent pattern of attacker behavior has emerged across these incidents: the use of the same throwaway tenants, the same 'IT</description>
-      <guid isPermaLink="false">8cf3ea921f3782ee10b7b16afe643745fe493746a9a4642d1ed0cfc172b84bd2</guid>
-      <pubDate>Mon, 26 Oct 2026 15:52:40 +0000</pubDate>
-    </item>
-    <item>
-      <title>Indirect Syscall Rust Loader Analysis (Stream) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xg06n4/indirect_syscall_rust_loader_analysis_stream/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/jershmagersh"&gt; /u/jershmagersh &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://youtu.be/6X8DIN5VO8E"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xg06n4/indirect_syscall_rust_loader_analysis_stream/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">56b0edab831f98aa1a7502e40ebad9e37100b12e66aed85d03fe7084eb4aac34</guid>
-      <pubDate>Mon, 26 Oct 2026 15:35:08 +0000</pubDate>
-    </item>
-    <item>
-      <title>Maigret – OSINT Username Search Tool - Darknet - The Darkside</title>
-      <link>https://www.darknet.org.uk/2026/10/maigret-osint-username-search-tool/</link>
-      <description>Maigret's database lists 5,900 sites, but a default run checks 500 and the list updates itself. How to install it, use it and pin what you searched.</description>
-      <guid isPermaLink="false">5b7f2097c8f298a265992f2f63e5024218ce925bba1d4474e464743019ab724f</guid>
-      <pubDate>Mon, 26 Oct 2026 15:16:34 +0000</pubDate>
-    </item>
-    <item>
-      <title>I modified my Nikon Z7's firmware to add a 3×3 rule-of-thirds grid - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xfx0zn/i_modified_my_nikon_z7s_firmware_to_add_a_33/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Skulleton12"&gt; /u/Skulleton12 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/tylermcm/WonderLanternZ7"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xfx0zn/i_modified_my_nikon_z7s_firmware_to_add_a_33/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">7d1f2439746cac512bb545d0ce4dd58874ead56df70cb55f10459b8cd731a07e</guid>
-      <pubDate>Mon, 26 Oct 2026 13:36:51 +0000</pubDate>
-    </item>
-    <item>
-      <title>RzWeb: Rizin compiled to WebAssembly, so you can do static analysis in a browser tab and nothing gets uploaded - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xfw6bd/rzweb_rizin_compiled_to_webassembly_so_you_can_do/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/IndAnony"&gt; /u/IndAnony &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/IndAlok/rzweb"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xfw6bd/rzweb_rizin_compiled_to_webassembly_so_you_can_do/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">7d9cb3ed2837731ee5e0c15ad4ea73bb83112bc0c9cdd605b5fd4519b624c28d</guid>
-      <pubDate>Mon, 26 Oct 2026 13:01:41 +0000</pubDate>
-    </item>
-    <item>
-      <title>Two Critical Wasmtime Flaws Could Let Malicious WebAssembly Modules Escape Sandboxes - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/two-critical-wasmtime-flaws-could-let.html</link>
-      <description>Two critical flaws in&amp;nbsp;Wasmtime, a WebAssembly runtime that can be built into other software, could allow a malicious WebAssembly module to escape the sandbox intended to contain it, the project's maintainers say.
-An attacker would first need a vulnerable Wasmtime build to compile a module they control, and one of the flaws affects only ARM64 systems. Fixed versions were released on</description>
-      <guid isPermaLink="false">117713dbc80386836449205d0a4f6dde4426a84e13367baae438a926280e4a5c</guid>
-      <pubDate>Mon, 26 Oct 2026 11:52:41 +0000</pubDate>
-    </item>
-    <item>
-      <title>How obfstr and litcrypt behave in compiled Rust: findings from a binary deobfuscation project - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xftajz/how_obfstr_and_litcrypt_behave_in_compiled_rust/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Odd-Sheepherder-8982"&gt; /u/Odd-Sheepherder-8982 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/VAHPEM/rust-deobf"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xftajz/how_obfstr_and_litcrypt_behave_in_compiled_rust/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">6c5ba01ab504ef6e76b634efe2ed6874d842f5669d0d7e4839b4861a9d10091e</guid>
-      <pubDate>Mon, 26 Oct 2026 10:39:25 +0000</pubDate>
-    </item>
-    <item>
-      <title>uCreator Android Spyware Can Steal Telegram 2FA Passwords and Clone WeChat Accounts - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/ucreator-android-spyware-can-steal.html</link>
-      <description>A rentable Android spyware kit called uCreator takes over Telegram and WeChat accounts by hiding its code inside working copies of the two apps, researcher Ovi found. It only reaches people who install one of these tampered copies, spread outside the official app stores, or who run WeChat inside the kit makers' own container app.
-The kit's Telegram part matches Baohuo, a backdoor that Doctor</description>
-      <guid isPermaLink="false">3db2027dddd82e87f1c006db05ae3e03103aaf8fe9b58a0c9d3d423fd8ee3972</guid>
-      <pubDate>Mon, 26 Oct 2026 09:54:02 +0000</pubDate>
-    </item>
-    <item>
-      <title>Microsoft 365 Token-Replay Attacks Compromise 97 Accounts at 79 Organizations - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/microsoft-365-token-replay-attacks.html</link>
-      <description>Cybersecurity researchers have disclosed a Microsoft 365 campaign that has been observed leveraging an adversary-in-the-middle (AitM) relay to capture sign-in sessions and then replay the stolen tokens to break into email accounts at 79 organizations.
-Huntress, which observed the activity between July 14 and September 22, 2026, said it detected 497 successful Microsoft 365 sign-in events across</description>
-      <guid isPermaLink="false">e5cf7f7f0893e2ebb9d14633ffcb4a3692965e8980610415cd10a84b4bd11014</guid>
-      <pubDate>Mon, 26 Oct 2026 08:35:51 +0000</pubDate>
-    </item>
-    <item>
-      <title>Gheist Uses Stolen GitHub Tokens to Steal Private Repository Secrets via Actions Logs - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/gheist-uses-stolen-github-tokens-to.html</link>
-      <description>An automated campaign is using stolen GitHub tokens to plant workflows that print a repository's secrets into its GitHub Actions logs, which the attackers then download before deleting the runs. The attacks have succeeded in private repositories and GitHub Enterprise environments, according to&amp;nbsp;an analysis&amp;nbsp;by cloud security company Wiz.
-A&amp;nbsp;GitHub safeguard&amp;nbsp;that pauses</description>
-      <guid isPermaLink="false">65b302ec36a79df7d9ac1f5ede7ccdfca1da679cd38829341c8c0ac75bc17539</guid>
-      <pubDate>Mon, 26 Oct 2026 07:49:46 +0000</pubDate>
-    </item>
-    <item>
-      <title>Malicious File in Downloads Folder Tries to Trick AI Coding Agent Into Installing Malware - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/malicious-file-in-downloads-folder.html</link>
-      <description>A malicious instruction file sitting in a developer's Downloads folder tried to make their AI coding agent install a known-malicious npm package, security firm&amp;nbsp;Forever Security said&amp;nbsp;in a report published last week.
-The company caught the attempt on a real customer's machine and stopped the agent before any code ran. It could not determine how the file got into the folder.
-The file</description>
-      <guid isPermaLink="false">e33541136a10506dbe12ef5fcd6d747f084f2a096497bb5739c788c9a821ca6a</guid>
-      <pubDate>Mon, 26 Oct 2026 06:03:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>An in-depth technical explanation of PHP2SHell - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xfbyb5/an_indepth_technical_explanation_of_php2shell/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Darmani"&gt; /u/Darmani &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://www.youtube.com/watch?v=6Kz4bWKoXhU&amp;amp;feature=youtu.be"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xfbyb5/an_indepth_technical_explanation_of_php2shell/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">35c2d46d45266e35b33fc43848f4b6bf5bb49a65564592e683ae9d91331559f5</guid>
-      <pubDate>Sun, 25 Oct 2026 19:51:14 +0000</pubDate>
-    </item>
-    <item>
-      <title>Unpatched Tailscale SSH Flaws Could Let a Hacked Device Reach Root on Other Servers - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/unpatched-tailscale-ssh-flaws-could-let.html</link>
-      <description>A single hacked device on a Tailscale network can be used to gain root access to other servers it can reach, according to a security researcher who published the findings this week.
-The attack requires two things: Tailscale SSH set up to allow port forwarding, and an attacker who already controls one device that the network's access rules permit to connect to the target.
-The findings were</description>
-      <guid isPermaLink="false">4f1f0d8474743d1d374bd6c34bf96320f06d3e824bacaab2903996d5e5ce209f</guid>
-      <pubDate>Sun, 25 Oct 2026 17:44:09 +0000</pubDate>
-    </item>
-    <item>
-      <title>PHP2Shell Exploitation Attempts Continue Amid Suspected N. Korea Global Scanning Activity - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/php2shell-exploitation-hits-government.html</link>
-      <description>In an update, Palo Alto Networks Unit 42 said it's retracting its earlier assessment that the post-compromise activity targeting the European government agency involved the exploitation of the PHP2Shell flaws.
-"What researchers saw was an attack against a European government agency executed in the context of a vulnerable PHP application," a spokesperson for the company told The Hacker News via</description>
-      <guid isPermaLink="false">4e51c0c07035f96a52ec0b42aa5b3c69659a7329cbd9e1828167c622049dd01b</guid>
-      <pubDate>Sun, 25 Oct 2026 17:19:46 +0000</pubDate>
-    </item>
-    <item>
-      <title>Five Open Source Ghidra SLEIGH Implementations - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xf817x/five_open_source_ghidra_sleigh_implementations/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/cascade_sparse"&gt; /u/cascade_sparse &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/aleph-void/Ghidra-Rare"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xf817x/five_open_source_ghidra_sleigh_implementations/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">bb47d984de8317afde15c8afb436016996b31d3a8e3267874ec3787ce26f2c4f</guid>
-      <pubDate>Sun, 25 Oct 2026 17:16:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>Velum-VMM - Hook System Call on Modern Windows - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xf6xsk/velumvmm_hook_system_call_on_modern_windows/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/quicaa"&gt; /u/quicaa &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/Dovughs/velum-vmm"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xf6xsk/velumvmm_hook_system_call_on_modern_windows/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">868ad30882b1181c801d64296cd9ef1cc296756a341f7262e7d7942aef1dc2da</guid>
-      <pubDate>Sun, 25 Oct 2026 16:33:32 +0000</pubDate>
-    </item>
-    <item>
-      <title>I've partially reverse-engineered Oblivion Remastered with Claude to fix its performance (+40% FPS in my benchmark scenario) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xeyph9/ive_partially_reverseengineered_oblivion/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/LTSharpe"&gt; /u/LTSharpe &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/LTSharpe/OblivionRemasteredPerformanceFix/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xeyph9/ive_partially_reverseengineered_oblivion/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">d33ebcdb0673d5de4ba0772db0cb1e7ffd8d1bd5797badce774f3836775f1145</guid>
-      <pubDate>Sun, 25 Oct 2026 10:16:09 +0000</pubDate>
-    </item>
-    <item>
-      <title>scLock: A 256-Slot Polymorphic Non-Linear MBA (Z_2^64) VM Bound to the Apple Secure Enclave — Public macOS arm64 CrackMe &amp; Write-Up - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xew4z6/sclock_a_256slot_polymorphic_nonlinear_mba_z_264/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/relay_si"&gt; /u/relay_si &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/planners1490/sclock"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xew4z6/sclock_a_256slot_polymorphic_nonlinear_mba_z_264/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">1bababbb34d80cd04058aaa6d5b71e5fd5b50f0600ace7bf63fd478687fc3d1c</guid>
-      <pubDate>Sun, 25 Oct 2026 07:38:33 +0000</pubDate>
-    </item>
-    <item>
-      <title>OpenAI AI Agents Demonstrate VM Escapes and Secret Cross-Sandbox Communication - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/openai-ai-agents-demonstrate-vm-escapes.html</link>
-      <description>OpenAI has announced plans to conduct frontier model training with no live internet access, as it resumes reinforcement learning (RL) training and internal inference of its most advanced AI models.
-"Based on the current state of alignment research, monitoring systems, and the security of internet infrastructure, we believe the responsible approach is to conduct frontier model training with no</description>
-      <guid isPermaLink="false">aed8ce128380fc745639f67c260b45ebcc03da31c97807d78946b3f5e378714b</guid>
-      <pubDate>Sun, 25 Oct 2026 06:54:29 +0000</pubDate>
-    </item>
-    <item>
-      <title>I built a tiny multiplayer game whose only purpose is to be reverse engineered — Lab 1 (derive the whole protocol from a pcap) is free - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xepsq0/i_built_a_tiny_multiplayer_game_whose_only/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Possible-Visual-7909"&gt; /u/Possible-Visual-7909 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://merunefleuruwu.github.io/driftlight/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xepsq0/i_built_a_tiny_multiplayer_game_whose_only/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">6087092bd1c31f7d652b6404ca8d5d7b942a8dda6428661903193910d0bfc486</guid>
-      <pubDate>Sun, 25 Oct 2026 01:44:30 +0000</pubDate>
-    </item>
-    <item>
-      <title>NativeMirror - PE-sieve functionality in pure Object Pascal, including HollowsHunter integration (as native Delphi written Dll) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xecayr/nativemirror_pesieve_functionality_in_pure_object/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/kargira"&gt; /u/kargira &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/habanada/NativeMirror"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xecayr/nativemirror_pesieve_functionality_in_pure_object/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">6fdeb97ded2051048a7b73b66f9d3a91819f18140bedca91b206f9dc47d542ac</guid>
-      <pubDate>Sat, 24 Oct 2026 15:59:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>Android: Promon Shield reversal &amp; bypass - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xe93em/android_promon_shield_reversal_bypass/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/0xd4000001"&gt; /u/0xd4000001 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://0xd4000001.com/posts/promon"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xe93em/android_promon_shield_reversal_bypass/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">40b50b2c616bf2bc7113fd06b21700c361e126c35618681a4018b5f06fd957b3</guid>
-      <pubDate>Sat, 24 Oct 2026 13:46:25 +0000</pubDate>
-    </item>
-    <item>
-      <title>[Writeup] Rooting a locked bootloader phone with Ghostlock - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xe70jy/writeup_rooting_a_locked_bootloader_phone_with/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Solid-AQUA"&gt; /u/Solid-AQUA &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://tusharpandey.com/blogs/ghostlock-somalia/index.html"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xe70jy/writeup_rooting_a_locked_bootloader_phone_with/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">36550215a0849f890a6cd4338d4c2642bbac79839de7f3ede94cb5ea1e15d296</guid>
-      <pubDate>Sat, 24 Oct 2026 12:09:45 +0000</pubDate>
-    </item>
-    <item>
-      <title>Full source: autonomous root chain for TCL Android TV via CVE-2022-22706 Mali GPU page-cache write — libc __cxa_atexit shellcode, SELinux bypass - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xe68bj/full_source_autonomous_root_chain_for_tcl_android/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/amnioticboy"&gt; /u/amnioticboy &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://gitlab.com/c4psu13/mali-pagecache-root"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xe68bj/full_source_autonomous_root_chain_for_tcl_android/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">3f419b8330f07c79ee638a9af9e10042665e797430604ba6455880245007f3f4</guid>
-      <pubDate>Sat, 24 Oct 2026 11:28:05 +0000</pubDate>
-    </item>
-    <item>
-      <title>Brotli Decoder Flaw Behind Node.js RCE Also Affects Bun, Python and Other Widely Used Software - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/brotli-decoder-flaw-behind-nodejs-rce.html</link>
-      <description>A memory-corruption flaw in Google's Brotli decoder sits in many programs that unpack Brotli-compressed data, among them Bun, the Python&amp;nbsp;Brotli&amp;nbsp;and&amp;nbsp;brotlicffi&amp;nbsp;packages, and Envoy proxies set up to decompress Brotli.
-Tracked as&amp;nbsp;CVE-2026-111497, the flaw allows crafted compressed data to overwrite past the end of a buffer and corrupt a program's memory, potentially</description>
-      <guid isPermaLink="false">62749836941e0792d9a4f2f098675d028339327fff3ef7b1a29ac2bf2cd27109</guid>
-      <pubDate>Sat, 24 Oct 2026 11:09:29 +0000</pubDate>
-    </item>
-    <item>
-      <title>Leaked LiteLLM Master Key Let Attackers Steal GitHub Tokens and Hijack Release Pipeline - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/leaked-litellm-master-key-let-attackers.html</link>
-      <description>LiteLLM on Friday revealed that an Agent Platform master key accidentally published to a public GitHub repository in late May 2026 ultimately allowed the threat actor to push a malicious version of the popular Python package.
-"On May 27, 2026, a configuration file was committed to the public LiteLLM-Labs/lite-harness repository which inadvertently contained the master key to a deployment of</description>
-      <guid isPermaLink="false">d4ad307a4e49a32497dc488e5b056023420279af998ae0392c7f2a3d343e7cfb</guid>
-      <pubDate>Sat, 24 Oct 2026 11:03:33 +0000</pubDate>
-    </item>
-    <item>
-      <title>Java vs Rust Ghidra in REA: early benchmarks from a work-in-progress Rust port - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xe5lol/java_vs_rust_ghidra_in_rea_early_benchmarks_from/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/nanashili"&gt; /u/nanashili &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/nanashili/rea-rust/blob/main/experiments/analysis-efficiency/runtime-comparison/GHIDRA.md"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xe5lol/java_vs_rust_ghidra_in_rea_early_benchmarks_from/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">1b67ad89134c70bbe3da519a6d14e0b878533318c9a93b52a6a2aae5d5f06f0d</guid>
-      <pubDate>Sat, 24 Oct 2026 10:52:38 +0000</pubDate>
-    </item>
-    <item>
-      <title>Google Says Gmail and Photos Data Shared With AI Search Could Be Used for Targeted Ads - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/google-says-gmail-and-photos-data.html</link>
-      <description>Google has updated its privacy policy to spell out that using personalized artificial intelligence (AI) features in Search or Gemini could allow the company to serve targeted ads to users based on their activity on other connected Google services.
-"You may choose to allow certain Google services, including services like Search or Gemini Apps, to access data from other Google services you use,</description>
-      <guid isPermaLink="false">9a5a1dcec806adb985b52f3022dfb127143995c8953ec687bb72866f0418734a</guid>
-      <pubDate>Sat, 24 Oct 2026 10:36:33 +0000</pubDate>
     </item>
   </channel>
 </rss>

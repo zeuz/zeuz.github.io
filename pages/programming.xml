@@ -5,7 +5,464 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 17 Nov 2026 20:37:36 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 14:01:34 +0000</lastBuildDate>
+    <item>
+      <title>Python GUIs: How to Change the Decimal Separator in QDoubleValidator — Use QLocale to control the decimal point format in PyQt6 QLineEdit validation - Planet Python</title>
+      <link>https://www.pythonguis.com/faq/decimal-seperator-qtgui-qdoublevalidator/</link>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;I'm using &lt;code&gt;QDoubleValidator&lt;/code&gt; with a &lt;code&gt;QLineEdit&lt;/code&gt; in PyQt6, but the validator allows a comma as the decimal separator instead of a point (dot). How can I force the decimal separator to be a point?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;When you use &lt;code&gt;QDoubleValidator&lt;/code&gt; in PyQt6, the character it treats as the decimal separator &amp;mdash; a comma (&lt;code&gt;,&lt;/code&gt;) or a point (&lt;code&gt;.&lt;/code&gt;) &amp;mdash; is determined by the &lt;strong&gt;locale&lt;/strong&gt; the validator uses. A locale defines how numbers, dates, and currencies are formatted for a particular language and region. In many European countries, for example, the comma is the standard decimal separator (&lt;code&gt;3,14&lt;/code&gt;), while in the United States and United Kingdom, the point is used (&lt;code&gt;3.14&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;By default, &lt;code&gt;QDoubleValidator&lt;/code&gt; picks up your system's locale settings. If your operating system is configured for a locale that uses commas, the validator will accept commas as the decimal separator. To override this and force a point separator, you can create a &lt;code&gt;QLocale&lt;/code&gt; and apply it directly to the validator.&lt;/p&gt;
+&lt;h2 id="setting-a-custom-locale-on-the-validator"&gt;Setting a Custom Locale on the Validator&lt;/h2&gt;
+&lt;p&gt;The &lt;code&gt;QLocale&lt;/code&gt; class lets you specify a language and country combination that determines number formatting rules. To get a point as the decimal separator, use a locale like &lt;code&gt;English, UnitedStates&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;from PyQt6.QtCore import QLocale
+locale = QLocale(QLocale.English, QLocale.UnitedStates)
+validator.setLocale(locale)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Once this locale is set on the validator, the point will be accepted as the decimal separator in your &lt;a href="https://www.pythonguis.com/docs/qlineedit/"&gt;QLineEdit&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;One thing to be aware of: even with this locale, the comma may still be accepted as input because the comma serves as the &lt;strong&gt;thousands grouping separator&lt;/strong&gt; in English locales (e.g., &lt;code&gt;1,000.50&lt;/code&gt;). This is expected behavior and generally won't cause problems.&lt;/p&gt;
+&lt;h2 id="setting-standard-notation"&gt;Setting Standard Notation&lt;/h2&gt;
+&lt;p&gt;You can also control whether the validator accepts scientific notation (like &lt;code&gt;1.5e10&lt;/code&gt;) by setting the notation mode. If you only want standard decimal numbers, use:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;validator.setNotation(QDoubleValidator.StandardNotation)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;This prevents users from entering numbers in scientific notation format.&lt;/p&gt;
+&lt;h2 id="constructor-arguments"&gt;Constructor Arguments&lt;/h2&gt;
+&lt;p&gt;When creating a &lt;code&gt;QDoubleValidator&lt;/code&gt;, the three main arguments are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;bottom&lt;/strong&gt; &amp;mdash; the minimum acceptable value&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;top&lt;/strong&gt; &amp;mdash; the maximum acceptable value&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;decimals&lt;/strong&gt; &amp;mdash; the maximum number of digits after the decimal point&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;validator = QDoubleValidator(0.1, 9990, 2)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;This creates a validator that accepts numbers between &lt;code&gt;0.1&lt;/code&gt; and &lt;code&gt;9990&lt;/code&gt;, with up to &lt;code&gt;2&lt;/code&gt; decimal places.&lt;/p&gt;
+&lt;p&gt;Be careful with Python syntax here &amp;mdash; something like &lt;code&gt;99.9.0&lt;/code&gt; is not a valid Python number and will raise a &lt;code&gt;SyntaxError&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id="complete-working-example"&gt;Complete Working Example&lt;/h2&gt;
+&lt;p&gt;Here's a full example that creates a &lt;code&gt;QLineEdit&lt;/code&gt; with a &lt;code&gt;QDoubleValidator&lt;/code&gt; configured to use a point as the decimal separator:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
+&lt;pre&gt;&lt;code class="python"&gt;from PyQt6.QtWidgets import QApplication, QLineEdit
+from PyQt6.QtGui import QDoubleValidator
+from PyQt6.QtCore import QLocale
+app = QApplication([])
+lineedit = QLineEdit()
+lineedit.setPlaceholderText("Enter a number (e.g. 3.14)")
+# Create a validator: min 0.1, max 9990, up to 2 decimal places.
+validator = QDoubleValidator(0.1, 9990, 2)
+# Create a locale that uses a point for the decimal separator.
+locale = QLocale(QLocale.English, QLocale.UnitedStates)
+validator.setLocale(locale)
+# Only allow standard notation (no scientific notation).
+validator.setNotation(QDoubleValidator.StandardNotation)
+# Apply the validator to the line edit.
+lineedit.setValidator(validator)
+lineedit.show()
+app.exec()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Run this, and you'll have a &lt;code&gt;QLineEdit&lt;/code&gt; that only accepts numbers formatted with a point as the decimal separator. Try typing &lt;code&gt;3.14&lt;/code&gt; &amp;mdash; it will be accepted. The comma is still permitted as a grouping separator (e.g., &lt;code&gt;1,000&lt;/code&gt;), but it won't function as a decimal point.&lt;/p&gt;
+&lt;p&gt;If you're looking for more ways to validate user input, you might also be interested in &lt;a href="https://www.pythonguis.com/tutorials/input-validation-tkinter/"&gt;input validation in Tkinter&lt;/a&gt; for a comparison of how other Python GUI frameworks handle similar problems. For a broader overview of the widgets available in PyQt6, including &lt;code&gt;QLineEdit&lt;/code&gt;, see the &lt;a href="https://www.pythonguis.com/tutorials/pyqt-basic-widgets/"&gt;basic widgets tutorial&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
+&lt;p&gt;The decimal separator used by &lt;code&gt;QDoubleValidator&lt;/code&gt; comes from the locale. To change it:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create a &lt;code&gt;QLocale&lt;/code&gt; with the language and country that matches your desired formatting.&lt;/li&gt;
+&lt;li&gt;Call &lt;code&gt;setLocale()&lt;/code&gt; on the validator to apply it.&lt;/li&gt;
+&lt;li&gt;Optionally, call &lt;code&gt;setNotation(QDoubleValidator.StandardNotation)&lt;/code&gt; to restrict input to standard decimal notation.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This gives you full control over how numbers are entered in your &lt;code&gt;QLineEdit&lt;/code&gt; fields, regardless of the user's system settings. To learn more about checking whether a &lt;code&gt;QLineEdit&lt;/code&gt; is empty or contains valid data, see &lt;a href="https://www.pythonguis.com/faq/check-qlineedit-empty-pyqt/"&gt;how to check if a QLineEdit is empty&lt;/a&gt;.&lt;/p&gt;
+            &lt;p&gt;For an in-depth guide to building Python GUIs with PyQt6 see my book, &lt;a href="https://www.pythonguis.com/pyqt6-book/"&gt;Create GUI Applications with Python &amp;amp; Qt6.&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">9623398b007bbfd29317c2ae0dee4af4df0bf17a8958a6adba443d24e7b57e97</guid>
+      <pubDate>Wed, 18 Nov 2026 06:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Graham Dumpleton: Muru: overlays on a schedule - Planet Python</title>
+      <link>https://grahamdumpleton.me/posts/2026/11/muru-overlays-on-a-schedule/</link>
+      <description>&lt;p&gt;The &lt;a href="https://grahamdumpleton.me/posts/2026/11/muru-scaling-to-zero/"&gt;last post&lt;/a&gt; was about the Muru daemon taking an idle site down to nothing. This one is about something every site has to deal with eventually, which is a change that is only meant to last for a while.&lt;/p&gt;
+&lt;p&gt;The database is backed up at 2am, and the site shouldn't take orders while that happens. A schema change on Saturday night needs the site down for an hour, with a page saying when it will be back. A sale starts at 9am on Monday, and the new version of the shop should be serving it at exactly that time. None of these is a permanent change to how the site is served, but each needs the configuration to be different for a while, and then to go back to how it was.&lt;/p&gt;
+&lt;p&gt;With gunicorn or uvicorn behind nginx, the usual answer is to edit something and remember to undo it. A maintenance page is often an &lt;code&gt;if (-f /srv/shop/maintenance.html)&lt;/code&gt; test in the nginx configuration, with someone touching and removing the file, or a cron job doing it for them. A read-only period is a flag the application checks, set by hand or from another cron job. A timed switch to a new version is someone awake at 9am to run the deploy. Each of these lives somewhere different, and nothing in the server knows any of them is temporary.&lt;/p&gt;
+&lt;p&gt;Muru has one mechanism for all of these, which it calls an overlay.&lt;/p&gt;
+&lt;h2&gt;An overlay is laid over the configuration&lt;/h2&gt;
+&lt;p&gt;An overlay is a named piece of configuration laid over routes and applications while it is active. The configuration underneath never changes. When the overlay ends, the routes are as they were, including any change made to them while it was active, so ending an overlay can't undo something someone else did in the meantime.&lt;/p&gt;
+&lt;p&gt;Overlays are declared beside the routes they change, in the files that &lt;code&gt;muructl apply&lt;/code&gt; reads. For the shop in this post, that starts with a virtual host and a route which has a name an overlay can refer to:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[host.shop]
+names = [&amp;quot;shop.localhost&amp;quot;]
+default = true
+[[route]]
+name = &amp;quot;shop-root&amp;quot;
+host = &amp;quot;shop&amp;quot;
+app = &amp;quot;shop&amp;quot;
+[overlay.nightly-backup]
+apps.shop = { mode = &amp;quot;read-only&amp;quot;, deny = [&amp;quot;POST&amp;quot;, &amp;quot;PUT&amp;quot;, &amp;quot;PATCH&amp;quot;, &amp;quot;DELETE&amp;quot;] }
+trigger = { schedule = { cron = &amp;quot;0 2 * * *&amp;quot;, duration = &amp;quot;1h&amp;quot;, timezone = &amp;quot;Australia/Sydney&amp;quot; } }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The overlay makes the shop read-only for an hour from 2am Sydney time each night. While it is active the edge refuses the methods in &lt;code&gt;deny&lt;/code&gt; without troubling the workers, and the application is passed the mode as &lt;code&gt;muru.mode&lt;/code&gt; in the WSGI environ, so it can stop offering what the mode rules out:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;def application(environ, start_response):
+    time.sleep(0.02)  # as if rendering from a database
+    if environ[&amp;quot;REQUEST_METHOD&amp;quot;] == &amp;quot;POST&amp;quot;:
+        start_response(&amp;quot;303 See Other&amp;quot;, [(&amp;quot;Location&amp;quot;, &amp;quot;/&amp;quot;)])
+        return [b&amp;quot;&amp;quot;]
+    read_only = environ.get(&amp;quot;muru.mode&amp;quot;) == &amp;quot;read-only&amp;quot;
+    page = PAGE.format(actions=PAUSED if read_only else CART)
+    start_response(&amp;quot;200 OK&amp;quot;, [(&amp;quot;Content-Type&amp;quot;, &amp;quot;text/html&amp;quot;)])
+    return [page.encode()]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The mode is any short word, so an application can have modes of its own. Muru doesn't interpret it beyond passing it on.&lt;/p&gt;
+&lt;p&gt;Once applied, &lt;code&gt;muructl overlay list&lt;/code&gt; shows the overlay, its trigger, what it changes and when it is next due:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl overlay list
+OVERLAY                  STATE                          TRIGGER                                  CHANGES
+nightly-backup           idle from 2026-11-17T15:00:00Z cron '0 2 * * *' for 1h Australia/Sydney app shop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The time shown is UTC, which is 2am in Sydney. The schedule follows daylight saving in the zone it names, so a window doesn't drift by an hour twice a year, and because a cron schedule depends on the system clock, the daemon checks every ten minutes that the clock is synchronised and raises a warning event when it isn't.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;muructl overlay preview&lt;/code&gt; says what activating the overlay now would change, field by field:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl overlay preview nightly-backup
+app shop: mode (none) -&amp;gt; read-only
+app shop: methods.deny (none) -&amp;gt; POST, PUT, PATCH, DELETE
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Turning one on by hand&lt;/h2&gt;
+&lt;p&gt;A schedule is only one way to activate an overlay. Backups don't always run when they are meant to, and sometimes the read-only period is needed right now. Any overlay can be activated by hand, until it is ended, for a duration, or until a given time:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl overlay activate nightly-backup --for 10m
+muru: overlay nightly-backup activated by hand, until 2026-11-17T06:38:03Z
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The page now says orders are paused instead of offering the cart:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ curl -s http://127.0.0.1:8080/
+&amp;lt;!doctype html&amp;gt;
+&amp;lt;title&amp;gt;Shop&amp;lt;/title&amp;gt;
+&amp;lt;h1&amp;gt;Today's offers&amp;lt;/h1&amp;gt;
+&amp;lt;p&amp;gt;Orders are paused for a few minutes, but you can still browse.&amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and anything that would change the site is refused by the edge:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ curl -si -X POST http://127.0.0.1:8080/cart
+HTTP/1.1 503 Service Unavailable
+content-type: text/plain; charset=utf-8
+content-length: 147
+cache-control: no-store
+x-request-id: 01M7M31W21TJAZMK3QZF9FZD7M
+date: Tue, 17 Nov 2026 06:28:03 GMT
+503 Service Unavailable
+reason: read_only
+request id: 01M7M31W21TJAZMK3QZF9FZD7M
+The site is read-only for now, and this request would change it.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With &lt;code&gt;answer = &amp;quot;method_not_allowed&amp;quot;&lt;/code&gt; beside &lt;code&gt;deny&lt;/code&gt;, the edge would answer 405 instead, with the methods still allowed in &lt;code&gt;Allow&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The overlay list says how the overlay was activated and when it ends:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl overlay list
+OVERLAY                  STATE                                      TRIGGER                                  CHANGES
+nightly-backup           active (manual) until 2026-11-17T06:38:03Z cron '0 2 * * *' for 1h Australia/Sydney app shop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When something isn't behaving as expected, the question is usually what configuration is actually in force right now. &lt;code&gt;muructl config show --effective&lt;/code&gt; answers that, headed by what each active overlay sets:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl config show shop --effective
+# Muru effective state: muructl 1.0.0 on grumpys-mac-mini, 2026-11-17T06:28:03Z, state version 9.
+# The active overlays set, and the routes below include:
+#   app shop: methods.deny = POST, PUT, PATCH, DELETE (overlay nightly-backup)
+#   app shop: mode = read-only (overlay nightly-backup)
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;An active overlay is part of the daemon's state rather than something held in memory. Stopping the daemon in the middle of the overlay, and starting it again:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl daemon stop
+muru: daemon detached; hosts and the edge keep serving
+$ muructl daemon start
+muru: daemon started (pid 73330), serving on http://127.0.0.1:8080, log ...
+$ muructl overlay list
+OVERLAY                  STATE                                      TRIGGER                                  CHANGES
+nightly-backup           active (manual) until 2026-11-17T06:38:03Z cron '0 2 * * *' for 1h Australia/Sydney app shop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;the overlay was still active, and a POST was still refused. The daemon works out each second which overlays should be active from the time and what it has recorded, so a daemon restarted in the middle of a scheduled window carries on with it as well. Ending the overlay by hand put things back:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl overlay end nightly-backup
+muru: overlay nightly-backup ended by hand
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The POST was answered by the application again, and the overlay went back to waiting for 2am.&lt;/p&gt;
+&lt;h2&gt;A maintenance window with its own page&lt;/h2&gt;
+&lt;p&gt;Some work needs the site down entirely. An overlay can turn on maintenance mode for an application, and choose the page people see while it is on:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[overlay.db-upgrade]
+apps.shop = { maintenance = true }
+routes.shop-root.error_pages = { &amp;quot;503:maintenance&amp;quot; = { file = &amp;quot;pages/maintenance.html&amp;quot; } }
+trigger = { schedule = { start = &amp;quot;2026-11-17T17:31&amp;quot;, end = &amp;quot;2026-11-17T17:33&amp;quot;, timezone = &amp;quot;Australia/Sydney&amp;quot; } }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A &lt;code&gt;start&lt;/code&gt; and an &lt;code&gt;end&lt;/code&gt; give one window rather than a recurring one.&lt;/p&gt;
+&lt;p&gt;What maintenance mode lets through is part of the application's own settings, in its &lt;code&gt;pyproject.toml&lt;/code&gt;, since it is something the application knows about itself:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[tool.muru.maintenance]
+exempt_paths = [&amp;quot;/health&amp;quot;]
+exempt_addresses = [&amp;quot;10.0.0.0/8&amp;quot;]
+bypass_cookie = &amp;quot;muru_bypass=letmein&amp;quot;
+retry_after = &amp;quot;15m&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When the window began, the overlay activated, and every request routed to the shop was answered by the edge with the page from the overlay and a &lt;code&gt;Retry-After&lt;/code&gt; of fifteen minutes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ curl -si http://127.0.0.1:8080/
+HTTP/1.1 503 Service Unavailable
+content-type: text/html; charset=utf-8
+content-length: 126
+cache-control: no-store
+retry-after: 900
+x-request-id: 01M7M37BXBTJAZMK3QZF9FZD7S
+date: Tue, 17 Nov 2026 06:31:03 GMT
+&amp;lt;!doctype html&amp;gt;
+&amp;lt;title&amp;gt;Back soon&amp;lt;/title&amp;gt;
+&amp;lt;h1&amp;gt;We're upgrading the shop&amp;lt;/h1&amp;gt;
+&amp;lt;p&amp;gt;It will be back by 10pm. Your cart is safe.&amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;muructl app list&lt;/code&gt; marks the application as in maintenance, and names the overlay which put it there:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl app list
+APP                  CURRENT      PREVIOUS     USER
+shop                 r1           -            - [maintenance by overlay db-upgrade]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The health check path was still served, so a load balancer in front doesn't decide the whole node is gone. With the bypass cookie, the real site came back:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ curl -s -b muru_bypass=letmein http://127.0.0.1:8080/
+&amp;lt;!doctype html&amp;gt;
+&amp;lt;title&amp;gt;Shop&amp;lt;/title&amp;gt;
+&amp;lt;h1&amp;gt;Today's offers&amp;lt;/h1&amp;gt;
+&amp;lt;form method=&amp;quot;post&amp;quot; action=&amp;quot;/cart&amp;quot;&amp;gt;&amp;lt;button&amp;gt;Add to cart&amp;lt;/button&amp;gt;&amp;lt;/form&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That cookie is the part I find most useful. Whoever is doing the upgrade can check that the site works before anyone else sees it, and then end the maintenance early if it is done before the window is over:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl overlay end db-upgrade
+muru: overlay db-upgrade ended by hand
+$ muructl overlay list
+OVERLAY                  STATE                            TRIGGER                                                       CHANGES
+db-upgrade               ended until 2026-11-17T06:33:00Z from 2026-11-17T17:31 until 2026-11-17T17:33 Australia/Sydney route shop-root, app shop
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A scheduled overlay ended by hand stays ended until its window is over, rather than the schedule turning it straight back on a second later. The events record what happened and why:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl events
+...
+    27 17:31:00 notice   overlay.activated    overlay db-upgrade       activated: its schedule's window began
+    28 17:31:20 notice   overlay.ended        overlay db-upgrade       ended by hand
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Trying a schedule before letting it act&lt;/h2&gt;
+&lt;p&gt;A schedule which acts on its own is only as good as the cron expression and time zone it was given, and getting either wrong means something happens at the wrong time with nobody watching. With &lt;code&gt;advisory = true&lt;/code&gt;, a schedule only raises an event as each window begins, and the overlay has to be activated by hand:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[overlay.stocktake]
+routes.shop-root = { mode = &amp;quot;read-only&amp;quot;, deny = [&amp;quot;POST&amp;quot;, &amp;quot;PUT&amp;quot;, &amp;quot;PATCH&amp;quot;, &amp;quot;DELETE&amp;quot;] }
+trigger = { schedule = { cron = &amp;quot;32 17 * * *&amp;quot;, duration = &amp;quot;1m&amp;quot;, timezone = &amp;quot;Australia/Sydney&amp;quot; } }
+advisory = true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When its window came around, the overlay list said it had been advised rather than activated:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;stocktake                advised until 2026-11-17T06:33:00Z cron '32 17 * * *' for 1m Australia/Sydney, advisory          route shop-root
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and the event says what would have happened:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    29 17:32:00 notice   overlay.would_activate overlay stocktake        would activate: its schedule's window began; it is advisory
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The shop kept taking orders. Once the events show a schedule firing when it should, removing &lt;code&gt;advisory&lt;/code&gt; lets it act.&lt;/p&gt;
+&lt;h2&gt;A timed cutover&lt;/h2&gt;
+&lt;p&gt;The sale starting at 9am on Monday is a different kind of temporary change. The overlay pins the route's traffic to a new release at a given time:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[overlay.summer-sale]
+routes.shop-root.traffic = { pin = &amp;quot;r2&amp;quot; }
+trigger = { schedule = { start = &amp;quot;2026-11-17T17:35&amp;quot;, timezone = &amp;quot;Australia/Sydney&amp;quot; } }
+warm_up = { start_release = &amp;quot;r2&amp;quot;, lead = &amp;quot;1m&amp;quot; }
+preconditions = { release_ready = &amp;quot;r2&amp;quot;, probe = &amp;quot;/healthz&amp;quot; }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The release is deployed ahead of time with &lt;code&gt;--hold&lt;/code&gt;, so it starts but takes no traffic, as covered in the &lt;a href="https://grahamdumpleton.me/posts/2026/11/muru-releases-not-restarts/"&gt;releases, not restarts&lt;/a&gt; post. The &lt;code&gt;warm_up&lt;/code&gt; starts the release ahead of the window if it has been stopped, so the switch lands on warm workers. The &lt;code&gt;preconditions&lt;/code&gt; are what stop a timed switch moving traffic to something broken. The release has to be ready, and it has to answer the probe path with a 2xx or 3xx response, asked through the edge as a preview of that release.&lt;/p&gt;
+&lt;p&gt;In my case, r2 had a bug, and its health check couldn't reach its database:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl deploy shop v2 --hold
+muru: release shop@r2 is ready and held: not serving
+$ curl -s -H &amp;quot;Muru-Preview: r2&amp;quot; http://127.0.0.1:8080/healthz
+database unreachable
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Trying the overlay out by hand ahead of time showed this straight away:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl overlay activate summer-sale
+muru: error: overlay summer-sale was not activated: its probe of shop@r2 failed: /healthz (as a preview, at host shop) answered 503 Service Unavailable
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Had nobody checked, the scheduled activation would have been skipped in the same way, with an &lt;code&gt;overlay.skipped&lt;/code&gt; warning event saying why, and the old release would have gone on serving. That is a much better outcome at 9am on a Monday than the sale page answering with errors.&lt;/p&gt;
+&lt;p&gt;With the bug fixed and deployed as r3, also held, I changed the overlay to name r3 and applied it again:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl overlay preview summer-sale
+route shop-root: traffic.split (none) -&amp;gt; r3 100%
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A minute before the window began, the warm-up started, and at the start of the window the overlay activated:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    30 17:34:00 info     overlay.warming      overlay summer-sale      warming up: its window begins in 59s; starting shop@r3
+    31 17:35:00 notice   overlay.activated    overlay summer-sale      activated: its schedule's window began
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A client asking for the page every fifty milliseconds through the switch saw the old page, then the new one, and nothing else:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;17:34:03 200 Today's offers
+17:35:01 200 Summer sale
+{&amp;quot;200 Today's offers&amp;quot;: 739, '200 Summer sale': 424}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A timed switch like this is usually meant to be permanent. &lt;code&gt;muructl overlay promote&lt;/code&gt; folds an active overlay's changes into the base configuration and ends the overlay. For a pin, that makes the pinned release the application's serving release, just as a deploy would:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl overlay promote summer-sale
+muru: overlay summer-sale promoted: its changes are now the base configuration; shop@r3 serves in place of shop@r1, which is retained
+muru: the next apply undoes this unless the applied files say the same: put this in them, and remove overlay summer-sale
+# shop: where the files name its serving release
+[app.shop]
+serving = &amp;quot;r3&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The release which was serving before is kept warm for a rollback, the same as after a deploy, and the next deploy replaces r3 as usual:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl release list
+RELEASE                  STATE      SERVING  WORKERS               DISK SOURCE
+shop@r3                  ready      yes      2 (2x4)              4.9MB /Users/graham/shop/v3
+shop@r2                  ready               2 (2x4)              4.9MB /Users/graham/shop/v2
+                         held: not serving
+shop@r1                  retained            1 (2x4)              4.9MB /Users/graham/shop/v1
+                         warm until 07:05 UTC; a rollback to it is instant
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The applied files still say what they said before, so promote prints what to put in them, here the serving release, for the next &lt;code&gt;muructl apply&lt;/code&gt; to keep the switch rather than undo it. The promoted overlay should then be taken out of the files.&lt;/p&gt;
+&lt;h2&gt;Known busy periods&lt;/h2&gt;
+&lt;p&gt;Overlays can also set capacity, and an application can declare schedules for load that is known in advance. A schedule on the application is an overlay by another name, written beside the application:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[[app.shop.schedule]]
+name = &amp;quot;black-friday&amp;quot;
+start = &amp;quot;2026-11-27T00:00&amp;quot;
+end = &amp;quot;2026-11-30T23:59&amp;quot;
+timezone = &amp;quot;America/New_York&amp;quot;
+min_workers = 4
+scale_in = &amp;quot;hold&amp;quot;
+freeze_deploys = true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For the four days of the sale the shop keeps at least four workers, never scales in, and refuses deploys. It shows up in the overlay list as &lt;code&gt;shop.black-friday&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;shop.black-friday        idle from 2026-11-27T05:00:00Z from 2026-11-27T00:00 until 2026-11-30T23:59 America/New_York app shop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and since it is an overlay, it can be tried out by hand like any other:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl overlay preview shop.black-friday
+app shop: group default: at least 4 workers, no scale-in
+app shop: deploys and rollouts frozen
+$ muructl overlay activate shop.black-friday --for 10m
+muru: overlay shop.black-friday activated by hand, until 2026-11-17T06:48:17Z
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The worker group rose to the floor, and &lt;code&gt;muructl scale status&lt;/code&gt; names the overlay which set it:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl scale status shop
+shop@r3
+GROUP        WORKERS      SLOTS      IDLE    QUEUE-P95     REAPS      POLICY
+default      4            0/16       4.00    under 1 ms    -          static
+  scheduled: 4-4 workers, no scale-in from shop.black-friday
+  workers: cpu 0%, gc 0%, gil wait p95 under 0.1 ms, loop lag p95 -
+  diagnosis: within capacity
+  last: scaled out to 4: raising toward the floor of 4 that shop.black-friday sets (3s ago)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The shop has a static count of two workers, so the floor raises that count for the window. With an autoscaling policy, as in the &lt;a href="https://grahamdumpleton.me/posts/2026/11/muru-scaling-from-what-the-workers-report/"&gt;scaling from what the workers report&lt;/a&gt; post, the floor sets the least the autoscaler may go down to, and a &lt;code&gt;max_workers&lt;/code&gt; in the schedule can raise its ceiling too.&lt;/p&gt;
+&lt;p&gt;The deploy freeze is there for the person who decides on the Friday that a small fix can't wait:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl deploy shop v1
+muru: error: deploys of shop are frozen by overlay shop.black-friday; give --override-freeze to deploy anyway
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When it really can't wait, &lt;code&gt;--override-freeze&lt;/code&gt; lets the deploy through, and records that it did:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    74 17:38:23 warning  deploy.freeze_overridden shop                     deploy despite the freeze set by overlay shop.black-friday
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Rolling back is never frozen, since a freeze that stopped someone undoing a bad deploy would be worse than no freeze at all.&lt;/p&gt;
+&lt;h2&gt;What's next&lt;/h2&gt;
+&lt;p&gt;What these overlays have in common is that someone knew ahead of time when they were needed, even if the answer was &amp;quot;now&amp;quot;. The backup runs at 2am, the upgrade is on Saturday night, and the sale starts at 9am. Muru holds the change, applies it at the right time, refuses to apply it when the release it depends on is broken, and takes it away again afterwards, and the base configuration is never touched in the process.&lt;/p&gt;
+&lt;p&gt;Not everything can be planned for, though. Crawlers turn up when they turn up, and a payment provider goes down without telling anyone first. The next post, noticing and responding, is about overlays which are activated by what Muru sees happening rather than by the time.&lt;/p&gt;</description>
+      <guid isPermaLink="false">ae5df478bfbf19b0475c8ac731e1403b5afeaf37cffdcdccf01bde6a3305f284</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Bytes: #505 Introducing diskcache-oxide - Planet Python</title>
+      <link>https://pythonbytes.fm/episodes/show/505/introducing-diskcache-oxide</link>
+      <description>&amp;lt;strong&amp;gt;Topics covered in this episode:&amp;lt;/strong&amp;gt;&amp;lt;br&amp;gt;
+&amp;lt;ul&amp;gt;
+	&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;&amp;lt;a href="https://github.com/Piergiuseppe/tinyjobs?featured_on=pythonbytes"&amp;gt;tinyjobs: a SQLite job queue goes free-threaded&amp;lt;/a&amp;gt;&amp;lt;/strong&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;&amp;lt;a href="https://alexwlchan.net/2026/funkycache/?featured_on=pythonbytes"&amp;gt;funkycache&amp;lt;/a&amp;gt;: cache Python functions in SQLite&amp;lt;/strong&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;&amp;lt;a href="https://github.com/4yk5/Ghostman?featured_on=pythonbytes"&amp;gt;Ghostman&amp;lt;/a&amp;gt; - a keyboard-driven terminal API client&amp;lt;/strong&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;&amp;lt;a href="https://mkennedy.codes/docs/diskcache-oxide/?featured_on=pythonbytes"&amp;gt;diskcache-oxide: A shared, durable disk cache&amp;lt;/a&amp;gt;&amp;lt;/strong&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Extras&amp;lt;/strong&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Joke&amp;lt;/strong&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;&amp;lt;a href='https://www.youtube.com/watch?v=SM5OwEmfHVA' style='font-weight: bold;' data-umami-event="Livestream-Past" data-umami-event-episode="505"&amp;gt;Watch on YouTube&amp;lt;/a&amp;gt;&amp;lt;br&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;About the show&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;Sponsored by&amp;lt;/strong&amp;gt; LongLink: &amp;lt;a href="https://pythonbytes.fm/longlink"&amp;gt;pythonbytes.fm/longlink&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;Connect with the hosts&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;Michael: &amp;lt;a href="https://fosstodon.org/@mkennedy"&amp;gt;Mastodon&amp;lt;/a&amp;gt; / &amp;lt;a href="https://bsky.app/profile/mkennedy.codes?featured_on=pythonbytes"&amp;gt;BlueSky&amp;lt;/a&amp;gt; / &amp;lt;a href="https://x.com/mkennedy?featured_on=pythonbytes"&amp;gt;X&amp;lt;/a&amp;gt; / &amp;lt;a href="https://www.linkedin.com/in/mkennedy/?featured_on=pythonbytes"&amp;gt;LinkedIn&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Calvin: &amp;lt;a href="https://sixfeetup.social/@calvin?featured_on=pythonbytes"&amp;gt;Mastodon&amp;lt;/a&amp;gt; / &amp;lt;a href="https://bsky.app/profile/calvinhp.com?featured_on=pythonbytes"&amp;gt;BlueSky&amp;lt;/a&amp;gt; / &amp;lt;a href="https://x.com/calvinhp?featured_on=pythonbytes"&amp;gt;X&amp;lt;/a&amp;gt; / &amp;lt;a href="https://www.linkedin.com/in/calvinhp/?featured_on=pythonbytes"&amp;gt;LinkedIn&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Show: &amp;lt;a href="https://fosstodon.org/@pythonbytes"&amp;gt;Mastodon&amp;lt;/a&amp;gt; / &amp;lt;a href="https://bsky.app/profile/pythonbytes.fm"&amp;gt;BlueSky&amp;lt;/a&amp;gt; / &amp;lt;a href="https://x.com/PythonBytes?featured_on=pythonbytes"&amp;gt;X&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&amp;lt;p&amp;gt;Join us on YouTube at &amp;lt;a href="https://pythonbytes.fm/stream/live"&amp;gt;&amp;lt;strong&amp;gt;pythonbytes.fm/live&amp;lt;/strong&amp;gt;&amp;lt;/a&amp;gt; to be part of the audience. Usually &amp;lt;strong&amp;gt;Tuesday at 7am PT&amp;lt;/strong&amp;gt;. Older video versions available there too.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;Finally, if you want an artisanal, hand-crafted digest of every week of the show notes in email form? Add your name and email to &amp;lt;a href="https://pythonbytes.fm/friends-of-the-show"&amp;gt;our friends of the show list&amp;lt;/a&amp;gt;, we'll never share it.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;Michael #1: &amp;lt;a href="https://github.com/Piergiuseppe/tinyjobs?featured_on=pythonbytes"&amp;gt;tinyjobs: a SQLite job queue goes free-threaded&amp;lt;/a&amp;gt;&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;tinyjobs is a Python job queue and cron scheduler that starts with a SQLite file and no dependencies. Switch the URL to Postgres or Redis without rewriting tasks. It runs async tasks natively, embeds workers in FastAPI, and plugs into Django 6's tasks framework. The creator's free-threading audit found four races hidden by the GIL.&amp;lt;/p&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;Background jobs without deploying a broker, plus a concrete case study in what removing the GIL exposes.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;The creator reports races in the task registry, codec cache, cross-thread flag and thread pool. hiredis can re-enable the GIL; the worker warns when it detects that.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;On 3.14t, --loops N runs event loops in separate threads. The author's laptop benchmark hit 42,000 async jobs/s with eight loops and two Redis instances, close to eight processes. SQLite rejects loops above one.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Clock-skew lesson: two hosts 20 minutes apart duplicated 492 of 3,000 jobs on 0.7.0. Using Redis server time fixed that test, not the general exactly-once problem.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Author's SQLite measurements: about 572 jobs/s end-to-end; a 20,000-job burst drained in four seconds. Synthetic workloads and different harnesses, not interchangeable throughput claims.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;At-least-once delivery still requires idempotent tasks. Python 3.12+; young project, with the README now listing v0.11.0 versus the email's v0.9.0.
+Docker setup:&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&amp;lt;div class="codehilite"&amp;gt;
+&amp;lt;pre&amp;gt;&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class="nt"&amp;gt;services&amp;lt;/span&amp;gt;&amp;lt;span class="p"&amp;gt;:&amp;lt;/span&amp;gt;
+&amp;lt;span class="w"&amp;gt;  &amp;lt;/span&amp;gt;&amp;lt;span class="nt"&amp;gt;web&amp;lt;/span&amp;gt;&amp;lt;span class="p"&amp;gt;:&amp;lt;/span&amp;gt;
+&amp;lt;span class="w"&amp;gt;    &amp;lt;/span&amp;gt;&amp;lt;span class="nt"&amp;gt;build&amp;lt;/span&amp;gt;&amp;lt;span class="p"&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class="w"&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class="l l-Scalar l-Scalar-Plain"&amp;gt;.&amp;lt;/span&amp;gt;
+&amp;lt;span class="w"&amp;gt;    &amp;lt;/span&amp;gt;&amp;lt;span class="nt"&amp;gt;command&amp;lt;/span&amp;gt;&amp;lt;span class="p"&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class="w"&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class="l l-Scalar l-Scalar-Plain"&amp;gt;uvicorn main:api --host 0.0.0.0&amp;lt;/span&amp;gt;
+&amp;lt;span class="w"&amp;gt;    &amp;lt;/span&amp;gt;&amp;lt;span class="nt"&amp;gt;volumes&amp;lt;/span&amp;gt;&amp;lt;span class="p"&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class="w"&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class="p p-Indicator"&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class="nv"&amp;gt;jobs&amp;lt;/span&amp;gt;&amp;lt;span class="p p-Indicator"&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class="nv"&amp;gt;/data&amp;lt;/span&amp;gt;&amp;lt;span class="p p-Indicator"&amp;gt;]&amp;lt;/span&amp;gt;
+&amp;lt;span class="w"&amp;gt;  &amp;lt;/span&amp;gt;&amp;lt;span class="nt"&amp;gt;worker&amp;lt;/span&amp;gt;&amp;lt;span class="p"&amp;gt;:&amp;lt;/span&amp;gt;
+&amp;lt;span class="w"&amp;gt;    &amp;lt;/span&amp;gt;&amp;lt;span class="nt"&amp;gt;build&amp;lt;/span&amp;gt;&amp;lt;span class="p"&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class="w"&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class="l l-Scalar l-Scalar-Plain"&amp;gt;.&amp;lt;/span&amp;gt;
+&amp;lt;span class="w"&amp;gt;    &amp;lt;/span&amp;gt;&amp;lt;span class="nt"&amp;gt;command&amp;lt;/span&amp;gt;&amp;lt;span class="p"&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class="w"&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class="l l-Scalar l-Scalar-Plain"&amp;gt;tinyjobs worker --app tasks:app --shutdown-timeout 25&amp;lt;/span&amp;gt;
+&amp;lt;span class="w"&amp;gt;    &amp;lt;/span&amp;gt;&amp;lt;span class="nt"&amp;gt;stop_grace_period&amp;lt;/span&amp;gt;&amp;lt;span class="p"&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class="w"&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class="l l-Scalar l-Scalar-Plain"&amp;gt;40s&amp;lt;/span&amp;gt;
+&amp;lt;span class="w"&amp;gt;    &amp;lt;/span&amp;gt;&amp;lt;span class="nt"&amp;gt;volumes&amp;lt;/span&amp;gt;&amp;lt;span class="p"&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class="w"&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class="p p-Indicator"&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class="nv"&amp;gt;jobs&amp;lt;/span&amp;gt;&amp;lt;span class="p p-Indicator"&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class="nv"&amp;gt;/data&amp;lt;/span&amp;gt;&amp;lt;span class="p p-Indicator"&amp;gt;]&amp;lt;/span&amp;gt;
+&amp;lt;span class="nt"&amp;gt;volumes&amp;lt;/span&amp;gt;&amp;lt;span class="p"&amp;gt;:&amp;lt;/span&amp;gt;
+&amp;lt;span class="w"&amp;gt;  &amp;lt;/span&amp;gt;&amp;lt;span class="nt"&amp;gt;jobs&amp;lt;/span&amp;gt;&amp;lt;span class="p"&amp;gt;:&amp;lt;/span&amp;gt;
+&amp;lt;span class="w"&amp;gt;    &amp;lt;/span&amp;gt;&amp;lt;span class="nt"&amp;gt;external&amp;lt;/span&amp;gt;&amp;lt;span class="p"&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class="w"&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class="l l-Scalar l-Scalar-Plain"&amp;gt;true&amp;lt;/span&amp;gt;
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;Calvin #2: &amp;lt;a href="https://alexwlchan.net/2026/funkycache/?featured_on=pythonbytes"&amp;gt;funkycache&amp;lt;/a&amp;gt;: cache Python functions in SQLite&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;Alex Chan's &amp;lt;code&amp;gt;functools.cache-style&amp;lt;/code&amp;gt; decorator stores results in SQLite, so they survive after the process exits. He built it to speed up his static site build.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;It's released on PyPI: &amp;lt;code&amp;gt;funkycache&amp;lt;/code&amp;gt; 1.0.4, from November 15. The first release, 1.0.0, came out November 7. It needs Python 3.14+ and depends on &amp;lt;code&amp;gt;pydantic&amp;lt;/code&amp;gt; and &amp;lt;code&amp;gt;xxhash&amp;lt;/code&amp;gt;.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Usage: &amp;lt;code&amp;gt;cache = FunkyCache(storage="sqlite")&amp;lt;/code&amp;gt;, then &amp;lt;code&amp;gt;@cache.register(files=[...], values=[...])&amp;lt;/code&amp;gt;. A cache entry is invalidated when the function's source file changes or when any listed file or value changes, such as a library version.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Return values go through Pydantic's &amp;lt;code&amp;gt;TypeAdapter&amp;lt;/code&amp;gt;, based on the return type hint, so it only works on typed code.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Generators get special handling. &amp;lt;code&amp;gt;functools.cache&amp;lt;/code&amp;gt; hands every caller the same generator object. funkycache saves the output as a list and gives each caller a fresh iterator, up to a soft memory limit.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Cache keys are JSON hashed with XXH64. They're deliberately lossy, and that's fine because nothing reads the original arguments back out of a key.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;The design notes are a good segment on their own: the author had used MD5 because they "conflated weak with fast," and in their limited testing JSON was faster than pickle and easier to debug.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;With a warm cache the site builds in about half a second, and the library is only a few hundred lines including tests. It doesn't watch files on purpose, to stay small.&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;Calvin #3: &amp;lt;a href="https://github.com/4yk5/Ghostman?featured_on=pythonbytes"&amp;gt;Ghostman&amp;lt;/a&amp;gt; - a keyboard-driven terminal API client&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;A local-first Postman alternative that runs in the terminal, with no cloud account required. It's MIT licensed and was featured in PyCoder's Weekly #760.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;It's released on PyPI: pip install ghostman, then run ghostman. The current version is 0.1.8, from November 3. The first release, 0.1.0, came out October 31. It needs Python 3.10+.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;It's built on Textual, httpx and Rich, so it's pure Python under the hood.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;It sends GET, POST, PUT, DELETE and PATCH requests, shows DNS and time-to-first-byte timing live, and colors JSON responses automatically.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;A built-in webhook inspector: Ctrl+W starts a listener on port 9090. Captured payloads show headers and timestamps, and you can load one straight into the request editor.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Collections are plain JSON/YAML files you can commit to Git. The README gives two different folders for them (.ghostman/ and ~/.ghostman/).&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;It's fully keyboard-driven: Ctrl+S sends, Ctrl+K saves, Ctrl+N starts a new request, Ctrl+Q quits.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;The author claims about 30MB of RAM and a cold start of about 150ms; I haven't checked either number. It's a young project, with 158 stars and 15 commits.&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&amp;lt;p&amp;gt;Michael #4: &amp;lt;a href="https://mkennedy.codes/docs/diskcache-oxide/?featured_on=pythonbytes"&amp;gt;diskcache-oxide: A shared, durable disk cache&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;Michael's diskcache-oxide is a Rust-backed, SQLite-based cache for Python workers sharing one directory on the same machine. Entries survive process restarts without running a cache server. It keeps the familiar diskcache API, adds fork and free-threading safety, and uses msgpack or JSON by default instead of pickle.&amp;lt;/p&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;Michael's item: a shared cache for multi-worker apps without deploying Redis or keeping a separate dict warm in every process.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Cache, FanoutCache sharding and transactions are available now. NullCache switches caching off without changing call sites; Caches manages named caches for an app.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Author's bench/gate.py, Linux container on Apple Silicon, CPython 3.14, 99:1 reads/writes: about 750k ops/s with one thread and 723k with eight; diskcache 5.6.3 falls to 44k. Not independently tested here.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Free-threading support is explicit: the Rust extension declares gil_used = false. A process-wide fork barrier protects SQLite state when workers fork.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Pickle is opt-in. Tagged serialization preserves types such as tuples, sets, datetimes and Decimals, with registration for custom types.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;The docs come to about &amp;lt;strong&amp;gt;70,000 words&amp;lt;/strong&amp;gt;, the length of a typical novel. Of that, about 53,000 are the written story (guide, recipes and the home page), and the rest is API reference, the agent skill and code samples.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Early release, not full diskcache parity: string keys only; AsyncCache, memoize, tags, Deque and Index are still planned. The network cache server is a roadmap item too.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Python 3.14+; macOS and Linux wheels include SQLite. Windows support is planned. Migration changes the import and uses a new directory, not the old cache.db.&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;Extras&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;Calvin:&amp;lt;/p&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;Django Software Foundation &amp;lt;a href="https://www.djangoproject.com/weblog/2026/nov/15/2027-dsf-board-nominations/?featured_on=pythonbytes"&amp;gt;Board Nominations&amp;lt;/a&amp;gt; open until December 2nd
+Michael:&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;a href="https://www.startpage.com/bill/plan-selection?sc=gQhKyhqUvCKn0oNP9jyRwvCbbJR1aKQqd3wHub8JxnqtNC93sPzZGl3WhHVfkT88mpDQILTiYK6yFx93LyoDt9e3eQz9MuHuH0H1MmSe9rtc9vd1P&amp;amp;t=device&amp;amp;segment=startpage.udog&amp;amp;lui=english&amp;amp;language=english&amp;amp;cat=web&amp;amp;abd=1&amp;amp;abe=1&amp;amp;query=&amp;amp;featured_on=pythonbytes"&amp;gt;Startpage paid plans&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Test driving &amp;lt;a href="https://helium.computer/?featured_on=pythonbytes"&amp;gt;Helium Browser&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;a href="https://github.com/mikeckennedy/tallyman/releases/tag/v0.4.3?featured_on=pythonbytes"&amp;gt;Tallyman&amp;lt;/a&amp;gt; got a big update, give it another try
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;Tallyman is my command-line tool for seeing the shape of a codebase, with line counts grouped by language and categories such as Code, Docs, and Specs. Version 0.4.3 bundles new controls and a long list of fixes.
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;I made a bunch of massive updates this week. If you tried Tallyman before and it didn't work for your project, give it another try.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Use --no-save to try setup choices without writing a config, and --exclude PATTERN for one-run file exclusions.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Lots of fixes to gitignore handling, nested configs, the setup TUI, encodings, and image export. First runs in CI or pipes no longer hang waiting for setup.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Optional exclusion of inline Rust test code, plus MATLAB and Solidity support, bringing the language count to 44.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Want another feature? Submit an idea through a GitHub issue.&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;a href="http://Bunny.net?featured_on=pythonbytes"&amp;gt;Bunny.net&amp;lt;/a&amp;gt; fonts disappoint.
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Root cause:&amp;lt;/strong&amp;gt; Bunny Fonts began serving its font files from &amp;lt;code&amp;gt;cdn.jsdelivr.net&amp;lt;/code&amp;gt;, which our &amp;lt;strong&amp;gt;CSP blocks&amp;lt;/strong&amp;gt; - production had silently fallen back to system fonts.&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;a href="https://talkpython.fm/meetups/sqlite-might-actually-be-all-you-need?featured_on=pythonbytes"&amp;gt;Talk Python Meetup: SQLite Might &amp;lt;em&amp;gt;Actually&amp;lt;/em&amp;gt; Be All You Need&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;Jokes&amp;lt;/strong&amp;gt;:&amp;lt;/p&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;a href="https://x.com/pr0grammerhum0r/status/2121573926568395183?a=0VHlGMnpqO9U8FjKPKw&amp;amp;s=46&amp;amp;featured_on=pythonbytes"&amp;gt;Disaster recovery&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;a href="https://www.reddit.com/r/iiiiiiitttttttttttt/s/THQxhz3hfz?featured_on=pythonbytes"&amp;gt;Prophecy fulfilled&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;</description>
+      <guid isPermaLink="false">68bd2ae248892a02bec2374ea70c02699656d655e8030c0516a966844c8a0cb9</guid>
+      <pubDate>Tue, 17 Nov 2026 22:23:26 +0000</pubDate>
+    </item>
     <item>
       <title>Graham Dumpleton: Muru: scaling to zero - Planet Python</title>
       <link>https://grahamdumpleton.me/posts/2026/11/muru-scaling-to-zero/</link>
@@ -19386,649 +19843,6 @@ by Gary Drevitch for Psychology Today, July 21, 2025. &lt;a class="footnote-bac
 &lt;/div&gt;</description>
       <guid isPermaLink="false">f31e2c3452abd45956c71d09284a822cbd0f2e3f13ebc2c9fabf1761a536fd48</guid>
       <pubDate>Fri, 15 Aug 2025 07:51:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Glyph Lefkowitz: Stop Writing `__init__` Methods</title>
-      <link>https://blog.glyph.im/2025/04/stop-writing-init-methods.html</link>
-      <description>&lt;h2 id="the-history"&gt;The History&lt;/h2&gt;
-&lt;p&gt;Before dataclasses were added to Python in version 3.7 — in June of 2018 — the
-&lt;code&gt;__init__&lt;/code&gt; special method had an important use.  If you had a class
-representing a data structure — for example a &lt;code&gt;2DCoordinate&lt;/code&gt;, with &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;y&lt;/code&gt;
-attributes — you would want to be able to construct it as &lt;code&gt;2DCoordinate(x=1,
-y=2)&lt;/code&gt;, which would require you to add an &lt;code&gt;__init__&lt;/code&gt; method with &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;y&lt;/code&gt;
-parameters.&lt;/p&gt;
-&lt;p&gt;The other options available at the time all had pretty bad problems:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;You could remove &lt;code&gt;2DCoordinate&lt;/code&gt; from your public API and instead expose a
-   &lt;code&gt;make_2d_coordinate&lt;/code&gt; function and make it non-importable, but then how would
-   you document your return or parameter types?&lt;/li&gt;
-&lt;li&gt;You could document the &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;y&lt;/code&gt; attributes and make the user assign each
-   one themselves, but then &lt;code&gt;2DCoordinate()&lt;/code&gt; would return an invalid object.&lt;/li&gt;
-&lt;li&gt;You could default your coordinates to 0 with class attributes, and while
-   that would fix the problem with option 2, this would now require all
-   &lt;code&gt;2DCoordinate&lt;/code&gt; objects to be not just mutable, but mutated at every call
-   site.&lt;/li&gt;
-&lt;li&gt;You could fix the problems with option 1 by adding a new &lt;em&gt;abstract&lt;/em&gt; class
-   that you could expose in your public API, but this would explode the
-   complexity of every new public class, no matter how simple.  To make matters
-   worse, &lt;code&gt;typing.Protocol&lt;/code&gt; didn’t even arrive until Python 3.8, so, in the
-   pre-3.7 world this would condemn you to using concrete inheritance and
-   declaring multiple classes even for the most basic data structure
-   imaginable.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Also, an &lt;code&gt;__init__&lt;/code&gt; method &lt;em&gt;that does nothing but assign a few attributes&lt;/em&gt;
-doesn’t have any significant problems, so it is an obvious choice in this case.
-Given all the problems that I just described with the alternatives, it makes
-sense that it became the obvious &lt;em&gt;default&lt;/em&gt; choice, in most cases.&lt;/p&gt;
-&lt;p&gt;However, by accepting “define a custom &lt;code&gt;__init__&lt;/code&gt;” as the &lt;em&gt;default&lt;/em&gt; way to
-allow users to create your objects, we make a habit of beginning &lt;em&gt;every&lt;/em&gt; class
-with a pile of &lt;em&gt;arbitrary code&lt;/em&gt; that gets executed every time it is
-instantiated.&lt;/p&gt;
-&lt;p&gt;Wherever there is arbitrary code, there are arbitrary problems.&lt;/p&gt;
-&lt;h2 id="the-problems"&gt;The Problems&lt;/h2&gt;
-&lt;p&gt;Let’s consider a data structure more complex than one that simply holds a
-couple of attributes.  We will create one that represents a reference to some
-I/O in the external world: a &lt;code&gt;FileReader&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Of course Python has &lt;a href="https://docs.python.org/3.13/library/io.html#io.FileIO"&gt;its own open-file object
-abstraction&lt;/a&gt;, but I
-will be ignoring that for the purposes of the example.&lt;/p&gt;
-&lt;p&gt;Let’s assume a world where we have the following functions, in an imaginary
-&lt;code&gt;fileio&lt;/code&gt; module:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;open(path: str) -&amp;gt; int&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;read(fileno: int, length: int)&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;close(fileno: int)&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Our hypothetical &lt;code&gt;fileio.open&lt;/code&gt; returns an integer representing a file
-descriptor&lt;sup id="fnref:1:stop-writing-init-methods-2025-4"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:1:stop-writing-init-methods-2025-4" id="fnref:1"&gt;1&lt;/a&gt;&lt;/sup&gt;, &lt;code&gt;fileio.read&lt;/code&gt; allows us to read &lt;code&gt;length&lt;/code&gt; bytes from an open
-file descriptor, and &lt;code&gt;fileio.close&lt;/code&gt; closes that file descriptor, invalidating
-it for future use.&lt;/p&gt;
-&lt;p&gt;With the habit that we have built from writing thousands of &lt;code&gt;__init__&lt;/code&gt; methods,
-we might want to write our &lt;code&gt;FileReader&lt;/code&gt; class like this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
-&lt;span class="normal"&gt;2&lt;/span&gt;
-&lt;span class="normal"&gt;3&lt;/span&gt;
-&lt;span class="normal"&gt;4&lt;/span&gt;
-&lt;span class="normal"&gt;5&lt;/span&gt;
-&lt;span class="normal"&gt;6&lt;/span&gt;
-&lt;span class="normal"&gt;7&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;FileReader&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_fd&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;fileio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;read&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;bytes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;fileio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_fd&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;close&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="n"&gt;fileio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_fd&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;For our initial use-case, this is fine.  Client code creates a &lt;code&gt;FileReader&lt;/code&gt; by
-doing something like &lt;code&gt;FileReader("./config.json")&lt;/code&gt;, which always creates a
-&lt;code&gt;FileReader&lt;/code&gt; that maintains its file descriptor &lt;code&gt;int&lt;/code&gt; internally as private
-state.  This is as it should be; we don’t want user code to see or mess with
-&lt;code&gt;_fd&lt;/code&gt;, as that might violate &lt;code&gt;FileReader&lt;/code&gt;’s invariants.  All the necessary work
-to construct a valid &lt;code&gt;FileReader&lt;/code&gt; — i.e. the call to &lt;code&gt;open&lt;/code&gt; — is always taken
-care of for you by &lt;code&gt;FileReader.__init__&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;However, additional requirements will creep in, and as they do,
-&lt;code&gt;FileReader.__init__&lt;/code&gt; becomes increasingly awkward.&lt;/p&gt;
-&lt;p&gt;Initially we only care about &lt;code&gt;fileio.open&lt;/code&gt;, but later, we may have to deal with
-a library that has its own reasons for managing the call to &lt;code&gt;fileio.open&lt;/code&gt; by
-itself, and wants to give us an &lt;code&gt;int&lt;/code&gt; that we use as our &lt;code&gt;_fd&lt;/code&gt;, we now have to
-resort to weird workarounds like:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
-&lt;span class="normal"&gt;2&lt;/span&gt;
-&lt;span class="normal"&gt;3&lt;/span&gt;
-&lt;span class="normal"&gt;4&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;reader_from_fd&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fd&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;FileReader&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__new__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;FileReader&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_fd&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;fd&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;fr&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;Now, all those nice properties that we got from trying to force object
-construction to give us a valid object are gone.  &lt;code&gt;reader_from_fd&lt;/code&gt;’s type
-signature, which takes a plain &lt;code&gt;int&lt;/code&gt;, has no way of even suggesting to client
-code how to ensure that it has passed in the right &lt;em&gt;kind&lt;/em&gt; of &lt;code&gt;int&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Testing is much more of a hassle, because we have to patch in our own copy of
-&lt;code&gt;fileio.open&lt;/code&gt; any time we want an instance of a &lt;code&gt;FileReader&lt;/code&gt; in a test without
-doing any real-life file I/O, even if we could (for example) share a single
-file descriptor among many &lt;code&gt;FileReader&lt;/code&gt; s for testing purposes.&lt;/p&gt;
-&lt;p&gt;All of this also assumes a &lt;code&gt;fileio.open&lt;/code&gt; that is &lt;em&gt;synchronous&lt;/em&gt;.  Although for
-literal file I/O this is more of a
-&lt;a href="https://stackoverflow.com/questions/87892/what-is-the-status-of-posix-asynchronous-i-o-aio"&gt;hypothetical&lt;/a&gt;
-concern, there are many types of networked resource which are really only
-available via an asynchronous (and thus: potentially slow, potentially
-error-prone) API.  If you’ve ever found yourself wanting to type &lt;code&gt;async def
-__init__(self): ...&lt;/code&gt; then you have seen this limitation in practice.&lt;/p&gt;
-&lt;p&gt;Comprehensively describing &lt;em&gt;all&lt;/em&gt; the possible problems with this approach would
-end up being a book-length treatise on a philosophy of object oriented design,
-so I will sum up by saying that the &lt;em&gt;cause&lt;/em&gt; of all these problems is the same:
-we are inextricably linking the act of &lt;em&gt;creating a data structure&lt;/em&gt; with
-&lt;em&gt;whatever side-effects are &lt;/em&gt;&lt;em&gt;most often&lt;/em&gt;&lt;em&gt; associated&lt;/em&gt; with that data structure.
-If they are “often” associated with it, then by definition they are not
-“always” associated with it, and all the cases where they &lt;em&gt;aren’t&lt;/em&gt; associated
-become unweildy and potentially broken.&lt;/p&gt;
-&lt;p&gt;Defining an &lt;code&gt;__init__&lt;/code&gt; is an anti-pattern, and we need a replacement for it.&lt;/p&gt;
-&lt;h2 id="the-solutions"&gt;The Solutions&lt;/h2&gt;
-&lt;p&gt;I believe this tripartite assemblage of design techniques will address the
-problems raised above:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;using &lt;code&gt;dataclass&lt;/code&gt; to define attributes,&lt;/li&gt;
-&lt;li&gt;replacing behavior that previously would have previously been in &lt;code&gt;__init__&lt;/code&gt;
-  with a new classmethod that does the same thing, and&lt;/li&gt;
-&lt;li&gt;using precise types to describe what a valid instance looks like.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id="using-dataclass-attributes-to-create-an-__init__-for-you"&gt;Using &lt;code&gt;dataclass&lt;/code&gt; attributes to create an &lt;code&gt;__init__&lt;/code&gt; for you&lt;/h3&gt;
-&lt;p&gt;To begin, let’s refactor &lt;code&gt;FileReader&lt;/code&gt; into a &lt;code&gt;dataclass&lt;/code&gt;.  This does get us an
-&lt;code&gt;__init__&lt;/code&gt; method, but it &lt;em&gt;won’t&lt;/em&gt; be one an arbitrary one we define ourselves;
-it will get the useful constraint enforced on it that it will just assign
-attributes.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
-&lt;span class="normal"&gt;2&lt;/span&gt;
-&lt;span class="normal"&gt;3&lt;/span&gt;
-&lt;span class="normal"&gt;4&lt;/span&gt;
-&lt;span class="normal"&gt;5&lt;/span&gt;
-&lt;span class="normal"&gt;6&lt;/span&gt;
-&lt;span class="normal"&gt;7&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nd"&gt;@dataclass&lt;/span&gt;
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;FileReader&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;_fd&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;read&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;bytes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;fileio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_fd&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;close&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="n"&gt;fileio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_fd&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;Except... oops.  In fixing the problems that we created with our custom
-&lt;code&gt;__init__&lt;/code&gt; that calls &lt;code&gt;fileio.open&lt;/code&gt;, we have re-introduced several problems
-that it solved:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;We have removed all the convenience of &lt;code&gt;FileReader("path")&lt;/code&gt;.  Now the user
-   needs to import the low-level &lt;code&gt;fileio.open&lt;/code&gt; again, making the most common
-   type of construction both more verbose and less discoverable; if we want
-   users to know how to build a &lt;code&gt;FileReader&lt;/code&gt; in a practical scenario, we will
-   have to add something in our documentation to point at a separate module
-   entirely.&lt;/li&gt;
-&lt;li&gt;There’s no enforcement of the validity of &lt;code&gt;_fd&lt;/code&gt; as a file descriptor; it’s
-   just some integer, which the user could easily pass an incorrect instance
-   of, with no error.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;In isolation, &lt;code&gt;dataclass&lt;/code&gt; by itself can’t solve all our problems, so let’s add
-in the second technique.&lt;/p&gt;
-&lt;h3 id="using-classmethod-factories-to-create-objects"&gt;Using &lt;code&gt;classmethod&lt;/code&gt; factories to create objects&lt;/h3&gt;
-&lt;p&gt;We don’t want to require any additional imports, or require users to go looking
-at any other modules — or indeed anything other than &lt;code&gt;FileReader&lt;/code&gt; itself — to
-figure out how to create a &lt;code&gt;FileReader&lt;/code&gt; for its intended usage.&lt;/p&gt;
-&lt;p&gt;Luckily we have a tool that can easily address all of these concerns at once:
-&lt;code&gt;@classmethod&lt;/code&gt;.  Let’s define a &lt;code&gt;FileReader.open&lt;/code&gt; class method:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
-&lt;span class="normal"&gt;2&lt;/span&gt;
-&lt;span class="normal"&gt;3&lt;/span&gt;
-&lt;span class="normal"&gt;4&lt;/span&gt;
-&lt;span class="normal"&gt;5&lt;/span&gt;
-&lt;span class="normal"&gt;6&lt;/span&gt;
-&lt;span class="normal"&gt;7&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Self&lt;/span&gt;
-&lt;span class="nd"&gt;@dataclass&lt;/span&gt;
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;FileReader&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;_fd&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;
-    &lt;span class="nd"&gt;@classmethod&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Self&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fileio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;Now, your callers can replace &lt;code&gt;FileReader("path")&lt;/code&gt; with
-&lt;code&gt;FileReader.open("path")&lt;/code&gt;, and get all the same benefits.&lt;/p&gt;
-&lt;p&gt;Additionally, if we needed to &lt;code&gt;await fileio.open(...)&lt;/code&gt;, and thus we needed its
-signature to be &lt;code&gt;@classmethod async def open&lt;/code&gt;, we are freed from the constraint
-of &lt;code&gt;__init__&lt;/code&gt; as a special method.  There is nothing that would prevent a
-&lt;code&gt;@classmethod&lt;/code&gt; from being &lt;code&gt;async&lt;/code&gt;, or indeed, from having any other
-modification to its return value, such as returning a &lt;code&gt;tuple&lt;/code&gt; of related values
-rather than just the object being constructed.&lt;/p&gt;
-&lt;h3 id="using-newtype-to-address-object-validity"&gt;Using &lt;code&gt;NewType&lt;/code&gt; to address object validity&lt;/h3&gt;
-&lt;p&gt;Next, let’s address the slightly trickier issue of enforcing object validity.&lt;/p&gt;
-&lt;p&gt;Our type signature calls this thing an &lt;code&gt;int&lt;/code&gt;, and indeed, that is unfortunately
-what the lower-level &lt;code&gt;fileio.open&lt;/code&gt; gives us, and that’s beyond our control.
-But for our &lt;em&gt;own&lt;/em&gt; purposes, we can be more precise in our definitions, using
-&lt;a href="https://docs.python.org/3.13/library/typing.html#newtype"&gt;&lt;code&gt;NewType&lt;/code&gt;&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
-&lt;span class="normal"&gt;2&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;NewType&lt;/span&gt;
-&lt;span class="n"&gt;FileDescriptor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;NewType&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"FileDescriptor"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;There are a few different ways to address the underlying library, but for the
-sake of brevity and to illustrate that this can be done with &lt;em&gt;zero&lt;/em&gt; run-time
-overhead, let’s just &lt;em&gt;insist&lt;/em&gt; to Mypy that we have versions of &lt;code&gt;fileio.open&lt;/code&gt;,
-&lt;code&gt;fileio.read&lt;/code&gt;, and &lt;code&gt;fileio.write&lt;/code&gt; which actually already take &lt;code&gt;FileDescriptor&lt;/code&gt;
-integers rather than regular ones.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
-&lt;span class="normal"&gt;2&lt;/span&gt;
-&lt;span class="normal"&gt;3&lt;/span&gt;
-&lt;span class="normal"&gt;4&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;
-&lt;span class="n"&gt;_open&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;FileDescriptor&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;fileio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;open&lt;/span&gt;  &lt;span class="c1"&gt;# type:ignore[assignment]&lt;/span&gt;
-&lt;span class="n"&gt;_read&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="n"&gt;FileDescriptor&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="nb"&gt;bytes&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;fileio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;
-&lt;span class="n"&gt;_close&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="n"&gt;FileDescriptor&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;fileio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;We do of course have to slightly adjust &lt;code&gt;FileReader&lt;/code&gt;, too, but the changes are
-very small.  Putting it all together, we get:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
-&lt;span class="normal"&gt; 2&lt;/span&gt;
-&lt;span class="normal"&gt; 3&lt;/span&gt;
-&lt;span class="normal"&gt; 4&lt;/span&gt;
-&lt;span class="normal"&gt; 5&lt;/span&gt;
-&lt;span class="normal"&gt; 6&lt;/span&gt;
-&lt;span class="normal"&gt; 7&lt;/span&gt;
-&lt;span class="normal"&gt; 8&lt;/span&gt;
-&lt;span class="normal"&gt; 9&lt;/span&gt;
-&lt;span class="normal"&gt;10&lt;/span&gt;
-&lt;span class="normal"&gt;11&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Self&lt;/span&gt;
-&lt;span class="nd"&gt;@dataclass&lt;/span&gt;
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;FileReader&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;_fd&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;FileDescriptor&lt;/span&gt;
-    &lt;span class="nd"&gt;@classmethod&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Self&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;_open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;read&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;bytes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;_read&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_fd&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;close&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="n"&gt;_close&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_fd&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;Note that the main technique here is not &lt;em&gt;necessarily&lt;/em&gt; using &lt;code&gt;NewType&lt;/code&gt;
-specifically, but rather aligning an instance’s property of “has all attributes
-set” as closely as possible with an instance’s property of “fully valid
-instance of its class”; &lt;code&gt;NewType&lt;/code&gt; is just a handy tool to enforce any necessary
-constraints on the places where you need to use a primitive type like &lt;code&gt;int&lt;/code&gt;,
-&lt;code&gt;str&lt;/code&gt; or &lt;code&gt;bytes&lt;/code&gt;.&lt;/p&gt;
-&lt;h2 id="in-summary-the-new-best-practice"&gt;In Summary - The New Best Practice&lt;/h2&gt;
-&lt;p&gt;From now on, when you’re defining a new Python class:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Make it a dataclass&lt;sup id="fnref:2:stop-writing-init-methods-2025-4"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:2:stop-writing-init-methods-2025-4" id="fnref:2"&gt;2&lt;/a&gt;&lt;/sup&gt;.&lt;/li&gt;
-&lt;li&gt;Use its default &lt;code&gt;__init__&lt;/code&gt; method&lt;sup id="fnref:3:stop-writing-init-methods-2025-4"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:3:stop-writing-init-methods-2025-4" id="fnref:3"&gt;3&lt;/a&gt;&lt;/sup&gt;.&lt;/li&gt;
-&lt;li&gt;Add &lt;code&gt;@classmethod&lt;/code&gt;s to provide your users convenient and discoverable ways to
-  build your objects.&lt;/li&gt;
-&lt;li&gt;Require that &lt;em&gt;all&lt;/em&gt; dependencies be satisfied by attributes, so you always
-  start with a valid object.&lt;/li&gt;
-&lt;li&gt;Use &lt;code&gt;typing.NewType&lt;/code&gt; to enforce any constraints on primitive data types (like
-  &lt;code&gt;int&lt;/code&gt; and &lt;code&gt;str&lt;/code&gt;) which might have magical external attributes, like needing
-  to come from a particular library, needing to be random, and so on.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;If you define all your classes this way, you will get all the benefits of a
-custom &lt;code&gt;__init__&lt;/code&gt; method:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;All consumers of your data structures will receive valid objects, because an
-  object with all its attributes populated correctly is inherently valid.&lt;/li&gt;
-&lt;li&gt;Users of your library will be presented with convenient ways to create your
-  objects that do as much work as is necessary to make them easy to use, and
-  they can discover these just by looking at the methods on your class itself.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Along with some nice new benefits:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;You will be future-proofed against new requirements for different ways that
-    users may need to construct your object.&lt;/li&gt;
-&lt;li&gt;If there are already multiple ways to instantiate your class, you can now
-    give each of them a meaningful name; no need to have monstrosities like
-    &lt;code&gt;def __init__(self, maybe_a_filename: int | str | None = None):&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Your test suite can always construct an object by satisfying all its
-    dependencies; no need to monkey-patch anything when you can always call the
-    type and never do any I/O or generate any side effects.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Before dataclasses, it was always a bit weird that such a basic feature of the
-Python language — giving data to a data structure to make it valid — required
-overriding a method with 4 underscores in its name.  &lt;code&gt;__init__&lt;/code&gt; stuck out like
-a sore thumb.  Other such methods like &lt;code&gt;__add__&lt;/code&gt; or even &lt;code&gt;__repr__&lt;/code&gt; were
-inherently customizing esoteric attributes of classes.&lt;/p&gt;
-&lt;p&gt;For many years now, that historical language wart has been
-resolved. &lt;code&gt;@dataclass&lt;/code&gt;, &lt;code&gt;@classmethod&lt;/code&gt;, and &lt;code&gt;NewType&lt;/code&gt; give you everything you
-need to build classes which are convenient, idiomatic, flexible, testable, and
-robust.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h2 id="acknowledgments"&gt;Acknowledgments&lt;/h2&gt;
-&lt;p class="update-note"&gt;Thank you to &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;my patrons&lt;/a&gt; who are supporting my writing on
-this blog.  If you like what you’ve read here and you’d like to read more of
-it, or you’d like to support my &lt;a href="https://github.com/glyph/"&gt;various open-source
-endeavors&lt;/a&gt;, you can &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;support my work as a
-sponsor&lt;/a&gt;!  I am also &lt;a href="mailto:consulting@glyph.im"&gt;available for
-consulting work&lt;/a&gt; if you think your organization
-could benefit from expertise on topics like “but what &lt;em&gt;is&lt;/em&gt; a ‘class’, really?”.&lt;/p&gt;
-&lt;div class="footnote"&gt;
-&lt;hr /&gt;
-&lt;ol&gt;
-&lt;li id="fn:1:stop-writing-init-methods-2025-4"&gt;
-&lt;p id="fn:1"&gt;If you aren’t already familiar, a “file descriptor” is an integer which
-has meaning only within your program; you tell the operating system to open
-a file, it says “I have opened file 7 for you”, and then whenever you refer
-to “7” it is that file, until you &lt;code&gt;close(7)&lt;/code&gt;. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:1:stop-writing-init-methods-2025-4" title="Jump back to footnote 1 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:2:stop-writing-init-methods-2025-4"&gt;
-&lt;p id="fn:2"&gt;Or an &lt;a href="https://blog.glyph.im/2016/08/attrs.html"&gt;attrs class&lt;/a&gt;, if you’re nasty. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:2:stop-writing-init-methods-2025-4" title="Jump back to footnote 2 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:3:stop-writing-init-methods-2025-4"&gt;
-&lt;p id="fn:3"&gt;Unless you have a really good reason to, of course.  Backwards
-compatibility, or compatibility with another library, might be good reasons
-to do that.  Or certain types of data-consistency validation which cannot
-be expressed within the type system.  The most common example of these
-would be a class that requires consistency &lt;em&gt;between&lt;/em&gt; two different fields,
-such as a “range” object where &lt;code&gt;start&lt;/code&gt; must always be less than &lt;code&gt;end&lt;/code&gt;.
-There are always exceptions to these types of rules.  Still, it’s pretty
-much &lt;em&gt;never&lt;/em&gt; a good idea to do any I/O in &lt;code&gt;__init__&lt;/code&gt;, and nearly all of the
-remaining stuff that may &lt;em&gt;sometimes&lt;/em&gt; be a good idea in edge-cases can be
-achieved with a
-&lt;a href="https://docs.python.org/3.13/library/dataclasses.html#dataclasses.__post_init__"&gt;&lt;code&gt;__post_init__&lt;/code&gt;&lt;/a&gt;
-rather than writing a literal &lt;code&gt;__init__&lt;/code&gt;. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:3:stop-writing-init-methods-2025-4" title="Jump back to footnote 3 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</description>
-      <guid isPermaLink="false">374503d99b3fc7674e06d7a2f961f4feae9dcb1c964f2ab25bec60f46709d52e</guid>
-      <pubDate>Thu, 17 Apr 2025 22:35:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Glyph Lefkowitz: The “Active Enum” Pattern</title>
-      <link>https://blog.glyph.im/2025/01/active-enum.html</link>
-      <description>&lt;p&gt;Have you ever written some Python code that looks like this?&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
-&lt;span class="normal"&gt; 2&lt;/span&gt;
-&lt;span class="normal"&gt; 3&lt;/span&gt;
-&lt;span class="normal"&gt; 4&lt;/span&gt;
-&lt;span class="normal"&gt; 5&lt;/span&gt;
-&lt;span class="normal"&gt; 6&lt;/span&gt;
-&lt;span class="normal"&gt; 7&lt;/span&gt;
-&lt;span class="normal"&gt; 8&lt;/span&gt;
-&lt;span class="normal"&gt; 9&lt;/span&gt;
-&lt;span class="normal"&gt;10&lt;/span&gt;
-&lt;span class="normal"&gt;11&lt;/span&gt;
-&lt;span class="normal"&gt;12&lt;/span&gt;
-&lt;span class="normal"&gt;13&lt;/span&gt;
-&lt;span class="normal"&gt;14&lt;/span&gt;
-&lt;span class="normal"&gt;15&lt;/span&gt;
-&lt;span class="normal"&gt;16&lt;/span&gt;
-&lt;span class="normal"&gt;17&lt;/span&gt;
-&lt;span class="normal"&gt;18&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;enum&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Enum&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;auto&lt;/span&gt;
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;SomeNumber&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Enum&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;one&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="n"&gt;two&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="n"&gt;three&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;behavior&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;number&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;SomeNumber&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="k"&gt;match&lt;/span&gt; &lt;span class="n"&gt;number&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="n"&gt;SomeNumber&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;one&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"one!"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
-        &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="n"&gt;SomeNumber&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;two&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"two!"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
-        &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="n"&gt;SomeNumber&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;three&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"three!"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;That is to say, have you written code that:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;defined an enum with several members&lt;/li&gt;
-&lt;li&gt;associated custom behavior, or custom values, with each member of that enum,&lt;/li&gt;
-&lt;li&gt;needed one or more &lt;code&gt;match&lt;/code&gt; / &lt;code&gt;case&lt;/code&gt; statements (or, if you’ve been
-   programming in Python for more than a few weeks, probably a big
-   &lt;code&gt;if&lt;/code&gt;/&lt;code&gt;elif&lt;/code&gt;/&lt;code&gt;elif&lt;/code&gt;/&lt;code&gt;else&lt;/code&gt; tree) to do that association?&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;In this post, I’d like to submit that this is an antipattern; let’s call it the
-“passive enum” antipattern.&lt;/p&gt;
-&lt;p&gt;For those of you having a generally positive experience organizing your
-discrete values with enums, it may seem odd to call this an “antipattern”, so
-let me first make something clear: the path to a passive enum is going in the
-correct direction.&lt;/p&gt;
-&lt;p&gt;Typically - particularly in legacy code that predates Python 3.4 - one begins
-with a value that is a bare &lt;code&gt;int&lt;/code&gt; constant, or maybe a &lt;code&gt;str&lt;/code&gt; with some
-associated values sitting beside in a few global &lt;code&gt;dict&lt;/code&gt;s.&lt;/p&gt;
-&lt;p&gt;Starting from there, collecting all of your values into an enum &lt;em&gt;at all&lt;/em&gt; is a
-great first step.  Having an explicit listing of all valid values and verifying
-against them is great.&lt;/p&gt;
-&lt;p&gt;But, it is a mistake to &lt;em&gt;stop&lt;/em&gt; there.  There are problems with passive enums, too:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;The behavior can be defined somewhere far away from the data, making it difficult to:&lt;ol&gt;
-&lt;li&gt;maintain an inventory of everywhere it’s used,&lt;/li&gt;
-&lt;li&gt;update all the consumers of the data when the list of enum values
-   changes, and&lt;/li&gt;
-&lt;li&gt;learn about the different usages as a consumer of the API&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;Logic may be defined procedurally (via &lt;code&gt;if&lt;/code&gt;/&lt;code&gt;elif&lt;/code&gt; or &lt;code&gt;match&lt;/code&gt;) or
-   declaratively (via e.g. a &lt;code&gt;dict&lt;/code&gt; whose keys are your enum and whose values
-   are the required associated value).&lt;ol&gt;
-&lt;li&gt;If it’s defined procedurally, it can be difficult to build tools to
-   interrogate it, because you need to parse the AST of your Python
-   program.  So it can be difficult to build interactive tools that look at
-   the associated data without just calling the relevant functions.&lt;/li&gt;
-&lt;li&gt;If it’s defined declaratively, it can be difficult for existing tools
-   that &lt;em&gt;do&lt;/em&gt; know how to interrogate ASTs (mypy, flake8, Pyright, ruff,
-   et. al.) to make meaningful assertions about it.  Does your linter know
-   how to check that a &lt;code&gt;dict&lt;/code&gt; whose keys should be &lt;em&gt;every&lt;/em&gt; value of your
-   enum is complete?&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;To refactor this, I would propose a further step towards organizing one’s
-enum-oriented code: the &lt;em&gt;active enum&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;An active enum is one which &lt;em&gt;contains all the logic&lt;/em&gt; associated with the
-first-party provider of the enum itself.&lt;/p&gt;
-&lt;p&gt;You may recognize this as a more generalized restatement of the object-oriented
-lens on the principle of “separation of concerns”.  The responsibilities of a
-class ought to be implemented as methods &lt;em&gt;on&lt;/em&gt; that class, so that you can send
-messages to that class via method calls, and it’s up to the class internally to
-implement things.  Enums are no different.&lt;/p&gt;
-&lt;p&gt;More specifically, you might notice it as a riff on the &lt;a href="https://www.rubyvideo.dev/talks/nothing-is-something-railsconf-2015"&gt;Active Nothing pattern
-described in this excellent talk by Sandi
-Metz&lt;/a&gt;,
-and, yeah, it’s the same thing.&lt;/p&gt;
-&lt;p&gt;The first refactoring that we can make is, thus, to mechanically move the
-method from an external function living anywhere, to a method on &lt;code&gt;SomeNumber&lt;/code&gt; .
-At least like this, we present an API to consumers externally that shows that
-&lt;code&gt;SomeNumber&lt;/code&gt; has a &lt;code&gt;behavior&lt;/code&gt; method that can be invoked.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
-&lt;span class="normal"&gt; 2&lt;/span&gt;
-&lt;span class="normal"&gt; 3&lt;/span&gt;
-&lt;span class="normal"&gt; 4&lt;/span&gt;
-&lt;span class="normal"&gt; 5&lt;/span&gt;
-&lt;span class="normal"&gt; 6&lt;/span&gt;
-&lt;span class="normal"&gt; 7&lt;/span&gt;
-&lt;span class="normal"&gt; 8&lt;/span&gt;
-&lt;span class="normal"&gt; 9&lt;/span&gt;
-&lt;span class="normal"&gt;10&lt;/span&gt;
-&lt;span class="normal"&gt;11&lt;/span&gt;
-&lt;span class="normal"&gt;12&lt;/span&gt;
-&lt;span class="normal"&gt;13&lt;/span&gt;
-&lt;span class="normal"&gt;14&lt;/span&gt;
-&lt;span class="normal"&gt;15&lt;/span&gt;
-&lt;span class="normal"&gt;16&lt;/span&gt;
-&lt;span class="normal"&gt;17&lt;/span&gt;
-&lt;span class="normal"&gt;18&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;enum&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Enum&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;auto&lt;/span&gt;
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;SomeNumber&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Enum&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;one&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="n"&gt;two&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="n"&gt;three&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;behavior&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="k"&gt;match&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="n"&gt;SomeNumber&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;one&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-                &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"one!"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-                &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
-            &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="n"&gt;SomeNumber&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;two&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-                &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"two!"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-                &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
-            &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="n"&gt;SomeNumber&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;three&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-                &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"three!"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-                &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;However, this still leaves us with a &lt;code&gt;match&lt;/code&gt; statement that repeats all the
-values that we just defined, with no particular guarantee of completeness.  To
-continue the refactoring, what we can do is &lt;em&gt;change the value of the enum
-itself&lt;/em&gt; into a simple dataclass to structurally, by definition, contain all the
-fields we need:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
-&lt;span class="normal"&gt; 2&lt;/span&gt;
-&lt;span class="normal"&gt; 3&lt;/span&gt;
-&lt;span class="normal"&gt; 4&lt;/span&gt;
-&lt;span class="normal"&gt; 5&lt;/span&gt;
-&lt;span class="normal"&gt; 6&lt;/span&gt;
-&lt;span class="normal"&gt; 7&lt;/span&gt;
-&lt;span class="normal"&gt; 8&lt;/span&gt;
-&lt;span class="normal"&gt; 9&lt;/span&gt;
-&lt;span class="normal"&gt;10&lt;/span&gt;
-&lt;span class="normal"&gt;11&lt;/span&gt;
-&lt;span class="normal"&gt;12&lt;/span&gt;
-&lt;span class="normal"&gt;13&lt;/span&gt;
-&lt;span class="normal"&gt;14&lt;/span&gt;
-&lt;span class="normal"&gt;15&lt;/span&gt;
-&lt;span class="normal"&gt;16&lt;/span&gt;
-&lt;span class="normal"&gt;17&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;dataclasses&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;dataclass&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;enum&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Enum&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;
-&lt;span class="nd"&gt;@dataclass&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;frozen&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;NumberValue&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;
-    &lt;span class="n"&gt;effect&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;[[],&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;SomeNumber&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Enum&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;one&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;NumberValue&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"one!"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-    &lt;span class="n"&gt;two&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;NumberValue&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"two!"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-    &lt;span class="n"&gt;three&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;NumberValue&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"three!"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;behavior&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;effect&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;result&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;Here, we give &lt;code&gt;SomeNumber&lt;/code&gt; members a value of &lt;code&gt;NumberValue&lt;/code&gt;, a dataclass that
-&lt;em&gt;requires&lt;/em&gt; a &lt;code&gt;result: int&lt;/code&gt; and an &lt;code&gt;effect: Callable&lt;/code&gt; to be constructed.  Mypy
-will properly notice that if &lt;code&gt;x&lt;/code&gt; is a &lt;code&gt;SomeNumber&lt;/code&gt;, that &lt;code&gt;x&lt;/code&gt; will have the type
-&lt;code&gt;NumberValue&lt;/code&gt; and we will get proper type checking on its &lt;code&gt;result&lt;/code&gt; (a static
-value) and &lt;code&gt;effect&lt;/code&gt; (some associated behaviors)&lt;sup id="fnref:1:active-enum-2025-1"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:1:active-enum-2025-1" id="fnref:1"&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
-&lt;p&gt;Note that the implementation of &lt;code&gt;behavior&lt;/code&gt; method - still conveniently
-discoverable for callers, and with its signature unchanged - is now vastly
-simpler.&lt;/p&gt;
-&lt;h3 id="but-what-about"&gt;But what about...&lt;/h3&gt;
-&lt;h4 id="lookups"&gt;Lookups?&lt;/h4&gt;
-&lt;p&gt;You may be noticing that I have hand-waved over something important to many
-&lt;code&gt;enum&lt;/code&gt; users, which is to say, by-value lookup.  &lt;code&gt;enum.auto&lt;/code&gt; will have
-generated int values for &lt;code&gt;one&lt;/code&gt;, &lt;code&gt;two&lt;/code&gt;, and &lt;code&gt;three&lt;/code&gt; already, and by transforming
-those into &lt;code&gt;NumberValue&lt;/code&gt; instances, I can no longer do &lt;code&gt;SomeNumber(1)&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;For the simple, string-enum case, one where you might do &lt;code&gt;class MyEnum: value =
-“value”&lt;/code&gt; so that you can do name lookups via &lt;code&gt;MyEnum("value")&lt;/code&gt;, there’s a
-simple solution: use square brackets instead of round ones.  In this case, with
-no matching strings in sight, &lt;code&gt;SomeNumber["one"]&lt;/code&gt; still works.&lt;/p&gt;
-&lt;p&gt;But, if we want to do integer lookups with our dataclass version here, there’s
-a simple one-liner that will get them back for you; and, moreover, will let you
-do lookups on whatever attribute you want:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;by_result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;each&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;each&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;each&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;SomeNumber&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;h4 id="enumflag"&gt;&lt;code&gt;enum.Flag&lt;/code&gt;?&lt;/h4&gt;
-&lt;p&gt;You &lt;em&gt;can&lt;/em&gt; do this with &lt;code&gt;Flag&lt;/code&gt; more or less unchanged, but in the same way that
-you can’t expect all your &lt;code&gt;list[T]&lt;/code&gt; behaviors to be defined on &lt;code&gt;T&lt;/code&gt;, the lack of
-a 1-to-1 correspondence between &lt;code&gt;Flag&lt;/code&gt; instances and their values makes it more
-complex and out of scope for this pattern specifically.&lt;/p&gt;
-&lt;h4 id="3rd-party-usage"&gt;3rd-party usage?&lt;/h4&gt;
-&lt;p&gt;Sometimes an enum is defined in library L and used in application A, where L
-provides the data and A provides the behavior.  If this is the case, then some
-amount of version shear is unavoidable; this is a situation where the data and
-behavior have &lt;em&gt;different vendors&lt;/em&gt;, and this means that other means of
-abstraction are required to keep them in sync.  Object-oriented modeling
-methods are for consolidating the responsibility for maintenance &lt;em&gt;within&lt;/em&gt; a
-single vendor’s scope of responsibility.  Once you’re not responsible for the
-entire model, you can’t do the modeling over all of it, and that is perfectly
-normal and to be expected.&lt;/p&gt;
-&lt;p&gt;The goal of the Active Enum pattern is to avoid creating the additional
-complexity of that shear when it does not serve a purpose, not to ban it
-entirely.&lt;/p&gt;
-&lt;h2 id="a-case-study"&gt;A Case Study&lt;/h2&gt;
-&lt;p&gt;I was inspired to make this post by a &lt;a href="https://github.com/glyph/PINPal/commit/09d8be50e91db4f57c7988d061bb414c3df279df"&gt;recent refactoring I
-did&lt;/a&gt;
-from a more obscure and magical&lt;sup id="fnref:2:active-enum-2025-1"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:2:active-enum-2025-1" id="fnref:2"&gt;2&lt;/a&gt;&lt;/sup&gt; version of this pattern into the version that I
-am presenting here, but if I am going to call passive enums an “antipattern” I
-feel like it behooves me to point at an example outside of my own solo work.&lt;/p&gt;
-&lt;p&gt;So, for a more realistic example, let’s consider a package that all Python
-developers will recognize from their day-to-day work,
-&lt;a href="https://github.com/HearthSim/python-hearthstone/"&gt;&lt;code&gt;python-hearthstone&lt;/code&gt;&lt;/a&gt;, the
-Python library for parsing the data files associated with Blizzard’s popular
-computerized collectible card game
-&lt;a href="https://hearthstone.blizzard.com/en-us"&gt;Hearthstone&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;As I’m sure you already know, there are a &lt;em&gt;lot&lt;/em&gt; of enums in this library, but
-for one small case study, let’s look a few of the methods in
-&lt;code&gt;hearthstone.enums.GameType&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;GameType&lt;/code&gt; has already taken the “step 1” in the direction of an active enum,
-as I described above: &lt;code&gt;as_bnet&lt;/code&gt; &lt;em&gt;is&lt;/em&gt; an instancemethod on &lt;code&gt;GameType&lt;/code&gt; itself,
-making it at least easy to see by looking at the class definition what
-operations it supports.  However, &lt;a href="https://github.com/HearthSim/python-hearthstone/blob/13812b2768d5ce191f524498966fa6e2bde06037/hearthstone/enums.py#L1765-L1787"&gt;in the implementation of that
-method&lt;/a&gt;
-(among many others) we can see the worst of both worlds:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
-&lt;span class="normal"&gt; 2&lt;/span&gt;
-&lt;span class="normal"&gt; 3&lt;/span&gt;
-&lt;span class="normal"&gt; 4&lt;/span&gt;
-&lt;span class="normal"&gt; 5&lt;/span&gt;
-&lt;span class="normal"&gt; 6&lt;/span&gt;
-&lt;span class="normal"&gt; 7&lt;/span&gt;
-&lt;span class="normal"&gt; 8&lt;/span&gt;
-&lt;span class="normal"&gt; 9&lt;/span&gt;
-&lt;span class="normal"&gt;10&lt;/span&gt;
-&lt;span class="normal"&gt;11&lt;/span&gt;
-&lt;span class="normal"&gt;12&lt;/span&gt;
-&lt;span class="normal"&gt;13&lt;/span&gt;
-&lt;span class="normal"&gt;14&lt;/span&gt;
-&lt;span class="normal"&gt;15&lt;/span&gt;
-&lt;span class="normal"&gt;16&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;GameType&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;IntEnum&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;as_bnet&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;format&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;FormatType&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;FormatType&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FT_STANDARD&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;GameType&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GT_RANKED&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;format&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;FormatType&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FT_WILD&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-                &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;BnetGameType&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;BGT_RANKED_WILD&lt;/span&gt;
-            &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="nb"&gt;format&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;FormatType&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FT_STANDARD&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-                &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;BnetGameType&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;BGT_RANKED_STANDARD&lt;/span&gt;
-            &lt;span class="c1"&gt;# ...&lt;/span&gt;
-            &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-                &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="ne"&gt;ValueError&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-        &lt;span class="c1"&gt;# ...&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-            &lt;span class="n"&gt;GameType&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GT_UNKNOWN&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;BnetGameType&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;BGT_UNKNOWN&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-            &lt;span class="c1"&gt;# ...&lt;/span&gt;
-            &lt;span class="n"&gt;GameType&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GT_BATTLEGROUNDS_DUO_FRIENDLY&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;BnetGameType&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;BGT_BATTLEGROUNDS_DUO_FRIENDLY&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="p"&gt;}[&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;We have procedural code mixed with a data lookup table; &lt;code&gt;raise ValueError&lt;/code&gt;
-mixed together with value returns.  Overall, it looks like this might be hard
-to maintain this going forward, or to see what’s going on without a
-comprehensive understanding of the game being modeled.  Of course for most
-python programmers that understanding can be assumed, but, still.&lt;/p&gt;
-&lt;p&gt;If &lt;code&gt;GameType&lt;/code&gt; were refactored in the manner above&lt;sup id="fnref:3:active-enum-2025-1"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:3:active-enum-2025-1" id="fnref:3"&gt;3&lt;/a&gt;&lt;/sup&gt;, you’d be able to look at the
-member definition for &lt;code&gt;GT_RANKED&lt;/code&gt; and see a mapping of &lt;code&gt;FormatType&lt;/code&gt; to
-&lt;code&gt;BnetGameType&lt;/code&gt;, or &lt;code&gt;GT_BATTLEGROUNDS_DUO_FRIENDLY&lt;/code&gt; to see an unconditional
-value of &lt;code&gt;BGT_BATTLEGROUNDS_DUO_FRIENDLY&lt;/code&gt;.  Given that this enum has 40
-elements, with several renamed or removed, it seems reasonable to expect that
-more will be added and removed as the game is developed.&lt;/p&gt;
-&lt;h2 id="conclusion"&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;If you have large enums that change over time, consider placing the
-responsibility for the behavior of the values alongside the values directly,
-and any logic for processing the values as methods of the enum.  This will
-allow you to quickly validate that you have full coverage of any data that is
-required among all the different members of the enum, and it will allow API
-clients a convenient surface to discover the capabilities associated with that
-enum.&lt;/p&gt;
-&lt;h2 id="acknowledgments"&gt;Acknowledgments&lt;/h2&gt;
-&lt;p class="update-note"&gt;Thank you to &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;my patrons&lt;/a&gt; who are
-supporting my writing on this blog.  If you like what you’ve read here and
-you’d like to read more of it, or you’d like to support my &lt;a href="https://github.com/glyph/"&gt;various open-source
-endeavors&lt;/a&gt;, you can &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;support my work as a sponsor&lt;/a&gt;!&lt;/p&gt;
-&lt;div class="footnote"&gt;
-&lt;hr /&gt;
-&lt;ol&gt;
-&lt;li id="fn:1:active-enum-2025-1"&gt;
-&lt;p id="fn:1"&gt;You can get even fancier than this, defining a
-&lt;a href="https://blog.glyph.im/2020/07/new-duck.html"&gt;&lt;code&gt;typing.Protocol&lt;/code&gt;&lt;/a&gt; as your enum’s value, but it’s
-best to keep things simple and use a very simple &lt;code&gt;dataclass&lt;/code&gt; container if
-you can. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:1:active-enum-2025-1" title="Jump back to footnote 1 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:2:active-enum-2025-1"&gt;
-&lt;p id="fn:2"&gt;derogatory &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:2:active-enum-2025-1" title="Jump back to footnote 2 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:3:active-enum-2025-1"&gt;
-&lt;p id="fn:3"&gt;I did not submit such a refactoring as a PR before writing this post
-because I don’t have full context for this library and I do not want to
-harass the maintainers or burden them with extra changes just to make a
-rhetorical point.  If you do want to try that yourself, &lt;em&gt;please&lt;/em&gt; file a bug
-first and clearly explain how you think it would benefit their project’s
-maintainability, and make sure that such a PR would be welcome. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:3:active-enum-2025-1" title="Jump back to footnote 3 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</description>
-      <guid isPermaLink="false">cf715a7e40d1dd6d34720ab1ddb74bad085f3beac2279239659808d0b677c8e8</guid>
-      <pubDate>Fri, 10 Jan 2025 22:37:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Hynek Schlawack: Python Project-Local Virtualenv Management Redux</title>
-      <link>https://hynek.me/articles/python-virtualenv-redux/</link>
-      <description>&lt;p&gt;One of my &lt;a href="https://hynek.me/til/python-project-local-venvs"&gt;first TIL entries&lt;/a&gt; was about how you can imitate Node’s &lt;code&gt;node_modules&lt;/code&gt; semantics in Python on UNIX-like operating systems. A lot has happened since then (to the better!) and it’s time for an update. &lt;em&gt;direnv&lt;/em&gt; still rocks, though.&lt;/p&gt;</description>
-      <guid isPermaLink="false">65f936d1ee1ab0f0a5def0b2ff15449017c1008408e09dd383be43c0206628fc</guid>
-      <pubDate>Mon, 23 Sep 2024 00:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>
