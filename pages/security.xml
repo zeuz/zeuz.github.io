@@ -5,7 +5,92 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Wed, 18 Nov 2026 14:01:34 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2026 14:01:46 +0000</lastBuildDate>
+    <item>
+      <title>Everything Is a Web Application, Including Your Firewall - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/everything-is-web-application-including.html</link>
+      <description>One of the early targets of PHP2Shell exploitation was the firewall. On October 28, Palo Alto Networks confirmed that attackers were exploiting the two PHP vulnerabilities, CVE-2026-109618 and CVE-2026-109619, against PAN-OS management interfaces exposed to the internet. Both flaws let anyone execute code on the web server without authentication. The disclosure itself went a little wrong.</description>
+      <guid isPermaLink="false">737ab2b5c24dd7ba27774528332f2d72e8c8176b91e6f0f36d53948ce2667ae2</guid>
+      <pubDate>Thu, 19 Nov 2026 11:52:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hackers Breach N-able Cloud Server, Disrupting Email Security Management Across 3 Regions - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/n-able-confirms-hackers-accessed-cloud.html</link>
+      <description>N-able on Wednesday disclosed that unknown threat actors gained unauthorized access to one of the servers in the Mail Assure and Spam Experts Hosted Cloud, causing it to disable management interfaces and APIs.
+"We have taken steps to mitigate the threat and are continuing to harden our services to reduce the risk of recurrence," N-able said.
+"The investigation is ongoing, but at this time we</description>
+      <guid isPermaLink="false">547da55f3c913ce76a08d165561750481d6801767563e0f416a04af23177be38</guid>
+      <pubDate>Thu, 19 Nov 2026 09:31:26 +0000</pubDate>
+    </item>
+    <item>
+      <title>Ruby Releases Fixes for 7 Regex and String Flaws, Warns 5 Have Proof-of-Concept RCE - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/ruby-releases-fixes-for-7-regex-and.html</link>
+      <description>Ruby contains seven memory-safety flaws in its regular expression engine and its string case-conversion code. For five of them, its maintainers say, proof-of-concept exploits, or PoCs, have shown that crafted input can run code on the machine.
+"We are aware of PoCs that prove some of them can be used to trigger remote code execution," the maintainers said.
+The project released fixed versions</description>
+      <guid isPermaLink="false">7066312bd76de44bd1e8fd0918a6b1b3bb6b9664e61b955282f20974fdfb5efa</guid>
+      <pubDate>Thu, 19 Nov 2026 08:42:11 +0000</pubDate>
+    </item>
+    <item>
+      <title>Researcher Demonstrates Database RCE Exploits Affecting PostgreSQL, MySQL and Oracle - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/researcher-demonstrates-database-rce.html</link>
+      <description>Low-privilege database accounts that cannot read a single application table can still be used to run code on the database server itself, a researcher has shown, by reaching memory-corruption bugs in the engine code behind ordinary SQL.
+The exploits, published yesterday, are the researcher's proofs of concept against PostgreSQL, MySQL and ClickHouse, plus a separate Oracle chain that needs no</description>
+      <guid isPermaLink="false">31fab7145ca26e8ed0d4a9d65c1cc55da68ed4fcc54f53bfca80e02f518efdd0</guid>
+      <pubDate>Thu, 19 Nov 2026 08:14:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>CISA Warns of 4 Exploited Flaws Linked to Ransomware, Cryptomining, and LLMjacking Attacks - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/cisa-warns-of-4-exploited-flaws-linked.html</link>
+      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Wednesday added four vulnerabilities impacting Synology DiskStation Manager (DSM), BerriAI LiteLLM, Apache Axis, and Vanderbilt University Research Electronic Data Capture (REDCap) to its Known Exploited Vulnerabilities (KEV) catalog, citing evidence of active exploitation.
+The vulnerabilities are listed below -</description>
+      <guid isPermaLink="false">a5f8bbc48005125f14df86a8ac3073585dcf8894fa46c8f5bac9204fb0dae59d</guid>
+      <pubDate>Thu, 19 Nov 2026 08:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>PHP Warns of Critical Security Flaws Affecting All Supported Versions, Fixes Coming November 19 - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/php-warns-of-critical-security-flaws.html</link>
+      <description>The maintainers of the PHP programming language on Wednesday issued an advisory announcing an upcoming security release that addresses critical flaws.
+The release is scheduled for November 19, 2026, between 2 and 2:30 p.m. UTC.
+"These releases are part of PHP's regular four-week release cycle and will address security vulnerabilities affecting all supported PHP versions," the maintainers said.</description>
+      <guid isPermaLink="false">543fa566d350cc879aa22764d19007e7f61aa072ed1deb4eeb65eddacdfce802</guid>
+      <pubDate>Thu, 19 Nov 2026 04:33:46 +0000</pubDate>
+    </item>
+    <item>
+      <title>10-Year-Old NGINX HTTP/2 Flaw Lets Unauthenticated Attackers Execute Code on Servers - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/10-year-old-nginx-http2-flaw-lets.html</link>
+      <description>A flaw in NGINX's HTTP/2 support can allow an attacker to run code on servers with HTTP/2 enabled, without needing to log in.
+The decade-old flaw, CVE-2026-123007, dubbed "nginx2root," has been present in NGINX's open-source code since version 1.9.5, released on September 22, 2015. Fixed versions 1.31.9 and 1.30.7 came out today.
+F5, the company behind NGINX, says attackers can run code where</description>
+      <guid isPermaLink="false">287b452ff2b2ebef1ceba3c522dac70f5d2b3ed0245d8d0c5554b07892129a87</guid>
+      <pubDate>Wed, 18 Nov 2026 18:31:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>F5 Warns 6 Critical BIG-IP Flaws Can Crash Traffic in Specific Setups, May Allow RCE - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/f5-warns-6-critical-big-ip-flaws-can.html</link>
+      <description>Six critical vulnerabilities in F5 BIG-IP allow an attacker to crash the Traffic Management Microkernel (TMM) without logging in, disrupting traffic until the TMM restarts.
+Each flaw needs a specific setup on a virtual server: an iRule that uses a particular command, or an APM policy that includes two particular kinds of agent.
+F5, which makes BIG-IP, disclosed the flaws today and says they</description>
+      <guid isPermaLink="false">6dc2cbff42e7b0778a618b8b2775109b1935e4af8f721892fe3847926d3f8b29</guid>
+      <pubDate>Wed, 18 Nov 2026 18:15:39 +0000</pubDate>
+    </item>
+    <item>
+      <title>Critical Apache Roller RCE Flaw Under Active Exploitation, No Authentication Required - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/critical-apache-roller-rce-flaw-under.html</link>
+      <description>A critical security flaw in Apache Roller, an open-source, Java-based blogging platform, has come under active exploitation in the wild, according to the Apache Software Foundation (ASF)
+The vulnerability, tracked as CVE-2026-129448 (CVSS score: 9.8), is a case of unauthenticated deserialization in the XML-RPC endpoint that could lead to remote code execution.
+"Deserialization of Untrusted</description>
+      <guid isPermaLink="false">b17a0d6a7ce703ded04d06101fd90a0ff14d2a3f927133a3659ccbd166907794</guid>
+      <pubDate>Wed, 18 Nov 2026 17:10:45 +0000</pubDate>
+    </item>
+    <item>
+      <title>New EggStreme Malware Variant Goes Silent to Evade Security Tools in Government Attacks - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/eggstreme-hackers-rebuild-malware-with.html</link>
+      <description>The suspected Chinese advanced persistent threat (APT) group behind the sophisticated EggStreme malware has rebuilt its toolkit as it continues to target government organizations in the Philippines.
+"When attackers are exposed, the cheap response is to rotate," Bitdefender said in a technical report shared with The Hacker News. "A file hash changes with every recompile, a domain costs a few</description>
+      <guid isPermaLink="false">553da40216a3b354eb6eb1448bfa6e7990b98273546c2dc7f651b2bfff6b8215</guid>
+      <pubDate>Wed, 18 Nov 2026 14:11:28 +0000</pubDate>
+    </item>
     <item>
       <title>New Attack Bypasses TPM Lockout to Crack Windows Hello and BitLocker PINs in Days, Not Years - The Hacker News</title>
       <link>https://thehackernews.com/2026/11/flash-chip-attack-bypasses-tpm-lockout.html</link>
@@ -1480,85 +1565,6 @@ In the researchers' tests,</description>
 Someone with that key could build counterfeit devices that pass the online check owners use to verify a Keystone. A buyer who trusted a counterfeit could have their crypto stolen, but the incident did not involve</description>
       <guid isPermaLink="false">d650a5f0e5dc254f92377bf787bc0625ba683fc4f66194fd08e13e6d706774f2</guid>
       <pubDate>Tue, 27 Oct 2026 11:46:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>AI-Generated Fake Login Pages Are Making Account Takeovers Easier - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/ai-generated-fake-login-pages-are.html</link>
-      <description>Fake login pages are nothing new, but generative AI is making them easier to build and more convincing. Attackers can recreate familiar login screens, impersonate trusted brands and tailor phishing attempts to specific employees or organizations.&amp;nbsp;
-Some fake login pages go beyond stealing passwords. They can also capture MFA codes or hijack authenticated sessions, allowing attackers to gain</description>
-      <guid isPermaLink="false">47eb6a27fa221d9e685dc8885f4f25f56d618fb5d131674f417063415d553c1e</guid>
-      <pubDate>Tue, 27 Oct 2026 11:32:46 +0000</pubDate>
-    </item>
-    <item>
-      <title>Lazarus Abuses South Korean Security Software to Deploy Malware Using Post-Quantum Encryption - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/lazarus-abuses-south-korean-security.html</link>
-      <description>The North Korea-linked Lazarus Group has been attributed to a cyber espionage campaign dubbed Operation FlashHole targeting at least three organizations in South Korea spanning the construction, software, and wire-communication equipment manufacturing sectors.
-According to Russian cybersecurity company Kaspersky, the campaign has been active since at least July 2025. It's assessed to pick up</description>
-      <guid isPermaLink="false">809623ffdfbfcacc610ebd3393380269ffec11115d9e389f3bd2e819b887d862</guid>
-      <pubDate>Tue, 27 Oct 2026 11:32:31 +0000</pubDate>
-    </item>
-    <item>
-      <title>Australia Gets Into Amadey Malware Backend, Cuts Off Access to 180,000 Infected Computers - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/australia-gets-into-amadey-malware.html</link>
-      <description>A criminal using the Amadey malware can no longer access or steal data from 180,000 infected computers around the world, including some in Australia, the Australian Signals Directorate (ASD) says. The agency's operators gained access to the criminal's operation's backend and cut it off from those computers.
-"The next steps that we took were to disconnect that Amadey controller from all those</description>
-      <guid isPermaLink="false">ddcca01900cb0c402a31e2276d7279b343819d02f141b4db7b262872a0751627</guid>
-      <pubDate>Tue, 27 Oct 2026 09:33:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>Encrypted firmware and software RE: a 31-method survey with validation criteria (AI-assisted) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xgnh5h/encrypted_firmware_and_software_re_a_31method/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/JaredReabow"&gt; /u/JaredReabow &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/JaredReabow/reverse-engineering-with-ai"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xgnh5h/encrypted_firmware_and_software_re_a_31method/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">2d4a44047aa9b5e15fc532133d43b8c0e47214726099440c77566d755f6f2e38</guid>
-      <pubDate>Tue, 27 Oct 2026 09:03:52 +0000</pubDate>
-    </item>
-    <item>
-      <title>OpenAI Compaction Flaw Let Researchers Bypass Hidden Reasoning Protections - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/openai-compaction-flaw-let-researchers.html</link>
-      <description>OpenAI's compaction feature, which shrinks a long conversation to save space, could be turned into a way to copy a model's hidden reasoning out in plain text,&amp;nbsp;security firm Xint&amp;nbsp;has shown.
-OpenAI's reasoning models work through a problem before answering, and the service normally returns only the raw reasoning as&amp;nbsp;an encrypted item&amp;nbsp;the user cannot read. The method got past</description>
-      <guid isPermaLink="false">01a8fd53d209eb3b8aad48f98cfd215774d459ff5f339260231f73de149884aa</guid>
-      <pubDate>Tue, 27 Oct 2026 08:22:43 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Hijack Dahua IP Cameras in Ukraine Using P2P Access and Auth Weaknesses - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/attackers-hijack-dahua-ip-cameras-in.html</link>
-      <description>The Computer Emergency Response Team of Ukraine (CERT-UA) has issued an alert warning of unauthorized remote access to video surveillance systems manufactured by Dahua.
-"Cases of compromising IP cameras and DVRs with access to the video stream, changing the device configuration and creating third-party accounts have been recorded," the State Special Communications Service of Ukraine (SSSCIP)</description>
-      <guid isPermaLink="false">7b0bacc210ce12df7209a1a1b6935755cdea851404f7cbf588f42149b6f016e8</guid>
-      <pubDate>Tue, 27 Oct 2026 06:34:47 +0000</pubDate>
-    </item>
-    <item>
-      <title>CISA Confirms Active Exploitation of Two PHP2Shell Flaws Enabling Remote Code Execution - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/cisa-confirms-active-exploitation-of.html</link>
-      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Monday confirmed active exploitation of the recently patched PHP2Shell flaws by adding them to its Known Exploited Vulnerabilities (KEV) catalog.
-The PHP vulnerabilities, both rated 9.2 on the CVSS scoring system, facilitate unauthenticated remote code execution on affected deployments -
-  CVE-2026-109618 - An out-of-memory</description>
-      <guid isPermaLink="false">e6e1cf334c742f77cfa8288d944fe4a93d24f85735b0fd2befd5e562970bcb14</guid>
-      <pubDate>Tue, 27 Oct 2026 04:37:59 +0000</pubDate>
-    </item>
-    <item>
-      <title>Running original ARM64 QOI instructions in a browser, with heap checkpoint and restore - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xgawmv/running_original_arm64_qoi_instructions_in_a/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Awkward_Conflict3990"&gt; /u/Awkward_Conflict3990 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/nazeeh111/Capsulith/blob/main/examples/qoi/README.md"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xgawmv/running_original_arm64_qoi_instructions_in_a/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">a6b1aa61dd31b021b533c5b69ae524a58ecfdb5748502ffc71b5dac2eda84e94</guid>
-      <pubDate>Mon, 26 Oct 2026 22:13:07 +0000</pubDate>
-    </item>
-    <item>
-      <title>Heap overflow in EDK2’s Brotli decompressor: the CVE-2021-28211 fix was applied to LZMA and never to Brotli - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xg5kkt/heap_overflow_in_edk2s_brotli_decompressor_the/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/lcpjj_"&gt; /u/lcpjj_ &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/lukr54/edk2-security"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xg5kkt/heap_overflow_in_edk2s_brotli_decompressor_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">76024d445dc7bbb1ff6c6c433eaeedded9657a01e9bb0f87c7cb027b17f21be7</guid>
-      <pubDate>Mon, 26 Oct 2026 18:49:54 +0000</pubDate>
-    </item>
-    <item>
-      <title>Hackers Infect 953 Online Stores With Scanner-Evading JavaScript, Mostly on Magento - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/hackers-infect-953-online-stores-with.html</link>
-      <description>An unknown threat actor has infected 953 online stores, most of them running Magento, as part of a long-running campaign active since July 2025.
-According to Dutch e-commerce security company Sansec, the activity is designed to add a small piece of code to the store's pages that, when visited by unsuspecting users, serves malicious JavaScript loader code through Magento CMS blocks.
-"When you</description>
-      <guid isPermaLink="false">959cd5a574ea22ecaae58ff2ac2713ed6516bdb79e137bbefaf1daf45276626a</guid>
-      <pubDate>Mon, 26 Oct 2026 18:12:22 +0000</pubDate>
     </item>
   </channel>
 </rss>

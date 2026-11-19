@@ -5,7 +5,268 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Wed, 18 Nov 2026 14:01:34 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2026 14:01:46 +0000</lastBuildDate>
+    <item>
+      <title>Graham Dumpleton: Muru: noticing and responding - Planet Python</title>
+      <link>https://grahamdumpleton.me/posts/2026/11/muru-noticing-and-responding/</link>
+      <description>&lt;p&gt;The &lt;a href="https://grahamdumpleton.me/posts/2026/11/muru-overlays-on-a-schedule/"&gt;last post&lt;/a&gt; was about overlays, named pieces of configuration the Muru daemon lays over a site's routes for a while, activated by hand or on a schedule. Everything in it was known ahead of time. The backup runs at 2am, and the sale starts at 9am on Monday.&lt;/p&gt;
+&lt;p&gt;The things that cause the most trouble don't come with a schedule. AI crawlers turn up when they turn up, and some of them will happily take more of a site's capacity than all its real visitors put together. A payment provider goes down without telling anyone first. The usual answer is a monitoring system that notices, an alert that wakes someone up, and that person logging in to change something, which they then have to remember to change back once it is over. Automating that means a script hanging off an alerting webhook, which is one more thing to write, secure and keep working.&lt;/p&gt;
+&lt;p&gt;Muru has two pieces for this. A condition says when something holds over Muru's own figures, and an overlay can be triggered by a condition rather than by the time. Put together, Muru notices something, responds to it, and stops responding once it is over.&lt;/p&gt;
+&lt;h2&gt;Telling crawlers apart&lt;/h2&gt;
+&lt;p&gt;Before anything can respond to crawlers, the edge has to know which requests are theirs. Muru gives every request a client class, worked out from rules declared beside the routes:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[host.shop]
+names = [&amp;quot;shop.localhost&amp;quot;]
+default = true
+[[route]]
+name = &amp;quot;shop&amp;quot;
+host = &amp;quot;shop&amp;quot;
+app = &amp;quot;shop&amp;quot;
+[[client_class]]
+name = &amp;quot;ai-crawler&amp;quot;
+user_agent = [&amp;quot;GPTBot&amp;quot;, &amp;quot;ClaudeBot&amp;quot;, &amp;quot;CCBot&amp;quot;]
+[rate_limit.crawlers]
+match = { client_class = [&amp;quot;ai-crawler&amp;quot;] }
+key = &amp;quot;client_class&amp;quot;
+rate = &amp;quot;2/s&amp;quot;
+burst = 2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Matching on the &lt;code&gt;User-Agent&lt;/code&gt; is the simplest rule. Rules can also match addresses, headers, cookies or the JA4 fingerprint of a TLS connection, or check a claimed search engine crawler by looking up its address in DNS, and community lists of AI crawler user agents can be dropped in as files. A request matching no rule is class &lt;code&gt;default&lt;/code&gt;. The class goes to the application as &lt;code&gt;muru.client_class&lt;/code&gt; in the WSGI environ, into the access log, where &lt;code&gt;muructl logs --access&lt;/code&gt; shows it as &lt;code&gt;class=ai-crawler&lt;/code&gt; for anything but &lt;code&gt;default&lt;/code&gt;, and onto the &lt;code&gt;client_class&lt;/code&gt; label of the request metrics.&lt;/p&gt;
+&lt;p&gt;The rate limit's &lt;code&gt;match&lt;/code&gt; applies it to requests in the &lt;code&gt;ai-crawler&lt;/code&gt; class, and &lt;code&gt;key&lt;/code&gt; puts the whole class in one bucket, so the crawlers get two requests a second between them while everyone else is left alone. Declaring it doesn't put it in force, though. A rate limit takes effect only on a route that names it, and nothing names this one yet.&lt;/p&gt;
+&lt;p&gt;To have something to watch, I used a load script with two people's browsers asking for the shop's front page five times a second each for a whole run, and four crawlers, with a &lt;code&gt;GPTBot&lt;/code&gt; user agent, asking as fast for the first part of it. Every five seconds it prints the answers so far, by status.&lt;/p&gt;
+&lt;h2&gt;A condition watches&lt;/h2&gt;
+&lt;p&gt;A condition is declared in the same files:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[condition.crawler-surge]
+when = &amp;quot;request_share{app='shop',client_class='ai-crawler'}[10s] &amp;gt; 0.5&amp;quot;
+for = &amp;quot;10s&amp;quot;
+clear_when = &amp;quot;request_share{app='shop',client_class='ai-crawler'}[10s] &amp;lt; 0.2&amp;quot;
+clear_for = &amp;quot;10s&amp;quot;
+min_requests = 20
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The expression is written to look like a Prometheus alerting rule, and that is deliberate, since it is the form people who run sites already know. &lt;code&gt;request_share&lt;/code&gt; is the share of the shop's requests from the &lt;code&gt;ai-crawler&lt;/code&gt; class, over a ten second window. The condition fires once the crawlers have been more than half the shop's requests for ten seconds, and resolves once they have been under a fifth for ten seconds. Having two thresholds with a gap between them stops a condition flapping around one value. &lt;code&gt;min_requests&lt;/code&gt; is how many requests the window needs before a share counts as a figure at all, so a handful of requests can't fire it.&lt;/p&gt;
+&lt;p&gt;The windows here are short, where real ones would be minutes long. There are signals for request rates, error rates, latencies, queue depth, how busy the workers are, whether the autoscaler is at its limit, the node's memory and the health of upstream services, and terms can be joined with &lt;code&gt;and&lt;/code&gt; and &lt;code&gt;or&lt;/code&gt;. There is no arithmetic and no functions, which keeps a condition something you can read at a glance.&lt;/p&gt;
+&lt;p&gt;With no traffic, the share has no figure, and the condition is &lt;code&gt;unknown&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl condition list
+CONDITION     STATE     SINCE                 WHEN
+crawler-surge unknown   -                     request_share{app='shop',client_class='ai-crawler'}[10s] &amp;gt; 0.5
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A few seconds into a run of the load script, the crawlers were two thirds of the requests, and the condition was waiting out its &lt;code&gt;for&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl condition show crawler-surge
+condition crawler-surge (applied)
+  state       pending: when has held for 5s of 10s
+  when        request_share{app='shop',client_class='ai-crawler'}[10s] &amp;gt; 0.5
+  for         10s
+  clear_when  request_share{app='shop',client_class='ai-crawler'}[10s] &amp;lt; 0.2
+  clear_for   10s
+  min         20 requests
+  term        request_share{app='shop',client_class='ai-crawler'}[10s] &amp;gt; 0.5 is 0.6667
+  term        request_share{app='shop',client_class='ai-crawler'}[10s] &amp;lt; 0.2 is 0.6667
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ten seconds after that, it fired:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  state       firing since 2026-11-17T06:29:30Z
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When the crawlers stopped, their share dropped away, and &lt;code&gt;show&lt;/code&gt; counted down the &lt;code&gt;clear_for&lt;/code&gt; wait:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  state       firing since 2026-11-17T06:29:30Z; clear_when has held for 6s of 10s
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;before the condition resolved. Each change is an event, carrying the figures that caused it:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl events
+...
+    10 17:29:30 warning  condition.firing     crawler-surge            firing, when held for 10s; request_share{app='shop',client_class='ai-crawler'}[10s] &amp;gt; 0.5: 0.6667; request_share{app='shop',client_class='ai-crawler'}[10s] &amp;lt; 0.2: 0.6667
+    11 17:30:08 info     condition.resolved   crawler-surge            resolved, clear for 10s; request_share{app='shop',client_class='ai-crawler'}[10s] &amp;gt; 0.5: 0; request_share{app='shop',client_class='ai-crawler'}[10s] &amp;lt; 0.2: 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And that was all that happened. The crawlers were served throughout:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; 30s  people 296 x 200  crawlers 592 x 200
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A condition does nothing by itself. That is the point of declaring one before anything acts on it, as it can be left watching real traffic, with its events going to wherever the other events go, until its thresholds and waits fire when you would actually want them to.&lt;/p&gt;
+&lt;h2&gt;Acting on it&lt;/h2&gt;
+&lt;p&gt;An overlay triggered by the condition gives the crawlers a route of their own while it fires, the same as the shop's route but drawing on the rate limit:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[overlay.crawler-response]
+routes.shop.client_routes.ai-crawler = { rate_limits = [&amp;quot;crawlers&amp;quot;] }
+trigger = { condition = &amp;quot;crawler-surge&amp;quot; }
+min_active = &amp;quot;20s&amp;quot;
+cooldown = &amp;quot;1m&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;client_routes&lt;/code&gt; lets a route treat requests from a particular client class differently. Each entry is named after a class and gives only the settings that change for that class's requests, with everything else staying as the route has it. Here, requests from the &lt;code&gt;ai-crawler&lt;/code&gt; class get the &lt;code&gt;crawlers&lt;/code&gt; rate limit added, and requests from everyone else carry on as before. I ran the load again, and once the condition fired, the overlay was active:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl overlay list
+OVERLAY                  STATE              TRIGGER                            CHANGES
+crawler-response         active (condition) condition crawler-surge, firing    route shop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and the crawlers' answers turned to 429s while the people's stayed 200s:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  5s  people 50 x 200  crawlers 100 x 200
+ 10s  people 100 x 200  crawlers 200 x 200
+ 15s  people 148 x 200  crawlers 296 x 200
+ 20s  people 198 x 200  crawlers 307 x 200, 89 x 429
+ 25s  people 248 x 200  crawlers 317 x 200, 179 x 429
+ 30s  people 296 x 200  crawlers 327 x 200, 265 x 429
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A refused request is still counted as one of the shop's, so the crawlers stayed most of its requests and the condition kept firing for as long as they kept coming. Once they stopped, the condition resolved and the overlay ended with it. The events tell the whole story:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    13 17:30:34 warning  condition.firing     crawler-surge            firing, when held for 10s; ...
+    14 17:30:34 notice   overlay.activated    overlay crawler-response activated: its condition crawler-surge is firing; ...
+    15 17:30:35 warning  ratelimit.enforcing  rate_limit crawlers      began refusing or holding requests: 14 so far
+    16 17:31:08 info     condition.resolved   crawler-surge            resolved, clear for 10s; ...
+    17 17:31:08 notice   overlay.ended        overlay crawler-response ended: its condition crawler-surge resolved; ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Nobody ran a command, and nothing was left for anyone to undo.&lt;/p&gt;
+&lt;p&gt;Something acting automatically needs to be kept from acting too often. &lt;code&gt;min_active&lt;/code&gt; keeps the overlay active for at least a while however soon its condition resolves, five minutes by default. &lt;code&gt;cooldown&lt;/code&gt; stops the condition activating it again for a while after it ends, ten minutes by default, and &lt;code&gt;max_per_hour&lt;/code&gt; caps how many times it can activate in an hour. I sent another burst of crawlers straight after, inside the cooldown. The condition fired again, but the overlay stayed as it was, and the crawlers were served:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    18 17:31:35 warning  condition.firing     crawler-surge            firing, when held for 10s; ...
+    19 17:31:35 warning  overlay.skipped      overlay crawler-response not activated though its condition crawler-surge is firing: its cooldown after it last ended lasts until 2026-11-17T06:32:08.559Z
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;A response that hides its own cause&lt;/h2&gt;
+&lt;p&gt;Rather than refusing the crawlers, an overlay could answer them from a static snapshot of the shop, which costs the application nothing at all:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[overlay.crawler-response]
+routes.shop.client_routes.ai-crawler = { target = { static = &amp;quot;snapshot&amp;quot; } }
+trigger = { condition = &amp;quot;crawler-surge&amp;quot; }
+min_active = &amp;quot;20s&amp;quot;
+cooldown = &amp;quot;1m&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is the part of conditions I found most interesting, because it seems like an improvement and isn't. &lt;code&gt;muructl apply&lt;/code&gt; accepted it, but warned:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;muru: warning: overlay crawler-response takes shop's ai-crawler requests away from what condition crawler-surge reads, so the condition sees none of them and may resolve while they keep coming; rate-limit the class instead, or read the class's share of every request, without app
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A request answered from a static directory isn't the application's. While the overlay is active, the crawlers vanish from the shop's figures, so their share of its requests falls to nothing, even though they are still coming. I ran it anyway, with the crawlers going for the whole run, to see what happens:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    24 17:33:34 notice   overlay.activated    overlay crawler-response activated: its condition crawler-surge is firing; ...
+    25 17:33:53 info     condition.resolved   crawler-surge            resolved, clear for 10s; ...
+    26 17:33:55 notice   overlay.ended        overlay crawler-response ended: its condition crawler-surge resolved; ...
+    27 17:34:11 warning  condition.firing     crawler-surge            firing, when held for 10s; ...
+    28 17:34:11 warning  overlay.skipped      overlay crawler-response not activated though its condition crawler-surge is firing: its cooldown after it last ended lasts until 2026-11-17T06:34:55.558Z
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Twenty seconds after the overlay sent the crawlers to the snapshot, the condition saw no crawlers and resolved. The overlay ended and the crawlers were back on the shop, where the condition saw them and fired again, and only the cooldown stopped the overlay going straight back on. Without a cooldown, it would have flipped back and forth like this for as long as the crawlers kept coming.&lt;/p&gt;
+&lt;p&gt;An overlay must not take away what its own condition reads. There are two ways out. One is a condition on a figure the overlay doesn't change. Leaving &lt;code&gt;app&lt;/code&gt; out of &lt;code&gt;request_share&lt;/code&gt; counts every request the node takes, the snapshot's included. The other is &lt;code&gt;latch = true&lt;/code&gt;, which keeps the overlay active after its condition resolves, until a person ends it:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl overlay list
+OVERLAY                  STATE              TRIGGER                                    CHANGES
+crawler-response         active (condition) condition crawler-surge, latched, resolved route shop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The condition resolved while the crawlers carried on, but the overlay stayed. Deciding when the crawlers have really gone is then left to a person, with &lt;code&gt;muructl overlay preview&lt;/code&gt; showing the condition's figures beside what the overlay changes, and &lt;code&gt;muructl overlay end&lt;/code&gt; ending it. A latch suits an overlay which responds to something going wrong, where Muru turning the response off on its own isn't wanted anyway.&lt;/p&gt;
+&lt;h2&gt;Holding capacity while a dependency is down&lt;/h2&gt;
+&lt;p&gt;Overlays can set capacity as well as routes, and one of the cases where that matters is less obvious than crawlers. The shop's checkout calls out to a payment service, and when that is down, checkout fails straight away:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;def checkout(start_response):
+    try:
+        with urllib.request.urlopen(f&amp;quot;{PAYMENTS}/charge&amp;quot;, timeout=2) as response:
+            response.read()
+    except (urllib.error.URLError, OSError):
+        start_response(&amp;quot;503 Service Unavailable&amp;quot;, [(&amp;quot;Content-Type&amp;quot;, &amp;quot;text/plain&amp;quot;)])
+        return [b&amp;quot;Payments are unavailable, please try again shortly.\n&amp;quot;]
+    start_response(&amp;quot;200 OK&amp;quot;, [(&amp;quot;Content-Type&amp;quot;, &amp;quot;text/plain&amp;quot;)])
+    return [b&amp;quot;Thank you for your order.\n&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Failing fast is the right thing for the application to do, but it changes what the autoscaler sees. A checkout normally holds a worker thread while the payment goes through. When every checkout fails in a millisecond, the slots look idle, and the autoscaler does what it should with idle slots, as covered in the &lt;a href="https://grahamdumpleton.me/posts/2026/11/muru-scaling-from-what-the-workers-report/"&gt;scaling from what the workers report&lt;/a&gt; post, and takes workers away. When the payment service comes back, the customers who were waiting all come back with it, and the shop is short of workers at exactly the wrong moment.&lt;/p&gt;
+&lt;p&gt;The shop has the same kind of spare mode policy as in that post, with its windows shortened so this happens in seconds rather than minutes, between one and four workers. I ran twelve clients doing checkouts, and the shop scaled out to four workers. Then I stopped the payment service:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; 30s  1143 x 200
+ 40s  1603 x 200, 12 x 503
+ 50s  1603 x 200, 2189 x 503
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and within half a minute the shop had given up half its workers:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    19 17:45:25 info     scaling.decision     shop@r1                  default: scale in from 4 to 3 workers: at least 3.50 idle workers over the last 20s, over max_spare 2; diagnosis: within capacity
+    21 17:45:30 info     scaling.decision     shop@r1                  default: scale in from 3 to 2 workers: at least 2.75 idle workers over the last 20s, over max_spare 2; diagnosis: within capacity
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With the payment service back, and the shop down to a single worker after a quiet spell, the next rush of checkouts had to wait on a scale-out:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    26 17:47:00 info     scaling.decision     shop@r1                  default: scale out from 1 to 3 workers: short by 2.00 workers for 5001ms; diagnosis: I/O bound with exhausted slots; ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With a policy whose &lt;code&gt;min_workers&lt;/code&gt; is zero, as in the &lt;a href="https://grahamdumpleton.me/posts/2026/11/muru-scaling-to-zero/"&gt;scaling to zero&lt;/a&gt; post, the shop could have scaled all the way down while payments were out.&lt;/p&gt;
+&lt;p&gt;The autoscaler can't know that the idle slots are the symptom of something else. A condition can, if Muru is told about the payment service. Declaring it as an upstream with a health check gives the edge a figure for it:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[upstream.payments]
+addresses = [&amp;quot;127.0.0.1:18540&amp;quot;]
+health = { path = &amp;quot;/healthz&amp;quot;, interval = &amp;quot;2s&amp;quot;, unhealthy_after = 2, healthy_after = 2 }
+[condition.payments-down]
+when = &amp;quot;upstream_healthy{upstream='payments'} &amp;lt; 0.5&amp;quot;
+for = &amp;quot;5s&amp;quot;
+clear_when = &amp;quot;upstream_healthy{upstream='payments'} &amp;gt;= 1&amp;quot;
+clear_for = &amp;quot;20s&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;upstream_healthy&lt;/code&gt; is the share of the upstream's addresses in service, so the condition fires when more than half of them have failed their health checks, and resolves once all of them have been back for twenty seconds. The overlay holds the shop's capacity while it fires:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[overlay.shop-hold]
+trigger = { condition = &amp;quot;payments-down&amp;quot; }
+apps.shop = { min_workers = 4, scale_in = &amp;quot;hold&amp;quot; }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Running the same test again, the condition fired five seconds after the payment service stopped answering its health checks, and the overlay raised the floor:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    41 17:48:44 warning  condition.firing     payments-down            firing, when held for 5s; upstream_healthy{upstream='payments'} &amp;lt; 0.5: 0; upstream_healthy{upstream='payments'} &amp;gt;= 1: 0
+    42 17:48:44 notice   overlay.activated    overlay shop-hold        activated: its condition payments-down is firing; ...
+    43 17:48:45 info     scaling.decision     shop@r1                  default: scale out from 3 to 4 workers: raising toward the floor of 4 that shop-hold sets; diagnosis: within capacity
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For the rest of the outage the shop held four workers, though every one of them was idle:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl scale status shop
+shop@r1
+GROUP        WORKERS      SLOTS      IDLE    QUEUE-P95     REAPS      POLICY
+default      4            2/16       3.50    under 1 ms    5/6        spare 1-4 workers, 0-2 idle
+  scheduled: 4-4 workers, no scale-in from shop-hold
+  workers: cpu 1%, gc 0%, gil wait p95 under 0.1 ms, loop lag p95 -
+  diagnosis: within capacity
+  last: scaled out to 4: raising toward the floor of 4 that shop-hold sets (70s ago)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The health check doesn't depend on the shop's own requests, so this overlay can't hide its own cause the way the snapshot did. When the payment service came back, the condition resolved, and the overlay stayed on for the rest of its &lt;code&gt;min_active&lt;/code&gt;, five minutes by default, which is time for the rush that follows an outage to arrive while the workers are still there. After that, the autoscaler goes back to deciding for itself.&lt;/p&gt;
+&lt;p&gt;The same pattern works the other way around. A cap, &lt;code&gt;cap_workers&lt;/code&gt;, sets the most workers a group may have whatever its policy says, so while a struggling database is the bottleneck, a condition on its latency can stop the autoscaler adding workers that would only send it more queries at once.&lt;/p&gt;
+&lt;h2&gt;Signals from outside&lt;/h2&gt;
+&lt;p&gt;Muru's figures only cover what Muru can see. A database replica falling behind, or a payment provider's status page announcing an incident, is something a monitoring system knows about first. An overlay with &lt;code&gt;trigger = { external = true }&lt;/code&gt; can be activated and ended through a signed webhook, served on an address of its own given in the daemon's configuration file:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[overlay_webhook]
+listen = &amp;quot;127.0.0.1:9466&amp;quot;
+secret_file = &amp;quot;/etc/muru/overlay-webhook.key&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This overlay takes the shop read-only while payments are out, with a page that says so:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[overlay.payments-outage]
+routes.shop.error_pages = { &amp;quot;503:read_only&amp;quot; = { template = &amp;quot;&amp;lt;h1&amp;gt;Checkout is paused&amp;lt;/h1&amp;gt;&amp;lt;p&amp;gt;Payments are down. Your cart is safe.&amp;lt;/p&amp;gt;&amp;quot; } }
+apps.shop = { mode = &amp;quot;read-only&amp;quot;, deny = [&amp;quot;POST&amp;quot;, &amp;quot;PUT&amp;quot;, &amp;quot;PATCH&amp;quot;, &amp;quot;DELETE&amp;quot;] }
+trigger = { external = true }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A request to the webhook carries a JSON body saying what to do, and the HMAC-SHA256 of the body with the shared secret in a header, the same signing Muru uses for the events it sends out. The body includes the time it was made, which must be within five minutes of the daemon's clock, so a captured request can't be replayed later:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ body='{&amp;quot;action&amp;quot;: &amp;quot;activate&amp;quot;, &amp;quot;time&amp;quot;: &amp;quot;2026-11-17T06:50:36Z&amp;quot;, &amp;quot;for&amp;quot;: &amp;quot;2h&amp;quot;}'
+$ signature=$(printf '%s' &amp;quot;$body&amp;quot; | openssl dgst -sha256 -hmac &amp;quot;$(cat /etc/muru/overlay-webhook.key)&amp;quot; | sed 's/^.* //')
+$ curl -H &amp;quot;X-Muru-Signature: sha256=$signature&amp;quot; -d &amp;quot;$body&amp;quot; http://127.0.0.1:9466/v1/overlays/payments-outage:trigger
+{&amp;quot;message&amp;quot;:&amp;quot;activated by the webhook&amp;quot;,&amp;quot;overlay&amp;quot;:&amp;quot;payments-outage&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Sending the same request again was refused, since the overlay was already active, and one with a bad signature was turned away:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{&amp;quot;error&amp;quot;:&amp;quot;refused&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;overlay payments-outage is already active&amp;quot;}
+{&amp;quot;error&amp;quot;:&amp;quot;bad_signature&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;X-Muru-Signature is not sha256= and the body's HMAC with the webhook's secret&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;While it was active, the overlay list showed who had activated it and for how long:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;payments-outage          active (external) until 2026-11-17T08:50:36Z by hand or webhook                 route shop, app shop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and an attempt to add to the cart got the overlay's page:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ curl -si -X POST http://127.0.0.1:8080/cart
+HTTP/1.1 503 Service Unavailable
+content-type: text/html; charset=utf-8
+content-length: 71
+cache-control: no-store
+x-request-id: 01M7M4B4NT1VVWMGEPKW48DD5P
+date: Tue, 17 Nov 2026 06:50:36 GMT
+&amp;lt;h1&amp;gt;Checkout is paused&amp;lt;/h1&amp;gt;&amp;lt;p&amp;gt;Payments are down. Your cart is safe.&amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A request with &lt;code&gt;&amp;quot;action&amp;quot;: &amp;quot;end&amp;quot;&lt;/code&gt; ended it again. An overlay activated by the webhook, or by hand, is only ended by the webhook or by hand, so a monitoring system that resolves its alert gets to say when the response is over.&lt;/p&gt;
+&lt;h2&gt;What's next&lt;/h2&gt;
+&lt;p&gt;What I like about conditions is that the first step is only watching. A condition can sit against real traffic for a week, raising events, before anything is allowed to act on it, and when something does act, the events record what it saw, what it did, and when it stopped. The responses are the same overlays as in the last post, so everything about them, from the preview to the effective configuration, works the same whether a person, a schedule or a condition turned them on.&lt;/p&gt;
+&lt;p&gt;The overlay posts have been about the Muru daemon running a site. The next post, a toolbar on every page, goes back to development mode, and the toolbar Muru adds to each page under &lt;code&gt;muructl run&lt;/code&gt;, with the timings, logs and errors of the request which produced it, and nothing changed in the application.&lt;/p&gt;</description>
+      <guid isPermaLink="false">c9fcb66ce2734753b2af62c5e7a6e0c1229ce49739db65948874673916f4931d</guid>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Software Foundation: De-fanging dangerous triggers in GitHub Actions across an organization - Planet Python</title>
+      <link>https://pyfound.blogspot.com/2026/11/de-fanging-dangerous-triggers-in-github.html</link>
+      <description>&lt;h3&gt;&lt;span&gt;Authors: Mike Fiedler, Seth Larson&lt;/span&gt;&lt;/h3&gt;&lt;span id="docs-internal-guid-ef9de01e-7fff-03f1-aef6-ce4e4d25aad1"&gt;&lt;p&gt;&lt;span&gt;On December 2, 2026, GitHub will&lt;/span&gt;&lt;a href="https://github.blog/changelog/2026-11-02-pull_request_target-blocked-by-default-december-2/"&gt;&lt;span&gt; &lt;/span&gt;&lt;span&gt;start blocking the &lt;/span&gt;&lt;span&gt;pull_request_target&lt;/span&gt;&lt;span&gt; trigger by default&lt;/span&gt;&lt;/a&gt;&lt;span&gt; in public repositories. If that sentence means nothing to you, this post is for you. If it fills you with dread, it is also for you.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;The short version: a handful of GitHub Actions triggers let a stranger on the internet start a workflow that may have access to your secrets. On a GitHub Team or Enterprise plan, you can turn them off for every repository in your organization with one policy. On a Free plan, you can do it one repository at a time. Set the policy up, check what it would block, then enforce it.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;Mike Fiedler, PyPI Safety and Security Engineer, and Seth Larson, Security Developer in Residence, have removed dangerous triggers and applied these policies to the Python Software Foundation (PSF) stewarded GitHub organizations (&lt;/span&gt;&lt;a href="https://github.com/psf"&gt;&lt;span&gt;psf&lt;/span&gt;&lt;/a&gt;&lt;span&gt;, &lt;/span&gt;&lt;a href="https://github.com/python"&gt;&lt;span&gt;python&lt;/span&gt;&lt;/a&gt;&lt;span&gt;, &lt;/span&gt;&lt;a href="https://github.com/pypi"&gt;&lt;span&gt;pypi&lt;/span&gt;&lt;/a&gt;&lt;span&gt;). They also wrote up &lt;a href="https://alpha-omega.dev/blog/de-fanging-dangerous-triggers-in-github-actions-across-an-organization/" rel="nofollow" target="_blank"&gt;technical documentation&lt;/a&gt; on how to roll these policies out to your own projects and organizations. The full details and technical documentation are available on &lt;a href="https://alpha-omega.dev/blog/de-fanging-dangerous-triggers-in-github-actions-across-an-organization/" rel="nofollow" target="_blank"&gt;the Alpha-Omega blog&lt;/a&gt;.&lt;/span&gt;&lt;/p&gt;&lt;div&gt;&lt;span&gt;&lt;span id="docs-internal-guid-668ee174-7fff-74ee-6666-39ef97454fa9"&gt;&lt;h2&gt;&lt;span&gt;Have dangerous triggers caused real incidents?&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;&lt;span&gt;Yes, repeatedly. A few that have affected projects hosted on PyPI directly:&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;a href="https://blog.pypi.org/posts/2024-12-11-ultralytics-attack-analysis/"&gt;&lt;span&gt;Ultralytics, December 2024&lt;/span&gt;&lt;/a&gt;&lt;span&gt;. The project's GitHub Actions workflows were compromised and the build cache was poisoned, which put malicious releases on PyPI. Seth wrote PyPI's analysis.&lt;/span&gt;&lt;a href="https://blog.yossarian.net/2024/12/06/zizmor-ultralytics-injection"&gt;&lt;span&gt; &lt;/span&gt;&lt;span&gt;William Woodruff's write-up&lt;/span&gt;&lt;/a&gt;&lt;span&gt; traces the entry point to a &lt;/span&gt;&lt;span&gt;pull_request_target&lt;/span&gt;&lt;span&gt; workflow.&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href="https://blog.pypi.org/posts/2026-04-02-incident-report-litellm-telnyx-supply-chain-attack/"&gt;&lt;span&gt;LiteLLM and Telnyx, March 2026&lt;/span&gt;&lt;/a&gt;&lt;span&gt;. Malicious releases of both packages were published after an API token was exposed through an exploited Trivy dependency.&lt;/span&gt;&lt;a href="https://www.stepsecurity.io/blog/trivy-compromised-a-second-time---malicious-v0-69-4-release"&gt;&lt;span&gt; &lt;/span&gt;&lt;span&gt;StepSecurity traced&lt;/span&gt;&lt;/a&gt;&lt;span&gt; the Trivy compromise back to a &lt;/span&gt;&lt;span&gt;pull_request_target&lt;/span&gt;&lt;span&gt; workflow exploited three weeks earlier. We worked with both maintainer teams on token rotation, release removals, and moving to Trusted Publishers, which both projects have since adopted.&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href="https://labs.cloudsecurityalliance.org/research/csa-research-note-pypi-elementarydata-supply-chain-20260429/"&gt;&lt;span&gt;elementary-data, April 2026&lt;/span&gt;&lt;/a&gt;&lt;span&gt;. A workflow triggered by comments puts the comment text straight into a shell script. One crafted comment on a pull request ran with a token that could be written to the repository. The attacker used it to commit a malicious file and push a release tag, and the project's own release pipeline published the result to PyPI.&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;span&gt;The maintainers behind these projects weren't careless. These triggers look harmless in a workflow file, and the unsafe version is one line away from the safe one.&lt;/span&gt;&lt;/p&gt;&lt;div&gt;&lt;span&gt;&lt;span id="docs-internal-guid-f2358dda-7fff-a93c-d2d0-ebaa7a7b9606"&gt;&lt;h2&gt;&lt;span&gt;Why are these triggers dangerous?&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;&lt;span&gt;Insecure triggers can run workflows with access to your secrets, and a stranger can start them.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;When someone opens a pull request from a fork, the &lt;/span&gt;&lt;span&gt;pull_request&lt;/span&gt;&lt;span&gt; trigger runs their code with a read-only token and no secrets. That's the safe one.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;pull_request_target&lt;/span&gt;&lt;span&gt; looks &lt;/span&gt;&lt;span&gt;almost the same&lt;/span&gt;&lt;span&gt; in a workflow file and behaves very differently. It runs with a read/write token and access to your repository and organization secrets. GitHub built it for chores like labeling pull requests from forks, where the workflow never touches the contributor's code. The trouble starts when a workflow checks out the pull request and runs it anyway:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;!--HTML generated using hilite.me--&gt;&lt;/span&gt;&lt;/p&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;on&lt;/span&gt;:&lt;span&gt; &lt;/span&gt;pull_request_target
+&lt;span&gt;jobs&lt;/span&gt;:
+&lt;span&gt;  &lt;/span&gt;&lt;span&gt;test&lt;/span&gt;:
+&lt;span&gt;    &lt;/span&gt;&lt;span&gt;runs-on&lt;/span&gt;:&lt;span&gt; &lt;/span&gt;ubuntu-latest
+&lt;span&gt;    &lt;/span&gt;&lt;span&gt;steps&lt;/span&gt;:
+&lt;span&gt;      &lt;/span&gt;-&lt;span&gt; &lt;/span&gt;&lt;span&gt;uses&lt;/span&gt;:&lt;span&gt; &lt;/span&gt;actions/checkout@v6
+&lt;span&gt;        &lt;/span&gt;&lt;span&gt;with&lt;/span&gt;:
+&lt;span&gt;          &lt;/span&gt;&lt;span&gt;# a stranger's code&lt;/span&gt;
+&lt;span&gt;          &lt;/span&gt;&lt;span&gt;ref&lt;/span&gt;:&lt;span&gt; &lt;/span&gt;${{ github.event.pull_request.head.sha }}&lt;span&gt;  &lt;/span&gt;
+&lt;span&gt;      &lt;/span&gt;&lt;span&gt;# running with your secrets&lt;/span&gt;
+&lt;span&gt;      &lt;/span&gt;-&lt;span&gt; &lt;/span&gt;&lt;span&gt;run&lt;/span&gt;:&lt;span&gt; &lt;/span&gt;make test&lt;span&gt;                                    &lt;/span&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;Anyone with a GitHub account can open that pull request. Their code now runs with your credentials. This is called a "pwn request", and &lt;/span&gt;&lt;a href="https://securitylab.github.com/resources/github-actions-preventing-pwn-requests/"&gt;&lt;span&gt;GitHub's docs&lt;/span&gt;&lt;/a&gt;&lt;span&gt; describe it as the root cause of multiple supply-chain compromises.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;The &lt;/span&gt;&lt;span&gt;issue_comment&lt;/span&gt;&lt;span&gt; trigger carries the same risk. This trigger fires when anyone comments on an issue or pull request, and the workflow runs with the repository's token and secrets. Sometimes the victim is a "comment &lt;/span&gt;&lt;span&gt;/test&lt;/span&gt;&lt;span&gt; to run CI" bot that checks out the pull request and runs their code. Sometimes the workflow pastes the comment text into a templated shell command, and the comment turns out to inject different instructions into the workflow shell.&lt;/span&gt;&lt;/p&gt;&lt;div&gt;&lt;span&gt;&lt;span id="docs-internal-guid-6a2b362f-7fff-ae37-ad5f-3b9e068533b9"&gt;&lt;p&gt;&lt;/p&gt;&lt;h3&gt;&lt;span&gt;How did Alpha-Omega support this work?&lt;/span&gt;&lt;/h3&gt;&lt;a href="https://alpha-omega.dev/"&gt;&lt;span&gt;Alpha-Omega&lt;/span&gt;&lt;/a&gt;&lt;span&gt; is a fund and catalyst for sustainable open source security improvements. Alpha-Omega supports Mike's role as PyPI Safety &amp;amp; Security Engineer and Seth's role as Security Developer in Residence at the PSF.&lt;/span&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;That support is what gives us the time for the work behind this post:&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;span&gt;Seth wrote PyPI's analysis of the Ultralytics attack&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;span&gt;Mike and Seth worked with the LiteLLM and Telnyx maintainers during their incident, and wrote up the guidance for everyone else&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;span&gt;Mike set up the event policy for the &lt;/span&gt;&lt;span&gt;pypi&lt;/span&gt;&lt;span&gt; GitHub organization&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;span&gt;Seth is working to migrate the few remaining repositories using insecure triggers in the &lt;/span&gt;&lt;span&gt;python&lt;/span&gt;&lt;span&gt; GitHub organization before enabling the event policy&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;span&gt;Mike and Seth wrote this guide so other organizations can do the same!&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;h4&gt;&lt;span&gt;&lt;span&gt;About the Python Software Foundation&lt;/span&gt;&lt;/span&gt;&lt;/h4&gt;&lt;p&gt;&lt;span&gt;The PSF is a non-profit whose mission is to promote, protect, and advance the Python programming language, and to support and facilitate the growth of a diverse and international community of Python programmers. The PSF supports the Python community using corporate sponsorships, grants, and donations. Are you interested in sponsoring or donating to the PSF so it can continue supporting Python and its community? Check out our&lt;/span&gt;&lt;a href="https://www.python.org/sponsors/application/"&gt;&lt;span&gt; sponsorship program&lt;/span&gt;&lt;/a&gt;&lt;span&gt;,&lt;/span&gt;&lt;a href="https://psfmember.org/civicrm/contribute/transact?reset=1&amp;amp;id=2"&gt;&lt;span&gt; donate directly here&lt;/span&gt;&lt;/a&gt;&lt;span&gt;, or contact our team!&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;div&gt;&lt;span&gt;&lt;br /&gt;&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;</description>
+      <guid isPermaLink="false">6370c95684947d39a07e7eca697cf16a8193783e4cc293b969e81ed9d1ffd1d5</guid>
+      <pubDate>Wed, 18 Nov 2026 12:46:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: Python Rich console: Setting text width and justification - Planet Python</title>
+      <link>https://lernerpython.com/2026/11/18/python-rich-console-setting-text-width-and-justification/</link>
+      <description>&lt;img alt="Python Rich console: Setting text width and justification" class="wp-image-18967" height="1661" src="https://lernerpython.com/wp-content/uploads/2026/11/2026-11-18-scaled.png" width="2560" /&gt;
+&lt;p class="wp-block-paragraph"&gt;Have a long Python string , and want to display it nicely? With Rich&amp;#8217;s console, you can set the width or justification:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;from rich.console import Console
+c = Console()
+c.print(text, width=50)
+c.print(text, width=50, justify='full')
+c.print(text, width=50, justify='center')&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/11/18/python-rich-console-setting-text-width-and-justification/"&gt;Python Rich console: Setting text width and justification&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">6f41b2491dd316f839c1a26a6e80ac9a35a4e9d53c833b99fbf40de704b3b3de</guid>
+      <pubDate>Wed, 18 Nov 2026 07:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Python GUIs: How to Change the Decimal Separator in QDoubleValidator — Use QLocale to control the decimal point format in PyQt6 QLineEdit validation - Planet Python</title>
       <link>https://www.pythonguis.com/faq/decimal-seperator-qtgui-qdoublevalidator/</link>
@@ -462,6 +723,19 @@ Michael:&amp;lt;/li&amp;gt;
 &amp;lt;/ul&amp;gt;</description>
       <guid isPermaLink="false">68bd2ae248892a02bec2374ea70c02699656d655e8030c0516a966844c8a0cb9</guid>
       <pubDate>Tue, 17 Nov 2026 22:23:26 +0000</pubDate>
+    </item>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: Python Rich console: Separate style from text with Console.print - Planet Python</title>
+      <link>https://lernerpython.com/2026/11/17/python-rich-console-separate-style-from-text-with-console-print/</link>
+      <description>&lt;img alt="Python Rich console: Separate style from text with Console.print" class="wp-image-18876" height="400" src="https://lernerpython.com/wp-content/uploads/2026/11/2026-11-17.png" width="1280" /&gt;
+&lt;p class="wp-block-paragraph"&gt;The &amp;#8220;console&amp;#8221; object in Python Rich lets you separate formatting from the text:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;from rich.console import Console
+c = Console()
+c.print('this is amazing', style='bold red on yellow')
+c.print('this is amazing', style='italic blue on red')&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/11/17/python-rich-console-separate-style-from-text-with-console-print/"&gt;Python Rich console: Separate style from text with Console.print&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">c84041824a4f3ef01ac8176b8038a01808f6f1a8232fbd895119997a7e051797</guid>
+      <pubDate>Tue, 17 Nov 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Graham Dumpleton: Muru: scaling to zero - Planet Python</title>
@@ -18692,1157 +18966,6 @@ that small cost. &lt;a class="footnote-backref" href="https://glyph.twistedmatr
 &lt;/div&gt;</description>
       <guid isPermaLink="false">8abb1564dd5ccef0d7eac2f0dee217e8068248019e0ccf95c9eecfff926d1732</guid>
       <pubDate>Fri, 22 May 2026 00:33:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Donovan Preston: Using osascript with terminal agents on macOS</title>
-      <link>https://donovanpreston.blogspot.com/2026/04/using-osascript-with-terminal-agents-on.html</link>
-      <description>Here is a useful trick that is unreasonably effective for simple computer use goals using modern terminal agents. On macOS, there has been a terminal osascript command since the original release of Mac OS X. All you have to do is suggest your agent use it and it can perform any application control action available in any AppleScript dictionary for any Mac app. No MCP set up or tools required at all. Agents are much more adapt at using rod terminal commands, especially ones that haven't changed in 30 years. Having a computer control interface that hasn't changed in 30 years and has extensive examples in the Internet corpus makes modern models understand how to use these tools basically Effortlessly.
-macOS locks down these permissions pretty heavily nowadays though, so you will have to grant the application control permission to terminal. But once you have done that, the range of possibilities for commanding applications using natural language is quite extensive.
-Also, for both Safari and chrome on Mac, you are going to want to turn on JavaScript over AppleScript permission. This basically allows claude or another agent to debug your web applications live for you as you are using them.In chrome, go to the view menu, developer submenu, and choose "Allow JavaScript from Apple events". In Safari, it's under the safari menu, settings, developer, "Allow JavaScript from Apple events".
-Then you can do something like "Hey Claude, would you Please use osascript to navigate the front chrome tab to hacker news". Once you suggest using OSA script in a session it will figure out pretty quickly what it can do with it. Of course you can ask it to do casual things like open your mail app or whatever. Then you can figure out what other things will work like please click around my web app or check the JavaScript Console for errors.
-Another very important tips for using modern agents is to try to practice using speech to text. I think speaking might be something like five times faster than typing. It takes a lot of time to get used to, especially after a lifetime of programming by typing, but it's a very interesting and a different experience and once you have a lot of practice It starts to to feel effortless.</description>
-      <guid isPermaLink="false">87993b210824a00db1b89731621f4f259be5c57d5c0f8c682821b04ae1f7a95f</guid>
-      <pubDate>Sat, 04 Apr 2026 13:31:26 +0000</pubDate>
-    </item>
-    <item>
-      <title>Glyph Lefkowitz: What Is Code Review For?</title>
-      <link>https://blog.glyph.im/2026/03/what-is-code-review-for.html</link>
-      <description>&lt;h2 id="humans-are-bad-at-perceiving"&gt;Humans Are Bad At Perceiving&lt;/h2&gt;
-&lt;p&gt;Humans are not particularly good at catching bugs.  For one thing, we get tired
-easily.  &lt;a href="https://smartbear.com/learn/code-review/best-practices-for-peer-code-review/"&gt;There is some science on this, indicating that humans can’t even
-maintain enough concentration to review more than about 400 lines of code at a
-time.&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;We have existing terms of art, in various fields, for the ways in which the
-human perceptual system fails to register stimuli. Perception fails when humans
-are distracted, tired, overloaded, or merely improperly engaged.&lt;/p&gt;
-&lt;p&gt;Each of these has implications for the fundamental limitations of code review
-as an engineering practice:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Inattentional_blindness"&gt;Inattentional
-  Blindness&lt;/a&gt;: you won’t
-  be able to reliably find bugs that you’re &lt;em&gt;not&lt;/em&gt; looking for.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Repetition_blindness"&gt;Repetition Blindness&lt;/a&gt;:
-  you won’t be able to reliably find bugs that you &lt;em&gt;are&lt;/em&gt; looking for, if they
-  keep occurring.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://www.asisonline.org/security-management-magazine/articles/2013/05/vigilance-fatigue/"&gt;Vigilance
-  Fatigue&lt;/a&gt;:
-  you won’t be able to reliably find either kind of bugs, if you have to keep
-  being alert to the presence of bugs all the time.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;and, of course, the distinct but related &lt;a href="https://www.ibm.com/think/topics/alert-fatigue"&gt;Alert
-  Fatigue&lt;/a&gt;: you won’t even be
-  able to reliably &lt;em&gt;evaluate&lt;/em&gt; reports of &lt;em&gt;possible&lt;/em&gt; bugs, if there are too many
-  false positives.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="never-send-a-human-to-do-a-machines-job"&gt;Never Send A Human To Do A Machine’s Job&lt;/h2&gt;
-&lt;p&gt;When you need to catch a category of error in your code reliably, you will need
-a deterministic tool to evaluate — and, thanks to our old friend “alert
-fatigue” above — ideally, to also remedy that type of error.  These tools will
-relieve the need for a human to make the same repetitive checks over and over.
-None of them are perfect, but:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;to catch logical errors, use automated tests.&lt;/li&gt;
-&lt;li&gt;to catch formatting errors, use autoformatters.&lt;/li&gt;
-&lt;li&gt;to catch common mistakes, use linters.&lt;/li&gt;
-&lt;li&gt;to catch common security problems, use a security scanner.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Don’t blame reviewers for missing these things.&lt;/p&gt;
-&lt;p&gt;Code review should not be how you catch bugs.&lt;/p&gt;
-&lt;h2 id="what-is-code-review-for-then"&gt;What Is Code Review For, Then?&lt;/h2&gt;
-&lt;p&gt;Code review is for three things.&lt;/p&gt;
-&lt;p&gt;First, code review is for catching &lt;em&gt;process failures&lt;/em&gt;.  If a reviewer &lt;em&gt;has&lt;/em&gt;
-noticed a few bugs of the same type in code review, that’s a sign that that
-type of bug is probably getting &lt;em&gt;through&lt;/em&gt; review more often than it’s getting
-caught.  Which means it’s time to figure out a way to deploy a tool or a test
-into CI that will &lt;em&gt;reliably&lt;/em&gt; prevent that class of error, without requiring
-reviewers to be vigilant to it any more.&lt;/p&gt;
-&lt;p&gt;Second — and this is actually its &lt;em&gt;more important&lt;/em&gt; purpose — code review is a
-tool for &lt;em&gt;acculturation&lt;/em&gt;.  Even if you already have good tools, good processes,
-and good documentation, new members of the team won’t necessarily &lt;em&gt;know&lt;/em&gt; about
-those things.  Code review is an opportunity for older members of the team to
-introduce newer ones to existing tools, patterns, or areas of responsibility.
-If you’re building an observer pattern, you might not realize that the codebase
-you’re working in already has an existing idiom for doing that, so you wouldn’t
-even think to search for it, but someone else who has worked more with the code
-might know about it and help you avoid repetition.&lt;/p&gt;
-&lt;p&gt;You will notice that I carefully avoided saying “junior” or “senior” in that
-paragraph.  Sometimes the newer team member is actually more senior.  But also,
-the acculturation goes both ways.  This is the third thing that code review is
-for: &lt;em&gt;disrupting&lt;/em&gt; your team’s culture and avoiding stagnation.  If you have new
-talent, a fresh perspective can &lt;em&gt;also&lt;/em&gt; be an extremely valuable tool for
-building a healthy culture.  If you’re new to a team and trying to build
-something with an observer pattern, and this codebase has no tools for that,
-but your &lt;em&gt;last&lt;/em&gt; job did, and it used one from an open source library, that is a
-good thing to point out in a review as well.  It’s an opportunity to spot areas
-for improvement to culture, as much as it is to spot areas for improvement to
-process.&lt;/p&gt;
-&lt;p&gt;Thus, code review should be as hierarchically flat as possible.  If the goal of
-code review were to spot bugs, it would make sense to reserve the ability to
-review code to only the most senior, detail-oriented, rigorous engineers in the
-organization.  But most teams already know that that’s a recipe for
-brittleness, stagnation and bottlenecks.  Thus, even though we &lt;em&gt;know&lt;/em&gt; that not
-everyone on the team will be equally good at spotting bugs, it is very common
-in most teams to allow anyone past some fairly low minimum seniority bar to do
-reviews, often as low as “everyone on the team who has finished onboarding”.&lt;/p&gt;
-&lt;h2 id="oops-surprise-this-post-is-actually-about-llms-again"&gt;Oops, Surprise, This Post Is Actually About LLMs Again&lt;/h2&gt;
-&lt;p&gt;Sigh.  I’m as disappointed as you are, but there are no two ways about it: LLM
-code generators are everywhere now, and we need to talk about how to deal with
-them.  Thus, an important corollary of this understanding that code review is a
-&lt;em&gt;social activity&lt;/em&gt;, is that LLMs are not &lt;em&gt;social actors&lt;/em&gt;, thus you cannot rely
-on code review to inspect their output.&lt;/p&gt;
-&lt;p&gt;My own &lt;em&gt;personal&lt;/em&gt; preference would be to eschew their use entirely, but in the
-spirit of harm reduction, if you’re going to use LLMs to generate code, you
-need to remember the ways in which LLMs are not like human beings.&lt;/p&gt;
-&lt;p&gt;When you relate to a human colleague, you will expect that:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;you can make decisions about what to focus on based on their level of
-   experience and areas of expertise to know what problems to focus on; from a
-   late-career colleague you might be looking for bad habits held over from
-   legacy programming languages; from an earlier-career colleague you might be
-   focused more on logical test-coverage gaps,&lt;/li&gt;
-&lt;li&gt;and, they will learn from repeated interactions so that you can gradually
-   focus less on a specific type of problem once you have seen that they’ve
-   learned how to address it,&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;With an LLM, by contrast, while errors can certainly be &lt;em&gt;biased&lt;/em&gt; a bit by the
-prompt from the engineer and pre-prompts that might exist in the repository, the
-types of errors that the LLM will make are somewhat more uniformly distributed
-across the experience range.&lt;/p&gt;
-&lt;p&gt;You will still find supposedly extremely sophisticated LLMs making &lt;a href="https://arxiv.org/html/2407.07064v2"&gt;extremely
-common mistakes&lt;/a&gt;, specifically because
-they &lt;em&gt;are&lt;/em&gt; common, and thus appear frequently in the training data.&lt;/p&gt;
-&lt;p&gt;The LLM also can’t really learn.  An intuitive response to this problem is to
-simply continue adding more and more instructions to its pre-prompt, treating
-&lt;em&gt;that&lt;/em&gt; text file as its “memory”, but that &lt;a href="https://github.com/anthropics/claude-code/issues/2766"&gt;just doesn’t work, and probably
-never will&lt;/a&gt;.  The
-problem — “&lt;a href="https://research.trychroma.com/context-rot"&gt;context rot&lt;/a&gt;” is
-somewhat fundamental to the nature of the technology.&lt;/p&gt;
-&lt;p&gt;Thus, code-generators must be treated more adversarially than you would a human
-code review partner.  When you notice it making errors, you &lt;em&gt;always&lt;/em&gt; have to
-add tests to a mechanical, deterministic harness that will evaluates the code,
-because the LLM cannot meaningfully learn from its mistakes outside a very
-small context window in the way that a human would, so giving it &lt;em&gt;feedback&lt;/em&gt; is
-unhelpful.  Asking it to just generate the code again still requires you to
-review it &lt;em&gt;all&lt;/em&gt; again, and as we have previously learned, you, a human, cannot
-review more than 400 lines at once.&lt;/p&gt;
-&lt;h2 id="to-sum-up"&gt;To Sum Up&lt;/h2&gt;
-&lt;p&gt;Code review is a social process, and you should treat it as such.  When you’re
-reviewing code from humans, share knowledge and encouragement as much as you
-share bugs or unmet technical requirements.&lt;/p&gt;
-&lt;p&gt;If you must reviewing code from an LLM, strengthen your automated code-quality
-verification tooling and make sure that its agentic loop will fail on its own
-when those quality checks fail immediately next time. Do not fall into the trap
-of appealing to its feelings, knowledge, or experience, because it doesn’t have
-any of those things.&lt;/p&gt;
-&lt;p&gt;But for both humans &lt;em&gt;and&lt;/em&gt; LLMs, do not fall into the trap of thinking that your
-code review process is catching your bugs.  That’s not its job.&lt;/p&gt;
-&lt;h2 id="acknowledgments"&gt;Acknowledgments&lt;/h2&gt;
-&lt;p class="update-note"&gt;Thank you to &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;my patrons&lt;/a&gt; who are supporting my writing on
-this blog.  If you like what you’ve read here and you’d
-like to read more of it, or you’d like to support my &lt;a href="https://github.com/glyph/"&gt;various open-source
-endeavors&lt;/a&gt;, you can &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;support my work as a
-sponsor&lt;/a&gt;!&lt;/p&gt;</description>
-      <guid isPermaLink="false">f6f41609faee482b206809b319a0c95c7db77638877302477c552d0d7a1afe1e</guid>
-      <pubDate>Wed, 04 Mar 2026 05:24:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Glyph Lefkowitz: The “Dependency Cutout” Workflow Pattern, Part I</title>
-      <link>https://blog.glyph.im/2025/11/dependency-cutout-workflow-pattern.html</link>
-      <description>&lt;p&gt;Tell me if you’ve heard this one before.&lt;/p&gt;
-&lt;p&gt;You’re working on an application.  Let’s call it “FooApp”.  FooApp has a
-dependency on an open source library, let’s call it “LibBar”.  You find a bug
-in LibBar that affects FooApp.&lt;/p&gt;
-&lt;p&gt;To envisage the best possible version of this scenario, let’s say you actively
-&lt;em&gt;like&lt;/em&gt; LibBar, both technically and socially.  You’ve contributed to it in the
-past.  But this bug is causing production issues in FooApp &lt;em&gt;today&lt;/em&gt;, and
-LibBar’s release schedule is quarterly.  FooApp is your job; LibBar is (at
-best) your hobby.  Blocking on the full upstream contribution cycle and waiting
-for a release is an absolute non-starter.&lt;/p&gt;
-&lt;p&gt;What do you do?&lt;/p&gt;
-&lt;p&gt;There are a few common reactions to this type of scenario, all of which are
-bad options.&lt;/p&gt;
-&lt;p&gt;I will enumerate them specifically here, because I suspect that some of them
-may resonate with many readers:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Find an alternative to LibBar, and switch to it.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;This is a bad idea because a transition to a core infrastructure component
-could be extremely expensive.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Vendor LibBar into your codebase and fix your vendored version.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;This is a bad idea because carrying this one fix now requires you to
-maintain all the tooling associated with a monorepo&lt;sup id="fnref:1:dependency-cutout-workflow-pattern-2025-11"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:1:dependency-cutout-workflow-pattern-2025-11" id="fnref:1"&gt;1&lt;/a&gt;&lt;/sup&gt;: you have to be
-able to start pulling in new versions from LibBar regularly, reconcile your
-changes even though you now have a separate version history on your
-imported version, and so on.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;&lt;a href="https://en.wikipedia.org/wiki/Monkey_patch"&gt;Monkey-patch&lt;/a&gt; LibBar to
-   include your fix.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;This is a bad idea because you are now extremely tightly coupled to a
-specific version of LibBar.  By modifying LibBar internally like this,
-you’re inherently violating its compatibility contract, in a way which is
-going to be extremely difficult to test.  You &lt;em&gt;can&lt;/em&gt; test this change, of
-course, but as LibBar changes, you will need to replicate any relevant
-portions of its test suite (which may be its &lt;em&gt;entire&lt;/em&gt; test suite) in
-FooApp.  Lots of potential duplication of effort there.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Implement a workaround in your own code, rather than fixing it.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;This is a bad idea because you are distorting the responsibility for
-correct behavior.  LibBar is supposed to do LibBar’s job, and unless you
-have a full wrapper for it in your own codebase, other engineers (including
-“yourself, personally”) might later forget to go through the alternate,
-workaround codepath, and invoke the buggy LibBar behavior again in some new
-place.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Implement the fix upstream in LibBar anyway, because that’s the Right
-   Thing To Do, and burn credibility with management while you anxiously wait
-   for a release with the bug in production.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;This is a bad idea because you are betraying your users — by allowing the
-buggy behavior to persist — for the workflow convenience of your dependency
-providers. Your users are probably giving you money, and trusting you with
-their data. This means you have both ethical and economic obligations to
-consider their interests.&lt;/p&gt;
-&lt;p&gt;As much as it’s nice to participate in the open source community and take
-on an appropriate level of burden to maintain the commons, this cannot
-sustainably be at the explicit expense of the population you serve
-directly.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Even if&lt;/em&gt; we only care about the open source maintainers here, there’s
-still a problem: as you are likely to come under immediate pressure to ship
-your changes, you will inevitably relay at least a bit of that stress to
-the maintainers.  Even if you try to be exceedingly polite, the maintainers
-will know that &lt;em&gt;you&lt;/em&gt; are coming under fire for not having shipped the fix
-yet, and are likely to feel an even greater burden of obligation to ship
-your code fast.&lt;/p&gt;
-&lt;p&gt;Much as it’s good to contribute the fix, it’s not great to put this on the
-maintainers.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The respective incentive structures of software development — specifically, of
-corporate application development and open source infrastructure development —
-make options 1-4 very common.&lt;/p&gt;
-&lt;p&gt;On the corporate / application side, these issues are:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;it’s difficult for corporate developers to get clearance to spend even small amounts of
-  their work hours on upstream open source projects, but clearance to spend
-  time on the project they actually work on is implicit.  If it takes 3 hours
-  of wrangling with Legal&lt;sup id="fnref:2:dependency-cutout-workflow-pattern-2025-11"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:2:dependency-cutout-workflow-pattern-2025-11" id="fnref:2"&gt;2&lt;/a&gt;&lt;/sup&gt; and 3 hours of implementation work to fix the
-  issue in LibBar, but 0 hours of wrangling with Legal and 40 hours of
-  implementation work in FooApp, a FooApp developer will often perceive it as
-  “easier” to fix the issue downstream.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;it’s difficult for corporate developers to get clearance from management to
-  spend even small amounts of &lt;em&gt;money&lt;/em&gt; sponsoring upstream reviewers, so even if
-  they can find the time to contribute the fix, chances are high that it will
-  remain stuck in review unless they are personally well-integrated members of
-  the LibBar development team already.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;even assuming there’s zero pressure whatsoever to avoid open sourcing the
-  upstream changes, there’s still the fact inherent to any development team
-  that FooApp’s developers will be more familiar with FooApp’s codebase and
-  development processes than they are with LibBar’s.  It’s just &lt;em&gt;easier&lt;/em&gt; to
-  work there, even if all other things are equal.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;systems for tracking risk from open source dependencies often lack visibility
-  into vendoring, particularly if you’re doing a hybrid approach and only
-  vendoring a &lt;em&gt;few&lt;/em&gt; things to address work in progress, rather than a
-  comprehensive and disciplined approach to a monorepo.  If you fully absorb a
-  vendored dependency and then modify it, Dependabot isn’t going to tell you
-  that a new version is available any more, because it won’t be present in your
-  dependency list.  Organizationally this is bad of course but from the
-  perspective of an &lt;em&gt;individual developer&lt;/em&gt; this manifests mostly as fewer
-  annoying emails.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;But there are problems on the open source side as well.  Those problems are all
-derived from one big issue: because we’re often working with relatively small
-sums of money, it’s hard for upstream open source developers to &lt;em&gt;consume&lt;/em&gt;
-either money or patches from application developers.  It’s nice to say that you
-should contribute money to your dependencies, and you absolutely &lt;em&gt;should&lt;/em&gt;, but
-the cost-benefit function is discontinuous.  Before a project reaches the
-fiscal threshold where it can be at least &lt;em&gt;one&lt;/em&gt; person’s full-time job to worry
-about this stuff, there’s often no-one responsible in the first place.
-Developers will therefore gravitate to the issues that are either fun, or
-relevant to their &lt;em&gt;own&lt;/em&gt; job.&lt;/p&gt;
-&lt;p&gt;These mutually-reinforcing incentive structures are a big reason that users of
-open source infrastructure, even teams who work at corporate users with
-zillions of dollars, don’t reliably contribute back.&lt;/p&gt;
-&lt;h2 id="the-answer-we-want"&gt;The Answer We Want&lt;/h2&gt;
-&lt;p&gt;All those options are bad. If we had a good option, what would it look like?&lt;/p&gt;
-&lt;p&gt;It is both practically necessary&lt;sup id="fnref:3:dependency-cutout-workflow-pattern-2025-11"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:3:dependency-cutout-workflow-pattern-2025-11" id="fnref:3"&gt;3&lt;/a&gt;&lt;/sup&gt; and morally required&lt;sup id="fnref:4:dependency-cutout-workflow-pattern-2025-11"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:4:dependency-cutout-workflow-pattern-2025-11" id="fnref:4"&gt;4&lt;/a&gt;&lt;/sup&gt; for you to have a
-way to temporarily rely on a modified version of an open source dependency,
-&lt;em&gt;without&lt;/em&gt; permanently diverging.&lt;/p&gt;
-&lt;p&gt;Below, I will describe a desirable abstract workflow for achieving this goal.&lt;/p&gt;
-&lt;h3 id="step-0-report-the-problem"&gt;Step 0: Report the Problem&lt;/h3&gt;
-&lt;p&gt;&lt;em&gt;Before&lt;/em&gt; you get started with any of these other steps, write up a clear
-description of the problem and report it to the project as an issue;
-specifically, &lt;em&gt;in contrast to&lt;/em&gt; writing it up as a pull request.  Describe the
-problem &lt;em&gt;before&lt;/em&gt; submitting a solution.&lt;/p&gt;
-&lt;p&gt;You may not be able to wait for a volunteer-run open source project to respond
-to your request, but you should &lt;em&gt;at least&lt;/em&gt; tell the project what you’re
-planning on doing.&lt;/p&gt;
-&lt;p&gt;If you don’t hear back from them at all, you will have at least made sure to
-comprehensively describe your issue and strategy beforehand, which will provide
-some clarity and focus to your changes.&lt;/p&gt;
-&lt;p&gt;If you &lt;em&gt;do&lt;/em&gt; hear back from them, in the worst case scenario, you may discover
-that a hard fork will be necessary because they don’t consider your issue
-valid, but even that information will save you time, if you know it before you
-get started.  In the best case, you may get a reply from the project telling
-you that you’ve misunderstood its functionality and that there is already a
-configuration parameter or usage pattern that will resolve your problems with
-no new code.  But in all cases, you will benefit from early coordination on
-&lt;em&gt;what&lt;/em&gt; needs fixing before you get to &lt;em&gt;how&lt;/em&gt; to fix it.&lt;/p&gt;
-&lt;h3 id="step-1-source-code-and-ci-setup"&gt;Step 1: Source Code and CI Setup&lt;/h3&gt;
-&lt;p&gt;Fork the source code for your upstream dependency to a writable location where
-it can live at least for the duration of this one bug-fix, and possibly for the
-duration of your application’s use of the dependency.  After all, you might
-want to fix more than &lt;em&gt;one&lt;/em&gt; bug in LibBar.&lt;/p&gt;
-&lt;p&gt;You want to have a place where you can put your edits, that will be version
-controlled and code reviewed according to your normal development process.
-This probably means you’ll need to have your own main branch that diverges from
-your upstream’s main branch.&lt;/p&gt;
-&lt;p&gt;Remember: you’re going to need to deploy this to &lt;em&gt;your production&lt;/em&gt;, so testing
-gates that your upstream only applies to final releases of LibBar will need to
-be applied to every commit here.&lt;/p&gt;
-&lt;p&gt;Depending on your LibBar’s own development process, this may result in slightly
-unusual configurations where, for example, your fixes are written against the
-last LibBar release tag, rather than its current&lt;sup id="fnref:5:dependency-cutout-workflow-pattern-2025-11"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:5:dependency-cutout-workflow-pattern-2025-11" id="fnref:5"&gt;5&lt;/a&gt;&lt;/sup&gt; &lt;code&gt;main&lt;/code&gt;; if the project has a branch-freshness requirement, you
-might need two branches, one for your upstream PR (based on main) and one for
-your own use (based on the release branch with your changes).&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Ideally&lt;/em&gt; for projects with really good CI and a strong “keep main
-release-ready at all times” policy, you can deploy straight from a development
-branch, but it’s good to take a moment to consider this before you get started.
-It’s usually easier to rebase changes from an older HEAD onto a newer one than
-it is to go backwards.&lt;/p&gt;
-&lt;p&gt;Speaking of CI, you will want to have your own CI system. The fact that GitHub
-Actions has become a de-facto lingua franca of continuous integration means
-that this step may be quite simple, and your forked repo can just run its own
-instance.&lt;/p&gt;
-&lt;h4 id="optional-bonus-step-1a-artifact-management"&gt;Optional Bonus Step 1a: Artifact Management&lt;/h4&gt;
-&lt;p&gt;If you have an in-house artifact repository, you should set that up for your
-dependency too, and upload your own build artifacts to it.  You can often treat
-your modified dependency as an extension of your own source tree and install
-from a GitHub URL, but if you’ve already gone to the trouble of having an
-in-house package repository, you can pretend you’ve taken over maintenance of
-the upstream package temporarily (which you kind of have) and leverage those
-workflows for caching and build-time savings as you would with any other
-internal repo.&lt;/p&gt;
-&lt;h3 id="step-2-do-the-fix"&gt;Step 2: Do The Fix&lt;/h3&gt;
-&lt;p&gt;Now that you’ve got somewhere to edit LibBar’s code, you will want to actually
-fix the bug.&lt;/p&gt;
-&lt;h4 id="step-2a-local-filesystem-setup"&gt;Step 2a: Local Filesystem Setup&lt;/h4&gt;
-&lt;p&gt;&lt;em&gt;Before&lt;/em&gt; you have a production version on your own deployed branch, you’ll want
-to test locally, which means having &lt;em&gt;both&lt;/em&gt; repositories in a single integrated
-development environment.&lt;/p&gt;
-&lt;p&gt;At this point, you will want to have a &lt;em&gt;local filesystem reference&lt;/em&gt; to your
-LibBar dependency, so that you can make real-time edits, without going through
-a slow cycle of pushing to a branch in your LibBar fork, pushing to a FooApp
-branch, and waiting for all of CI to run on both.&lt;/p&gt;
-&lt;p&gt;This is useful in both directions: as you prepare the FooApp branch that makes
-any necessary updates on that end, you’ll want to make sure that FooApp can
-exercise the LibBar fix in any integration tests.  As you work on the LibBar
-fix itself, you’ll also want to be able to use FooApp to exercise the code and
-see if you’ve missed anything - and this, you wouldn’t get in CI, since LibBar
-can’t depend on FooApp itself.&lt;/p&gt;
-&lt;p&gt;In short, you want to be able to treat both projects as an integrated
-&lt;em&gt;development environment&lt;/em&gt;, with support from your usual testing and debugging
-tools, just as much as you want your deployment output to be an integrated
-artifact.&lt;/p&gt;
-&lt;h4 id="step-2b-branch-setup-for-pr"&gt;Step 2b: Branch Setup for PR&lt;/h4&gt;
-&lt;p&gt;However, for continuous integration to work, you will &lt;em&gt;also&lt;/em&gt; need to have a
-remote resource reference of some kind from FooApp’s branch to LibBar.  You
-will need 2 pull requests: the first to land your LibBar changes to your
-internal LibBar fork and make sure it’s passing its &lt;em&gt;own&lt;/em&gt; tests, and then a
-second PR to switch your LibBar dependency from the public repository to your
-internal fork.&lt;/p&gt;
-&lt;p&gt;At this step it is &lt;em&gt;very important&lt;/em&gt; to ensure that there is an issue filed on
-your own internal backlog to drop your LibBar fork.  You do not want to lose
-track of this work; it is technical debt that must be addressed.&lt;/p&gt;
-&lt;p&gt;Until it’s addressed, automated tools like Dependabot will not be able to apply
-security updates to LibBar for you; you’re going to need to manually integrate
-every upstream change.  This type of work is itself very easy to drop or lose
-track of, so you might just end up stuck on a vulnerable version.&lt;/p&gt;
-&lt;h3 id="step-3-deploy-internally"&gt;Step 3: Deploy Internally&lt;/h3&gt;
-&lt;p&gt;Now that you’re confident that the fix will work, and that your
-temporarily-internally-maintained version of LibBar isn’t going to break
-anything on &lt;em&gt;your&lt;/em&gt; site, it’s time to deploy.&lt;/p&gt;
-&lt;p&gt;Some &lt;a href="https://www.esa.int/Applications/Connectivity_and_Secure_Communications/Atlas_lifts_satcom_heritage#:~:text=They%20need%20proof%20that%20it%20has%20already%20worked%20in%20space%2C%20that%20it%20has%20‘flight%20heritage’"&gt;deployment
-heritage&lt;/a&gt;
-should help to provide &lt;em&gt;some&lt;/em&gt; evidence that your fix is ready to land in
-LibBar, but at the next step, please remember that your production environment
-isn’t necessarily emblematic of that of all LibBar users.&lt;/p&gt;
-&lt;h3 id="step-4-propose-externally"&gt;Step 4: Propose Externally&lt;/h3&gt;
-&lt;p&gt;You’ve got the fix, you’ve tested the fix, you’ve got the fix in your own
-production, you’ve told upstream you want to send them some changes.  Now, it’s
-time to make the pull request.&lt;/p&gt;
-&lt;p&gt;You’re likely going to get some feedback on the PR, even if you think it’s
-already ready to go; as I said, despite having been proven in &lt;em&gt;your&lt;/em&gt; production
-environment, you may get feedback about additional concerns from other users
-that you’ll need to address before LibBar’s maintainers can land it.&lt;/p&gt;
-&lt;p&gt;As you process the feedback, make sure that each new iteration of your branch
-gets re-deployed to your own production. It would be a huge bummer to go
-through all this trouble, and then end up unable to deploy the next publicly
-released version of LibBar within FooApp because you forgot to test that your
-responses to feedback &lt;em&gt;still worked&lt;/em&gt; on your own environment.&lt;/p&gt;
-&lt;h4 id="step-4a-hurry-up-and-wait"&gt;Step 4a: Hurry Up And Wait&lt;/h4&gt;
-&lt;p&gt;If you’re lucky, upstream will land your changes to LibBar.  But, there’s still
-no release version available.  Here, you’ll have to stay in a holding pattern
-until upstream can finalize the release on their end.&lt;/p&gt;
-&lt;p&gt;Depending on some particulars, it &lt;em&gt;might&lt;/em&gt; make sense at this point to archive
-your internal LibBar repository and move your pinned release version to a git
-hash of the LibBar version where your fix landed, in their repository.&lt;/p&gt;
-&lt;p&gt;Before you do this, check in with the LibBar core team and make sure that they
-understand that’s what you’re doing and they don’t have any wacky workflows
-which may involve rebasing or eliding that commit as part of their release
-process.&lt;/p&gt;
-&lt;h3 id="step-5-unwind-everything"&gt;Step 5: Unwind Everything&lt;/h3&gt;
-&lt;p&gt;Finally, you eventually want to stop carrying any patches and move back to an
-official released version that integrates your fix.&lt;/p&gt;
-&lt;p&gt;You want to do this because this is what the upstream will expect when you are
-reporting bugs.  Part of the benefit of using open source is benefiting from
-the collective work to do bug-fixes and such, so you don’t want to be stuck off
-on a pinned git hash that the developers do not support for anyone else.&lt;/p&gt;
-&lt;p&gt;As I said in step 2b&lt;sup id="fnref:6:dependency-cutout-workflow-pattern-2025-11"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:6:dependency-cutout-workflow-pattern-2025-11" id="fnref:6"&gt;6&lt;/a&gt;&lt;/sup&gt;, make sure to &lt;em&gt;maintain a tracking task&lt;/em&gt; for doing this
-work, because leaving this sort of relatively &lt;em&gt;easy&lt;/em&gt;-to-clean-up technical debt
-lying around is something that can potentially create a lot of aggravation for
-no particular benefit.  Make sure to put your internal LibBar repository into
-an appropriate state at this point as well.&lt;/p&gt;
-&lt;h2 id="up-next"&gt;Up Next&lt;/h2&gt;
-&lt;p&gt;This is part 1 of a 2-part series.  In part 2, I will explore in depth how to
-execute this workflow specifically for Python packages, using some popular
-tools.  I’ll discuss my own workflow, standards like PEP 517 and
-&lt;code&gt;pyproject.toml&lt;/code&gt;, and of course, by the popular demand that I just &lt;em&gt;know&lt;/em&gt; will
-come, &lt;a href="https://github.com/astral-sh/uv"&gt;&lt;code&gt;uv&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id="acknowledgments"&gt;Acknowledgments&lt;/h2&gt;
-&lt;p class="update-note"&gt;Thank you to &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;my patrons&lt;/a&gt; who are supporting my writing on
-this blog.  If you like what you’ve read here and you’d like to read more of
-it, or you’d like to support my &lt;a href="https://github.com/glyph/"&gt;various open-source
-endeavors&lt;/a&gt;, you can &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;support my work as a
-sponsor&lt;/a&gt;!&lt;/p&gt;
-&lt;div class="footnote"&gt;
-&lt;hr /&gt;
-&lt;ol&gt;
-&lt;li id="fn:1:dependency-cutout-workflow-pattern-2025-11"&gt;
-&lt;p id="fn:1"&gt;if you already have all the tooling associated with a monorepo,
-&lt;em&gt;including&lt;/em&gt; the ability to manage divergence and reintegrate patches with
-upstream, you already have the higher-overhead version of the workflow I am
-going to propose, so, never mind. but chances are you don’t have that, very
-few companies do. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:1:dependency-cutout-workflow-pattern-2025-11" title="Jump back to footnote 1 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:2:dependency-cutout-workflow-pattern-2025-11"&gt;
-&lt;p id="fn:2"&gt;In any business where one must wrangle with Legal, 3 hours is a &lt;em&gt;wildly&lt;/em&gt;
-optimistic estimate. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:2:dependency-cutout-workflow-pattern-2025-11" title="Jump back to footnote 2 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:3:dependency-cutout-workflow-pattern-2025-11"&gt;
-&lt;p id="fn:3"&gt;&lt;a href="https://mastodon.social/@mcc/112117339397138167"&gt;c.f. &lt;code&gt;@mcc@mastodon.social&lt;/code&gt;&lt;/a&gt; &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:3:dependency-cutout-workflow-pattern-2025-11" title="Jump back to footnote 3 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:4:dependency-cutout-workflow-pattern-2025-11"&gt;
-&lt;p id="fn:4"&gt;&lt;a href="https://mastodon.social/@geofft/112186487032016599"&gt;c.f. &lt;code&gt;@geofft@mastodon.social&lt;/code&gt;&lt;/a&gt; &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:4:dependency-cutout-workflow-pattern-2025-11" title="Jump back to footnote 4 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:5:dependency-cutout-workflow-pattern-2025-11"&gt;
-&lt;p id="fn:5"&gt;In an ideal world every project would &lt;a href="https://martinfowler.com/articles/continuousIntegration.html#FixBrokenBuildsImmediately"&gt;keep its main branch ready to
-release at all times, no matter
-what&lt;/a&gt;
-but we do not live in an ideal world. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:5:dependency-cutout-workflow-pattern-2025-11" title="Jump back to footnote 5 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:6:dependency-cutout-workflow-pattern-2025-11"&gt;
-&lt;p id="fn:6"&gt;In this case, there is no question. It’s 2b only, no not-2b. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:6:dependency-cutout-workflow-pattern-2025-11" title="Jump back to footnote 6 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</description>
-      <guid isPermaLink="false">46e3039e7a941f8b7327ca33a1bd6dfd8a8d4f6ccfec07d80f2ee09aa5abbe3c</guid>
-      <pubDate>Tue, 11 Nov 2025 01:44:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Glyph Lefkowitz: The Futzing Fraction</title>
-      <link>https://blog.glyph.im/2025/08/futzing-fraction.html</link>
-      <description>&lt;p&gt;The most optimistic vision of generative AI&lt;sup id="fnref:1:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:1:futzing-fraction-2025-8" id="fnref:1"&gt;1&lt;/a&gt;&lt;/sup&gt; is that it will relieve us of
-the tedious, repetitive elements of knowledge work so that we can get to work
-on the &lt;em&gt;really&lt;/em&gt; interesting problems that such tedium stands in the way of.
-Even if you fully believe in this vision, it’s hard to deny that &lt;em&gt;today&lt;/em&gt;, some
-tedium is associated with the process of using generative AI itself.&lt;/p&gt;
-&lt;p&gt;Generative AI also
-&lt;a href="https://futurism.com/the-byte/openai-chatgpt-pro-subscription-losing-money"&gt;isn’t&lt;/a&gt;
-&lt;a href="https://www.computerworld.com/article/4021954/rushing-into-genai-prepare-for-budget-blowouts-and-broken-promises.html"&gt;free&lt;/a&gt;,
-and so, as responsible consumers, we need to ask: is it worth it?  What’s the
-&lt;a href="https://www.investopedia.com/articles/basics/10/guide-to-calculating-roi.asp"&gt;ROI&lt;/a&gt;
-of genAI, and how can we tell?  In this post, I’d like to explore a logical
-framework for evaluating genAI expenditures, to determine if your organization
-is getting its money’s worth.&lt;/p&gt;
-&lt;h1 id="perpetually-proffering-permuted-prompts"&gt;Perpetually Proffering Permuted Prompts&lt;/h1&gt;
-&lt;p&gt;I think most LLM users would agree with me that a typical workflow with an LLM
-rarely involves prompting it only one time and getting a perfectly useful
-answer that solves the whole problem.&lt;/p&gt;
-&lt;p&gt;Generative AI best practices, even &lt;a href="https://techcommunity.microsoft.com/blog/azuredevcommunityblog/evaluating-generative-ai-best-practices-for-developers/4271488#:~:text=Frequent%20and%20scheduled%20evaluations%20should%20be%20embedded%20into%20the%20development%20cycle"&gt;from the most optimistic
-vendors&lt;/a&gt;
-all suggest that you should continuously evaluate everything.  ChatGPT, which
-is really the
-&lt;a href="https://www.wheresyoured.at/the-haters-gui/#:~:text=ChatGPT%20has%20500%20million%20weekly%20users%2C%20and%20otherwise%2C%20it%20seems%20that%20other%20services%20struggle%20to%20get%2015%20million%20of%20them"&gt;only&lt;/a&gt;
-genAI product with significantly scaled adoption, still says at the bottom of
-&lt;em&gt;every&lt;/em&gt; interaction:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;ChatGPT can make mistakes. Check important info.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;If we have to “check important info” on every interaction, it stands to reason
-that even if we think it’s useful, &lt;em&gt;some&lt;/em&gt; of those checks will find an error.
-Again, if we think it’s useful, presumably the next thing to do is to perturb
-our prompt somehow, and issue it again, in the hopes that the next invocation
-will, by dint of either:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href="https://pivot-to-ai.com/2025/06/05/generative-ai-runs-on-gambling-addiction-just-one-more-prompt-bro/"&gt;better luck this
-time&lt;/a&gt;
-   with the &lt;a href="https://en.wikipedia.org/wiki/Stochastic_parrot"&gt;stochastic&lt;/a&gt; aspect of the inference process,&lt;/li&gt;
-&lt;li&gt;enhanced application of our skill to
-   &lt;a href="https://www.fastcompany.com/91327911/prompt-engineering-going-extinct"&gt;engineer&lt;/a&gt;
-   a better prompt based on the deficiencies of the current inference, or&lt;/li&gt;
-&lt;li&gt;better performance of the model by populating additional
-   &lt;a href="https://research.trychroma.com/context-rot"&gt;context&lt;/a&gt; in subsequent chained
-   prompts.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Unfortunately, given the relative lack of &lt;em&gt;reliable&lt;/em&gt; methods to re-generate the
-prompt and receive a better answer&lt;sup id="fnref:2:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:2:futzing-fraction-2025-8" id="fnref:2"&gt;2&lt;/a&gt;&lt;/sup&gt;, checking the output and re-prompting
-the model can feel like just kinda futzing around with it.  You try, you get a
-wrong answer, you try a few more times, eventually you get the right answer
-that you wanted in the first place.  It’s a somewhat unsatisfying process, but
-if you get the right answer eventually, it does feel like progress, and you
-didn’t need to use up another human’s time.&lt;/p&gt;
-&lt;p&gt;In fact, the hottest buzzword of the last hype cycle is “agentic”.  While I
-have my own feelings about this particular word&lt;sup id="fnref:3:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:3:futzing-fraction-2025-8" id="fnref:3"&gt;3&lt;/a&gt;&lt;/sup&gt;, its current &lt;em&gt;practical&lt;/em&gt;
-definition is “a generative AI system which automates the process of
-re-prompting itself, by having a deterministic program evaluate its outputs for
-correctness”.&lt;/p&gt;
-&lt;p&gt;A better term for an “agentic” system would be a “self-futzing system”.&lt;/p&gt;
-&lt;p&gt;However, the ability to automate &lt;em&gt;some&lt;/em&gt; level of checking and re-prompting does
-not mean that you can &lt;em&gt;fully&lt;/em&gt; delegate tasks to an agentic tool, either.  It
-is, plainly put, not safe. If you leave the AI on its own, you will get
-&lt;em&gt;terrible&lt;/em&gt; results that will at best make for a funny story&lt;sup id="fnref:4:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:4:futzing-fraction-2025-8" id="fnref:4"&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;sup id="fnref:5:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:5:futzing-fraction-2025-8" id="fnref:5"&gt;5&lt;/a&gt;&lt;/sup&gt; and at
-worst might end up causing serious damage&lt;sup id="fnref:6:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:6:futzing-fraction-2025-8" id="fnref:6"&gt;6&lt;/a&gt;&lt;/sup&gt;&lt;sup id="fnref:7:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:7:futzing-fraction-2025-8" id="fnref:7"&gt;7&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
-&lt;p&gt;Taken together, this all means that for &lt;em&gt;any&lt;/em&gt; consequential task that you want
-to accomplish with genAI, you need an expert &lt;a href="https://en.wikipedia.org/wiki/Human-in-the-loop"&gt;human in the
-loop&lt;/a&gt;.  The human must be
-capable of independently doing the job that the genAI system is being asked to
-accomplish.&lt;/p&gt;
-&lt;p&gt;When the genAI guesses correctly and produces usable output, some of the
-human’s time will be saved.  When the genAI guesses wrong and produces
-hallucinatory gibberish or even “correct” output that nevertheless fails to
-account for some unstated but necessary property such as security or scale,
-some of the human’s time will be wasted evaluating it and re-trying it.&lt;/p&gt;
-&lt;h1 id="income-from-investment-in-inference"&gt;Income from Investment in Inference&lt;/h1&gt;
-&lt;p&gt;Let’s evaluate an abstract, hypothetical genAI system that can automate some
-work for our organization.  To avoid implicating any specific vendor, let’s
-call the system “Mallory”.&lt;/p&gt;
-&lt;p&gt;Is Mallory worth the money?  How can we know?&lt;/p&gt;
-&lt;p&gt;Logically, there are only two outcomes that might result from using Mallory to
-do our work.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;We prompt Mallory to do some work; we check its work, it is correct, and
-   some time is saved.&lt;/li&gt;
-&lt;li&gt;We prompt Mallory to do some work; we check its work, it fails, and we futz
-   around with the result; this time is wasted.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;As a &lt;em&gt;logical&lt;/em&gt; framework, this makes sense, but ROI is an arithmetical concept,
-not a logical one.  So let’s translate this into some terms.&lt;/p&gt;
-&lt;p&gt;In order to evaluate Mallory, let’s define the Futzing Fraction, “
-FF ”, in terms of the following variables:&lt;/p&gt;
-&lt;dl&gt;
-&lt;dt&gt;H&lt;/dt&gt;
-&lt;dd&gt;
-&lt;p&gt;the average amount of time a &lt;strong&gt;&lt;em&gt;H&lt;/em&gt;&lt;/strong&gt;uman worker would take to do a task,
-unaided by Mallory&lt;/p&gt;
-&lt;/dd&gt;
-&lt;dt&gt;I&lt;/dt&gt;
-&lt;dd&gt;
-&lt;p&gt;the amount of time that Mallory takes to run one &lt;strong&gt;&lt;em&gt;I&lt;/em&gt;&lt;/strong&gt;nference&lt;sup id="fnref:8:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:8:futzing-fraction-2025-8" id="fnref:8"&gt;8&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
-&lt;/dd&gt;
-&lt;dt&gt;C&lt;/dt&gt;
-&lt;dd&gt;
-&lt;p&gt;the amount of time that a human has to spend &lt;strong&gt;&lt;em&gt;C&lt;/em&gt;&lt;/strong&gt;hecking Mallory’s output for
-each inference&lt;/p&gt;
-&lt;/dd&gt;
-&lt;dt&gt;P&lt;/dt&gt;
-&lt;dd&gt;
-&lt;p&gt;the &lt;strong&gt;&lt;em&gt;P&lt;/em&gt;&lt;/strong&gt;robability that Mallory will produce a correct inference for each prompt&lt;/p&gt;
-&lt;/dd&gt;
-&lt;dt&gt;W&lt;/dt&gt;
-&lt;dd&gt;
-&lt;p&gt;the average amount of time that it takes for a human to &lt;strong&gt;&lt;em&gt;W&lt;/em&gt;&lt;/strong&gt;rite one prompt for
-Mallory&lt;/p&gt;
-&lt;/dd&gt;
-&lt;dt&gt;E&lt;/dt&gt;
-&lt;dd&gt;
-&lt;p&gt;since we are normalizing everything to &lt;em&gt;time&lt;/em&gt;, rather than &lt;em&gt;money&lt;/em&gt;, we do also have to account for the dollar of Mallory as as a product, so we will include the &lt;strong&gt;&lt;em&gt;E&lt;/em&gt;&lt;/strong&gt;quivalent amount of human time we could purchase for the marginal cost of one&lt;sup id="fnref:9:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:9:futzing-fraction-2025-8" id="fnref:9"&gt;9&lt;/a&gt;&lt;/sup&gt; inference.&lt;/p&gt;
-&lt;/dd&gt;
-&lt;/dl&gt;
-&lt;p&gt;As in last week’s example of &lt;a href="https://blog.glyph.im/2025/08/r0mls-ratio.html"&gt;simple ROI
-arithmetic&lt;/a&gt;, we will put our costs in the
-numerator, and our benefits in the denominator.&lt;/p&gt;
-&lt;div style="font-size: 30px; text-align: center;"&gt;
-    FF  = 
-        W+I+C+E
-        P H
-&lt;/div&gt;
-&lt;p&gt;The idea here is that for each prompt, the &lt;em&gt;minimum&lt;/em&gt; amount of time-equivalent cost possible is W+I+C+E.  The user must, at least once, write a prompt, wait for inference to run, then check the output; and, of course, pay any costs to Mallory’s vendor.&lt;/p&gt;
-&lt;p&gt;If the probability of a correct answer is P=13, then they will do this entire process 3 times&lt;sup id="fnref:10:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:10:futzing-fraction-2025-8" id="fnref:10"&gt;10&lt;/a&gt;&lt;/sup&gt;, so we put P in the denominator.  Finally, we divide everything by H, because we are trying to determine if we are actually saving any time or money, versus just letting our existing human, who has to be driving this process anyway, do the whole thing.&lt;/p&gt;
-&lt;p&gt;If the Futzing Fraction evaluates to a number greater than 1, &lt;a href="https://blog.glyph.im/2025/08/r0mls-ratio.html"&gt;as previously discussed, you are a bozo&lt;/a&gt;; you’re spending more time futzing with Mallory than getting value out of it.&lt;/p&gt;
-&lt;h1 id="figuring-out-the-fraction-is-frustrating"&gt;Figuring out the Fraction is Frustrating&lt;/h1&gt;
-&lt;p&gt;In order to even evaluate the value of the Futzing Fraction though, you have to
-have a sound method to even get a vague sense of all the terms.&lt;/p&gt;
-&lt;p&gt;If you are a business leader, a lot of this is relatively easy to measure.  You
-vaguely know what H is, because you know what your
-payroll costs, and similarly, you can figure out E with
-some pretty trivial arithmetic based on Mallory’s pricing table.  There are endless
-YouTube channels, spec sheets and benchmarks to give you I. W is probably going to be so small compared to H that it hardly merits consideration&lt;sup id="fnref:11:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:11:futzing-fraction-2025-8" id="fnref:11"&gt;11&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
-&lt;p&gt;But, are you measuring C?  If your employees are &lt;em&gt;not&lt;/em&gt; checking the outputs of the AI, you’re on a path to catastrophe that no ROI calculation can capture, so it had &lt;em&gt;better&lt;/em&gt; be greater than zero.&lt;/p&gt;
-&lt;p&gt;Are you measuring P?  How often does the AI get it right on the first try?&lt;/p&gt;
-&lt;h2 id="challenges-to-computing-checking-costs"&gt;Challenges to Computing Checking Costs&lt;/h2&gt;
-&lt;p&gt;In the fraction defined above, the term C is going to be
-large.  Larger than you think.&lt;/p&gt;
-&lt;p&gt;Measuring P and C with a high
-degree of precision is probably going to be very hard; possibly unreasonably
-so, or too expensive&lt;sup id="fnref:12:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:12:futzing-fraction-2025-8" id="fnref:12"&gt;12&lt;/a&gt;&lt;/sup&gt; to bother with in practice.  So you will undoubtedly need
-to work with estimates and proxy metrics.  But you have to be aware that this
-is a problem domain where your normal method of estimating is going to be
-&lt;em&gt;extremely&lt;/em&gt; vulnerable to inherent cognitive bias, and find ways to measure.&lt;/p&gt;
-&lt;h3 id="margins-money-and-metacognition"&gt;Margins, Money, and Metacognition&lt;/h3&gt;
-&lt;p&gt;First let’s discuss cognitive and metacognitive bias.&lt;/p&gt;
-&lt;p&gt;My favorite cognitive bias is the &lt;a href="https://en.wikipedia.org/wiki/Availability_heuristic"&gt;availability
-heuristic&lt;/a&gt; and a close
-second is its cousin &lt;a href="https://en.wikipedia.org/wiki/Salience_(neuroscience)#Salience_bias"&gt;salience
-bias&lt;/a&gt;.
-Humans are empirically predisposed towards noticing and remembering things that
-are more striking, and to overestimate their frequency.&lt;/p&gt;
-&lt;p&gt;If you are estimating the variables above based on the &lt;em&gt;vibe&lt;/em&gt; that you’re
-getting from the experience of using an LLM, you may be overestimating its
-utility.&lt;/p&gt;
-&lt;p&gt;Consider a slot machine.&lt;/p&gt;
-&lt;p&gt;If you put a dollar in to a slot machine, and you lose that dollar, this is an
-unremarkable event. Expected, even.  It doesn’t seem interesting.  You can
-repeat this over and over again, a thousand times, and each time it will seem
-equally unremarkable.  If you do it a thousand times, you will probably get
-gradually more anxious as your sense of your dwindling bank account becomes
-slowly more salient, but losing one more dollar still seems unremarkable.&lt;/p&gt;
-&lt;p&gt;If you put a dollar in a slot machine and it gives you a &lt;em&gt;thousand&lt;/em&gt; dollars,
-that will probably seem pretty cool.  Interesting.  Memorable.  You might tell
-a story about this happening, but you definitely wouldn’t really remember any
-particular time you lost one dollar.&lt;/p&gt;
-&lt;p&gt;Luckily, when you arrive at a casino with slot machines, you probably know well
-enough to set a hard budget in the form of some amount of physical currency you
-will have available to you.  The odds are against you, you’ll probably lose it
-all, but any responsible gambler will have an immediate, physical
-representation of their balance in front of them, so when they have lost it
-all, they can see that their hands are empty, and can try to resist the “just
-one more pull” temptation, after hitting that limit.&lt;/p&gt;
-&lt;p&gt;Now, consider Mallory.&lt;/p&gt;
-&lt;p&gt;If you put ten minutes into writing a prompt, and Mallory gives a completely
-off-the-rails, useless answer, and you lose ten minutes, well, that’s just what
-using a computer is like sometimes.  Mallory malfunctioned, or hallucinated,
-but it does that sometimes, everybody knows that.  You only wasted ten minutes.
-It’s fine.  Not a big deal.  Let’s try it a few more times.  Just ten more
-minutes.  It’ll probably work this time.&lt;/p&gt;
-&lt;p&gt;If you put ten minutes into writing a prompt, and it completes a task that
-would have otherwise taken you 4 hours, that feels amazing.  Like the computer
-is &lt;em&gt;magic&lt;/em&gt;! An absolute endorphin rush.&lt;/p&gt;
-&lt;p&gt;Very memorable.  When it happens, it feels like P=1.&lt;/p&gt;
-&lt;p&gt;But... did you have a time budget before you started?  Did you have a specified
-N such that “I will give up on Mallory as soon as I have spent N minutes
-attempting to solve this problem with it”?  When the jackpot finally pays out
-that 4 hours, did you &lt;em&gt;notice&lt;/em&gt; that you put 6 hours worth of 10-minute prompt
-coins into it in?&lt;/p&gt;
-&lt;p&gt;If you are attempting to use the same sort of heuristic intuition that probably
-works &lt;em&gt;pretty well&lt;/em&gt; for other business leadership decisions, Mallory’s
-slot-machine chat-prompt user interface is practically &lt;em&gt;designed&lt;/em&gt; to subvert
-those sensibilities.  Most business activities do not have nearly such an
-emotionally variable, intermittent reward schedule.  They’re not going to trick
-you with this sort of cognitive illusion.&lt;/p&gt;
-&lt;p&gt;Thus far we have been talking about cognitive bias, but there is a
-metacognitive bias at play too: while
-&lt;a href="https://en.wikipedia.org/wiki/Dunning–Kruger_effect"&gt;Dunning-Kruger&lt;/a&gt;,
-everybody’s favorite metacognitive bias does have some
-&lt;a href="https://www.sciencedirect.com/science/article/pii/S1877042814051489#bib0040"&gt;problems&lt;/a&gt;
-with it, the main underlying metacognitive bias is that we tend to &lt;em&gt;believe our
-own thoughts and perceptions&lt;/em&gt;, and it requires active effort to distance
-ourselves from them, even if we know they might be wrong.&lt;/p&gt;
-&lt;p&gt;This means you must assume any &lt;em&gt;intuitive&lt;/em&gt; estimate of C
-is going to be biased low; similarly P is going to be
-biased high.  You will forget the time you spent checking, and you will
-underestimate the number of times you had to re-check.&lt;/p&gt;
-&lt;p&gt;To avoid this, you will need to decide on a &lt;a href="https://en.wikipedia.org/wiki/Ulysses_pact"&gt;Ulysses
-pact&lt;/a&gt; to provide some inputs to a
-calculation for these factors that you will not be able to able to fudge if
-they seem wrong to you.&lt;/p&gt;
-&lt;h3 id="problematically-plausible-presentation"&gt;Problematically Plausible Presentation&lt;/h3&gt;
-&lt;p&gt;Another nasty little cognitive-bias landmine for you to watch out for is the
-&lt;a href="https://en.wikipedia.org/wiki/Authority_bias"&gt;authority bias&lt;/a&gt;, for two
-reasons:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;People will tend to see Mallory as an unbiased, external authority, and
-   thereby see it as more of an authority than a similarly-situated human&lt;sup id="fnref:13:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:13:futzing-fraction-2025-8" id="fnref:13"&gt;13&lt;/a&gt;&lt;/sup&gt;.&lt;/li&gt;
-&lt;li&gt;Being an LLM, Mallory will be overconfident in its answers&lt;sup id="fnref:14:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:14:futzing-fraction-2025-8" id="fnref:14"&gt;14&lt;/a&gt;&lt;/sup&gt;.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The nature of LLM training is also such that commonly co-occurring tokens in
-the training corpus produce higher likelihood of co-occurring in the output;
-they’re just going to be closer together in the vector-space of the weights;
-that’s, like, what training a model &lt;em&gt;is&lt;/em&gt;, establishing those relationships.&lt;/p&gt;
-&lt;p&gt;If you’ve ever used an heuristic to informally evaluate someone’s credibility
-by listening for industry-specific shibboleths or ways of describing a
-particular issue, that skill is now useless.  Having ingested every industry’s
-expert literature, commonly-occurring phrases will always be present in
-Mallory’s output.  Mallory will usually sound like an expert, but then make
-mistakes at random.&lt;sup id="fnref:15:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:15:futzing-fraction-2025-8" id="fnref:15"&gt;15&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
-&lt;p&gt;While you might intuitively estimate C by thinking “well,
-if I asked a &lt;em&gt;person&lt;/em&gt;, how could I check that &lt;em&gt;they&lt;/em&gt; were correct, and how long
-would that take?” that estimate will be extremely optimistic, because the
-heuristic techniques you would use to quickly evaluate incorrect information
-from other humans will fail with Mallory.  You need to go all the way back to
-primary sources and actually &lt;em&gt;fully&lt;/em&gt; verify the output every time, or you will
-likely fall into one of these traps.&lt;/p&gt;
-&lt;h3 id="mallory-mangling-mentorship"&gt;Mallory Mangling Mentorship&lt;/h3&gt;
-&lt;p&gt;So far, I’ve been describing the effect Mallory will have in the context of an
-individual attempting to get some work done. If we are considering
-organization-wide adoption of Mallory, however, we must &lt;em&gt;also&lt;/em&gt; consider the
-impact on team dynamics.  There are a number of possible potential side effects
-that one might consider when looking at, but here I will focus on just one that
-I have observed.&lt;/p&gt;
-&lt;p&gt;I have a cohort of friends in the software industry, most of whom are
-individual contributors.  I’m a programmer who likes programming, so are most
-of my friends, and we are also (&lt;strong&gt;sigh&lt;/strong&gt;), charitably, &lt;em&gt;pretty solidly
-middle-aged&lt;/em&gt; at this point, so we tend to have a lot of experience.&lt;/p&gt;
-&lt;p&gt;As such, we are often the folks that the team — or, in my case, the community —
-goes to when less-experienced folks need answers.&lt;/p&gt;
-&lt;p&gt;On its own, this is actually pretty great.  Answering questions from more
-junior folks is one of the best parts of a software development job.  It’s an
-opportunity to be helpful, mostly just by knowing a thing we already knew.  And
-it’s an opportunity to help someone else improve their own agency by giving
-them knowledge that they can use in the future.&lt;/p&gt;
-&lt;p&gt;However, generative AI throws a bit of a wrench into the mix.&lt;/p&gt;
-&lt;p&gt;Let’s imagine a scenario where we have 2 developers: Alice, a staff engineer
-who has a good understanding of the system being built, and Bob, a relatively
-junior engineer who is still onboarding.&lt;/p&gt;
-&lt;p&gt;The traditional interaction between Alice and Bob, when Bob has a question,
-goes like this:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Bob gets confused about something in the system being developed, because
-   Bob’s understanding of the system is incorrect.&lt;/li&gt;
-&lt;li&gt;Bob formulates a question based on this confusion.&lt;/li&gt;
-&lt;li&gt;Bob asks Alice that question.&lt;/li&gt;
-&lt;li&gt;Alice knows the system, so she gives an answer which
-   accurately reflects the state of the system to Bob.&lt;/li&gt;
-&lt;li&gt;Bob’s understanding of the system improves, and thus he will have fewer and
-   better-informed questions going forward.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;You can imagine how repeating this simple 5-step process will eventually
-transform Bob into a senior developer, and then he can start answering
-questions on his own.  Making sufficient time for regularly iterating this loop
-is the heart of any good mentorship process.&lt;/p&gt;
-&lt;p&gt;Now, though, with Mallory in the mix, the process now has a new decision point,
-changing it from a linear sequence to a flow chart.&lt;/p&gt;
-&lt;p&gt;We begin the same way, with steps 1 and 2.  Bob’s confused, Bob formulates a
-question, but then:&lt;/p&gt;
-&lt;ol start="3"&gt;
-&lt;li&gt;Bob asks Mallory that question.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Here, our path then diverges into a “happy” path, a “meh” path, and a “sad”
-path.&lt;/p&gt;
-&lt;p&gt;The “happy” path proceeds like so:&lt;/p&gt;
-&lt;ol start="4"&gt;
-&lt;li&gt;Mallory happens to formulate a correct answer.&lt;/li&gt;
-&lt;li&gt;Bob’s understanding of the system improves, and thus he will have fewer and
-   better-informed questions going forward.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Great. Problem solved. We just saved some of Alice’s time. But as we learned earlier,&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Mallory can make mistakes&lt;/em&gt;&lt;/strong&gt;.  When that happens, we will need to &lt;strong&gt;&lt;em&gt;check
-important info&lt;/em&gt;&lt;/strong&gt;.  So let’s get checking:&lt;/p&gt;
-&lt;ol start="4"&gt;
-&lt;li&gt;Mallory happens to formulate an &lt;em&gt;incorrect&lt;/em&gt; answer.&lt;/li&gt;
-&lt;li&gt;Bob investigates this answer.&lt;/li&gt;
-&lt;li&gt;Bob realizes that this answer is incorrect because it is inconsistent with
-   some of his prior, correct knowledge of the system, or his investigation.&lt;/li&gt;
-&lt;li&gt;Bob asks Alice the same question; GOTO traditional interaction step 4.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;On this path, Bob spent a while futzing around with Mallory, to no particular
-benefit.  This wastes some of Bob’s time, but then again, Bob &lt;em&gt;could&lt;/em&gt; have
-ended up on the happy path, so perhaps it was worth the risk; at least Bob
-wasn’t wasting any of &lt;em&gt;Alice’s&lt;/em&gt; much more valuable time in the process.&lt;sup id="fnref:16:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:16:futzing-fraction-2025-8" id="fnref:16"&gt;16&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
-&lt;p&gt;Notice that beginning at the start of step 4, we must begin allocating all of
-Bob’s time to C, so C already
-starts getting a bit bigger than if it were just Bob checking Mallory’s output
-specifically on &lt;em&gt;tasks&lt;/em&gt; that Bob is doing.&lt;/p&gt;
-&lt;p&gt;That brings us to the “sad” path.&lt;/p&gt;
-&lt;ol start="4"&gt;
-&lt;li&gt;Mallory happens to formulate an &lt;em&gt;incorrect&lt;/em&gt; answer.&lt;/li&gt;
-&lt;li&gt;Bob investigates this answer.&lt;/li&gt;
-&lt;li&gt;Bob &lt;em&gt;does not realize&lt;/em&gt; that this answer is incorrect because he is unable to
-   recognize any inconsistencies with his existing, incomplete knowledge of the
-   system.&lt;/li&gt;
-&lt;li&gt;Bob integrates Mallory’s incorrect information of the system into his mental
-   model.&lt;/li&gt;
-&lt;li&gt;Bob proceeds to make a larger and larger mess of his work, based on an
-   incorrect mental model.&lt;/li&gt;
-&lt;li&gt;Eventually, Bob asks Alice a new, worse question, based on this incorrect
-   understanding.&lt;/li&gt;
-&lt;li&gt;Sadly we &lt;em&gt;cannot&lt;/em&gt; return to the happy path at this point, because now Alice
-    must unravel the complex series of confusing misunderstandings that Mallory
-    has unfortunately conveyed to Bob at this point.  In the &lt;em&gt;really&lt;/em&gt; sad
-    case, Bob actually &lt;em&gt;doesn’t believe&lt;/em&gt; Alice for a while, because Mallory
-    seems unbiased&lt;sup id="fnref:17:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:17:futzing-fraction-2025-8" id="fnref:17"&gt;17&lt;/a&gt;&lt;/sup&gt;, and Alice has to waste even more time &lt;em&gt;convincing&lt;/em&gt; Bob
-    before she can simply &lt;em&gt;explain&lt;/em&gt; to him.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Now, we have wasted some of Bob’s time, &lt;em&gt;and&lt;/em&gt; some of Alice’s time.  Everything
-from step 5-10 is C, and as soon as Alice gets involved,
-we are now adding to C at &lt;em&gt;double&lt;/em&gt; real-time.  If more
-team members are pulled in to the investigation, you are now multiplying 
-C by the number of investigators, potentially running at triple
-or quadruple real time.&lt;/p&gt;
-&lt;h3 id="but-thats-not-all"&gt;But That’s Not All&lt;/h3&gt;
-&lt;p&gt;Here I’ve presented a &lt;em&gt;brief&lt;/em&gt; selection reasons why C
-will be both large, and larger than you expect. To review:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Gambling-style mechanics of the user interface will interfere with your own
-   self-monitoring and developing a good estimate.&lt;/li&gt;
-&lt;li&gt;You can’t use human heuristics for quickly spotting bad answers.&lt;/li&gt;
-&lt;li&gt;Wrong answers given to junior people who can’t evaluate them will waste more
-   time from your more senior employees.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;But this is a &lt;em&gt;small&lt;/em&gt; selection of ways that Mallory’s output can cost you
-money and time.  It’s harder to simplistically model second-order effects like
-this, but there’s also a broad range of possibilities for ways that, rather
-than simply checking and catching errors, an error slips through and starts
-doing damage. Or ways in which the output isn’t exactly &lt;em&gt;wrong&lt;/em&gt;, but still
-sub-optimal in ways which can be difficult to notice in the short term.&lt;/p&gt;
-&lt;p&gt;For example, you might successfully vibe-code your way to launch a series of
-applications, successfully “checking” the output along the way, but then
-discover that the resulting code is unmaintainable garbage that prevents future
-feature delivery, and needs to be re-written&lt;sup id="fnref:18:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:18:futzing-fraction-2025-8" id="fnref:18"&gt;18&lt;/a&gt;&lt;/sup&gt;.  But this kind of
-intellectual debt isn’t even specific to technical debt while coding; it can
-even affect such apparently genAI-amenable fields as LinkedIn content
-marketing&lt;sup id="fnref:19:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:19:futzing-fraction-2025-8" id="fnref:19"&gt;19&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
-&lt;h2 id="problems-with-the-prediction-of-p"&gt;Problems with the Prediction of P&lt;/h2&gt;
-&lt;p&gt; C  isn’t the only challenging term
-though. P, is just as, if not more important, and just as
-hard to measure.&lt;/p&gt;
-&lt;p&gt;LLM marketing materials love to phrase their accuracy in terms of a
-&lt;em&gt;percentage&lt;/em&gt;.  Accuracy claims for LLMs in general tend to hover around
-70%&lt;sup id="fnref:20:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:20:futzing-fraction-2025-8" id="fnref:20"&gt;20&lt;/a&gt;&lt;/sup&gt;.  But these scores vary per field, and when you aggregate them across
-multiple topic areas, they start to trend down. This is exactly why “agentic”
-approaches for more immediately-verifiable LLM outputs (with checks like “did
-the code work”) got popular in the first place: you need to try more than once.&lt;/p&gt;
-&lt;p&gt;Independently measured claims about accuracy tend to be quite a bit lower&lt;sup id="fnref:21:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:21:futzing-fraction-2025-8" id="fnref:21"&gt;21&lt;/a&gt;&lt;/sup&gt;.
-The field of AI benchmarks is exploding, but it probably goes without saying
-that LLM vendors game those benchmarks&lt;sup id="fnref:22:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:22:futzing-fraction-2025-8" id="fnref:22"&gt;22&lt;/a&gt;&lt;/sup&gt;, because of course every incentive
-would encourage them to do that.  Regardless of what their arbitrary scoring on
-some benchmark might say, all that matters to &lt;em&gt;your&lt;/em&gt; business is whether it is
-accurate for the problems &lt;em&gt;you&lt;/em&gt; are solving, for the way that &lt;em&gt;you&lt;/em&gt; use it.
-Which is not necessarily going to correspond to any benchmark. You will need to
-measure it for yourself.&lt;/p&gt;
-&lt;p&gt;With that goal in mind, our formulation of P must be a
-somewhat harsher standard than “accuracy”.  It’s not merely “was the factual
-information contained in any generated output accurate”, but, “is the output
-good enough that some given real knowledge-work task is &lt;em&gt;done&lt;/em&gt; and the human
-does not need to issue another prompt”?&lt;/p&gt;
-&lt;h3 id="surprisingly-small-space-for-slip-ups"&gt;Surprisingly Small Space for Slip-Ups&lt;/h3&gt;
-&lt;p&gt;The problem with reporting these things as percentages at all, however, is that our actual definition for P is 1attempts, where attempts for any given attempt, at least, must be an integer greater than or equal to 1.&lt;/p&gt;
-&lt;p&gt;Taken in aggregate, if we succeed on the first prompt more often than not, we &lt;em&gt;could&lt;/em&gt; end up with a P&amp;gt;12, but combined with
-the previous observation that you almost always have to prompt it more than once, the practical reality is that P will start at 50% and go down from there.&lt;/p&gt;
-&lt;p&gt;If we plug in some numbers, trying to be as &lt;em&gt;extremely&lt;/em&gt; optimistic as we can,
-and say that we have a uniform stream of tasks, every one of which can be
-addressed by Mallory, every one of which:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;we can measure perfectly, with no overhead&lt;/li&gt;
-&lt;li&gt;would take a human 45 minutes&lt;/li&gt;
-&lt;li&gt;takes Mallory only a single minute to generate a response&lt;/li&gt;
-&lt;li&gt;Mallory will require only 1 re-prompt, so “good enough” half the time&lt;/li&gt;
-&lt;li&gt;takes a human only 5 minutes to write a prompt for&lt;/li&gt;
-&lt;li&gt;takes a human only 5 minutes to check the result of&lt;/li&gt;
-&lt;li&gt;has a per-prompt cost of the equivalent of a single second of a human’s time&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Thought experiments are a dicey basis for reasoning in the face of
-disagreements, so I have tried to formulate something here that is absolutely,
-comically, over-the-top stacked in favor of the AI optimist here.&lt;/p&gt;
-&lt;p&gt;Would that be a profitable?  It sure seems like it, given that we are trading
-off 45 minutes of human time for 1 minute of Mallory-time and 10 minutes of
-human time.  If we ask Python:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
-&lt;span class="normal"&gt;2&lt;/span&gt;
-&lt;span class="normal"&gt;3&lt;/span&gt;
-&lt;span class="normal"&gt;4&lt;/span&gt;
-&lt;span class="normal"&gt;5&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; def FF(H, I, C, P, W, E):
-&lt;span class="k"&gt;...&lt;/span&gt;     return (W + I + C + E) / (P * H)
-&lt;span class="k"&gt;...&lt;/span&gt; FF(H=45.0, I=1.0, C=5.0, P=1/2, W=5.0, E=0.01)
-...
-0.48933333333333334
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;We get a futzing fraction of about 0.4893.  Not bad!  Sounds like, at least
-under these conditions, it would indeed be cost-effective to deploy Mallory.
-But…  realistically, do you &lt;em&gt;reliably&lt;/em&gt; get useful, done-with-the-task quality
-output on the &lt;em&gt;second&lt;/em&gt; prompt?  Let’s bump up the denominator on P just a little bit there, and see how we fare:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
-&lt;span class="normal"&gt;2&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; FF(H=45.0, I=1.0, C=5.0, P=1/3, W=5.0, E=0.01)
-0.734
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;Oof.  Still cost-effective at 0.734, but not quite as good.  Where do
-we cap out, exactly?&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
-&lt;span class="normal"&gt;2&lt;/span&gt;
-&lt;span class="normal"&gt;3&lt;/span&gt;
-&lt;span class="normal"&gt;4&lt;/span&gt;
-&lt;span class="normal"&gt;5&lt;/span&gt;
-&lt;span class="normal"&gt;6&lt;/span&gt;
-&lt;span class="normal"&gt;7&lt;/span&gt;
-&lt;span class="normal"&gt;8&lt;/span&gt;
-&lt;span class="normal"&gt;9&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;itertools&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;
-&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;:=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;FF&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;H&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;45.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;I&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;5.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;P&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;W&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;5.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;E&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mf"&gt;60.&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="k"&gt;break&lt;/span&gt;
-&lt;span class="o"&gt;...&lt;/span&gt;
-&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0.9792592592592594&lt;/span&gt;
-&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;1.224074074074074&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;With this little test, we can see that at our next iteration we are already at
-0.9792, and by 5 tries per prompt, even in this absolute fever-dream of an
-over-optimistic scenario, with a futzing fraction of 1.2240, Mallory is now a
-net detriment to our bottom line.&lt;/p&gt;
-&lt;h2 id="harm-to-the-humans"&gt;Harm to the Humans&lt;/h2&gt;
-&lt;p&gt;We are treating H as functionally constant so far, an
-average around some hypothetical Gaussian distribution, but the distribution
-itself can also change over time.&lt;/p&gt;
-&lt;p&gt;Formally speaking, an increase to H would be &lt;em&gt;good&lt;/em&gt; for
-our fraction.  Maybe it would even be a good thing; it could mean we’re taking
-on harder and harder tasks due to the superpowers that Mallory has given us.&lt;/p&gt;
-&lt;p&gt;But an observed increase to H would probably &lt;em&gt;not&lt;/em&gt; be
-good.  An increase could also mean your humans are getting worse at solving
-problems, because using Mallory has atrophied their skills&lt;sup id="fnref:23:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:23:futzing-fraction-2025-8" id="fnref:23"&gt;23&lt;/a&gt;&lt;/sup&gt; and sabotaged
-learning opportunities&lt;sup id="fnref:24:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:24:futzing-fraction-2025-8" id="fnref:24"&gt;24&lt;/a&gt;&lt;/sup&gt;&lt;sup id="fnref:25:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:25:futzing-fraction-2025-8" id="fnref:25"&gt;25&lt;/a&gt;&lt;/sup&gt;.  It could also go up because your senior,
-experienced people now hate their jobs&lt;sup id="fnref:26:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:26:futzing-fraction-2025-8" id="fnref:26"&gt;26&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
-&lt;p&gt;For some more vulnerable folks, Mallory might just take a shortcut to all these
-complex interactions and drive them completely insane&lt;sup id="fnref:27:futzing-fraction-2025-8"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:27:futzing-fraction-2025-8" id="fnref:27"&gt;27&lt;/a&gt;&lt;/sup&gt; directly.  Employees
-experiencing an intense psychotic episode are famously less productive than
-those who are not.&lt;/p&gt;
-&lt;p&gt;This could all be very bad, if our futzing fraction eventually does head north
-of 1 and you need to reconsider introducing human-only workflows, without
-Mallory.&lt;/p&gt;
-&lt;h1 id="abridging-the-artificial-arithmetic-alliteratively"&gt;Abridging the Artificial Arithmetic (Alliteratively)&lt;/h1&gt;
-&lt;p&gt;To reiterate, I have proposed this fraction:&lt;/p&gt;
-&lt;div style="font-size: 30px; text-align: center;"&gt;
-    FF  = 
-        W+I+C+E
-        P H
-&lt;/div&gt;
-&lt;p&gt;which shows us positive ROI when FF is less than 1, and negative ROI when it is
-more than 1.&lt;/p&gt;
-&lt;p&gt;This model is heavily simplified.  A comprehensive measurement program that
-tests the efficacy of &lt;em&gt;any&lt;/em&gt; technology, let alone one as complex and rapidly
-changing as LLMs, is more complex than could be captured in a single blog post.&lt;/p&gt;
-&lt;p&gt;Real-world work might be insufficiently uniform to fit into a closed-form
-solution like this.  Perhaps an iterated simulation with variables based on the
-range of values seem from your team’s metrics would give better results.&lt;/p&gt;
-&lt;p&gt;However, in this post, I want to illustrate that if you are going to try to
-evaluate an LLM-based tool, you need to at &lt;em&gt;least&lt;/em&gt; include some representation
-of each of these terms &lt;em&gt;somewhere&lt;/em&gt;.  They are all fundamental to the way the
-technology works, and if you’re not measuring them somehow, then you are flying
-blind into the genAI storm.&lt;/p&gt;
-&lt;p&gt;I also hope to show that a lot of existing assumptions about how benefits
-might be demonstrated, for example with user surveys about general impressions,
-or by evaluating artificial benchmark scores, are deeply flawed.&lt;/p&gt;
-&lt;p&gt;Even making what I consider to be wildly, unrealistically optimistic
-assumptions about these measurements, I hope I’ve shown:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;in the numerator, C might be a lot higher than you
-   expect,&lt;/li&gt;
-&lt;li&gt;in the denominator, P might be a lot lower than you
-   expect,&lt;/li&gt;
-&lt;li&gt;repeated use of an LLM might make H go up, but despite
-   the fact that it's in the denominator, that will ultimately be quite bad for
-   your business.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Personally, I don’t have all that many concerns about E and  I.  E is still seeing significant loss-leader pricing, and I might not be coming down as fast as vendors would like us to believe, if the other numbers work out I don’t think they make a huge difference.  However, there might still be surprises lurking in there, and if you want to rationally evaluate the effectiveness of a model, you need to be able to measure them and incorporate them as well.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;In particular&lt;/em&gt;, I really want to stress the importance of the influence of LLMs on your &lt;em&gt;team dynamic&lt;/em&gt;, as that can cause massive, hidden increases to C.  LLMs present opportunities for junior employees to generate an endless stream of chaff that will simultaneously:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;wreck your performance review process by making them look much more
-  productive than they are,&lt;/li&gt;
-&lt;li&gt;increase stress and load on senior employees who need to clean up unforeseen
-  messes created by their LLM output,&lt;/li&gt;
-&lt;li&gt;and ruin their own opportunities for career development by skipping over
-  learning opportunities.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;If you’ve already deployed LLM tooling without measuring these things and
-without updating your performance management processes to account for the
-strange distortions that these tools make possible, your Futzing Fraction may
-be much, much greater than 1, creating hidden costs and technical debt that
-your organization will not notice until a lot of damage has already been done.&lt;/p&gt;
-&lt;p&gt;If you got all the way here, &lt;em&gt;particularly&lt;/em&gt; if you’re someone who is
-enthusiastic about these technologies, thank you for reading.  I appreciate
-your attention and I am hopeful that if we can start paying attention to these
-details, perhaps we can &lt;em&gt;all&lt;/em&gt; stop futzing around so much with this stuff and
-get back to doing real work.&lt;/p&gt;
-&lt;h2 id="acknowledgments"&gt;Acknowledgments&lt;/h2&gt;
-&lt;p class="update-note"&gt;Thank you to &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;my patrons&lt;/a&gt; who are supporting my writing on
-this blog.  If you like what you’ve read here and you’d
-like to read more of it, or you’d like to support my &lt;a href="https://github.com/glyph/"&gt;various open-source
-endeavors&lt;/a&gt;, you can &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;support my work as a
-sponsor&lt;/a&gt;!&lt;/p&gt;
-&lt;div class="footnote"&gt;
-&lt;hr /&gt;
-&lt;ol&gt;
-&lt;li id="fn:1:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:1"&gt;I do not share this optimism, but I want to try &lt;em&gt;very&lt;/em&gt; hard in this
-particular piece to &lt;em&gt;take it as a given&lt;/em&gt; that genAI is in fact helpful. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:1:futzing-fraction-2025-8" title="Jump back to footnote 1 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:2:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:2"&gt;If we could have a better prompt on demand via some repeatable and
-automatable process, surely we would have used a prompt that got the answer
-we wanted in the first place. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:2:futzing-fraction-2025-8" title="Jump back to footnote 2 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:3:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:3"&gt;The software idea of a “&lt;a href="https://www.w3.org/WAI/UA/work/wiki/Definition_of_User_Agent"&gt;user
-agent&lt;/a&gt;”
-straightforwardly comes from the legal principle of an
-&lt;a href="https://en.wikipedia.org/wiki/Law_of_agency"&gt;agent&lt;/a&gt;, which has deep roots
-in common law, jurisprudence, &lt;a href="https://en.wikipedia.org/wiki/Principal–agent_problem"&gt;philosophy, and
-math&lt;/a&gt;.  When we
-think of an agent (some software) acting on behalf of a principal (a human
-user), this historical baggage imputes some &lt;a href="https://blog.glyph.im/2005/11/ethics-for-programmers-primum-non.html"&gt;&lt;strong&gt;important ethical
-obligations&lt;/strong&gt;&lt;/a&gt;
-to the developer of the agent software.  genAI vendors have been as eager
-as any software vendor to &lt;a href="https://openai.com/policies/row-terms-of-use/#:~:text=NEITHER%20WE%20NOR%20ANY%20OF%20OUR%20AFFILIATES%20OR%20LICENSORS%20WILL%20BE%20LIABLE"&gt;dodge responsibility for faithfully representing
-the user’s
-interests&lt;/a&gt;
-even as there are some indications that &lt;a href="https://www.forbes.com/sites/marisagarcia/2024/02/19/what-air-canada-lost-in-remarkable-lying-ai-chatbot-case/"&gt;at least some courts are not
-persuaded&lt;/a&gt;
-by this dodge, at least by the consumers of genAI attempting to pass on the
-responsibility all the way to end users.  Perhaps it goes without saying,
-but I’ll say it anyway: I don’t like this newer interpretation of “agent”. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:3:futzing-fraction-2025-8" title="Jump back to footnote 3 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:4:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:4"&gt;&lt;a href="https://arxiv.org/abs/2502.15840"&gt;“Vending-Bench: A Benchmark for Long-Term Coherence of Autonomous
-Agents”&lt;/a&gt;, Axel Backlund, Lukas Petersson,
-Feb 20, 2025 &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:4:futzing-fraction-2025-8" title="Jump back to footnote 4 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:5:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:5"&gt;&lt;a href="https://xcancel.com/leojr94_/status/1901560276488511759"&gt;“random thing are happening, maxed out usage on api keys”&lt;/a&gt;, @leojr94 on Twitter, Mar 17, 2025 &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:5:futzing-fraction-2025-8" title="Jump back to footnote 5 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:6:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:6"&gt;&lt;a href="https://apnews.com/article/chatgpt-study-harmful-advice-teens-c569cddf28f1f33b36c692428c2191d4"&gt;“New study sheds light on ChatGPT’s alarming interactions with
-teens”&lt;/a&gt; &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:6:futzing-fraction-2025-8" title="Jump back to footnote 6 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:7:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:7"&gt;&lt;a href="https://apnews.com/article/artificial-intelligence-chatgpt-fake-case-lawyers-d6ae9fa79d0542db9e1455397aef381c"&gt;“Lawyers submitted bogus case law created by ChatGPT. A judge fined
-them
-$5,000”&lt;/a&gt;,
-by Larry Neumeister for the Associated Press, June 22, 2023 &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:7:futzing-fraction-2025-8" title="Jump back to footnote 7 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:8:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:8"&gt;During which a human will be busy-waiting on an answer. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:8:futzing-fraction-2025-8" title="Jump back to footnote 8 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:9:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:9"&gt;Given the fluctuating pricing of these products, and fixed subscription overhead, this will obviously need to be amortized; including all the additional terms to actually convert this from your inputs is left as an exercise for the reader. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:9:futzing-fraction-2025-8" title="Jump back to footnote 9 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:10:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:10"&gt;I feel like I should emphasize explicitly here that everything is an
-average over repeated interactions.  For example, you might observe that a
-particular LLM has a low probability of outputting acceptable work on the
-first prompt, but higher probability on subsequent prompts in the same
-context, such that it usually takes 4 prompts.  For the purposes of this
-extremely simple closed-form model, we’d still consider that a
-P of 25%, even though a more sophisticated model, or
-a monte carlo simulation that sets progressive bounds on the probability,
-might produce more accurate values. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:10:futzing-fraction-2025-8" title="Jump back to footnote 10 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:11:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:11"&gt;&lt;a href="https://social.coop/@chrisjrn/115011133688436556"&gt;No it isn’t,
-actually&lt;/a&gt;, but for the
-sake of argument let’s grant that it is. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:11:futzing-fraction-2025-8" title="Jump back to footnote 11 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:12:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:12"&gt;It’s worth noting that all this expensive measuring &lt;em&gt;itself&lt;/em&gt; must be
-included in C until you have a solid grounding for
-all your metrics, but let’s optimistically leave all of that out for the
-sake of simplicity. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:12:futzing-fraction-2025-8" title="Jump back to footnote 12 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:13:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:13"&gt;&lt;a href="https://www.newsweek.com/nearly-half-employees-trust-ai-more-their-coworkers-2113159"&gt;“AI Company Poll Finds 45% of Workers Trust the Tech More Than Their
-Peers”&lt;/a&gt;,
-by Suzanne Blake for Newsweek, Aug 13, 2025 &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:13:futzing-fraction-2025-8" title="Jump back to footnote 13 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:14:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:14"&gt;&lt;a href="https://www.cmu.edu/dietrich/news/news-stories/2025/july/trent-cash-ai-overconfidence.html"&gt;AI Chatbots Remain Overconfident — Even When They’re
-Wrong&lt;/a&gt;
-by Jason Bittel for the Dietrich College of Humanities and Social Sciences
-at Carnegie Mellon University, July 22, 2025 &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:14:futzing-fraction-2025-8" title="Jump back to footnote 14 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:15:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:15"&gt;&lt;a href="https://spectrum.ieee.org/ai-mistakes-schneier"&gt;AI Mistakes Are Very Different From Human
-Mistakes&lt;/a&gt; by Bruce Schneier
-and Nathan E. Sanders for IEEE Spectrum, Jan 13, 2025 &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:15:futzing-fraction-2025-8" title="Jump back to footnote 15 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:16:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:16"&gt;Foreshadowing is a narrative device in which a storyteller gives an
-advance hint of an upcoming event later in the story. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:16:futzing-fraction-2025-8" title="Jump back to footnote 16 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:17:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:17"&gt;&lt;a href="https://www.ipsos.com/en-us/people-are-worried-about-misuse-ai-they-trust-it-more-humans"&gt;“People are worried about the misuse of AI, but they trust it more than humans”&lt;/a&gt; &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:17:futzing-fraction-2025-8" title="Jump back to footnote 17 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:18:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:18"&gt;&lt;a href="https://youtu.be/w3EZpcTZ4ZA?si=816uBg6N3Pmon2P3"&gt;“Why I stopped using AI (as a Senior Software
-Engineer)”&lt;/a&gt;, theSeniorDev
-YouTube channel, Jun 17, 2025 &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:18:futzing-fraction-2025-8" title="Jump back to footnote 18 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:19:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:19"&gt;&lt;a href="https://www.youtube.com/watch?v=1ghBG302_LQ"&gt;“I was an AI evangelist. Now I’m an AI vegan. Here’s
-why.”&lt;/a&gt;, Joe McKay for the
-greatchatlinkedin YouTube channel, Aug 8, 2025 &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:19:futzing-fraction-2025-8" title="Jump back to footnote 19 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:20:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:20"&gt;&lt;a href="https://originality.ai/blog/what-llm-is-the-most-accurate"&gt;“What LLM is The Most Accurate?”&lt;/a&gt; &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:20:futzing-fraction-2025-8" title="Jump back to footnote 20 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:21:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:21"&gt;&lt;a href="https://futurism.com/the-byte/study-chatgpt-answers-wrong"&gt;“Study Finds That 52 Percent Of ChatGPT Answers to Programming Questions are Wrong”&lt;/a&gt;, by Sharon Adarlo for Futurism, May 23, 2024 &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:21:futzing-fraction-2025-8" title="Jump back to footnote 21 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:22:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:22"&gt;&lt;a href="https://blog.boxcars.ai/p/off-the-mark-the-pitfalls-of-metrics"&gt;“Off the Mark: The Pitfalls of Metrics Gaming in AI Progress
-Races”&lt;/a&gt;, by
-Tabrez Syed on BoxCars AI, Dec 14, 2023 &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:22:futzing-fraction-2025-8" title="Jump back to footnote 22 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:23:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:23"&gt;&lt;a href="https://thomasorus.com/i-tried-coding-with-ai-i-became-lazy-and-stupid"&gt;“I tried coding with AI, I became lazy and
-stupid”&lt;/a&gt;,
-by Thomasorus, Aug 8, 2025 &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:23:futzing-fraction-2025-8" title="Jump back to footnote 23 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:24:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:24"&gt;&lt;a href="https://www.psychologytoday.com/us/blog/the-algorithmic-mind/202505/how-ai-changes-student-thinking-the-hidden-cognitive-risks"&gt;“How AI Changes Student Thinking: The Hidden Cognitive
-Risks”&lt;/a&gt;
-by Timothy Cook for Psychology Today, May 10, 2025 &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:24:futzing-fraction-2025-8" title="Jump back to footnote 24 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:25:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:25"&gt;&lt;a href="https://phys.org/news/2025-01-ai-linked-eroding-critical-skills.html"&gt;“Increased AI use linked to eroding critical thinking skills”&lt;/a&gt; by Justin Jackson for Phys.org, Jan 13, 2025 &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:25:futzing-fraction-2025-8" title="Jump back to footnote 25 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:26:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:26"&gt;&lt;a href="https://dev.to/manuartero/ai-could-end-my-job-just-not-the-way-i-expected-5g3m"&gt;“AI could end my job — Just not the way I expected”&lt;/a&gt; by Manuel Artero Anguita on dev.to, Jan 27, 2025 &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:26:futzing-fraction-2025-8" title="Jump back to footnote 26 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:27:futzing-fraction-2025-8"&gt;
-&lt;p id="fn:27"&gt;&lt;a href="https://www.psychologytoday.com/us/blog/urban-survival/202507/the-emerging-problem-of-ai-psychosis"&gt;“The Emerging Problem of “AI
-Psychosis””&lt;/a&gt;
-by Gary Drevitch for Psychology Today, July 21, 2025. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:27:futzing-fraction-2025-8" title="Jump back to footnote 27 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</description>
-      <guid isPermaLink="false">f31e2c3452abd45956c71d09284a822cbd0f2e3f13ebc2c9fabf1761a536fd48</guid>
-      <pubDate>Fri, 15 Aug 2025 07:51:00 +0000</pubDate>
     </item>
   </channel>
 </rss>
