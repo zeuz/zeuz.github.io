@@ -5,7 +5,132 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Thu, 19 Nov 2026 14:01:46 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 14:01:39 +0000</lastBuildDate>
+    <item>
+      <title>Graham Dumpleton: Muru: a toolbar on every page - Planet Python</title>
+      <link>https://grahamdumpleton.me/posts/2026/11/muru-a-toolbar-on-every-page/</link>
+      <description>&lt;p&gt;The &lt;a href="https://grahamdumpleton.me/posts/2026/11/muru-looking-inside-the-workers/"&gt;looking inside the workers&lt;/a&gt; post was about what a development run is doing right now, with the stacks of its threads, a profile of where the time goes, and a dashboard. What it didn't answer well is a question I find myself asking more often when working on a web application, which is what happened to the one request that produced the page I'm looking at.&lt;/p&gt;
+&lt;p&gt;Python web frameworks have had an answer to that for a long time. &lt;a href="https://django-debug-toolbar.readthedocs.io/"&gt;Django Debug Toolbar&lt;/a&gt; and &lt;a href="https://flask-debugtoolbar.readthedocs.io/"&gt;Flask-DebugToolbar&lt;/a&gt; add a panel to each page with the request's timings, SQL queries, logging and more. Both are middleware installed into the application, each works for its own framework only, and both only see what happens once the request reaches the framework.&lt;/p&gt;
+&lt;p&gt;Muru has a development toolbar of its own. It needs nothing installed into the application, works the same for any WSGI or ASGI application, and because it is Muru that keeps each request's record, it can say things a framework can't, such as how long a request waited for a worker before the application saw it.&lt;/p&gt;
+&lt;h2&gt;A shop to look at&lt;/h2&gt;
+&lt;p&gt;To have something to look at, I wrote a small Flask shop. Its front page lists books, with the author of each and how many are in stock, which it asks a separate stock service about. The stock service is part of the same application here, at &lt;code&gt;/stock/&lt;/code&gt;, so nothing else needs to be running. There is also a page for each author, a form for adding a book, a slow report, and a JSON API.&lt;/p&gt;
+&lt;p&gt;The front page also shows a rating for each book, which a script in the page fetches once the list has loaded:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-html"&gt;&amp;lt;script&amp;gt;
+for (const span of document.querySelectorAll(&amp;quot;.rating&amp;quot;)) {
+  fetch(`/ratings/${span.dataset.book}`)
+    .then((response) =&amp;gt; response.json())
+    .then((rating) =&amp;gt; { span.textContent = `(${rating.stars} stars)`; });
+}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Each rating takes about 150 milliseconds, as if it were asking a reviews service. The project's &lt;code&gt;pyproject.toml&lt;/code&gt; names the application, and gives requests a soft timeout of two seconds, which comes up later:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[tool.muru]
+entrypoint = &amp;quot;shop:app&amp;quot;
+[tool.muru.timeouts]
+soft_timeout = &amp;quot;2s&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Timings without a toolbar&lt;/h2&gt;
+&lt;p&gt;Even before turning the toolbar on, every response from &lt;code&gt;muructl run&lt;/code&gt; says how long it took:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ curl -s -D - -o /dev/null http://127.0.0.1:8080/
+HTTP/1.1 200 OK
+content-type: text/html; charset=utf-8
+server: muru
+x-request-id: 01M7PA2AG3CBFFQTR4TP0SC0S6
+server-timing: queue;dur=0.00, app;dur=4.56, muru;desc=&amp;quot;01M7PA2AG3CBFFQTR4TP0SC0S6&amp;quot;
+muru-request-link: http://127.0.0.1:8081/request/01M7PA2AG3CBFFQTR4TP0SC0S6
+transfer-encoding: chunked
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;Server-Timing&lt;/code&gt; is a standard header, and the browser's developer tools already know what to do with it. In Chrome or Firefox, selecting a request in the Network tab and opening its Timing section shows &lt;code&gt;queue&lt;/code&gt;, how long the request waited for a worker, and &lt;code&gt;app&lt;/code&gt;, how long the application took to produce the response head, in milliseconds. The &lt;code&gt;muru&lt;/code&gt; entry is the request's ID, the same as in &lt;code&gt;X-Request-ID&lt;/code&gt; and the access log. &lt;code&gt;Muru-Request-Link&lt;/code&gt; is the address of the request's page on the run's dashboard, which shows everything Muru kept about it.&lt;/p&gt;
+&lt;p&gt;The first request in a worker to load modules it hadn't imported yet also gets an &lt;code&gt;import&lt;/code&gt; entry, saying how long that took, and a request that had to wait for another request in the worker to finish loading a module gets an &lt;code&gt;import_wait&lt;/code&gt; entry. That is a topic of its own, which I'll come back to in another post.&lt;/p&gt;
+&lt;h2&gt;Turning the toolbar on&lt;/h2&gt;
+&lt;p&gt;The toolbar is turned on with &lt;code&gt;--toolbar&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl run --toolbar
+...
+muru: serving shop:app on http://127.0.0.1:8080 with 1 worker of 4 threads
+muru: development mode: error pages show tracebacks, nothing is persisted, the run reloads on change and only loopback is served; production runs under the daemon (muructl daemon start)
+muru: toolbar on: the edge inserts it into HTML pages, with each request's record under /_muru/
+muru: dashboard on http://127.0.0.1:8081/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For it to be on for every run of a project, &lt;code&gt;toolbar = true&lt;/code&gt; goes in the &lt;code&gt;[tool.muru.run]&lt;/code&gt; table of &lt;code&gt;pyproject.toml&lt;/code&gt;. If it is only me who wants it, the same key in the &lt;code&gt;[run]&lt;/code&gt; table of a &lt;code&gt;muru.local.toml&lt;/code&gt; beside the project turns it on for my own checkout, without changing what is committed.&lt;/p&gt;
+&lt;p&gt;Each HTML page then has a badge in its bottom right corner, with the request's status, its total time, the time it waited for a worker, the worker that served it, and how many log records, errors and hints it had. Clicking the badge opens the record:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="The shop's list of books with the toolbar open at the Timing panel, showing the request's phases from waiting for a worker to sending the response, and nearly all its time spent running the application" src="https://grahamdumpleton.me/posts/2026/11/muru-a-toolbar-on-every-page/timing.png" /&gt;&lt;/p&gt;
+&lt;p&gt;The application isn't changed in any way. Muru's edge inserts one &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; tag before the page's &lt;code&gt;&amp;lt;/body&amp;gt;&lt;/code&gt;, and the toolbar loads from &lt;code&gt;/_muru/&lt;/code&gt; on the application's own address, which Muru answers without the request reaching the application. Only pages a browser loads as a document get the tag, so responses to &lt;code&gt;fetch()&lt;/code&gt; calls and htmx requests are left alone, as is anything that isn't HTML or that the application compressed itself. If the page has a content security policy that gives scripts a nonce, the tag is given the same nonce.&lt;/p&gt;
+&lt;p&gt;The toolbar is also strictly a development feature. Under &lt;code&gt;muructl serve&lt;/code&gt; and the Muru daemon there is no toolbar, responses carry neither header, and no records are kept.&lt;/p&gt;
+&lt;h2&gt;What the record holds&lt;/h2&gt;
+&lt;p&gt;The Timing panel above breaks the request into its phases, each with a bar placed where it falls on the request's clock. It starts with how long the request waited for a worker, then what the worker reports itself, which is waiting for a thread, waiting for the GIL, running the application up to the point where it called &lt;code&gt;start_response()&lt;/code&gt;, producing the body and finishing. Last is sending the response back to the client. A table under the phases adds what can't be placed on the clock, such as how many times the request had to wait for the GIL, and any garbage collections that ran while it was in the worker, since a collection pauses every thread of the worker.&lt;/p&gt;
+&lt;p&gt;Nearly all of the front page's time is spent running the application, which is what you would hope for, but the record can't yet say what the application was doing in that time. That is what the next post is about.&lt;/p&gt;
+&lt;p&gt;The other panels have the rest of what Muru knows about the request. Where says which release, worker and thread served it and which client class it was put in. Response has the headers as they arrived and as they were sent, and whether the response was compressed, or why not. Connection says which connection it came on and its position on it. Logs has the log records the application made while serving the request. The front page logs a warning for any book that is out of stock, so its Logs panel has:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;3.5ms  WARNING  shop  Persuasion is out of stock
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Muru knows which request a log record belongs to because it was made in that request's thread or task. Output from &lt;code&gt;print()&lt;/code&gt; isn't kept, since nothing ties it to a request.&lt;/p&gt;
+&lt;h2&gt;Every request the page made&lt;/h2&gt;
+&lt;p&gt;The front page isn't one request. Once it has loaded, its script asks for eight ratings. The toolbar's &amp;quot;This page&amp;quot; tab lists every request the page made, with the browser's own timings, matched to Muru's record of each through the request ID in its &lt;code&gt;Server-Timing&lt;/code&gt; header:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="The This page tab, a waterfall of the page's own request and its eight rating requests, with two of the ratings showing a blue bar where they waited about 150ms for a worker" src="https://grahamdumpleton.me/posts/2026/11/muru-a-toolbar-on-every-page/this-page.png" /&gt;&lt;/p&gt;
+&lt;p&gt;The ratings start together, but only four of them were served straight away. The run has one worker with four threads, so the fifth and sixth waited for one of the first four to finish, which shows as a blue bar and about 150 milliseconds under Queue. The last two also took twice as long, but they waited in the browser, not at Muru. A browser opens at most six connections to one host over HTTP/1.1, and they had to wait for one of those to be free.&lt;/p&gt;
+&lt;p&gt;Clicking a row opens that request's own record. For one of the two which waited, the toolbar's Hints panel says what stands out:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="The Hints panel of one rating request, saying the request waited for a worker and the run had too few workers for the page's requests, so raise processes, from the Timing panel with 151ms waiting for a worker" src="https://grahamdumpleton.me/posts/2026/11/muru-a-toolbar-on-every-page/hints.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Hints read the record and point at what is worth a look, each saying which panel and figure it comes from. Others cover a long wait for a thread, garbage collection that took a large share of the request, and a response of HTML or JSON that went out uncompressed. The badge counts a page's hints, and the toolbar opens on the Hints panel when there are any.&lt;/p&gt;
+&lt;p&gt;Taking the hint, I started the run again with &lt;code&gt;--processes 2&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="The This page tab with two worker processes, where none of the ratings waited for a worker, and the requests were served by workers 0 and 1" src="https://grahamdumpleton.me/posts/2026/11/muru-a-toolbar-on-every-page/two-workers.png" /&gt;&lt;/p&gt;
+&lt;p&gt;None of the ratings waited for a worker this time, and the Worker column shows them shared between the two workers. The last two still waited on the browser's six connections, which is something no number of workers will fix.&lt;/p&gt;
+&lt;p&gt;This is one place where Muru keeping the records itself pays off. Django Debug Toolbar by default keeps the contents of its panels in the memory of the process that served the request, and loads them from there when they are opened. When the server runs more than one process, &lt;a href="https://django-debug-toolbar.readthedocs.io/en/latest/configuration.html"&gt;it instead&lt;/a&gt; renders every panel into every page and turns its History panel off, since the next request may well go to another process. Under &lt;code&gt;muructl run&lt;/code&gt; the record of every request is kept by the run itself, with each worker sending its part of a record once the response is done, so the toolbar works the same whether there is one worker or several.&lt;/p&gt;
+&lt;h2&gt;When a page fails&lt;/h2&gt;
+&lt;p&gt;The author page has a bug. Anne Brontë has no books in the shop, and working out the average stock of her books divides by zero. Flask catches the exception and sends its own error page, which in production mode says nothing at all about what went wrong. The badge still shows the 500, and the Errors panel has the rest:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Flask's Internal Server Error page with the toolbar open at the Errors panel, saying the application answered 500 itself, with the traceback it logged ending in ZeroDivisionError" src="https://grahamdumpleton.me/posts/2026/11/muru-a-toolbar-on-every-page/errors.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Muru doesn't know about Flask, or that an exception was caught. What it sees is that the application returned normally with a 500 status, which is how any framework that handles its own errors behaves. Every log record made while serving a request is tagged with that request, so the panel looks for the first error the request logged with a traceback, which here is what Flask logged when it caught the exception.&lt;/p&gt;
+&lt;p&gt;A request that runs too long ends up here too. The report page loops for far longer than the soft timeout of two seconds allows, so the worker interrupted it, and Muru answered with its own page:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Muru's 504 Gateway Timeout page for a request that ran past the soft timeout of 2 s, with the traceback ending in the report view's loop, and the toolbar badge showing 504 and one hint" src="https://grahamdumpleton.me/posts/2026/11/muru-a-toolbar-on-every-page/timeout.png" /&gt;&lt;/p&gt;
+&lt;p&gt;The badge is on Muru's own error pages as well. The record's Errors panel also keeps the stack of the request's thread, taken just before the timeout interrupted it, and its one hint names the setting involved, &lt;code&gt;soft_timeout&lt;/code&gt;, along with the option to change it for a run. Timeouts and what Muru does about them were covered in the looking inside the workers post, so I won't go into them again.&lt;/p&gt;
+&lt;h2&gt;The request behind a redirect&lt;/h2&gt;
+&lt;p&gt;Adding a book posts the form to &lt;code&gt;/books&lt;/code&gt;, which adds the book and redirects back to the list. The toolbar on the page you end up on is the list's, and the POST that did the work would normally be lost. The History tab lists the run's recent page loads and form submissions, and joins a redirect to the request it led to:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="The History tab, with a POST to /books that answered 302 joined to the GET of the list it redirected to, marked as this page, followed by the earlier requests for the add book form, the failing author page and the list" src="https://grahamdumpleton.me/posts/2026/11/muru-a-toolbar-on-every-page/history.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Clicking the POST opens its own record, so the warning it logged is a click away:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;0.9ms  WARNING  shop  added 'Middlemarch', with none in stock yet
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Without a browser&lt;/h2&gt;
+&lt;p&gt;The JSON API has no page for the toolbar to go on, but its requests have records like any other. Given the ID from a response's &lt;code&gt;X-Request-ID&lt;/code&gt; header, &lt;code&gt;muructl debug request&lt;/code&gt;, run from the project's directory, prints the record:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl debug request 01M7PB2V7KECWC4P9BKESC4ATF
+GET /api/books HTTP/1.1  200  0.6ms  at 14:26:53.171
+request 01M7PB2V7KECWC4P9BKESC4ATF
+Hints
+  What stands out
+    none
+Timing
+  request                      0.6ms  from 0.0ms
+    waiting for a worker       0.0ms  from 0.0ms
+    in the worker              0.4ms  from 0.0ms
+      waiting for a thread     0.0ms  from 0.0ms
+      waiting for the GIL      0.0ms  from 0.0ms
+      running the application  0.3ms  from 0.0ms
+      response started         at 0.4ms
+      producing the body       0.0ms  from 0.4ms
+      finishing                0.0ms  from 0.4ms
+    response head at the edge  at 0.5ms
+    sending the response       0.1ms  from 0.5ms
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Every panel is there as text, and &lt;code&gt;--json&lt;/code&gt; gives the whole record. The same record is available to a coding agent through Muru's MCP server, which is something I'll get to later in the series.&lt;/p&gt;
+&lt;p&gt;The run keeps the records of its last 1000 requests, in memory only, so they are gone when the run stops. Request and response bodies are never kept, only their sizes, and headers and query parameters that look like they hold secrets, such as cookies, authorization headers and anything named like a token or password, are kept as &lt;code&gt;***&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;What's next&lt;/h2&gt;
+&lt;p&gt;What I like about this is that it is just there. There is nothing to install into the application, and nothing to change when moving between Flask, Django or a framework of my own, and the timings it shows start from when the request reached Muru, not when the framework got to it.&lt;/p&gt;
+&lt;p&gt;What the record can't say is what the application did with its time. The front page spends nearly all of its time running the application, and in the next post, tracing in the toolbar, that turns out to hide a database query run once for every book, and a call to the stock service for every book as well.&lt;/p&gt;</description>
+      <guid isPermaLink="false">8eb1f61f69d324bc5de198b5ae16f5aa936c05f6f50ea71cdcd5d10a37eb96b4</guid>
+      <pubDate>Fri, 20 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: Rich Console: Set default styles with keyword arguments - Planet Python</title>
+      <link>https://lernerpython.com/2026/11/19/rich-console-set-default-styles-with-keyword-arguments/</link>
+      <description>&lt;img alt="Rich Console: Set default styles with keyword arguments" class="wp-image-19031" height="1363" src="https://lernerpython.com/wp-content/uploads/2026/11/2026-11-19.png" width="2465" /&gt;
+&lt;p class="wp-block-paragraph"&gt;Pass keyword args to the Python Rich console upon creation for consistent styling:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;from rich.console import Console
+c = Console(width=50, style='blue on yellow')&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;c.print(text)  
+c.print(text, width=30) # overrides
+c.print(text, width=80)  # still 50 -- no override!&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/11/19/rich-console-set-default-styles-with-keyword-arguments/"&gt;Rich Console: Set default styles with keyword arguments&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">961893e94317de22996a4423cf6ae22f6fdad8ade31b325f8ac1d3a2aa936b70</guid>
+      <pubDate>Thu, 19 Nov 2026 07:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Graham Dumpleton: Muru: noticing and responding - Planet Python</title>
       <link>https://grahamdumpleton.me/posts/2026/11/muru-noticing-and-responding/</link>
@@ -18749,223 +18874,6 @@ here. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feed
 &lt;/div&gt;</description>
       <guid isPermaLink="false">e9ab8d77a1131b6c8526dda4ea72459f588bdc1528fca48d7cb7439cee565630</guid>
       <pubDate>Tue, 23 Jun 2026 20:06:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Hynek Schlawack: How to Ditch Codecov for Python Projects</title>
-      <link>https://hynek.me/articles/ditch-codecov-python/</link>
-      <description>&lt;p&gt;Codecov’s unreliability breaking CI on my open source projects has been a constant source of frustration for me for years. I have found a way to enforce coverage over a whole GitHub Actions build matrix that doesn’t rely on third-party services.&lt;/p&gt;</description>
-      <guid isPermaLink="false">a6441ae356de287204172b08a8f2f527e2023ee5f334bbd351a7d79d27ec8d35</guid>
-      <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Glyph Lefkowitz: Opaque Types in Python</title>
-      <link>https://blog.glyph.im/2026/05/opaque-types-in-python.html</link>
-      <description>&lt;p&gt;Let’s say you’re writing a Python library.&lt;/p&gt;
-&lt;p&gt;In this library, you have some collection of state that represents “options” or
-“configuration” for a bunch of operations.  Such a set of options is a bundle
-of potentially ever-increasing complexity.  Thus, you will want it to have an
-extremely minimal compatibility surface, with a very carefully chosen public
-interface, that is either small, or perhaps nothing at all.  Such an object
-conveys state and might have some private behavior, but all you want consumers
-to be able to do is build it in very constrained, specific ways, and then pass
-it along as a parameter to your own APIs.&lt;/p&gt;
-&lt;p&gt;By way of example, imagine that you’re wrapping a library that handles shipping
-physical packages.&lt;/p&gt;
-&lt;p&gt;There are a zillion ways to do it ship a package.  There are different carriers
-who can ship it for you. There’s air freight, and ground freight, and sea
-freight.  There’s overnight shipping.  There’s the option to require a
-signature.  There’s package tracking and certified mail.  Suffice it to say,
-lots of stuff.&lt;/p&gt;
-&lt;p&gt;If you are starting out to implement such a library, you might need an object
-called something like &lt;code&gt;ShippingOptions&lt;/code&gt; that encapsulates some of this.  At the
-core of your library you might have a function like this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
-&lt;span class="normal"&gt;2&lt;/span&gt;
-&lt;span class="normal"&gt;3&lt;/span&gt;
-&lt;span class="normal"&gt;4&lt;/span&gt;
-&lt;span class="normal"&gt;5&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;async&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;shipPackage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-        &lt;span class="n"&gt;how&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ShippingOptions&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="n"&gt;where&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Address&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;ShippingStatus&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="o"&gt;...&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;If you are &lt;em&gt;starting out&lt;/em&gt; implementing such a library, you know that you’re
-going to get the initial implementation of &lt;code&gt;ShippingOptions&lt;/code&gt; wrong; or, at the
-very least, if not “wrong”, then “incomplete”.  You should not want to commit
-to an expansive public API with a ton of different attributes until you really
-understand the problem domain pretty well.&lt;/p&gt;
-&lt;p&gt;Yet, &lt;code&gt;ShippingOptions&lt;/code&gt; is absolutely vital to the rest of your library.  You’ll
-need to construct it and pass it to various methods like &lt;code&gt;estimateShippingCost&lt;/code&gt;
-and &lt;code&gt;shipPackage&lt;/code&gt;.  So you’re not going to want a ton of complexity and churn
-as you evolve it to be more complex.&lt;/p&gt;
-&lt;p&gt;Worse yet, this object has to hold a ton of state.  It’s got attributes, maybe
-even quite complex internal attributes that relate to different shipping
-services.&lt;/p&gt;
-&lt;p&gt;Right now, &lt;em&gt;today&lt;/em&gt;, you need to add &lt;em&gt;something&lt;/em&gt; so you can have “no rush”,
-“standard” and “expedited” options.  You can’t just put off implementing that
-indefinitely until you can come up with the perfect shape. What to do?&lt;/p&gt;
-&lt;p&gt;The tool you want here is the &lt;em&gt;opaque data type&lt;/em&gt; design pattern.  C is lousy
-with such things (&lt;code&gt;FILE&lt;/code&gt;, &lt;code&gt;pthread_*_t&lt;/code&gt;, &lt;code&gt;fd_set&lt;/code&gt;, etc).  A &lt;code&gt;typedef&lt;/code&gt; in a
-header file can easily achieve this.&lt;/p&gt;
-&lt;p&gt;But in Python, if you expose a &lt;code&gt;dataclass&lt;/code&gt; — or &lt;em&gt;any&lt;/em&gt; class, really — even if
-you keep all your fields private, the &lt;em&gt;constructor&lt;/em&gt; is still, inherently,
-public.  You can make it raise an exception or something, but your type checker
-still won’t help your users; it’ll still look like it’s a normal class.&lt;/p&gt;
-&lt;p&gt;Luckily, Python typing provides a tool for this:
-&lt;a href="https://docs.python.org/3.14/library/typing.html#newtype"&gt;&lt;code&gt;typing.NewType&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Let’s review our requirements:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;We need a type that our client code can use in its type annotations; it
-   needs to be public.&lt;/li&gt;
-&lt;li&gt;They need to be able to consruct it &lt;em&gt;somehow&lt;/em&gt;, even if they shouldn’t be
-   able to see its attributes or its internal constructor arguments.&lt;/li&gt;
-&lt;li&gt;To express high-level things (like “ship fast”) that should stay supported
-   as we add more nuanced and complex configurations in the future (like “ship
-   with the fastest possible option provided by the lowest-cost carrier that
-   supports signature verification”).&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;In order to solve these problems respectively, we will use:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;a &lt;em&gt;public &lt;code&gt;NewType&lt;/code&gt;&lt;/em&gt;, which gives us our public name...&lt;/li&gt;
-&lt;li&gt;which wraps a &lt;em&gt;private class&lt;/em&gt; with entirely private attributes, to give us
-   an actual data structure, while not exposing the constructor,&lt;/li&gt;
-&lt;li&gt;a set of public constructor functions, which returns our &lt;code&gt;NewType&lt;/code&gt;.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;When we put that all together, it looks like this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
-&lt;span class="normal"&gt; 2&lt;/span&gt;
-&lt;span class="normal"&gt; 3&lt;/span&gt;
-&lt;span class="normal"&gt; 4&lt;/span&gt;
-&lt;span class="normal"&gt; 5&lt;/span&gt;
-&lt;span class="normal"&gt; 6&lt;/span&gt;
-&lt;span class="normal"&gt; 7&lt;/span&gt;
-&lt;span class="normal"&gt; 8&lt;/span&gt;
-&lt;span class="normal"&gt; 9&lt;/span&gt;
-&lt;span class="normal"&gt;10&lt;/span&gt;
-&lt;span class="normal"&gt;11&lt;/span&gt;
-&lt;span class="normal"&gt;12&lt;/span&gt;
-&lt;span class="normal"&gt;13&lt;/span&gt;
-&lt;span class="normal"&gt;14&lt;/span&gt;
-&lt;span class="normal"&gt;15&lt;/span&gt;
-&lt;span class="normal"&gt;16&lt;/span&gt;
-&lt;span class="normal"&gt;17&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;dataclasses&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;dataclass&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Literal&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;NewType&lt;/span&gt;
-&lt;span class="nd"&gt;@dataclass&lt;/span&gt;
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;_RealShipOpts&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;_speed&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Literal&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"fast"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"normal"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"slow"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="n"&gt;ShippingOptions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;NewType&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"ShippingOptions"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_RealShipOpts&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;shipFast&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;ShippingOptions&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;ShippingOptions&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;_RealShipOpts&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"fast"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;shipNormal&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;ShippingOptions&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;ShippingOptions&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;_RealShipOpts&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"normal"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;shipSlow&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;ShippingOptions&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;ShippingOptions&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;_RealShipOpts&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"slow"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;As a snapshot in time, this is not all that interesting; we could have just
-exposed &lt;code&gt;_RealShipOpts&lt;/code&gt; as a public class and saved ourselves some time.  The
-fact that this exposes a constructor that takes a string is not a big deal for
-the present moment.  For an initial quick and dirty implementation, we can just
-do checks like &lt;code&gt;if options._speed == "fast"&lt;/code&gt; in our shipping and estimation
-code.&lt;/p&gt;
-&lt;p&gt;However, the main thing we are doing here is preserving our flexibility to
-evolve the related APIs into the future, so let’s see how we might do that.
-For example, let’s allow the shipping options to contain a concrete and
-specific carrier and freight method:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
-&lt;span class="normal"&gt; 2&lt;/span&gt;
-&lt;span class="normal"&gt; 3&lt;/span&gt;
-&lt;span class="normal"&gt; 4&lt;/span&gt;
-&lt;span class="normal"&gt; 5&lt;/span&gt;
-&lt;span class="normal"&gt; 6&lt;/span&gt;
-&lt;span class="normal"&gt; 7&lt;/span&gt;
-&lt;span class="normal"&gt; 8&lt;/span&gt;
-&lt;span class="normal"&gt; 9&lt;/span&gt;
-&lt;span class="normal"&gt;10&lt;/span&gt;
-&lt;span class="normal"&gt;11&lt;/span&gt;
-&lt;span class="normal"&gt;12&lt;/span&gt;
-&lt;span class="normal"&gt;13&lt;/span&gt;
-&lt;span class="normal"&gt;14&lt;/span&gt;
-&lt;span class="normal"&gt;15&lt;/span&gt;
-&lt;span class="normal"&gt;16&lt;/span&gt;
-&lt;span class="normal"&gt;17&lt;/span&gt;
-&lt;span class="normal"&gt;18&lt;/span&gt;
-&lt;span class="normal"&gt;19&lt;/span&gt;
-&lt;span class="normal"&gt;20&lt;/span&gt;
-&lt;span class="normal"&gt;21&lt;/span&gt;
-&lt;span class="normal"&gt;22&lt;/span&gt;
-&lt;span class="normal"&gt;23&lt;/span&gt;
-&lt;span class="normal"&gt;24&lt;/span&gt;
-&lt;span class="normal"&gt;25&lt;/span&gt;
-&lt;span class="normal"&gt;26&lt;/span&gt;
-&lt;span class="normal"&gt;27&lt;/span&gt;
-&lt;span class="normal"&gt;28&lt;/span&gt;
-&lt;span class="normal"&gt;29&lt;/span&gt;
-&lt;span class="normal"&gt;30&lt;/span&gt;
-&lt;span class="normal"&gt;31&lt;/span&gt;
-&lt;span class="normal"&gt;32&lt;/span&gt;
-&lt;span class="normal"&gt;33&lt;/span&gt;
-&lt;span class="normal"&gt;34&lt;/span&gt;
-&lt;span class="normal"&gt;35&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;dataclasses&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;dataclass&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;enum&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Enum&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;auto&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;NewType&lt;/span&gt;
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Carrier&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Enum&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;FedEx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="n"&gt;USPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="n"&gt;DHL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="n"&gt;UPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Conveyance&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Enum&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;air&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="n"&gt;truck&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="n"&gt;train&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="nd"&gt;@dataclass&lt;/span&gt;
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;_RealShipOpts&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;_carrier&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Carrier&lt;/span&gt;
-    &lt;span class="n"&gt;_freight&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Conveyance&lt;/span&gt;
-&lt;span class="n"&gt;ShippingOptions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;NewType&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"ShippingOptions"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_RealShipOpts&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;shipFast&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;ShippingOptions&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;ShippingOptions&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;_RealShipOpts&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Carrier&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FedEx&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Conveyance&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;air&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;shipNormal&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;ShippingOptions&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;ShippingOptions&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;_RealShipOpts&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Carrier&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UPS&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Conveyance&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;truck&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;shipSlow&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;ShippingOptions&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;ShippingOptions&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;_RealShipOpts&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Carrier&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;USPS&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Conveyance&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;train&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;shippingDetailed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="n"&gt;carrier&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Carrier&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;conveyance&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Conveyance&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;ShippingOptions&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;ShippingOptions&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;_RealShipOpts&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;carrier&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;conveyance&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;As a &lt;code&gt;NewType&lt;/code&gt;, our public &lt;code&gt;ShippingOptions&lt;/code&gt; type doesn’t have a constructor.
-Since &lt;code&gt;_RealShipOpts&lt;/code&gt; is private, and all its attributes are private, we can
-completely remove the old versions.&lt;/p&gt;
-&lt;p&gt;Anything &lt;em&gt;within&lt;/em&gt; our shipping library can still access the private variables
-on &lt;code&gt;ShippingOptions&lt;/code&gt;; as a &lt;code&gt;NewType&lt;/code&gt;, it’s the same type as its base at
-runtime, so it presents minimal&lt;sup id="fnref:1:opaque-types-in-python-2026-5"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:1:opaque-types-in-python-2026-5" id="fnref:1"&gt;1&lt;/a&gt;&lt;/sup&gt; overhead.&lt;/p&gt;
-&lt;p&gt;Clients &lt;em&gt;outside&lt;/em&gt; our shipping library can still call all of our public
-constructors: &lt;code&gt;shipFast&lt;/code&gt;, &lt;code&gt;shipNormal&lt;/code&gt;, and &lt;code&gt;shipSlow&lt;/code&gt; all still work with the
-same (as far as calling code knows) signature and behavior.&lt;/p&gt;
-&lt;p&gt;If you need to build and convey some state within your public API, while
-avoiding breakages associated with compatibility churn, hopefully this
-technique can help you do that!&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h2 id="acknowledgments"&gt;Acknowledgments&lt;/h2&gt;
-&lt;p class="update-note"&gt;Thanks for reading, and thank you to &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;my patrons&lt;/a&gt; who are
-supporting my writing on this blog.  If you like what you’ve read here and
-you’d like to read more of it, or you’d like to support my &lt;a href="https://github.com/glyph/"&gt;various open-source
-endeavors&lt;/a&gt;, you can &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;support my work as a
-sponsor&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="footnote"&gt;
-&lt;hr /&gt;
-&lt;ol&gt;
-&lt;li id="fn:1:opaque-types-in-python-2026-5"&gt;
-&lt;p id="fn:1"&gt;The overhead is minimal, but it is not &lt;em&gt;completely&lt;/em&gt; zero.  The suggested
-idiom for converting to a &lt;code&gt;NewType&lt;/code&gt; is to call it like a function, as I’ve
-done in these examples, but if you are wanting to use this pattern &lt;em&gt;inside&lt;/em&gt;
-of a hot loop, you can use &lt;code&gt;# type: ignore[return-value]&lt;/code&gt; comments to avoid
-that small cost. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:1:opaque-types-in-python-2026-5" title="Jump back to footnote 1 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</description>
-      <guid isPermaLink="false">8abb1564dd5ccef0d7eac2f0dee217e8068248019e0ccf95c9eecfff926d1732</guid>
-      <pubDate>Fri, 22 May 2026 00:33:00 +0000</pubDate>
     </item>
   </channel>
 </rss>

@@ -5,7 +5,89 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Thu, 19 Nov 2026 14:01:46 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 14:01:39 +0000</lastBuildDate>
+    <item>
+      <title>Linux KVM Flaw CVE-2026-99312 Lets Guest VMs Access Host Memory on AMD Hosts - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/new-linux-kvm-flaw-cve-2026-99312-lets.html</link>
+      <description>A flaw in KVM, the hypervisor built into the Linux kernel, let researchers read about 127 GB of a cloud server's memory from inside a virtual machine of their own on DigitalOcean.
+On a shared server, that memory can include other customers' virtual machines. The flaw, tracked as CVE-2026-99312, affects only hosts with AMD processors and nested virtualization enabled.
+Fixed kernels shipped</description>
+      <guid isPermaLink="false">c2d50e7c513e367c26cc5302adf41e66c17909c901d6f528388f129fae10f8aa</guid>
+      <pubDate>Fri, 20 Nov 2026 12:20:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>SonicWall Warns Gen 6 Firewalls Won't Get Security Patches, Even for Critical Flaws - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/sonicwall-warns-gen-6-firewalls-wont.html</link>
+      <description>SonicWall has urged all customers still running Generation 6 firewalls to retire and replace them immediately and stop exposing the devices on the internet edge, citing security risks fueled by AI-assisted attacks.
+"Attackers now use automation and AI to find and exploit unsupported edge devices faster than ever," SonicWall said. "We expect internet-facing Gen 6 firewalls to be actively</description>
+      <guid isPermaLink="false">8ffdba7090facea75d5fc89ab1d6f45deca7be37e5de80b59d63ebe46e72c06c</guid>
+      <pubDate>Fri, 20 Nov 2026 10:38:22 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hackers Exploit Critical Cisco Expressway Flaw, Breach Four Devices and Reach Internal Network - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/hackers-exploit-critical-cisco.html</link>
+      <description>Threat actors have been observed exploiting a recently disclosed critical security flaw in Cisco Expressway to breach a Russian organization shortly after the public release of a proof-of-concept (PoC) exploit.
+The activity involves the exploitation of CVE-2026-76466 (CVSS score: 9.8), a vulnerability that could allow an unauthenticated, remote attacker with network access to a Cisco Expressway</description>
+      <guid isPermaLink="false">8d80c5b9391215d93a2dd6c82c0a31dd9e702776e1a81e5b179d14ff25e4ea20</guid>
+      <pubDate>Fri, 20 Nov 2026 10:32:50 +0000</pubDate>
+    </item>
+    <item>
+      <title>China-Linked Hackers Exploit Critical VMware vCenter Zero-Day to Gain Admin Access and Steal Data - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/china-linked-hackers-exploit-critical.html</link>
+      <description>The suspected China-nexus cyber espionage group known as Armory Castle (formerly UNC5221) has been attributed to the zero-day exploitation of a critical security flaw in VMware vCenter Server in early September 2026.
+The vulnerability, tracked as CVE-2026-123890 (CVSS score: 9.8), is a case of authentication bypass in the VMware Directory Service that could be exploited to gain unauthorized</description>
+      <guid isPermaLink="false">f264f94ffb64d5ac5d8887dcf651e4de1ae8d61d8570d95fca1fd3ae30474143</guid>
+      <pubDate>Fri, 20 Nov 2026 09:38:15 +0000</pubDate>
+    </item>
+    <item>
+      <title>ANOM – The FBI’s Secret Encrypted Phone Firm for Criminals - Darknet - The Darkside</title>
+      <link>https://www.darknet.org.uk/2026/11/anom-fbi-encrypted-phone-trojan-shield/</link>
+      <description>ANOM was the encrypted phone company the FBI secretly ran for criminal groups, copying every message. How it worked, and what courts ruled on the evidence.</description>
+      <guid isPermaLink="false">be4cb305df7c4bada250e3e63d2c1108b344bb76cc59d13b388f46ec106eb507</guid>
+      <pubDate>Fri, 20 Nov 2026 09:28:13 +0000</pubDate>
+    </item>
+    <item>
+      <title>ROMULUS ClickFix Attacks Deliver RAT That Can Spy on Users and Control PCs - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/romulus-clickfix-attacks-deliver-rat.html</link>
+      <description>Threat actors have been observed using the ROMULUS ClickFix malware delivery platform to deliver a previously undocumented remote access trojan (RAT) that shares similarities with CNCMachineRMS.
+"ROMULUS likely operates as a delivery service, distributing CNCMachineRMS and Legion Loader through separate chains while retaining ClickFix and signed binary sideloading techniques," Blackpoint</description>
+      <guid isPermaLink="false">f9c9999faae1d43c5ac6af5f2251342b6edf75f0e62a2673c17e9709b4ae8702</guid>
+      <pubDate>Fri, 20 Nov 2026 07:11:39 +0000</pubDate>
+    </item>
+    <item>
+      <title>New Unpatched Windows 0-Day FastUnlock Lets Someone Holding a Locked PC Run Programs on It - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/new-unpatched-windows-0-day-fastunlock.html</link>
+      <description>A newly disclosed unpatched zero-day technique called FastUnlock lets someone with physical access to a locked Windows computer start programs without signing in. Whoever uses it gets only a limited account, not administrator control of the machine.
+The method was posted yesterday by a researcher who uses the handles MSNightmare and Nightmare Eclipse, and the endpoint-security firm ThreatLocker</description>
+      <guid isPermaLink="false">6b0088c3d979c33e01f0b7e95da9ec7eb66af856ea6e1866adce9f1fb207a1d5</guid>
+      <pubDate>Fri, 20 Nov 2026 05:30:01 +0000</pubDate>
+    </item>
+    <item>
+      <title>phpAfterShell Explained: How Hackers Could Turn a PHP Session Flaw Into Code Execution - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/phpaftershell-explained-how-hackers.html</link>
+      <description>PHP's default file-based session storage can be made to return objects an attacker chose, by cutting off a session write at the right moment. When combined with a second weakness, such as a suitable gadget chain in the app, those objects can allow the attacker to run code on the server.
+Today's PHP releases fix the flaw, called phpAfterShell.
+The flaw is tracked as CVE-2026-126714 and rated</description>
+      <guid isPermaLink="false">170918019871517c17ea268c8e4db76f7df40fd72b0b14e52e17770e278df606</guid>
+      <pubDate>Thu, 19 Nov 2026 16:59:56 +0000</pubDate>
+    </item>
+    <item>
+      <title>PHP Fixes 7 Critical Flaws, Including Bugs That Could Allow Remote Code Execution - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/php-fixes-7-critical-flaws-including.html</link>
+      <description>The PHP Foundation has released security updates to address multiple critical security flaws that could be exploited to achieve remote code execution on affected deployments, including CVE-2026-115560.
+The release of the patch follows an advance notice in which the project maintainers alerted users to multiple critical vulnerabilities affecting all supported PHP versions under specific</description>
+      <guid isPermaLink="false">a36366fd5426b8798b6f9a4062de47c2a37486f6d45523a7dddd4c911e2f122c</guid>
+      <pubDate>Thu, 19 Nov 2026 15:18:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>Drupal Patches Critical Installer Flaw That Could Give Unauthenticated Attackers Control of Sites - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/drupal-patches-critical-installer-flaw.html</link>
+      <description>Under specific conditions, a critical vulnerability in Drupal core can allow an attacker without login credentials to use the built-in installer to attempt to reinstall a site.
+That can lead to a site takeover or remote code execution, and the project rates the vulnerable configurations as uncommon. Fixed releases for all supported branches shipped yesterday.
+The Drupal Security Team disclosed</description>
+      <guid isPermaLink="false">4d93b29e88963712495e3565eac6e395d8cfde711fa8d48d9c14f8964d81b6ea</guid>
+      <pubDate>Thu, 19 Nov 2026 14:33:06 +0000</pubDate>
+    </item>
     <item>
       <title>Everything Is a Web Application, Including Your Firewall - The Hacker News</title>
       <link>https://thehackernews.com/2026/11/everything-is-web-application-including.html</link>
@@ -1485,86 +1567,6 @@ The move was in response to the service being used to commit and facilitate prol
 The flaws are in how&amp;nbsp;Tailscale SSH&amp;nbsp;forwards network connections, a job the Tailscale background process carries out with root privileges. To use them, an attacker must</description>
       <guid isPermaLink="false">bbee19fe2fac38a7936f0ac75c5c0c452f0d5d50193097d3ea8bbd1cf9cbf7c8</guid>
       <pubDate>Wed, 28 Oct 2026 06:20:37 +0000</pubDate>
-    </item>
-    <item>
-      <title>ShinyHunters-Exploited Oracle PeopleSoft Zero-Day Turns Out to Be Three Chained Flaws - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/shinyhunters-exploited-oracle.html</link>
-      <description>The critical Oracle PeopleSoft bug that ShinyHunters has exploited since May is not one flaw but three chained together, the researchers who reported it said this week.
-Oracle patched all three under a single identifier,&amp;nbsp;CVE-2026-35273, in June. Its root is a server-side request forgery (SSRF) that reaches an internal management interface because PeopleSoft trusts its own loopback address</description>
-      <guid isPermaLink="false">bcb1cf25804925aaf1d0620533ee9f8d17c4d7f76a851ca74cb89f60bc03d3ef</guid>
-      <pubDate>Wed, 28 Oct 2026 06:04:58 +0000</pubDate>
-    </item>
-    <item>
-      <title>Adobe Commerce PolyShell Attacks Breach Hundreds of Stores as Brotli Exploit Traffic Emerges - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/adobe-commerce-polyshell-attacks-breach.html</link>
-      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Tuesday added two vulnerabilities impacting Adobe Commerce and Magento, and Google's Brotli decoder library to its Known Exploited Vulnerabilities (KEV) catalog, citing evidence of active exploitation.
-The vulnerabilities are listed below -
-  CVE-2026-111497 (CVSS score: 9.2) - An unchecked return value vulnerability in</description>
-      <guid isPermaLink="false">e09f093e7c75033a5825f1cbc55f90fae62b67cbd2e5f7845b7db34005bb14aa</guid>
-      <pubDate>Wed, 28 Oct 2026 05:42:26 +0000</pubDate>
-    </item>
-    <item>
-      <title>iCloudKit Extractor: seven months from an ADP dead end to a public toolkit - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xh42db/icloudkit_extractor_seven_months_from_an_adp_dead/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/D34dL0ck9327"&gt; /u/D34dL0ck9327 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/GiordanoSconti/iCloudKitExtractor"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xh42db/icloudkit_extractor_seven_months_from_an_adp_dead/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">07008322dde16cc85cda4e1d6b53cb3cb84e7203d6cfd5f79b222a95488c067b</guid>
-      <pubDate>Tue, 27 Oct 2026 20:37:40 +0000</pubDate>
-    </item>
-    <item>
-      <title>CyberStrikeAI Uses 44 AI Agents to Automate Hacking Operations Against Japan Targets - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/cyberstrikeai-uses-44-ai-agents-to.html</link>
-      <description>Cybersecurity researchers have disclosed details of three cyber attacks targeting organizations in Japan in which artificial intelligence (AI) was a key element, either in the driving seat or to assist a human operator.
-TrendAI, which analyzed three exposed server environments used by threat actors to conduct the malicious cyber operations, described them as distinct from previously published</description>
-      <guid isPermaLink="false">d3700d2f7b852d766f989b4c37b5c269f23d7f2b3f8af707bb862036d7f47a14</guid>
-      <pubDate>Tue, 27 Oct 2026 18:26:46 +0000</pubDate>
-    </item>
-    <item>
-      <title>I reverse engineered the Attack Shark X6 protocol to get a Linux app for it, and I'd like the community to test it and tell me what to build next - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xgupyc/i_reverse_engineered_the_attack_shark_x6_protocol/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/blakok14"&gt; /u/blakok14 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/blak0p/attack-shark-linux"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xgupyc/i_reverse_engineered_the_attack_shark_x6_protocol/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">c837b10208b21923cf13219b376cec23fbf452055af6ca683cc43c9dd2074800</guid>
-      <pubDate>Tue, 27 Oct 2026 14:55:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>Rooting a 2024 Samsung Tizen 9 TV from its own browser - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xgunma/rooting_a_2024_samsung_tizen_9_tv_from_its_own/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/pixelsperfect"&gt; /u/pixelsperfect &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/commit-regrets/samsung_tizen_tv_root"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xgunma/rooting_a_2024_samsung_tizen_9_tv_from_its_own/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">0a12042f3aa5f932f54a41464973cc995ab8b5f58f14cfad5cade47fa568f2a5</guid>
-      <pubDate>Tue, 27 Oct 2026 14:52:46 +0000</pubDate>
-    </item>
-    <item>
-      <title>GoAhead TLS Flaws Allow Revoked Client Certificates and Enable Session Decryption - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/goahead-tls-flaws-allow-revoked-client.html</link>
-      <description>The GoAhead embedded web server loaded a certificate revocation list into its default TLS backend but never turned revocation checking on, so a revoked client certificate could still pass login on affected setups.
-The flaw is in builds that use the OpenSSL backend with mutual-TLS, where the server checks a client certificate and vice versa, and a revocation list is configured to block revoked</description>
-      <guid isPermaLink="false">45ee31dacbc39b77cb70188d873565a439fc13d6399fe401761dba5cd71a0b6e</guid>
-      <pubDate>Tue, 27 Oct 2026 13:59:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>Apple Backports Fix for Exploited CoreGraphics Flaw to Older iPhones and iPads - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/apple-backports-fix-for-exploited.html</link>
-      <description>Apple on Monday backported fixes for a high-severity security flaw that was exploited in real-world cyber attacks to older devices.
-The vulnerability, tracked as CVE-2026-86950 (CVSS score: 8.8), is an out-of-bounds write affecting CoreGraphics that could result in arbitrary code execution when processing a maliciously crafted file.
-Patches for the flaw were released last month by Apple in</description>
-      <guid isPermaLink="false">4cc782e5b6fe30533a93f98420c7714fe9b5b5386f3a398f1136676247413c92</guid>
-      <pubDate>Tue, 27 Oct 2026 13:59:09 +0000</pubDate>
-    </item>
-    <item>
-      <title>Microsoft Authenticator Flaw Let Permissionless Android Apps Steal Work Account Tokens - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/microsoft-authenticator-flaw-let.html</link>
-      <description>Microsoft has fixed a flaw in its Authenticator app for Android that let a malicious app with no permissions pose as a trusted Microsoft app, such as Teams, and collect sign-in tokens for a victim's work account.
-Microsoft tracks the flaw as&amp;nbsp;CVE-2026-80097&amp;nbsp;and fixed it in Authenticator for Android version 6.2606.4246, so anyone using the app should update.
-In the researchers' tests,</description>
-      <guid isPermaLink="false">42406ca84a0cdf972312af960b7085ac54f9833ee0f77fc1dff6889546756889</guid>
-      <pubDate>Tue, 27 Oct 2026 12:09:50 +0000</pubDate>
-    </item>
-    <item>
-      <title>Keystone to Destroy 18,835 Hardware Wallets After Hackers Steal Device Verification Key - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/keystone-to-destroy-18835-hardware.html</link>
-      <description>An attacker who gained access to Keystone's website obtained the key that its hardware wallets use to prove they are genuine, the company said in a&amp;nbsp;statement&amp;nbsp;on October 26.
-Someone with that key could build counterfeit devices that pass the online check owners use to verify a Keystone. A buyer who trusted a counterfeit could have their crypto stolen, but the incident did not involve</description>
-      <guid isPermaLink="false">d650a5f0e5dc254f92377bf787bc0625ba683fc4f66194fd08e13e6d706774f2</guid>
-      <pubDate>Tue, 27 Oct 2026 11:46:00 +0000</pubDate>
     </item>
   </channel>
 </rss>
