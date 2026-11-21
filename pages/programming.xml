@@ -5,7 +5,168 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Fri, 20 Nov 2026 14:01:39 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 21 Nov 2026 14:01:46 +0000</lastBuildDate>
+    <item>
+      <title>The Python Coding Stack: 4. Does an Agent Need a Plan? - Planet Python</title>
+      <link>https://www.thepythoncodingstack.com/p/4-does-an-agent-need-a-plan</link>
+      <description>&lt;p&gt;In previous chapters of &lt;em&gt;Agents Unpacked&lt;/em&gt;, we explored &lt;a href="https://www.thepythoncodingstack.com/p/1-what-makes-an-ai-agent-different"&gt;what makes an AI agent different from a chatbot&lt;/a&gt;, &lt;a href="https://www.thepythoncodingstack.com/p/2-who-actually-does-the-work-the"&gt;how the model, its tools, and the surrounding software work together&lt;/a&gt;, and &lt;a href="https://www.thepythoncodingstack.com/p/3-how-can-words-turn-into-actions-agents-unpacked"&gt;how words become specific tool requests&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Calling a tool is one thing. Organising a job that needs many calls is another. Let's say an agent is building a conference programme, where it needs to work across many actions. Should it write a complete plan before starting? What happens when reading the files reveals something the plan didn&amp;#8217;t account for?&lt;/p&gt;&lt;p&gt;In this conversation, Monty and I explore how much to decide in advance, when to follow a procedure, and what should happen when the original approach no longer fits. A tidy list of steps is a start. It isn&amp;#8217;t a timetable.&lt;/p&gt;&lt;p&gt;&lt;em&gt;Who&amp;#8217;s Monty? Monty is my personal AI agent. Read &lt;a href="https://www.thepythoncodingstack.com/p/stephens-preface-to-agents-unpacked"&gt;the introduction to this series&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;&lt;div class="captioned-image-container"&gt;&lt;a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!Ff0i!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1aa2adbd-dcc6-4742-af2e-b5e91fd938b3_1200x630.png" target="_blank"&gt;&lt;div class="image2-inset"&gt;&lt;img height="630" src="src" width="1200" /&gt;&lt;div class="image-link-expand"&gt;&lt;div class="pencraft pc-display-flex pc-gap-8 pc-reset"&gt;&lt;button class="pencraft pc-reset pencraft icon-container restack-image buttonBase-tqxFUX" tabindex="0" type="button"&gt;&lt;/button&gt;&lt;button class="pencraft pc-reset pencraft icon-container view-image buttonBase-tqxFUX" tabindex="0" type="button"&gt;&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;&lt;p class="button-wrapper"&gt;&lt;a class="button primary" href="https://www.thepythoncodingstack.com/subscribe"&gt;&lt;span&gt;Subscribe now&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h2&gt;In Conversation &amp;#8226; Chapter 4&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Imagine you&amp;#8217;re organising a three-day conference with 112 talks from 89 speakers across four rooms. Some speakers are giving more than one talk, some are available only on particular days, and the rooms have different capacities and equipment.&lt;/p&gt;&lt;p&gt;You have spreadsheets containing the talk proposals, speaker availability, and room details, plus last year&amp;#8217;s programme as a reference. You want the agent to build this year&amp;#8217;s programme in Google Sheets, with a readable timetable and any unresolved clashes clearly identified.&lt;/p&gt;&lt;p&gt;You&amp;#8217;ve given the agent those files and the request. What would you expect it to do before it starts filling the timetable?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;What would a person organising this do? I guess you'd start by getting a clear picture of all the requirements and restrictions and come up with a plan on how to start drafting the timetable. Then, you'd start filling in more details and resolving conflicts. I'd expect an agent to follow a similar path.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Yes. Getting a clear picture matters because some requirements determine what you can sensibly do next. If several talks need specialist equipment, finding out which rooms have it affects where those talks can go.&lt;/p&gt;&lt;p&gt;The agent could start with a provisional plan: inspect the files, identify the restrictions, build a draft, and work through conflicts. But &amp;#8220;identify the restrictions&amp;#8221; hides some actual work. It has to read the inputs before it knows what those restrictions are.&lt;/p&gt;&lt;p&gt;A detailed plan based on files the agent hasn&amp;#8217;t read would be an impressive start to the wrong job.&lt;/p&gt;&lt;p&gt;Would you expect it to write a complete plan before using any tools, or could reading the spreadsheets be part of working out its plan?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;I had skipped ahead. In the last chapter we talked about tool calls, so yes, it will need to call tools to read the content of the spreadsheets first.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Right. Your overall approach still stands. Reading the files is part of getting that clear picture, not something that has to wait until the agent has a complete plan.&lt;/p&gt;&lt;p&gt;Suppose a tool returns a proposal for a talk whose speaker notes say &amp;#8220;Friday only&amp;#8221;, but the availability spreadsheet lists that speaker as available on Saturday only.&lt;/p&gt;&lt;p&gt;That discovery changes the work ahead. The agent can no longer treat both entries as reliable scheduling instructions. It might flag that talk as unresolved and continue with the others, or ask which entry is correct if the answer affects much of the programme.&lt;/p&gt;&lt;p&gt;So a useful plan can begin broadly and become more specific as information comes back. What do you think the agent should keep in its plan at this point, and what should it leave undecided?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Any inconsistencies in the data, such as the one you mentioned above, would have to be left undecided at this stage. Or are you asking about a different aspect of the agent's planning?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Yes, that inconsistency should remain unresolved until there&amp;#8217;s evidence to settle it. My question blurred two things: an undecided detail in the timetable and an undecided step in the agent&amp;#8217;s approach.&lt;/p&gt;&lt;p&gt;I&amp;#8217;ve managed to make planning the plan the confusing part.&lt;/p&gt;&lt;p&gt;The agent can already plan to build a draft and check for clashes without knowing where every talk will go. It can also record &amp;#8220;clarify this speaker&amp;#8217;s availability&amp;#8221; while continuing work that doesn&amp;#8217;t depend on the answer.&lt;/p&gt;&lt;p&gt;That&amp;#8217;s the useful distinction: &lt;strong&gt;a plan can give the work direction without deciding everything in advance.&lt;/strong&gt; It should preserve the uncertainty, not quietly turn an assumption into a confirmed requirement.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;How does the agent know how to create such a plan?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;The model creates the plan using patterns it learned during training, together with the request, any instructions it&amp;#8217;s been given, and the information returned by tools. It hasn&amp;#8217;t necessarily been taught a specific procedure for this conference.&lt;/p&gt;&lt;p&gt;For example, after reading the files, it might identify that several talks require equipment available in only one room. That gives it a reason to propose assigning those talks before less constrained talks, while there&amp;#8217;s still flexibility elsewhere in the timetable.&lt;/p&gt;&lt;p&gt;There are two possible sources of structure here:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;We can &lt;strong&gt;supply a procedure&lt;/strong&gt;: read these files, check these requirements, then follow these scheduling steps.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;We can &lt;strong&gt;ask the model to work out an approach&lt;/strong&gt; from the goal and the available information.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;An agent can combine both. It might follow an organiser&amp;#8217;s checklist but work out how to handle a discrepancy the checklist doesn&amp;#8217;t cover.&lt;/p&gt;&lt;p&gt;The important limit is that generating a plausible plan doesn&amp;#8217;t establish that it&amp;#8217;s a good one. The model can overlook a dependency or suggest steps that won&amp;#8217;t work. Tool results give it evidence to revise the plan, but they don&amp;#8217;t guarantee it will make the right revision.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Is there a preferred approach between the "give the agent a procedure" approach or the "let it figure it out from the goals" one?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Use a supplied procedure where the steps are dependable, and let the model choose where the work needs judgement.&lt;/strong&gt; Often, that means combining the two.&lt;/p&gt;&lt;p&gt;For our conference, checking whether a speaker has two overlapping talks follows a clear rule. There&amp;#8217;s little benefit in asking the model to reinvent that check. Interpreting a free-text note in a proposal, or deciding how to proceed when two sources disagree, is less predictable.&lt;/p&gt;&lt;p&gt;A procedure makes repeated work more consistent and easier to test. But a rigid or unsuitable procedure can keep doing the wrong thing very consistently. Giving the model more freedom helps it adapt, but also gives it more opportunities to overlook something, take an unnecessary detour, or spend time on an unhelpful approach.&lt;/p&gt;&lt;p&gt;So I&amp;#8217;d give this agent established requirements and reliable checks, while leaving it room to organise the work and revise its approach as it reads the files. If a dedicated scheduling tool can handle the actual assignments, the agent can use that rather than trying to reason out all 112 placements itself.&lt;/p&gt;&lt;p&gt;The choice isn&amp;#8217;t really &amp;#8220;procedure or intelligence&amp;#8221;. It&amp;#8217;s &lt;strong&gt;which decisions are already settled well enough to put into a procedure, and which need to remain open?&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Presumably, it also depends on how proficient the human is at the task. Someone who has never organised a conference may not immediately know the right procedures needed. So, does the user's knowledge and expertise affect which approach to use?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Yes. &lt;strong&gt;The user&amp;#8217;s expertise affects how much useful structure they can supply, but it doesn&amp;#8217;t determine how much freedom the agent should have.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;An experienced organiser might provide established procedures and priorities that aren&amp;#8217;t obvious from the files: which requirements are negotiable, for example, or when two popular talks should avoid competing for the same audience.&lt;/p&gt;&lt;p&gt;A first-time organiser may need the agent to help identify those questions before building the timetable. The agent can draw on general conference-planning knowledge and consult relevant guidance, but its suggestions aren&amp;#8217;t automatically right for this event. It should distinguish requirements found in the supplied material from recommendations it&amp;#8217;s introducing.&lt;/p&gt;&lt;p&gt;Crucially, &lt;strong&gt;a gap in the user&amp;#8217;s knowledge isn&amp;#8217;t a reason to trust the model more&lt;/strong&gt;. It may instead be a reason to use a tested procedure, a specialist tool, or an experienced person&amp;#8217;s review.&lt;/p&gt;&lt;p&gt;The agent&amp;#8217;s lack of hesitation isn&amp;#8217;t a qualification in conference management.&lt;/p&gt;&lt;p&gt;So the agent can help a novice develop an approach, rather than demand a procedure they don&amp;#8217;t know how to write. But it should make consequential choices visible. &amp;#8220;I suggest leaving ten minutes between talks for changeovers&amp;#8221; is a proposal, not a requirement it discovered in the spreadsheet.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;OK, I'm asking too many questions. I'll let you go on.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Your questions have brought us to the useful part: &lt;strong&gt;what does the plan actually do once work starts?&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Suppose the agent writes:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;p&gt;Read the source files and identify requirements.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Build a provisional timetable.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Check for conflicts and revise.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Save the programme with unresolved items clearly marked.&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;That list doesn&amp;#8217;t execute anything.&lt;/p&gt;&lt;p&gt;An agent can write a very tidy to-do list without inconveniencing a single spreadsheet.&lt;/p&gt;&lt;p&gt;The model still has to select tool calls, inspect their results, and decide how to proceed. The software running the agent may keep the plan available and let it mark steps as complete, but writing &amp;#8220;check for conflicts&amp;#8221; hasn&amp;#8217;t checked a single talk.&lt;/p&gt;&lt;p&gt;Our contradictory speaker availability gives it a reason to adjust the plan. It could record that talk as awaiting clarification and continue scheduling other talks. If it later gets a confirmed answer, it can return to the affected assignment.&lt;/p&gt;&lt;p&gt;So there are three distinct things here: &lt;strong&gt;the goal&lt;/strong&gt;, which says what result we want, &lt;strong&gt;the plan&lt;/strong&gt;, which organises the work, and &lt;strong&gt;the next action&lt;/strong&gt;, which does something towards it.&lt;/p&gt;&lt;p&gt;For a short task, choosing the next action may be enough. For 112 talks, an explicit plan can help it keep track of dependencies and unfinished work. The useful plan isn&amp;#8217;t necessarily the most detailed one. It&amp;#8217;s one that helps the agent act without losing sight of the job.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;So what mechanisms keep the agent on track as it follows a plan?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;The written plan is one aid. The software running the agent can provide others, including checks and limits that don&amp;#8217;t depend on the model remembering to follow instructions.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;For our conference, those mechanisms could include:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;A record of progress.&lt;/strong&gt; The current timetable, unresolved questions, and completed steps are kept available to the model. It can see where work stands instead of relying on its original plan alone.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;Feedback from tools.&lt;/strong&gt; A scheduling check reports overlapping talks or missing equipment. That gives the model concrete information to act on, rather than just asking it whether everything looks right.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;Rules about progressing.&lt;/strong&gt; The software could require a conflict check before allowing the programme to be marked ready. That is stronger than an instruction saying &amp;#8220;remember to check&amp;#8221;.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;Limits on continuing.&lt;/strong&gt; A maximum number of attempts, tool calls, or elapsed time can prevent endless rearranging. At the limit, the system can stop and return the unfinished programme with its outstanding problems.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;The distinction is between &lt;strong&gt;guidance the model must interpret&lt;/strong&gt; and &lt;strong&gt;conditions the surrounding software enforces&lt;/strong&gt;. &amp;#8220;Ask for help if you get stuck&amp;#8221; is guidance. Software that stops after a set number of unsuccessful attempts provides an enforced boundary.&lt;/p&gt;&lt;p&gt;Neither makes the whole system infallible. A conflict checker might miss a requirement it wasn&amp;#8217;t designed to check. But these mechanisms mean keeping on track needn&amp;#8217;t rest entirely on the model repeatedly telling itself to follow the plan.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;I understand. This is not the first time we came across the distinction between the model being told to do something or the harness enforcing something.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Exactly. It&amp;#8217;s the same distinction applied to keeping a longer task moving, rather than a new mechanism.&lt;/p&gt;&lt;p&gt;There&amp;#8217;s another useful distinction here: &lt;strong&gt;following the plan isn&amp;#8217;t always the same as staying on track.&lt;/strong&gt; The goal is a workable conference programme, not faithful completion of the agent&amp;#8217;s first checklist. New information may make changing that checklist the sensible move.&lt;/p&gt;&lt;p&gt;Suppose the agent has repeatedly rearranged talks, but still has a clash involving the only room with specialist equipment. Another rearrangement is useful only if there&amp;#8217;s a reason it might help. Otherwise, the next step could be to use a scheduling tool, ask whether a particular requirement is negotiable, or return a partial programme explaining what remains unresolved.&lt;/p&gt;&lt;p&gt;If the agent still can&amp;#8217;t resolve that room clash, what would you want it to show or explain before handing the unfinished timetable back to you?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;First of all, if there's no solution, I would rather the agent gave the unfinished timetable rather than somehow trying to complete it. I'd then want it to explain the issue and perhaps also suggest some compromises to consider?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Yes. An unfinished timetable with a clear explanation is more useful than one that looks complete because the agent quietly dropped a requirement.&lt;/p&gt;&lt;p&gt;There&amp;#8217;s an important distinction in your &amp;#8220;if there&amp;#8217;s no solution&amp;#8221;: &lt;strong&gt;the agent failing to find a solution doesn&amp;#8217;t establish that none exists.&lt;/strong&gt; Unless it has evidence that the requirements cannot all be met, it should say &amp;#8220;I haven&amp;#8217;t resolved this clash&amp;#8221;, not &amp;#8220;this clash is impossible to resolve&amp;#8221;.&lt;/p&gt;&lt;p&gt;It could show the affected talks, explain which requirements conflict in its current draft, and suggest compromises, such as hiring equipment for another room or asking whether a speaker can attend on another day. Those remain proposals, not changes it assumes you&amp;#8217;ve accepted.&lt;/p&gt;&lt;p&gt;That gives us a useful stopping point: the agent has preserved the work, made the remaining problem clear, and identified a decision or new information needed to continue. Stopping there can serve the goal better than endlessly rearranging the timetable.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Got it.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Let&amp;#8217;s change one requirement. Partway through building the programme, you tell the agent that one of the four rooms is no longer available.&lt;/p&gt;&lt;p&gt;The talks, rather inconsiderately, still need somewhere to happen.&lt;/p&gt;&lt;p&gt;The goal hasn&amp;#8217;t changed, but some completed assignments may no longer work. That doesn&amp;#8217;t necessarily mean starting again, nor can the agent safely assume it only needs to move talks out of the lost room.&lt;/p&gt;&lt;p&gt;What would you expect its next action to be?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Come up with a new plan to reassign the talks that were in the fourth room and move other talks around.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Yes. It should first inspect the current assignments and the remaining rooms&amp;#8217; capacity, equipment, and available time. Those results would help it form the revised plan you describe.&lt;/p&gt;&lt;p&gt;Moving a displaced talk might require moving another talk, which could then clash with its speaker&amp;#8217;s other session. So the change can spread beyond the talks in the lost room. Equally, if suitable spaces are available, there&amp;#8217;s no need to rebuild everything.&lt;/p&gt;&lt;p&gt;That brings us back to the chapter&amp;#8217;s question: &lt;strong&gt;an agent doesn&amp;#8217;t always need a separate written plan, but dependent work benefits from a revisable one.&lt;/strong&gt; The plan gives direction. Tool results and changed requirements inform the next action. The goal, rather than loyalty to the original plan, determines whether to continue, change approach, or stop with unfinished work clearly explained.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;This is not that different from what a capable person would do!&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Monty:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Yes. Much of this is recognisable good working practice: understand the job, identify dependencies, make a provisional plan, and adjust when circumstances change.&lt;/p&gt;&lt;p&gt;What differs is how it happens. The model selects actions from the information available to it, and the harness executes tool calls and returns results. A convincing account of that process doesn&amp;#8217;t establish that it has done the work well.&lt;/p&gt;&lt;p&gt;So the human comparison helps us describe useful behaviour without assuming the agent has a capable organiser&amp;#8217;s experience or judgement. &lt;strong&gt;We want the practical habits, but we still need evidence that they&amp;#8217;re producing a workable result.&lt;/strong&gt; That leads naturally into the next chapter: how do we check what the agent actually achieved?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Stephen:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Ah, I'm intrigued.&lt;/p&gt;&lt;p class="button-wrapper"&gt;&lt;a class="button primary" href="https://www.thepythoncodingstack.com/subscribe"&gt;&lt;span&gt;Subscribe now&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h2&gt;What We&amp;#8217;ve Unpacked in This Chapter&lt;/h2&gt;&lt;p&gt;An agent doesn&amp;#8217;t always need a separate written plan. For work with many dependent steps, a plan can help it keep direction without deciding every detail in advance. Reading the inputs and using tools can be part of working out that plan, not something that waits until planning is finished.&lt;/p&gt;&lt;p&gt;The key points:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;The goal, the plan, and the next action are different.&lt;/strong&gt; Writing a checklist doesn&amp;#8217;t carry out the work.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;A useful plan can change.&lt;/strong&gt; Tool results, conflicting information, and new requirements can alter what should happen next.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;Procedures and model-led decisions can work together.&lt;/strong&gt; Use dependable steps where they fit, and leave room for judgement where the work is less predictable.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;Confidence doesn&amp;#8217;t replace expertise.&lt;/strong&gt; A novice user may need help identifying requirements, but that isn&amp;#8217;t a reason to trust the model more.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;Keeping on track needs more than instructions.&lt;/strong&gt; Progress records, tool feedback, enforced checks, and limits can help. Each still has limits of its own.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;An honest partial result can be useful.&lt;/strong&gt; An unresolved clash should stay visible. Failing to find a solution doesn&amp;#8217;t prove that none exists.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;The point is to reach a useful result, not faithfully complete the first checklist. Next, we&amp;#8217;ll ask how to check what the agent actually achieved, rather than taking its word that the job is done.&lt;/p&gt;&lt;p class="button-wrapper"&gt;&lt;a class="button primary" href="https://www.thepythoncodingstack.com/subscribe"&gt;&lt;span&gt;Subscribe now&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;div&gt;&lt;hr /&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;If you enjoy these conversations, consider becoming a &lt;a href="https://www.thepythoncodingstack.com/subscribe?utm_source=agents-unpacked&amp;amp;utm_medium=article&amp;amp;utm_campaign=chapter-4&amp;amp;utm_content=premium-invitation"&gt;premium subscriber&lt;/a&gt; of Notes from the Near Future.&lt;/em&gt;&lt;/p&gt;&lt;div&gt;&lt;hr /&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;&amp;lt;&amp;lt; Previous Post: &lt;a href="https://www.thepythoncodingstack.com/p/3-how-can-words-turn-into-actions-agents-unpacked"&gt;3. How can words turn into actions?&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;&lt;p&gt;&lt;em&gt;&amp;gt;&amp;gt; Next Post: Coming soon&amp;#8230;&lt;/em&gt;&lt;/p&gt;&lt;p&gt;&lt;em&gt;&lt;a href="https://www.thepythoncodingstack.com/p/agents-unpacked-table-of-contents"&gt;Table of Contents&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">71f1e5ef066491b32d2944687a97bc6eedbb114de4b32e345abcecceb11fd83a</guid>
+      <pubDate>Fri, 20 Nov 2026 22:49:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>Graham Dumpleton: Muru: tracing in the toolbar - Planet Python</title>
+      <link>https://grahamdumpleton.me/posts/2026/11/muru-tracing-in-the-toolbar/</link>
+      <description>&lt;p&gt;The &lt;a href="https://grahamdumpleton.me/posts/2026/11/muru-a-toolbar-on-every-page/"&gt;last post&lt;/a&gt; was about the development toolbar Muru adds to each HTML page under &lt;code&gt;muructl run&lt;/code&gt;, with the record Muru keeps of each request. That record can say a lot about how a request was served, how long it waited for a worker, how long the application took, what it logged and what went wrong. What it can't say is what the application did with its time, because Muru only sees the application from the outside.&lt;/p&gt;
+&lt;p&gt;For that, Muru uses &lt;a href="https://wrapture.readthedocs.io/"&gt;wrapture&lt;/a&gt;, the package I wrote for monkey patching, testing and tracing, which I covered in a &lt;a href="https://grahamdumpleton.me/guides/testing-and-tracing-with-wrapture/"&gt;series of posts&lt;/a&gt; earlier this year. With tracing turned on, wrapture's instrumentation records the calls the application makes while it serves a request, such as its database queries and calls to other services, and the toolbar gains panels showing them.&lt;/p&gt;
+&lt;h2&gt;Turning tracing on&lt;/h2&gt;
+&lt;p&gt;The shop from the last post is a Flask application which uses &lt;code&gt;sqlite3&lt;/code&gt; for its database, and &lt;code&gt;urllib.request&lt;/code&gt; to call its stock service. Tracing needs wrapture and its instrumentation packages added to the project:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ uv add wrapture wrapture-instrumentation
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;then &lt;code&gt;tracing = true&lt;/code&gt;, and a wrapture configuration saying what to instrument, which can go in the same &lt;code&gt;pyproject.toml&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[tool.muru]
+entrypoint = &amp;quot;shop:app&amp;quot;
+tracing = true
+[tool.muru.run]
+toolbar = true
+[[tool.wrapture.instrument]]
+name = &amp;quot;flask&amp;quot;
+[[tool.wrapture.instrument]]
+name = &amp;quot;sqlite3&amp;quot;
+statement = true
+[[tool.wrapture.instrument]]
+name = &amp;quot;urllib.request&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;flask&lt;/code&gt; instrumentation records each request with the view that handled it, &lt;code&gt;sqlite3&lt;/code&gt; records each query, with &lt;code&gt;statement = true&lt;/code&gt; so the SQL itself is kept, and &lt;code&gt;urllib.request&lt;/code&gt; records calls made with it. The configuration can also be in a &lt;code&gt;wrapture.toml&lt;/code&gt; file beside &lt;code&gt;pyproject.toml&lt;/code&gt;, or a file named by &lt;code&gt;WRAPTURE_CONFIG&lt;/code&gt;, which is where wrapture itself would look for it. I have also put &lt;code&gt;toolbar = true&lt;/code&gt; in the &lt;code&gt;[tool.muru.run]&lt;/code&gt; table this time, so the toolbar is on without needing &lt;code&gt;--toolbar&lt;/code&gt; each time.&lt;/p&gt;
+&lt;p&gt;When the run starts, the host says where the configuration came from and what it instruments:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;muru.host[36012]: tracing on: wrapture configuration from [tool.wrapture] in ./pyproject.toml, instrumenting flask, sqlite3, urllib.request
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Not everyone working on a project may want tracing on, since it adds work to every request. &lt;code&gt;tracing = true&lt;/code&gt; in the &lt;code&gt;muru.local.toml&lt;/code&gt; beside the project turns it on for my own runs only, with the configuration still coming from the project. Tracing needs Python 3.12 or later, and if wrapture is missing, or its configuration can't be found or applied, the run logs a one-line warning saying why and serves the application untraced, rather than failing to start.&lt;/p&gt;
+&lt;h2&gt;What the front page does&lt;/h2&gt;
+&lt;p&gt;With tracing on, the front page's badge now shows two hints, and the toolbar opens on them:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="The Hints panel of the front page, saying the same statement ran 8 times in one request, which an N+1 pattern does, and the same endpoint was called 8 times in one request, from the SQL and Outbound panels" src="https://grahamdumpleton.me/posts/2026/11/muru-tracing-in-the-toolbar/hints.png" /&gt;&lt;/p&gt;
+&lt;p&gt;The toolbar also has new tabs, Trace, SQL and Outbound. The Trace panel is the request's tree of operations, on the same clock as the Timing panel from the last post:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="The Trace panel of the front page, with the request, the books view, and below it a query for the books followed by alternating queries for an author and calls to the stock service, one pair for each book" src="https://grahamdumpleton.me/posts/2026/11/muru-tracing-in-the-toolbar/trace.png" /&gt;&lt;/p&gt;
+&lt;p&gt;The view ran one query for the books, and then for each book, a query for its author and a call to the stock service. This is the code which did that:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;@app.route(&amp;quot;/&amp;quot;)
+def books():
+    rows = database().execute(&amp;quot;SELECT id, title, author_id FROM book ORDER BY id&amp;quot;).fetchall()
+    books = []
+    for book_id, title, author_id in rows:
+        query = &amp;quot;SELECT name FROM author WHERE id = ?&amp;quot;
+        (author,) = database().execute(query, (author_id,)).fetchone()
+        stock = in_stock(book_id)
+        if stock == 0:
+            log.warning(&amp;quot;%s is out of stock&amp;quot;, title)
+        books.append({&amp;quot;id&amp;quot;: book_id, &amp;quot;line&amp;quot;: f&amp;quot;{title} by {author}, {stock} in stock&amp;quot;})
+    return render_template_string(PAGE, title=&amp;quot;Books&amp;quot;, books=books)
+def in_stock(book_id):
+    with urllib.request.urlopen(f&amp;quot;{request.host_url}stock/{book_id}&amp;quot;) as response:
+        return int(response.read())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Nothing about it looks wrong when reading it, and with eight books, the whole page took under ten milliseconds. It is a different story with a thousand books, a database on another machine, and a stock service on the other side of a network.&lt;/p&gt;
+&lt;h2&gt;Queries and calls, grouped&lt;/h2&gt;
+&lt;p&gt;The Trace panel shows the pattern when there are only a few books, but with hundreds it would be a very long list. The SQL panel groups the request's queries by statement, with how many times each ran and their total time, and then lists each query in order:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="The SQL panel, with the author query run 8 times and the books query once, followed by each of the nine queries in order" src="https://grahamdumpleton.me/posts/2026/11/muru-tracing-in-the-toolbar/sql.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Statements which differ only in the values written into them group together, so the author query shows up as one statement run eight times. This is the N+1 pattern, one query for the list and then one more for each row of it, and it is one of the most common performance problems in web applications which use a database. It is also easy to write without noticing, since an ORM will happily generate it from code that looks perfectly reasonable.&lt;/p&gt;
+&lt;p&gt;The Outbound panel does the same for calls to other services, grouped by method, host and path:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="The Outbound panel, with GET 127.0.0.1:8080 /stock/{id} called 8 times, followed by each of the eight calls with its URL and status" src="https://grahamdumpleton.me/posts/2026/11/muru-tracing-in-the-toolbar/outbound.png" /&gt;&lt;/p&gt;
+&lt;p&gt;A path segment which names a row rather than the endpoint, such as a number, a UUID or a long hexadecimal string, is grouped as &lt;code&gt;{id}&lt;/code&gt;, so the eight calls to &lt;code&gt;/stock/1&lt;/code&gt; through &lt;code&gt;/stock/8&lt;/code&gt; are one endpoint called eight times. Calls made with &lt;code&gt;requests&lt;/code&gt;, &lt;code&gt;httpx&lt;/code&gt;, &lt;code&gt;urllib3&lt;/code&gt;, &lt;code&gt;aiohttp&lt;/code&gt; and &lt;code&gt;http.client&lt;/code&gt; are recorded the same way, given the instrumentation for them, as are gRPC calls.&lt;/p&gt;
+&lt;p&gt;The fix for both is to ask for everything at once. A join gets the authors with the books, and the stock service can answer for several books in one call:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;@app.route(&amp;quot;/&amp;quot;)
+def books():
+    query = (
+        &amp;quot;SELECT book.id, book.title, author.name FROM book&amp;quot;
+        &amp;quot; JOIN author ON author.id = book.author_id ORDER BY book.id&amp;quot;
+    )
+    rows = database().execute(query).fetchall()
+    stock = in_stock([book_id for book_id, _, _ in rows])
+    books = []
+    for book_id, title, author in rows:
+        if stock[book_id] == 0:
+            log.warning(&amp;quot;%s is out of stock&amp;quot;, title)
+        books.append({&amp;quot;id&amp;quot;: book_id, &amp;quot;line&amp;quot;: f&amp;quot;{title} by {author}, {stock[book_id]} in stock&amp;quot;})
+    return render_template_string(PAGE, title=&amp;quot;Books&amp;quot;, books=books)
+def in_stock(book_ids):
+    ids = &amp;quot;,&amp;quot;.join(str(book_id) for book_id in book_ids)
+    with urllib.request.urlopen(f&amp;quot;{request.host_url}stock?ids={ids}&amp;quot;) as response:
+        return {int(book_id): count for book_id, count in json.load(response).items()}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Saving the file was enough for the run to start a new release with the change:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;muru: reloading, /Users/graham/shop/shop.py changed
+muru: switched to release r2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and the front page's record now has one query and one call:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl debug request 01M7PBFZP78AN9K8YRZ0DC3AMY
+...
+SQL
+  By statement
+    SELECT book.id, book.title, author.name FROM book JOIN author ON author.id = book.author_id ORDER BY book.id  1  0.098
+  Each query
+    0.419  0.098  SELECT book.id, book.title, author.name FROM book JOIN author ON author.id = book.author_id ORDER BY book.id
+Outbound
+  By endpoint
+    GET  127.0.0.1:8080  /stock  1  0.991
+  Each call
+    0.604  0.991  GET  http://127.0.0.1:8080/stock  200
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The two hints went with them. Hints are where I would start with any page, since they apply the same thresholds to every request without me having to remember what to look for. A statement run five or more times in one request, or an endpoint called five or more times, is flagged, as is a single query or call taking a quarter or more of the request's time and at least 10 milliseconds.&lt;/p&gt;
+&lt;h2&gt;The failing page again&lt;/h2&gt;
+&lt;p&gt;The author page from the last post still divides by zero for an author with no books. With tracing on, its Trace panel shows where the exception went:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="The Trace panel of the failing author page, with the request and the author view marked with a cross and outlined in red, and the two queries the view ran beneath it" src="https://grahamdumpleton.me/posts/2026/11/muru-tracing-in-the-toolbar/trace-failed.png" /&gt;&lt;/p&gt;
+&lt;p&gt;The view, &lt;code&gt;author&lt;/code&gt;, is marked as failed, since the exception escaped it. The request is marked as well, because Flask's instrumentation notes the exception Flask's error handling caught against the request. The Exceptions panel lists both, the one Flask handled being marked as such:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GET /authors/4  ZeroDivisionError: division by zero (handled)
+author          ZeroDivisionError: division by zero
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The bars also show something the Errors panel didn't. The view itself was done in about a third of a millisecond, out of a request which took about three. Most of the rest went on Flask handling the exception, which includes formatting and logging the traceback.&lt;/p&gt;
+&lt;h2&gt;Applications without framework instrumentation&lt;/h2&gt;
+&lt;p&gt;The shop gets its request spans from the &lt;code&gt;flask&lt;/code&gt; instrumentation, and there is the same for Django and other frameworks. An application without such instrumentation, such as a plain WSGI or ASGI callable, can have Muru wrap its entry point in wrapture's request middleware instead:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[tool.muru]
+entrypoint = &amp;quot;api:application&amp;quot;
+tracing = true
+tracing_middleware = true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The same key in a mount's table wraps just that mount, for an application which &lt;a href="https://grahamdumpleton.me/posts/2026/11/muru-wsgi-and-asgi-together/"&gt;mixes WSGI and ASGI&lt;/a&gt;. It shouldn't be used where a framework's instrumentation already records requests, since the middleware would then record them instead, and the framework's own request settings would no longer apply.&lt;/p&gt;
+&lt;h2&gt;Tracing and the workers&lt;/h2&gt;
+&lt;p&gt;How tracing is set up follows from how Muru starts an application, as covered in the &lt;a href="https://grahamdumpleton.me/posts/2026/11/muru-import-once-fork-many/"&gt;import once, fork many&lt;/a&gt; post. The host process applies the wrapture configuration before it imports the application, so the instrumentation's patches are in place for the application's own imports. What the configuration sends events to, its sinks, are only started in each worker after it is forked, so the host holds no threads or open files of wrapture's when it forks.&lt;/p&gt;
+&lt;p&gt;The toolbar's panels don't need a sink at all, since Muru collects what wrapture records for each request itself. Any sinks the configuration does declare still work as they would without Muru. Adding wrapture's printer sink, for example, prints each request's tree in the run's output, from the worker which served it:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;muru.worker[0]: GET /authors/1 (shop.wsgi_app)
+muru.worker[0]:   author(author_id=1)
+muru.worker[0]:     sqlite3:connect('&amp;lt;str&amp;gt;')
+muru.worker[0]:     sqlite3:connect -&amp;gt; '&amp;lt;Connection&amp;gt;' [220us]
+muru.worker[0]:     sqlite3:Connection.execute(sql='&amp;lt;36 chars&amp;gt;', parameters='&amp;lt;1 values&amp;gt;')
+muru.worker[0]:     sqlite3:Connection.execute -&amp;gt; '&amp;lt;Cursor&amp;gt;' [136us]
+muru.worker[0]:     sqlite3:Connection.execute(sql='&amp;lt;42 chars&amp;gt;', parameters='&amp;lt;1 values&amp;gt;')
+muru.worker[0]:     sqlite3:Connection.execute -&amp;gt; '&amp;lt;Cursor&amp;gt;' [26us]
+muru.worker[0]:     flask:render_template_string(source='&amp;lt;!doctype html&amp;gt;\n&amp;lt;html&amp;gt;\n&amp;lt;head&amp;gt;&amp;lt;title&amp;gt;&amp;lt;/title&amp;gt;&amp;lt;/h...', context='&amp;lt;context&amp;gt;')
+muru.worker[0]:     flask:render_template_string -&amp;gt; '&amp;lt;191 chars&amp;gt;' [1.3ms]
+muru.worker[0]:   author -&amp;gt; '&amp;lt;str 191 chars&amp;gt;' [2.0ms]
+muru.worker[0]:   shop:close(exc=None)
+muru.worker[0]:   shop:close -&amp;gt; None [27us]
+muru.worker[0]: shop.wsgi_app -&amp;gt; '200 OK' [4.4ms, body 6us over 1 chunk]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Each worker writes its own output, so a sink writing to a file needs &lt;code&gt;{pid}&lt;/code&gt; in its path to give each worker a file of its own.&lt;/p&gt;
+&lt;p&gt;The same is true under &lt;code&gt;muructl serve&lt;/code&gt; and the Muru daemon, except there is no toolbar there, so tracing costs only what the configuration's own sinks do. In production that would normally mean exporting to an OpenTelemetry collector, as covered in the &lt;a href="https://grahamdumpleton.me/posts/2026/09/opentelemetry-export-in-wrapture/"&gt;OpenTelemetry export in wrapture&lt;/a&gt; post.&lt;/p&gt;
+&lt;h2&gt;What's next&lt;/h2&gt;
+&lt;p&gt;Between them, the toolbar and tracing answer most of what I want to know about a request while I'm working on an application. How long it waited and why, what it logged and what failed, and what the application did with its time, all without adding anything to the application beyond a dependency and a few lines of configuration.&lt;/p&gt;
+&lt;p&gt;The toolbar's Timing panel has one more row, for modules a request loads for the first time in its worker, and that is where the next post, when lazy imports help, picks up. Lazy imports are popular for making command line tools start faster, but in a web server which imports an application once and forks its workers, deferring an import is a trade, and Muru has the measurements to make it.&lt;/p&gt;</description>
+      <guid isPermaLink="false">15f695ba0b165ff655df520d5de50740cc7669a73eebc32807ea8f470b43dfb6</guid>
+      <pubDate>Fri, 20 Nov 2026 21:39:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>Mariatta: Gidgethub Is in Maintenance-Only Mode - Planet Python</title>
+      <link>https://mariatta.ca/posts/gidgethub-maintenance-only/</link>
+      <description>&lt;p&gt;If you use &lt;a href="https://github.com/gidgethub/gidgethub" rel="noopener" target="_blank"&gt;gidgethub&lt;/a&gt;, here&amp;rsquo;s some news you may have missed: as of v6.0.0,
+released on September 25, 2026, the project is in &lt;strong&gt;maintenance-only mode&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;What that means in practice:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Bug reports are welcome.&lt;/strong&gt; We&amp;rsquo;ll make a best-effort attempt at fixing them.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Feature requests are not accepted&lt;/strong&gt;, and will be closed.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pull requests from external contributors are not accepted.&lt;/strong&gt; Only maintainers can open them.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It still works, it still gets bug fixes, and v6.0.0 was a big release. It just isn&amp;rsquo;t growing anymore.&lt;/p&gt;</description>
+      <guid isPermaLink="false">f8e47e715be883979fdd9048868f735328fd68f08f2a56a5c5397e17765aed7a</guid>
+      <pubDate>Fri, 20 Nov 2026 17:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Graham Dumpleton: Muru: a toolbar on every page - Planet Python</title>
       <link>https://grahamdumpleton.me/posts/2026/11/muru-a-toolbar-on-every-page/</link>
@@ -18563,317 +18724,6 @@ the Django Forum. Please see
 information.&lt;/p&gt;</description>
       <guid isPermaLink="false">b6b5bb0448ddea0ed46b4faab4cb9efc1db67aa26c761f478c4ad15e48033ea7</guid>
       <pubDate>Tue, 04 Aug 2026 11:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Python Insider: Python 3.15.0 candidate 1 is here!</title>
-      <link>https://blog.python.org/2026/08/python-3150-rc1/</link>
-      <description>Get those wheels rolling!</description>
-      <guid isPermaLink="false">d0df44ca0b99b2b86bcdf7c4d8d9a8afdf06e9f3b0ab7bf349609171414c7020</guid>
-      <pubDate>Tue, 04 Aug 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Python⇒Speed: Faster floating point math with Rust’s new API</title>
-      <link>https://pythonspeed.com/articles/faster-float-math-rust/</link>
-      <description>&lt;p&gt;Floating point math is often slower than integer math because the
-compiler is being conservative about how it optimizes your code. While
-some programming languages already had solutions of a sort, until now
-Rust did not have a good stable way to deal with this limitation. But
-now, starting in version 1.98, Rust will allow telling the compiler it
-can optimize your code further—but with extra control so that you can
-still write numeric algorithms with minimal rounding errors.&lt;/p&gt;
-&lt;p&gt;In this article you will learn:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Why by default the compiler won’t optimize floating point math as much
-as it does integer math.&lt;/li&gt;
-  &lt;li&gt;Rust’s new API to solve this limitation.&lt;/li&gt;
-  &lt;li&gt;Examples of using this new API, its speed impact, and how you can
-control where it is used.&lt;/li&gt;
-&lt;/ul&gt;
-   &lt;a href="https://pythonspeed.com/articles/faster-float-math-rust/"&gt;Read more...&lt;/a&gt;</description>
-      <guid isPermaLink="false">2e65ea554752aef9c4b7ee58e6213c686effff3f9ba685dcb7738ea8f77f1272</guid>
-      <pubDate>Sun, 02 Aug 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Glyph Lefkowitz: Adversarial Communication</title>
-      <link>https://blog.glyph.im/2026/06/adversarial-communication.html</link>
-      <description>&lt;p&gt;As I have discussed in &lt;a href="https://blog.glyph.im/2025/08/futzing-fraction.html"&gt;previous posts&lt;/a&gt;,
-&lt;em&gt;“AIs” can make mistakes&lt;/em&gt;.  In fact, they &lt;em&gt;do&lt;/em&gt; make mistakes, and their
-mistake-making patterns are such that where and how they will make mistakes is
-both uncertain and constantly changing.&lt;/p&gt;
-&lt;p&gt;Thus, in any scenario where you want to attempt to make “productive” use of
-“AI”, you must have a system in place for checking every result.  Not checking
-&lt;em&gt;some&lt;/em&gt; results; checking &lt;em&gt;every&lt;/em&gt; result.  If each result might have a
-consequence for you (and if it didn’t have a consequence, why bother automating
-it?) and you cannot predict in advance which kinds of results will need
-verification, then verification is always required.&lt;/p&gt;
-&lt;p&gt;The verification often ends up being just as expensive as doing the work in the
-first place, which means that if you want your usage of “AI” to be personally
-profitable, you have to find someone &lt;em&gt;else&lt;/em&gt; to externalize the cost of
-verification onto.  This person becomes your adversary, and, if you are
-successful, your “AI’s” victim.&lt;/p&gt;
-&lt;h2 id="the-ladder-climber-and-their-reverse-centaur-rungs"&gt;The Ladder-Climber And Their Reverse-Centaur Rungs&lt;/h2&gt;
-&lt;p&gt;One way that this constellation of facts can straightforwardly assemble
-themselves into a dystopian nightmare is the phenomenon, described by Cory
-Doctorow, of the &lt;a href="https://locusmag.com/feature/commentary-cory-doctorow-reverse-centaurs/"&gt;reverse
-centaur&lt;/a&gt;.
-This is when your employer non-consensually turns &lt;em&gt;you&lt;/em&gt; into the verification
-system.  The “AI” does the fun part of initially performing the work, and then
-you do the boring part where you check if the robot is right and clean up its
-messes, even if &lt;a href="https://fortune.com/article/why-is-the-cost-of-ai-higher-than-human-workers-nvidia-executive/"&gt;everyone already knows that it would, in aggregate, be cheaper
-for you to do the work in the first
-place&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Reverse centaurs can be made from any automation, not &lt;em&gt;only&lt;/em&gt; “AI” automation.
-I think that there is a reason that this term happens to have emerged in the
-“age of AI”, though, and not with earlier automation technologies (even those
-which were
-&lt;a href="https://en.wikipedia.org/wiki/Cotton_gin#Effects_in_the_United_States"&gt;considerably&lt;/a&gt;
-more &lt;a href="https://victorianweb.org/technology/ir/capuano.html"&gt;viscerally
-horrific&lt;/a&gt;).  That reason
-is: the &lt;em&gt;wrongness&lt;/em&gt; of “AI” output is not merely a technical feature that must
-be compensated for, it is a generalized externality.&lt;/p&gt;
-&lt;p&gt;As I mentioned above, if you are responsible for the entirety of the work, both
-extruding the “AI” output &lt;em&gt;and&lt;/em&gt; checking it, it’s usually cheaper to have
-humans do the entirety of the work to begin with.  When humans do the writing
-directly, we can check as we go, and thus verification doesn’t need to be as
-comprehensive.&lt;/p&gt;
-&lt;p&gt;When “AI” coding advocates say “code review is the
-&lt;a href="https://lucumr.pocoo.org/2026/2/13/the-final-bottleneck/"&gt;bottleneck&lt;/a&gt;”, what
-they are observing is that the LLM is still rolling the dice for each PR, and a
-human is still necessary to verify that each of those rolls is a winner.  But
-calling this process “code review” is a bit of a
-&lt;a href="https://blog.glyph.im/2026/03/what-is-code-review-for.html"&gt;misnomer&lt;/a&gt;; it’s not really “code
-review” in the traditional sense, it’s &lt;em&gt;human understanding&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Before the advent of “AI”, the human understanding was implicit in the process
-of writing the code in the first place&lt;sup id="fnref:1:adversarial-communication-2026-6"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:1:adversarial-communication-2026-6" id="fnref:1"&gt;1&lt;/a&gt;&lt;/sup&gt;, and the code review was a way of
-diffusing and extending that understanding.  Now that the code can be authored
-with no initial understanding taking place, that cost has not gone away, it has
-moved.&lt;/p&gt;
-&lt;p&gt;Human understanding was &lt;em&gt;always&lt;/em&gt; the bottleneck.&lt;/p&gt;
-&lt;p&gt;However, this is taking a &lt;em&gt;collaborative&lt;/em&gt; view of a software project, where
-satisfying the needs and solving the problems of your customers are the goals.
-We can see that “AI” is a bad tool to satisfy those goals, because all it’s
-doing is converting the first half of the work, that of understanding the code
-as you write it, to understanding the agent’s output as you read it.&lt;/p&gt;
-&lt;p&gt;What if, instead, we were to take the view that every software company is a
-Hobbesian nightmare, red in tooth and claw? In this view, the only goal of a
-software project is for the individual developers to make their promo cycles
-and get their bonuses.  Given that there is only a certain amount of money to
-go around, this is a zero-sum game where each programmer wants to look more
-productive than their colleagues.&lt;/p&gt;
-&lt;p&gt;Pretty much &lt;em&gt;every&lt;/em&gt; organization finds it easy to reward “productivity” as
-expressed by lines of code emitted, but the benefits of doing
-thorough and thoughtful design, analysis, and code review &lt;em&gt;very difficult&lt;/em&gt; to
-reward.  In this world, an LLM is an invaluable tool for the sociopathic
-ladder-climber, particularly if your legacy organization is still structuring
-their workflows as if the person prompting the bot is “writing” the code, and
-then they get to foist off the act of “reviewing” the code onto someone else.&lt;/p&gt;
-&lt;p&gt;Here, the prompter effectively externalizes the cost of the LLM’s failures but
-internalizes any benefits.  The prompter will vibe-code a big feature, so large
-that the assigned reviewer can’t possibly comprehend it all effectively. When
-this happens, the reviewer will, &lt;em&gt;eventually&lt;/em&gt;, be pressured to approve it, even
-if they can try to spot a few problems along the way.  The reviewer has their
-own work to get back to, after all, the obligation to review the prompter’s
-(read: the bot’s) code is a drain on their time that they are not going to get
-rewarded for.&lt;/p&gt;
-&lt;p&gt;If this feature is a big success, the prompter gets a promotion.  If it causes
-a big issue, well, the reviewer must not have been careful enough.&lt;/p&gt;
-&lt;p&gt;This is why LLMs are “good for coding”, and also why their biggest promoters
-&lt;a href="https://ap7i.com/posts/github-outages-vibe-coding-era/"&gt;keep&lt;/a&gt;
-&lt;a href="https://www.linkedin.com/posts/paulsf_last-weeks-massive-google-cloud-outage-activity-7340015235321278466-c0hz"&gt;having&lt;/a&gt;
-&lt;a href="https://www.ft.com/content/7cab4ec7-4712-4137-b602-119a44f771de"&gt;outages&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id="the-generative-gish-galloper"&gt;The Generative Gish Galloper&lt;/h2&gt;
-&lt;p&gt;Coding is the biggest “success story” of this type of adversarial
-communication, but it is by far not the only instance of such a thing.  LLMs
-create a new form of leverage that can turn &lt;a href="https://en.wikipedia.org/wiki/Brandolini%27s_law"&gt;Brandolini’s
-law&lt;/a&gt; from a linear advantage
-into an exponential one.  If you are engaged in a political debate where you
-want to overwhelm the other side in nonsense, an LLM can generate bullshit
-faster than it is physically possible for a human being to type, let alone
-respond thoughtfully.  There is an asymmetry to the utility of this weapon as
-well: only one side of the political spectrum wants to &lt;a href="https://en.wikipedia.org/wiki/Flood_the_zone"&gt;flood the
-zone&lt;/a&gt; and destroy trust in
-institutions and the concept of truth.  There’s a good reason that &lt;a href="https://newsocialist.org.uk/transmissions/ai-the-new-aesthetics-of-fascism/"&gt;the
-fascists love
-it&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id="straightforward-spam-and-fraud"&gt;Straightforward Spam and Fraud&lt;/h2&gt;
-&lt;p&gt;This is kind of obvious, but LLMs can generate lightly-customized,
-plausible-looking text much more quickly than any human being.  &lt;a href="https://withpersona.com/blog/llm-fraud"&gt;This
-facilitates their use in fraud, spam, and
-scams.&lt;/a&gt; In a spamming or fraudulent
-interaction, once again, the costs are externalized onto the victim: the
-recipient of a spam message has to do all the work of “checking” the LLM’s
-output.  Spammers already expect very low hit rates from boilerplate, and if the
-LLM can increase those percentages from 1% to 5% the technology will pay for
-itself; they don’t need anything like &lt;em&gt;reliable&lt;/em&gt; accuracy.&lt;/p&gt;
-&lt;h2 id="customer-support"&gt;Customer “Support”&lt;/h2&gt;
-&lt;p&gt;If you have any kind of commercial relationship with a company, I probably
-don’t even need to mention this: customer “support” bots are a misery.
-&lt;a href="https://www.forbes.com/sites/terdawn-deboe/2026/04/20/customers-hate-your-ai-chatbot-small-businesses-should-listen/"&gt;Everybody knows
-it&lt;/a&gt;
-at this point.  But customer support is usually conceptualized by businesses as
-an adversarial interaction, because it is a cost center.  They maintain
-internal metrics on time-to-resolution and try to optimize them.  Implicitly,
-this creates a dynamic where the goal of the customer service agent’s job is
-not to solve your problem, but to emit noise that will cause you to &lt;em&gt;think&lt;/em&gt;
-your problem is resolved, or to give up, as fast as possible.  Unsurprisingly,
-LLMs can emit this noise faster than humans can, getting those customers off
-the phone.  But those customers will &lt;em&gt;remember&lt;/em&gt; those interactions, and the
-story &lt;em&gt;outside&lt;/em&gt; the TTR metrics is horrible.&lt;/p&gt;
-&lt;p&gt;Similarly to the situation in software development, LLMs can look very good on
-paper for customer support, but mostly what they are doing is illuminating the
-problems with the industry’s existing metrics, by turning “winning the metrics
-battle against the customer” into a more obvious and immediate defeat for the
-company’s long term reputation.&lt;/p&gt;
-&lt;h2 id="education"&gt;“Education”&lt;/h2&gt;
-&lt;p&gt;In 2026 it is sadly a fact of life that &lt;a href="https://www.nytimes.com/2026/06/18/us/ai-apps-students-cheat.html"&gt;students cheat all the time using
-“AI”&lt;/a&gt;, and
-that this cheating is very successful, in that the teachers find it very hard
-to detect.&lt;/p&gt;
-&lt;p&gt;LLMs are great for cheating on schoolwork because the student is externalizing
-the work of the checking onto the teachers, who are often starting at a
-disadvantage to begin with, at least in the US.&lt;/p&gt;
-&lt;p&gt;My view is that this is happening because of a divergence in the way that
-students vs. teachers (or, more accurately, “the broader educational system”)
-view grading.&lt;/p&gt;
-&lt;p&gt;When a student is asked to write an essay, the teachers see the effort as both
-intrinsically worthwhile for the student, as well as useful as a pedagogical
-tool to evaluate and react to the student’s progress.  The student, by
-contrast, sees a stumbling block designed to knock them off the path to success
-and into a permanent underclass.  It is no wonder that the student sees “AI” as
-useful to their own goals and has no compunction about deploying it.&lt;/p&gt;
-&lt;p&gt;There is a bitter irony that the ability to understand the inherent value of
-actually writing the essay on their own is the sort of thing that students can
-really only learn by writing a bunch of essays.  There’s no way that I can
-think of which makes the benefit legible as long as a shortcut is available.&lt;/p&gt;
-&lt;p&gt;The net effect here is a downward spiral, where the already-wobbling
-educational system is sustaining an attack that it doesn’t have the resources
-to recover from.  The individual students’ attacks against their teachers and
-their schools’ grading systems might appear to momentarily succeed, but they
-will win the battle and lose the war.&lt;/p&gt;
-&lt;h2 id="spamming-for-good"&gt;Spamming “For Good”?&lt;/h2&gt;
-&lt;p&gt;Usually when we talk about someone unilaterally choosing to enter into an
-adversarial relationship, that’s an “attack” and for good reasons we have a
-negative impression of the attacker.  However, I would be remiss if I did not
-point out that there are some cases where the relationship was already
-adversarial; just because you’re the attacker doesn’t mean that you are evil.&lt;/p&gt;
-&lt;p&gt;For example we might &lt;em&gt;imagine&lt;/em&gt; use-cases like automatically filing appeals for
-prior authorizations against health insurance. It’s relatively
-&lt;a href="https://en.wikipedia.org/wiki/Delay,_Deny,_Defend"&gt;well-known&lt;/a&gt; at this point
-that the main way for-profit insurers maintain their margins is by denying
-claims right up to the line of the policies themselves being fraud, so using a
-spamming tool to fight them might be entirely justifiable&lt;sup id="fnref:2:adversarial-communication-2026-6"&gt;&lt;a class="footnote-ref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fn:2:adversarial-communication-2026-6" id="fnref:2"&gt;2&lt;/a&gt;&lt;/sup&gt; in that case.&lt;/p&gt;
-&lt;p&gt;Similarly, using an LLM could be justified in a fight against a company
-refusing to honor a warranty.  One could imagine using an LLM to immediately
-generate replies and escalations.&lt;/p&gt;
-&lt;p&gt;However, even in imagined cases like these, the underlying problem is that the
-insurers and the vendors already have a tremendous amount of structural power,
-so it is more likely that they will have the advantage in deploying a
-communications weapon like an LLM, as well as enacting policies to simply
-ignore any LLM-based communication that you might submit.  Worse, if these
-strategies were to become widespread, they might provide an excuse to reject
-&lt;em&gt;any&lt;/em&gt; communications by feeding them into an unreliable “&lt;a href="https://www.npr.org/2025/12/16/nx-s1-5492397/ai-schools-teachers-students"&gt;LLM
-detector&lt;/a&gt;”
-and issuing an automated “computer says no” even to hand-written
-correspondence.&lt;/p&gt;
-&lt;p&gt;It is also worth stressing that these cases are imagined, as compared to the
-very real coworker-abuse, spam, scam, fraud, and disinformation campaigns being
-waged in real life today.&lt;/p&gt;
-&lt;p&gt;Therefore, while legitimate uses might exist, it’s hard to imagine that there’s
-anywhere they would be genuinely valuable and sustainable.  In the best case
-“AI” will provide a temporary advantage for underdogs that will provoke an arms
-race which the resource-advantaged adversaries will win in the long run, in the
-worst case the arms race itself will cement permanent structural change that
-will make things worse.&lt;/p&gt;
-&lt;h2 id="search-by-stealing"&gt;“Search” By Stealing&lt;/h2&gt;
-&lt;p&gt;Most of the adversarial utility of “AI” is on the “write” side, since
-write-amplification is more obviously aggressive than reading.  But the “read”
-side of LLMs — summarization and question-answering — can be a form of attack
-as well.&lt;/p&gt;
-&lt;p&gt;To begin with, &lt;a href="https://www.theregister.com/software/2025/08/29/ai-crawlers-destroying-websites-in-hunger-for-content/464120"&gt;the act of reading
-itself&lt;/a&gt;
-is currently enormously destructive, but that’s arguably not a &lt;em&gt;fundamental&lt;/em&gt;
-aspect of this technology.  They &lt;em&gt;could&lt;/em&gt; set reasonable rate-limits and respect
-things like &lt;code&gt;robots.txt&lt;/code&gt;, as search engines have for decades now.  They could
-also refrain from committing &lt;a href="https://www.npr.org/2025/09/05/nx-s1-5529404/anthropic-settlement-authors-copyright-ai"&gt;criminal
-levels&lt;/a&gt;
-&lt;a href="https://www.theguardian.com/technology/2025/jan/10/mark-zuckerberg-meta-books-ai-models-sarah-silverman"&gt;of copyright
-infringement&lt;/a&gt;.
-But, today, using “AI” tools does suborn this sort of out-of-control crawling.&lt;/p&gt;
-&lt;p&gt;More insidiously, consider the scenario described in &lt;a href="https://www.youtube.com/watch?v=8KQFgWdiudo"&gt;this YouTube
-video&lt;/a&gt;.  The LTT Bros decided to
-try Linux again, and in the course of so doing, they had problems.  When trying
-to solve these problems, they were faced with a choice: they could consult
-Reddit, or they could ask an LLM.  Asking an LLM would “gaslight the heck out
-of” them, but they still found it preferable, because they would at least get
-an answer without getting yelled at.&lt;/p&gt;
-&lt;p&gt;Initially this sounds great.  But it also means that you want to extract
-knowledge from a community, while mechanically eliding any values or norms that
-the community may want to impart as part of offering that knowledge.  As
-someone who spent many years in a community tech support role, this is
-worrying.  Many requests for support are people asking how to do things that
-will momentarily solve a superficial problem but create a long-term reliability
-problem or even an immediate security risk, that the question-asker doesn’t
-want to hear about.  Consider the question “I’m tired of entering my password
-so much, how do I make it so my laptop unlocks automatically”.  An obsequious
-chatbot will helpfully tell you how to do this without pushback.&lt;/p&gt;
-&lt;p&gt;But, this is also a sort of ethically murky area.  The Linux community is
-somewhat famously, for &lt;a href="https://news.ycombinator.com/item?id=10332286"&gt;many years
-now&lt;/a&gt;, a toxic cesspool of
-general hostility, misogyny, etc.  It is certainly a good thing that people can
-get access to this knowledge without subjecting themselves to abuse.  But it
-also means that the people &lt;em&gt;with&lt;/em&gt; the power and the privilege to change the
-community for the better can just quietly withdraw, rather than fixing the
-problems.  It also means that the positive elements of culture cannot be
-transmitted, and people will have no opportunity to learn about unknown
-unknowns.&lt;/p&gt;
-&lt;p&gt;In this case, the “adversarial” communication is with society.  The thing that
-using an LLM for search lets you do is withdraw from society and avoid forming
-any personal connections.  There are some personal connections which are
-painful and annoying, and so that can feel like a momentary balm.  But the need
-to make connections &lt;em&gt;in general&lt;/em&gt; is, like, the concept of society itself.&lt;/p&gt;
-&lt;h2 id="who-am-i-hurting"&gt;Who Am I Hurting?&lt;/h2&gt;
-&lt;p&gt;LLMs are good at adversarial communication.  They are &lt;em&gt;so&lt;/em&gt; good at it, relative
-to their other benefits, that they will tend to &lt;em&gt;make&lt;/em&gt; communications
-adversarial if you are not remaining vigilant about the possibility that it
-might do so.  My request to you, dear reader, if you are going to use such
-tools, is to always ask yourself, “who might I be hurting, if I use an LLM for
-this?”&lt;/p&gt;
-&lt;p&gt;If you’re using an “AI”, who is its adversary?  If you haven’t given it one
-yet, who might the “AI” &lt;em&gt;turn into&lt;/em&gt; an adversary?  Who might you overwhelm with
-an asymmetric amount of output, or, if you’re receiving information and not
-sending it, who are you taking that information from without consulting?&lt;/p&gt;
-&lt;p&gt;Figure out the answers to these questions and conduct yourself accordingly; the
-answer might be “yourself”.&lt;/p&gt;
-&lt;h2 id="acknowledgments"&gt;Acknowledgments&lt;/h2&gt;
-&lt;p class="update-note"&gt;Thank you to &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;my patrons&lt;/a&gt; who are supporting my writing on
-this blog.  If you like what you’ve read here and you’d
-like to read more of it, or you’d like to support my &lt;a href="https://github.com/glyph/"&gt;various open-source
-endeavors&lt;/a&gt;, you can &lt;a href="https://glyph.twistedmatrix.com/pages/patrons.html"&gt;support my work as a
-sponsor&lt;/a&gt;!&lt;/p&gt;
-&lt;div class="footnote"&gt;
-&lt;hr /&gt;
-&lt;ol&gt;
-&lt;li id="fn:1:adversarial-communication-2026-6"&gt;
-&lt;p id="fn:1"&gt;One of the reasons that software developers tend to prefer
-&lt;a href="https://en.wikipedia.org/wiki/Greenfield_project"&gt;greenfield&lt;/a&gt; development
-is that when you are given a blank page, you can project your &lt;em&gt;own&lt;/em&gt;
-specific understanding onto it.  You can structure the codebase in a way
-that works for your brain, down to the variable naming conventions and the
-module layouts.  LLM-assisted development makes everything into instant
-brownfield work, which makes developers instantly miserable; even those who
-are excited about the technology will frequently complain about how it
-feels like their agency has been stolen and their joy in the work has been
-diminished.  But I digress. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:1:adversarial-communication-2026-6" title="Jump back to footnote 1 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:2:adversarial-communication-2026-6"&gt;
-&lt;p id="fn:2"&gt;Modulo the massive amount of &lt;em&gt;other&lt;/em&gt; externalities involved in using
-LLMs, of course, but I don’t have the time or energy to get into those
-here. &lt;a class="footnote-backref" href="https://glyph.twistedmatrix.com/feeds/atom.xml#fnref:2:adversarial-communication-2026-6" title="Jump back to footnote 2 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</description>
-      <guid isPermaLink="false">e9ab8d77a1131b6c8526dda4ea72459f588bdc1528fca48d7cb7439cee565630</guid>
-      <pubDate>Tue, 23 Jun 2026 20:06:00 +0000</pubDate>
     </item>
   </channel>
 </rss>
