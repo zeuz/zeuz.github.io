@@ -5,7 +5,32 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sat, 21 Nov 2026 14:01:46 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Nov 2026 14:01:26 +0000</lastBuildDate>
+    <item>
+      <title>OpenRouter Drops 3 Providers After Researchers Catch Months of Prompt Theft at AI Hosting Firms - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/openrouter-drops-3-providers-after.html</link>
+      <description>Attackers stole data from inside three AI inference providers for months, and none of the three knew until researchers told them, the industrial cybersecurity company Dragos said this week.
+Some of the stolen requests were flagged as Zero Data Retention, the setting that is supposed to mean a prompt is never stored.
+OpenRouter, a gateway that routes customers' AI requests to a pool of</description>
+      <guid isPermaLink="false">f6c21ef028a728dfb875c04ce1f1b0455b254839430514f3fea31fb023ed20b4</guid>
+      <pubDate>Sun, 22 Nov 2026 05:06:55 +0000</pubDate>
+    </item>
+    <item>
+      <title>Researchers Demonstrate Ghostscript Sandbox-Escape RCE via Crafted File Uploads in Popular Apps - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/researchers-demonstrate-ghostscript.html</link>
+      <description>A now-patched flaw in Ghostscript allows a crafted file to escape the program's security sandbox and run commands on the server that processes it.
+Ghostscript is the interpreter that many Linux servers use to convert uploaded PDFs, PostScript files, and images into other formats, often without the application calling it directly.
+Security firm pwn.ai showed this week that ordinary upload,</description>
+      <guid isPermaLink="false">7b333a5bd675be6ed632a4cc36e2e813e8dd5e12f07fe541e1ad127edec49694</guid>
+      <pubDate>Sun, 22 Nov 2026 05:03:41 +0000</pubDate>
+    </item>
+    <item>
+      <title>openvoxdb -- An authenticated node can write another node's factset through the PuppetDB facts terminus - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/15b98472-e624-11f1-9eae-18cf5efc6bb4.html</link>
+      <description/>
+      <guid isPermaLink="false">199d9411c7a984079a52f481bec4fdc07a3e070c68eef7606c3ec6491074a14f</guid>
+      <pubDate>Sun, 22 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>A Single Malicious Webpage Let Researchers Hijack Meta Muse and Access Private Chats - The Hacker News</title>
       <link>https://thehackernews.com/2026/11/a-single-malicious-webpage-let.html</link>
@@ -1547,30 +1572,6 @@ The vulnerabilities, tracked as</description>
 "First identified in late 2023, Silent Train uses rotating chains of compromised SOHO, IoT, and enterprise infrastructure," Lumen Technologies Black Lotus Labs said in a report shared</description>
       <guid isPermaLink="false">550461876bbe411cb422bc54f0b85a55e1d89c8b6dc51c6df1c820360a4d5f52</guid>
       <pubDate>Wed, 28 Oct 2026 18:08:33 +0000</pubDate>
-    </item>
-    <item>
-      <title>Google to Allow One-Tap Android App Installs From Approved Third-Party Stores Outside U.S. - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/google-to-allow-one-tap-android-app.html</link>
-      <description>Third-party Android app stores can now apply to Google for permission to install apps with one tap, without Android's usual confirmation screens, and to update them in the background.
-To qualify, a store must pass identity checks and send Google&amp;nbsp;its full catalog, along with every new app and update, for ongoing malware scanning. Approved stores get the features from December 1, but only on</description>
-      <guid isPermaLink="false">f7cc765e406e6b50c2eccdd5f1e7ee5fc1e0204a8d36d8c6475fad2cc885c111</guid>
-      <pubDate>Wed, 28 Oct 2026 17:08:09 +0000</pubDate>
-    </item>
-    <item>
-      <title>Researcher Reveals How Logic Bugs Alone Cracked Microsoft Edge in $175,000 Pwn2Own Win - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/researcher-reveals-how-logic-bugs-alone.html</link>
-      <description>A chain of logic flaws, with no memory corruption, can turn a malicious web page into code running on a Windows computer outside Microsoft Edge's sandbox, a security researcher has shown.
-Orange Tsai of DEVCORE published the full method on October 28, five months after the chain won $175,000 at the&amp;nbsp;Pwn2Own Berlin contest&amp;nbsp;in May. Microsoft fixed the Edge bugs the day after the contest,</description>
-      <guid isPermaLink="false">5c5fb7b6906986e175e8f4d2ed853640d67ad40df47d3766033ca3d2d9b57f5a</guid>
-      <pubDate>Wed, 28 Oct 2026 16:23:34 +0000</pubDate>
-    </item>
-    <item>
-      <title>PHP2Shell Attack Roots 25 Servers, Breaches U.S. Government-Affiliated Network - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/php2shell-attack-roots-25-servers.html</link>
-      <description>Cybersecurity researchers have disclosed details of what appears to be an artificial intelligence (AI)-assisted attack orchestrated by a suspected China-nexus threat actor that has leveraged the PHP2Shell vulnerabilities to breach exposed systems.
-The activity, which was observed on October 25, 2026, involved an attacker combining PHP2Shell with a kernel privilege escalation exploit to root</description>
-      <guid isPermaLink="false">c5d0fd01d79c2b9585f607b030e2bf087428b9f69d71e92a880d78b3dcda7cb1</guid>
-      <pubDate>Wed, 28 Oct 2026 16:02:45 +0000</pubDate>
     </item>
   </channel>
 </rss>

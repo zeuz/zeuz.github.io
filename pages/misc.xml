@@ -5,7 +5,32 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Misc category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Wed, 18 Nov 2026 14:01:34 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Nov 2026 14:01:26 +0000</lastBuildDate>
+    <item>
+      <title>Nothing Brite about it - And now it's all this</title>
+      <link>https://leancrew.com/all-this/2026/11/nothing-brite-about-it/</link>
+      <description>&lt;p&gt;Siri’s great failing over the past decade and a half has been its &lt;a href="https://leancrew.com/all-this/2016/06/siri-and-context/"&gt;contextual ignorance&lt;/a&gt;. It treated every request you made as if it were the first chalk markings on a great blank slate, a slate that was immediately washed clean after it answered you. That’s no longer the case with Siri AI. It now keeps track of your conversations, and it can dig through your apps to find information. This is, without question, a tremendous improvement, but I did run into a problem with it about a week ago.&lt;/p&gt;
+&lt;p&gt;I was out on a walk, listening to one of Apple Music’s built-in playlists, and “I’m Just a Singer (In a Rock and Roll Band)” by the Moody Blues came on. I wasn’t paying close attention, but after a while I realized that I didn’t know who the lead singer was. I knew only that it wasn’t Justin Hayward, who did most of their lead vocals. So I asked Siri, “Who’s singing lead vocals on this song?”&lt;/p&gt;
+&lt;p&gt;This was a test. I would never have asked the pre-2025 Siri this kind of question. I have asked similar questions over the past year or two, but only because I figured Siri would pass the question along to ChatGPT. And in those cases, I made the question more explicit—something like “Who is the lead singer on the Moody Blues song ‘I’m Just a Singer (In a Rock and Roll Band)’?”—because Siri usually wouldn’t tell ChatGPT what I was listening to.&lt;/p&gt;
+&lt;p&gt;Siri AI passed the test, telling me it was John Lodge. Great! I decided to do this more often.&lt;/p&gt;
+&lt;p&gt;A couple of minutes later, “Do It Again” by Steely Dan started playing.&lt;sup id="fnref:music"&gt;&lt;a href="#fn:music" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt; I had a vague memory of seeing a video of them performing this song on some TV show, with Skunk Baxter playing bongos. Was that just for the TV show, or did he also play bongos on the record? So I asked Siri, “Who’s playing percussion&lt;sup id="fnref:bongos"&gt;&lt;a href="#fn:bongos" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt; on this song?”&lt;/p&gt;
+&lt;p&gt;Siri answered that Graeme Edge played percussion on “I’m Just a Singer (In a Rock and Roll Band).” A correct answer, but not what I was looking for. I wondered if Siri was running slow and hadn’t updated itself to know what the current song was. So I asked again and got the same answer. Then I asked for the lead vocalist and got an answer of John Lodge again. What the hell?&lt;/p&gt;
+&lt;p&gt;Then I realized that I had been caught by conversational context. After my first question, in which Siri correctly interpreted “this song” as the song that was currently playing, it treated my later questions as part of an extended conversation about “I’m Just a Singer” and interpreted “this song” accordingly. So I changed my question to “Who is playing percussion on the currently playing song?” This switched Siri’s context, and I got the right answer. (It was V. Feldman, not Skunk Baxter, although Baxter did play guitar on the track.)&lt;/p&gt;
+&lt;p&gt;I suspect that if more time had passed between the two songs (and my questions), Siri would have changed its interpretation of “this song.” How much time? I have no idea. Despite what George Harrison told us, “this song” has something tricky about it.&lt;/p&gt;
+&lt;div class="footnotes"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:music"&gt;
+&lt;p&gt;No, the music &lt;em&gt;you&lt;/em&gt; listen to is shit. &lt;a href="#fnref:music" rev="footnote"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:bongos"&gt;
+&lt;p&gt;I thought “percussion” was more likely than “bongos” to be in the song credits. &lt;a href="#fnref:bongos" rev="footnote"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
+      <guid isPermaLink="false">beb6856fe42cd6f91dd817413e8e516999f55753704ce16f68cbe34241c351b5</guid>
+      <pubDate>Sun, 22 Nov 2026 00:53:14 +0000</pubDate>
+    </item>
     <item>
       <title>Making flippy floppy - And now it's all this</title>
       <link>https://leancrew.com/all-this/2026/11/making-flippy-floppy/</link>

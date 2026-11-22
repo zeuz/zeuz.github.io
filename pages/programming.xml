@@ -5,7 +5,243 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sat, 21 Nov 2026 14:01:46 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Nov 2026 14:01:26 +0000</lastBuildDate>
+    <item>
+      <title>Mark Dufour: Shed Skin restricted-Python to C++ transpiler v1.0 released! - Planet Python</title>
+      <link>http://shed-skin.blogspot.com/2026/11/shed-skin-restricted-python-to-c.html</link>
+      <description>&lt;p&gt;I have just released &lt;a href="https://github.com/shedskin/shedskin/releases/tag/v1.0"&gt;version 1.0&lt;/a&gt; of &lt;a href="https://github.com/shedskin/shedskin"&gt;Shed Skin&lt;/a&gt;, a restricted-Python to C++ transpiler. It has taken a long time, in fact more than 20 years, to get to this point. I want to start by thanking all the people that have contributed over time. Leonardo Maffi helped out by testing in the first few years. IIRC, Harri Pasanen contributed extension module support. Johan Kristensen was instrumental in the move to Python 3. Jeremy Roquet and others helped to keep the project alive in my absense of several years. And in recent years, Shakeeb Alireza has been the main contributor, adding CMake (and hence good Windows) support, cleaning up the code and tests, and also contributing many good ideas.
+&lt;p&gt;So why release 1.0 now? Well, let's say that many things have finally come together. From a much improved type inference engine, to Unicode support, to much improved performance of generated code, to basically catching up with Python 3.15, a lot has happened over the past few months. Another thing that has happened (over the past few years?) is that C++ compilers have started to optimize away object allocations where possible. This has always been an achilles heel of Shed Skin, making it slower than for example PyPy for certain allocation-heavy programs. Regular allocations also seem to have become faster over time (under Linux at least). For my standard (of course highly biased!) performance plot, Shed Skin is now on average 5.0 times faster than PyPy, and in no case slower.
+&lt;div class="separator"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmUCqSGicGwU0S-l7dhJrW7NKH0848_qdHjW3KP2m-OUnoXqhaCRj-pDWQAlMHSbKW7fWKDolt9IVPRwk988fEyEk76v0Gu4ZQyFC-MCtYGjVs8LH1F2UHawTQaT5dNGPej_3tMtnAEEqoTb_Rtad9GgEuOsa5jzkigdaBcLaXvNd1DGHfBC2eHQ/s9974/perf_comp_1_0.png"&gt;&lt;img alt="" border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmUCqSGicGwU0S-l7dhJrW7NKH0848_qdHjW3KP2m-OUnoXqhaCRj-pDWQAlMHSbKW7fWKDolt9IVPRwk988fEyEk76v0Gu4ZQyFC-MCtYGjVs8LH1F2UHawTQaT5dNGPej_3tMtnAEEqoTb_Rtad9GgEuOsa5jzkigdaBcLaXvNd1DGHfBC2eHQ/s400/perf_comp_1_0.png" width="400" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Something that I have to acknowledge also is the help of AI, more specifically Claude, to develop Shed Skin at a much more rapid speed than possible before. It has also been able to identify (and in many cases fix) about 500 bugs. We are all wondering about the future impact of AI of course, but let's hope that programming will remain a human hobby for a long time (the way chess is still enjoyable for humans, even though we totally suck at it.. :-)). But AI doesn't only help with development of Shed Skin, it can also help users to make their code Shed Skin compatible, and/or even submit issues/contributions. The following new example (an 'Another World' engine), was changed by AI in a few places, so that it worked with Shed Skin (while of course remaining valid CPython code, with no added type annotations!):
+ &lt;div class="separator"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZRrUqEm71NZXW56csQwBepbEsPnqiDPAOFj7GOKIo3IWfw_LCv9fw5Cn9rTnkGva5P292nQfc9kDOI2TZKbsXYG2e1-VVfPHXbGsFYhe9bGyPaLE_aWSfMYeHyfYLF96kaPM9m-AKt_YHQGyMV7itjPAxZYV_97_M3L64tgT25I0SIcaSkXuQXg/s3036/aw.png"&gt;&lt;img alt="" border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZRrUqEm71NZXW56csQwBepbEsPnqiDPAOFj7GOKIo3IWfw_LCv9fw5Cn9rTnkGva5P292nQfc9kDOI2TZKbsXYG2e1-VVfPHXbGsFYhe9bGyPaLE_aWSfMYeHyfYLF96kaPM9m-AKt_YHQGyMV7itjPAxZYV_97_M3L64tgT25I0SIcaSkXuQXg/s320/aw.png" width="320" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Thanks again to everyone who has contributed to the project, which has turned out to be my "life's work". Now that 1.0 has been reached, and with the advent of AI in programming, I don't know if I will continue to work on it intensively anymore though, without more/any community feedback or financial support, and spend more of my free time on other interesting projects. I will certainly try to keep it working, and do a yearly update for every new CPython release. I probably won't be able to help myself, but we will see! :-)&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">838e70eccc148205a6992c66131a8cf08431c9f4555078b680f599aa3f5078cc</guid>
+      <pubDate>Sun, 22 Nov 2026 00:57:28 +0000</pubDate>
+    </item>
+    <item>
+      <title>Graham Dumpleton: Muru: when lazy imports help - Planet Python</title>
+      <link>https://grahamdumpleton.me/posts/2026/11/muru-when-lazy-imports-help/</link>
+      <description>&lt;p&gt;Lazy imports are having a moment. Python 3.15 adds a &lt;code&gt;lazy import&lt;/code&gt; statement, from &lt;a href="https://peps.python.org/pep-0810/"&gt;PEP 810&lt;/a&gt;, and a module can name imports it wants deferred in a &lt;code&gt;__lazy_modules__&lt;/code&gt; list. A deferred import binds its name straight away, but the module isn't loaded until the code first uses it. Most of the excitement is about command line tools. A tool which imports everything it might ever need, just to print its &lt;code&gt;--help&lt;/code&gt;, can start in a fraction of the time when most of those imports are deferred.&lt;/p&gt;
+&lt;p&gt;A web application served by a pre-forking server is a different calculation, and deferring imports there can make things worse rather than better. Whether it helps depends on the application, on how it is deployed, and on what its requests actually use, which is why Muru measures imports rather than leaving it to guesswork.&lt;/p&gt;
+&lt;h2&gt;Where import time goes under Muru&lt;/h2&gt;
+&lt;p&gt;As covered in the &lt;a href="https://grahamdumpleton.me/posts/2026/11/muru-import-once-fork-many/"&gt;import once, fork many&lt;/a&gt; post, Muru imports an application once in a host process, and forks the workers from it. Everything the host imported is shared by the workers through copy on write memory, and is paid for once.&lt;/p&gt;
+&lt;p&gt;Under the Muru daemon, a deploy starts a new release beside the one serving, as covered in the &lt;a href="https://grahamdumpleton.me/posts/2026/11/muru-releases-not-restarts/"&gt;releases, not restarts&lt;/a&gt; post, and traffic only moves to it once it is ready. However long the new release takes to import the application, nobody visiting the site waits for it. Deferring an import doesn't save anyone any time there. What it does is move the cost into the first request in each worker which uses the module, and since each worker then loads the module itself, its memory is no longer shared.&lt;/p&gt;
+&lt;p&gt;Under &lt;code&gt;muructl serve&lt;/code&gt; in a container, a new release is a new container, and the import is part of how long it takes to start. A shorter start makes a rollout or a scale-out finish sooner. Even so, as covered in the &lt;a href="https://grahamdumpleton.me/posts/2026/11/muru-working-with-kubernetes-not-around-it/"&gt;working with Kubernetes&lt;/a&gt; post, Muru's readiness probe doesn't pass until the application is loaded and the workers are ready, so a new pod still gets no requests before it can serve them.&lt;/p&gt;
+&lt;p&gt;There are times when someone does wait for the import. A release &lt;a href="https://grahamdumpleton.me/posts/2026/11/muru-scaling-to-zero/"&gt;scaled to zero&lt;/a&gt; with its host stopped makes the next request wait for the host to start and import the application. And &lt;code&gt;muructl run&lt;/code&gt; in development loads the application again every time a file changes.&lt;/p&gt;
+&lt;p&gt;So a deferred import can help or hurt, depending on how the application is run and how often its requests use what was deferred. To decide, it helps to know what each import costs, and what the workers end up loading anyway.&lt;/p&gt;
+&lt;h2&gt;A shop with two slow imports&lt;/h2&gt;
+&lt;p&gt;The example for this post is a small Flask shop with two features that need large libraries. A stock report uses pandas:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;# shop/reports.py
+import pandas
+from shop.data import BOOKS
+def stock_value():
+    frame = pandas.DataFrame(BOOKS, columns=[&amp;quot;title&amp;quot;, &amp;quot;author&amp;quot;, &amp;quot;stock&amp;quot;, &amp;quot;price&amp;quot;])
+    frame[&amp;quot;value&amp;quot;] = frame[&amp;quot;stock&amp;quot;] * frame[&amp;quot;price&amp;quot;]
+    return frame.groupby(&amp;quot;author&amp;quot;)[&amp;quot;value&amp;quot;].sum().to_string()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and a download of the stock list as a spreadsheet uses openpyxl:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;# shop/export.py
+import io
+import openpyxl
+from shop.data import BOOKS
+def workbook():
+    book = openpyxl.Workbook()
+    ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Someone has already tried to keep start-up fast, so the view for the report imports &lt;code&gt;shop.reports&lt;/code&gt; inside the function, while &lt;code&gt;shop.export&lt;/code&gt; is imported at the top of the application's module like everything else:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;from flask import Flask, Response, render_template_string
+from shop import export
+from shop.data import BOOKS
+app = Flask(__name__)
+...
+@app.route(&amp;quot;/report&amp;quot;)
+def report():
+    from shop import reports
+    return render_template_string(REPORT, report=reports.stock_value())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It runs under &lt;code&gt;muructl run&lt;/code&gt; with two worker processes, on Python 3.14.&lt;/p&gt;
+&lt;h2&gt;What the host's load costs&lt;/h2&gt;
+&lt;p&gt;Muru can record every import the host makes while it loads the application, using the profile recorder of &lt;a href="https://unwrapt.readthedocs.io/"&gt;unwrapt&lt;/a&gt;, a package for lazy imports which I wrote alongside Muru. With unwrapt added to the project's dependencies, &lt;code&gt;import_report&lt;/code&gt; turns it on:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[tool.muru]
+entrypoint = &amp;quot;shop.app:app&amp;quot;
+import_report = true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;muructl debug imports&lt;/code&gt; then prints a report of the host's load:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ muructl debug imports
+Import report of the host's load of shop@r1: outcome fork, Python 3.14.8, 2 workers
+  113.8 ms importing, 397 modules loaded, 4046 import calls; deferring what can be deferred would save about 75.2 ms
+Advice
+  defer: shop imported by shop.app, 71.2 ms, loading entrypoint
+    paid by the host, once before the fork, shared by the 2 workers; deferred, each worker that uses it loads it on first use
+    add 'shop' to __lazy_modules__ in shop.app; it defers natively from Python 3.15, and below it only once rewritten as import shop (from-import)
+      __lazy_modules__ = ['shop']
+  defer: openpyxl imported by shop.export, 70.9 ms, loading entrypoint
+    paid by the host, once before the fork, shared by the 2 workers; deferred, each worker that uses it loads it on first use
+    add 'openpyxl' to __lazy_modules__ in shop.export
+      __lazy_modules__ = ['openpyxl']
+Imports that loaded a module, by cumulative time
+  CUM MS SAVES MS IMPORTED IMPORTED BY         LOADING    3.15 UNWRAPT NOTES
+    71.2      0.0 shop     shop.app            entrypoint yes  no
+    70.9     70.9 openpyxl shop.export         entrypoint yes  yes
+     5.0      0.0 click    flask.app           entrypoint yes  yes     also imported eagerly by flask.cli
+     0.8      0.8 html     http.server         entrypoint yes  yes
+     0.7      0.0 decimal  flask.json.provider entrypoint yes  yes     also imported eagerly by openpyxl.compat.numbers
+  126 more rows with nothing to act on; --all lists them
+The 2 workers that answered have loaded no module for the first time since the fork.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Most of the load was openpyxl. The advice for each import says what deferring it would mean, and the configuration to write. For the shop's own code, that is a &lt;code&gt;__lazy_modules__&lt;/code&gt; list in the module making the import. For an import inside a package the project depends on, where nobody wants to edit the package's source, it is an entry of unwrapt's &lt;code&gt;[tool.unwrapt.lazy_modules]&lt;/code&gt; table, naming the importing module and what to defer in it.&lt;/p&gt;
+&lt;p&gt;The first piece of advice is about the application's own &lt;code&gt;from shop import export&lt;/code&gt;, and nearly all of its 71.2 milliseconds is the openpyxl which &lt;code&gt;shop.export&lt;/code&gt; imports, so the two are different ways of deferring the same cost. The 3.15 and UNWRAPT columns say whether each way of deferring can defer that import as written, since Python 3.15 can defer a &lt;code&gt;from&lt;/code&gt; import while unwrapt can only defer a plain &lt;code&gt;import&lt;/code&gt;. On the Python 3.14 the shop runs on, deferring the &lt;code&gt;from&lt;/code&gt; import would save nothing unless it were rewritten, which is why its SAVES column is zero.&lt;/p&gt;
+&lt;p&gt;The report lists by default only the imports there is something to do about. With &lt;code&gt;--all&lt;/code&gt; it lists the rest, among them the numpy which openpyxl imports in turn, for 28.6 of openpyxl's milliseconds:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  CUM MS SAVES MS IMPORTED IMPORTED BY             LOADING    3.15 UNWRAPT NOTES
+    28.6      0.0 numpy    openpyxl.compat.numbers entrypoint yes  yes     used at load, deferring saves nothing, ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It isn't advised, because &lt;code&gt;openpyxl.compat.numbers&lt;/code&gt; uses numpy at the top level, straight after importing it, to build a tuple of numeric types. A deferred import that is used the moment it is made is loaded straight away anyway, so deferring it would save nothing.&lt;/p&gt;
+&lt;p&gt;The same report comes from &lt;code&gt;muructl check --imports&lt;/code&gt;, which loads the application once without serving anything, so it can be run before and after a change, or in CI.&lt;/p&gt;
+&lt;h2&gt;Deferring an import&lt;/h2&gt;
+&lt;p&gt;The spreadsheet export is used rarely, so deferring openpyxl looks worthwhile. That takes two changes. The module names the import in &lt;code&gt;__lazy_modules__&lt;/code&gt;, before the import itself:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;# shop/export.py
+__lazy_modules__ = [&amp;quot;openpyxl&amp;quot;]
+import io
+import openpyxl
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and the project turns on &lt;code&gt;lazy_imports&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[tool.muru]
+entrypoint = &amp;quot;shop.app:app&amp;quot;
+import_report = true
+lazy_imports = true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Python 3.15 and later act on &lt;code&gt;__lazy_modules__&lt;/code&gt; by themselves. Python 3.11 to 3.14 ignore it, and with &lt;code&gt;lazy_imports&lt;/code&gt; on, Muru has unwrapt defer the imports it names instead, so the same code defers on every version of Python Muru supports. The &lt;code&gt;lazy import&lt;/code&gt; statement can't be used that way, since it is a syntax error before 3.15.&lt;/p&gt;
+&lt;p&gt;As the host forks, it says what was deferred, and whether anything used a deferred import before the fork anyway, in which case deferring it saved nothing:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;muru.host[74803]: lazy_imports: 1 import deferred, none of them used before the fork
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;How much this saved needs more than one measurement, since a load's time varies from one start to the next by about as much as the difference being measured. A &lt;code&gt;muru.local.toml&lt;/code&gt; beside the project overrides the project's settings for my own runs only, so &lt;code&gt;lazy_imports = false&lt;/code&gt; in it turns deferral off without changing &lt;code&gt;pyproject.toml&lt;/code&gt;. With &lt;code&gt;import_report = false&lt;/code&gt; there as well, since recording the imports adds to the load, I started the run five times each way. The host took a median of 83 milliseconds to load the application without deferral, and 35 milliseconds with it.&lt;/p&gt;
+&lt;p&gt;The cost hasn't gone away though, it has moved. The first request for the spreadsheet in a worker now loads openpyxl, and the numpy it imports in turn:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;server-timing: queue;dur=0.00, app;dur=56.89, import;dur=52.03, muru;desc=&amp;quot;01M7TS44DGPY87CQSBXYXS7D83&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;import&lt;/code&gt; entry in &lt;code&gt;Server-Timing&lt;/code&gt; is the time the request spent loading modules for the first time in its worker. The request's Timing panel, on the dashboard here since a spreadsheet has no page for the toolbar, shows it as an &amp;quot;importing modules&amp;quot; row, and its list of the modules loaded marks the one that resolved a deferred import, with the line of code that first used it:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="The dashboard's Timing panel for the spreadsheet download, with importing modules taking most of the request, and the modules loaded on first use" src="https://grahamdumpleton.me/posts/2026/11/muru-when-lazy-imports-help/deferred-timing.png" /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  Modules loaded on first use
+    encodings.idna  0.7ms  1.0ms  encodings/__init__.py:100
+      stringprep  1.0ms  0.3ms  encodings/idna.py:3
+    openpyxl (deferred)  2.1ms  50ms  shop/export.py:11
+      openpyxl.compat  2.3ms  21ms  openpyxl/__init__.py:5
+        openpyxl.compat.numbers  2.4ms  21ms  openpyxl/compat/__init__.py:3
+          numpy  2.5ms  21ms  openpyxl/compat/numbers.py:9
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Line 11 of &lt;code&gt;shop/export.py&lt;/code&gt; is &lt;code&gt;book = openpyxl.Workbook()&lt;/code&gt;, the first use of the module.&lt;/p&gt;
+&lt;p&gt;Since numpy was a good part of that, I tried deferring it inside openpyxl anyway, to see what the report's reason for not advising it looks like in practice, with an entry of &lt;code&gt;[tool.unwrapt.lazy_modules]&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[tool.unwrapt.lazy_modules]
+&amp;quot;openpyxl.compat.numbers&amp;quot; = [&amp;quot;numpy&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The list of modules for the next first download showed &lt;code&gt;numpy (deferred)&lt;/code&gt; being loaded from line 16 of &lt;code&gt;openpyxl/compat/numbers.py&lt;/code&gt;, while openpyxl itself was still loading. That is the line which builds the tuple of numeric types, so the deferred import was used the moment it was made. The workers' part of &lt;code&gt;muructl debug imports&lt;/code&gt;, which comes up next, said the same of it, &amp;quot;used as openpyxl.compat.numbers loads, at openpyxl/compat/numbers.py:16; deferring it saves nothing, remove the entry&amp;quot;, so I took the entry out again.&lt;/p&gt;
+&lt;h2&gt;Asking the workers&lt;/h2&gt;
+&lt;p&gt;Whether moving that cost was worth it depends on how many workers end up paying it, and that depends on the traffic. After the run had served some pages, several stock reports and one spreadsheet, the last part of &lt;code&gt;muructl debug imports&lt;/code&gt; asked each worker what it had loaded for the first time since the fork:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Modules loaded for the first time since the fork, by the 2 workers that answered
+  MODULE                      LOADED BY FIRST REQUEST                 MS ADVICE
+  shop.reports                2 of 2    01M7TS5XN33J2YHXVA5EYVR7RN 134.0 every worker loads it: load it before the fork with preload_modules = [&amp;quot;shop.reports&amp;quot;]
+  openpyxl (deferred)         1 of 2    01M7TS5XV33J2YHXVA5EYVR7RX  28.7 deferred in the host; loaded by 1 of 2 workers: loading on first use pays off: only some workers load it
+  encodings.idna              2 of 2    01M7TS5XMM3J2YHXVA5EYVR7RM   1.4 every worker loads it: load it before the fork with preload_modules = [&amp;quot;encodings.idna&amp;quot;]
+  openpyxl.packaging.extended 1 of 2    01M7TS5XV33J2YHXVA5EYVR7RX   0.1 loading on first use pays off: only some workers load it
+  The counts cover the requests served so far; read them after representative traffic.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The two features come out on opposite sides. Only one worker had needed openpyxl, so the other was spared both the time and the memory, and the deferral paid off. Every worker had needed &lt;code&gt;shop.reports&lt;/code&gt;, and each loaded pandas itself, about 135 milliseconds a time, which the function level import in the view had pushed into the first report each worker served.&lt;/p&gt;
+&lt;p&gt;That first report is also worse than it looks. With three requests for the report sent at once, two of them went to the same worker on different threads, and both took about 140 milliseconds. Only one of them was loading pandas. The other was waiting on Python's import lock for it to finish, and their &lt;code&gt;Server-Timing&lt;/code&gt; headers tell the two apart:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;server-timing: queue;dur=0.01, app;dur=140.39, import;dur=137.67, muru;desc=&amp;quot;01M7TS5YW93J2YHXVA5EYVR7RZ&amp;quot;
+server-timing: queue;dur=0.40, app;dur=140.80, import_wait;dur=138.92, muru;desc=&amp;quot;01M7TS5YW93J2YHXVA5EYVR7S2&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The second request's Timing panel has a &amp;quot;waiting for an import&amp;quot; row in place of &amp;quot;importing modules&amp;quot;, and names the module and the request it was waiting on:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;waiting for an import: 139ms in 1 wait: shop.reports, loaded by request 01M7TS5YW93J2YHXVA5EYVR7RZ
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The first requests after a deploy, or after a scale-out adds workers, are exactly when that happens.&lt;/p&gt;
+&lt;h2&gt;Loading before the fork&lt;/h2&gt;
+&lt;p&gt;A module that every worker loads is better loaded once, in the host, before the fork. &lt;code&gt;preload_modules&lt;/code&gt; lists modules for the host to import after the application, as part of the same load:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-toml"&gt;[tool.muru]
+entrypoint = &amp;quot;shop.app:app&amp;quot;
+import_report = true
+lazy_imports = true
+preload_modules = [&amp;quot;shop.reports&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The host's load now includes pandas, and the first reports in each worker took from four and a half to nine milliseconds, rather than more than a hundred. The import report gives the entry's own cost on a line of its own, &lt;code&gt;preload_modules entry shop.reports: 145.5 ms in the host&lt;/code&gt;, and doesn't advise deferring anything the entry loads, since that would only undo it.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;preload_modules&lt;/code&gt; is also the way to undo a deferral you don't want. Once Python 3.15 is common, libraries will start using &lt;code&gt;lazy import&lt;/code&gt; themselves, for their own command line tools or their own start-up time, and in a web application that may move a library's import into the first request of each worker. Listing the module in &lt;code&gt;preload_modules&lt;/code&gt; loads it before the fork regardless, and the deferred import finds it already loaded when the code first uses it.&lt;/p&gt;
+&lt;h2&gt;After more traffic&lt;/h2&gt;
+&lt;p&gt;The advice is only as good as the traffic the workers have seen. After a few more downloads of the spreadsheet, both workers had served one:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Modules loaded for the first time since the fork, by the 2 workers that answered
+  MODULE                      LOADED BY FIRST REQUEST                MS ADVICE
+  openpyxl (deferred)         2 of 2    01M7TS6PYFJQCRT78JGT5BYKRS 31.1 deferred in the host; loaded by 2 of 2 workers: load it before the fork with preload_modules = [&amp;quot;openpyxl&amp;quot;]
+  encodings.idna              2 of 2    01M7TS6CHTJQCRT78JGT5BYKRE  1.6 every worker loads it: load it before the fork with preload_modules = [&amp;quot;encodings.idna&amp;quot;]
+  openpyxl.packaging.extended 2 of 2    01M7TS6PYFJQCRT78JGT5BYKRS  0.1 every worker loads it: load it before the fork with preload_modules = [&amp;quot;openpyxl.packaging.extended&amp;quot;]
+  The counts cover the requests served so far; read them after representative traffic.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With two workers running for a long time, a module that any request uses at all eventually ends up loaded in all of them, at which point the deferral bought nothing but a slower first request in each. With more workers, workers that are replaced after a number of requests, or an autoscaler which adds and removes workers as load changes, many workers may never get as far as needing it. Which of those describes a production deployment is something only its own traffic can say, so this is a question to ask of a running release rather than a development run. The same counts are kept as metrics, &lt;code&gt;muru_worker_modules_loaded_total&lt;/code&gt; and &lt;code&gt;muru_worker_module_load_seconds_total&lt;/code&gt;, so they can be watched over time.&lt;/p&gt;
+&lt;h2&gt;What's next&lt;/h2&gt;
+&lt;p&gt;Lazy imports are a useful tool, but in a web application served by a pre-forking server they are a trade between the host's load, the first request in each worker, and how much memory the workers share. Muru gives you the measurements to make that trade for your own application. The &lt;code&gt;Server-Timing&lt;/code&gt; header and the Timing panel show what a request paid for imports, the import report shows what the host's load costs and where to cut it, and the workers say what they ended up loading anyway. Deferral through unwrapt works the same from Python 3.11 to 3.15, and &lt;code&gt;preload_modules&lt;/code&gt; puts back what shouldn't have been deferred.&lt;/p&gt;
+&lt;p&gt;The next post, working with coding agents, is about something else doing things through Muru. Coding agents are increasingly the ones running, deploying and debugging applications, and Muru gives them a way in through MCP, so an agent can deploy each change as a release, read the events, logs and worker stacks when something fails, and roll back, using everything the earlier posts covered.&lt;/p&gt;</description>
+      <guid isPermaLink="false">bda8df557b219e1930e6bc35379133928b629b8ebd34d5b5f78d05ee8098e127</guid>
+      <pubDate>Sun, 22 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: Rich tables in Python: Using Table, add_column, and add_row - Planet Python</title>
+      <link>https://lernerpython.com/2026/11/21/rich-tables-in-python-using-table-add-column-and-add-row/</link>
+      <description>&lt;img alt="Rich tables in Python: Using Table, add_column, and add_row" class="wp-image-19346" height="1065" src="https://lernerpython.com/wp-content/uploads/2026/11/2026-11-21.png" width="1751" /&gt;
+&lt;p class="wp-block-paragraph"&gt;Create beautiful tables in Python with Rich:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;from rich.table import Table
+t = Table()&lt;/code&gt;&lt;/pre&gt;
+&lt;p class="wp-block-paragraph"&gt;# call once per column:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;t.add_column('A') &lt;/code&gt;&lt;/pre&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;# call once per row with string args, one for each column
+t.add_row('10', '20', '30') &lt;/code&gt;&lt;/pre&gt;
+&lt;p class="wp-block-paragraph"&gt;# print it!&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;c = Console()
+c.print(t)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/11/21/rich-tables-in-python-using-table-add-column-and-add-row/"&gt;Rich tables in Python: Using Table, add_column, and add_row&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">ab85cdca3f4b086fc2166811ec6dc12e7b172516dc5f9e3d218ada44740588c8</guid>
+      <pubDate>Sat, 21 Nov 2026 07:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Seth Michael Larson: GitHub’s new “Security Advisory Permissions” feature is a massive win for OSS security sustainability - Planet Python</title>
+      <link>https://sethmlarson.dev/github-security-advisory-permissions-sustainability?utm_campaign=rss</link>
+      <description>&lt;p&gt;This week GitHub released a new feature for GitHub Security Advisories
+called "&lt;a href="https://github.blog/changelog/2026-11-20-security-advisory-permissions-are-now-generally-available/"&gt;Security Advisory Permissions&lt;/a&gt;". The feature allows configuring
+repository teams and collaborators permissions to allow viewing, editing, and publishing GitHub Security Advisories.
+This feature has huge implications for the sustainability of security
+work for open source projects. Thank you to the folks involved at GitHub for adding this feature
+at a time when open source projects need all the help they can get
+for vulnerability work.&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;I was able to try this feature ahead of its public release through
+the &lt;a href="https://devguide.python.org/security/psrt/"&gt;Python Security Response Team&lt;/a&gt; (PSRT). The PSRT was invited to the private beta to test the
+feature and provide feedback. For the PSRT, this feature made &lt;a href="https://devguide.python.org/security/psrt/#triaging-a-vulnerability-report"&gt;triaging&lt;/a&gt; as a non-admin
+&lt;strong&gt;night-and-day&lt;/strong&gt; easier, and we already have multiple members contributing to triage more actively and
+with renewed energy. Seriously, this feature is so good we're feeling &lt;em&gt;excitement&lt;/em&gt; about triaging vulnerability reports.
+We need more of that kind of energy for security work in open source! 🔥&lt;/p&gt;
+&lt;h2&gt;Sustainability and open source security&lt;/h2&gt;
+&lt;p&gt;Before this feature was introduced only &lt;em&gt;repository admins&lt;/em&gt; were able to view advisories by default,
+requiring adding other contributors as collaborators manually or &lt;a href="https://github.com/python/psrt-ghsa-bot"&gt;using a bot&lt;/a&gt;, and
+&lt;strong&gt;only admins were able to edit and publish advisories&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;What this meant concretely is that &lt;strong&gt;only the most privileged users
+could effectively triage vulnerability reports&lt;/strong&gt;. Other would-be contributors were disempowered:
+they couldn't calculate severities, close duplicates or
+low-quality issues, assign CVE IDs, or stage and publish advisories.
+The tool enforced a narrow assumption about how security work had to be done
+and made vulnerability triage less sustainable for open source projects as a result.&lt;/p&gt;
+&lt;p&gt;I've argued that “&lt;a href="https://sethmlarson.dev/security-work-isnt-special"&gt;open source security work isn't special&lt;/a&gt;”.
+All areas of open source contribution, security included, need to provide a
+smooth on-ramp for users with time, interest, and expertise to help projects.
+Without this model the work falls on a few of the most privileged contributors
+who are already contributing to other areas and don't necessarily have security expertise.
+This assumption also means projects can't ask for and receive
+help from third-parties, even when the energy and capacity for such support
+exists.&lt;/p&gt;
+&lt;p&gt;Right now open source projects are triaging more reports and publishing more
+advisories than ever before. This makes features like GitHub Security Advisories
+and similar features on other software forges invaluable.
+There is a lot more to do in this area, so I am hoping this is only
+the first step of many towards open source security work not being special.&lt;/p&gt;
+&lt;br /&gt;&lt;hr /&gt;&lt;p&gt;Thanks for reading ♥ I would love to hear your thoughts! Contact me via &lt;a href="https://mastodon.social/@sethmlarson"&gt;Mastodon&lt;/a&gt;, &lt;a href="https://bsky.app/profile/sethmlarson.dev"&gt;Bluesky&lt;/a&gt;, or &lt;a href="mailto:sethmichaellarson@gmail.com"&gt;email&lt;/a&gt;. Browse the &lt;a href="https://sethmlarson.dev/"&gt;blog archive&lt;/a&gt;. Check out my &lt;a href="https://sethmlarson.dev/blogroll"&gt;blogroll&lt;/a&gt;.&lt;/p&gt;&lt;hr /&gt;&lt;br /&gt;</description>
+      <guid isPermaLink="false">44905f49fd764ffb45cdf6321eb84eddca92dd6ba2b3e5134e1409e34b402196</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>The Python Coding Stack: 4. Does an Agent Need a Plan? - Planet Python</title>
       <link>https://www.thepythoncodingstack.com/p/4-does-an-agent-need-a-plan</link>
@@ -18211,519 +18447,6 @@ security issues.&lt;/p&gt;
 supported versions and the future release schedule.&lt;/p&gt;</description>
       <guid isPermaLink="false">84d3ec392690b0fe5baa4b33ce7be08a2d27c79383b8a584cc1c6e3b21702d2d</guid>
       <pubDate>Wed, 05 Aug 2026 19:30:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Tryton News: Security Release for issue #14947</title>
-      <link>https://discuss.tryton.org/t/security-release-for-issue-14947/9302</link>
-      <description>&lt;p&gt;&lt;a href="https://foss.heptapod.net/ced"&gt;Cédric Krier&lt;/a&gt; has discovered that &lt;a href="https://bugs.tryton.org/14947"&gt;Tryton does not prevent weasyprint to access local files&lt;/a&gt; when rendering HTML report to PDF.&lt;/p&gt;
-&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40152-impact-1" name="p-40152-impact-1"&gt;&lt;/a&gt;Impact&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.first.org/cvss/calculator/3-0#CVSS:3.0/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N/E:H/RL:O/RC:C"&gt;CVSS v3.0 Base Score: 4.9&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Attack Vector: Network&lt;/li&gt;
-&lt;li&gt;Attack Complexity: Low&lt;/li&gt;
-&lt;li&gt;Privileges Required: High&lt;/li&gt;
-&lt;li&gt;User Interaction: None&lt;/li&gt;
-&lt;li&gt;Scope: Unchanged&lt;/li&gt;
-&lt;li&gt;Confidentiality: High&lt;/li&gt;
-&lt;li&gt;Integrity: None&lt;/li&gt;
-&lt;li&gt;Availability: None&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40152-workaround-2" name="p-40152-workaround-2"&gt;&lt;/a&gt;Workaround&lt;/h2&gt;
-&lt;p&gt;There is no workaround.&lt;/p&gt;
-&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40152-resolution-3" name="p-40152-resolution-3"&gt;&lt;/a&gt;Resolution&lt;/h2&gt;
-&lt;p&gt;All affected users should upgrade &lt;code&gt;trytond&lt;/code&gt; to the latest version.&lt;/p&gt;
-&lt;p&gt;Affected versions per series:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;trytond&lt;/code&gt;:
-&lt;ul&gt;
-&lt;li&gt;8.0: &amp;lt;= 8.0.7&lt;/li&gt;
-&lt;li&gt;7.8: &amp;lt;= 7.8.13&lt;/li&gt;
-&lt;li&gt;7.0: &amp;lt;= 7.0.54&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Not affected versions per series:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;trytond&lt;/code&gt;:
-&lt;ul&gt;
-&lt;li&gt;8.0: &amp;gt;= 8.0.8&lt;/li&gt;
-&lt;li&gt;7.8: &amp;gt;= 7.8.14&lt;/li&gt;
-&lt;li&gt;7.0: &amp;gt;= 7.0.55&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;em&gt;Some custom reports may fail after the upgrade because they are using local files. Such reports must be updated to use only files via public HTTP.&lt;/em&gt;&lt;/p&gt;
-&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40152-reference-4" name="p-40152-reference-4"&gt;&lt;/a&gt;Reference&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://bugs.tryton.org/14947"&gt;https://bugs.tryton.org/14947&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40152-concerns-5" name="p-40152-concerns-5"&gt;&lt;/a&gt;Concerns?&lt;/h2&gt;
-&lt;p&gt;Any security concerns should be reported on the bug-tracker at &lt;a href="https://bugs.tryton.org/"&gt;https://bugs.tryton.org/&lt;/a&gt; with the confidential checkbox checked.&lt;/p&gt;
-            &lt;p&gt;&lt;small&gt;1 post - 1 participant&lt;/small&gt;&lt;/p&gt;
-            &lt;p&gt;&lt;a href="https://discuss.tryton.org/t/security-release-for-issue-14947/9302"&gt;Read full topic&lt;/a&gt;&lt;/p&gt;</description>
-      <guid isPermaLink="false">449c23fb53557970c00df4485146d3989ddd5a4b6583b9ff86a6215a8a2c4a11</guid>
-      <pubDate>Wed, 05 Aug 2026 06:00:46 +0000</pubDate>
-    </item>
-    <item>
-      <title>Python GUIs: Handling Image Drag and Drop from Web Browsers in PyQt6 — Why toLocalFile() returns an empty string and how to handle remote image drops correctly</title>
-      <link>https://www.pythonguis.com/faq/dragging-and-dropping-in-rich-text-example-app/</link>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;When dragging and dropping images from a web browser into a PyQt6 rich text editor, &lt;code&gt;toLocalFile()&lt;/code&gt; sometimes returns a blank string. It works for some images (like Google image search results) but fails for others (like images embedded directly on a webpage). Why does this happen, and how can I handle it?&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;If you've added drag and drop support to your application, you may have noticed something frustrating: dragging an image from a browser sometimes works perfectly, and other times gives you nothing at all. The &lt;code&gt;toLocalFile()&lt;/code&gt; method returns an empty string, and your image never appears.&lt;/p&gt;
-&lt;p&gt;This comes down to how browsers package image data when you start a drag operation, and what your application expects to receive. Let's walk through what's happening and how to fix it.&lt;/p&gt;
-&lt;h2 id="how-drag-and-drop-mime-data-works"&gt;How drag and drop MIME data works&lt;/h2&gt;
-&lt;p&gt;When you drag something &amp;mdash; a file, an image, some text &amp;mdash; the source application bundles that data into a &lt;code&gt;QMimeData&lt;/code&gt; object. This object can contain several different formats at once. For example, dragging an image might include:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;A file URL (&lt;code&gt;text/uri-list&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;Raw image data (&lt;code&gt;image/png&lt;/code&gt; or &lt;code&gt;image/jpeg&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;An HTML &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; tag (&lt;code&gt;text/html&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;A plain text URL (&lt;code&gt;text/plain&lt;/code&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Which of these formats are included depends entirely on the source application. Different browsers, and even different types of images within the same browser, behave differently.&lt;/p&gt;
-&lt;h2 id="why-tolocalfile-returns-an-empty-string"&gt;Why toLocalFile() returns an empty string&lt;/h2&gt;
-&lt;p&gt;The method &lt;code&gt;QUrl.toLocalFile()&lt;/code&gt; converts a URL into a local filesystem path. It only works when the URL uses the &lt;code&gt;file://&lt;/code&gt; scheme &amp;mdash; meaning the file actually exists on your computer.&lt;/p&gt;
-&lt;p&gt;When you drag an image from a Google image search, the browser often creates a temporary local file and provides a &lt;code&gt;file://&lt;/code&gt; URL. That's why &lt;code&gt;toLocalFile()&lt;/code&gt; works in that case.&lt;/p&gt;
-&lt;p&gt;But when you drag an image that's embedded directly in a webpage (like a screenshot in a blog post), the browser typically provides a remote &lt;code&gt;http://&lt;/code&gt; or &lt;code&gt;https://&lt;/code&gt; URL instead. There's no local file, so &lt;code&gt;toLocalFile()&lt;/code&gt; returns an empty string. Some browsers may also provide the image as inline data or an HTML fragment with no URL at all.&lt;/p&gt;
-&lt;h2 id="inspecting-what-the-browser-actually-sends"&gt;Inspecting what the browser actually sends&lt;/h2&gt;
-&lt;p&gt;A good first step is to look at exactly what MIME data arrives when you drop something. This small example creates a drop target that prints out all available MIME formats and their contents:&lt;/p&gt;
-&lt;div class="code-block"&gt;
-&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
-&lt;pre&gt;&lt;code class="python"&gt;import sys
-from PyQt6.QtCore import Qt
-from PyQt6.QtWidgets import QApplication, QLabel, QVBoxLayout, QWidget
-class DropInspector(QLabel):
-    def __init__(self):
-        super().__init__("Drop something here")
-        self.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.setMinimumSize(400, 300)
-        self.setStyleSheet(
-            "background-color: #f0f0f0; border: 2px dashed #aaa; font-size: 16px;"
-        )
-        self.setAcceptDrops(True)
-    def dragEnterEvent(self, event):
-        event.acceptProposedAction()
-    def dropEvent(self, event):
-        mime_data = event.mimeData()
-        print("=== Drop received ===")
-        for fmt in mime_data.formats():
-            data = mime_data.data(fmt)
-            print(f"\nFormat: {fmt}")
-            # Show first 200 bytes as text for readability.
-            try:
-                print(f"  Data: {bytes(data[:200]).decode('utf-8', errors='replace')}")
-            except Exception:
-                print(f"  Data: ({len(data)} bytes, binary)")
-        if mime_data.hasUrls():
-            for url in mime_data.urls():
-                print(f"\nURL: {url.toString()}")
-                print(f"  toLocalFile: '{url.toLocalFile()}'")
-                print(f"  scheme: '{url.scheme()}'")
-        event.acceptProposedAction()
-        self.setText("Check console output!")
-app = QApplication(sys.argv)
-window = DropInspector()
-window.show()
-sys.exit(app.exec())
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;Try dragging different images from your browser into this window. You'll see that some drops include &lt;code&gt;file://&lt;/code&gt; URLs while others include &lt;code&gt;https://&lt;/code&gt; URLs or even raw image data with no URL at all.&lt;/p&gt;
-&lt;h2 id="handling-all-cases-in-your-drop-event"&gt;Handling all cases in your drop event&lt;/h2&gt;
-&lt;p&gt;To make your application work reliably with images dragged from any source, you need to handle multiple scenarios:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Local file URL&lt;/strong&gt; &amp;mdash; use the file path directly&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Remote URL&lt;/strong&gt; &amp;mdash; download the image&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Raw image data&lt;/strong&gt; &amp;mdash; use it directly from the MIME data&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;HTML with an &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; tag&lt;/strong&gt; &amp;mdash; extract the image URL from the HTML&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Here's how to implement this step by step.&lt;/p&gt;
-&lt;h3&gt;Checking for local files first&lt;/h3&gt;
-&lt;p&gt;This is the simplest case and the one you likely already have working:&lt;/p&gt;
-&lt;div class="code-block"&gt;
-&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
-&lt;pre&gt;&lt;code class="python"&gt;def dropEvent(self, event):
-    mime_data = event.mimeData()
-    if mime_data.hasUrls():
-        for url in mime_data.urls():
-            local_path = url.toLocalFile()
-            if local_path:
-                # It's a local file &amp;mdash; use it directly.
-                self.insert_image_from_path(local_path)
-                event.acceptProposedAction()
-                return
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;h3&gt;Handling remote URLs&lt;/h3&gt;
-&lt;p&gt;When &lt;code&gt;toLocalFile()&lt;/code&gt; returns an empty string but you still have a URL, it's likely a remote image. You can download it using Python's &lt;code&gt;urllib&lt;/code&gt; (or &lt;code&gt;requests&lt;/code&gt; if you prefer):&lt;/p&gt;
-&lt;div class="code-block"&gt;
-&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
-&lt;pre&gt;&lt;code class="python"&gt;import os
-import tempfile
-import urllib.request
-def download_image(url_string):
-    """Download an image from a URL and return the local file path."""
-    try:
-        # Create a temporary file to store the downloaded image.
-        suffix = os.path.splitext(url_string)[-1].split("?")[0]
-        if suffix not in (".png", ".jpg", ".jpeg", ".gif", ".bmp", ".webp"):
-            suffix = ".png"
-        tmp_file = tempfile.NamedTemporaryFile(delete=False, suffix=suffix)
-        urllib.request.urlretrieve(url_string, tmp_file.name)
-        return tmp_file.name
-    except Exception as e:
-        print(f"Failed to download image: {e}")
-        return None
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;Then extend your drop handler:&lt;/p&gt;
-&lt;div class="code-block"&gt;
-&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
-&lt;pre&gt;&lt;code class="python"&gt;if mime_data.hasUrls():
-    for url in mime_data.urls():
-        local_path = url.toLocalFile()
-        if local_path:
-            self.insert_image_from_path(local_path)
-            event.acceptProposedAction()
-            return
-        # No local file &amp;mdash; try downloading the remote URL.
-        url_string = url.toString()
-        if url_string:
-            local_path = download_image(url_string)
-            if local_path:
-                self.insert_image_from_path(local_path)
-                event.acceptProposedAction()
-                return
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;h3&gt;Handling raw image data&lt;/h3&gt;
-&lt;p&gt;Sometimes the browser sends the image data directly, without any URL. You can check for this using &lt;code&gt;hasImage()&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="code-block"&gt;
-&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
-&lt;pre&gt;&lt;code class="python"&gt;if mime_data.hasImage():
-    image = mime_data.imageData()
-    if image and not image.isNull():
-        # Save the image to a temp file and insert it.
-        tmp_path = tempfile.NamedTemporaryFile(
-            delete=False, suffix=".png"
-        ).name
-        image.save(tmp_path)
-        self.insert_image_from_path(tmp_path)
-        event.acceptProposedAction()
-        return
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;h3&gt;Extracting URLs from HTML&lt;/h3&gt;
-&lt;p&gt;As a fallback, some drops include an HTML fragment with an &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; tag. You can parse out the &lt;code&gt;src&lt;/code&gt; attribute:&lt;/p&gt;
-&lt;div class="code-block"&gt;
-&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
-&lt;pre&gt;&lt;code class="python"&gt;import re
-def extract_image_url_from_html(html):
-    """Extract the first image URL from an HTML string."""
-    match = re.search(r'&amp;lt;img[^&amp;gt;]+src=["\']([^"\']+)["\']', html)
-    if match:
-        return match.group(1)
-    return None
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;Then add this as a final fallback:&lt;/p&gt;
-&lt;div class="code-block"&gt;
-&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
-&lt;pre&gt;&lt;code class="python"&gt;if mime_data.hasHtml():
-    html = mime_data.html()
-    image_url = extract_image_url_from_html(html)
-    if image_url:
-        local_path = download_image(image_url)
-        if local_path:
-            self.insert_image_from_path(local_path)
-            event.acceptProposedAction()
-            return
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;h2 id="complete-working-example"&gt;Complete working example&lt;/h2&gt;
-&lt;p&gt;Here's a full, working rich text editor with robust image drag and drop support. You can copy this and run it directly:&lt;/p&gt;
-&lt;div class="code-block"&gt;
-&lt;span class="code-block-language code-block-python"&gt;python&lt;/span&gt;
-&lt;pre&gt;&lt;code class="python"&gt;import os
-import re
-import sys
-import tempfile
-import urllib.request
-from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QImage, QTextCursor
-from PyQt6.QtWidgets import QApplication, QMainWindow, QTextEdit, QVBoxLayout, QWidget
-def download_image(url_string):
-    """Download an image from a URL and return the local file path."""
-    try:
-        suffix = os.path.splitext(url_string.split("?")[0])[-1]
-        if suffix.lower() not in (".png", ".jpg", ".jpeg", ".gif", ".bmp", ".webp"):
-            suffix = ".png"
-        tmp_file = tempfile.NamedTemporaryFile(delete=False, suffix=suffix)
-        urllib.request.urlretrieve(url_string, tmp_file.name)
-        return tmp_file.name
-    except Exception as e:
-        print(f"Failed to download image: {e}")
-        return None
-def extract_image_url_from_html(html):
-    """Extract the first image URL from an HTML string."""
-    match = re.search(r'&amp;lt;img[^&amp;gt;]+src=["\']([^"\']+)["\']', html)
-    if match:
-        return match.group(1)
-    return None
-class ImageDropTextEdit(QTextEdit):
-    def __init__(self):
-        super().__init__()
-        self.setAcceptDrops(True)
-    def canInsertFromMimeData(self, source):
-        if source.hasImage() or source.hasUrls() or source.hasHtml():
-            return True
-        return super().canInsertFromMimeData(source)
-    def insertFromMimeData(self, source):
-        """Handle paste and drop events with image support."""
-        # Try each method in order of reliability.
-        # 1. Check for direct image data.
-        if source.hasImage():
-            image = source.imageData()
-            if isinstance(image, QImage) and not image.isNull():
-                self.insert_image(image)
-                return
-        # 2. Check for URLs (local or remote).
-        if source.hasUrls():
-            for url in source.urls():
-                local_path = url.toLocalFile()
-                if local_path and self.is_image_file(local_path):
-                    self.insert_image_from_path(local_path)
-                    return
-                # Try downloading remote URL.
-                url_string = url.toString()
-                if url_string and self.looks_like_image_url(url_string):
-                    local_path = download_image(url_string)
-                    if local_path:
-                        self.insert_image_from_path(local_path)
-                        return
-        # 3. Check for HTML with embedded image tags.
-        if source.hasHtml():
-            image_url = extract_image_url_from_html(source.html())
-            if image_url:
-                if image_url.startswith("data:"):
-                    # Data URI &amp;mdash; decode and insert.
-                    image = self.image_from_data_uri(image_url)
-                    if image and not image.isNull():
-                        self.insert_image(image)
-                        return
-                else:
-                    local_path = download_image(image_url)
-                    if local_path:
-                        self.insert_image_from_path(local_path)
-                        return
-        # Fall back to default behavior for plain text, etc.
-        super().insertFromMimeData(source)
-    def insert_image_from_path(self, file_path):
-        """Insert an image from a local file path into the editor."""
-        image = QImage(file_path)
-        if image.isNull():
-            print(f"Could not load image: {file_path}")
-            return
-        self.insert_image(image)
-    def insert_image(self, image):
-        """Insert a QImage into the editor at the current cursor position."""
-        cursor = self.textCursor()
-        document = self.document()
-        # Add the image as a resource in the document.
-        image_name = f"dropped_image_{id(image)}"
-        document.addResource(
-            document.ResourceType.ImageResource.value,
-            self.create_url(image_name),
-            image,
-        )
-        # Insert the image at the cursor.
-        image_format = cursor.charFormat()
-        from PyQt6.QtGui import QTextImageFormat
-        img_fmt = QTextImageFormat()
-        img_fmt.setName(image_name)
-        img_fmt.setWidth(min(image.width(), 600))
-        img_fmt.setHeight(
-            int(image.height() * min(image.width(), 600) / max(image.width(), 1))
-        )
-        cursor.insertImage(img_fmt)
-    @staticmethod
-    def create_url(name):
-        from PyQt6.QtCore import QUrl
-        return QUrl(name)
-    @staticmethod
-    def is_image_file(path):
-        extensions = {".png", ".jpg", ".jpeg", ".gif", ".bmp", ".webp", ".svg"}
-        return os.path.splitext(path.lower())[-1] in extensions
-    @staticmethod
-    def looks_like_image_url(url_string):
-        """Check if a URL looks like it points to an image."""
-        clean_url = url_string.split("?")[0].lower()
-        extensions = {".png", ".jpg", ".jpeg", ".gif", ".bmp", ".webp", ".svg"}
-        return any(clean_url.endswith(ext) for ext in extensions)
-    @staticmethod
-    def image_from_data_uri(data_uri):
-        """Decode a data: URI and return a QImage."""
-        import base64
-        try:
-            # data:image/png;base64,iVBOR...
-            header, data = data_uri.split(",", 1)
-            image_data = base64.b64decode(data)
-            image = QImage()
-            image.loadFromData(image_data)
-            return image
-        except Exception as e:
-            print(f"Failed to decode data URI: {e}")
-            return None
-class MainWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.setWindowTitle("Rich Text Editor &amp;mdash; Image Drop Demo")
-        self.setMinimumSize(700, 500)
-        self.editor = ImageDropTextEdit()
-        self.editor.setPlaceholderText(
-            "Try dragging an image from your web browser into this editor..."
-        )
-        layout = QVBoxLayout()
-        layout.addWidget(self.editor)
-        container = QWidget()
-        container.setLayout(layout)
-        self.setCentralWidget(container)
-app = QApplication(sys.argv)
-window = MainWindow()
-window.show()
-sys.exit(app.exec())
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;h2 id="whats-happening-in-the-complete-example"&gt;What's happening in the complete example&lt;/h2&gt;
-&lt;p&gt;The &lt;code&gt;ImageDropTextEdit&lt;/code&gt; class overrides &lt;code&gt;insertFromMimeData&lt;/code&gt;, which Qt calls for both paste (Ctrl+V) and drag-and-drop operations. This gives you a single place to handle all image insertion.&lt;/p&gt;
-&lt;p&gt;The method tries each data source in order:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Direct image data&lt;/strong&gt; &amp;mdash; the fastest and most reliable, when available.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;URLs&lt;/strong&gt; &amp;mdash; first checking for local files, then attempting to download remote URLs.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;HTML fragments&lt;/strong&gt; &amp;mdash; parsing out &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; tags and fetching the referenced image, including support for &lt;code&gt;data:&lt;/code&gt; URIs.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Fallback&lt;/strong&gt; &amp;mdash; if none of the above match, it passes control to the default &lt;code&gt;QTextEdit&lt;/code&gt; behavior, so normal text paste and drop still work.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;By overriding &lt;code&gt;canInsertFromMimeData&lt;/code&gt; as well, we tell Qt's drag and drop system that our editor accepts these additional formats, which ensures the correct cursor icon appears when hovering over the editor.&lt;/p&gt;
-&lt;p&gt;This approach handles the differences between browsers &amp;mdash; Chrome, Firefox, Edge &amp;mdash; and between different types of images on the web, making your rich text editor's drag and drop support much more resilient.&lt;/p&gt;
-            &lt;p&gt;For an in-depth guide to building Python GUIs with PyQt6 see my book, &lt;a href="https://www.pythonguis.com/pyqt6-book/"&gt;Create GUI Applications with Python &amp;amp; Qt6.&lt;/a&gt;&lt;/p&gt;</description>
-      <guid isPermaLink="false">8c74933aa09ecd525ef293de6f9201e7432e2231f305d43f43c22c4304da78c1</guid>
-      <pubDate>Wed, 05 Aug 2026 06:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Python Insider: Python 3.14.7 and 3.13.15 are now available!</title>
-      <link>https://blog.python.org/2026/08/python-3147-31315/</link>
-      <description>A pair of bug fix releases await your upgrade.</description>
-      <guid isPermaLink="false">59622f567df45159fbf0ba930043b03bdfdbe11a3dd2b240606651ada0e6859a</guid>
-      <pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Django Weblog: Django security releases issued: 6.0.8 and 5.2.17</title>
-      <link>https://www.djangoproject.com/weblog/2026/aug/04/security-releases/</link>
-      <description>&lt;p&gt;In accordance with &lt;a href="https://docs.djangoproject.com/en/dev/internals/security/"&gt;our security release policy&lt;/a&gt;,
-the Django team is issuing releases for
-&lt;a href="https://docs.djangoproject.com/en/dev/releases/6.0.8/"&gt;Django 6.0.8&lt;/a&gt; and
-&lt;a href="https://docs.djangoproject.com/en/dev/releases/5.2.17/"&gt;Django 5.2.17&lt;/a&gt;.
-These releases address the security issues detailed below. We encourage all
-users of Django to upgrade as soon as possible.&lt;/p&gt;
-&lt;h2 id="s-cve-2026-15307-server-side-file-write-and-request-forgery-via-spatial-lookups"&gt;CVE-2026-15307: Server-side file-write and request forgery via spatial lookups&lt;/h2&gt;
-&lt;p&gt;Spatial lookups allowed &lt;code&gt;str&lt;/code&gt; and &lt;code&gt;dict&lt;/code&gt; lookup values to be passed to
-&lt;code&gt;GDALRaster&lt;/code&gt; when they represented rasters. Depending on the raster driver, this could
-write a file to disk (in some cases enabling remote code execution) or issue a
-network request as the Django process user. Because the admin changelist
-permits filtering via &lt;code&gt;ModelAdmin.lookup_allowed()&lt;/code&gt;, the flaw was reachable by
-staff users with view permissions on any registered model containing a spatial
-field.&lt;/p&gt;
-&lt;p&gt;The following types are now disallowed by spatial lookups:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;dict&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;A &lt;code&gt;str&lt;/code&gt; that is not a valid &lt;code&gt;GEOSGeometry&lt;/code&gt;, e.g. a serialized dictionary&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;This is a backward incompatible change. As a reminder, all untrusted user input
-should be validated before use. For that reason, assignments to model fields
-are unaffected and still accept these input types.&lt;/p&gt;
-&lt;p&gt;For guidance on how to keep using these types in spatial lookups, on validating
-untrusted input, and on further security considerations, see the
-&lt;a href="https://docs.djangoproject.com/en/dev/ref/contrib/gis/gdal/#raster-security"&gt;raster security considerations&lt;/a&gt;
-documentation.&lt;/p&gt;
-&lt;p&gt;This issue has severity "high" according to the &lt;a href="https://docs.djangoproject.com/en/dev/internals/security/#security-issue-severity-levels"&gt;Django security policy&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Thanks to Bence Nagy, localhost-detect, and kimchunbok_ for the report.&lt;/p&gt;
-&lt;h2 id="s-cve-2026-15337-potential-denial-of-service-vulnerability-in-check_for_language"&gt;CVE-2026-15337: Potential denial-of-service vulnerability in &lt;code&gt;check_for_language()&lt;/code&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;django.utils.translation.check_for_language()&lt;/code&gt; was subject to a potential denial-of-service attack when checking many distinct, very long language codes. Each code was used as a key in an in-memory cache, consuming process memory.&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;language&lt;/code&gt; value reaches this function through the &lt;code&gt;django.views.i18n.set_language()&lt;/code&gt; view (not active by default) from POST data. Since request data is limited by &lt;code&gt;DATA_UPLOAD_MAX_MEMORY_SIZE&lt;/code&gt; and the cache is configured to store a maximum number of entries, the memory that could be consumed was bounded.&lt;/p&gt;
-&lt;p&gt;To mitigate this vulnerability, language codes longer than 500 characters are now rejected before the cached lookup.&lt;/p&gt;
-&lt;p&gt;This issue has severity "low" according to the &lt;a href="https://docs.djangoproject.com/en/dev/internals/security/#security-issue-severity-levels"&gt;Django security policy&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Thanks to Jaeyoung Jang for the report.&lt;/p&gt;
-&lt;h2 id="s-cve-2026-15830-potential-denial-of-service-vulnerability-via-nested-geometry-collections"&gt;CVE-2026-15830: Potential denial-of-service vulnerability via nested geometry collections&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;GEOSGeometry&lt;/code&gt; was subject to a potential denial-of-service attack when
-provided deeply nested &lt;code&gt;GEOMETRYCOLLECTION&lt;/code&gt; objects, leading to a segmentation
-fault in GEOS. A maximum depth of 198 &lt;code&gt;GEOMETRYCOLLECTION&lt;/code&gt;s is now enforced for
-the well-known text (WKT) format, and a maximum number of 198
-&lt;code&gt;GEOMETRYCOLLECTION&lt;/code&gt;s in total (breadth and depth) is enforced for well-known
-binary (WKB).&lt;/p&gt;
-&lt;p&gt;Lookups against spatial fields and the &lt;code&gt;GeometryField&lt;/code&gt; form field were also
-affected.&lt;/p&gt;
-&lt;p&gt;The limit can be customized through the new &lt;code&gt;max_geom_collections&lt;/code&gt; argument,
-available on &lt;code&gt;GEOSGeometry&lt;/code&gt;, the form field, and the model field. The limit is
-not applied to GeoJSON inputs, as they were parsed by GDAL and are not affected.&lt;/p&gt;
-&lt;p&gt;This issue has severity "moderate" according to the &lt;a href="https://docs.djangoproject.com/en/dev/internals/security/#security-issue-severity-levels"&gt;Django security policy&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Thanks to Andrew MacPherson and kimchunbok_ for the report.&lt;/p&gt;
-&lt;h2 id="s-cve-2026-15920-potential-cross-site-scripting-via-urlfield-values-in-the-admin"&gt;CVE-2026-15920: Potential cross-site scripting via &lt;code&gt;URLField&lt;/code&gt; values in the admin&lt;/h2&gt;
-&lt;p&gt;The admin renders &lt;code&gt;URLField&lt;/code&gt; values as clickable links on changelist views and read-only fields. The link was generated without validating the value as a safe URL, so a stored value using a potentially dangerous scheme was rendered as a link.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;URLField&lt;/code&gt; values shown via &lt;code&gt;display_for_field&lt;/code&gt; are now validated using &lt;code&gt;URLValidator&lt;/code&gt; before a link is rendered, and displayed as plain text if validation is failed.&lt;/p&gt;
-&lt;p&gt;This issue has severity "moderate" according to the &lt;a href="https://docs.djangoproject.com/en/dev/internals/security/#security-issue-severity-levels"&gt;Django security policy&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Thanks to Egor Saltykov (misop00p / ansjdnakjdnajkd) for the report.&lt;/p&gt;
-&lt;h2 id="s-affected-supported-versions"&gt;Affected supported versions&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Django main&lt;/li&gt;
-&lt;li&gt;Django 6.1 (currently at release candidate status)&lt;/li&gt;
-&lt;li&gt;Django 6.0&lt;/li&gt;
-&lt;li&gt;Django 5.2&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="s-resolution"&gt;Resolution&lt;/h2&gt;
-&lt;p&gt;Patches to resolve the issue have been applied to Django's
-main, 6.1 (currently at release candidate status), 6.0, and 5.2 branches.
-The patches may be obtained from the following changesets.&lt;/p&gt;
-&lt;h3 id="s-cve-2026-15307-server-side-file-write-and-request-forgery-via-spatial-lookups_1"&gt;CVE-2026-15307: Server-side file-write and request forgery via spatial lookups&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;On the &lt;a href="https://github.com/django/django/commit/f1949c1f9758947ade984c895ff16bef46f56520"&gt;main branch&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;On the &lt;a href="https://github.com/django/django/commit/39b3e2d0c743a338def6c473086ebc06865e86b6"&gt;6.1 branch&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;On the &lt;a href="https://github.com/django/django/commit/208f80cb682868b584ed0a78f23e4ba6304212aa"&gt;6.0 branch&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;On the &lt;a href="https://github.com/django/django/commit/115ffd0463a765ab1cc93de18e94b5459b8a300e"&gt;5.2 branch&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id="s-cve-2026-15337-potential-denial-of-service-vulnerability-in-check_for_language_1"&gt;CVE-2026-15337: Potential denial-of-service vulnerability in &lt;code&gt;check_for_language()&lt;/code&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;On the &lt;a href="https://github.com/django/django/commit/27137e655e442e81095f1f8f77ff3870d9fdf169"&gt;main branch&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;On the &lt;a href="https://github.com/django/django/commit/5b3523d29be25948e1dd90b3863a002f00fc865f"&gt;6.1 branch&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;On the &lt;a href="https://github.com/django/django/commit/224dbc832586ad5cfb0237c2ff30d14baeaddc6f"&gt;6.0 branch&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;On the &lt;a href="https://github.com/django/django/commit/c72a5dbb64d0777f3f471f1be94e8b2ca91e0959"&gt;5.2 branch&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id="s-cve-2026-15830-potential-denial-of-service-vulnerability-via-nested-geometry-collections_1"&gt;CVE-2026-15830: Potential denial-of-service vulnerability via nested geometry collections&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;On the &lt;a href="https://github.com/django/django/commit/d2e59b77fe18de318a8272c2a7bbc798d84d1d0d"&gt;main branch&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;On the &lt;a href="https://github.com/django/django/commit/9e4a3f186b6b07b483bfd9195ea06734663fcd06"&gt;6.1 branch&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;On the &lt;a href="https://github.com/django/django/commit/6af5da31775417c610dbf9c3f1b5b8333d42daf6"&gt;6.0 branch&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;On the &lt;a href="https://github.com/django/django/commit/ba80833fa656dd09660b97c4429331067db1b080"&gt;5.2 branch&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id="s-cve-2026-15920-potential-cross-site-scripting-via-urlfield-values-in-the-admin_1"&gt;CVE-2026-15920: Potential cross-site scripting via &lt;code&gt;URLField&lt;/code&gt; values in the admin&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;On the &lt;a href="https://github.com/django/django/commit/47511a21026cdd721d8fbf8571cc079bc38bb46d"&gt;main branch&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;On the &lt;a href="https://github.com/django/django/commit/5a260d309a4c8010c2ebda24eb758a5d95e2508a"&gt;6.1 branch&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;On the &lt;a href="https://github.com/django/django/commit/13debb622a32720bda1bccda7622fd14fbf3931b"&gt;6.0 branch&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;On the &lt;a href="https://github.com/django/django/commit/b9adb81339cc418f8f56b1050cca6dfec3ab6349"&gt;5.2 branch&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="s-the-following-releases-have-been-issued"&gt;The following releases have been issued&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Django 6.0.8 (&lt;a href="https://www.djangoproject.com/download/6.0.8/tarball/"&gt;tarball&lt;/a&gt; | &lt;a href="https://www.djangoproject.com/download/6.0.8/checksum/"&gt;checksums&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;Django 5.2.17 (&lt;a href="https://www.djangoproject.com/download/5.2.17/tarball/"&gt;tarball&lt;/a&gt; | &lt;a href="https://www.djangoproject.com/download/5.2.17/checksum/"&gt;checksums&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The PGP key ID used for this release is Natalia Bidart: &lt;a href="https://github.com/nessita.gpg"&gt;2EE82A8D9470983E&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="s-general-notes-regarding-security-reporting"&gt;General notes regarding security reporting&lt;/h2&gt;
-&lt;p&gt;As always, we ask that potential security issues be reported via private email
-to &lt;code&gt;security@djangoproject.com&lt;/code&gt;, and not via Django's Trac instance, nor via
-the Django Forum. Please see
-&lt;a href="https://www.djangoproject.com/security/"&gt;our security policies&lt;/a&gt; for further
-information.&lt;/p&gt;</description>
-      <guid isPermaLink="false">b6b5bb0448ddea0ed46b4faab4cb9efc1db67aa26c761f478c4ad15e48033ea7</guid>
-      <pubDate>Tue, 04 Aug 2026 11:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>
