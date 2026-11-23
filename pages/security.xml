@@ -5,7 +5,57 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sun, 22 Nov 2026 14:01:26 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Nov 2026 14:01:21 +0000</lastBuildDate>
+    <item>
+      <title>Critical binary-parser Flaw Enables JavaScript Injection via Malicious Parser Definitions - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/critical-binary-parser-flaw-enables.html</link>
+      <description>A critical security flaw has been disclosed in the popular binary-parser library that could allow an attacker who controls parser definitions to execute arbitrary code.
+The vulnerability, tracked as CVE-2026-134814 (CVSS score: 9.2 / 8.1), is a case of code injection impacting binary-parser versions prior to 2.3.1.
+"Binary-parser before 2.3.1 contains a code injection vulnerability that allows</description>
+      <guid isPermaLink="false">21bf8add058811b3272edad6c9a712fd6ee8987a0de3fd4ab1412b6bea96ed43</guid>
+      <pubDate>Mon, 23 Nov 2026 13:22:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hackers Exploit Critical ScreenConnect Flaw to Hijack MSP Technician PCs Without Warning - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/hackers-exploit-critical-screenconnect.html</link>
+      <description>Threat actors are exploiting a now-patched security flaw in ConnectWise ScreenConnect to target managed service provider (MSP) servers.
+The activity revolves around CVE-2026-84869 (CVSS score: 9.9), a critical ScreenConnect client flaw that allows a guest to transfer and execute a malicious payload on a connecting technician's host.
+"On November 12, 2026, we observed one managed service</description>
+      <guid isPermaLink="false">a8d19908c38b03fcced5907f5703060c4fe0a44b96a7a9ff800a8bf0217a20a7</guid>
+      <pubDate>Mon, 23 Nov 2026 12:41:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>N-able Discloses Critical Mail Assure Vulnerability Found During Breach Investigation - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/n-able-discloses-critical-mail-assure.html</link>
+      <description>N-able yesterday disclosed a critical flaw it found while investigating the breach of its Mail Assure and SpamExperts Hosted Cloud, an email filtering service it runs for managed service providers.
+The bug, tracked as CVE-2026-134624, is a server-side request forgery (SSRF) flaw. It allowed a user with high-level API access to open connections to internal systems of the user's choosing on the</description>
+      <guid isPermaLink="false">5d5ce8c0252828ccac390af7352414a53118eb81dd9005ffec69015e3458d0e2</guid>
+      <pubDate>Mon, 23 Nov 2026 12:28:09 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hackers Exploit Critical ASP.NET Anti-CSRF Library Flaw Allowing Unauthenticated RCE - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/hackers-exploit-critical-aspnet-anti.html</link>
+      <description>Cybersecurity researchers have urged users to discontinue using a legacy ASP.NET anti-CSRF library named Idunno.AntiCsrf ("Idunno.AntiCsrf.dll") following the discovery of a critical vulnerability that has been exploited in the wild.
+The vulnerability, tracked as CVE-2026-131914, carries a CVSS score of 9.3 out of 10.0. The issue affects versions 0.9.1.0 and 0.9.1 Beta, and relates to an</description>
+      <guid isPermaLink="false">ac6120a81e73376ab3e57af26558cbeec9aa7366e06ae40af088f47ea9dce5f6</guid>
+      <pubDate>Mon, 23 Nov 2026 09:11:56 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hackers Exploited GL.iNet Cloud Flaw to Install Malware on Routers and KVM Devices - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/hackers-exploited-glinet-cloud-flaw-to.html</link>
+      <description>Hackers exploited a vulnerability in GL.iNet's GoodCloud remote management service to install malware on some customer routers and KVM devices, the maker of travel routers and remote-access KVM hardware said in a security notice updated today.
+The company identified and fixed the flaw on Friday and blocked the access the attacker used, so devices can no longer be infected through this route.</description>
+      <guid isPermaLink="false">86169ad6ecefdec9a599831352341f7e3a43379c6f86f360aa78727842fe9944</guid>
+      <pubDate>Mon, 23 Nov 2026 09:04:08 +0000</pubDate>
+    </item>
+    <item>
+      <title>AI-Assisted Cyber Attacks Trigger Unauthorized Payments at Indian Banks and Fintech Firms - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/ai-assisted-cyberattacks-trigger.html</link>
+      <description>The Indian Computer Emergency Response Team (CERT-In) has warned that threat actors are carrying out artificial intelligence (AI)-assisted cyber attacks targeting information and communication technology (ICT) assets in the country.
+This unsanctioned activity has resulted in unauthorized financial transactions at banking and financial services entities, as well as technology service providers</description>
+      <guid isPermaLink="false">14c64e2fccc245ba2dd9cc5d9a1303f0cabd9e1693785f64aca13d184de251b3</guid>
+      <pubDate>Mon, 23 Nov 2026 08:24:15 +0000</pubDate>
+    </item>
     <item>
       <title>OpenRouter Drops 3 Providers After Researchers Catch Months of Prompt Theft at AI Hosting Firms - The Hacker News</title>
       <link>https://thehackernews.com/2026/11/openrouter-drops-3-providers-after.html</link>
@@ -1524,54 +1574,6 @@ The feature, which currently supports only npm packages, is available in public 
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/nanaynunay"&gt; /u/nanaynunay &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/mein-0/MercilessAmd"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xiexpa/amd_uproof_eop_kernel_driver_vuln/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">112111ce6960a9c1f2ace18c8554a679e3c6de57428e58b65da64418ccffc4a2</guid>
       <pubDate>Thu, 29 Oct 2026 09:09:59 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attacker Tried to Exploit Alpine Linux’s GitLab via CVSS 10.0 Flaw Its Ruby Left Open - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/attacker-tried-to-exploit-alpine-linuxs.html</link>
-      <description>An attacker tried to exploit a critical GitLab vulnerability on the Alpine Linux project's own GitLab server a week after GitLab&amp;nbsp;released a fix, Alpine Linux&amp;nbsp;said&amp;nbsp;on 28 October.
-The flaw, CVE-2026-97229 (CVSS score: 10.0), can let an attacker run code on a GitLab server through a crafted regular expression in a CI configuration. Alpine found no evidence that the attack worked but</description>
-      <guid isPermaLink="false">4b115633587cf69e883a18a883b14355e9d7e10634019ba3236b4816d39bfd9a</guid>
-      <pubDate>Thu, 29 Oct 2026 09:05:39 +0000</pubDate>
-    </item>
-    <item>
-      <title>Hackers Exploited Cisco SD-WAN Flaw to Plant Malware Built to Steal Encryption Keys - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/hackers-exploited-cisco-sd-wan-flaw-to.html</link>
-      <description>Hackers exploited a critical Cisco Catalyst SD-WAN flaw, fixed in February, to plant custom malware inside the systems that control an organization's SD-WAN network.
-The malware, called KeyDrift, is designed to copy the keys that encrypt traffic between sites and store them for later use,&amp;nbsp;Cisco Talos said&amp;nbsp;on October 28. Talos calls the attacks historical but does not specify when they</description>
-      <guid isPermaLink="false">a76a214a98b33d301e589431266054c814eaba62f015e2d29fc09bd92ba8c2f8</guid>
-      <pubDate>Thu, 29 Oct 2026 08:24:22 +0000</pubDate>
-    </item>
-    <item>
-      <title>Reconstructing an MF904Q LK Unlock Path: Actual Gate Inputs, Corrected Return Instrumentation, and Persistence Under Factory LK - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xidjhv/reconstructing_an_mf904q_lk_unlock_path_actual/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/Acceptable-Shame3718"&gt; /u/Acceptable-Shame3718 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/Faicalom/ZTE-MF904Q-Reverse-Engineering/blob/main/02-Bootloader-Unlock/COMPLETE_UNLOCK_GUIDE.md"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xidjhv/reconstructing_an_mf904q_lk_unlock_path_actual/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">d0f5eccf0c5afa7fb8ef7f233304f9314463be27a0a0f5c479470581bd16ccb9</guid>
-      <pubDate>Thu, 29 Oct 2026 07:40:46 +0000</pubDate>
-    </item>
-    <item>
-      <title>China-Linked Hackers Exploited VMware ESX Zero-Day to Reduce Audit Trail Visibility - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/china-linked-hackers-exploited-vmware.html</link>
-      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Wednesday added a security flaw impacting Broadcom VMware ESX to its Known Exploited Vulnerabilities (KEV) catalog, after CrowdStrike revealed that it had been weaponized by a China-nexus threat actor known as Warp Panda in attacks targeting the U.S. legal sector.
-The vulnerability in question is CVE-2026-41709 (CVSS score:</description>
-      <guid isPermaLink="false">e5fc7023e4e8e0dadaed49a10c1a250cb7f8149501adcb93bdc06bb75e6bf6a8</guid>
-      <pubDate>Thu, 29 Oct 2026 06:22:33 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Exploit PHP2Shell Flaws in Internet-Exposed Palo Alto Networks Management Interfaces - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/attackers-exploit-php2shell-flaws-in.html</link>
-      <description>Palo Alto Networks on Wednesday warned that threat actors are exploiting the recently patched PHP2Shell vulnerabilities against publicly-accessible management interfaces.
-"Active exploitation has been observed targeting the Palo Alto Networks management interface exposed to the internet," the network security company said in an update to its advisory.
-The vulnerabilities, tracked as</description>
-      <guid isPermaLink="false">958735853084b7a9c114f059366c7284957e1f58acdd36a5d66a3eb62a44eae6</guid>
-      <pubDate>Thu, 29 Oct 2026 05:50:17 +0000</pubDate>
-    </item>
-    <item>
-      <title>Volt Typhoon Used Covert Silent Train Network in Four Zero-Day Exploitation Campaigns - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/volt-typhoon-used-covert-silent-train.html</link>
-      <description>The China-nexus cyber espionage group known as Volt Typhoon has been attributed to a now-disrupted covert access network dubbed Silent Train that has been put to use for zero-day exploitation and strategic access.
-"First identified in late 2023, Silent Train uses rotating chains of compromised SOHO, IoT, and enterprise infrastructure," Lumen Technologies Black Lotus Labs said in a report shared</description>
-      <guid isPermaLink="false">550461876bbe411cb422bc54f0b85a55e1d89c8b6dc51c6df1c820360a4d5f52</guid>
-      <pubDate>Wed, 28 Oct 2026 18:08:33 +0000</pubDate>
     </item>
   </channel>
 </rss>

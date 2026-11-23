@@ -5,7 +5,69 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Hardware category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sun, 22 Nov 2026 14:01:26 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Nov 2026 14:01:21 +0000</lastBuildDate>
+    <item>
+      <title>No MicroDrive? No Problem! - Hack a Day</title>
+      <link>https://hackaday.com/2026/11/23/no-microdrive-no-problem/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2020/08/microdrive-featured.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;The Sinclair ZX Spectrum and QL computers contained many of Sir Clive&amp;#8217;s signature quirks, but perhaps chief among them was their take on mass storage. The Microdrive was something similar to a miniaturised version of an 8-track cartridge, with a continuous loop of tape inside that gave about 80k of storage. At the best of times, their reliability was a little suspect, but with all examples now being over four decades old, a working one is something to be cherished in 2026. If you have a QL or a Spectrum with Interface 1, though, all is not lost. [&lt;span class="header text center"&gt;Alexander Vollschwitz&lt;/span&gt;] has your back with &lt;a href="https://codeberg.org/xelalexv/oqtadrive/" target="_blank"&gt;Oqtadrive, an emulator for Sinclair microdrives&lt;/a&gt;. What it delivers is an emulated eight daisy-chained Microdrives, and even the Sinclair networking system over the Internet, something that many users never even saw locally back in the day.&lt;/p&gt;
+&lt;p&gt;At its heart is an Arduino Nano that connects to the Microdrive port and, if necessary, the network port, which in turn connects to a daemon running on a host computer. This can be anything from a PC or Mac to a Pi Zero. The Arduino emulates the hardware and the protocol for the Sinclair machine, while the daemon manages the storage and networking.&lt;/p&gt;
+&lt;p&gt;&lt;span id="more-1429669"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;There are quite a few options for connecting modern mass storage to a Sinclair machine, but we like this one for its use of original Sinclair methods and hardware. If we&amp;#8217;d been able to afford an Interface 1 back then, we might have wished we could have had this.&lt;/p&gt;
+&lt;p&gt;Curious about Microdrives? &lt;a href="https://hackaday.com/2020/09/18/the-zx-microdrive-budget-data-storage-1980s-style/"&gt;We took a look back in 2020&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">c24383ee5078327643db172559cd20188c7c22bb36594025e838499488a6d407</guid>
+      <pubDate>Mon, 23 Nov 2026 12:00:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>Repairing a Cheap Rotary Evaporator for the Home Lab - Hack a Day</title>
+      <link>https://hackaday.com/2026/11/23/repairing-a-cheap-rotary-evaporator-for-the-home-lab/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="503" src="https://hackaday.com/wp-content/uploads/2026/11/used_rotovap_repaired_projectsinflight_youtube.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;&lt;img alt="" class="size-medium wp-image-1429597 alignright" height="400" src="https://hackaday.com/wp-content/uploads/2026/11/used_rotovap_projectsinflight_youtube.jpg?w=400" width="400" /&gt;After running through the chemical reactions required to get whatever substance you were targeting, it&amp;#8217;ll often still be mixed in with a lot of solvent. Getting rid of this solvent can be done in a variety of ways, but the quickest and most gentle approach is to use the rotary evaporator, or rotovap. Unfortunately, despite being rather simple devices, buying them new is quite the financial decision, so [ProjectsInFlight] opted to try and &lt;a href="https://www.youtube.com/watch?v=M9Btbm7pXMw" target="_blank"&gt;fix up a cheap broken one&lt;/a&gt; that he bought online.&lt;/p&gt;
+&lt;p&gt;A rotovap, as the name suggests, rotates the flask that the liquid is contained in. A heating bath provides gentle heating to the flask, while a vacuum lowers the boiling point of the solvent. The evaporated solvent is then condensed and collected for reuse or disposal. With even a &amp;#8216;cheap&amp;#8217; budget rotovap starting at around $1,600, finding a rather trashed one for $100 might be a steal, even with the broken glass condenser section.&lt;/p&gt;
+&lt;p&gt;A replacement condenser was sourced for pretty much the price of the rotovap, with the hope that this would create one whole unit. After some testing it turned out that this rotovap probably fell down a tall flight of stairs, with a busted bearing block for the vertical lift. This is where having a milling machine and some scrap aluminium came in useful.&lt;/p&gt;
+&lt;p&gt;Ultimately the whole machine came together just fine, and a demonstration of why you want one of these puppies in your lab. For just over $200 this rotovap is excellent at massively speeding up evaporating over a basic hotplate, although you do need to supply your own vacuum pump, plus a cold trap or similar moisture trap if you use a rotary vane vacuum pump. Here using staged (eccentric) membrane pumps might be a budget solution.&lt;/p&gt;
+&lt;p&gt;Drying things in a vacuum is overall a very useful concept, one that can be used for more than just making chemistry tasks go faster, but &lt;a href="https://hackaday.com/2026/10/01/vacuum-drying-and-making-stuff-hot-in-a-vacuum/"&gt;also speed up drying&lt;/a&gt; of desiccant and FDM filament.&lt;/p&gt;
+&lt;p&gt;&lt;span id="more-1429580"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">b5cf65f2de00feb25b99b9574292deceea6758412e50e0705725c9bb185a96e7</guid>
+      <pubDate>Mon, 23 Nov 2026 09:00:28 +0000</pubDate>
+    </item>
+    <item>
+      <title>I Heard There Was a Secret Port… - Hack a Day</title>
+      <link>https://hackaday.com/2026/11/22/i-heard-there-was-a-secret-port/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="484" src="https://hackaday.com/wp-content/uploads/2026/06/UDP.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;TCP specifies 2^16 ports, 65536, much more than are typically used. In fact, the port zero is almost never used, or, as [Acid Vegas] found out, &lt;a href="https://acid.vegas/blog/the-port-that-does-not-exist/" target="_blank"&gt;about 0.25% of hosts globally (give or take) to be precise.&lt;/a&gt; The reason is not technical, in fact TCP supports it quite well, but rather social. If one were to request the Linux kernel provide you with port 0, it would actually provide you with a randomly allocated even port between 32768 and 61000. But, there are, of course, ways around this. Raw sockets or, the route [Acid] takes, IPTables/NFTables port mapping. By this, plain text IRC is bound to irc.supernets.org on port 0, and TLS on port 1.&lt;/p&gt;
+&lt;p&gt;But, should you go try to connect to this IRC server, you will find most userland programs simply refuse to accept a port of 0. BSD NC and Telnet will simply tell you the port is too small. Chromium and Firefox derived browsers will warn you its unsafe. And Python SSL will give you an IO error. However, Python AsyncIO and socat work just fine. Once again, this is not technical limitation of the port, but rather a reflection of the fact that there really isn&amp;#8217;t a reason to use it.&lt;/p&gt;
+&lt;p&gt;Should you go looking on the internet for hosts using port zero, you will find they mostly appear accidental. Mostly likely a network device defaulted to a strange configuration that no one noticed. Regardless the reasons, some strange services are using the port. SSH, mostly DropBear, suggesting IoT or networking devices like routers. Likewise, Telnet appeared on a number of embedded devices. HTTP router admin pages also appear on the port. But, if you remember, browsers don&amp;#8217;t let you use port 0, so you need to set up a local port forwarding rule if you want to connect.&lt;/p&gt;
+&lt;p&gt;While a handful of other services including RustDesk are on port 0, the most interesting is Station Message Detail Recording. SMDR is a simple TCP protocol which logs the outputs of phone calls in plain text.&lt;/p&gt;
+&lt;p&gt;If you like Linux networking,&lt;a href="https://hackaday.com/2026/08/10/linux-fu-heads-or-tails-for-vpn/"&gt; make sure to check out this VPN hack next!&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Thanks [adistuder] for the tip!&lt;/p&gt;</description>
+      <guid isPermaLink="false">bffc6941d2adaeab91eb5e9621d06b4a42eb212e1111ff6d2a58d86957529cca</guid>
+      <pubDate>Mon, 23 Nov 2026 03:00:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>Recycling Thousands of Coffee Capsules into a Moka Pot - Hack a Day</title>
+      <link>https://hackaday.com/2026/11/22/recycling-thousands-of-coffee-capsules-into-a-moka-pot/</link>
+      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="525" src="https://hackaday.com/wp-content/uploads/2026/11/moka_pot_coffee_capsules_shake_the_future_youtube.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;Everyone who has ever used a Nespresso or similar single-use pod system to make coffee may have noticed how much waste this produces in terms of empty capsules. A happy bit of trivia regarding these pods is that they are generally made of aluminium, and thus if you happen to have a kiln like [Shake the Future], you may get certain wild ideas involving collecting a few years worth of empty pods &lt;a href="https://www.youtube.com/watch?v=sD7EUUR06VI" target="_blank"&gt;to create aluminium ingots and more&lt;/a&gt;.&lt;/p&gt;
+&lt;figure class="wp-caption alignright" id="attachment_1429606" style="width: 400px;"&gt;&lt;img alt="Leaky, but definitely working." class="size-medium wp-image-1429606" height="400" src="https://hackaday.com/wp-content/uploads/2026/11/moka_pot_coffee_capsules_working_shake_the_future_youtube.jpg?w=400" width="400" /&gt;&lt;figcaption class="wp-caption-text" id="caption-attachment-1429606"&gt;Leaky, but definitely working.&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;The goal here is to create a &lt;a href="https://en.wikipedia.org/wiki/Moka_pot" target="_blank"&gt;Moka pot&lt;/a&gt;, which perhaps ironically is a stove top coffee maker that does not involve single-use waste beyond the easy-to-compost coffee grinds. Of course, the main question is how much good aluminium you can obtain from empty capsules, a question that started the process of melting them down to create those ingots and burn off plastic and other contaminants.&lt;/p&gt;
+&lt;p&gt;With only a fairly small furnace just this process took many hours for a few hundred capsules, but proved that the aluminium material seemed usable. Following this the two-part Moka pot design was printed in PLA for lost-PLA casting, creating two molds to pour fresh the molten aluminium into before combining both into the final pot.&lt;/p&gt;
+&lt;p&gt;The good news is that it does indeed work as a Moka pot after adding an off-the-shelf filter and seal. The bad news is that the cast aluminium is rather porous, with a significant amount of the water and also coffee happily leaking out of the bottom and sides in addition to fresh coffee pouring into the top section where it&amp;#8217;s supposed to go.&lt;/p&gt;
+&lt;p&gt;Sadly this Moka pot found itself repurposed as a flower pot, but if the porosity issue can be solved it might actually prove to be a viable approach to make some rather interesting functional items made from scrap capsules.&lt;/p&gt;
+&lt;p&gt;&lt;span id="more-1429599"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">e6273e4e6318504d8651af7286119e5300dca8512d9f52d717e33f76f5987887</guid>
+      <pubDate>Sun, 22 Nov 2026 21:00:56 +0000</pubDate>
+    </item>
+    <item>
+      <title>Building a Single-Chip USB GPU - Hack a Day</title>
+      <link>https://hackaday.com/2026/11/22/building-a-single-chip-usb-gpu/</link>
+      <description>&lt;div&gt;&lt;img alt="A small PCB is shown plugged into an RCA connector and a USB-C cable. The PCB has no separate connectors mounted on; the board itself plugs into both connectors." class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/11/usb_gpu.png?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;Considering how powerful they’ve become and how many other tasks they’ve been repurposed for, it’s easy to forget that a GPU’s primary purpose is to generate graphics. With this definition in mind, and accepting a somewhat lower standard of performance, it’s entirely possible to build a twenty-cent GPU, as &lt;a href="https://www.youtube.com/watch?v=mAM5MpFBTu8" target="_blank"&gt;[bitluni] demonstrated&lt;/a&gt; with this USB to analog video converter.&lt;/p&gt;
+&lt;p&gt;The converter is built into one tiny PCB with only one active component, a CH570 microcontroller, and a few passive components. Not only is the USB-C connector made out of the PCB itself, the analog RCA connector is also: the PCB is designed with several copper-plated cutouts which let it plug into a female RCA port. There is a quirk with this approach, though: many RCA ports apparently only have one wire to make contact with the internal pin, making this somewhat sensitive to orientation. Of the passive components, the most important was a crystal oscillator to keep the generated signal in sync with the display’s refresh rate; timing was this project’s main constraint.&lt;/p&gt;
+&lt;p&gt;To keep up with the necessary rate, all high-speed operations had to be done with SRAM; an odd performance drop turned out to be caused by the compiler using flash memory. The actual analog signal is generated with PWM. The device appears as a USB CDC device, and can display greyscale text and rudimentary graphics; [bitluni] wrote a program to use it as a serial terminal. Interestingly, when the TV he was using as a display was in wireless reception mode, it was able to pick up on the PWM signal transmitted by a jumper wire. This inspired [bitluni] to search for more transmission options; it turns out that with SPI and overclocking, the system might be able to transmit a PAL colour signal.&lt;/p&gt;
+&lt;p&gt;This isn’t [bitluni]’s first time getting video out of an unlikely microcontroller; he’s also driven VGA &lt;a href="https://hackaday.com/2023/06/28/much-better-vga-from-an-esp32/"&gt;with an ESP32&lt;/a&gt;. On a bit of a larger scale, he’s also built several &lt;a href="https://hackaday.com/2025/07/07/160-core-risc-v-board-is-the-m-2-coprocessor-you-didnt-know-you-needed/"&gt;coprocessors&lt;/a&gt; out of &lt;a href="https://hackaday.com/2026/07/06/gluing-8192-mcus-together-to-make-a-gpu/"&gt;microcontroller clusters&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">c272c86687e53a3711b0aaa118f433f4e202ca2c6695bc5a03aca0a62d5415e9</guid>
+      <pubDate>Sun, 22 Nov 2026 18:00:49 +0000</pubDate>
+    </item>
     <item>
       <title>Potatoes Grow in Simulated Lunar Soil as Well as on Earth - Hack a Day</title>
       <link>https://hackaday.com/2026/11/22/potatoes-grow-in-simulated-lunar-soil-as-well-as-on-earth/</link>
@@ -77,6 +139,623 @@
 &lt;p&gt;&lt;/p&gt;</description>
       <guid isPermaLink="false">9db132bcaa5b4364c07108f34092c82219cc74cb271061a9ff12ac0facaa0240</guid>
       <pubDate>Sun, 22 Nov 2026 00:00:29 +0000</pubDate>
+    </item>
+    <item>
+      <title>mass destruction of weapons - computers are bad</title>
+      <link>https://computer.rip/2026-11-22-mass-destruction-of-weapons.html</link>
+      <description>&lt;p&gt;There is a long history to chemical and biological warfare—one that, we at least
+hope, ended in 1993. The paucity of chemical and biological warfare today is a
+result of long-standing objections that culminated in the 1993 Chemical Weapons
+Convention. It is striking that this formal end to most chemical weapons
+programs came within a year of the last US test of a nuclear weapon: similar
+sentiments, and a similar 1990s &amp;quot;end of history&amp;quot; context, motivated both. The
+similarity makes the differences more striking. Nuclear weapons are still part
+of the pop culture today, the quintessential &amp;quot;weapon of mass destruction&amp;quot; and a
+symbol of the destructive potential of modern warfare.&lt;/p&gt;
+&lt;p&gt;But what of that term? Why &amp;quot;weapons of mass destruction?&amp;quot; The history of the
+phrase WMD is complex, and while it does predate nuclear weapons our modern use
+emerged in response to them. Still, it's a broader category. In today's
+language, WMD refers to nuclear, biological, or chemical weapons. Some of its
+most prominent invocations, namely in the Iraq War, referred to chemical rather
+than nuclear warfare. Still, to most Americans, chemical weapons are out of
+sight and out of mind.&lt;/p&gt;
+&lt;p&gt;There are a few reasons: chemical weapons have been more or less prohibited in
+warfare for over one hundred years, so we have little experience with or memory
+of them. In fact, today, in the United States, there are none. &lt;em&gt;That&lt;/em&gt; was the
+modern chemical war: the safe management, recovery, and destruction of an
+enormous stockpile of chemical weapons. This effort spanned military
+reservations across the United States, dismantling and burning chemical and
+biological munitions as life went on as usual outside of the fence. Well, at
+least, &amp;quot;as usual&amp;quot; for the Cold War: one of the effects of the stockpile was to
+maintain a sort of localized Cold War climate in those towns that fell downwind
+of it.&lt;/p&gt;
+&lt;p&gt;Today, with the discovery of a dangerously poorly managed stockpile of Lead
+Azide that will require an exceptionally risky emergency measure to destroy, we
+are all acutely aware of the direction that the wind blows. The upcoming plume
+of lead over Iowa is far from the first time that dangerous compounds have blown
+away from military custody. There have been dozens of such incidents, with
+varying degrees of intentionality and risk to the public. Many were, at the
+time, classified. Others were simply covered up. While not exactly the future we
+wanted, it is perhaps a sign of progress that the upcoming detonation has been
+announced at all. The public notifications seem, to me, to be the result of an
+attitude shift that happened at the tail end of the era of US chemical warfare.
+Windblown plume forecasting models, originally developed for the fallout of
+nuclear war, were reapplied to risk analysis of chemical weapon stockpiles. The
+news was bad, so bad that civilian towns were hardened against attack: not enemy
+attack, but an attack of bad luck, an accident upwind.&lt;/p&gt;
+&lt;p&gt;But first, we should consider how we got there.&lt;/p&gt;
+&lt;p&gt;There are accounts of chemical and biological warfare dating to antiquity,
+although as with most early history it can be hard to tell what was speculative
+and what was actually done. By the 18th century, there had certainly been
+multiple uses of poisons and noxious chemicals on the battlefield. Chemical
+weapons in particular took a revolutionary step forward with the development of
+a more formal science of chemistry, during the 19th century. Several important
+advancements in chemistry occurred in the pursuit of poisonous gases, and just
+about every other advance in chemistry was applied to them. Still, even in this
+early era, there was more of an appetite for the development of chemical weapons
+than for their actual use.&lt;/p&gt;
+&lt;p&gt;A particularly memorable incident in this history comes from Lyon Playfair, the
+very same who popularized the &amp;quot;Playfair Cipher&amp;quot; that makes a standard appearance
+in cryptography classes. In his role as a key scientific official during the
+Crimean War of the mid-1850s, he proposed the use of shells that would disperse
+a very poisonous form of Cyanide. Objections to the plan came not from pacifist
+do-gooders but from the weapons-builders themselves, who considered the whole
+thing morally questionable. Playfair's words in response are almost haunting in
+consideration of what would follow, outcomes of which he was simultaneously
+prescient and shockingly short-sighted.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;War is destruction, and the more destructive it can be made with the least
+suffering the sooner will be ended that barbarous method of protecting
+national rights. No doubt in time chemistry will be used to lessen the
+suffering of combatants, and even of criminals condemned to death.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;One of the reasons for the lackluster popularity of chemical weapons is that
+this notion of &amp;quot;easing the suffering&amp;quot; of the enemy, even if accepted as
+something other than madness, never really materialized. Particularly in the
+1990s, the ethics of capital punishment in the United States came to be seen as
+sort of a &lt;em&gt;technical&lt;/em&gt; problem. Maybe homicide by the state wasn't so bad if it
+was &amp;quot;painless,&amp;quot; or &amp;quot;quick,&amp;quot; or at least clinical in its appearance. The same
+idea pervaded chemical warfare in the 19th century, and in the 20th century it
+fell short in the same way that lethal injection has now.&lt;/p&gt;
+&lt;p&gt;Objection to chemical weapons generally preceded their use. The Hague Convention
+of 1899 prohibited the form of chemical weapon that was then most obvious, the
+gas shell. That this prohibition applied specifically to artillery shells is
+significant: one of the complexities of chemical warfare is its interaction with
+domestic use. Like hollow-point bullets, tear gas, for example, is widely used
+in many nations' interiors—but it has been prohibited in warfare for many
+decades. This situation was already apparent with the first large-scale use of
+chemical weapons, at the onset of the First World War.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="JACADS" src="https://computer.rip/static/img/chem/1.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;Tear gas, a broad category of irritants that are not generally fatal but induce
+painful and disabling effects, was first developed in France. Parisian police
+struggled with organized criminal groups who would barricade themselves into
+buildings and successfully repel attempts at arrest. A commission was formed to
+investigate the matter in 1912, and it recommended the adoption of ethyl
+bromoacetate. Delivered to a barricaded position, it caused uncontrollable
+tearing, difficulty breathing, and considerable pain—enough to drive gangsters
+out of cover.&lt;/p&gt;
+&lt;p&gt;That development in policing might have been controversial in its own right, but
+it was quickly overshadowed by the outbreak of the Great War. Tear gas was
+adapted to hand grenades, directed against the Germans at Alsace in 1914. In
+practice, this early chemical attack proved ineffective, but it opened Pandora's
+box. The Germans developed their own irritant shells, both sides justifying
+their use by leaning on the term &amp;quot;asphyxiating gas&amp;quot; in the Hague convention.
+Tear gases are unpleasant, but they are not asphyxiating as the term is
+defined.&lt;/p&gt;
+&lt;p&gt;It was a slippery slope, though, and once the gears of war were in motion they
+would not be stopped. German chemists improved both the chemical agents and the
+means of delivery, such that during 1915 a drifting cloud of Chlorine gas was
+used to scatter French soldiers holding a defensive line. As it happened, the
+reticence of the Germans to march into their own poisonous cloud meant that they
+gained little advantage, but it proved the concept. Once again, the legality of
+the measure was questioned, but this time, the Germans emphasized the Hague
+convention's specific use of the word &amp;quot;shells&amp;quot;—no artillery shells having been
+involved in this particular weapon.&lt;/p&gt;
+&lt;p&gt;Faced with this new threat, both sides developed countermeasures, and faced with
+those countermeasures, both developed new weapons. By the end of 1915 Phosgene
+was in wide use, and in 1917, the Germans introduced Mustard Gas.&lt;/p&gt;
+&lt;p&gt;Mustard is a terrifying weapon, causing severe blistering of any exposed skin
+and extensive bleeding. Mustard Gas was extensively used by both sides, becoming
+part of routine infantry strategy, and along the way dooming tens of thousands
+of soldiers to a torturous ordeal in the overwhelmed military hospitals.
+Ironically, despite the extreme response it induced, Mustard Has was not
+particularly fatal. Many of its victims survived, disfigured after a long
+period of extreme suffering.&lt;/p&gt;
+&lt;p&gt;These were the stories that came to be associated with chemical warfare. Far
+from Playfair's vision of &amp;quot;the least suffering,&amp;quot; Mustard Gas became one of the
+war's main sources of it. Mustard-exposed soldiers convalescing in rows, their
+skin covered in blisters, their eyes sealed closed... these were the images that
+defined chemical warfare for decades to follow.&lt;/p&gt;
+&lt;p&gt;While some use of chemical weapons continued after the First World War, Mustard
+Gas inspired a level of outrage that hung over the 1925 Geneva Conference.
+The Hague convention's prohibition on shells with asphyxiating gas was narrow
+enough that Mustard Gas arguably did not apply, so negotiators at Geneva agreed
+to stronger language. The Geneva Protocol, entering into force in 1928, broadly
+prohibited the use of chemical or biological agents in warfare between states.&lt;/p&gt;
+&lt;p&gt;That could have been the end of the story. The Geneva Protocol was not perfectly
+observed, but it did prevent almost all use of such weapons. Despite significant
+technological advances made in Germany, including the development of several
+nerve agents during the 1930s, World War II elapsed with only limited use of
+chemical or biological weapons in combat. Most chemical attacks were by the
+Japanese, perhaps less affected by the experience of the First World War, and
+even then were directed mostly against other combatants in Asia. On the European
+front, only a handful of chemical attacks took place.&lt;/p&gt;
+&lt;p&gt;Here, we arrive at the strangest contradiction in the history of chemical
+weapons: the near end of the use of chemical weapons, the Geneva Protocol, came
+before the peak of their development and manufacturing.&lt;/p&gt;
+&lt;p&gt;Despite the limited chemical attacks during WWII, chemical weapons programs
+became larger than ever before. One reason was the Geneva Protocol's
+differentiation between combat use by state actors and other uses. To say that
+the Nazis made little use of chemical weapons, while correct in a certain
+technical sense, becomes absurd in the face of the Holocaust. Domestic use of
+chemical weapons only escalated, a dichotomy that still resonates today. This
+potential for domestic use or use against non-state adversaries (such as putting
+down revolutionary movements) justified a decision by most WWI combatants to
+continue development and manufacturing of chemical weapons. That created an
+ongoing possibility of their use, despite prohibition, which itself justified
+even more development.&lt;/p&gt;
+&lt;p&gt;Consider the case of Australia, a nation that did not have a domestic chemical
+weapons program but still built massive stockpiles of imported chemical
+munitions during WWII. Why? For defense, of course: Australia was relatively
+close to Japan, the main chemical combatant, and felt the need to have a
+credible retaliation capability if Japan did decide to initiate all-out chemical
+war. This kind of reasoning, foreshadowing the doctrine that would demand
+nuclear weapons programs to the modern day, echoed around the world. Australia
+was importing those weapons principally from the US and UK, two countries that
+committed not to use chemical weapons, indeed never used them, and nevertheless
+operated major research centers and manufacturing plants throughout the war.
+The Germans clearly had a chemical inventory, which they so saliently
+demonstrated against their own population, and what if they decided to cast the
+treaty aside? Ought we to remain defenseless?&lt;/p&gt;
+&lt;p&gt;The fear was not unfounded; Germany was known to have violated the Geneva
+Protocol on several occasions and some historians take the view that their use
+of chemical weapons was limited by technical issues rather than a policy
+decision. Churchill favored a chemical &amp;quot;first strike,&amp;quot; although the suggestion
+didn't get much traction. In the US, as well, a notional retaliation capability
+was grounds for extensive R&amp;amp;D on rocket-delivered chemical warheads.&lt;/p&gt;
+&lt;p&gt;Ironically, most of the US casualties to chemical weapons were self-inflicted.
+During the war the military manufactured stockpiles of Mustard Gas, Hydrogen
+Cyanide, and Cyanogen Chloride. These compounds were packaged into weapons and,
+in at least some cases, staged at the front in preparation for use. This program
+was a closely held secret and little is known of it even today. One major detail
+could not escape discovery: a German air raid on US Navy ships in Italy, in
+1943, struck a ship carrying Mustard Gas. The resulting leakage at least
+contributed to the deaths of 69 people, and sickened hundreds. Already, perhaps
+the most dangerous thing about chemical weapons was possessing them.&lt;/p&gt;
+&lt;p&gt;Chemical warfare programs only accelerated after WWII. The newly developed
+German nerve agents, including Sarin&lt;sup class="footnote-ref" id="fnref-1"&gt;&lt;a href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;, made it to the US as spoils of war. The
+research programs that formed around these new agents are some of the most
+infamous of the period, including exposure of thousands of soldiers to small
+doses of poisons to observe the effects, a program that continued at Edgewood
+Arsenal in Maryland until the public became aware—and the program collapsed in
+scandal—in 1975. The involvement of LSD in these experiments often sees them
+lumped together with MKULTRA, but the vast majority of the research was on less
+exotic substances: VX, Sarin, Mustard Gas, Tear Gas.&lt;/p&gt;
+&lt;p&gt;Edgewood was also the manufacturing center for Mustard and Phosgene. What
+Edgewood couldn't provide was storage; it didn't have room for the
+well-separated bunkers required for munitions. The Army built new installations
+for the stockpile: Redstone Arsenal in Alabama, Rocky Mountain Arsenal in
+Colorado, Pine Bluff Arsenal in Arkansas, and Tooele Ordnance Depot in Utah.
+At each of these sites, hundreds of acres of earth-covered concrete sheds stored
+weapons at a distance that wouldn't set off their neighbors.&lt;/p&gt;
+&lt;p&gt;In the very early years of the Cold War, the US Army weaponized a new chemical agent
+called BZ. BZ gained notoriety because of its psychological effects, which
+included hallucinations, and because of various accusations that it was covertly
+used by the US during the 1960s. These allegations don't generally hold up, but
+they illustrate the atmosphere of paranoia that chemical weapons created, and
+in response to which more chemical weapons were developed.&lt;/p&gt;
+&lt;p&gt;BZ was produced at Swannanoa, North Carolina, and assembled into weapons at
+Pine Bluff Arsenal, where binary (two parts that are mixed together) nerve
+agents were produced as well. Phosphate was manufactured at Muscle Shoals,
+Alabama, and VX at Newport, Indiana. The Aberdeen Proving Ground handled
+Mustard gas manufacturing and filling. The Rocky Mountain Arsenal, though,
+just outside of Denver, was the center of the post-war program: Sarin, Mustard,
+and Sulfur Mustard were all produced and stored there.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Storage configuration in a Umatilla bunker" src="https://computer.rip/static/img/chem/2.png" /&gt;&lt;/p&gt;
+&lt;p&gt;The Vietnam War proved a pivotal conflict for chemical warfare, as with so many
+other aspects of military history. Defoliants, such as Agent Orange, were not
+considered to be chemical weapons and saw heavy use in Vietnam. While targeted at
+plants, they were not safe for humans either, and played a major role in
+creating a generation of disabled veterans. In the meantime, the accidental
+dangers became more apparent: in 1968, an accident at Dugway Proving Ground in
+Utah released the nerve gas VX and killed thousands of sheep. The Army denied
+involvement, and then later admitted involvement but denied fault, a position it
+maintained into the '90s. Despite attempts to maintain secrecy, the Dugway sheep
+incident brought public attention to the chemical weapons program—which had
+maintained such a low profile that many didn't realize it existed.&lt;/p&gt;
+&lt;p&gt;Press investigations after Dugway revealed further problems: disposal practices
+that had released large quantities of chemical agents into the ocean, handling
+accidents in overseas military installations, and of course numerous human
+experiments that fell far short of the ethical standards of the time.&lt;/p&gt;
+&lt;p&gt;In short, the Dugway incident reminded the public, and Congress, that the US
+Army Chemical Corps existed. It had thousands of soldiers, dozens of facilities,
+and maintained an inventory of chemical weapons that spanned a national network of
+ammunition igloos. Ongoing manufacturing operations in the 1960s included BZ
+cluster bombs, VX shells, Hydrogen Cyanide, and others. Once the press latched
+on to the program, though, it was the beginning of the end. In 1969, President
+Nixon announced a &amp;quot;no first use&amp;quot; policy for chemical weapons and the complete
+prohibition of biological weapons—a stronger policy than has been adopted
+for nuclear weapons even to this day.&lt;/p&gt;
+&lt;p&gt;As part of the 1969 declaration, Nixon also ended the biological weapons
+program entirely. I have not spoken as much of biological weapons here, as the
+scale of the US effort was always smaller than that for chemical agents, but I
+shouldn't understate it. A half dozen viral and bacterial infections, including
+Anthrax and Botulism, were weaponized in research laboratories. In part because
+of moral and practical concerns in the military, most of these were never
+manufactured at scale and delivery systems (such as artillery shells or
+warheads) were rarely developed to maturity. When Nixon ordered the program
+ended, its small scale made it relatively straightforward to destroy stockpiled
+material. Much of the laboratory-scale work was retained, anyway, for its value
+in researching defensive measures.&lt;/p&gt;
+&lt;p&gt;Chemical weapons were a different matter entirely, because of the scale of the
+stockpiles. Continuing expansion of the chemical weapons program saw new
+stockpiles at Umatilla, Oregon; Pueblo, Colorado; Hawthorne, Nevada; Anniston,
+Alabama; and Blue Grass, Kentucky. At the peak, the United States disclosed an
+inventory of 31,100 metric tons of nerve agents and Mustard, stored across a
+dozen sites. Nearly half was concentrated in Tooele, Utah.&lt;/p&gt;
+&lt;p&gt;Due to the old age of many chemical munitions, there had already
+been efforts to dispose of aged-out stockpiles in the 1960s. This program took
+the crude form of missions like &amp;quot;Operation CHASE,&amp;quot; or &amp;quot;Cut Holes and Sink 'Em,&amp;quot;
+in which Liberty ships full of munitions were towed off of the coast of Florida
+and scuttled. Only some carried chemical weapons, but well-founded concerns
+over the environmental impacts of such a chemical assault on the ocean led to
+legislation prohibiting this means of disposal in 1972. Other smaller-scale
+disposal efforts had taken forms like loading Phosphorus into barrels, rolling
+them into a lake, and then shooting at them until they sank, but besides the
+generally crude nature of this approach there were only so many lakes that could
+be so used.&lt;/p&gt;
+&lt;p&gt;Congress had intervened in other ways, as well. Starting in 1970, the Office of
+the Surgeon General was tasked with reviewing the way that chemical weapons were
+handled and destroyed. This responsibility shifted around several agencies,
+ultimately involving the Centers for Disease Control, and brought a level of
+visibility into chemical weapons management that forced the Department of Defense
+to take a far more systematic and cautious approach to the remaining stockpile.&lt;/p&gt;
+&lt;p&gt;During the 1970s, the Army's Chemical Corps took on a new focus: safe handling
+and disposal. The most concerning—and contentious—part of the stockpile was
+weapons that had been &amp;quot;forward staged&amp;quot; in Europe and Asia. These were intended
+to allow a fast retaliation to any chemical attack on Europe, but by this point
+they had become unpopular with host nations like Germany and Japan. This set up
+the first wave of chemical demilitarization: a months-long Army/Navy effort
+moved the chemical inventory from Okinawa, thousands of tons of munitions with
+nerve agents and Mustard Gas, to Johnston Atoll.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Umatilla disposal facility" src="https://computer.rip/static/img/chem/3.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;While better known for its
+role in the nuclear weapons program, Johnston also served as a base for
+satellite programs (both intelligence collection and anti-satellite weapons)
+and a test site for biological and chemical weapons. Starting in 1971, storage
+and destruction of chemical weapons was made the installation's main purpose.
+In reaction to the safety incidents of the late '60s, legislation passed in the
+early 1970s that prohibited transfer of most chemical weapons from overseas to
+the United States. Instead, over the following decades, nearly all US chemical
+weapons that had been stored outside of North America were consolidated to
+Johnston Atoll. The inventory there in the 1990s included even German-made
+chemical shells that had been captured by the Allies and stored in Germany for
+study.&lt;/p&gt;
+&lt;p&gt;In 1972, an Army command was formally established to manage the destruction of
+chemical weapons. The first priority was made the M34 cluster bomb. Designed in
+the 1950s, the M34 was the first Cold War-era chemical weapon and already
+considered obsolete. M34s were among the weapons destroyed by ocean disposal
+during Operation CHASE, but that method had since been prohibited. The Army had to
+find another way to handle more than 20,000 M34 bombs still stored by Denver,
+and because of the location of the weapons that method would have to actually
+neutralize the agents. For the Sarin-laden M34s, a hole was carefully drilled to
+drain the Sarin from each of the &amp;quot;bomblets&amp;quot; that made up the cluster munition.
+That Sarin liquid was then mixed with a neutralizing caustic chemical in a
+sealed reaction chamber. The resulting salt brine was dried, and the
+precipitated solids (no longer a nerve agent but still an environmental toxin)
+were buried in nearly 20,000 steel drums. In the meantime, Rocky Mountain
+Arsenal burned tens of thousands of tons of Mustard gas projectiles in an
+on-site incinerator, and began chemical neutralization of outdated VX munitions
+that had been relocated to the site for storage. &lt;/p&gt;
+&lt;p&gt;These early disposal operations at Rocky Mountain Arsenal took place in part
+because of its proximity to a major city, and a political factor that had made it
+the top priority for site closure. That was also a liability: disposal
+operations added to existing environmental contamination, exacerbating a
+groundwater plume that killed nearby crops and creating a new set of toxic
+landfills. The weapons that were destroyed there in the '60s and '70s were the
+easy cases, intact weapons with chemical agents that had known neutralization
+techniques or were easily incinerated. The Army realized that many other
+chemical weapons, including older weapons that were already in poor condition
+and beginning to leak, would require a more complex approach with greater risk
+of exposure.&lt;/p&gt;
+&lt;p&gt;To develop these techniques, the Chemical Corps established the Chemical Agent
+Munitions Disposal System (CAMDS) at the Deseret Chemical Depot, a new
+purpose-built installation adjacent to the Tooele Army Depot on the south side
+of the Great Salt Lake. CAMDS became the primary R&amp;amp;D site for disposal, and
+pioneered techniques that included robotic remote handling, semi-automated
+processing lines, and high-temperature incineration with extensive filtration
+and chemical treatment of the exhaust. Over the lifespan of CAMDS, more than
+91 tons of chemical agents were treated, but most operations at CAMDS served as
+pilots for larger-scale facilities at other installations.&lt;/p&gt;
+&lt;p&gt;In 1981, an ambitious construction program started at Johnston Atoll: the
+Johnston Atoll Chemical Agent Disposal System (JACADS). Based on techniques
+in use at CAMDS and built over five years, JACADS then went through four years
+of testing and validation before the first full-scale chemical weapons disposal
+line started operation in 1990. Nerve gas shells were carefully unloaded from
+storage pallets and set up on a belt. That carried them through a sort of
+de-production line, where the shells were opened, drained, and washed. The
+explosives and chemicals they contained were burned in a high-temperature
+incinerator, while the metal casings of the shells and other components were
+treated in a high-temperature kiln to ensure they were safe to handle.
+Simultaneously, a set of &amp;quot;auxiliary&amp;quot; incinerators and kilns processed packaging
+materials and handling waste. Monitoring systems continuously sampled emissions
+for any escaping chemical weapons, and periodically such leaks were discovered.&lt;/p&gt;
+&lt;p&gt;This period of chemical weapons history is an odd one, because the political
+tide had turned against chemical weapons but the Army's inertia continued in the
+direction of chemical warfare. As JACADS was under construction, the Army built
+a set of new manufacturing plants at Pine Bluff Arsenal. This would specifically
+produce binary chemical weapons, which use two separate agents that are
+relatively safe until they are mixed to produce a nerve agent. Binary weapons
+can be much safer to handle, since the mixing doesn't occur until an in-flight
+&amp;quot;arming&amp;quot; stage. They were also seen as an escalation in chemical warfare,
+especially in the context of the Cold War.&lt;/p&gt;
+&lt;p&gt;As often happens with controversial weapons systems, the Army's work to
+productionize binary weapons was also their undoing. Controversy around the new
+weapon designs, and the facilities for manufacturing them, led to a renewal in
+negotiations with the Soviet Union for some type of chemical weapons treaty.
+Domestically, the issue made its way to Washington, where in 1986 legislation
+passed requiring that all non-binary (and thus less safe to handle) weapons
+be safely destroyed. Lack of congressional enthusiasm (resulting in limited
+funding), the intrinsic complexity of safely handling dangerous chemicals and
+explosives, and standard military acquisition problems meant that the new binary
+weapons programs were slow in coming. Despite the start of construction on
+several binary weapons plants in 1982, only one was operational by the 1990s,
+producing the M20 and M21 cartridges which produced Sarin upon mixing in an
+artillery shell. Barely after M20/M21 production started, ongoing talks with the
+Soviet Union led to an early agreement to end chemical weapons production—a
+somewhat informal memorandum, but one that kickstarted negotiations for a formal
+treaty, complete with timelines and verification requirements.&lt;/p&gt;
+&lt;p&gt;In 1991, Congress ordered the destruction of all material related to the
+chemical weapons program. This included binary materials, as well as waste,
+experimental samples, and chemical weapons waste buried in landfills. The United
+States had, at that point, officially ended its chemical weapons program—a
+position that would be reinforced by the 1997 ratification of the Chemical
+Weapons Convention, a complete demilitarization treaty with nearly every nation of
+the world, and most critically key opponent Russia, as signatories. In a certain
+strategic sense, the US was no longer a &amp;quot;chemical power,&amp;quot; the entire stockpile
+considered retired. In a practical sense, there were still thousands of tons of
+chemical agents, packaged into hundreds of thousands of tons of munitions,
+stored in concrete bunkers from Alabama to Oregon.&lt;/p&gt;
+&lt;p&gt;Throughout the last decade of that century, every chemical weapon storage site
+became a disposal operation. Congressional restrictions and political realities
+meant that chemical weapons could not generally be transported between sites.
+During the 1980s, Sarin-carrying Mk 116 &amp;quot;Weteye&amp;quot; bombs stored at Rocky Mountain
+Arsenal were dismantled there until safety concerns forced a decision to
+discontinue demilitarization operations at the edge of a major city. The
+remaining stockpile at Denver was small, but still included almost a thousand
+Weteye bombs, particularly the &amp;quot;difficult cases&amp;quot; that had begun to leak. The
+decision was made to ship these bombs to Tooele for safer storage and disposal
+at the planned CAMDS. The move did happen, but not without inspiring one of the
+largest political battles of the chemical weapons era, a media circus that
+considerably frayed relations between the Army and the state of Utah. Congress
+followed up by restricting domestic transportation, and by the time disarmament
+was fully underway it was clear that it would all need to be done &amp;quot;as is, where
+is.&amp;quot;&lt;/p&gt;
+&lt;div class="beg"&gt;
+&lt;hr /&gt;
+&lt;p&gt;I put a lot of time into writing this, and I hope that you enjoy reading
+it. If you can spare a few dollars, consider &lt;a href="https://ko-fi.com/jbcrawford"&gt;supporting me on
+ko-fi&lt;/a&gt;. You'll receive an occasional extra,
+subscribers-only post, and defray the costs of providing artisanal, hand-built
+world wide web directly from Albuquerque, New Mexico.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;p&gt;The US Army Chemical Demilitarization and Remediation Activity built the Tooele
+Chemical Agent Disposal Facility (scaled up from CAMDS), Anniston CADF, Umatilla
+CADF, and Newport CADF. Failures of several pilot programs to develop a practical
+alternative to high-temperature incineration led to the construction of the
+Aberdeen and Pine Bluff CADFs shortly after. Manufacturing facilities were
+converted, sometimes hastily, to dismantling facilities. The Chemical Weapons
+Convention's verification scheme started a comprehensive audit of military
+stockpiles, with storage sites physically searched for chemical inventory. A
+dream that seems so remote for nuclear weapons had been achieved: it was now
+military policy, and a major military objective, to find and destroy every last
+chemical weapon.&lt;/p&gt;
+&lt;p&gt;At the turn of the millennium, JACADS completed its mission, having incinerated
+nearly half a million weapons—6% of the total US stockpile—stored at
+Johnston Atoll. Disposal facilities were operating at nearly every stockpile
+site, almost exclusively by incineration, although some neutralization
+operations continued at smaller scale. While most of the chemical inventory
+took the form of large quantities of finished weapons at depots, there was also
+a sort of &amp;quot;miscellaneous&amp;quot; category. Smaller supplies of weapons that had been
+moved for testing or R&amp;amp;D, stored agents that were never assembled into
+weapons, laboratory samples and waste, and other &amp;quot;etcetera&amp;quot; cases made up the
+category of &amp;quot;non-stockpile&amp;quot; chemical materials.&lt;/p&gt;
+&lt;p&gt;For example, the military had manufactured over a hundred thousand &amp;quot;chemical
+agent identification sets,&amp;quot; sort of portable laboratories and field guides for
+soldiers that might encounter chemical weapons in the field. These contained
+small samples of several chemical weapons, and were stored at several sites.
+They met their end via the Rapid Response System, a three-semi-trailer portable
+agent disposal facility that could perform a range of neutralization processes
+at small scale. After qualification testing at Tooele, the Rapid Response System
+made a sort of nationwide tour of each facility.&lt;/p&gt;
+&lt;p&gt;A particularly hard case were those weapons that had begun to leak, or where the
+explosives had become unstable. These were dangerous to handle or transport,
+even over short distances. In response, Sandia National Laboratories developed
+the Explosive Destruction System. The EDS was a single semi trailer, but one
+that traveled with about a dozen supporting trucks. It was typically set up
+under a tent with a negative pressure air filtration system and an airlock for
+entry. Chemical munitions were set up in a tray, and shaped explosive charges
+placed across the top. This nightmare casserole is then loaded into a huge
+steel chamber, where the explosives are detonated to both &amp;quot;open&amp;quot; the weapons and
+thermally neutralize some of the contents. The rest of the chemical agent is
+destroyed by neutralizing chemicals injected into the chamber post-detonation,
+and the steel vessel is heated and rotated to mix everything up and complete the
+operation. During the '90s and '00s, multiple EDS units were used to handle
+small inventories of &amp;quot;discovered&amp;quot; chemical weapons, leaking and damaged weapons,
+and non-stockpile materials. After the Chemical Weapons Convention, the EDS
+convoy included a &amp;quot;treaty trailer&amp;quot; where staff from the international treaty
+enforcement body Organization for the Prohibition of Chemical Weapons (OPCW)
+independently observed the work.&lt;/p&gt;
+&lt;p&gt;Major storage sites required industrial-scale facilities. At Umatilla, 1,000
+concrete bunkers held artillery shells, rockets, bombs, landmines, sprayers,
+and storage containers. These weapons contained nerve agents Sarin and VX, as
+well as Mustard Gas and blister agents. 1980s upgrades to the facility included
+better sealing the igloos, fitting them with drains that would contain water
+from the bunkers for sampling, and adding air filtration on the bunker vents.
+These reduced the risk from leaking weapons, but as the stockpile aged, leakage
+was a more and more serious problem. Starting in 1998 the Army carefully
+recorded each leak; prior to that year most went unnoticed. Environmental
+personnel interviewed former employees and found multiple stories of leaks,
+cracks, and other incidents. In at least one case, a leaking munition described
+by a former worker was found, still stored, right in the bunker where he said
+it had sprayed its contents across the wall.&lt;/p&gt;
+&lt;p&gt;Contracted to Raytheon, construction of the Umatilla Chemical Agent Disposal
+Facility (UMCDF) began in 1997. The plant went in to operation in 2004. With 819 miles
+of wire, 25,000 cubic yards of concrete, and 2,655 tons of steel, the Army
+boasted that it was &amp;quot;among the most advanced industrial facilities in the
+world.&amp;quot; Destroying the full inventory at Umatilla would take years. A
+risk-prioritized approach was used in which large-quantity nerve agent weapons
+were destroyed first, and the relatively less dangerous munitions (such as those
+with only Mustard Gas or those with very small quantities of nerve agent) were
+left for later.&lt;/p&gt;
+&lt;p&gt;Operated by contractor URS, the UMCDF consisted of a Container Handling Building
+where airtight, double-walled steel containers that had been packed and sealed
+in the bunkers were inspected and transferred to conveyors. From that point,
+they moved into the Munitions Demilitarization Building where the containers
+were opened, munitions were disassembled and drained, and the chemical agents
+and components were delivered to various incinerators. While a few workers with
+extensive protective equipment performed the most complex disassembly tasks,
+most operations within the Demilitarization Building were performed by a system
+of conveyors, hoists, and robots under remote control.&lt;/p&gt;
+&lt;p&gt;Different components went into different incinerators. Liquid from washing
+weapons and containers went to the Liquid Incinerators, where it was mixed
+with air and natural gas and fed into a two-stage vortex burner system operating
+between 2,500 and 2,700 degrees Fahrenheit (1,370-1,480 C). Explosives and
+propellants, usually contaminated by residual chemical agents, went to the
+Deactivation Furnace System. A 32 foot long rotating drum kiln treated the waste
+at a minimum of 1,100 degrees Fahrenheit (590 C) for 7-10 minutes, followed by
+a discharge conveyor that kept them nearly as hot for another 15 minutes. Most
+of the material burned during this process, leaving ash (packaged for disposal
+in a chemical landfill) and flue gas that passed through a final stage of
+incineration in an afterburner chamber. Just about everything else, mostly the
+metal casings and components of weapons, went to the Metal Parts Furnace (MPF).
+The MPF was a three-stage incinerator, with a system of belts and airlocks to
+move material through it in an almost continuous stream. The three stages held
+materials for various time periods (depending on the type of waste) at
+temperatures from 1,450 F to 1,800 F (790 C to 980 C), until the materials
+arrive in the out-feed airlock where they are cooled. The air blown in for
+cooling was sampled on the way out and tested to ensure that it was free of
+chemical agents. All gases from the MPF were processed by a multi-stage
+afterburner incinerator.&lt;/p&gt;
+&lt;p&gt;The UMCDF required an array of support facilities, like the Pollution Abatement
+System that received the exhaust gases from all of the incinerators. This
+exhaust, clean of chemical agents but still bearing a variety of interesting and
+toxic chemicals, was cooled in a quench tower and then put through a series
+of chemical scrubbers and filters before a final incinerator stage for good
+measure. Liquid brines, collected from the scrubber towers and parts of the
+Demilitarization Building process, went to a treatment plant where the water
+was evaporated off (and the vapors scrubbed) to leave dry crystallized salts.
+These were packaged for disposal at a hazardous waste landfill. Laboratory,
+utility, and office buildings made up the rest of the complex.&lt;/p&gt;
+&lt;p&gt;Congressional scrutiny of chemical weapons also led to the Chemical Stockpile
+Emergency Preparedness Program. This legislation responded to accidents that had
+occurred at storage and demilitarization sites by requiring that the Army and
+FEMA take measures to protect nearby communities. The highest population
+concentration around a major depot, after the relatively early end of operations
+at Rocky Mountain Arsenal, was found in Oregon and Washington towns around
+Umatilla. In that region, FEMA funded the construction of a
+new emergency operations center, installation of sirens, and positive-pressure
+chemical filtration systems on schools. It was projected that residents of
+Umatilla would have to move into sealed shelter in less than an hour, were there
+to be an accident at the depot. A FEMA-funded computer modeling system, at the
+Emergency Operations Center, would project plume travel to inform evacuation and
+shelter decisions. The counties stockpiled protective suits and other equipment,
+and arranged military training on surviving chemical attack for firefighters.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Siren in Irrigon, Oregon" src="https://computer.rip/static/img/chem/4.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;By 2000, residents of the area were provided with &amp;quot;tone alert&amp;quot; radios to sound
+an alarm in their home. Counties distributed &amp;quot;shelter in place kits,&amp;quot; with tape
+and plastic sheeting, to offer residents something to do if the radios ever did
+sound. The East Oregonian described a county official saying that the kits
+wouldn't really seal a room, but &amp;quot;may buy more time for a family inside.&amp;quot;
+Pressurization systems were made standard in new schools in the area, and added
+to the hospital and a nursing home in Umatilla. Working with the CDC, the State
+of Oregon trained medical personnel on chemical weapons response and distributed
+the nerve agent antidote Atropine to hospitals. FEMA funds were directed to
+school districts to buy more buses—a local transportation capability that could
+be conscripted for an evacuation.&lt;/p&gt;
+&lt;p&gt;In 2008, the last nerve gas weapon, a VX land mine, passed through the plant.
+The last Mustard Gas weapon was processed in 2011, and evacuation sirens sounded
+their last Tuesday test. In 2013, the Army published a plan to remediate
+contamination at Umatilla, demolish the plant, and return the land to other use.
+Even this process was complex: many of the bunkers were contaminated and had to
+be carefully cleaned. Much of the demolition debris from the incinerator plant
+had to be handled as hazardous waste. Each and every bunker was swabbed for
+testing, soil samples were taken, buildings were knocked over and covered. At
+the building where workers changed into their protective equipment, septic
+leachate and dryer lint were collected as chemical waste. In 2023, the Army
+transferred the 9,511 acres that made up the installation to a coalition of
+local governments. Much of it will be used by the Oregon National Guard as a
+training site, other areas are slated to become industrial parks, and the
+tribal government of the Cayuse, Umatilla, and Walla Walla peoples will operate
+a large area as an environmental preserve—some of which will require an ongoing
+program of monitoring and institutional controls.&lt;/p&gt;
+&lt;p&gt;The last chemical weapons in the US stockpile were located at Blue Grass Army
+Depot, where the Blue Grass Chemical Agent Disposal Facility processed the final
+Sarin-filled M55 rocket on July 7th, 2023—just ahead of the September 30th
+deadline set by the Chemical Weapons Convention. Measured from Congress's 1986
+legislative mandate, the complete destruction of the US inventory of chemical
+and biological weapons took 37 years. Closure of the later disposal facilities
+is still ongoing, and the small-scale portable disposal systems will be retained
+for use on any chemical or biological weapons that might turn up in the future.
+An Assistant Secretary of Defense, Deborah Rosenblum, said that &amp;quot;this
+achievement demonstrates our credibility to the international community and has
+helped move the US government toward closing this particular chapter of US
+military history.&amp;quot;&lt;/p&gt;
+&lt;p&gt;There are few chapters of military history that ever close. The arc of the
+chemical weapons program, developed under wartime pressures but accelerated
+during the curious pressure of the Cold War, largely rejected by both the
+military and the public, and then wrapped up under international agreement at
+great expense... it is impossible not to compare it to that of the nuclear
+weapons program. Negotiations with the Soviet Union leading to a bilateral
+agreement, followed by an international convention, to completely disarm: the
+dream of generations of nuclear weapons protestors. It seems so far away, so
+impossible, for nuclear weapons that it's hard to remember that we've done it
+once before.&lt;/p&gt;
+&lt;p&gt;So why can't we do it again? Well, the comparison isn't entirely fair. For one,
+the strategic significance of chemical weapons has never been on par with that
+of their nuclear peers. The story of World War I shows that chemical weapons are
+hard to use effectively outside of a few very specific situations, and that
+never really changed. They have a small area of effect, making them useful
+mostly to clear the way to advance, but they poison the land such that they can
+prevent that advance actually happening. Chemical disarmament was achieved, in
+good part, because the chemical weapons just weren't that important to begin
+with.&lt;/p&gt;
+&lt;p&gt;One also wonders if the history of use is a factor: chemical weapons were widely
+used in the First World War, which both spread awareness of their horrific
+effects and made them more approachable, more understandable, as a part of
+combat. Nuclear weapons have seen such limited use that they remain more of a
+symbol than a real weapon, surrounded by such a mystique that their power seems
+both unlimited and unlikely to actually matter. &lt;/p&gt;
+&lt;p&gt;During the 1899 Hague Convention, which banned the use of &amp;quot;shells containing
+asphyxiating gas,&amp;quot; there was a sole vote against. That vote came from the United
+States, through its representative, Captain Alfred Mahan of the Navy. He
+explained his vote thus:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The inventiveness of Americans should not be restricted in the development of
+new weapons.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We &lt;em&gt;do&lt;/em&gt; consider ourselves to be a powerful culture. The development and
+manufacturing of chemical weapons was a massive program, involving tens of
+thousands of workers across the military and private industry. The dismantling
+of those same weapons happened on the same scale, and often faced even more
+formidable technical challenges. Perhaps our inventiveness could be less
+restricted in the &lt;em&gt;destruction&lt;/em&gt; of weapons, as well.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Weapons processed at JACADS" src="https://computer.rip/static/img/chem/5.jpg" /&gt;&lt;/p&gt;
+&lt;div class="footnotes"&gt;
+&lt;ol&gt;
+&lt;li id="fn-1"&gt;
+&lt;p&gt;German researchers gave nerve agents names such as Sarin and Tabun, while
+the US and NATO used two-letter codes like GB and GA. In fact, these are the
+same: Sarin is GB and Tabun is GA. I find the acronyms difficult to remember,
+and the German names are generally the ones used in popular media, so I use
+the German names when applicable. The problem is that nerve agents developed
+within NATO countries, such as VX, have no such names. The result will
+unfortunately be a mix of both conventions.&lt;a class="footnote" href="#fnref-1"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
+      <guid isPermaLink="false">db31730f0568de6b34b98754c10e3458e86b443a7ffdd07de9ae0127e67f2469</guid>
+      <pubDate>Sun, 22 Nov 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>ESP32 Drives MDA Display For Wireless Terminal - Hack a Day</title>
@@ -3446,79 +4125,6 @@ otherwise.&lt;a class="footnote" href="#fnref-2"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&
 &lt;p&gt;&lt;a href="https://hackaday.com/2021/03/26/move-over-cesium-clock-optical-clocks-are-taking-over/"&gt;Optical atomic clocks&lt;/a&gt; are the way to go for time standards, but this research has promise to provide even more accurate results in the future.&lt;/p&gt;</description>
       <guid isPermaLink="false">2992901c30da298065dcaafb88ace395e8fdb5030782724e4025332dccbb734c</guid>
       <pubDate>Sun, 11 Oct 2026 17:00:52 +0000</pubDate>
-    </item>
-    <item>
-      <title>Improving an Autorouter with a Hexagonal Grid - Hack a Day</title>
-      <link>https://hackaday.com/2026/10/11/improving-an-autorouter-with-a-hexagonal-grid/</link>
-      <description>&lt;div&gt;&lt;img alt="A PCB layout is superimposed on a grey grid of hexagonal cells. The PCB traces mostly bend at 120-degree angles, and an integrated circuit&amp;#039;s footprint is tilted at an angle matching the grid." class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/10/hexagonal_autorouter.png?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;
-&lt;p class="wp-block-paragraph"&gt;Despite the recent leaps forward in other forms of computer-driven design, the reliability of PCB autorouters remains questionable; on the positive side, though, the lack of massive training data makes them plausible for a determined programmer to implement. For anyone contemplating this undertaking, [James Bowman] recommends a slightly unusual choice: use a &lt;a href="https://excamera.substack.com/p/routing-pcbs-on-a-hex-cell-grid" target="_blank"&gt;hexagonal layout grid&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;[James] built his own autorouter in his &lt;a href="https://hackaday.com/2021/03/30/wires-vs-words-pcb-routing-in-python/"&gt;CuFlow PCB layout program&lt;/a&gt;. It takes a fairly straightforward approach: it represents the board as a grid of cells, and uses Lee’s algorithm to find the shortest routes between connected cells. The program initially used a square grid, but a hexagonal grid had a few advantages: in particular, each cell has six equidistant neighbors, rather than four (or eight, if you accept diagonal neighbors at a different distance), which allows denser routing. Because a hexagon more closely approximates a circle than a square, the same minimum-distance rules allow smaller cells, allowing the autorouter to pack more traces into the same space.&lt;/p&gt;
-&lt;p&gt;While we have previously seen a &lt;a href="https://hackaday.com/2026/07/01/gpu-accelerated-autorouter-handles-monstrous-pcb-designs/"&gt;self-built autorouter&lt;/a&gt;, it’s much more common to interface with &lt;a href="https://hackaday.com/2023/04/14/kicad-autorouting-made-easy/"&gt;an external tool&lt;/a&gt;. If you start to get into &lt;a href="https://hackaday.com/2018/09/28/inductance-in-pcb-layout-the-good-the-bad-and-the-fugly/"&gt;high-speed PCB routing&lt;/a&gt;, though, building an autorouter becomes much harder.&lt;/p&gt;</description>
-      <guid isPermaLink="false">6b7b2decb5e5cdff687c0b46d579b81afd250c1eb75a0aadf9a2565094ed93de</guid>
-      <pubDate>Sun, 11 Oct 2026 11:00:24 +0000</pubDate>
-    </item>
-    <item>
-      <title>Mars Pathfinder: What Really Happened? - Hack a Day</title>
-      <link>https://hackaday.com/2026/10/11/mars-pathfinder-what-really-happened/</link>
-      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="405" src="https://hackaday.com/wp-content/uploads/2026/10/mars.png?w=720" style="margin: 0 auto; margin-bottom: 15px;" width="720" /&gt;&lt;/div&gt;&lt;p&gt;You&amp;#8217;ve probably heard of Mars Pathfinder, the NASA lander and its Sojourner rover that took up residence on Mars in 1997. At first, all was well, but after a few days, the lander suffered a series of total system resets. A watchdog timer detected a problem and forced reboots. [Vivek Bhageria&amp;#8217;s] recent post looks into &lt;a href="https://nerdyelectronics.com/mars-pathfinder-what-really-happened/" target="_blank"&gt;what happened and the eventual solution&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The root cause was priority inversion. This happens when a lower-priority task holds a resource needed by a higher-priority task and prevents the higher-priority task from executing. In this case, the operating system was VxWorks, but this can happen on any kind of priority scheduling system.&lt;/p&gt;
-&lt;p&gt;The simplified version is that there were two tasks that each used the same mutex to avoid stepping on each other. The highest priority was a data distribution task. The lowest priority task dealt with meteorology data processing. There was also a medium-priority task that handled bus maintenance.&lt;/p&gt;
-&lt;p&gt;The failure would occur when the low-priority task had the mutex and lost its time slot before releasing it. The high-priority task would then find it couldn&amp;#8217;t take the mutex. However, the low-priority task didn&amp;#8217;t get control again because of the medium-priority tasks waiting to run.&lt;/p&gt;
-&lt;p&gt;In effect, the high-priority task was now waiting on something that couldn&amp;#8217;t become available until the lowest-priority task was able to run. That&amp;#8217;s priority inversion.&lt;/p&gt;
-&lt;p&gt;&lt;span id="more-1171678"&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Sadly, engineers noticed this happening occasionally during testing but, as we are often prone to do, they chalked it up to glitches. As one of our old bosses used to say: &amp;#8220;If you don&amp;#8217;t know why it happened, then you don&amp;#8217;t know that it won&amp;#8217;t happen again.&amp;#8221;&lt;/p&gt;
-&lt;p&gt;VxWorks, of course, understands that this might happen and, luckily, there was enough capability on the spacecraft to turn priority inheritance on for the mutex in question. This allows the low-priority task to get a boost because a higher-priority task is waiting on it.&lt;/p&gt;
-&lt;p&gt;You can read more about the details in the post. We also covered this a decade ago with &lt;a href="https://hackaday.com/2016/12/25/the-first-bug-on-mars/"&gt;our own analysis&lt;/a&gt;.&lt;/p&gt;</description>
-      <guid isPermaLink="false">138f8209321982be0845f00dd654bc4117a9d1053d6bbaa4e3d88895722827fe</guid>
-      <pubDate>Sun, 11 Oct 2026 08:00:04 +0000</pubDate>
-    </item>
-    <item>
-      <title>Slim Type for Small Screens, with PixelFonts - Hack a Day</title>
-      <link>https://hackaday.com/2026/10/10/slim-type-for-small-screens-with-pixelfonts/</link>
-      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="256" src="https://hackaday.com/wp-content/uploads/2026/10/PixelFonts-title.png?w=455" style="margin: 0 auto; margin-bottom: 15px;" width="455" /&gt;&lt;/div&gt;&lt;p&gt;Small displays are affordable and easy to use, but their size can present a challenge. To help address this, [mcer12] created &lt;a href="https://github.com/mcer12/PixelFonts" target="_blank"&gt;PixelFonts&lt;/a&gt;, a family of condensed fonts designed specifically for low-resolution displays, making sure every line holds as much text as it can fit.&lt;/p&gt;
-&lt;p&gt;PixelFonts works alongside either the &lt;a href="https://github.com/adafruit/adafruit-gfx-library" target="_blank"&gt;AdafruitGFX&lt;/a&gt; or &lt;a href="https://github.com/olikraus/u8g2" target="_blank"&gt;U8g2&lt;/a&gt; libraries; one writes to the display using the common syntax of the chosen library, and the font itself comes from PixelFonts. Text can be displayed in regular and 3D shadowed versions, as well as in a wide variety of heights and weights. There&amp;#8217;s support for accented letters, albeit only in lowercase due to space constraints. Want to make some changes? Every font comes with a &lt;a href="https://en.wikipedia.org/wiki/Glyph_Bitmap_Distribution_Format" target="_blank"&gt;BDF file&lt;/a&gt; to make alterations as widely accessible as possible.&lt;/p&gt;
-&lt;p&gt;Making the most of every pixel is important with small displays, but there&amp;#8217;s more than one way to do so. For example, when it comes to color LCDs, &lt;a href="https://hackaday.com/2025/07/02/subpixel-rendering-for-impossibly-small-terminal-text/"&gt;subpixel rendering can improve legibility&lt;/a&gt; of small fonts; another way to get the most out of limited display sizes.&lt;/p&gt;</description>
-      <guid isPermaLink="false">e15e9ac36e83f26314f87f698c70d7c149876824991bc39c6e977b6647b3f993</guid>
-      <pubDate>Sun, 11 Oct 2026 05:00:55 +0000</pubDate>
-    </item>
-    <item>
-      <title>Unique Archeological Discovery Sheds Light on Neanderthal Wooden Tool Usage - Hack a Day</title>
-      <link>https://hackaday.com/2026/10/10/unique-archeological-discovery-sheds-light-on-neanderthal-wooden-tool-usage/</link>
-      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="427" src="https://hackaday.com/wp-content/uploads/2026/10/sciadv.aeh2287-f1.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;&lt;img alt="" class="size-medium wp-image-1171640 alignright" height="400" src="https://hackaday.com/wp-content/uploads/2026/10/sciadv.aeh2287-f5_square.jpg?w=400" width="400" /&gt;The Abric Romaní site in Spain is rather unique in archeology for one simple reason: the caves in its limestone-rich cliff have seen humanoid occupation for thousands of years. A thick layer of calcium carbonate-based travertine deposit has, over time, covered and largely preserved tools and other implements, including those made of wood. Over many decades of archeological exploration, 597 wooden imprints have been uncovered, with a recent research article by [Palmira Saladié] et al. &lt;a href="https://www.science.org/doi/10.1126/sciadv.aeh2287" target="_blank"&gt;detailing these findings&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Wood is one of those archaeological artefacts that are very elusive due to their fragility, even though we know that wood has been used pretty much everywhere from the first day that a humanoid critter discovered that branches make great clubs and spears, and can also easily be shaped to make them even more useful.&lt;/p&gt;
-&lt;p&gt;&lt;span id="more-1171633"&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;The wooden imprints and some larger remains of wooden implements were found, ranging from wooden spears and clubs to trays (see heading image) and tripods. With enough of the wood still present, researchers were also able to determine which types of trees were used to make these tools, and sometimes which part of the tree.&lt;/p&gt;
-&lt;p&gt;These finds date back to between 62,000 and 40,000 years ago during the Middle Paleolithic era. This would have been &lt;a href="https://en.wikipedia.org/wiki/Prehistoric_Europe" target="_blank"&gt;around the time&lt;/a&gt; that &lt;em&gt;Homo sapiens&lt;/em&gt; began to move into Europe, with both species of humans living side by side for thousands of years. These days, the only active traces of this can be found in our DNA, which retains bits of &lt;em&gt;H. neanderthalensis&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;The &lt;a href="https://www.science.org/action/downloadSupplement?doi=10.1126%2Fsciadv.aeh2287&amp;amp;file=sciadv.aeh2287_sm.pdf" target="_blank"&gt;supplemental materials PDF&lt;/a&gt;  breaks down some of this site&amp;#8217;s more recent history. The sole reason that this crucial archaeological site was discovered was that the landowner in the early 20th century expressed a profound interest in archaeology and other natural sciences.&lt;/p&gt;
-&lt;p&gt;Thanks to this lucky find, we gained some insight into how our ancestors would have learned how to create crude wooden implements, before eventually moving on to smelting metals and eventually sand in order to make it into computer chips.&lt;/p&gt;</description>
-      <guid isPermaLink="false">e4e2dbbb9d26fcabd7047c61c58a79175a1c23116d321371d8c7bb92f09494e5</guid>
-      <pubDate>Sun, 11 Oct 2026 02:00:46 +0000</pubDate>
-    </item>
-    <item>
-      <title>Poking at the Radxa Dragon Q8B Raspberry Pi 5 Killer - Hack a Day</title>
-      <link>https://hackaday.com/2026/10/10/poking-at-the-radxa-dragon-q8b-raspberry-pi-5-killer/</link>
-      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="477" src="https://hackaday.com/wp-content/uploads/2026/10/radxa_dragon_q8b_vs_raspberry_pi_5_jeff_geerling_youtube.jpg?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;&lt;img alt="" class="size-medium wp-image-1171616 alignright" height="400" src="https://hackaday.com/wp-content/uploads/2026/10/radxa_dragon_q8b_qualcomm_sc8280_soc_jeff_geerling_youtube.jpg?w=400" width="400" /&gt;Although the asking price of $209 plus shipping seems high for the Radxa Dragon Q8B, featuring the Qualcomm SC8280XP and 8 GB of LPDDR4X, this is 2026, and amid the RAMpocalypse, even the 8 GB LPDDR4X-equipped Raspberry Pi 5 now costs $175. This, to [Jeff Geerling], &lt;a href="https://www.youtube.com/watch?v=KUUuxkICOLw" target="_blank"&gt;makes it fair to directly compare the two&lt;/a&gt; to see whether you may want to consider this board for more intense computing purposes.&lt;/p&gt;
-&lt;p&gt;There&amp;#8217;s also &lt;a href="https://github.com/geerlingguy/sbc-reviews/issues/108" target="_blank"&gt;a written summary&lt;/a&gt; of the results and details in a GitHub issue, though the direct comparison with the Raspberry Pi 5 is in the video.&lt;/p&gt;
-&lt;p&gt;Although this Qualcomm SoC isn&amp;#8217;t new, its primary use is &lt;a href="https://www.notebookcheck.net/Qualcomm-Snapdragon-8cx-Gen-3-Processor-Benchmarks-and-Specs.652916.0.html" target="_blank"&gt;for Windows laptops&lt;/a&gt;, which gives somewhat of a hint as to what its performance may be like, tempered by the fact that it was announced in 2021.&lt;/p&gt;
-&lt;p&gt;The Dragon QXB offers about 2x everything over the RPi5, plus Windows and UEFI support. For Linux, it appears that you still need customized images, which seems perplexing in light of the UEFI aspect. You also have to pick between different Linux images from Radxa and use their Rsetup update tool, making it a less than newbie-friendly offering.&lt;/p&gt;
-&lt;p&gt;&lt;span id="more-1171608"&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;The Radxa-provided Linux experience is somewhat choppy. Raw performance in e.g., Geekbench 6 multi-core shows why you&amp;#8217;d want to use this SBC, as it triples the RPi5 score. Power efficiency is also better, with [Jeff]&amp;#8217;s HPL efficiency showing 3.73 Gflops/W versus 2.75 for the RPi5. There are twin 2.5 Gbit Ethernet ports and more PCIe too, all of which can really be used by the raw CPU power.&lt;/p&gt;
-&lt;p&gt;This means that there&amp;#8217;s a lot to like about this Q8B SBC. [Jeff] expresses his appreciation for it, despite issues with the Radxa UEFI BIOS. It feels like Radxa is still trying to work out the BIOS-related kinks, which might even allow for the installation of generic OS images, rather than their own images.&lt;/p&gt;
-&lt;p&gt;Per &lt;a href="https://docs.radxa.com/en/dragon/q8b" target="_blank"&gt;the documentation&lt;/a&gt;, the SBC comes in a range of RAM sizes, from 4 to 32 GB, so you can still get a cheaper version too, if you can find one for sale. As noted in the video, these SBCs are still pretty scarce, and as the AI-induced personal computing and SBC collapse continues, this situation is unlikely to improve.&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;</description>
-      <guid isPermaLink="false">2331a51696231e8f34cf11db048e4a463012775e8a653f49b4d3afec3f162880</guid>
-      <pubDate>Sat, 10 Oct 2026 23:00:10 +0000</pubDate>
-    </item>
-    <item>
-      <title>Valve Releases Hardware and CAD Reference For New VR Headset - Hack a Day</title>
-      <link>https://hackaday.com/2026/10/10/valve-releases-hardware-and-cad-reference-for-new-vr-headset/</link>
-      <description>&lt;div&gt;&lt;img alt="" class="attachment-large size-large wp-post-image" height="450" src="https://hackaday.com/wp-content/uploads/2026/10/Valve-Steam-Frame-CAD.png?w=800" style="margin: 0 auto; margin-bottom: 15px;" width="800" /&gt;&lt;/div&gt;&lt;p&gt;Valve recently began shipping its long-awaited VR headset, the Steam Frame. Now, there is a &lt;a href="https://gitlab.steamos.cloud/SteamHardware/SteamFrame" target="_blank"&gt;hardware reference repository&lt;/a&gt; that includes everything a budding modder might need, and then some.&lt;/p&gt;
-&lt;p&gt;&lt;figure class="wp-caption alignright" id="attachment_1171560" style="width: 250px;"&gt;&lt;a href="https://hackaday.com/wp-content/uploads/2026/10/Steam_Frame_Controller_ISO_Grip_Side.png" target="_blank"&gt;&lt;img alt="" class="wp-image-1171560 size-thumbnail" height="250" src="https://hackaday.com/wp-content/uploads/2026/10/Steam_Frame_Controller_ISO_Grip_Side.png?w=250" width="250" /&gt;&lt;/a&gt;&lt;figcaption class="wp-caption-text" id="caption-attachment-1171560"&gt;No need to 3D scan or break out the calipers if one wants to design their own add-ons.&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;Want to design and 3D print some add-ons, or a carrying case, or some other doodad? There&amp;#8217;s no need to break out the calipers or 3D scan the hardware. The repository contains STEP format models of the VR core module, head strap, and controllers, so it&amp;#8217;s as easy as possible to design things that&amp;#8217;ll fit. The location of the IR tracking LEDs embedded in the controllers is also documented, so one can ensure their design doesn&amp;#8217;t occlude them.&lt;/p&gt;
-&lt;p&gt;That&amp;#8217;s not all. The Frame has a user-accessible hardware expansion port at its front. This port exposes two interfaces: high-speed MIPI camera and PCI Express. This expansion port is documented in the repository, and even has a simple reference design built in both KiCad and Altium.&lt;/p&gt;
-&lt;p&gt;We&amp;#8217;re glad to see Valve maintain their &lt;a href="https://hackaday.com/2020/08/20/want-to-support-hacker-friendly-hardware-design-follow-valves-example/"&gt;hacker-friendly hardware design&lt;/a&gt; with the Steam Frame. Demand for The Frame outstrips supply so far, so if you&amp;#8217;re on the waitlist, you might want to browse the repository and get an early start on whatever customizations you have in mind while you wait for your confirmation. And when you get something working, &lt;a href="https://hackaday.com/submit-a-tip/"&gt;drop us a note on the tips line&lt;/a&gt;!&lt;/p&gt;</description>
-      <guid isPermaLink="false">a884f2cac616372d3c856e8331d76e5a6f707a4d12e78d40346d83a2d065cb0d</guid>
-      <pubDate>Sat, 10 Oct 2026 20:00:54 +0000</pubDate>
     </item>
   </channel>
 </rss>

@@ -5,7 +5,152 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Sun, 22 Nov 2026 14:01:26 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Nov 2026 14:01:21 +0000</lastBuildDate>
+    <item>
+      <title>Graham Dumpleton: Muru: working with coding agents - Planet Python</title>
+      <link>https://grahamdumpleton.me/posts/2026/11/muru-working-with-coding-agents/</link>
+      <description>&lt;p&gt;When I wrote about &lt;a href="https://grahamdumpleton.me/posts/2026/11/twenty-years-of-mod-wsgi/"&gt;twenty years of mod_wsgi&lt;/a&gt; and why I had started on Muru, part of the answer was AI coding tools. They are what made it practical for me to build something this size. The flip side is that coding agents are now often the ones running a web application while it is being worked on. They start it, poke at it, read what went wrong and change the code, and they do all of that through whatever the server gives them.&lt;/p&gt;
+&lt;p&gt;With gunicorn or uvicorn, what the server gives them is not much. An agent starts the server in the background, sends it some requests with &lt;code&gt;curl&lt;/code&gt;, and reads whatever the server happened to print. If a request hangs, the agent sees a timeout and nothing else, so it goes back to reading the code and guessing. Seeing what a stuck thread is doing means reaching for something like py-spy, which may need privileges the agent doesn't have. And when it wants to try a change, it restarts the server and the old version is gone.&lt;/p&gt;
+&lt;p&gt;The earlier posts in this series covered what the Muru daemon knows while an application runs: releases, events, logs and tracebacks per release, what every worker thread is doing, and rollback as a routing change. This post is about handing all of that to a coding agent.&lt;/p&gt;
+&lt;h2&gt;The MCP server&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;muructl mcp serve&lt;/code&gt; speaks the Model Context Protocol on its standard input and output, and talks to the daemon over its admin socket the same way the other &lt;code&gt;muructl&lt;/code&gt; commands do. For Claude Code, it goes in &lt;code&gt;.mcp.json&lt;/code&gt; at the top of the project:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-json"&gt;{
+  &amp;quot;mcpServers&amp;quot;: {
+    &amp;quot;muru&amp;quot;: { &amp;quot;command&amp;quot;: &amp;quot;muructl&amp;quot;, &amp;quot;args&amp;quot;: [&amp;quot;mcp&amp;quot;, &amp;quot;serve&amp;quot;, &amp;quot;--up&amp;quot;] }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;--up&lt;/code&gt; option starts the user's daemon if none is answering, so the first tool call works on a fresh checkout.&lt;/p&gt;
+&lt;p&gt;The server offers a few dozen tools. Each one runs the &lt;code&gt;muructl&lt;/code&gt; command of the same name with &lt;code&gt;--json&lt;/code&gt; and returns what it prints, and each is marked for the client as either only reading or changing something. Deploying, rolling back, draining and running canary rollouts are there. Stopping or upgrading the daemon, running arbitrary code in a worker and one-off commands with &lt;code&gt;muructl exec&lt;/code&gt; deliberately aren't, and &lt;code&gt;run_command&lt;/code&gt; only runs the commands an application declares in its &lt;code&gt;[tool.muru]&lt;/code&gt; settings.&lt;/p&gt;
+&lt;p&gt;What an agent may do can be cut down further. With &lt;code&gt;--read-only&lt;/code&gt; the server lists only the tools which read, so an agent can watch and diagnose but not change anything. With &lt;code&gt;--allow rollback,drain&lt;/code&gt; it adds just those two. A tool left out isn't hidden by convention, it doesn't exist as far as the client is concerned. Calling &lt;code&gt;deploy&lt;/code&gt; against a server started with &lt;code&gt;--read-only&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{&amp;quot;jsonrpc&amp;quot;: &amp;quot;2.0&amp;quot;, &amp;quot;id&amp;quot;: 3, &amp;quot;error&amp;quot;: {&amp;quot;code&amp;quot;: -32602, &amp;quot;message&amp;quot;: &amp;quot;no tool named deploy&amp;quot;}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;The skill&lt;/h2&gt;
+&lt;p&gt;Tools let an agent operate Muru, but don't tell it what a release is, what each operation does to traffic, or what to check afterwards. That is what the skill is for. It is embedded in &lt;code&gt;muructl&lt;/code&gt;, so it always matches the version being used, and is written into the project so it travels with the code:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;muructl mcp skill install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;muru: wrote the skill for muructl 1.0.0 to .claude/skills/muru/SKILL.md
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The skill describes applications, releases, traffic and overlays, has a table of each operation and what it does to traffic, and lays out a development loop: check the status, deploy the working tree, run the tests against the daemon's listener, and when something fails, find out why from events, logs, the requests in flight and worker stacks before changing any code. It works through the MCP tools when the agent has them, and through &lt;code&gt;muructl --json&lt;/code&gt; when it doesn't.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;muructl mcp skill status&lt;/code&gt; says whether the project's copy is current, and exits with a non-zero status when it isn't, so a CI job can check it after &lt;code&gt;muructl&lt;/code&gt; is upgraded. The MCP server checks as well. In a project without the skill, the instructions it gives the agent at the start of a session end with:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;The Muru skill: the project carries no skill at .claude/skills/muru/SKILL.md; `muructl mcp skill install` writes it.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;An agent and a broken change&lt;/h2&gt;
+&lt;p&gt;To see how this works in practice, I set up a small WSGI shop application in a git repository, with a few JSON pages over a dictionary of orders, guarded by a lock, and a &lt;code&gt;tests.py&lt;/code&gt; which runs against the daemon's listener. That version was deployed as &lt;code&gt;shop@r1&lt;/code&gt; and passed its tests.&lt;/p&gt;
+&lt;p&gt;For the scenario, I then pulled down a change which a colleague had committed to the repository before rushing out in a hurry, leaving it for me to test. It added an &lt;code&gt;/orders/summary&lt;/code&gt; page and a test for it, and along the way changed &lt;code&gt;get_order()&lt;/code&gt; to index the dictionary rather than call &lt;code&gt;.get()&lt;/code&gt;. The new &lt;code&gt;summary()&lt;/code&gt; function took the lock and then called &lt;code&gt;all_orders()&lt;/code&gt;, which takes the same lock. A plain &lt;code&gt;threading.Lock&lt;/code&gt; isn't reentrant, so that is a deadlock.&lt;/p&gt;
+&lt;p&gt;I then ran Claude Code headless in the project, with the MCP server above, the skill installed, and permission to use only the Muru tools, &lt;code&gt;python3 tests.py&lt;/code&gt;, and tools for reading files. The prompt was:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A colleague committed a quick change to our repo that adds an order summary page, and left it for me to test. I've pulled it into this checkout. Deploy the working tree as a new release of the &lt;code&gt;shop&lt;/code&gt; application using the muru tools, then run &lt;code&gt;python3 tests.py&lt;/code&gt; against it. If tests fail, use the muru tools to find out why rather than guessing from the code alone, roll the application back to the previous release so the shop keeps working, and report what you found. Don't change any code yet.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Everything that follows comes from the session's record of tool calls and their results.&lt;/p&gt;
+&lt;p&gt;The agent loaded the muru skill, looked at what the commit changed, then called &lt;code&gt;status&lt;/code&gt; and &lt;code&gt;list&lt;/code&gt; to see which release was serving. It then deployed:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mcp__muru__deploy {&amp;quot;app&amp;quot;: &amp;quot;shop&amp;quot;, &amp;quot;source&amp;quot;: &amp;quot;.../s7/shop&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The tool waits until the release is ready or has failed, and returned the release, trimmed here:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-json"&gt;{
+  &amp;quot;app&amp;quot;: &amp;quot;shop&amp;quot;,
+  &amp;quot;id&amp;quot;: &amp;quot;r2&amp;quot;,
+  &amp;quot;state&amp;quot;: &amp;quot;ready&amp;quot;,
+  &amp;quot;message&amp;quot;: &amp;quot;&amp;quot;,
+  &amp;quot;serving&amp;quot;: true,
+  &amp;quot;processes&amp;quot;: 2,
+  &amp;quot;threads&amp;quot;: 4,
+  &amp;quot;python_version&amp;quot;: &amp;quot;3.15.0&amp;quot;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Running the tests, three of the five failed:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;test_home (__main__.ShopTests.test_home) ... ok
+test_missing_order (__main__.ShopTests.test_missing_order) ... ERROR
+test_order (__main__.ShopTests.test_order) ... ok
+test_orders (__main__.ShopTests.test_orders) ... ERROR
+test_summary (__main__.ShopTests.test_summary) ... ERROR
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Most of the errors were five second timeouts in the test client, which say nothing about the cause. The agent's next call was the one that mattered:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mcp__muru__debug {&amp;quot;what&amp;quot;: &amp;quot;stacks&amp;quot;, &amp;quot;target&amp;quot;: &amp;quot;shop@r2&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The result lists, for each worker, the requests in flight and the stack of every thread, with the request each thread is serving. For worker 0 it reported three requests in flight, &lt;code&gt;/orders/summary&lt;/code&gt; for 29.9 seconds, &lt;code&gt;/orders/99&lt;/code&gt; for 19.2 seconds and &lt;code&gt;/orders&lt;/code&gt; for 14.2 seconds. The thread serving the summary, trimmed to the last of its frames:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-json"&gt;{
+  &amp;quot;name&amp;quot;: &amp;quot;muru-app-0&amp;quot;,
+  &amp;quot;request&amp;quot;: {&amp;quot;method&amp;quot;: &amp;quot;GET&amp;quot;, &amp;quot;path&amp;quot;: &amp;quot;/orders/summary&amp;quot;, &amp;quot;elapsed_ms&amp;quot;: 29878, ...},
+  &amp;quot;frames&amp;quot;: [
+    ...
+    {&amp;quot;file&amp;quot;: &amp;quot;.../shop/app.py&amp;quot;, &amp;quot;line&amp;quot;: 19, &amp;quot;function&amp;quot;: &amp;quot;application&amp;quot;,
+     &amp;quot;text&amp;quot;: &amp;quot;return respond(start_response, \&amp;quot;200 OK\&amp;quot;, orders.summary())&amp;quot;},
+    {&amp;quot;file&amp;quot;: &amp;quot;.../shop/orders.py&amp;quot;, &amp;quot;line&amp;quot;: 23, &amp;quot;function&amp;quot;: &amp;quot;summary&amp;quot;,
+     &amp;quot;text&amp;quot;: &amp;quot;orders = all_orders()&amp;quot;},
+    {&amp;quot;file&amp;quot;: &amp;quot;.../shop/orders.py&amp;quot;, &amp;quot;line&amp;quot;: 12, &amp;quot;function&amp;quot;: &amp;quot;all_orders&amp;quot;,
+     &amp;quot;text&amp;quot;: &amp;quot;with _lock:&amp;quot;}
+  ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The other two threads were stuck on the same lock, at &lt;code&gt;orders.py&lt;/code&gt; lines 12 and 17. One request for the summary page had taken the lock and never let it go, and every other request touching orders in that worker then queued up behind it. That explained why the set of failing tests grew between the agent's two test runs, which otherwise looks like a flaky test.&lt;/p&gt;
+&lt;p&gt;It then read the release's output with &lt;code&gt;logs&lt;/code&gt;, which had the traceback for the other failure:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;muru.worker[1]: Traceback (most recent call last):
+muru.worker[1]:   File &amp;quot;.../shop/app.py&amp;quot;, line 21, in application
+muru.worker[1]:   File &amp;quot;.../shop/orders.py&amp;quot;, line 18, in get_order
+muru.worker[1]: KeyError: 99
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and &lt;code&gt;logs&lt;/code&gt; with &lt;code&gt;access&lt;/code&gt; set, where the same request showed up on r2 as a 500 with the reason &lt;code&gt;app_error&lt;/code&gt;, where r1 had answered 404. It read the events, read &lt;code&gt;orders.py&lt;/code&gt; to confirm what the stacks and traceback said, and rolled back:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mcp__muru__rollback {&amp;quot;app&amp;quot;: &amp;quot;shop&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;which returned r1, with &lt;code&gt;&amp;quot;state&amp;quot;: &amp;quot;ready&amp;quot;&lt;/code&gt; and &lt;code&gt;&amp;quot;serving&amp;quot;: true&lt;/code&gt;, and a &lt;code&gt;list&lt;/code&gt; of releases showed r2 kept warm, not serving. The agent ran the tests once more to check the rollback. The four original tests passed, and the summary test failed as you would expect, since r1 predates the page.&lt;/p&gt;
+&lt;p&gt;Its report named both defects, with the file and line for each, and pointed out that the deadlock wasn't confined to the new page, but took down every order endpoint in a worker once it happened. The session took 23 turns and about a minute and three quarters.&lt;/p&gt;
+&lt;h2&gt;Fixing it&lt;/h2&gt;
+&lt;p&gt;I then resumed the same session:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Thanks. Go ahead and fix both problems, deploy the fix as a new release, and run the tests against it. If they pass, leave the new release serving and drain the release with the deadlock, since nothing should go back to it.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This time it was allowed to edit files. It changed &lt;code&gt;get_order()&lt;/code&gt; back to &lt;code&gt;.get()&lt;/code&gt;, and moved the call to &lt;code&gt;all_orders()&lt;/code&gt; in &lt;code&gt;summary()&lt;/code&gt; out from under the lock. It deployed the result as &lt;code&gt;shop@r3&lt;/code&gt;, and the tests passed:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;test_home ... ok
+test_missing_order ... ok
+test_order ... ok
+test_orders ... ok
+test_summary ... ok
+Ran 5 tests in 0.013s
+OK
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Before draining anything, it called &lt;code&gt;debug&lt;/code&gt; with &lt;code&gt;status&lt;/code&gt; on r3 to check that no thread was left holding a request. It then drained r2, and the releases ended up as:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;r3 ready True
+r2 stopped False superseded again
+r1 retained False warm until 12:30 UTC; a rollback to it is instant
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It also noted, without being asked, that r1 was now the instant rollback target and didn't have the summary page, which is the kind of thing worth knowing before you reach for a rollback. That took eight turns and 45 seconds.&lt;/p&gt;
+&lt;p&gt;None of what the agent did needed it to restart anything, and at every point there was a working release it could go back to. The two releases being separate is what let it look at the broken one's workers while the hang was still in progress, rather than reconstructing it from the code afterwards.&lt;/p&gt;
+&lt;h2&gt;Without MCP&lt;/h2&gt;
+&lt;p&gt;An agent working through a shell, or a script, gets the same answers from &lt;code&gt;muructl&lt;/code&gt; directly. Every command which reports something takes &lt;code&gt;--json&lt;/code&gt; and prints exactly what the corresponding tool returns:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;muructl release list shop --json | python3 -c 'import json,sys; [print(r[&amp;quot;id&amp;quot;], r[&amp;quot;state&amp;quot;], r[&amp;quot;serving&amp;quot;], r[&amp;quot;message&amp;quot;]) for r in json.load(sys.stdin)[&amp;quot;releases&amp;quot;]]'
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That is where the release list above came from. A failure prints an error object, with a non-zero exit status:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;muructl rollback blog --json
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;{
+  &amp;quot;error&amp;quot;: &amp;quot;application blog does not exist&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and &lt;code&gt;muructl events --json --after 28&lt;/code&gt; returns only the events after a given sequence number, so a script can keep up with what has happened without parsing text.&lt;/p&gt;
+&lt;h2&gt;An experiment as much as a feature&lt;/h2&gt;
+&lt;p&gt;AI is changing how we develop code, of that there is little doubt, but exactly how it is changing it isn't real clear yet. The tools, and the ways of working with them, keep shifting. What looked like the obvious way for an agent to talk to other software a year ago may not be how it is done a year from now, and MCP itself is still young enough that it could end up being a stepping stone to something else.&lt;/p&gt;
+&lt;p&gt;So adding an MCP server to Muru is a bit of an experiment on my part, to see how much a server which knows what an application is doing can help an agent working on that application. The approach may turn out to be wrong. That said, I am sure lessons will be learnt along the way, and as new paradigms emerge for using AI to do coding, what was learnt here about which operations an agent needs, and what it has to be told about them, should still be helpful.&lt;/p&gt;
+&lt;h2&gt;What's next&lt;/h2&gt;
+&lt;p&gt;The posts so far have covered the core features of Muru worth knowing about. The first ones were about what is different in development mode, then the daemon with releases and canaries, then containers and Kubernetes, then scaling and overlays acting on a schedule or on what Muru sees, then back to development mode with the toolbar, tracing and import timings, and this one ties it back to the reason I started. Muru was built with a coding agent, and it turns out the things that make it easier for me to see what an application is doing, such as stacks for every thread, logs and events for each release, and rollback as a routing change, are just as useful when the one looking is an agent.&lt;/p&gt;
+&lt;p&gt;The next post will be an update on where Muru is up to, along with my current thinking on the timeline for when you can expect a release I deem suitable for local development and testing, and later on, a release for production.&lt;/p&gt;</description>
+      <guid isPermaLink="false">9be3dc033dc1f92aebc2e18d52590f1155a29979d33c228490c16708973d03a8</guid>
+      <pubDate>Mon, 23 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: Python loading spinners with Rich: Using Console.status - Planet Python</title>
+      <link>https://lernerpython.com/2026/11/22/python-loading-spinners-with-rich-using-console-status/</link>
+      <description>&lt;img alt="Python loading spinners with Rich: Using Console.status" class="wp-image-19357" height="842" src="https://lernerpython.com/wp-content/uploads/2026/11/2026-11-22.png" width="1620" /&gt;
+&lt;p class="wp-block-paragraph"&gt;Is your Python program going to take a while? Use Rich to display animation while waiting:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code&gt;c = Console()
+with c.status('Going through numbers') as status:
+    # iterate&lt;/code&gt;&lt;/pre&gt;
+&lt;p class="wp-block-paragraph"&gt;The status marker goes to the left of your text. See &amp;#8220;python -m rich.spinner&amp;#8221; for all possibilities.&lt;/p&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/11/22/python-loading-spinners-with-rich-using-console-status/"&gt;Python loading spinners with Rich: Using Console.status&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">c1b63127500a6467a9834d2143cf76eee7f173187880a69ce83f666a96a7e37b</guid>
+      <pubDate>Sun, 22 Nov 2026 07:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Mark Dufour: Shed Skin restricted-Python to C++ transpiler v1.0 released! - Planet Python</title>
       <link>http://shed-skin.blogspot.com/2026/11/shed-skin-restricted-python-to-c.html</link>
@@ -18409,44 +18554,6 @@ used &lt;code&gt;func_name&lt;/code&gt; as the context instead of the caller&amp
 you have ideas for other uses.&lt;/p&gt;</description>
       <guid isPermaLink="false">9046e14b16ce5c56c6ecad2fb988702dc333c6cc52c9167b274f05c4b6899978</guid>
       <pubDate>Sun, 09 Aug 2026 17:56:25 +0000</pubDate>
-    </item>
-    <item>
-      <title>Hynek Schlawack: Production-ready Python Docker Containers with uv</title>
-      <link>https://hynek.me/articles/docker-uv/</link>
-      <description>&lt;p&gt;Starting with &lt;a href="https://astral.sh/blog/uv-unified-python-packaging"&gt;0.3.0&lt;/a&gt;, Astral’s &lt;a href="https://docs.astral.sh/uv/"&gt;&lt;em&gt;uv&lt;/em&gt;&lt;/a&gt; brought many great features, including support for cross-platform lock files &lt;code&gt;uv.lock&lt;/code&gt;. Together with subsequent fixes, it has become Python’s finest workflow tool for &lt;strong&gt;my&lt;/strong&gt; (non-scientific) use cases. Here’s how I build production-ready containers, as fast as possible.&lt;/p&gt;</description>
-      <guid isPermaLink="false">351e017e704d299713340494f1b00466c1fbad283644bc0efaf6944bcfa687f3</guid>
-      <pubDate>Thu, 06 Aug 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Django Weblog: Django 6.1 released</title>
-      <link>https://www.djangoproject.com/weblog/2026/aug/05/django-61-released/</link>
-      <description>&lt;p&gt;The Django team is happy to announce the release of Django 6.1.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://docs.djangoproject.com/en/6.1/releases/6.1/"&gt;The release notes&lt;/a&gt;
-offer a harmonious mélange of new features and usability improvements. A few highlights are:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Model field fetch modes for configuring on-demand fetching behavior&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Database-level delete options for &lt;code&gt;ForeignKey.on_delete&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Dictionary-based email settings&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;You can get Django 6.1 from
-&lt;a href="https://www.djangoproject.com/download/"&gt;our downloads page&lt;/a&gt; or from
-&lt;a href="https://pypi.python.org/pypi/Django/6.1"&gt;the Python Package Index&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The PGP key ID used for this release is Jacob Walls: &lt;a href="https://github.com/jacobtylerwalls.gpg"&gt;131403F4D16D8DC7&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;With the release of Django 6.1, Django 6.0 has reached the end of mainstream support. 
-The final minor bug fix release, &lt;a href="https://docs.djangoproject.com/en/stable/releases/6.0.8/"&gt;6.0.8&lt;/a&gt;, which was also a security release, was issued yesterday, Aug. 4, 2026. Django 6.0
-will receive security and data loss fixes until April 2027.
-All users are encouraged to upgrade before then to continue receiving fixes for
-security issues.&lt;/p&gt;
-&lt;p&gt;See the &lt;a href="https://www.djangoproject.com/download/#supported-versions"&gt;downloads page&lt;/a&gt; for a table of
-supported versions and the future release schedule.&lt;/p&gt;</description>
-      <guid isPermaLink="false">84d3ec392690b0fe5baa4b33ce7be08a2d27c79383b8a584cc1c6e3b21702d2d</guid>
-      <pubDate>Wed, 05 Aug 2026 19:30:00 +0000</pubDate>
     </item>
   </channel>
 </rss>
