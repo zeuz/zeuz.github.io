@@ -5,7 +5,184 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Mon, 23 Nov 2026 14:01:21 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 24 Nov 2026 14:01:17 +0000</lastBuildDate>
+    <item>
+      <title>Paolo Melchiorre: My Django on the Med 2026 🏖️ - Planet Python</title>
+      <link>https://www.paulox.net/2026/11/23/my-django-on-the-med-2026/</link>
+      <description>&lt;p&gt;From 23 to 25 September 2026, I hosted the second edition of Django on the Med in Pescara. This is what it meant to welcome the Django community to my hometown and find time to take part in the sprints&amp;nbsp;myself.&lt;/p&gt;</description>
+      <guid isPermaLink="false">cd8f32e03342eeb970a90b8c67fff19a5171c13a64ee664b7b7d647ddf92dc2d</guid>
+      <pubDate>Mon, 23 Nov 2026 15:57:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>PyCharm: Creating Polars Expression Plugins in PyCharm: A Step-by-Step Guide for Rust Beginners - Planet Python</title>
+      <link>https://blog.jetbrains.com/pycharm/2026/11/creating-polars-expression-plugins-in-pycharm-a-step-by-step-guide-for-rust-beginners/</link>
+      <description>&lt;p&gt;&lt;a href="https://pola.rs/" rel="noopener" target="_blank"&gt;Polars&lt;/a&gt; is a favorite among data scientists. It’s a high-performance, columnar DataFrame library written in Rust and powered by Apache Arrow.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Unlike traditional single-threaded tools, Polars uses full multicore CPU parallelism, efficient memory allocation, and lazy execution with query optimization. These features let data professionals execute complex joins, filters, and aggregations on large datasets significantly faster while saving RAM.&lt;/p&gt;
+&lt;p&gt;However, real-world data processing often requires specialized processes to prepare raw data for operational or analytical use cases.&lt;/p&gt;
+&lt;p&gt;Built-in Polars expressions may not cover highly specialized algorithms or proprietary business logic out of the box. Without custom expression plugins, data engineers and scientists often resort to standard user-defined Python functions or iterative processing. This potentially introduces performance bottlenecks and sacrifices some of Polars’ native speed and memory efficiency. To overcome these bottlenecks, you may want to consider creating Polars expression plugins.&amp;nbsp;&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;Polars expression plugins&lt;/h2&gt;
+&lt;p&gt;Polars expression plugins allow you to create custom functions and register them as expressions in the Polars library. The Polars engine dynamically links these functions to the runtime, and their performance will be close to that of native expressions.&lt;/p&gt;
+&lt;p&gt;Expression plugins offer three key benefits:&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;&lt;strong&gt;Optimization&lt;/strong&gt;: Plugins seamlessly integrate into Polars’ lazy query engine, allowing expressions to benefit from logical plan optimizations and predicate pushdown.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Parallelism&lt;/strong&gt;: Expressions automatically leverage Polars’ multi-threaded execution framework to process data chunks concurrently across available CPU cores.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Native performance&lt;/strong&gt;: Implemented directly in Rust, plugins execute with bare-metal speed and zero Python GIL overhead during runtime.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;But there’s a catch: These functions must be implemented in Rust (because of the native functionalities mentioned above). To write Rust code in &lt;a href="https://www.jetbrains.com/pycharm/" rel="noopener" target="_blank"&gt;PyCharm&lt;/a&gt;, you will need to install the &lt;a href="https://www.jetbrains.com/help/pycharm/rust-plugin.html#install-rust-plugin" rel="noopener" target="_blank"&gt;Rust plugin&lt;/a&gt; and configure the &lt;a href="https://www.jetbrains.com/help/pycharm/rust-plugin.html#install-rust-toolchain" rel="noopener" target="_blank"&gt;Rust toolchain&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://docs.pola.rs/user-guide/plugins/expr_plugins/" rel="noopener" target="_blank"&gt;&lt;em&gt;Expression Plugins&lt;/em&gt; chapter&lt;/a&gt; of the Polars user guide gives you a quick overview of the core concepts. This blog post digs a little deeper and is geared toward PyCharm users who are new to Rust.&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;Create a Polars plugin project using a template&lt;/h2&gt;
+&lt;p&gt;The Rust plugin in PyCharm uses cargo-generate under the hood, allowing developers to quickly scaffold new Rust projects directly from templates.&lt;/p&gt;
+&lt;p&gt;To create a Rust project, start by installing the Rust plugin and toolchain, following the instructions in &lt;a href="https://www.jetbrains.com/help/pycharm/rust-plugin.html#install-rust-plugin" rel="noopener" target="_blank"&gt;this documentation&lt;/a&gt;. Then, while you have the &lt;em&gt;New Project&lt;/em&gt; window open, click on the &lt;em&gt;+&lt;/em&gt; icon at the bottom.&lt;/p&gt;
+&lt;img alt="" class="wp-image-760121" src="https://blog.jetbrains.com/wp-content/uploads/2026/11/image-59.png" /&gt;
+&lt;p&gt;In this example, we’ll create our Polars plugin from &lt;a href="https://github.com/Cheukting/polars_plugin_template" rel="noopener" target="_blank"&gt;a template I made earlier&lt;/a&gt;. Simply paste the URL for this template into the &lt;em&gt;Template URL &lt;/em&gt;field and click &lt;em&gt;Add&lt;/em&gt;.&lt;/p&gt;
+&lt;img alt="" class="wp-image-760132" src="https://blog.jetbrains.com/wp-content/uploads/2026/11/image-60.png" /&gt;
+&lt;p&gt;Now the template will be available as an option, and we’ll select it for our current project. Don’t forget to use the &lt;em&gt;Location&lt;/em&gt; field to establish a location and name for your project. In this example, ours will be called “polars-plugin-demo”.&lt;/p&gt;
+&lt;img alt="" class="wp-image-760143" src="https://blog.jetbrains.com/wp-content/uploads/2026/11/image-61.png" /&gt;
+&lt;p&gt;When we click &lt;em&gt;Create&lt;/em&gt;, a project is created with the necessary .toml files and file structure. Then we can just dive straight into it.&lt;/p&gt;
+&lt;img alt="" class="wp-image-760154" src="https://blog.jetbrains.com/wp-content/uploads/2026/11/image-62.png" /&gt;
+&lt;p&gt;Before we start developing, we’ll have to add a &lt;a href="https://www.jetbrains.com/help/pycharm/configuring-python-interpreter.html" rel="noopener" target="_blank"&gt;Python environment and interpreter&lt;/a&gt;, as you can see &lt;em&gt;&amp;lt;No interpreters&amp;gt;&lt;/em&gt; in the bottom right of the screenshot above. Let’s set one up now by clicking on &lt;em&gt;&amp;lt;No interpreters&amp;gt;&lt;/em&gt; and selecting &lt;em&gt;Add New Interpreter&lt;/em&gt;, then &lt;em&gt;Add Local Interpreter.&lt;/em&gt; For this example, we’ll use &lt;em&gt;uv&lt;/em&gt; (which I’ve already installed). We should also make sure to select the latest Python version, which is Python 3.14 at the time of writing.&lt;/p&gt;
+&lt;img alt="" class="wp-image-755719" src="https://blog.jetbrains.com/wp-content/uploads/2026/11/image-39.png" /&gt;
+&lt;p&gt;With everything set up, we can start creating our custom Polars plugin.&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;What’s in a Polars plugin project&lt;/h2&gt;
+&lt;p&gt;Let’s start by looking at what’s inside a new project by default&lt;/p&gt;
+&lt;p&gt;First, we have two .toml files for the project settings. Cargo.toml is for Rust, and pyproject.toml is for Python. Since our project uses both languages, we’ll need both files:&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;Cargo.toml – Rust dependencies: polars, pyo3, pyo3-polars, and serde.&lt;/li&gt;
+&lt;li&gt;pyproject.toml – maturin build settings, with module-name wired to polars_plugin_demo._internal.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now we’ll follow the steps laid out in the &lt;a href="https://docs.pola.rs/user-guide/plugins/expr_plugins/#writing-the-expression" rel="noopener" target="_blank"&gt;&lt;em&gt;Writing the expression&lt;/em&gt;&lt;/a&gt; section of the Polars user guide. The source code for Rust will be in the src/ folder. This is the same as using maturin init or cargo init to start a Rust project:&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;src/lib.rs – The _internal PyO3 module and the Polars global allocator.&lt;/li&gt;
+&lt;li&gt;src/expressions.rs – Empty for now, but your #[polars_expr] functions will go here.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Then we’ll have a directory with the same name as our project. This is where all the Python-specific files are located:&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;polars_plugin_demo/__init__.py – Where you register each expression with Polars.&lt;/li&gt;
+&lt;li&gt;polars_plugin_demo/_typing.py – IntoExpr / IntoExprColumn aliases, so we never have to import the private polars._typing.&lt;/li&gt;
+&lt;li&gt;polars_plugin_demo/_internal.pyi – Type stub for the compiled module.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As we go along, I’ll explain the contents of each file and how they all work together.&lt;/p&gt;
+&lt;p&gt;If you’re using PyCharm, you might also notice the target/ folder in your project files&lt;em&gt;. &lt;/em&gt;&amp;nbsp;Although we have not built the project yet, once we’ve configured a local virtual environment (.venv) as its Python interpreter, PyCharm regularly scans and indexes the environment. When PyCharm runs background tasks, it can inadvertently trigger PEP 517 build hooks using information in pyproject.toml. However, this build (the target/ folder) is mainly used to service PyCharm’s checking and indexing functionality. We will ignore it for now.&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;Writing a Polars plugin&lt;/h2&gt;
+&lt;h3 class="wp-block-heading"&gt;Working out the expression logic&lt;/h3&gt;
+&lt;p&gt;As explained above, we will mainly be working in &lt;code&gt;src/expressions.rs&lt;/code&gt;, which is currently empty. In our example project, we’ll start by adding this code to the file:&lt;/p&gt;
+&lt;pre class="EnlighterJSRAW"&gt;use polars::prelude::*;
+use pyo3_polars::derive::polars_expr;
+use std::fmt::Write;
+fn capitalize_str(value: &amp;amp;str, output: &amp;amp;mut String) {
+    if let Some(mut first_char) = value.chars().next() {
+        first_char.make_ascii_uppercase();
+        write!(output, "{first_char}{}", &amp;amp;value[1..]).unwrap();
+    }
+}
+#[polars_expr(output_type=String)]
+fn capitalize(inputs: &amp;amp;[Series]) -&amp;gt; PolarsResult&amp;lt;Series&amp;gt; {
+    let ca = inputs[0].str()?;
+    let out: StringChunked = ca.apply_into_string_amortized(capitalize_str);
+    Ok(out.into_series())
+}&lt;/pre&gt;
+&lt;p&gt;Let’s look at this code line by line to understand what it does. First we have the imports:&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;&lt;code&gt;use polars::prelude::*;&lt;/code&gt; – This line brings commonly used Polars types, traits, and macros into scope so they can be used everywhere in the file without specification of their full paths.&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;use pyo3_polars::derive::polars_expr; &lt;/code&gt;– This line imports the #[polars_expr] attribute macro that we’ll be using. This macro turns an ordinary Rust function into a plugin entry point that Polars can find at runtime.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;use std::fmt::Write; &lt;/code&gt;– This line is here to ensure that the write!(output, …) macro works properly.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;The logic of our expression is implemented in the &lt;code&gt;capitalize_str&lt;/code&gt; function. Instead of returning a &lt;code&gt;String&lt;/code&gt;, the function takes the input value and a mutable output buffer. This is necessary because it’s the format demanded by &lt;code&gt;apply_into_string_amortized&lt;/code&gt;, which we will call later, so that it can promise one allocation for a whole column instead of one per row.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;In this case, the caller in Polars owns the buffer and hands the same one back on every row. Our function can&amp;#8217;t own that buffer, because otherwise it only lives for one call. The only way to reuse it is for the caller to hold it and lend it out as a &lt;code&gt;&amp;amp;mut String&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Inside the function:&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;&lt;code&gt;if let Some(mut first_char) = value.chars().next() {...}&lt;/code&gt; provides an owned, mutable copy of the first char as first_char. There&amp;#8217;s no mutable borrowing of value itself.&amp;nbsp;&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;first_char.make_ascii_uppercase(); &lt;/code&gt;capitalizes in place, but only for a–z. Non-ASCII characters are left untouched by design.&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;write!(output, "{first_char}{}", &amp;amp;value[1..]).unwrap();&lt;/code&gt; appends the capitalized character plus the rest of the string.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Note that, in this example, we assume that each character is stored in a single byte only. If the first character is multibyte, byte 1 lands mid-character, the slice panics, and the program will stop working.&lt;/p&gt;
+&lt;p&gt;After the logic is set, the capitalize function with the &lt;code&gt;#[polars_expr]&lt;/code&gt; attribute is responsible for exporting the expression.&amp;nbsp;&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;&lt;code&gt;#[polars_expr(output_type=String)]&lt;/code&gt; – The &lt;code&gt;#[polars_expr]&lt;/code&gt; attribute wraps the capitalize function into an extern &amp;#8220;C&amp;#8221; symbol in the compiled cdylib, plus a companion function reporting the output dtype. output_type=String declares a fixed output schema, so Polars knows the resulting dtype during lazy planning without running anything.&amp;nbsp;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Note that Polars looks up symbols by name at runtime, which means there’s no need to register our expressions to the module in lib.rs by hand. Instead, we’ll register them on the Python side later.&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;&lt;code&gt;fn capitalize(inputs: &amp;amp;[Series]) -&amp;gt; PolarsResult&amp;lt;Series&amp;gt; {...}&lt;/code&gt; – Every plugin expression has the same signature: It receives its input columns as a slice of Series values and returns a PolarsResult&amp;lt;Series&amp;gt; containing the resulting column or an error.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;let ca = inputs[0].str()?;&lt;/code&gt; –&lt;code&gt; inputs[0]&lt;/code&gt; is the single input column; &lt;code&gt;.str()&lt;/code&gt; downcasts the type-erased Series to a &lt;code&gt;&amp;amp;StringChunked&lt;/code&gt; (Polars&amp;#8217; typed chunked array). It returns a &lt;code&gt;PolarsResult&lt;/code&gt;, so `&lt;code&gt;?&lt;/code&gt;` turns an incorrect dtype into a clean Polars error instead of causing a panic that would stop the program.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;let out: StringChunked = ca.apply_into_string_amortized(capitalize_str); &lt;/code&gt;– out will be a &lt;code&gt;StringChunked&lt;/code&gt; type result from moving through the column and calling &lt;code&gt;capitalize_str(value, &amp;amp;mut buf)&lt;/code&gt; for each row. As mentioned before, in this process, Polars reuses one &lt;code&gt;String&lt;/code&gt; buffer across all rows and copies the bytes into the output &lt;code&gt;Arrow&lt;/code&gt; buffer.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ok(out.into_series())&lt;/code&gt; – At the end, we convert the typed &lt;code&gt;StringChunked&lt;/code&gt; back to a &lt;code&gt;Series&lt;/code&gt; and wrap it into the &lt;code&gt;Result&lt;/code&gt; type&amp;#8217;s &lt;code&gt;Ok&lt;/code&gt; variant.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="wp-block-heading"&gt;Putting it together as a module&lt;/h3&gt;
+&lt;p&gt;Now that we’ve created the expression logic and registered it as a symbol, we can look at the rest of the project and see how the pieces fit together. Let’s look at src/&lt;a href="http://lib.rs" rel="noopener" target="_blank"&gt;lib.rs&lt;/a&gt;, which is the crate root for a Polars expression plugin:&lt;/p&gt;
+&lt;pre class="EnlighterJSRAW"&gt;mod expressions;
+use pyo3_polars::PolarsAllocator;
+/// Polars plugin expressions implemented in Rust.
+#[pyo3::pymodule]
+mod _internal {
+   use pyo3::prelude::*;
+   #[pymodule_init]
+   fn init(m: &amp;amp;Bound&amp;lt;'_, PyModule&amp;gt;) -&amp;gt; PyResult&amp;lt;()&amp;gt; {
+       m.add("__version__", env!("CARGO_PKG_VERSION"))
+   }
+}
+#[global_allocator]
+static ALLOC: PolarsAllocator = PolarsAllocator::new();&lt;/pre&gt;
+&lt;p&gt;This code is pure scaffolding, with no expression logic of its own. However, it’s still essential that we understand what it does:&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;&lt;code&gt;mod expressions;&lt;/code&gt; pulls in src/expressions.rs, where your &lt;code&gt;#[polars_expr(...)]&lt;/code&gt; functions live. It&amp;#8217;s declared here purely so the module gets compiled; nothing in lib.rs calls into it. As mentioned before, the symbols were looked up by name at call time, so there&amp;#8217;s no registration list anywhere in this file.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;#[pyo3::pymodule]&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;mod _internal {...}&lt;/code&gt; declares the Python extension module using PyO3&amp;#8217;s declarative module syntax. The name _internal has to match module-name in pyproject.toml, which is what maturin uses to decide where to drop the compiled _internal.abi3.so inside the Python package.&lt;/p&gt;
+&lt;p&gt;The module body is nearly empty. But this is intentional, as Polars plugin functions aren&amp;#8217;t exposed as Python functions. The only thing &lt;code&gt;#[pymodule_init]&lt;/code&gt; does is set &lt;code&gt;__version__ &lt;/code&gt;on the module from &lt;code&gt;CARGO_PKG_VERSION&lt;/code&gt;, resolved at compile time by env!. The module still matters even though it&amp;#8217;s empty because importing it is what loads the .so file into the process, which is what makes the exported &lt;code&gt;#[polars_expr]&lt;/code&gt; symbols available for Polars to resolve.&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;&lt;code&gt;#[global_allocator]&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;static ALLOC: PolarsAllocator = PolarsAllocator::new();&lt;/code&gt; installs Polars&amp;#8217; allocator as the Rust-side global allocator. This is the recommended setup for pyo3-polars plugins: It ensures the plugin shares the same allocator as the Polars build it&amp;#8217;s loaded next to, keeping memory management compatible when data passes between Polars and the plugin, and it lets Polars&amp;#8217; memory accounting see the plugin&amp;#8217;s allocations.&lt;/p&gt;
+&lt;h3 class="wp-block-heading"&gt;The Python-side setup&lt;/h3&gt;
+&lt;p&gt;Now let’s look at the Python side. There are three files inside the polars_plugin_demo/ folder. These files are all scaffolding for a Polars expression plugin and are essential when adding our custom expressions to Polars.&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;_typing.py is created because we need a type alias for &lt;code&gt;polars._typing&lt;/code&gt;, which is a private module that is subject to change from one release to the next.&lt;/li&gt;
+&lt;li&gt;__init__.py is where the Python-side registration surface lives. &lt;code&gt;PLUGIN_PATH&lt;/code&gt; points to the package directory, where maturin develop drops _internal.abi3.so. The commented-out capitalize demonstrates how one Python wrapper calls register_plugin_function for each #[polars_expr] in src/expressions.rs. function_name needs to match the Rust function name exactly so Polars can locate the correct plugin function.&lt;/li&gt;
+&lt;li&gt;_internal.pyi is the stub for the compiled extension. However, expression functions are exported as C symbols, not Python attributes, so they do not appear here. We use this file to declare &lt;code&gt;__version__: str&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After reading through these files, uncomment the example in __init__.py:&lt;/p&gt;
+&lt;pre class="EnlighterJSRAW"&gt;def capitalize(expr: IntoExpr) -&amp;gt; pl.Expr:
+    """Capitalize String."""
+    return register_plugin_function(
+        plugin_path=PLUGIN_PATH,
+        function_name="capitalize",
+        args=expr,
+        is_elementwise=True,
+    )&lt;/pre&gt;
+&lt;p&gt;We are now ready to build our custom Polars expression.&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;Building and testing our plugin&lt;/h2&gt;
+&lt;p&gt;Although we can build the plugin manually with maturin develop, PyCharm can handle this step for you. It invokes maturin develop to compile your Rust modules into a native shared library (an .so file in this case) and drops it into the designated directory.&lt;/p&gt;
+&lt;p&gt;Since we’ve configured&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;[tool.maturin]&lt;br /&gt;module-name = "polars_plugin_demo._internal"&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;in the pyproject.toml file, our .so file is placed in the polars_plugin_demo/ folder. We also need to make sure the name of the PyO3 module in src/lib.rs matches the last part of module-name (_internal in this case).&lt;/p&gt;
+&lt;p&gt;To trigger a build, simply run or debut a Python script that uses the plugin. In a real project, you’d typically have a set of Python tests sitting in a tests/ folder or something similar. However, since this is only a demo, let’s keep things simple and use the following script:&lt;/p&gt;
+&lt;pre class="EnlighterJSRAW"&gt;import polars as pl
+from polars_plugin_demo import capitalize
+df = pl.DataFrame(
+   {
+       "attendees": ["john", "mary", "connor", "sally"],
+   }
+)
+out = df.with_columns(names=capitalize("attendees"))
+print(out)&lt;/pre&gt;
+&lt;p&gt;Now that our customized plugin capitalize&lt;em&gt; &lt;/em&gt;has been built and included in the polars_plugin_demo module, we can import it and use it like other &lt;a href="https://docs.pola.rs/user-guide/concepts/expressions-and-contexts/" rel="noopener" target="_blank"&gt;Polars expressions&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Run the script just like you’d normally do in PyCharm – for example, by clicking the &lt;em&gt;Run&lt;/em&gt; button in the top-right corner:&lt;/p&gt;
+&lt;img alt="" class="wp-image-760165" src="https://blog.jetbrains.com/wp-content/uploads/2026/11/image-63.png" /&gt;
+&lt;p&gt;You’ll see the loading bar at the bottom:&lt;/p&gt;
+&lt;img alt="" class="wp-image-760176" src="https://blog.jetbrains.com/wp-content/uploads/2026/11/image-64.png" /&gt;
+&lt;p&gt;This indicates that maturin develop is running in the background. The result is cached, so the next time you run the script (assuming you haven’t made changes to the module), it will execute much faster.&lt;/p&gt;
+&lt;p&gt;Want a challenge? Try writing some unit tests and running them with pytest to see if everything works as expected.&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;What’s next?&lt;/h2&gt;
+&lt;p&gt;If you’d like to learn more about how to create Polars plugins, check out my &lt;a href="https://github.com/Cheukting/polars_plugin_101" rel="noopener" target="_blank"&gt;workshop on GitHub&lt;/a&gt;. You might also enjoy &lt;a href="https://docs.pola.rs/user-guide/plugins/#other-material:~:text=Polars%20plugins%20tutorial" rel="noopener" target="_blank"&gt;this tutorial by Marco Gorelli&lt;/a&gt; or the &lt;a href="https://docs.pola.rs/user-guide/plugins/expr_plugins/" rel="noopener" target="_blank"&gt;&lt;em&gt;Expression Plugins&lt;/em&gt;&lt;/a&gt; section of the Polars user guide.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.jetbrains.com/pycharm/2026/11/creating-polars-expression-plugins-in-pycharm-a-step-by-step-guide-for-rust-beginners/" rel="noreferrer noopener" target="_blank"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Explore more of what the Rust plugin in PyCharm offers to streamline your project with Rust and Python. The plugin enhances cross-language development with intelligent code completion, seamless navigation between Rust and Python modules, and automated refactoring across your codebase. Furthermore, its integrated debugging support lets you step through both Python scripts and compiled Rust code effortlessly, ensuring a smooth and unified workflow.&lt;/p&gt;</description>
+      <guid isPermaLink="false">69246780e3c2bbcf2a854afc01be884512747eaf7c888c4b7c5ae2dfee5aac00</guid>
+      <pubDate>Mon, 23 Nov 2026 12:42:50 +0000</pubDate>
+    </item>
     <item>
       <title>Graham Dumpleton: Muru: working with coding agents - Planet Python</title>
       <link>https://grahamdumpleton.me/posts/2026/11/muru-working-with-coding-agents/</link>
@@ -18399,161 +18576,6 @@ convo = ConversationalTestCase(
 &lt;/blockquote&gt;</description>
       <guid isPermaLink="false">0258814a3a3a11ed90ff5fbc97524eb872699b5676dc6adcba1b4c57efbeab3c</guid>
       <pubDate>Mon, 10 Aug 2026 10:37:15 +0000</pubDate>
-    </item>
-    <item>
-      <title>Django Weblog: Django is moving to an annual release cycle</title>
-      <link>https://www.djangoproject.com/weblog/2026/aug/10/annual-release-cycle/</link>
-      <description>&lt;p&gt;Django's Steering Council has accepted the Django Enhancement Proposal &lt;a href="https://github.com/django/deps/blob/main/accepted/0020-annual-release-cycle.rst"&gt;DEP
-20&lt;/a&gt; to move Django to an annual release cycle. From January 2028, Django
-will make one feature release a year, giving every feature release the
-LTS-level three years of support, and version numbers will carry the feature
-release year: Django 2028, then Django 2029, and so on.&lt;/p&gt;
-&lt;h2 id="s-better-python-support"&gt;Better Python support&lt;/h2&gt;
-&lt;p&gt;Python releases annually, each October. Django's eight-month cycle hasn't fit
-that well: LTS releases carried a wide Python matrix, including versions long
-past their upstream end-of-life.&lt;/p&gt;
-&lt;p&gt;Under the new cycle, each Django version supports the three latest Python
-versions at release, and picks up the new Python version during its first year.
-Django's support window ends in step with its oldest supported Python.&lt;/p&gt;
-&lt;h2 id="s-every-release-is-an-lts"&gt;Every release is an LTS&lt;/h2&gt;
-&lt;p&gt;Every feature release gets three years of support: one year of mainstream
-bugfixes, then two years of security and data-loss fixes. The "LTS" label is
-retired — every feature release now carries that same, unique commitment.&lt;/p&gt;
-&lt;p&gt;No more LTS gap: no racing a deadline to jump two years of changes at once.
-Upgrade one year at a time, whenever suits you within the support window. Three
-versions are supported at any time, giving third-party packages a clear,
-rolling target.&lt;/p&gt;
-&lt;p&gt;API stability and deprecation policies are unchanged — deprecation periods
-actually get longer in calendar terms.&lt;/p&gt;
-&lt;h2 id="s-transition-timeline"&gt;Transition timeline&lt;/h2&gt;
-&lt;p&gt;Django 2028 will be the first release under the new cycle.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Release&lt;/th&gt;
-&lt;th&gt;Date&lt;/th&gt;
-&lt;th&gt;End of life&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Django 6.1&lt;/td&gt;
-&lt;td&gt;August 2026&lt;/td&gt;
-&lt;td&gt;December 2027&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Django 6.2 LTS&lt;/td&gt;
-&lt;td&gt;April 2027&lt;/td&gt;
-&lt;td&gt;April 2030&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Django 2028&lt;/td&gt;
-&lt;td&gt;January 2028&lt;/td&gt;
-&lt;td&gt;December 2030&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Django 2029&lt;/td&gt;
-&lt;td&gt;January 2029&lt;/td&gt;
-&lt;td&gt;December 2031&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Nothing changes before 2028. Support commitments for Django 5.2 LTS and 6.2
-LTS stand as made.&lt;/p&gt;
-&lt;h2 id="s-read-the-dep"&gt;Read the DEP&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://github.com/django/deps/blob/main/accepted/0020-annual-release-cycle.rst"&gt;DEP 20&lt;/a&gt; has the full specification and the reasoning behind each
-decision. Thanks to everyone who took part in the discussion, and to the
-Steering Council for its consideration.&lt;/p&gt;</description>
-      <guid isPermaLink="false">8189e59fdaadbf92603cb1d6bd486b867321811edd70ed9fe522d0bf1e4906b5</guid>
-      <pubDate>Mon, 10 Aug 2026 09:00:49 +0000</pubDate>
-    </item>
-    <item>
-      <title>Ned Batchelder: Caller-specific coverage</title>
-      <link>https://nedbatchelder.com/blog/202608/callerspecific_coverage</link>
-      <description>&lt;p&gt;I&amp;#8217;ve had an idea rattling around to get more detail from coverage
-measurement.  Can we measure the coverage in a function separately for each
-caller of the function?&lt;/p&gt;&lt;p&gt;Here&amp;#8217;s why I want it: in &lt;a href="https://nedbatchelder.com/blog/202607/acidica"&gt;Acidica&lt;/a&gt;, my toy
-BASIC interpreter, I had code to implement the built-in functions that looked
-something like this:&lt;/p&gt;&lt;blockquote class="code"&gt;&lt;div class="source"&gt;&lt;pre class="python"&gt;&lt;span class="k"&gt;match&lt;/span&gt;&amp;#xa0;&lt;span class="n"&gt;func_name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;br /&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="k"&gt;case&lt;/span&gt;&amp;#xa0;&lt;span class="s2"&gt;&amp;quot;LEN&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="k"&gt;if&lt;/span&gt;&amp;#xa0;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&amp;#xa0;&lt;span class="o"&gt;!=&lt;/span&gt;&amp;#xa0;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="k"&gt;raise&lt;/span&gt;&amp;#xa0;&lt;span class="ne"&gt;TypeError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Wrong&amp;#xa0;arguments&amp;#xa0;for&amp;#xa0;LEN,&amp;#xa0;got&amp;#xa0;&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="k"&gt;return&lt;/span&gt;&amp;#xa0;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
-&lt;br /&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="k"&gt;case&lt;/span&gt;&amp;#xa0;&lt;span class="s2"&gt;&amp;quot;LEFT$&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="k"&gt;if&lt;/span&gt;&amp;#xa0;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&amp;#xa0;&lt;span class="o"&gt;!=&lt;/span&gt;&amp;#xa0;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="k"&gt;raise&lt;/span&gt;&amp;#xa0;&lt;span class="ne"&gt;TypeError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Wrong&amp;#xa0;arguments&amp;#xa0;for&amp;#xa0;LEFT$,&amp;#xa0;got&amp;#xa0;&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="k"&gt;return&lt;/span&gt;&amp;#xa0;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;][:&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
-&lt;br /&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="c1"&gt;#&amp;#xa0;...&amp;#xa0;19&amp;#xa0;other&amp;#xa0;built-ins&amp;#xa0;...&lt;/span&gt;
-&lt;br /&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/blockquote&gt;&lt;p&gt;I didn&amp;#8217;t like the repeated code here: each different &lt;code&gt;func_name&lt;/code&gt; has to
-check that it got its expected number of arguments and perhaps raise an error.
-So I refactored:&lt;/p&gt;&lt;blockquote class="code"&gt;&lt;div class="source"&gt;&lt;pre class="python"&gt;&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt;&amp;#xa0;&lt;/span&gt;&lt;span class="nf"&gt;expects&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nargs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&amp;#xa0;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&amp;#xa0;&lt;span class="n"&gt;func_name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&amp;#xa0;&lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&amp;#xa0;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&amp;#xa0;&lt;span class="nb"&gt;tuple&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&amp;#xa0;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&amp;#xa0;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="k"&gt;if&lt;/span&gt;&amp;#xa0;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&amp;#xa0;&lt;span class="o"&gt;!=&lt;/span&gt;&amp;#xa0;&lt;span class="n"&gt;nargs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="k"&gt;raise&lt;/span&gt;&amp;#xa0;&lt;span class="ne"&gt;TypeError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Wrong&amp;#xa0;arguments&amp;#xa0;for&amp;#xa0;&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;func_name&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;,&amp;#xa0;got&amp;#xa0;&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;span class="k"&gt;match&lt;/span&gt;&amp;#xa0;&lt;span class="n"&gt;func_name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="k"&gt;case&lt;/span&gt;&amp;#xa0;&lt;span class="s2"&gt;&amp;quot;LEN&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="n"&gt;expects&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&amp;#xa0;&lt;span class="n"&gt;func_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&amp;#xa0;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="k"&gt;return&lt;/span&gt;&amp;#xa0;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
-&lt;br /&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="k"&gt;case&lt;/span&gt;&amp;#xa0;&lt;span class="s2"&gt;&amp;quot;LEFT$&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="n"&gt;expects&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&amp;#xa0;&lt;span class="n"&gt;func_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&amp;#xa0;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="k"&gt;return&lt;/span&gt;&amp;#xa0;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;][:&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
-&lt;br /&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/blockquote&gt;&lt;p&gt;Nice. The code is tighter, easier to read, and common behavior is implemented
-in one place.&lt;/p&gt;&lt;p&gt;But the old code had an advantage: because each error condition had its own
-&lt;code&gt;raise&lt;/code&gt; line, coverage measurement could tell me whether I had tested every
-&lt;code&gt;func_name&lt;/code&gt; for the wrong number of arguments.  With the error handling
-happening in a helper function, that information is lost. I&amp;#8217;ll know that
-&lt;i&gt;some&lt;/i&gt; &lt;code&gt;func_name&lt;/code&gt; had a test for the wrong number of arguments, but
-not that all of them did.&lt;/p&gt;&lt;p&gt;Here&amp;#8217;s where the new idea comes in. What if I could indicate that for the
-&lt;code&gt;expects&lt;/code&gt; function, I want separate coverage data for each distinct calling
-site? Then I could see that every &lt;code&gt;func_name&lt;/code&gt; had a test for both the wrong
-number of arguments and the right number of arguments.  The simple branch inside
-&lt;code&gt;expects&lt;/code&gt; would be measured separately for each caller.&lt;/p&gt;&lt;p&gt;I have a quick proof-of-concept. A decorator on &lt;code&gt;expects&lt;/code&gt; does the work.
-Coverage.py already has dynamic contexts which are used for things like tracking
-which tests called which code. The decorator starts a new context named for the
-calling location, then restores the context when the function returns:&lt;/p&gt;&lt;blockquote class="code"&gt;&lt;div class="source"&gt;&lt;pre class="python"&gt;&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt;&amp;#xa0;&lt;/span&gt;&lt;span class="nf"&gt;coverage_per_caller&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="nd"&gt;@functools&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;wraps&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt;&amp;#xa0;&lt;/span&gt;&lt;span class="nf"&gt;_wrapper&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&amp;#xa0;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="n"&gt;cov&lt;/span&gt;&amp;#xa0;&lt;span class="o"&gt;=&lt;/span&gt;&amp;#xa0;&lt;span class="n"&gt;coverage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Coverage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;current&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="n"&gt;name&lt;/span&gt;&amp;#xa0;&lt;span class="o"&gt;=&lt;/span&gt;&amp;#xa0;&lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__name__&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="n"&gt;caller&lt;/span&gt;&amp;#xa0;&lt;span class="o"&gt;=&lt;/span&gt;&amp;#xa0;&lt;span class="n"&gt;inspect&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;currentframe&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;f_back&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="n"&gt;file&lt;/span&gt;&amp;#xa0;&lt;span class="o"&gt;=&lt;/span&gt;&amp;#xa0;&lt;span class="n"&gt;caller&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;f_code&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;co_filename&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="n"&gt;lineno&lt;/span&gt;&amp;#xa0;&lt;span class="o"&gt;=&lt;/span&gt;&amp;#xa0;&lt;span class="n"&gt;caller&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;f_lineno&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="n"&gt;prev_context&lt;/span&gt;&amp;#xa0;&lt;span class="o"&gt;=&lt;/span&gt;&amp;#xa0;&lt;span class="n"&gt;cov&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch_context&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;per_caller:&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;:&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;:&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;lineno&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="n"&gt;ret&lt;/span&gt;&amp;#xa0;&lt;span class="o"&gt;=&lt;/span&gt;&amp;#xa0;&lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&amp;#xa0;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="k"&gt;finally&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="n"&gt;cov&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch_context&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;prev_context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="k"&gt;return&lt;/span&gt;&amp;#xa0;&lt;span class="n"&gt;ret&lt;/span&gt;
-&lt;br /&gt;
-&lt;br /&gt;&amp;#xa0;&amp;#xa0;&amp;#xa0;&amp;#xa0;&lt;span class="k"&gt;return&lt;/span&gt;&amp;#xa0;&lt;span class="n"&gt;_wrapper&lt;/span&gt;
-&lt;br /&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/blockquote&gt;&lt;p&gt;I had to make one tiny (unreleased) change to coverage.py for this:
-&lt;code&gt;switch_context&lt;/code&gt; used to return None, but now it returns the previous
-context so that we can nest them properly.&lt;/p&gt;&lt;p&gt;To my delight, this works! I can look at the HTML coverage report and see the
-caller contexts for the lines in &lt;code&gt;expects&lt;/code&gt;. I can see that 20 callers ran
-the &lt;code&gt;if&lt;/code&gt; line, but only 2 ran the &lt;code&gt;raise&lt;/code&gt;, and the context names show
-the file and line number of the callers for each:&lt;/p&gt;&lt;div class="figurep"&gt;&lt;a href="https://nedbatchelder.com/pix/per-caller-coverage.png"&gt;&lt;img alt="HTML report showing the contexts that ran each line of expects()" class="hairline" height="555" src="https://nedbatchelder.com/pix/per-caller-coverage.png" width="1624" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;p&gt;This isn&amp;#8217;t the whole solution yet. Things to improve:&lt;/p&gt;&lt;ul&gt;
-&lt;li&gt;I&amp;#8217;d like to post-process these contexts to show which callers were missing
-lines inside &lt;code&gt;expects&lt;/code&gt;.  What I&amp;#8217;m looking for is the same kind of &amp;#8220;this
-line is missing&amp;#8221; information that I got from the original inlined logic.&lt;/li&gt;
-&lt;li&gt;These per-caller contexts overwrite the contexts we were already collecting
-(the test names). Ideally we&amp;#8217;d have some kind of sub-context so that we could
-track both (or many) at once.&lt;/li&gt;
-&lt;li&gt;It&amp;#8217;s not great that I had to add a decorator to the source code. Driving
-this through the coverage configuration would keep these kinds of details out of
-the source.&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;But it&amp;#8217;s a start, and gives me other ideas. I could use some aspect of the
-data passed into a function as the context name. In this example, we could have
-used &lt;code&gt;func_name&lt;/code&gt; as the context instead of the caller&amp;#8217;s location. Maybe
-you have ideas for other uses.&lt;/p&gt;</description>
-      <guid isPermaLink="false">9046e14b16ce5c56c6ecad2fb988702dc333c6cc52c9167b274f05c4b6899978</guid>
-      <pubDate>Sun, 09 Aug 2026 17:56:25 +0000</pubDate>
     </item>
   </channel>
 </rss>

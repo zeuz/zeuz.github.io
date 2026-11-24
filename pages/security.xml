@@ -5,7 +5,81 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Mon, 23 Nov 2026 14:01:21 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 24 Nov 2026 14:01:17 +0000</lastBuildDate>
+    <item>
+      <title>VMware vCenter Hit by Another Critical 9.8-Rated Auth Bypass Flaw After Zero-Day Exploitation - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/vmware-vcenter-hit-by-another-critical.html</link>
+      <description>Broadcom has shipped patches to address 23 vulnerabilities impacting VMware ESX, vCenter, Workstation, Fusion, and Avi Load Balancer, including one critical bug that could be abused to bypass authentication.
+The critical vulnerability, tracked as CVE-2026-123903, is rated 9.8 out of 10.0 on the CVSS scoring system. It resides in the VMware Directory Service ("vmdir").
+"A malicious actor with</description>
+      <guid isPermaLink="false">5e9c2e9d100ddfd0c747a2d1bcba989b9a3e5333d317cffc5099fed19dcfc0e9</guid>
+      <pubDate>Tue, 24 Nov 2026 13:28:26 +0000</pubDate>
+    </item>
+    <item>
+      <title>Okta Links ShinyHunters-Associated Vishing Group to New INCEPTION Data Leak Site - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/okta-links-shinyhunters-associated.html</link>
+      <description>A threat cluster previously assessed to be affiliated with the ShinyHunters extortion crew may have rebranded and continued operations under a new name called INCEPTION, according to Okta's Threat Intelligence team.
+The cluster, dubbed O-UNC-053, is characterized by the use of voice phishing (aka vishing) attacks to trick targets into entering credentials in phishing pages and approving</description>
+      <guid isPermaLink="false">cfc7e09acdbdb1a92d9b719a173efbf1ef26f6b35392acfce2b4b821b9435863</guid>
+      <pubDate>Tue, 24 Nov 2026 13:28:21 +0000</pubDate>
+    </item>
+    <item>
+      <title>Google Researcher Shows How a Single Bit Change in .NET Files Bypassed Windows Code Integrity - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/google-researcher-shows-how-single-bit.html</link>
+      <description>A quirk in how the .NET Framework loads a program file let a local attacker run untrusted code past two separate protections on Windows built to block it, Google Project Zero researcher James Forshaw showed in a write-up published yesterday.
+The same loading behavior bypassed Oracle VirtualBox's process hardening on Windows hosts, tracked as CVE-2026-87268, and Windows code integrity, tracked</description>
+      <guid isPermaLink="false">df55a215ac462405875b876caf3609371b54f6b58992287787e6b6891cef8d05</guid>
+      <pubDate>Tue, 24 Nov 2026 12:02:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Microsoft Fixes Azure API Management Classic Flaw as Actor Targets Customer Secrets - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/microsoft-fixes-azure-api-management.html</link>
+      <description>Norway's National Security Authority (NSM) has disclosed that it became aware of a security vulnerability in Microsoft's Azure API Management (APIM) that has affected multiple businesses in the country, including energy companies Equinor and Skagerak Energi.
+"An unknown actor has been actively looking for access tokens, secrets, and named values ​​in APIM," NSM said. "It is still uncertain how</description>
+      <guid isPermaLink="false">e3dde09d5c0c1381313e1e34bfa9aa7a1bd08c7cf03b7d495630cc924e2e640d</guid>
+      <pubDate>Tue, 24 Nov 2026 10:44:49 +0000</pubDate>
+    </item>
+    <item>
+      <title>WHMCS SQL Injection Could Expose Customer Data and Admin Password Hashes without Login - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/whmcs-sql-injection-flaw-could-expose.html</link>
+      <description>A flaw in WHMCS's shopping cart, the billing and automation platform many web hosting companies use to run their businesses, could allow anyone on the internet to retrieve customer records and administrator password hashes from an installation's database. No login is needed.
+The company disclosed the SQL injection yesterday along with two other flaws that need a logged-in client, and released</description>
+      <guid isPermaLink="false">d89d263eca9f1675f94c98cb27a1df420df1479f7f906a23d0ae4e5d0ac64443</guid>
+      <pubDate>Tue, 24 Nov 2026 08:34:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>OpenAI and Cisco Unveil AI-Assisted Linux Security Tool to Block Exploits Before Patching - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/openai-and-cisco-unveil-ai-assisted.html</link>
+      <description>OpenAI and Cisco have teamed up to launch Shirudo (meaning "shield" in Japanese), an open-source Linux runtime that allows artificial intelligence (AI) agents to defend systems without downtime.
+"It lets agents write dynamic eBPF controls to shield systems from exploits, giving defenders more time to test and roll out patches," OpenAI said in a post on X.
+The AI upstart called the initiative a</description>
+      <guid isPermaLink="false">35f90bea27463c9ba81d99b5b768c12db95c47c467e518a924f6f7e22b305ab3</guid>
+      <pubDate>Tue, 24 Nov 2026 06:02:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hackers Exploit N-able MailAssure Flaw While AI Agents Exploit MONAI Label Zero-Day - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/hackers-exploit-n-able-mailassure-flaw.html</link>
+      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Monday added two flaws impacting N-able MailAssure and MONAI Label to its Known Exploited Vulnerabilities (KEV) catalog, citing evidence of active exploitation.
+The critical vulnerabilities are listed below -
+  CVE-2026-134624 (CVSS score: 9.3) - A server-side request forgery (SSRF) vulnerability in N-able MailAssure's LDAP</description>
+      <guid isPermaLink="false">85f8854d6e3802a1dca6b99f47e2d7390dcbd8dc0dbdc54e9f606ec00bf20433</guid>
+      <pubDate>Tue, 24 Nov 2026 06:02:45 +0000</pubDate>
+    </item>
+    <item>
+      <title>Ghidra – Install, Analyse and Decompile with NSA’s Reverse Engineering Suite - Darknet - The Darkside</title>
+      <link>https://www.darknet.org.uk/2026/11/ghidra-nsa-reverse-engineering-decompiler/</link>
+      <description>Install Ghidra 12.2 with JDK 25, fix "java command could not be found", decompile a binary headless, find WinMain, and what 12.2 changes for servers.</description>
+      <guid isPermaLink="false">a42e43239c4d47a5fce21387e15478e47a0ea9387f577f7793e7c6e2655b23b5</guid>
+      <pubDate>Mon, 23 Nov 2026 23:20:49 +0000</pubDate>
+    </item>
+    <item>
+      <title>Webworm Suspected of Modifying SoftEther VPN to Evade Detection and Hide Remote Access - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/webworm-suspected-of-modifying.html</link>
+      <description>The China-aligned threat actor known as Webworm is suspected to be using a custom version of the open-source SoftEther VPN Bridge tool in an attempt to remove recognizable detection fingerprints, while disguising it as network-monitoring software to establish covert remote access to compromised networks.
+The modified variant "implements various tricks to hide itself from security tools,"</description>
+      <guid isPermaLink="false">b81cb9e571058aa646e928aba4f29e0e8f7de49f11539646ddbfdd7398874bb6</guid>
+      <pubDate>Mon, 23 Nov 2026 17:45:15 +0000</pubDate>
+    </item>
     <item>
       <title>Critical binary-parser Flaw Enables JavaScript Injection via Malicious Parser Definitions - The Hacker News</title>
       <link>https://thehackernews.com/2026/11/critical-binary-parser-flaw-enables.html</link>
@@ -1503,77 +1577,6 @@ Tether and Circle said they have frozen more than 1.567 billion USDT and 800 mil
 Anthropic said&amp;nbsp;on October 27 that its AI model wrote an exploit that uses the flaw to let a remote attacker with no credentials run commands as root on Linux servers with a</description>
       <guid isPermaLink="false">60c1eefebceb865c90f65a3a19cc306ee2268d10bad21efeb1dd64e03fdb1bb5</guid>
       <pubDate>Thu, 29 Oct 2026 15:57:05 +0000</pubDate>
-    </item>
-    <item>
-      <title>Fake ChatGPT and Claude Apps Abuse Signed Executables to Deploy Crypto Miners - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/fake-chatgpt-and-claude-apps-abuse.html</link>
-      <description>Threat actors are delivering malicious loaders and cryptocurrency miners under the guise of artificial intelligence (AI) desktop applications for Anthropic Claude and OpenAI ChatGPT as part of a campaign dubbed Yoba.
-The activity involves creating fake GitHub projects that claim to be desktop applications like GPT-5.6 Sol, GPT-6 Astra, and Claude Opus, only to deliver a malware family called</description>
-      <guid isPermaLink="false">0b54423c38568a241c99b4463970b5e7de1122620959bedfee392c6eb5182b32</guid>
-      <pubDate>Thu, 29 Oct 2026 15:20:29 +0000</pubDate>
-    </item>
-    <item>
-      <title>NWH Stealer Payload Extraction, Fileless Bun Runtime &amp; Cloud C2 (AWS/R2) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1ximqti/nwh_stealer_payload_extraction_fileless_bun/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/StructBreaker"&gt; /u/StructBreaker &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/kaandemir993/NWH-Stealer-Analysis-Fileless-Bun-Runtime-Execution-Clipboard-Image-Theft-Cloud-C2-AWS-R2-"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1ximqti/nwh_stealer_payload_extraction_fileless_bun/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">c8aa41cb9206febeb8edeea993561186c04cbf3ea8ef12dcb9e5c306ae6e7f98</guid>
-      <pubDate>Thu, 29 Oct 2026 15:14:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>Reverse engineering Peugeot SMEG+: VxWorks 6.7 and native UI in a custom QEMU MPC5121E model (AI-assisted) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xikrso/reverse_engineering_peugeot_smeg_vxworks_67_and/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/SolidEstablishment70"&gt; /u/SolidEstablishment70 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/jlfernandes22/SMEG5.43.A.R2"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xikrso/reverse_engineering_peugeot_smeg_vxworks_67_and/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">d3bc178aba513e73e5aa4221448fe4ddb01d19bf59628836a98b028f96db5942</guid>
-      <pubDate>Thu, 29 Oct 2026 13:59:53 +0000</pubDate>
-    </item>
-    <item>
-      <title>Google's Gemini 4 Carbon Leads Benchmarks for Finding, Exploiting, and Patching Vulnerabilities - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/googles-gemini-4-carbon-leads.html</link>
-      <description>Google on Wednesday took the wraps off Gemini 4 Carbon, its latest frontier model with state-of-the-art cybersecurity and long-horizon capabilities.
-"It shows significant gains across coding and agentic tasks as well as across key capabilities critical for cybersecurity defense, landing a firm lead in SEC-bench Pro (88.2%) for finding vulnerabilities, ExploitGym (54.8%) for exploitation, and</description>
-      <guid isPermaLink="false">240cb3d799c6a4b1b2ee2abbfb3bcbb96e391e007e246f8959b117020154b009</guid>
-      <pubDate>Thu, 29 Oct 2026 13:42:40 +0000</pubDate>
-    </item>
-    <item>
-      <title>Telegram Android Flaw Lets Attackers Run Code When Users Answer Voice Calls - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/telegram-android-flaw-lets-attackers.html</link>
-      <description>A flaw in Telegram for Android could be chained with two other bugs to take full control of a victim's phone through a voice call, once the victim answered, according to security startup NebuSec.
-The attacker needed only an ordinary Telegram account. Telegram fixed the flaw in version 12.10.4 of the app, released in late September, and NebuSec&amp;nbsp;disclosed it on October 29.
-Combined with an</description>
-      <guid isPermaLink="false">e84dedd2c2c468c19a2ca6bc5bdb2754d3935bdc1eea06e8982b3bcf699bb835</guid>
-      <pubDate>Thu, 29 Oct 2026 11:39:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>26,400 Valid Cloud and AI Credentials Found Exposed in Public Gitee Repositories - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/26400-valid-cloud-and-ai-credentials.html</link>
-      <description>26,400 credentials that developers left in public code on Gitee, a Chinese code-hosting service, still worked when a researcher tested them. Anyone who copied one from that code could have used it.
-Independent researcher Ben Zimmermann found them by scanning 7.25 million public Gitee repositories and&amp;nbsp;reported the results&amp;nbsp;on October 28. Most were keys for cloud and AI services, led by</description>
-      <guid isPermaLink="false">423a8de08ee047356d8cae0537856e07056044dba970d2f2e42583ab925ac00e</guid>
-      <pubDate>Thu, 29 Oct 2026 11:33:15 +0000</pubDate>
-    </item>
-    <item>
-      <title>Cisco Patches Actively Exploited ASA and FTD VPN Flaw That Can Crash Firewalls - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/cisco-patches-actively-exploited-asa.html</link>
-      <description>Cisco has released patches to address a high-severity security flaw in Secure Firewall Adaptive Security Appliance (ASA) Software and Secure Firewall Threat Defense (FTD) Software that it said has been exploited in the wild.
-The vulnerability, tracked as CVE-2026-76418, is rated 8.6 on the CVSS scoring system. Successful exploitation could allow an unauthenticated, remote attacker to cause the</description>
-      <guid isPermaLink="false">367b2e5acb22d379fc6db916b3fc1e980b24adec5b07954e151215507d5cad78</guid>
-      <pubDate>Thu, 29 Oct 2026 10:44:46 +0000</pubDate>
-    </item>
-    <item>
-      <title>GitHub Launches npm Firewall to Block Malicious Packages Before Installation - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/github-launches-npm-firewall-to-block.html</link>
-      <description>GitHub has announced that it's introducing a new package firewall as a preview to block installation of suspicious npm packages during installation time.
-"The firewall inspects both metadata requests and package downloads for signs of malicious activity, acting as an install-time policy gate," GitHub said.
-The feature, which currently supports only npm packages, is available in public preview</description>
-      <guid isPermaLink="false">38da4d6593e2477f4c27b903d43e0d9273845bd720fd48ef540a95056413c3d7</guid>
-      <pubDate>Thu, 29 Oct 2026 10:26:33 +0000</pubDate>
-    </item>
-    <item>
-      <title>Amd uProof EoP kernel driver vuln - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xiexpa/amd_uproof_eop_kernel_driver_vuln/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/nanaynunay"&gt; /u/nanaynunay &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/mein-0/MercilessAmd"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xiexpa/amd_uproof_eop_kernel_driver_vuln/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">112111ce6960a9c1f2ace18c8554a679e3c6de57428e58b65da64418ccffc4a2</guid>
-      <pubDate>Thu, 29 Oct 2026 09:09:59 +0000</pubDate>
     </item>
   </channel>
 </rss>
