@@ -5,63 +5,61 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 24 Nov 2026 14:01:17 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 24 Nov 2026 19:55:14 +0000</lastBuildDate>
+    <item>
+      <title>Iran-Aligned Volant Manticore Uses IPFS-Based KuboShell Backdoor in Espionage Campaigns - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/iran-aligned-volant-manticore-uses-ipfs.html</link>
+      <description>A previously undocumented Iran-aligned cyber espionage group called Volant Manticore has targeted telecommunications companies, airlines, and critical infrastructure in Cyprus.
+Central to the group's operations is a backdoor called KuboShell that uses the InterPlanetary File System (IPFS) for command-and-control (C2) and deploys Homa, a post-compromise framework that's a reimplementation of</description>
+      <guid isPermaLink="false">6e74a91841420eacbb29b094be678c0787a48892f6802c63f12081ceaa780920</guid>
+      <pubDate>Tue, 24 Nov 2026 16:54:07 +0000</pubDate>
+    </item>
     <item>
       <title>VMware vCenter Hit by Another Critical 9.8-Rated Auth Bypass Flaw After Zero-Day Exploitation - The Hacker News</title>
       <link>https://thehackernews.com/2026/11/vmware-vcenter-hit-by-another-critical.html</link>
-      <description>Broadcom has shipped patches to address 23 vulnerabilities impacting VMware ESX, vCenter, Workstation, Fusion, and Avi Load Balancer, including one critical bug that could be abused to bypass authentication.
-The critical vulnerability, tracked as CVE-2026-123903, is rated 9.8 out of 10.0 on the CVSS scoring system. It resides in the VMware Directory Service ("vmdir").
-"A malicious actor with</description>
+      <description>Broadcom has shipped patches to address 23 vulnerabilities impacting VMware ESX, vCenter, Workstation, Fusion, and Avi Load Balancer, including one critical bug that could be abused to…</description>
       <guid isPermaLink="false">5e9c2e9d100ddfd0c747a2d1bcba989b9a3e5333d317cffc5099fed19dcfc0e9</guid>
       <pubDate>Tue, 24 Nov 2026 13:28:26 +0000</pubDate>
     </item>
     <item>
       <title>Okta Links ShinyHunters-Associated Vishing Group to New INCEPTION Data Leak Site - The Hacker News</title>
       <link>https://thehackernews.com/2026/11/okta-links-shinyhunters-associated.html</link>
-      <description>A threat cluster previously assessed to be affiliated with the ShinyHunters extortion crew may have rebranded and continued operations under a new name called INCEPTION, according to Okta's Threat Intelligence team.
-The cluster, dubbed O-UNC-053, is characterized by the use of voice phishing (aka vishing) attacks to trick targets into entering credentials in phishing pages and approving</description>
+      <description>A threat cluster previously assessed to be affiliated with the ShinyHunters extortion crew may have rebranded and continued operations under a new name called INCEPTION, according to Okta's Threat…</description>
       <guid isPermaLink="false">cfc7e09acdbdb1a92d9b719a173efbf1ef26f6b35392acfce2b4b821b9435863</guid>
       <pubDate>Tue, 24 Nov 2026 13:28:21 +0000</pubDate>
     </item>
     <item>
       <title>Google Researcher Shows How a Single Bit Change in .NET Files Bypassed Windows Code Integrity - The Hacker News</title>
       <link>https://thehackernews.com/2026/11/google-researcher-shows-how-single-bit.html</link>
-      <description>A quirk in how the .NET Framework loads a program file let a local attacker run untrusted code past two separate protections on Windows built to block it, Google Project Zero researcher James Forshaw showed in a write-up published yesterday.
-The same loading behavior bypassed Oracle VirtualBox's process hardening on Windows hosts, tracked as CVE-2026-87268, and Windows code integrity, tracked</description>
+      <description>A quirk in how the .NET Framework loads a program file let a local attacker run untrusted code past two separate protections on Windows built to block it, Google Project Zero researcher James Forshaw…</description>
       <guid isPermaLink="false">df55a215ac462405875b876caf3609371b54f6b58992287787e6b6891cef8d05</guid>
       <pubDate>Tue, 24 Nov 2026 12:02:00 +0000</pubDate>
     </item>
     <item>
       <title>Microsoft Fixes Azure API Management Classic Flaw as Actor Targets Customer Secrets - The Hacker News</title>
       <link>https://thehackernews.com/2026/11/microsoft-fixes-azure-api-management.html</link>
-      <description>Norway's National Security Authority (NSM) has disclosed that it became aware of a security vulnerability in Microsoft's Azure API Management (APIM) that has affected multiple businesses in the country, including energy companies Equinor and Skagerak Energi.
-"An unknown actor has been actively looking for access tokens, secrets, and named values ​​in APIM," NSM said. "It is still uncertain how</description>
+      <description>Norway's National Security Authority (NSM) has disclosed that it became aware of a security vulnerability in Microsoft's Azure API Management (APIM) that has affected multiple businesses in…</description>
       <guid isPermaLink="false">e3dde09d5c0c1381313e1e34bfa9aa7a1bd08c7cf03b7d495630cc924e2e640d</guid>
       <pubDate>Tue, 24 Nov 2026 10:44:49 +0000</pubDate>
     </item>
     <item>
       <title>WHMCS SQL Injection Could Expose Customer Data and Admin Password Hashes without Login - The Hacker News</title>
       <link>https://thehackernews.com/2026/11/whmcs-sql-injection-flaw-could-expose.html</link>
-      <description>A flaw in WHMCS's shopping cart, the billing and automation platform many web hosting companies use to run their businesses, could allow anyone on the internet to retrieve customer records and administrator password hashes from an installation's database. No login is needed.
-The company disclosed the SQL injection yesterday along with two other flaws that need a logged-in client, and released</description>
+      <description>A flaw in WHMCS's shopping cart, the billing and automation platform many web hosting companies use to run their businesses, could allow anyone on the internet to retrieve customer records and…</description>
       <guid isPermaLink="false">d89d263eca9f1675f94c98cb27a1df420df1479f7f906a23d0ae4e5d0ac64443</guid>
       <pubDate>Tue, 24 Nov 2026 08:34:20 +0000</pubDate>
     </item>
     <item>
       <title>OpenAI and Cisco Unveil AI-Assisted Linux Security Tool to Block Exploits Before Patching - The Hacker News</title>
       <link>https://thehackernews.com/2026/11/openai-and-cisco-unveil-ai-assisted.html</link>
-      <description>OpenAI and Cisco have teamed up to launch Shirudo (meaning "shield" in Japanese), an open-source Linux runtime that allows artificial intelligence (AI) agents to defend systems without downtime.
-"It lets agents write dynamic eBPF controls to shield systems from exploits, giving defenders more time to test and roll out patches," OpenAI said in a post on X.
-The AI upstart called the initiative a</description>
+      <description>OpenAI and Cisco have teamed up to launch Shirudo (meaning "shield" in Japanese), an open-source Linux runtime that allows artificial intelligence (AI) agents to defend systems without downtime.…</description>
       <guid isPermaLink="false">35f90bea27463c9ba81d99b5b768c12db95c47c467e518a924f6f7e22b305ab3</guid>
       <pubDate>Tue, 24 Nov 2026 06:02:57 +0000</pubDate>
     </item>
     <item>
       <title>Hackers Exploit N-able MailAssure Flaw While AI Agents Exploit MONAI Label Zero-Day - The Hacker News</title>
       <link>https://thehackernews.com/2026/11/hackers-exploit-n-able-mailassure-flaw.html</link>
-      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Monday added two flaws impacting N-able MailAssure and MONAI Label to its Known Exploited Vulnerabilities (KEV) catalog, citing evidence of active exploitation.
-The critical vulnerabilities are listed below -
-  CVE-2026-134624 (CVSS score: 9.3) - A server-side request forgery (SSRF) vulnerability in N-able MailAssure's LDAP</description>
+      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Monday added two flaws impacting N-able MailAssure and MONAI Label to its Known Exploited Vulnerabilities (KEV) catalog, citing…</description>
       <guid isPermaLink="false">85f8854d6e3802a1dca6b99f47e2d7390dcbd8dc0dbdc54e9f606ec00bf20433</guid>
       <pubDate>Tue, 24 Nov 2026 06:02:45 +0000</pubDate>
     </item>
@@ -75,8 +73,7 @@ The critical vulnerabilities are listed below -
     <item>
       <title>Webworm Suspected of Modifying SoftEther VPN to Evade Detection and Hide Remote Access - The Hacker News</title>
       <link>https://thehackernews.com/2026/11/webworm-suspected-of-modifying.html</link>
-      <description>The China-aligned threat actor known as Webworm is suspected to be using a custom version of the open-source SoftEther VPN Bridge tool in an attempt to remove recognizable detection fingerprints, while disguising it as network-monitoring software to establish covert remote access to compromised networks.
-The modified variant "implements various tricks to hide itself from security tools,"</description>
+      <description>The China-aligned threat actor known as Webworm is suspected to be using a custom version of the open-source SoftEther VPN Bridge tool in an attempt to remove recognizable detection fingerprints,…</description>
       <guid isPermaLink="false">b81cb9e571058aa646e928aba4f29e0e8f7de49f11539646ddbfdd7398874bb6</guid>
       <pubDate>Mon, 23 Nov 2026 17:45:15 +0000</pubDate>
     </item>
@@ -1569,14 +1566,6 @@ Tether and Circle said they have frozen more than 1.567 billion USDT and 800 mil
       <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/wesleykoevoets"&gt; /u/wesleykoevoets &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/BaggaBruh/jbl-partybox-ha/blob/main/PROTOCOL.md"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xitbxd/reverse_engineering_the_jbl_partybox_bluetooth/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
       <guid isPermaLink="false">f9d5c1ace1fb2433ee4fde7dc1d56473a86199831a36ab776e01c9c9af7880b9</guid>
       <pubDate>Thu, 29 Oct 2026 19:17:02 +0000</pubDate>
-    </item>
-    <item>
-      <title>Linux Kernel TCP Flaw With 9.8 CVSS Score Affects Ubuntu, Red Hat and Other Distributions - The Hacker News</title>
-      <link>https://thehackernews.com/2026/10/linux-kernel-tcp-flaw-with-98-cvss.html</link>
-      <description>A flaw in the Linux kernel's TCP code, tracked as&amp;nbsp;CVE-2026-98432, affects Ubuntu, Red Hat Enterprise Linux (RHEL), and other Linux distributions. The kernel's own CVE team rates it 9.8 out of 10 on the CVSS scale.
-Anthropic said&amp;nbsp;on October 27 that its AI model wrote an exploit that uses the flaw to let a remote attacker with no credentials run commands as root on Linux servers with a</description>
-      <guid isPermaLink="false">60c1eefebceb865c90f65a3a19cc306ee2268d10bad21efeb1dd64e03fdb1bb5</guid>
-      <pubDate>Thu, 29 Oct 2026 15:57:05 +0000</pubDate>
     </item>
   </channel>
 </rss>

@@ -5,7 +5,115 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Tue, 24 Nov 2026 14:01:17 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 24 Nov 2026 19:55:14 +0000</lastBuildDate>
+    <item>
+      <title>LernerPython blog, from Reuven Lerner: The end of enterprise software — or, a world of custom solutions - Planet Python</title>
+      <link>https://lernerpython.com/2026/11/24/the-end-of-enterprise-software-or-a-world-of-custom-solutions/</link>
+      <description>&lt;p class="wp-block-paragraph"&gt;Let&amp;#8217;s say you need a new shirt. In 2026, you have so many options for buying that shirt. You can shop online. You can (horrors!) go into a physical store. You can go to a vintage (aka &amp;#8220;used&amp;#8221;) clothing store.&lt;/p&gt;
+&lt;div class="wp-block-cover alignright"&gt;&lt;img alt="A table covered with mass-produced T-shirts from Python conferences and tech companies, including PyCon, AWS, Anvil, and Weekly Python Exercise." class="wp-block-cover__image-background wp-image-19391" height="454" src="https://lernerpython.com/wp-content/uploads/2026/11/image.png" width="605" /&gt;&lt;span class="wp-block-cover__background has-background-dim"&gt;&lt;/span&gt;&lt;div class="wp-block-cover__inner-container is-layout-flow wp-block-cover-is-layout-flow"&gt;
+&lt;p class="has-text-align-center has-large-font-size wp-block-paragraph"&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;But go back 100 years, and it was basically impossible for two people to have the same shirt. That&amp;#8217;s because &amp;#8220;buying a shirt&amp;#8221; meant going to a tailor who took your measurements and created a one-of-a-kind shirt, custom-built for your measurements and preferences. You didn&amp;#8217;t have to wonder if it would fit, or if you liked the color, or even what kinds of buttons were on the shirt, because you were designing it along with the tailor. The &amp;#8220;size&amp;#8221; of the shirt was whatever your personal measurements were, rather than generic &amp;#8220;small,&amp;#8221; &amp;#8220;medium,&amp;#8221; and &amp;#8220;large.&amp;#8221;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;What happened? Why don&amp;#8217;t we still buy custom-tailored clothing? Economies of scale. A tailor makes one item of clothing at a time, spending hours or days on each one. A clothes factory, by contrast, can produce many thousands of shirts each hour, making each shirt dramatically cheaper to make. So yes, some people buy custom-tailored clothing, but most of us buy clothes that were made in a factory, with thousands of identical items sold in hundreds of stores.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;For the most part, this works well: We buy cheaper clothes, and many more of them. But you know very well that one company&amp;#8217;s &amp;#8220;large&amp;#8221; is another company&amp;#8217;s &amp;#8220;medium.&amp;#8221; And finding precisely what you want, in precisely the size and style you want, can often be a challenge.&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;Economies of scale — in software&lt;/h2&gt;
+&lt;p class="wp-block-paragraph"&gt;Now consider software: For many years, all software was custom-written for whoever was going to use it. (And in fact, the people writing the software &lt;em&gt;were&lt;/em&gt; often the people who would use it.) It did precisely what the users wanted, in the way that they wanted. But creating custom software for each user was, like tailored shirts, extremely expensive. There weren&amp;#8217;t any economies of scale.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Today, of course, software is &lt;em&gt;all&lt;/em&gt; about economies of scale. Just about any program you use, from an operating system to browser to word processor to video editor, is used by many millions of people. As such, it&amp;#8217;s like a shirt that you&amp;#8217;ve bought off of the rack — it fits, more or less. It&amp;#8217;s the style you want, more or less. It does what you want, more or less.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Economies of scale also lead to other problems, such as feature bloat: You might not care about a particular feature, but someone else does. Over time, each of these &amp;#8220;someone needs this&amp;#8221; features results in programs that try to cater to every possible user, no matter what they&amp;#8217;re trying to do.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;In trying to satisfy everyone, including oodles of features, software not only becomes hard to use, but hard to navigate. I love the MacOS &amp;#8220;help&amp;#8221; menu that lets me search for a command; it allows me to find commands whose names I know, but that are buried beneath menus that I cannot remember on my own.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;This is especially true with enterprise software. Ironically, such software can cost many millions of dollars to install and configure. But it never ceases to frustrate and annoy the users, who feel like idiots because they cannot find the functionality they want and need — including the things they need to do every day. I can&amp;#8217;t even begin to count the number of companies I&amp;#8217;ve visited whose staffers put sticky notes on their monitor with the recipe needed to do common tasks.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Things are changing, though. And the source of that change? AI.&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;Custom applications with AI&lt;/h2&gt;
+&lt;p class="wp-block-paragraph"&gt;With AI, almost anyone can create an application. And not a generic application, but one that does precisely what you need, when you need it, in a way that feels natural to you. Instead of &amp;#8220;one size fits all,&amp;#8221; the way that clothing is sold, AI can produce custom-tailored software that leaves out the stuff you don&amp;#8217;t need, and includes the stuff you do.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;I say this not only as someone who teaches how to use AI to code, but also someone who uses it in this way: In just the last week, I&amp;#8217;ve created three new software projects, each aimed at improving my work as a Python instructor and content creator. I&amp;#8217;m swapping out bloated programs that require customization and integration, swapping in custom applications that do precisely what I want, in the way that I want. In some cases, I&amp;#8217;ve kept these programs private. But in others (e.g., &lt;a href="https://github.com/reuven/newsprint"&gt;newsprint&lt;/a&gt;  and &lt;a href="https://github.com/reuven/course-setup"&gt;course-setup&lt;/a&gt;), I&amp;#8217;ve made them open source — because these programs aren&amp;#8217;t core to my business, and why not share with others, if this matches their way of doing things?&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;I&amp;#8217;ll add my usual caveat, namely that creating software with AI is problematic, and potentially even dangerous, without any coding experience and training. Which is why I stress best practices (e.g., &lt;a href="https://lernerpython.com/courses/keeping-ai-on-a-short-leash/"&gt;version control, TDD, and mutation testing&lt;/a&gt;) in all of my &lt;a href="https://lernerpython.com/courses/intro-agentic-coding-claude-code/"&gt;agentic coding classes&lt;/a&gt;. But with such training and experience, you&amp;#8217;ll quickly see numerous opportunities to improve your workflow, removing some of the frustrating and annoying enterprise software that you&amp;#8217;ve been forced to use. You&amp;#8217;ll spend more time working, and less time getting around the inherent limitations of economies of scale.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;AI is causing a lot of stress and heartache, and I completely understand why. It&amp;#8217;s a tough time, and no one is quite sure how things are going to land as AI becomes more powerful and more pervasive. But I&amp;#8217;ve been thoroughly delighted to discover just how many problems I&amp;#8217;ve been able to solve using AI, simply by creating custom programs that do things my way, rather than how a project manager or focus group decided would be best.&lt;/p&gt;
+&lt;p&gt;The post &lt;a href="https://lernerpython.com/2026/11/24/the-end-of-enterprise-software-or-a-world-of-custom-solutions/"&gt;The end of enterprise software — or, a world of custom solutions&lt;/a&gt; appeared first on &lt;a href="https://lernerpython.com"&gt;LernerPython&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid isPermaLink="false">3b1b729ec20660f515ae80dd298bacba4c100d40703b252809deb4a1d66e6f4b</guid>
+      <pubDate>Tue, 24 Nov 2026 14:24:12 +0000</pubDate>
+    </item>
+    <item>
+      <title>Python Software Foundation: Reopening the PSF Grants Program with Twice-Yearly Funding Rounds - Planet Python</title>
+      <link>https://pyfound.blogspot.com/2026/11/reopening-psf-grants-program-with-twice.html</link>
+      <description>&lt;p&gt;&lt;b&gt;The Python Software Foundation (PSF) is excited to announce that the PSF Grants Program is reopening with a restructured schedule of two funding rounds per year.&lt;/b&gt; After the &lt;a href="https://pyfound.blogspot.com/2025/08/the-psf-has-paused-our-grants-program.html" target="_blank"&gt;pause in 2025&lt;/a&gt;, and the &lt;a href="https://pyfound.blogspot.com/2026/07/announcing-2026-psf-grants-program.html" target="_blank"&gt;special funding round held in 2026&lt;/a&gt;, the PSF is reopening the PSF Grants Program on an ongoing but restructured basis, with the budget reviewed annually. This approach aims to balance the sustainability of the program with our commitment to support the Python community through grants.&amp;nbsp;&lt;br /&gt;&lt;br /&gt;The PSF is also happy to announce the upcoming funding round with a budget capped at $125,000 USD with a similar scope as the special funding round. &lt;b&gt;We will be accepting applications from December 14 - January 4, for Conferences and Workshops that are scheduled between May 1, 2027, and September 30, 2027.&lt;/b&gt; Details on the restructured program are below. More information about the upcoming round will be published next week.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Moving forward with twice-yearly funding rounds&lt;/h3&gt;&lt;p&gt;The &lt;a href="https://pyfound.blogspot.com/2026/07/announcing-2026-psf-grants-program.html" target="_blank"&gt;2026 PSF Grants Program Funding Round&lt;/a&gt; was a success! The PSF is proud to have awarded 44 grants totaling approximately $60,000. The round also gave the Grants Work Group (GWG) and PSF staff the opportunity to explore the round-based process, in contrast to our old process of rolling applications, review, and awards. We received many questions and much feedback during the Grants Program Office Hour sessions and via email before and during the round. The most frequent question we received was “when will the next round of funding happen?”&lt;br /&gt;&lt;br /&gt;While all the PSF could share at the time was that we hoped for the program to run on an ongoing basis, what we felt this question pointed to was the community’s call for reliability from the PSF Grants Program. The PSF wants to meet this call, both for the community’s sake and because reliability is one of &lt;a href="https://www.python.org/psf/grants/#guiding-principles" target="_blank"&gt;the Program’s Guiding Principles&lt;/a&gt;. It also supports our &lt;a href="https://docs.google.com/document/d/1NxkgWzR7j3K8W8wp0j41VyjNtrw-sOlY7loXTd-J3iI/edit?tab=t.0#heading=h.kq4bn6q8o0kt" target="_blank"&gt;Strategic Plan goal&lt;/a&gt; of fostering a thriving, connected global Python community. Based on that, we intend to run two funding rounds per year going forward, with the budget to be set in advance each year. That way, we can reliably offer grants to the community, and each round’s budget will determine how many grants we can award and at what size. We look forward to receiving community feedback so we can continue to improve the restructured PSF Grants Program as we move forward.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Round timing&lt;/h3&gt;&lt;p&gt;In order to get on a schedule aligned with PSF staff capacity around other projects throughout the year, (such as PyCon US, elections, and our end-of-year fundraiser), the upcoming second funding round will cover a five-month eligibility period of May 2027 through September 2027, meaning events taking place within that window can apply. After that, each round will cover six months, October to March and April to September. Rounds 3 and 4 below set the schedule we expect to follow going forward, repeating each year. The table shows the previous round, the upcoming round, and our expectations for the rounds after that.
+&lt;/p&gt;&lt;div class="table"&gt;
+  &lt;table&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Round&lt;/th&gt;
+        &lt;th&gt;Applications Open&lt;/th&gt;
+        &lt;th&gt;Decisions Communicated&lt;/th&gt;
+        &lt;th&gt;Eligibility Period&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;Round 1 (completed)&lt;/td&gt;
+        &lt;td&gt;August 3 - 24, 2026&lt;/td&gt;
+        &lt;td&gt;September 14 - 21, 2026&lt;/td&gt;
+        &lt;td&gt;December 1, 2026 - April 30, 2027 (5 months)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;b&gt;Round 2 (upcoming)&lt;/b&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;b&gt;December 14 - January 4, 2027&lt;/b&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;b&gt;February 11 - 19, 2027&lt;/b&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;b&gt;May 1 - September 30 2027 (5 months)&lt;/b&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;Round 3 (anticipated)&lt;/td&gt;
+        &lt;td&gt;May - June, 2027&lt;/td&gt;
+        &lt;td&gt;August 2027&lt;/td&gt;
+        &lt;td&gt;October 1, 2027 - March 31, 2028 (6 months)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;Round 4 (anticipated)&lt;/td&gt;
+        &lt;td&gt;November - Dec, 2027&lt;/td&gt;
+        &lt;td&gt;February 2028&lt;/td&gt;
+        &lt;td&gt;April 1 - September 30, 2028 (6 months)&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+.table {
+    display: block;
+    overflow-y: hidden;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+} 
+.table thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+    color: inherit;
+    background: darkcyan;
+}
+  table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}  
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+ table th {
+    padding: 16px;
+    text-align: inherit;
+    border-bottom: 1px solid black;
+   color:white!important;
+}
+  tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+ table:not(.tr-caption-container) {
+    min-width: 100%;
+    border-radius: 3px;
+}
+&lt;/div&gt;&lt;p&gt;Note: The dates for the upcoming round are set. The dates for rounds 3, 4, and beyond are projected–that means that the application opening and decision dates may be adjusted based on Board, staff, and Grants Work Group capacity. We will not change the dates of the eligibility periods, however, in order to ensure we are covering the entire year of Python community events!&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Questions or feedback?&lt;/h3&gt;&lt;p&gt;The PSF expects questions and feedback about both the reopened Grants Program restructure as well as the upcoming funding round. Your feedback will help us improve during the process and for future rounds. There are multiple ways for you to reach out to us with your questions, feedback, and comments:&lt;br /&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Discuss forum thread&lt;/li&gt;&lt;li&gt;Email grants@python.org&lt;/li&gt;&lt;li&gt;PSF Grants Office Hour sessions (more info below)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;This is big news! And, applications for the next round are opening soon. To help answer the community’s questions, we are holding supplemental &lt;a href="https://pyfound.blogspot.com/2024/02/introducing-psf-grants-office-hours.html" target="_blank"&gt;PSF Grants Program Office Hours&lt;/a&gt; on the &lt;a href="https://discord.gg/7rthGF3BBe" target="_blank"&gt;PSF Discord&lt;/a&gt;:&lt;br /&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;December 15th at 1 PM UTC (this is our regular day/time!)&lt;/li&gt;&lt;li&gt;December 22nd at 8PM UTC&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Check out what times these are for you using this &lt;a href="https://time.is/" target="_blank"&gt;timezone converter.&lt;/a&gt; We welcome you to join us to ask questions, discuss the process, suggest ideas for future rounds, or anything else related to the PSF Grants Program.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h3&gt;Final Thoughts and Thanks&lt;/h3&gt;&lt;p&gt;This is yet &lt;i&gt;another&lt;/i&gt; big change for the PSF Grants Program. It has moved from rolling applications, to a pause, to a special funding round, and now to a restructured schedule. The hope is to keep this format going forward, though we expect small changes and adjustments from round to round.&lt;br /&gt;&lt;br /&gt;Thank you to the Python community for your patience as we work to make the program more viable for the PSF over the long term. We are grateful for your understanding and generous support, through your actions, words, and donations. We could not fulfill our mission without the community, or without each individual championing the PSF’s work. The PSF is so very grateful to be in community with each and every one of you.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h3&gt;About the Python Software Foundation&lt;/h3&gt;&lt;p&gt;The Python Software Foundation is a US non-profit whose mission is to promote, protect, and advance the Python programming language, and to support and facilitate the growth of a diverse and international community of Python programmers. The PSF supports the Python community using corporate sponsorships, grants, and donations. Are you interested in sponsoring or donating to the PSF so we can continue supporting Python and its community? Check out our &lt;a href="https://www.python.org/sponsors/application/" target="_blank"&gt;sponsorship program&lt;/a&gt;, &lt;a href="https://donate.python.org/" target="_blank"&gt;donate directly&lt;/a&gt;, or contact our team at sponsors@python.org!&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">850f018bc7ba2676a50b09424a99bc00a3adc3f73cd011232abe39d81e7cb7db</guid>
+      <pubDate>Tue, 24 Nov 2026 10:45:19 +0000</pubDate>
+    </item>
     <item>
       <title>Paolo Melchiorre: My Django on the Med 2026 🏖️ - Planet Python</title>
       <link>https://www.paulox.net/2026/11/23/my-django-on-the-med-2026/</link>
@@ -16,170 +124,7 @@
     <item>
       <title>PyCharm: Creating Polars Expression Plugins in PyCharm: A Step-by-Step Guide for Rust Beginners - Planet Python</title>
       <link>https://blog.jetbrains.com/pycharm/2026/11/creating-polars-expression-plugins-in-pycharm-a-step-by-step-guide-for-rust-beginners/</link>
-      <description>&lt;p&gt;&lt;a href="https://pola.rs/" rel="noopener" target="_blank"&gt;Polars&lt;/a&gt; is a favorite among data scientists. It’s a high-performance, columnar DataFrame library written in Rust and powered by Apache Arrow.&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;Unlike traditional single-threaded tools, Polars uses full multicore CPU parallelism, efficient memory allocation, and lazy execution with query optimization. These features let data professionals execute complex joins, filters, and aggregations on large datasets significantly faster while saving RAM.&lt;/p&gt;
-&lt;p&gt;However, real-world data processing often requires specialized processes to prepare raw data for operational or analytical use cases.&lt;/p&gt;
-&lt;p&gt;Built-in Polars expressions may not cover highly specialized algorithms or proprietary business logic out of the box. Without custom expression plugins, data engineers and scientists often resort to standard user-defined Python functions or iterative processing. This potentially introduces performance bottlenecks and sacrifices some of Polars’ native speed and memory efficiency. To overcome these bottlenecks, you may want to consider creating Polars expression plugins.&amp;nbsp;&lt;/p&gt;
-&lt;h2 class="wp-block-heading"&gt;Polars expression plugins&lt;/h2&gt;
-&lt;p&gt;Polars expression plugins allow you to create custom functions and register them as expressions in the Polars library. The Polars engine dynamically links these functions to the runtime, and their performance will be close to that of native expressions.&lt;/p&gt;
-&lt;p&gt;Expression plugins offer three key benefits:&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;&lt;strong&gt;Optimization&lt;/strong&gt;: Plugins seamlessly integrate into Polars’ lazy query engine, allowing expressions to benefit from logical plan optimizations and predicate pushdown.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Parallelism&lt;/strong&gt;: Expressions automatically leverage Polars’ multi-threaded execution framework to process data chunks concurrently across available CPU cores.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Native performance&lt;/strong&gt;: Implemented directly in Rust, plugins execute with bare-metal speed and zero Python GIL overhead during runtime.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;But there’s a catch: These functions must be implemented in Rust (because of the native functionalities mentioned above). To write Rust code in &lt;a href="https://www.jetbrains.com/pycharm/" rel="noopener" target="_blank"&gt;PyCharm&lt;/a&gt;, you will need to install the &lt;a href="https://www.jetbrains.com/help/pycharm/rust-plugin.html#install-rust-plugin" rel="noopener" target="_blank"&gt;Rust plugin&lt;/a&gt; and configure the &lt;a href="https://www.jetbrains.com/help/pycharm/rust-plugin.html#install-rust-toolchain" rel="noopener" target="_blank"&gt;Rust toolchain&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The &lt;a href="https://docs.pola.rs/user-guide/plugins/expr_plugins/" rel="noopener" target="_blank"&gt;&lt;em&gt;Expression Plugins&lt;/em&gt; chapter&lt;/a&gt; of the Polars user guide gives you a quick overview of the core concepts. This blog post digs a little deeper and is geared toward PyCharm users who are new to Rust.&lt;/p&gt;
-&lt;h2 class="wp-block-heading"&gt;Create a Polars plugin project using a template&lt;/h2&gt;
-&lt;p&gt;The Rust plugin in PyCharm uses cargo-generate under the hood, allowing developers to quickly scaffold new Rust projects directly from templates.&lt;/p&gt;
-&lt;p&gt;To create a Rust project, start by installing the Rust plugin and toolchain, following the instructions in &lt;a href="https://www.jetbrains.com/help/pycharm/rust-plugin.html#install-rust-plugin" rel="noopener" target="_blank"&gt;this documentation&lt;/a&gt;. Then, while you have the &lt;em&gt;New Project&lt;/em&gt; window open, click on the &lt;em&gt;+&lt;/em&gt; icon at the bottom.&lt;/p&gt;
-&lt;img alt="" class="wp-image-760121" src="https://blog.jetbrains.com/wp-content/uploads/2026/11/image-59.png" /&gt;
-&lt;p&gt;In this example, we’ll create our Polars plugin from &lt;a href="https://github.com/Cheukting/polars_plugin_template" rel="noopener" target="_blank"&gt;a template I made earlier&lt;/a&gt;. Simply paste the URL for this template into the &lt;em&gt;Template URL &lt;/em&gt;field and click &lt;em&gt;Add&lt;/em&gt;.&lt;/p&gt;
-&lt;img alt="" class="wp-image-760132" src="https://blog.jetbrains.com/wp-content/uploads/2026/11/image-60.png" /&gt;
-&lt;p&gt;Now the template will be available as an option, and we’ll select it for our current project. Don’t forget to use the &lt;em&gt;Location&lt;/em&gt; field to establish a location and name for your project. In this example, ours will be called “polars-plugin-demo”.&lt;/p&gt;
-&lt;img alt="" class="wp-image-760143" src="https://blog.jetbrains.com/wp-content/uploads/2026/11/image-61.png" /&gt;
-&lt;p&gt;When we click &lt;em&gt;Create&lt;/em&gt;, a project is created with the necessary .toml files and file structure. Then we can just dive straight into it.&lt;/p&gt;
-&lt;img alt="" class="wp-image-760154" src="https://blog.jetbrains.com/wp-content/uploads/2026/11/image-62.png" /&gt;
-&lt;p&gt;Before we start developing, we’ll have to add a &lt;a href="https://www.jetbrains.com/help/pycharm/configuring-python-interpreter.html" rel="noopener" target="_blank"&gt;Python environment and interpreter&lt;/a&gt;, as you can see &lt;em&gt;&amp;lt;No interpreters&amp;gt;&lt;/em&gt; in the bottom right of the screenshot above. Let’s set one up now by clicking on &lt;em&gt;&amp;lt;No interpreters&amp;gt;&lt;/em&gt; and selecting &lt;em&gt;Add New Interpreter&lt;/em&gt;, then &lt;em&gt;Add Local Interpreter.&lt;/em&gt; For this example, we’ll use &lt;em&gt;uv&lt;/em&gt; (which I’ve already installed). We should also make sure to select the latest Python version, which is Python 3.14 at the time of writing.&lt;/p&gt;
-&lt;img alt="" class="wp-image-755719" src="https://blog.jetbrains.com/wp-content/uploads/2026/11/image-39.png" /&gt;
-&lt;p&gt;With everything set up, we can start creating our custom Polars plugin.&lt;/p&gt;
-&lt;h2 class="wp-block-heading"&gt;What’s in a Polars plugin project&lt;/h2&gt;
-&lt;p&gt;Let’s start by looking at what’s inside a new project by default&lt;/p&gt;
-&lt;p&gt;First, we have two .toml files for the project settings. Cargo.toml is for Rust, and pyproject.toml is for Python. Since our project uses both languages, we’ll need both files:&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;Cargo.toml – Rust dependencies: polars, pyo3, pyo3-polars, and serde.&lt;/li&gt;
-&lt;li&gt;pyproject.toml – maturin build settings, with module-name wired to polars_plugin_demo._internal.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Now we’ll follow the steps laid out in the &lt;a href="https://docs.pola.rs/user-guide/plugins/expr_plugins/#writing-the-expression" rel="noopener" target="_blank"&gt;&lt;em&gt;Writing the expression&lt;/em&gt;&lt;/a&gt; section of the Polars user guide. The source code for Rust will be in the src/ folder. This is the same as using maturin init or cargo init to start a Rust project:&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;src/lib.rs – The _internal PyO3 module and the Polars global allocator.&lt;/li&gt;
-&lt;li&gt;src/expressions.rs – Empty for now, but your #[polars_expr] functions will go here.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Then we’ll have a directory with the same name as our project. This is where all the Python-specific files are located:&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;polars_plugin_demo/__init__.py – Where you register each expression with Polars.&lt;/li&gt;
-&lt;li&gt;polars_plugin_demo/_typing.py – IntoExpr / IntoExprColumn aliases, so we never have to import the private polars._typing.&lt;/li&gt;
-&lt;li&gt;polars_plugin_demo/_internal.pyi – Type stub for the compiled module.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;As we go along, I’ll explain the contents of each file and how they all work together.&lt;/p&gt;
-&lt;p&gt;If you’re using PyCharm, you might also notice the target/ folder in your project files&lt;em&gt;. &lt;/em&gt;&amp;nbsp;Although we have not built the project yet, once we’ve configured a local virtual environment (.venv) as its Python interpreter, PyCharm regularly scans and indexes the environment. When PyCharm runs background tasks, it can inadvertently trigger PEP 517 build hooks using information in pyproject.toml. However, this build (the target/ folder) is mainly used to service PyCharm’s checking and indexing functionality. We will ignore it for now.&lt;/p&gt;
-&lt;h2 class="wp-block-heading"&gt;Writing a Polars plugin&lt;/h2&gt;
-&lt;h3 class="wp-block-heading"&gt;Working out the expression logic&lt;/h3&gt;
-&lt;p&gt;As explained above, we will mainly be working in &lt;code&gt;src/expressions.rs&lt;/code&gt;, which is currently empty. In our example project, we’ll start by adding this code to the file:&lt;/p&gt;
-&lt;pre class="EnlighterJSRAW"&gt;use polars::prelude::*;
-use pyo3_polars::derive::polars_expr;
-use std::fmt::Write;
-fn capitalize_str(value: &amp;amp;str, output: &amp;amp;mut String) {
-    if let Some(mut first_char) = value.chars().next() {
-        first_char.make_ascii_uppercase();
-        write!(output, "{first_char}{}", &amp;amp;value[1..]).unwrap();
-    }
-}
-#[polars_expr(output_type=String)]
-fn capitalize(inputs: &amp;amp;[Series]) -&amp;gt; PolarsResult&amp;lt;Series&amp;gt; {
-    let ca = inputs[0].str()?;
-    let out: StringChunked = ca.apply_into_string_amortized(capitalize_str);
-    Ok(out.into_series())
-}&lt;/pre&gt;
-&lt;p&gt;Let’s look at this code line by line to understand what it does. First we have the imports:&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;&lt;code&gt;use polars::prelude::*;&lt;/code&gt; – This line brings commonly used Polars types, traits, and macros into scope so they can be used everywhere in the file without specification of their full paths.&amp;nbsp;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;use pyo3_polars::derive::polars_expr; &lt;/code&gt;– This line imports the #[polars_expr] attribute macro that we’ll be using. This macro turns an ordinary Rust function into a plugin entry point that Polars can find at runtime.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;use std::fmt::Write; &lt;/code&gt;– This line is here to ensure that the write!(output, …) macro works properly.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;The logic of our expression is implemented in the &lt;code&gt;capitalize_str&lt;/code&gt; function. Instead of returning a &lt;code&gt;String&lt;/code&gt;, the function takes the input value and a mutable output buffer. This is necessary because it’s the format demanded by &lt;code&gt;apply_into_string_amortized&lt;/code&gt;, which we will call later, so that it can promise one allocation for a whole column instead of one per row.&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;In this case, the caller in Polars owns the buffer and hands the same one back on every row. Our function can&amp;#8217;t own that buffer, because otherwise it only lives for one call. The only way to reuse it is for the caller to hold it and lend it out as a &lt;code&gt;&amp;amp;mut String&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Inside the function:&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;&lt;code&gt;if let Some(mut first_char) = value.chars().next() {...}&lt;/code&gt; provides an owned, mutable copy of the first char as first_char. There&amp;#8217;s no mutable borrowing of value itself.&amp;nbsp;&amp;nbsp;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;first_char.make_ascii_uppercase(); &lt;/code&gt;capitalizes in place, but only for a–z. Non-ASCII characters are left untouched by design.&amp;nbsp;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;write!(output, "{first_char}{}", &amp;amp;value[1..]).unwrap();&lt;/code&gt; appends the capitalized character plus the rest of the string.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;Note that, in this example, we assume that each character is stored in a single byte only. If the first character is multibyte, byte 1 lands mid-character, the slice panics, and the program will stop working.&lt;/p&gt;
-&lt;p&gt;After the logic is set, the capitalize function with the &lt;code&gt;#[polars_expr]&lt;/code&gt; attribute is responsible for exporting the expression.&amp;nbsp;&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;&lt;code&gt;#[polars_expr(output_type=String)]&lt;/code&gt; – The &lt;code&gt;#[polars_expr]&lt;/code&gt; attribute wraps the capitalize function into an extern &amp;#8220;C&amp;#8221; symbol in the compiled cdylib, plus a companion function reporting the output dtype. output_type=String declares a fixed output schema, so Polars knows the resulting dtype during lazy planning without running anything.&amp;nbsp;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;Note that Polars looks up symbols by name at runtime, which means there’s no need to register our expressions to the module in lib.rs by hand. Instead, we’ll register them on the Python side later.&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;&lt;code&gt;fn capitalize(inputs: &amp;amp;[Series]) -&amp;gt; PolarsResult&amp;lt;Series&amp;gt; {...}&lt;/code&gt; – Every plugin expression has the same signature: It receives its input columns as a slice of Series values and returns a PolarsResult&amp;lt;Series&amp;gt; containing the resulting column or an error.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;let ca = inputs[0].str()?;&lt;/code&gt; –&lt;code&gt; inputs[0]&lt;/code&gt; is the single input column; &lt;code&gt;.str()&lt;/code&gt; downcasts the type-erased Series to a &lt;code&gt;&amp;amp;StringChunked&lt;/code&gt; (Polars&amp;#8217; typed chunked array). It returns a &lt;code&gt;PolarsResult&lt;/code&gt;, so `&lt;code&gt;?&lt;/code&gt;` turns an incorrect dtype into a clean Polars error instead of causing a panic that would stop the program.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;let out: StringChunked = ca.apply_into_string_amortized(capitalize_str); &lt;/code&gt;– out will be a &lt;code&gt;StringChunked&lt;/code&gt; type result from moving through the column and calling &lt;code&gt;capitalize_str(value, &amp;amp;mut buf)&lt;/code&gt; for each row. As mentioned before, in this process, Polars reuses one &lt;code&gt;String&lt;/code&gt; buffer across all rows and copies the bytes into the output &lt;code&gt;Arrow&lt;/code&gt; buffer.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Ok(out.into_series())&lt;/code&gt; – At the end, we convert the typed &lt;code&gt;StringChunked&lt;/code&gt; back to a &lt;code&gt;Series&lt;/code&gt; and wrap it into the &lt;code&gt;Result&lt;/code&gt; type&amp;#8217;s &lt;code&gt;Ok&lt;/code&gt; variant.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 class="wp-block-heading"&gt;Putting it together as a module&lt;/h3&gt;
-&lt;p&gt;Now that we’ve created the expression logic and registered it as a symbol, we can look at the rest of the project and see how the pieces fit together. Let’s look at src/&lt;a href="http://lib.rs" rel="noopener" target="_blank"&gt;lib.rs&lt;/a&gt;, which is the crate root for a Polars expression plugin:&lt;/p&gt;
-&lt;pre class="EnlighterJSRAW"&gt;mod expressions;
-use pyo3_polars::PolarsAllocator;
-/// Polars plugin expressions implemented in Rust.
-#[pyo3::pymodule]
-mod _internal {
-   use pyo3::prelude::*;
-   #[pymodule_init]
-   fn init(m: &amp;amp;Bound&amp;lt;'_, PyModule&amp;gt;) -&amp;gt; PyResult&amp;lt;()&amp;gt; {
-       m.add("__version__", env!("CARGO_PKG_VERSION"))
-   }
-}
-#[global_allocator]
-static ALLOC: PolarsAllocator = PolarsAllocator::new();&lt;/pre&gt;
-&lt;p&gt;This code is pure scaffolding, with no expression logic of its own. However, it’s still essential that we understand what it does:&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;&lt;code&gt;mod expressions;&lt;/code&gt; pulls in src/expressions.rs, where your &lt;code&gt;#[polars_expr(...)]&lt;/code&gt; functions live. It&amp;#8217;s declared here purely so the module gets compiled; nothing in lib.rs calls into it. As mentioned before, the symbols were looked up by name at call time, so there&amp;#8217;s no registration list anywhere in this file.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;#[pyo3::pymodule]&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;code&gt;mod _internal {...}&lt;/code&gt; declares the Python extension module using PyO3&amp;#8217;s declarative module syntax. The name _internal has to match module-name in pyproject.toml, which is what maturin uses to decide where to drop the compiled _internal.abi3.so inside the Python package.&lt;/p&gt;
-&lt;p&gt;The module body is nearly empty. But this is intentional, as Polars plugin functions aren&amp;#8217;t exposed as Python functions. The only thing &lt;code&gt;#[pymodule_init]&lt;/code&gt; does is set &lt;code&gt;__version__ &lt;/code&gt;on the module from &lt;code&gt;CARGO_PKG_VERSION&lt;/code&gt;, resolved at compile time by env!. The module still matters even though it&amp;#8217;s empty because importing it is what loads the .so file into the process, which is what makes the exported &lt;code&gt;#[polars_expr]&lt;/code&gt; symbols available for Polars to resolve.&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;&lt;code&gt;#[global_allocator]&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;code&gt;static ALLOC: PolarsAllocator = PolarsAllocator::new();&lt;/code&gt; installs Polars&amp;#8217; allocator as the Rust-side global allocator. This is the recommended setup for pyo3-polars plugins: It ensures the plugin shares the same allocator as the Polars build it&amp;#8217;s loaded next to, keeping memory management compatible when data passes between Polars and the plugin, and it lets Polars&amp;#8217; memory accounting see the plugin&amp;#8217;s allocations.&lt;/p&gt;
-&lt;h3 class="wp-block-heading"&gt;The Python-side setup&lt;/h3&gt;
-&lt;p&gt;Now let’s look at the Python side. There are three files inside the polars_plugin_demo/ folder. These files are all scaffolding for a Polars expression plugin and are essential when adding our custom expressions to Polars.&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;_typing.py is created because we need a type alias for &lt;code&gt;polars._typing&lt;/code&gt;, which is a private module that is subject to change from one release to the next.&lt;/li&gt;
-&lt;li&gt;__init__.py is where the Python-side registration surface lives. &lt;code&gt;PLUGIN_PATH&lt;/code&gt; points to the package directory, where maturin develop drops _internal.abi3.so. The commented-out capitalize demonstrates how one Python wrapper calls register_plugin_function for each #[polars_expr] in src/expressions.rs. function_name needs to match the Rust function name exactly so Polars can locate the correct plugin function.&lt;/li&gt;
-&lt;li&gt;_internal.pyi is the stub for the compiled extension. However, expression functions are exported as C symbols, not Python attributes, so they do not appear here. We use this file to declare &lt;code&gt;__version__: str&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;After reading through these files, uncomment the example in __init__.py:&lt;/p&gt;
-&lt;pre class="EnlighterJSRAW"&gt;def capitalize(expr: IntoExpr) -&amp;gt; pl.Expr:
-    """Capitalize String."""
-    return register_plugin_function(
-        plugin_path=PLUGIN_PATH,
-        function_name="capitalize",
-        args=expr,
-        is_elementwise=True,
-    )&lt;/pre&gt;
-&lt;p&gt;We are now ready to build our custom Polars expression.&lt;/p&gt;
-&lt;h2 class="wp-block-heading"&gt;Building and testing our plugin&lt;/h2&gt;
-&lt;p&gt;Although we can build the plugin manually with maturin develop, PyCharm can handle this step for you. It invokes maturin develop to compile your Rust modules into a native shared library (an .so file in this case) and drops it into the designated directory.&lt;/p&gt;
-&lt;p&gt;Since we’ve configured&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;[tool.maturin]&lt;br /&gt;module-name = "polars_plugin_demo._internal"&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;in the pyproject.toml file, our .so file is placed in the polars_plugin_demo/ folder. We also need to make sure the name of the PyO3 module in src/lib.rs matches the last part of module-name (_internal in this case).&lt;/p&gt;
-&lt;p&gt;To trigger a build, simply run or debut a Python script that uses the plugin. In a real project, you’d typically have a set of Python tests sitting in a tests/ folder or something similar. However, since this is only a demo, let’s keep things simple and use the following script:&lt;/p&gt;
-&lt;pre class="EnlighterJSRAW"&gt;import polars as pl
-from polars_plugin_demo import capitalize
-df = pl.DataFrame(
-   {
-       "attendees": ["john", "mary", "connor", "sally"],
-   }
-)
-out = df.with_columns(names=capitalize("attendees"))
-print(out)&lt;/pre&gt;
-&lt;p&gt;Now that our customized plugin capitalize&lt;em&gt; &lt;/em&gt;has been built and included in the polars_plugin_demo module, we can import it and use it like other &lt;a href="https://docs.pola.rs/user-guide/concepts/expressions-and-contexts/" rel="noopener" target="_blank"&gt;Polars expressions&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Run the script just like you’d normally do in PyCharm – for example, by clicking the &lt;em&gt;Run&lt;/em&gt; button in the top-right corner:&lt;/p&gt;
-&lt;img alt="" class="wp-image-760165" src="https://blog.jetbrains.com/wp-content/uploads/2026/11/image-63.png" /&gt;
-&lt;p&gt;You’ll see the loading bar at the bottom:&lt;/p&gt;
-&lt;img alt="" class="wp-image-760176" src="https://blog.jetbrains.com/wp-content/uploads/2026/11/image-64.png" /&gt;
-&lt;p&gt;This indicates that maturin develop is running in the background. The result is cached, so the next time you run the script (assuming you haven’t made changes to the module), it will execute much faster.&lt;/p&gt;
-&lt;p&gt;Want a challenge? Try writing some unit tests and running them with pytest to see if everything works as expected.&lt;/p&gt;
-&lt;h2 class="wp-block-heading"&gt;What’s next?&lt;/h2&gt;
-&lt;p&gt;If you’d like to learn more about how to create Polars plugins, check out my &lt;a href="https://github.com/Cheukting/polars_plugin_101" rel="noopener" target="_blank"&gt;workshop on GitHub&lt;/a&gt;. You might also enjoy &lt;a href="https://docs.pola.rs/user-guide/plugins/#other-material:~:text=Polars%20plugins%20tutorial" rel="noopener" target="_blank"&gt;this tutorial by Marco Gorelli&lt;/a&gt; or the &lt;a href="https://docs.pola.rs/user-guide/plugins/expr_plugins/" rel="noopener" target="_blank"&gt;&lt;em&gt;Expression Plugins&lt;/em&gt;&lt;/a&gt; section of the Polars user guide.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.jetbrains.com/pycharm/2026/11/creating-polars-expression-plugins-in-pycharm-a-step-by-step-guide-for-rust-beginners/" rel="noreferrer noopener" target="_blank"&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Explore more of what the Rust plugin in PyCharm offers to streamline your project with Rust and Python. The plugin enhances cross-language development with intelligent code completion, seamless navigation between Rust and Python modules, and automated refactoring across your codebase. Furthermore, its integrated debugging support lets you step through both Python scripts and compiled Rust code effortlessly, ensuring a smooth and unified workflow.&lt;/p&gt;</description>
+      <description>Polars is a favorite among data scientists. It’s a high-performance, columnar DataFrame library written in Rust and powered by Apache Arrow. Unlike traditional single-threaded tools, Polars uses…</description>
       <guid isPermaLink="false">69246780e3c2bbcf2a854afc01be884512747eaf7c888c4b7c5ae2dfee5aac00</guid>
       <pubDate>Mon, 23 Nov 2026 12:42:50 +0000</pubDate>
     </item>
@@ -18310,272 +18255,6 @@ performance improvements, but for now the gains are not that much yet.&lt;/p&gt;
 final yet), and merely initial, more work will be needed to get there.&lt;/p&gt;</description>
       <guid isPermaLink="false">9df6f621961fe8d30161ada367aa7e6ab756fe286c6cd69f0e6860fd1256a505</guid>
       <pubDate>Sun, 23 Aug 2026 22:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>James Bennett: Breaking up (lines) is hard to do</title>
-      <link>https://www.b-list.org/weblog/2026/aug/10/newlines/</link>
-      <description>&lt;p&gt;Here’s a seemingly simple question: given a chunk of multi-line text, how do you split it and return an array whose members are the constituent lines of the&amp;nbsp;text?&lt;/p&gt;
-&lt;p&gt;Hopefully, your first instinct is to reach for some sort of standard-library function, maybe something like&amp;nbsp;the &lt;code&gt;splitlines()&lt;/code&gt; method of&amp;nbsp;Python’s &lt;code&gt;str&lt;/code&gt; type. Because it turns out this “simple” question is actually pretty complex to answer! For example, quite some time ago I read &lt;a href="https://yossarian.net/til/post/python-s-splitlines-does-a-lot-more-than-just-newlines/"&gt;a post by William Woodruff&lt;/a&gt; pointing out the surprising discovery that Python treats up to eleven different Unicode code points or code point sequences as indicating a line&amp;nbsp;break.&lt;/p&gt;
-&lt;p&gt;At the time I meant to write about that, but a lot of other things started fighting for my time, and it’s only now that I’m finally digging it out of my drafts. Still, better late than never, so today let’s dig into some of the many ways there are to break a line of text and how they&amp;#8217;ve been standardized and specified and ultimately wound up in the set Python&amp;nbsp;uses.&lt;/p&gt;
-&lt;h2&gt;In the&amp;nbsp;beginning&amp;#8230;&lt;/h2&gt;
-&lt;p&gt;Once upon a time, there was &lt;abbr title="American Standard Code for Information Interchange"&gt;&lt;span class="caps"&gt;ASCII&lt;/span&gt;&lt;/abbr&gt;. Of course there were other things before &lt;abbr title="American Standard Code for Information Interchange"&gt;&lt;span class="caps"&gt;ASCII&lt;/span&gt;&lt;/abbr&gt;, and alongside &lt;abbr title="American Standard Code for Information Interchange"&gt;&lt;span class="caps"&gt;ASCII&lt;/span&gt;&lt;/abbr&gt;, but for today’s discussion we really only need to go back to &lt;abbr title="American Standard Code for Information Interchange"&gt;&lt;span class="caps"&gt;ASCII&lt;/span&gt;&lt;/abbr&gt;; if you want the full history of physical teletypes, how they evolved from typewriters and influenced character sets for computing and so on, I suggest Wikipedia. Here, I’m just going to gloss over and simplify a lot of that to focus on the topic at&amp;nbsp;hand.&lt;/p&gt;
-&lt;p&gt;So. Once upon a time, there was &lt;abbr title="American Standard Code for Information Interchange"&gt;&lt;span class="caps"&gt;ASCII&lt;/span&gt;&lt;/abbr&gt;. And it wound up being incredibly influential and important in computing, to an extent other early character sets couldn’t match. And because it was used on computers which used teletypes (basically electronic typewriters connected as input/output devices) as a user interface, it contained control characters for sending commands to the teletype. Such as&amp;nbsp;a &lt;code&gt;LINE FEED&lt;/code&gt; (byte&amp;nbsp;value &lt;code&gt;0x0A&lt;/code&gt;) to advance the paper vertically to the next line, and&amp;nbsp;a &lt;code&gt;CARRIAGE RETURN&lt;/code&gt; (byte&amp;nbsp;value &lt;code&gt;0x0D&lt;/code&gt;) to re-align the print head/carriage with the horizontal start point of the&amp;nbsp;line.&lt;/p&gt;
-&lt;p&gt;These are often&amp;nbsp;abbreviated &lt;code&gt;LF&lt;/code&gt; and &lt;code&gt;CR&lt;/code&gt; (or by their C-family escape&amp;nbsp;sequences &lt;code&gt;\n&lt;/code&gt; and &lt;code&gt;\r&lt;/code&gt;, respectively), and you might think that since physically advancing a typewriter-style device to be ready to print the next line requires both operations, that would have just become the universal way everybody did new lines. Or at least the universal way everybody did them in English, or in the &lt;span class="caps"&gt;US&lt;/span&gt;, where &lt;abbr title="American Standard Code for Information Interchange"&gt;&lt;span class="caps"&gt;ASCII&lt;/span&gt;&lt;/abbr&gt; dominated.&amp;nbsp;Right?&lt;/p&gt;
-&lt;p&gt;Well, nothing is ever that simple. Physical teletypes apparently benefited from the two-character approach (as opposed to a single “new line” character) because it gave them time to physically move everything into the right position. But as &lt;em&gt;virtual&lt;/em&gt; teletypes&amp;#8212;“printing” to a television-like display instead of to paper&amp;#8212;became more common, that was less of an issue. So there were multiple possible options for representing line breaks, and several of them showed up in historical systems. For&amp;nbsp;example:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;span class="caps"&gt;CP&lt;/span&gt;/M&amp;nbsp;used &lt;code&gt;CR LF&lt;/code&gt;. And so &lt;span class="caps"&gt;MS&lt;/span&gt;-&lt;span class="caps"&gt;DOS&lt;/span&gt;, which aimed for compatibility with it,&amp;nbsp;used &lt;code&gt;CR LF&lt;/code&gt; too. And so Microsoft Windows, which wanted to be compatible with &lt;span class="caps"&gt;MS&lt;/span&gt;-&lt;span class="caps"&gt;DOS&lt;/span&gt;, &lt;em&gt;also&lt;/em&gt; used&amp;nbsp;it.&lt;/li&gt;
-&lt;li&gt;Meanwhile, Multics chose to use&amp;nbsp;just &lt;code&gt;LF&lt;/code&gt; with&amp;nbsp;no &lt;code&gt;CR&lt;/code&gt;, and Unix went along with that&amp;nbsp;choice.&lt;/li&gt;
-&lt;li&gt;But Commodore and Apple and many others went yet another way and used&amp;nbsp;plain &lt;code&gt;CR&lt;/code&gt; , with&amp;nbsp;no &lt;code&gt;LF&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;This meant “plain text” was not easily portable between these various systems, since none of them could agree on how to represent a line break. Which led to one of my all-time favorite programming jokes, in the infamous &lt;a href="https://xml.coverpages.org/sgmlFAQ-NOT-19990401.html"&gt;“&lt;span class="caps"&gt;NOT&lt;/span&gt;&amp;nbsp;the &lt;code&gt;comp.text.sgml&lt;/code&gt; &lt;span class="caps"&gt;FAQ&lt;/span&gt;”&lt;/a&gt;&amp;nbsp;document:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Q.  What&amp;#8217;s an &lt;span class="caps"&gt;RE&lt;/span&gt;?&lt;/p&gt;
-&lt;p&gt;A.  &lt;span class="caps"&gt;RE&lt;/span&gt; is an acronym for Record End, which is sort of like a newline, only different. Goldfarb&amp;#8217;s First Law of Text Processing states&amp;nbsp;that:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;&amp;#8230; if a text processing system has bugs, at least one of them will have to do with the handling of input line&amp;nbsp;endings.&amp;#8221;&lt;/p&gt;
-&lt;p&gt;[The Handbook, footnote p.&amp;nbsp;321]&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;The Record End concept was introduced to make sure that &lt;abbr title="Standard Generalized Markup Language"&gt;&lt;span class="caps"&gt;SGML&lt;/span&gt;&lt;/abbr&gt; parsers don&amp;#8217;t violate Goldfarb&amp;#8217;s First&amp;nbsp;Law.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;(for the uninitiated, &lt;a href="https://en.wikipedia.org/wiki/Charles_Goldfarb"&gt;Charles Goldfarb&lt;/a&gt; created &lt;abbr title="Standard Generalized Markup Language"&gt;&lt;span class="caps"&gt;SGML&lt;/span&gt;&lt;/abbr&gt;)&lt;/p&gt;
-&lt;p&gt;Anyway, over twenty years ago Python tried (in Python 2.3) to smooth this over by introducing &lt;a href="https://peps.python.org/pep-0278/"&gt;“universal newline” mode&lt;/a&gt; for opening files, which accepts all three options: a&amp;nbsp;plain &lt;code&gt;\n&lt;/code&gt; (Unix), or a&amp;nbsp;plain &lt;code&gt;\r&lt;/code&gt; (classic Mac), or&amp;nbsp;an &lt;code&gt;\r\n&lt;/code&gt; sequence (&lt;span class="caps"&gt;DOS&lt;/span&gt; and Windows) will all be interpreted as line&amp;nbsp;breaks.&lt;/p&gt;
-&lt;p&gt;But even in &lt;abbr title="American Standard Code for Information Interchange"&gt;&lt;span class="caps"&gt;ASCII&lt;/span&gt;&lt;/abbr&gt; there there are other ways of breaking a line. For example, at byte&amp;nbsp;value &lt;code&gt;0x0C&lt;/code&gt; &lt;abbr title="American Standard Code for Information Interchange"&gt;&lt;span class="caps"&gt;ASCII&lt;/span&gt;&lt;/abbr&gt; includes&amp;nbsp;the &lt;code&gt;FORM FEED&lt;/code&gt; control character&amp;nbsp;(&lt;code&gt;FF&lt;/code&gt;,&amp;nbsp;or &lt;code&gt;\f&lt;/code&gt;). Which is not one of the traditional characters used by major operating systems as a “newline”, but nonetheless does cause a new line to occur: it moves to the next page (if necessary, by ejecting the current sheet of paper from the printer and feeding in a new one). And there’s&amp;nbsp;also &lt;code&gt;0x0B&lt;/code&gt;, &lt;code&gt;VERTICAL TAB&lt;/code&gt; (&lt;code&gt;VT&lt;/code&gt; or &lt;code&gt;\v&lt;/code&gt;): just as a “regular” tab&amp;nbsp;(&lt;code&gt;\t&lt;/code&gt;) causes a horizontal adjustment, a vertical tab causes a vertical one. So it, too, causes output to advance to another line (probably skipping several in the&amp;nbsp;process).&lt;/p&gt;
-&lt;p&gt;And &lt;a href="https://en.wikipedia.org/wiki/C0_and_C1_control_codes#C1_controls"&gt;the C1 control characters&lt;/a&gt;&amp;nbsp;added &lt;code&gt;0x85&lt;/code&gt;,&amp;nbsp;the &lt;code&gt;NEXT LINE&lt;/code&gt; character (typically&amp;nbsp;abbreviated &lt;code&gt;NEL&lt;/code&gt;), useful for translating back and forth between &lt;abbr title="American Standard Code for Information Interchange"&gt;&lt;span class="caps"&gt;ASCII&lt;/span&gt;&lt;/abbr&gt; and &lt;span class="caps"&gt;IBM&lt;/span&gt;’s &lt;span class="caps"&gt;EBCDIC&lt;/span&gt; character set (which had “New Line” as a single&amp;nbsp;character).&lt;/p&gt;
-&lt;h2&gt;Then Unicode&amp;nbsp;happened&lt;/h2&gt;
-&lt;p&gt;Today we live in a Unicode world, and Unicode tries its hardest to catalog and standardize and describe how to work with all the world’s writing systems. &lt;a href="https://www.unicode.org/versions/Unicode17.0.0/core-spec/chapter-5/#G10213"&gt;Chapter 5, Section 8 of the Unicode Standard, “Newline Guidelines”&lt;/a&gt;, lists seven code points to recognize as causing new lines. Five of them we’ve seen&amp;nbsp;already:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;U+000A LINE FEED&lt;/code&gt;, from &lt;abbr title="American Standard Code for Information Interchange"&gt;&lt;span class="caps"&gt;ASCII&lt;/span&gt;&lt;/abbr&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;U+000B LINE TABULATION&lt;/code&gt;, from &lt;abbr title="American Standard Code for Information Interchange"&gt;&lt;span class="caps"&gt;ASCII&lt;/span&gt;&lt;/abbr&gt;’s vertical&amp;nbsp;tab&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;U+000C FORM FEED&lt;/code&gt;, from &lt;abbr title="American Standard Code for Information Interchange"&gt;&lt;span class="caps"&gt;ASCII&lt;/span&gt;&lt;/abbr&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;U+000D CARRIAGE RETURN&lt;/code&gt;, from &lt;abbr title="American Standard Code for Information Interchange"&gt;&lt;span class="caps"&gt;ASCII&lt;/span&gt;&lt;/abbr&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;U+0085 NEXT LINE&lt;/code&gt;, from the C1 control&amp;nbsp;codes&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The &lt;code&gt;CR LF&lt;/code&gt; sequence is also recognized, on systems which use&amp;nbsp;it.&lt;/p&gt;
-&lt;p&gt;But the other two code points are new and were created specifically for&amp;nbsp;Unicode:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;U+2028 LINE SEPARATOR&lt;/code&gt; (which Unicode likes to abbreviate&amp;nbsp;as &lt;code&gt;LS&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;U+2029 PARAGRAPH SEPARATOR&lt;/code&gt; (similarly abbreviated&amp;nbsp;as &lt;code&gt;PS&lt;/code&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The Unicode Standard explains that the traditional newline characters had started to become ambiguous, because of the rise of tools such as word-processing programs which implicitly broke lines to wrap them for display and so began using explicit “newline” characters to mean a &lt;em&gt;paragraph&lt;/em&gt; break rather than a line break. So Unicode &lt;a href="https://xkcd.com/927/"&gt;added two new code points&lt;/a&gt; whose purposes are explicit. And the standard says that “[I]n Unicode text, the &lt;span class="caps"&gt;PS&lt;/span&gt; and &lt;span class="caps"&gt;LS&lt;/span&gt; characters should be used wherever the desired function is&amp;nbsp;unambiguous.”&lt;/p&gt;
-&lt;p&gt;This set of line-breaking code points originated in version 5.0 of Unicode, with &lt;a href="https://www.unicode.org/standard/reports/tr13/tr13-5.html"&gt;Unicode Technical Report #13&lt;/a&gt;, which lists the seven “newline” code points and&amp;nbsp;the &lt;code&gt;CR LF&lt;/code&gt; sequence. This is also the set of code points and sequences defined for &lt;a href="https://www.unicode.org/reports/tr18/#Line_Boundaries"&gt;line boundaries in Unicode regular expressions, Unicode Technical Standard #18&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;And expanding on Chapter 5 of the Standard, there&amp;#8217;s &lt;a href="https://www.unicode.org/reports/tr14/"&gt;Unicode Standard Annex #14, “Unicode Line Breaking Algorithm”&lt;/a&gt;. As the name implies, this document formally specifies the line-breaking algorithm for Unicode, including defining things like which characters offer an opportunity to break a line, whether the break is mandatory, and whether the break would come before or after the character in question. It does this in a typical Unicode way: by &lt;a href="https://www.unicode.org/reports/tr14/#DescriptionOfProperties"&gt;defining a set of named properties&lt;/a&gt; and specifying which characters have which&amp;nbsp;properties.&lt;/p&gt;
-&lt;h2&gt;Two ways about&amp;nbsp;it&lt;/h2&gt;
-&lt;p&gt;But there are still three “newline” characters supported by Python that we haven’t seen yet, and they come from a place that might be surprising: &lt;a href="https://www.unicode.org/reports/tr9/"&gt;Unicode Standard Annex #9, the bidirectional algorithm&lt;/a&gt;. And it’s &lt;span class="caps"&gt;OK&lt;/span&gt; if you’re wondering what that has to do with newlines, because it’s not immediately obvious if you don’t already know about&amp;nbsp;it.&lt;/p&gt;
-&lt;p&gt;Some written scripts, like the Latin script this blog post is written in, are written and read left-to-right: the start of a line of text is on the left-hand side, and the end is on the right-hand side. Other scripts, such as Arabic or Hebrew, do the opposite, and are right-to-left. And so Unicode, which again wants to cover &lt;em&gt;all&lt;/em&gt; the world’s writing systems and let you use any or all of them, has to support both left-to-right and right-to-left horizontal text&amp;nbsp;direction.&lt;/p&gt;
-&lt;p&gt;But more than that, it has to support switching direction within a single piece of text. You might have something that’s in, say, Arabic but quotes something in Spanish in the middle of a line; that would require a short section of left-to-right inside an otherwise right-to-left text. Or you might be writing something that uses &lt;a href="https://en.wikipedia.org/wiki/Boustrophedon"&gt;boustrophedon&lt;/a&gt;, switching directions on each line. So Unicode includes direction-control characters&amp;nbsp;like &lt;code&gt;U+200E LEFT-TO-RIGHT MARK&lt;/code&gt; and &lt;code&gt;U+200F RIGHT-TO-LEFT MARK&lt;/code&gt; to handle this. But it also needs to know the scope of a direction change, and that’s where the last “newline” characters come in: the Unicode bidirectional algorithm says that “[t]he effects of all of these formatting characters are limited to the current paragraph; thus, they are terminated by a &lt;em&gt;paragraph separator&lt;/em&gt;”.&lt;/p&gt;
-&lt;p&gt;So Unicode characters have, among their properties, a “bidirectional class” which influences how they affect the bidirectional algorithm. And the characters which act as paragraph separators for purposes of ending the effects of an explicit directional marker all share a common value for this: bidirectional&amp;nbsp;class &lt;code&gt;B&lt;/code&gt;. The characters with that class include quite a few that we’ve already seen, along with three more&amp;nbsp;characters:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;U+001C INFORMATION SEPARATOR FOUR&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;U+001D INFORMATION SEPARATOR THREE&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;U+001E INFORMATION SEPARATOR TWO&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;But these are better known by their original &lt;abbr title="American Standard Code for Information Interchange"&gt;&lt;span class="caps"&gt;ASCII&lt;/span&gt;&lt;/abbr&gt;&amp;nbsp;names: &lt;code&gt;FILE SEPARATOR&lt;/code&gt;, &lt;code&gt;GROUP SEPARATOR&lt;/code&gt;,&amp;nbsp;and &lt;code&gt;RECORD SEPARATOR&lt;/code&gt;. &lt;abbr title="American Standard Code for Information Interchange"&gt;&lt;span class="caps"&gt;ASCII&lt;/span&gt;&lt;/abbr&gt; provided these to help represent data structures in memory and on storage media. Today it’s not as common to try to use control characters for this purpose, though they do have the virtue of being rare in actual text, unlike other common delimiters such as &lt;a href="https://en.wikipedia.org/wiki/Tab-separated_values"&gt;tab&lt;/a&gt; or &lt;a href="https://en.wikipedia.org/wiki/Comma-separated_values"&gt;comma&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;End of the&amp;nbsp;line&lt;/h2&gt;
-&lt;p&gt;And now, after looking at multiple character sets and five Unicode technical documents, we can finally state clearly what’s going on in&amp;nbsp;Python.&lt;/p&gt;
-&lt;p&gt;Python’s &lt;code&gt;splitlines()&lt;/code&gt; treats ten different code points, and one multi-code-point sequence, as causing a line break. These&amp;nbsp;are:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;The&amp;nbsp;sequence &lt;code&gt;U+000D U+000A&lt;/code&gt; (&lt;code&gt;CR LF&lt;/code&gt;).&lt;/li&gt;
-&lt;li&gt;The four code points which have line-breaking&amp;nbsp;property &lt;code&gt;BK&lt;/code&gt; (Mandatory Break&amp;nbsp;(Non-tailorable)): &lt;code&gt;U+000B LINE TABULATION&lt;/code&gt; , &lt;code&gt;U+000C    FORM FEED&lt;/code&gt;, &lt;code&gt;U+2028 LINE SEPARATOR&lt;/code&gt;,&amp;nbsp;and &lt;code&gt;U+2029 PARAGRAPH SEPARATOR&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;The one code point which has line-breaking&amp;nbsp;property &lt;code&gt;CR&lt;/code&gt; (Carriage Return&amp;nbsp;(Non-tailorable)): &lt;code&gt;U+000D CARRIAGE RETURN&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;The one code point which has line-breaking&amp;nbsp;property &lt;code&gt;LF&lt;/code&gt; (Line Feed&amp;nbsp;(Non-tailorable)): &lt;code&gt;U+000A LINE FEED&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;The one code point which has line-breaking&amp;nbsp;property &lt;code&gt;NL&lt;/code&gt; (Next Line&amp;nbsp;(Non-tailorable)): &lt;code&gt;U+0085 NEXT LINE&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;The three code points which don’t have any of the above line-breaking properties, but do have bidirectional&amp;nbsp;property &lt;code&gt;B&lt;/code&gt;:  &lt;code&gt;U+001C INFORMATION SEPARATOR FOUR&lt;/code&gt;, &lt;code&gt;U+001D INFORMATION SEPARATOR THREE&lt;/code&gt;,&amp;nbsp;and &lt;code&gt;U+001E INFORMATION SEPARATOR TWO&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Which is also exactly what’s stated by &lt;a href="https://github.com/python/cpython/blob/87b120fdb58afd8f7cb79daa87122334e295b70c/Objects/unicodetype_db.h#L6583"&gt;a comment in the CPython source code&lt;/a&gt; accompanying the list of individual code points that are considered to break lines, but hopefully now you have a better understanding of what that comment means and how this particular set was arrived&amp;nbsp;at.&lt;/p&gt;</description>
-      <guid isPermaLink="false">3973351cd5c9c9611079a63b6ec6d28d4f4b9f2d87259e248f9198b5c797c187</guid>
-      <pubDate>Mon, 10 Aug 2026 16:42:29 +0000</pubDate>
-    </item>
-    <item>
-      <title>Ed Crewe: From Routing Checks to Trajectory Testing: Evaluating an Agentic Chatbot</title>
-      <link>http://edcrewe.blogspot.com/2026/08/from-routing-checks-to-trajectory.html</link>
-      <description>pre[class*="language-"] { border-radius: 6px; font-size: 14px; overflow-x: auto; }
-&lt;blockquote&gt;
-&lt;h2&gt;Which Agentic Chatbot?&lt;/h2&gt;
-&lt;p&gt;I have been working on a Python based AI test framework for a chatbot interface for&amp;nbsp;&lt;a href="https://www.enterprisedb.com/"&gt;my company&lt;/a&gt;'s product, Postgres AI Hybrid Manager. The manager allows the setup of Postgres clusters across cloud or on-prem and attaching various AI tools such as &lt;a href="https://www.langflow.org/"&gt;Langflow&lt;/a&gt;.&amp;nbsp;&amp;nbsp;So a combination of more traditional Postgres backup, migration, telemetry and analytics features along with LLM workflows leveraging the data it holds.&lt;/p&gt;
-&lt;p&gt;The product already has a control plane UI for managing Postgres estates. It also has full help for the product, all Postgres versions, analytics, AI and add ons. The chatbot brings all these things together: ask a question, get the relevant help, or ask it to do something such as migrate a cluster, or evaluate telemetry that would otherwise require clicking through the UI.&lt;/p&gt;
-&lt;p&gt;That makes it a pretty handy interface, especially for the less technical. However it is not a simple to test and ensure good quality responses.&lt;/p&gt;
-&lt;p&gt;A normal deterministic API test is simple. Send a request, check the status code, check the JSON body, perhaps check the database state. An LLM-backed agent does not pass or fail so clearly. It can route to the wrong capability and still return fluent text. It can pick a plausible but wrong tool. It can miss half the task and still sound confident. It can complete the first turn of a conversation and lose the plot on the second.
-It could get malformed or missing data from tooling that leads it to deliver a misleading conclusion. It might only provide help to something that should be from tool data or was a request for an action such as create a cluster.&lt;/p&gt;
-&lt;p&gt;So the testing problem was not “does the chatbot return a reasonable response?” It was “how do we test the whole chat path is doing the right thing?”&lt;/p&gt;&lt;p&gt;This is the story of how our agent-eval test framework evolved as we worked to see that our chatbot was not only getting the right answer,&amp;nbsp;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;b&gt;&lt;span&gt;4&lt;/span&gt;&lt;span&gt;2 &lt;/span&gt;&lt;/b&gt;, but whether it was asking all the right questions of the right tools to get that answer. Known as &lt;b&gt;trajectory&lt;/b&gt; testing ...&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;&lt;div class="separator"&gt;&lt;a href="https://blogger.googleusercontent.com/img/a/AVvXsEhMxyMKsc2kI1qTJAs1_Gb38oivlHwL6t9G2__Wqw9rcRYrvNikRFovf-1u7K2cGe28q-ZBRbJgBli8ZCd6vF6DXtAxLMQk7fOeXF7P3YuPqr59NNGdfZeGpjWHbnRvALpCrjeOYuAQIo-Drf4y9372Ea2h90tasFgmnnElx0GPpRpxcx3XrwI5WXr8tFjr"&gt;&lt;img alt="" height="240" src="https://blogger.googleusercontent.com/img/a/AVvXsEhMxyMKsc2kI1qTJAs1_Gb38oivlHwL6t9G2__Wqw9rcRYrvNikRFovf-1u7K2cGe28q-ZBRbJgBli8ZCd6vF6DXtAxLMQk7fOeXF7P3YuPqr59NNGdfZeGpjWHbnRvALpCrjeOYuAQIo-Drf4y9372Ea2h90tasFgmnnElx0GPpRpxcx3XrwI5WXr8tFjr" width="240" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h2&gt;&lt;span&gt;&amp;nbsp;You're Golden&amp;nbsp;&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;Before we can tell our story we need to define some terms.&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;A Golden&lt;/b&gt; is an example of a perfect desired output from a test input. They often refer to more complex outputs that may need saving as separate files, but a simple assertable output such as 42, is a golden too! &lt;br /&gt;Whilst complex goldens may be used and marked for semantic similarity against the test output. It is more common for complex outputs to be described by a &lt;b&gt;rubric. &lt;/b&gt;A&amp;nbsp;rubric is a checklist of qualitative properties a good answer must exhibit, written in plain English as opposed to a golden example of an answer.&lt;br /&gt;&lt;/p&gt;
-&lt;p&gt;For AI testing the &lt;b&gt;tests are termed evals&lt;/b&gt;, ie they evaluate the tool, but not by strict assertions, because one thing you can be sure of with an LLM is that given the same input, you usually get subtly different output, ie they are non-deterministic. Which means for LLM outputs the only way to test them is to &lt;b&gt;use an LLM-as-judge,&amp;nbsp;&amp;nbsp;&lt;/b&gt;ie give that LLM the test output and a rubric or golden and let it mark it against that.
-Then you set a pass threshold for that mark, to translate your complex output into a pass or fail.&lt;/p&gt;
-&lt;p&gt;You can also total up all the passes to give you a &lt;b&gt;Task Completion Rate, TCR&lt;/b&gt;.
-So with complex AI agentic LLM interactions a 100% pass of all evals is often not realistic.
-Hence you set a TCR below 100% for the whole test suite of evals to pass.
-Start with the smallest useful test.
-The core principle of evals is not complicated, you want the input to give you the expected output.&lt;/p&gt;
-&lt;p&gt;But for an Agentic application this may require a sequence of LLM calls and tools: Making the final output dependent on the route that should be chosen, the tool(s) that should be called, the actions to be taken, further LLM calls that may be necessary and finally the core data that the response to the user should contain.&lt;/p&gt;
-&lt;p&gt;Our first version did not try to solve every part of that. It started with routing, simple and deterministic.&lt;/p&gt;
-&lt;h2&gt;Routing is the starting point&lt;/h2&gt;
-&lt;p&gt;The chatbot originally had an agent per tool. The tool being the code and API calls that performed actions or returned data or help.&lt;/p&gt;
-&lt;p&gt;Different specialist agents owned different parts of the product surface: Control-plane actions, Postgres database operations, schema design, roles and permissions, cluster reporting, migration, and so on.&lt;/p&gt;
-&lt;p&gt;Before any specialist can help, something has to choose the right specialist.&lt;/p&gt;
-&lt;p&gt;So the first eval suite asked a narrow question:&lt;/p&gt;
-&lt;blockquote&gt;&lt;b&gt;Given this user prompt, did the chatbot route to the expected tool?&lt;/b&gt;&lt;/blockquote&gt;
-&lt;p&gt;That gave us a fast health check. We could keep a corpus of prompts, map each one to an expected destination, run them through either a direct model path or against the real deployment and its tools, and score whether the selected destination tool matched the golden.&lt;/p&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;div&gt;&amp;nbsp;A golden here is just the name of the tool:&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;/p&gt;
- &lt;pre&gt;&lt;code class="language-yaml"&gt;- id: "core-iam-001"
-    prompt: "List all my projects"
-    expected_tool: "control-plane"
-    tags: ["core", "control-plane", "project"]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And the check on the other end is deliberately dumb — an equality test, not a semantic one:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-python"&gt;self.success = tool_match(predicted_tool, expected_tool)&lt;br /&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;h2&gt;&lt;br /&gt;&lt;/h2&gt;&lt;h2&gt;Agents became skills, but routing remained&amp;nbsp;&lt;/h2&gt;
-&lt;p&gt;The design moved away from “one agent per tool family” toward a more consolidated orchestrating agent with skills.&lt;/p&gt;
-&lt;p&gt;That is a better fit for how modern agent systems are evolving. A skill = instructions, constraints, and a subset of tools that are relevant for a task. It is a form of progressive disclosure. Give the model the minium it needs at each step to save tokens.&lt;/p&gt;
-&lt;p&gt;But this did not make routing irrelevant.&lt;/p&gt;
-&lt;p&gt;Instead of asking “did we transfer to the right sub-agent?”, the eval asks “was the right skill made visible and selected for this task?” The labels changed but a skill could still use the wrong tool.&lt;/p&gt;
-&lt;p&gt;Routing evals stayed valuable because they were fast, explainable, and easy to run in CI. But they are limited, routing should always be correct but it doesn't mean that the final agent response is too.&lt;/p&gt;
-&lt;h2&gt;TCR jumps to the endpoint, the response&lt;/h2&gt;
-&lt;p&gt;Task Completion Rate, or TCR, was the next step.&lt;/p&gt;
-&lt;p&gt;The user asked for a cluster comparison, or a schema recommendation, or help diagnosing a database issue. We need to know whether the full response actually completed these tasks.&lt;/p&gt;
-&lt;p&gt;Responses are complex goldens so they need the LLM-as-a-judge pattern: run the chatbot, take the actual response, and ask a judge model to score it against expected sections.&lt;/p&gt;
-&lt;p&gt;The eval has a rubric here for judging the output:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-yaml"&gt;- id: "tcr-core-014"
-  prompt: "Compare CPU usage between these two clusters"
-  expected_sections:
-    - "identifies which cluster has higher CPU usage"
-    - "cites at least one supporting metric"
-    - "suggests a plausible next step"
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The judge gets one simple instruction: score each &lt;code&gt;expected_sections&lt;/code&gt; between 0.0–1.0 A metric class then just thresholds it for pass / fail:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-python"&gt;self.success = score &amp;gt;= 0.7
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The judge must be calibrated and a consistent model used for comparing runs over time. Enabling skill an prompt tuning from metric trends. The rubric must be specific enough to avoid marking waffle as success. But it turns a non-deterministic complex output into a simple pass and fail. It also separated two different levels of QA:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Can the underlying model answer the task if given the right context?&lt;/li&gt;
-&lt;li&gt;Does the deployed chatbot complete the task through the real product path?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;That led to two execution modes.&lt;/p&gt;
-&lt;p&gt;Direct mode calls the model with simulated context. It is faster and useful for prompt and rubric development.&lt;/p&gt;
-&lt;p&gt;Proxy mode calls the real chatbot.&amp;nbsp;It is slower, but it exercises the production path: routing, skill selection, tool calls, guardrails, streaming responses, conversation state, and the actual service wiring.&lt;/p&gt;
-&lt;p&gt;Both matter. Direct mode tells you whether the model is capable of the answer. Proxy mode tells you whether your product is capable of really delivering it via agents running your deployment's tools.&amp;nbsp;&lt;/p&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;This is the major difference from standard AI LLM testing, the model is only a small pluggable engine for the full agentic skill set that requires the actual deployment domain of data, actions and tools. Direct mode testing of only the model, is occasionally useful but E2E testing of the Chatbot deployment is required for agentic AI Chatbot QA, tuning and validation.&lt;/b&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/p&gt;&lt;/blockquote&gt;&lt;blockquote&gt;
-&lt;h2&gt;Multi-step conversations changed the unit of testing&lt;/h2&gt;
-&lt;p&gt;Single-turn TCR is still too small for many real chatbot tasks.&lt;/p&gt;
-&lt;p&gt;Users do not always provide all required information in one message. They ask to create a cluster, then pick a project, then choose a size, then confirm. They ask for a schema review, then refine the problem, then ask for a migration path. They troubleshoot by adding information over time.&lt;/p&gt;
-&lt;p&gt;So the framework has to exercise test cases that are conversations, not just single prompts.&lt;/p&gt;
-&lt;p&gt;That sounds like a minor data-model change. It was not. Once a test has steps, the eval runner has to preserve conversation state. In proxy mode, that means carrying the real &lt;code&gt;conversation_id&lt;/code&gt; returned by the chatbot and sending each follow-up as part of the same server-side conversation. In direct mode, it means building a synthetic conversation history so the model sees the prior turns.&lt;/p&gt;
-&lt;p&gt;In code that split is about as literal as it sounds. Proxy mode threads a real id through each call:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-python"&gt;response = client.send_message(prompt=msg, conversation_id=conversation_id)
-conversation_id = response.conversation_id  # captured on turn 1, reused after
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Direct mode has no server-side conversation to lean on, so it fakes one by re-rendering the transcript into the prompt itself, every turn:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-python"&gt;full_prompt = f"## Conversation History\n{render(history)}\n\n{next_prompt}"
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Same test case, same expected outcome, but a different code path depending on which half of the system is actually holding the conversation state. That's impacts multi-turn evals because conversation memory is part of the harness code for the actual deployment not just a model issue.&lt;/p&gt;
-&lt;p&gt;The scoring also becomes more interesting. You want per-step checks, because the assistant should ask the right clarifying question at the right time. You also want an overall score, because a conversation can have reasonable individual turns and still fail to complete the user's goal.&lt;br /&gt;&lt;/p&gt;
-&lt;h2&gt;Coding it yourself: deepeval underneath&lt;/h2&gt;
-&lt;p&gt;Everything above sits on top of &lt;a href="https://github.com/confident-ai/deepeval"&gt;deepeval&lt;/a&gt;, the open-source LLM eval library. We add&amp;nbsp;a Synthesize → Execute → Evaluate pipeline, a plugin system, YAML goldens, CI wiring, and &lt;a href="https://langfuse.com/"&gt;Langfuse&lt;/a&gt; push on top of it But the core library underneath is plain deepeval, and you do not need any of the surrounding machinery we used. Here are routing, TCR and multi-step just built directly on deepeval (simplified deepeval 3.6.9)&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;A test case is just an input/output pair.&lt;/strong&gt; &lt;code&gt;LLMTestCase&lt;/code&gt; is the base unit everything else scores:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-python"&gt;from deepeval.test_case import LLMTestCase
-test_case = LLMTestCase(
-    input="List all my projects",
-    actual_output=chatbot_response_text,       # what the system under test said
-    expected_output="control-plane",                  # the golden - a skill label here, not prose
-    additional_metadata={"predicted_skill": predicted_skill},
-)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;Routing is a custom metric, not a built-in one.&lt;/strong&gt; deepeval ships plenty of semantic metrics, but “did it route to the right skill” is an exact-match business rule, so you write your own &lt;code&gt;BaseMetric&lt;/code&gt;. This is a simplified version of the same shape our real &lt;code&gt;AgentMatch&lt;/code&gt; metric takes:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-python"&gt;from deepeval.metrics import BaseMetric
-from deepeval.test_case import LLMTestCase
-class AgentMatch(BaseMetric):
-    def __init__(self, threshold: float = 1.0):
-        self.threshold = threshold
-        self.async_mode = False  # routing checks are cheap; no need for async here
-    def measure(self, test_case: LLMTestCase) -&amp;gt; float:
-        predicted = test_case.additional_metadata["predicted_skill"]
-        expected = test_case.expected_output
-        self.score = 1.0 if tool_match(predicted, expected) else 0.0
-        self.success = self.score &amp;gt;= self.threshold
-        return self.score
-    async def a_measure(self, test_case: LLMTestCase) -&amp;gt; float:
-        return self.measure(test_case)
-    def is_successful(self) -&amp;gt; bool:
-        return bool(self.success)
-    @property
-    def __name__(self):
-        return "Agent Match"
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;tool_match&lt;/code&gt; is the check from earlier. Run it with deepeval's own runner rather than hand-rolled assertions, and you get retries, pretty output, and a result object for free:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-python"&gt;from deepeval import evaluate
-evaluate(test_cases=[test_case], metrics=[AgentMatch()])
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;TCR is where deepeval's built-in &lt;code&gt;GEval&lt;/code&gt; earns its keep.&lt;/strong&gt; &lt;code&gt;GEval&lt;/code&gt; is deepeval's off-the-shelf LLM-as-judge metric, you give it criteria (or explicit evaluation steps) and it handles the judge prompt, the JSON parsing, and the scoring for you. Our rubric-per-line &lt;code&gt;expected_sections&lt;/code&gt; maps onto &lt;code&gt;evaluation_steps&lt;/code&gt; almost directly:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-python"&gt;from deepeval.metrics import GEval
-from deepeval.test_case import LLMTestCase, LLMTestCaseParams
-task_completion = GEval(
-    name="TaskCompletion",
-    evaluation_steps=[
-        "Check whether the response identifies which cluster has higher CPU usage",
-        "Check whether the response cites at least one supporting metric",
-        "Check whether the response suggests a plausible next step",
-    ],
-    evaluation_params=[LLMTestCaseParams.INPUT, LLMTestCaseParams.ACTUAL_OUTPUT],
-    threshold=0.7,
-)
-test_case = LLMTestCase(
-    input="Compare CPU usage between these two clusters",
-    actual_output=chatbot_response_text,
-)
-evaluate(test_cases=[test_case], metrics=[task_completion])&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;Multi-step conversations get their own test case type.&lt;/strong&gt; &lt;code&gt;ConversationalTestCase&lt;/code&gt; takes a list of &lt;code&gt;Turn&lt;/code&gt;s instead of a single input/output pair, and pairs with a &lt;code&gt;BaseConversationalMetric&lt;/code&gt; instead of &lt;code&gt;BaseMetric&lt;/code&gt;:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-python"&gt;from deepeval.test_case import ConversationalTestCase, Turn
-convo = ConversationalTestCase(
-    turns=[
-        Turn(role="user", content="Create a new cluster"),
-        Turn(role="assistant", content="Sure - which project should it go in?"),
-        Turn(role="user", content="acme-prod"),
-        Turn(role="assistant", content=final_response_text),
-    ],
-    expected_outcome="A cluster is created in acme-prod after resolving the missing project name",
-)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;deepeval has a conversational counterpart to &lt;code&gt;GEval&lt;/code&gt; too (&lt;code&gt;ConversationalGEval&lt;/code&gt;), scored against the whole turn sequence rather than a single response which is the natural fit for “did the assistant ask the right clarifying question at the right time”, the per-step-plus-overall shape TCR needed once prompts became conversations.&lt;/p&gt;
-&lt;p&gt;Put together, that is the whole starting kit: &lt;code&gt;LLMTestCase&lt;/code&gt; plus a hand-written &lt;code&gt;BaseMetric&lt;/code&gt; for hard business rules like routing, &lt;code&gt;GEval&lt;/code&gt; for rubric-style task completion, &lt;code&gt;ConversationalTestCase&lt;/code&gt; plus &lt;code&gt;ConversationalGEval&lt;/code&gt; once a prompt becomes a conversation, and &lt;code&gt;evaluate()&lt;/code&gt; to run the lot and get a result object back. &lt;br /&gt;&lt;br /&gt;Everything else we built, the YAML goldens, the plugin architecture, the CI wiring, the Langfuse push exists to run more of these at scale and make the failures easy to find. But none of it is required to get started. If you are testing your own agentic chatbot, this is how to begin.&lt;/p&gt;
-&lt;p&gt;This is where instrumentation started to matter much more.&lt;/p&gt;
-&lt;p&gt;For a single-turn answer, a markdown report with pass/fail rows is often enough to start debugging. For multi-step conversations, that is thin. You need to know which turn failed, whether the route changed, whether the wrong tool was called, whether the tool call used correct arguments, whether the model forgot earlier context, or whether the final answer simply missed a required section.&lt;/p&gt;
-&lt;p&gt;That is why we added span-level telemetry and pushed eval traces into Langfuse.&lt;/p&gt;
-&lt;h2&gt;Langfuse made the failures inspectable&lt;/h2&gt;
-&lt;p&gt;The useful thing about Langfuse is not just having another pretty dashboard. Although that is important for spotting quality regressions over time via regular CI/CD automated runs.&lt;br /&gt;&lt;/p&gt;
-&lt;p&gt;The vital thing was being able to treat an eval run as a set of traces. A run becomes a session. Each test case becomes a trace. The trace carries the prompt, response, scores, tags, model, mode, scenario, and the spans emitted by the proxy.&lt;/p&gt;
-&lt;p&gt;For a chatbot path, those spans are where the debugging starts. You can see routing, tool execution, LLM calls, latency, and token usage where it is available. You can filter by scenario and model. You can compare runs. You can look at a failing conversation and see whether the problem began at route selection, tool selection, tool arguments, or final synthesis.&lt;/p&gt;
-&lt;p&gt;That changes the tuning loop.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;div class="separator"&gt;&lt;a href="https://blogger.googleusercontent.com/img/a/AVvXsEgNqASh9hCGmosfhEwze_2epHBQjuO104CjxjPNBoFiqMpKHubTgt4MZceUO8isgH1-iRRr6R9YFEDasBTS0DCEqI9Y8oYQp-5K_guJilM6e6L-YMi0W9hsyzPvx8qKbBT7oii7HVGNkIoLsu0W8a_ZSpVQdYoBMFk_KpcfSBJXSGObY-cMjqgTI81hhvRI"&gt;&lt;img src="https://blogger.googleusercontent.com/img/a/AVvXsEgNqASh9hCGmosfhEwze_2epHBQjuO104CjxjPNBoFiqMpKHubTgt4MZceUO8isgH1-iRRr6R9YFEDasBTS0DCEqI9Y8oYQp-5K_guJilM6e6L-YMi0W9hsyzPvx8qKbBT7oii7HVGNkIoLsu0W8a_ZSpVQdYoBMFk_KpcfSBJXSGObY-cMjqgTI81hhvRI=s1600" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;br /&gt;&lt;br /&gt;&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;Without traces, an eval failure says “this case failed”. With traces, it can say why it failed.&lt;/p&gt;
-&lt;p&gt;That distinction matters because the fix lands in different places... &lt;br /&gt;Is it a routing rule? &lt;br /&gt;Is it a skill description?&lt;br /&gt;Is it a tool schema?&lt;br /&gt;Is it the judge rubric?&lt;br /&gt;Is it that the eval has has an expectation that the product has never actually promised?&lt;/p&gt;
-&lt;h2&gt;&lt;span&gt;&amp;nbsp;Trajectory testing -&amp;gt;&amp;nbsp;&lt;/span&gt; knitted the pieces together&lt;/h2&gt;
-&lt;p&gt;Routing and TCR started as separate signals.&lt;/p&gt;
-&lt;p&gt;Routing asked whether the right capability was selected. TCR asked whether the final task was completed. Multi-step testing asked whether that held across a conversation. Instrumentation showed what happened between those points.&lt;/p&gt;
-&lt;p&gt;Trajectory testing is the next natural step: score the path itself.&lt;/p&gt;
-&lt;p&gt;For an agentic product, the fully correct path is essential to response quality.&lt;br /&gt;So trajectory tests add expectations about intermediate actions:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;which tool or flow should be used&lt;/li&gt;
-&lt;li&gt;whether the arguments are valid&lt;/li&gt;
-&lt;li&gt;whether the conversation reached the right state&lt;/li&gt;
-&lt;li&gt;whether the final answer completed the task&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The label-based routing tests are still useful as fast canaries. They tell us whether the classifier shape has drifted and distinguish tiers - see the next section.&lt;br /&gt;But full trajectory tests judge the route by consequence: did the system actually follow the tool path that would satisfy the user?&lt;/p&gt;
-&lt;p&gt;So retain the fast determisitc routing tests, but move more user-visible behavioural coverage into trajectory and TCR.&lt;/p&gt;
-&lt;h2&gt;Sovereign AI makes the eval problem tiered &lt;span&gt;S/M/L/XL&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;There is one more constraint that makes this more than a generic chatbot-testing story.&lt;/p&gt;
-&lt;p&gt;Our chatbot has to work for sovereign and air-gapped deployments. In those environments, prompts, tool results, schema details, and operational data cannot be sent to a hosted frontier model outside the customer's trust boundary. The inference model may run inside the customer's environment.&lt;/p&gt;
-&lt;p&gt;That usually means a smaller model.&lt;/p&gt;
-&lt;p&gt;Smaller models are not just cheaper versions of larger ones. They have different context limits, weaker tool-selection behaviour, and less tolerance for an over-wide capability surface. If you show a smaller model every possible tool and skill, you have increased the chance that it chooses a bad one.&lt;/p&gt;
-&lt;p&gt;So the architecture becomes tiered. Models are effectively T-shirt sized. A small self-hosted model sees a curated subset of reliable skills. A larger model can be allowed to see more. Some experimental or complex skills only make sense for the highest tiers.&lt;/p&gt;
-&lt;p&gt;That changes the meaning of a routing eval again.&lt;/p&gt;
-&lt;p&gt;The correct visible skill set is no longer universal. It depends on the model tier. A prompt that should route to an advanced skill for an XL model may need to be dropped, refused, or handled differently for a smaller model that should not see that skill at all.&lt;/p&gt;
-&lt;p&gt;This is why trajectory testing and routing need to be tier-aware. We are not only asking whether the chatbot can complete a task. We are asking whether it can complete the task through the capability surface that a deployment's LLM size allows.&lt;/p&gt;
-&lt;h2&gt;What I would keep from the journey&lt;/h2&gt;
-&lt;p&gt;The final shape was not obvious at the start.&lt;/p&gt;
-&lt;p&gt;We began with routing because it was the first integration failure point and the cheapest one to isolate. We added TCR because correct routing did not prove task completion. We added multi-step cases because real users have conversations, not isolated prompts. We added telemetry because multi-step failures are otherwise too hard to debug. We moved toward trajectory testing because the route, tools, arguments, and answer need to be judged as one path.&lt;/p&gt;
-&lt;p&gt;If I were starting another agentic product eval framework, I would keep that order.&lt;/p&gt;
-&lt;p&gt;Do not start by trying to build a grand universal benchmark. Start with the smallest failure point that would embarrass the product if it regressed. Then move the signal closer to the user's actual goal.&lt;/p&gt;
-&lt;p&gt;For a chatbot wired into a real control plane, that means testing more than the output text. It means testing the route, the skill, the tool call, the arguments, the conversation state, the final answer, and the model tier that made those options visible in the first place.&lt;/p&gt;
-&lt;p&gt;That is the difference between checking that an AI system said something vaguely relevant and checking that it actually did all the things the user asked of it.&lt;/p&gt;
-&lt;/blockquote&gt;</description>
-      <guid isPermaLink="false">0258814a3a3a11ed90ff5fbc97524eb872699b5676dc6adcba1b4c57efbeab3c</guid>
-      <pubDate>Mon, 10 Aug 2026 10:37:15 +0000</pubDate>
     </item>
   </channel>
 </rss>
