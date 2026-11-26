@@ -5,7 +5,56 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Wed, 25 Nov 2026 14:00:58 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2026 14:01:37 +0000</lastBuildDate>
+    <item>
+      <title>Most Wanted: The Phishing Kits and Techniques Getting Past Security Controls - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/most-wanted-phishing-kits-and.html</link>
+      <description>Every phishing attack has to get past email security, web filtering, and safe browsing before it reaches an employee. Some kits manage that far more often than others, and those are the kits that security teams need to know about.
+At Push Security, we measure this as breakthrough rate: The share of attacks that get past email security, web gateways, and safe browsing to reach the user.
+How an</description>
+      <guid isPermaLink="false">1ae302765862bca1756a52aaddae15712f16aadad63f48c5bb52355141431acd</guid>
+      <pubDate>Thu, 26 Nov 2026 10:57:55 +0000</pubDate>
+    </item>
+    <item>
+      <title>1Password Hacked, Customer Data and Source Code Stolen in GitHub Account Breach - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/1password-hacked-customer-data-and.html</link>
+      <description>Popular password management software 1Password on Wednesday disclosed a security incident involving its backend systems that led to the unauthorized access of some customer information, but emphasized that customer password vaults and other secrets were not accessed.
+"While we took immediate steps to contain the incident, the attacker gained access to some of our backend systems and accessed a</description>
+      <guid isPermaLink="false">b7a4e9765ed205e084f675937ff40fc051cef83f62b18c18ce5a78a77011a972</guid>
+      <pubDate>Thu, 26 Nov 2026 10:57:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>Drupal Warns of New Highly Critical Site Takeover Vulnerability Under Active Exploitation - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/drupal-warns-of-new-highly-critical.html</link>
+      <description>Drupal has warned of a new "highly critical" security flaw impacting Drupal core that it said has been exploited in the wild.
+The vulnerability, tracked as CVE-2026-136716 (CVSS score: N/A), has been described as a case of improper checking for unusual or exceptional conditions. It also relates to CVE-2026-132165 aka Fail2Install in that it addresses remaining vulnerable installation states</description>
+      <guid isPermaLink="false">17d04b9578d5d46af40d0dcfdf16f60d27f81abe0d6c2815e1d5b5487a02a602</guid>
+      <pubDate>Thu, 26 Nov 2026 07:02:34 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hackers Exploit 10 Vulnerabilities Across Mitel, Juniper, Vates, and Danfoss Products - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/hackers-exploit-10-vulnerabilities.html</link>
+      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Wednesday added 10 security flaws to its Known Exploited Vulnerabilities (KEV) catalog, including five vulnerabilities impacting Mitel MiCollab that were disclosed last week.
+The Mitel MiCollab vulnerabilities are listed below -
+  CVE-2026-133275 (CVSS score: 5.3) - An arbitrary file upload vulnerability in the Audio, Web and</description>
+      <guid isPermaLink="false">5d5d0a545b7887d9a04d0f1c30abb08b575c6dd47df76833dcc13a5864811b48</guid>
+      <pubDate>Thu, 26 Nov 2026 06:44:46 +0000</pubDate>
+    </item>
+    <item>
+      <title>13 Malicious NuGet Packages Turn Fake .NET Job Assessments Into Malware Delivery Traps - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/13-malicious-nuget-packages-turn-fake.html</link>
+      <description>Cybersecurity researchers have discovered 13 malicious NuGet packages that are designed to target Windows .NET developers under the guise of a fake take-home job assessment.
+"Most of the packages pose as WinUI 3 and WPF [Windows Presentation Foundation] button controls," Socket security researcher Kush Pandya said in a technical write-up. "In the versions we analyzed, building or running a</description>
+      <guid isPermaLink="false">acbf5cdbd72c910ae35ed6945aa4f6ea4d162a9a04e2bb55d3e29294aa51f5fe</guid>
+      <pubDate>Thu, 26 Nov 2026 03:48:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>Gitlab -- Vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/aec2b759-e98b-11f1-b3a2-2cf05da270f3.html</link>
+      <description/>
+      <guid isPermaLink="false">948858598165238ea8d3320beeb3147ada584a98a50a28ca9190baaca305d78b</guid>
+      <pubDate>Thu, 26 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Hackers Exploit Two GeoServer Flaws as Researchers Warn of Unauthenticated RCE Chains - The Hacker News</title>
       <link>https://thehackernews.com/2026/11/hackers-exploit-two-geoserver-flaws-as.html</link>
@@ -72,6 +121,41 @@ The attacks have targeted financial services, healthcare, and legal services loc
 The WordPress plugins team has proactively detected and blocked the threat before it could be officially released. Visiting each plugin listing now</description>
       <guid isPermaLink="false">6618daa9bb88524a7ad302f585a8811cd4eb3a4df3964826a46c5cd30f67d7ed</guid>
       <pubDate>Wed, 25 Nov 2026 06:21:12 +0000</pubDate>
+    </item>
+    <item>
+      <title>freenginx -- multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/5734413b-e8a5-11f1-9b74-3497f65b111b.html</link>
+      <description/>
+      <guid isPermaLink="false">45ca3d4e9057c4b8f5afc2f60165e7d9792b87a6171196deb92d5662141577ab</guid>
+      <pubDate>Wed, 25 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>MySQL -- multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/a454f42d-e904-11f1-9b74-3497f65b111b.html</link>
+      <description/>
+      <guid isPermaLink="false">002a9a4a08bd17ff83f174cae8e5249121150c3ff0fae025e440278c2c7c660d</guid>
+      <pubDate>Wed, 25 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>OpenResty -- multiple vulnerabilities in the bundled nginx core - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/573460ab-e8a5-11f1-9b74-3497f65b111b.html</link>
+      <description/>
+      <guid isPermaLink="false">2320447eca12e5f1e8325617a772d0603aeba64aef949085e7f7297e56ab48f2</guid>
+      <pubDate>Wed, 25 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Prosody XMPP server advisory 2026-11-25 - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/d6298f47-e90c-11f1-90f4-589cfc0dc9a2.html</link>
+      <description/>
+      <guid isPermaLink="false">7064371d4bae7c667d5aa52cc11a731ffaaa2d51a880bbfd1d3f26668df320e5</guid>
+      <pubDate>Wed, 25 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>PyMySQL -- SQL injection via sequence parameters with NO_BACKSLASH_ESCAPES - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/aa7e7798-a716-4e2f-807d-019f9c61af91.html</link>
+      <description/>
+      <guid isPermaLink="false">c4d56ebf2663284203f27f547cfcd38b0eb25ecdb0406744635584112c5f3ad3</guid>
+      <pubDate>Wed, 25 Nov 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Iran-Aligned Volant Manticore Uses IPFS-Based KuboShell Backdoor in Espionage Campaigns - The Hacker News</title>
@@ -142,6 +226,20 @@ Central to the group's operations is a backdoor called KuboShell that uses the I
       <link>http://www.vuxml.org/freebsd/99846c9e-e81a-11f1-b58b-8447094a420f.html</link>
       <description/>
       <guid isPermaLink="false">083dfe3d74f1175b6e49c422139ca31cc1a3658653caaef7215002eb4edc1b00</guid>
+      <pubDate>Tue, 24 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Erlang/OTP -- TLS 1.2 client completes handshake without a server certificate - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/2014dc89-e818-11f1-ae3c-4c526214c986.html</link>
+      <description/>
+      <guid isPermaLink="false">4ab700536ac5a55682d516623f084e32b8ac49929907eb33fd1381041b2d2703</guid>
+      <pubDate>Tue, 24 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Erlang/OTP -- multiple vulnerabilities in erts, inets, snmp and xmerl - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/2014ba8f-e818-11f1-ae3c-4c526214c986.html</link>
+      <description/>
+      <guid isPermaLink="false">3432be7c4ba9281a185e5d1e1ae75eb4ef61b57c5e7d96119e499580f9651acd</guid>
       <pubDate>Tue, 24 Nov 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
@@ -1466,107 +1564,6 @@ The attackers broke into controllers on the night of October 11 and changed thei
 The unit</description>
       <guid isPermaLink="false">da4c346186d96fde29b977cb63d922466845c28cadddecd8fe34c914acde00cf</guid>
       <pubDate>Tue, 10 Nov 2026 09:08:20 +0000</pubDate>
-    </item>
-    <item>
-      <title>Anthropic's Claude Fable 5.2 Beats GPT-6 Cyber in Multi-Stage Cyberattack Benchmark - The Hacker News</title>
-      <link>https://thehackernews.com/2026/11/anthropics-claude-fable-52-beats-gpt-6.html</link>
-      <description>Anthropic on Monday released Claude Fable 5.2 and Claude Mythos 5.2 models, which it said exhibit improvements in coding, reasoning, and vision.
-During pre-release training, the large language models (LLMs) helped its engineers "complete otherwise-infeasible software migrations, designed three working electronic devices from scratch, solved two open problems in the physics of black holes, made</description>
-      <guid isPermaLink="false">8d34e4607d3ac73348655ffa7d1da7e1175f7e7a6382a28aba6306ecedfe8233</guid>
-      <pubDate>Tue, 10 Nov 2026 08:16:14 +0000</pubDate>
-    </item>
-    <item>
-      <title>Google Issues Chrome Security Update for Eighth Actively Exploited Zero-Day of 2026 - The Hacker News</title>
-      <link>https://thehackernews.com/2026/11/google-issues-chrome-security-update.html</link>
-      <description>Google on Monday released updates to patch nine security vulnerabilities, including one that has come under active exploitation in the wild.
-The high-severity vulnerability, assigned the CVE identifier CVE-2026-125350 (CVSS score: N/A), has been described as a use-after-free bug in the XML component.
-Use-after-free bugs typically occur when a program attempts to access a memory location after</description>
-      <guid isPermaLink="false">0017eb5c65ec3fcbbbe061ffa6bd224e59c040dffbdb85bf276c27843b4979e4</guid>
-      <pubDate>Tue, 10 Nov 2026 06:52:54 +0000</pubDate>
-    </item>
-    <item>
-      <title>N-able Takes N-central Cloud Offline After Researcher Discloses 33 Zero-Days with PoC Exploits - The Hacker News</title>
-      <link>https://thehackernews.com/2026/11/n-able-takes-hosted-n-central-offline.html</link>
-      <description>N-able said it has taken N-central Hosted Environments offline and is urging on-premises customers to shut down their servers until further notice following the public disclosure of over 30 vulnerabilities collectively tracked as Able2Shell.
-"As a precautionary measure, we are temporarily taking our Hosted N-central environment offline while we take the necessary actions to secure the</description>
-      <guid isPermaLink="false">efe583d0576ef08ef6f59c20c1d7c214421aac56b2b2418a6cecfc7486d51aa6</guid>
-      <pubDate>Tue, 10 Nov 2026 06:44:36 +0000</pubDate>
-    </item>
-    <item>
-      <title>CISA Warns of Active Exploitation of OpenSSH, GPUStack, FreeSWITCH, and IBM Flaws - The Hacker News</title>
-      <link>https://thehackernews.com/2026/11/cisa-warns-of-active-exploitation-of.html</link>
-      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Monday added four security flaws impacting GPUStack, SignalWire FreeSwitch, OpenBSD OpenSSH, and IBM Aspera Faspex to its Known Exploited Vulnerabilities (KEV) catalog, citing evidence of active exploitation.
-The vulnerabilities are listed below -
-  CVE-2026-123218 (CVSS score: 9.8) - An incorrect authorization vulnerability</description>
-      <guid isPermaLink="false">e7c7bb7eccd64b46722b1fc62d94896d5e91f7bdb0fcf4bc050f90845f214311</guid>
-      <pubDate>Tue, 10 Nov 2026 06:31:42 +0000</pubDate>
-    </item>
-    <item>
-      <title>Unbarred: VIZIO Elevate SE Soundbar App Replacement - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xs9k6q/unbarred_vizio_elevate_se_soundbar_app_replacement/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/TrevorTherrien"&gt; /u/TrevorTherrien &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/TrevorTherrien/unbarred-vizio"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xs9k6q/unbarred_vizio_elevate_se_soundbar_app_replacement/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">7427cd705ebdfb3d87e3f209feff8ed566bd1d3b5559195804484c892095b030</guid>
-      <pubDate>Tue, 10 Nov 2026 01:07:16 +0000</pubDate>
-    </item>
-    <item>
-      <title>git -- multiple vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/24e1443d-dd3b-11f1-b094-bc2411e144f8.html</link>
-      <description/>
-      <guid isPermaLink="false">885669f9ddc31b5befa0fecaec0e2b6f44f1f37180610cf02c3be898981a6f0b</guid>
-      <pubDate>Tue, 10 Nov 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Newsboat -- Remote code execution via manual OPML import - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/9b39eca8-dd1a-11f1-867b-3c7c3fba4204.html</link>
-      <description/>
-      <guid isPermaLink="false">9cc3a4bb76c869c73fb860ccf4dfed2570ade05136e363bac1c8c44b10be706f</guid>
-      <pubDate>Tue, 10 Nov 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Corsair MM800 RGB Mousepad Custom Firmware for Persistent default colors and custom JSON-defined default animations - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xs6rre/corsair_mm800_rgb_mousepad_custom_firmware_for/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/boredherobrine13"&gt; /u/boredherobrine13 &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/boredhero/mm800-persistence-patcher"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xs6rre/corsair_mm800_rgb_mousepad_custom_firmware_for/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">570e52f94cc40a6ea82f7cb7adc60c1e1473b6dbd7545d77a0610e305b152e2e</guid>
-      <pubDate>Mon, 09 Nov 2026 23:05:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>usb-rea: label your clicks in a vendor app, get the USB protocol (with frame-level evidence) and a pyusb driver - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xrzsui/usbrea_label_your_clicks_in_a_vendor_app_get_the/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/emirdev_mo"&gt; /u/emirdev_mo &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/emirmrkaljevic/usb-rea"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xrzsui/usbrea_label_your_clicks_in_a_vendor_app_get_the/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">5e6a0c797b0dfb858f9b7103cd0d1a1feebf1efdd18c02e2dffe55853c0455b2</guid>
-      <pubDate>Mon, 09 Nov 2026 18:38:44 +0000</pubDate>
-    </item>
-    <item>
-      <title>Hackers Exploit Qubole's Trusted AWS Access to Breach Customer Accounts and Steal Data - The Hacker News</title>
-      <link>https://thehackernews.com/2026/11/hackers-exploit-quboles-trusted-aws.html</link>
-      <description>An attacker broke into AWS accounts belonging to multiple Qubole customers between October 14 and October 26 and stole stored secrets and data, cloud security company Wiz said today.
-The attacker used credentials for an AWS account that Qubole's platform uses to reach those customers. How the attacker got those credentials has not been disclosed.
-Qubole, a data lake platform owned by Idera,</description>
-      <guid isPermaLink="false">40fb1db4cad43cc272c6f56f5bc1d4ce7401af88603d48d2bf1fe9445f6e240c</guid>
-      <pubDate>Mon, 09 Nov 2026 17:51:21 +0000</pubDate>
-    </item>
-    <item>
-      <title>Hackers Compromise Ethersphere's bee-js and Swarm Desktop to Deliver Wallet-Stealing Malware - The Hacker News</title>
-      <link>https://thehackernews.com/2026/11/hackers-compromise-etherspheres-bee-js.html</link>
-      <description>Attackers used the Ethersphere project's own release automation to publish malicious versions of two of its tools for the Swarm decentralized storage network: bee-js 13.3.0 and Swarm Desktop 0.56.2.
-Both releases download and run code built to steal the wallet key that Swarm Desktop keeps for its node, along with the stored password that unlocks it. The code is also built to install a backdoor</description>
-      <guid isPermaLink="false">2fd019fa75e3591e1562f37a0c96f00d24ccdcaa0be2c2b20d04868e40a849ad</guid>
-      <pubDate>Mon, 09 Nov 2026 17:36:28 +0000</pubDate>
-    </item>
-    <item>
-      <title>Bitter Hackers Deploy New PapRAT Backdoor in Cyberespionage Campaign Targeting South Asia - The Hacker News</title>
-      <link>https://thehackernews.com/2026/11/bitter-hackers-deploy-new-paprat.html</link>
-      <description>The South Asian cyber espionage group known as Bitter (aka APT-C-08, APT-Q-37, Hazy Tiger, Orange Yali, T-APT-17, and TA397) has been observed targeting South Asian organizations with a previously unreported remote access trojan called PapRAT.
-"PapRAT has both C++ and Rust implementations," Fortinet FortiGuard Labs researcher Cara Lin said. "Its capabilities include command execution, file</description>
-      <guid isPermaLink="false">7b8941b071586a6df0ef0654837c4357042a25eac5d0bc755423457306c10439</guid>
-      <pubDate>Mon, 09 Nov 2026 14:31:29 +0000</pubDate>
-    </item>
-    <item>
-      <title>OpenEXR -- 3.4.18 fixes two vulnerabilities - FreeBSD VuXML</title>
-      <link>http://www.vuxml.org/freebsd/bb6a3ddb-dc22-11f1-8e49-3c7c3fba4204.html</link>
-      <description/>
-      <guid isPermaLink="false">33f06516532b1c5cc30079dd47d6478c891ff5b9785af29ce22c525ab9b75c8a</guid>
-      <pubDate>Mon, 09 Nov 2026 00:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>
