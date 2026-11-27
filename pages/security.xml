@@ -5,7 +5,55 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Thu, 26 Nov 2026 14:01:37 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2026 14:01:02 +0000</lastBuildDate>
+    <item>
+      <title>Microsoft Store App Found Delivering Vinci RAT Capable of Remote System Control - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/microsoft-store-app-found-delivering.html</link>
+      <description>Cybersecurity researchers have disclosed details of a cyber attack in which a threat actor leveraged a Microsoft Store application to deliver a remote access trojan (RAT) called Vinci RAT.
+The intrusion, according to eSentire, begins with a redirection to a bogus site for a sniping tool ("snipp.codes-team[.]com"), from where a Microsoft-signed installer called "Snipping-Tool.exe" is</description>
+      <guid isPermaLink="false">b0092541f6d8ccafb7eac87f93673bb7038bb79de37eca8448738e0c782ff870</guid>
+      <pubDate>Fri, 27 Nov 2026 11:49:34 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hackers Trojanize Official Q-Dir and DesktopOK Downloads to Deliver Remote Access Malware - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/hackers-trojanize-official-q-dir-and.html</link>
+      <description>Cybersecurity researchers have disclosed details of a software supply chain attack that has tampered with Q-Dir and DesktopOK installation files distributed via the official SoftwareOK website.
+"Evidence indicates that malicious files were generated not only when users downloaded the programs directly from the official download page but also during the update process of previously installed</description>
+      <guid isPermaLink="false">406d99256405fb270a00539330b39b013c6b0c4e2ae234681140e114c4e42166</guid>
+      <pubDate>Fri, 27 Nov 2026 09:29:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>Switzerland Confirms AI-Assisted Cyberattacks Breached Critical Infrastructure Operators - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/switzerland-confirms-ai-assisted.html</link>
+      <description>Attackers using AI agents have broken into computer systems at Swiss organizations in four of five confirmed attacks, the first such cases in the country, the country's cybersecurity agency said yesterday.
+Three of the attacks targeted critical infrastructure operators, and two of those succeeded, with no major disruptions reported. The victims have not been named, and it is not known who is</description>
+      <guid isPermaLink="false">ad5566cdda8d8e0c06287c6ff9626a4f9f99d322ded2f35f1920b8e42200def9</guid>
+      <pubDate>Fri, 27 Nov 2026 06:04:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>Unpatched Cacti Zero-Day Enables RCE in Just Four HTTP Requests via Guest Access - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/unpatched-cacti-zero-day-enables-rce-in.html</link>
+      <description>Details have emerged about a new zero-day vulnerability in Cacti, an open-source network monitoring tool, that could be exploited to achieve remote code execution.
+The proof-of-concept (PoC) exploit, which has yet to be assigned a CVE identifier, has been tracked as 4HTTP2SHELL and 4HTTP2ROOT.
+"I found a path from a fresh, unauthenticated HTTP session to command execution as the Cacti server</description>
+      <guid isPermaLink="false">541c72c9ee1d87c58a7abfffa5488b70df35c2eaf1fa4bdd36bfca208831547a</guid>
+      <pubDate>Fri, 27 Nov 2026 05:48:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>WeeChat -- Multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/f031c396-ea45-11f1-b58b-8447094a420f.html</link>
+      <description/>
+      <guid isPermaLink="false">a9d517fcae9b1537d8f107e011d14b8be098d5a825dffcf8d98022b0b5d2e4bb</guid>
+      <pubDate>Fri, 27 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>North Korea-Linked PolinRider Poisons Over 7,600 GitHub Repositories to Spread Malware - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/north-korea-linked-polinrider-poisons.html</link>
+      <description>The threat actors behind the PolinRider campaign have compromised over 7,600 GitHub repositories, in some cases planting a Python loader capable of delivering next-stage payloads, as evidence emerges that the activity may have started as far back as February 2025.
+"These are real developers, not throwaway accounts," Apiiro researcher Shmulik Cohen said. "6,541 of the 7,609 repos (86%) belong</description>
+      <guid isPermaLink="false">18e4a3f7c0cfc82c34d0be4d76eae602f9cc63ee07aed0ed65ff8c8617ed9123</guid>
+      <pubDate>Thu, 26 Nov 2026 15:13:41 +0000</pubDate>
+    </item>
     <item>
       <title>Most Wanted: The Phishing Kits and Techniques Getting Past Security Controls - The Hacker News</title>
       <link>https://thehackernews.com/2026/11/most-wanted-phishing-kits-and.html</link>
@@ -53,6 +101,13 @@ The Mitel MiCollab vulnerabilities are listed below -
       <link>http://www.vuxml.org/freebsd/aec2b759-e98b-11f1-b3a2-2cf05da270f3.html</link>
       <description/>
       <guid isPermaLink="false">948858598165238ea8d3320beeb3147ada584a98a50a28ca9190baaca305d78b</guid>
+      <pubDate>Thu, 26 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>p5-CGI-PSGI -- multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/a22c60b3-e987-11f1-97dc-40b034429ecf.html</link>
+      <description/>
+      <guid isPermaLink="false">8554dc0255d9ce252fc56a18819b5bb4f97744ed0352f33334c8e23e36b3e6a3</guid>
       <pubDate>Thu, 26 Nov 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
@@ -1508,62 +1563,6 @@ The activity, observed by Huntress in early October 2026, involves the exploitat
 In a notice published on October 10, 2026, the company said it detected unauthorized use of internal Fireworks</description>
       <guid isPermaLink="false">297dfa3f0526b9ad440f0cfd3650a0506b32fe160e664cd9ac2aa7d94c1425f0</guid>
       <pubDate>Tue, 10 Nov 2026 15:33:59 +0000</pubDate>
-    </item>
-    <item>
-      <title>Mt. Gox – The Missing Bitcoin and Who Was Convicted of What - Darknet - The Darkside</title>
-      <link>https://www.darknet.org.uk/2026/11/mt-gox-hack-karpeles-vinnik/</link>
-      <description>Mt. Gox said in 2014 that about 850,000 bitcoins had disappeared. What the courts found, who was charged, and how far repayments had got by October 2026.</description>
-      <guid isPermaLink="false">c6043416af2bfef8275a4e2859b6d9884448dfce3cfb25ed545daa3c74bb77b3</guid>
-      <pubDate>Tue, 10 Nov 2026 12:44:38 +0000</pubDate>
-    </item>
-    <item>
-      <title>That viral aircraft-Doppler triangulation exploit? I built a working replication. - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xslfq5/that_viral_aircraftdoppler_triangulation_exploit/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/lymn"&gt; /u/lymn &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://doinfinitely.github.io/doppler-triangulation-attack/"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xslfq5/that_viral_aircraftdoppler_triangulation_exploit/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">b63078573a7bb852c02b25af05e10916926ed85945d39599550f818876f2b689</guid>
-      <pubDate>Tue, 10 Nov 2026 12:17:59 +0000</pubDate>
-    </item>
-    <item>
-      <title>Binance Warns of iOS Sandbox Escape That Could Expose Crypto Wallet Keys, No Fix Confirmed - The Hacker News</title>
-      <link>https://thehackernews.com/2026/11/binance-warns-of-ios-sandbox-escape.html</link>
-      <description>An iOS sandbox escape published on GitHub lets an app read other apps' files on iPhones running iOS 26 and 27. That puts seed phrases, private keys, and login credentials at risk of exposure to malicious apps, Binance warned today. Apple's updates for iOS 26 and 27, released yesterday, do not list a fix.
-A researcher who goes by forcequit released the escape, called worse_query, on Sunday, a</description>
-      <guid isPermaLink="false">6e441157a2dea9ac159eb7cc98120e7678ffc078848127599ce5c26702f71896</guid>
-      <pubDate>Tue, 10 Nov 2026 12:15:31 +0000</pubDate>
-    </item>
-    <item>
-      <title>Apple Patches iMessage Group Chat Privacy Flaws and Bluetooth Pairing Vulnerabilities - The Hacker News</title>
-      <link>https://thehackernews.com/2026/11/apple-patches-imessage-group-chat.html</link>
-      <description>An iMessage flaw could let a remote attacker join a group chat and receive its messages, Apple said yesterday, and it released updates to fix it. The updates also fix a separate iMessage flaw that could let someone added to a group access messages sent before they joined.
-As of today, other updates released yesterday for the iPhone XS, XS Max and XR, the iPad (7th generation) and some Apple</description>
-      <guid isPermaLink="false">46ecfb0387625ab3f6e739881ec66a00f9121598095f7197b5f9832751bc296f</guid>
-      <pubDate>Tue, 10 Nov 2026 10:16:51 +0000</pubDate>
-    </item>
-    <item>
-      <title>Russian Turla Hackers Use New Cereal Malware to Steal Emails From Government Exchange Servers - The Hacker News</title>
-      <link>https://thehackernews.com/2026/11/russian-turla-hackers-use-new-cereal.html</link>
-      <description>The Russia-aligned state-sponsored threat actor known as Turla (aka Snake) is wielding a previously undocumented cyber espionage toolset called Cereal that's used to break into victims' Microsoft Exchange servers with an aim to surreptitiously collect emails.
-According to an ESET report shared with The Hacker News ahead of publication, the sophisticated and modular tool is designed for</description>
-      <guid isPermaLink="false">a35b353a7ee78b35b10ee139047956245e7e99313759cd059bd363bfce5d2acf</guid>
-      <pubDate>Tue, 10 Nov 2026 10:07:29 +0000</pubDate>
-    </item>
-    <item>
-      <title>SAP Patches Four CVSS 10.0 Flaws, Including Two Enabling Remote Code Execution - The Hacker News</title>
-      <link>https://thehackernews.com/2026/11/sap-patches-four-cvss-100-flaws.html</link>
-      <description>Four flaws that attackers could exploit without logging in were fixed today as part of SAP's monthly Security Patch Day—the vendor rates all four 10.0, the maximum CVSS score.
-Three are in the SAP NetWeaver application server, the software SAP systems run on, and one is in the Web Dispatcher, which receives web requests from the internet and passes them on to that server.
-The flaws in the Web</description>
-      <guid isPermaLink="false">990e9270b6741fa59ff6180b0e7f9f68b1cc2f5f01c6ac420652c4e8de61c8d0</guid>
-      <pubDate>Tue, 10 Nov 2026 10:02:40 +0000</pubDate>
-    </item>
-    <item>
-      <title>France Blames Iran for Sabotage Attack on Refrigeration Controllers at About 700 Retail Sites - The Hacker News</title>
-      <link>https://thehackernews.com/2026/11/france-blames-iran-for-sabotage-attack.html</link>
-      <description>An October cyberattack on refrigeration controllers at about 700 French retail sites was carried out by a cyber unit of Iran's Islamic Revolutionary Guard Corps (IRGC), the French government said yesterday.
-The attackers broke into controllers on the night of October 11 and changed their defrost settings to high temperatures. That caused food losses and, in at least 15 cases, fires.
-The unit</description>
-      <guid isPermaLink="false">da4c346186d96fde29b977cb63d922466845c28cadddecd8fe34c914acde00cf</guid>
-      <pubDate>Tue, 10 Nov 2026 09:08:20 +0000</pubDate>
     </item>
   </channel>
 </rss>

@@ -5,7 +5,413 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Programming category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Thu, 26 Nov 2026 14:01:38 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2026 14:01:02 +0000</lastBuildDate>
+    <item>
+      <title>Tryton News: Security Release for issue 15271 - Planet Python</title>
+      <link>https://discuss.tryton.org/t/security-release-for-issue-15271/9498</link>
+      <description>&lt;p&gt;&lt;a href="https://foss.heptapod.net/ced"&gt;Cédric Krier&lt;/a&gt; has discovered that &lt;a href="https://bugs.tryton.org/15271"&gt;the access rights on selection field can be bypassed by using the &lt;code&gt;:string&lt;/code&gt; suffix&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40801-impact-1" name="p-40801-impact-1"&gt;&lt;/a&gt;Impact&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.first.org/cvss/calculator/3-0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"&gt;CVSS v3.0 Base Score: 4.3&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Attack Vector: Network&lt;/li&gt;
+&lt;li&gt;Attack Complexity: Low&lt;/li&gt;
+&lt;li&gt;Privileges Required: Low&lt;/li&gt;
+&lt;li&gt;User Interaction: None&lt;/li&gt;
+&lt;li&gt;Scope: Unchanged&lt;/li&gt;
+&lt;li&gt;Confidentiality: Low&lt;/li&gt;
+&lt;li&gt;Integrity: None&lt;/li&gt;
+&lt;li&gt;Availability: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40801-workaround-2" name="p-40801-workaround-2"&gt;&lt;/a&gt;Workaround&lt;/h2&gt;
+&lt;p&gt;There is no known workaround.&lt;/p&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40801-resolution-3" name="p-40801-resolution-3"&gt;&lt;/a&gt;Resolution&lt;/h2&gt;
+&lt;p&gt;All affected users should upgrade &lt;code&gt;trytond&lt;/code&gt; to the latest version.&lt;/p&gt;
+&lt;p&gt;Affected versions per series:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;trytond&lt;/code&gt;:
+&lt;ul&gt;
+&lt;li&gt;8.2: &amp;lt;= 8.2.3&lt;/li&gt;
+&lt;li&gt;8.0: &amp;lt;= 8.0.14&lt;/li&gt;
+&lt;li&gt;7.8: &amp;lt;= 7.8.20&lt;/li&gt;
+&lt;li&gt;7.0: &amp;lt;= 7.0.61&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Not affected versions per series:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;trytond&lt;/code&gt;:
+&lt;ul&gt;
+&lt;li&gt;8.2: &amp;gt;= 8.2.4&lt;/li&gt;
+&lt;li&gt;8.0: &amp;gt;= 8.0.15&lt;/li&gt;
+&lt;li&gt;7.8: &amp;gt;= 7.8.21&lt;/li&gt;
+&lt;li&gt;7.0: &amp;gt;= 7.0.62&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40801-reference-4" name="p-40801-reference-4"&gt;&lt;/a&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://bugs.tryton.org/15271"&gt;https://bugs.tryton.org/15271&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40801-concerns-5" name="p-40801-concerns-5"&gt;&lt;/a&gt;Concerns?&lt;/h2&gt;
+&lt;p&gt;Any security concerns should be reported on the bug-tracker at &lt;a href="https://bugs.tryton.org/"&gt;https://bugs.tryton.org/&lt;/a&gt; with the confidential checkbox checked.&lt;/p&gt;
+            &lt;p&gt;&lt;small&gt;1 post - 1 participant&lt;/small&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;a href="https://discuss.tryton.org/t/security-release-for-issue-15271/9498"&gt;Read full topic&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">f7186b7cf5a8bf9c61e8733f8255d24274275e2254a4afaf80c63b5cd818a0d0</guid>
+      <pubDate>Fri, 27 Nov 2026 07:00:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>Tryton News: Security Release for issue 15266 - Planet Python</title>
+      <link>https://discuss.tryton.org/t/security-release-for-issue-15266/9497</link>
+      <description>&lt;p&gt;&lt;a href="https://foss.heptapod.net/eva_luadora"&gt;Eva Luadora&lt;/a&gt; using AI tools has discovered that &lt;a href="https://bugs.tryton.org/15266"&gt;it is possible for a user to guess the temporary reset password of another user through repeated search&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40798-impact-1" name="p-40798-impact-1"&gt;&lt;/a&gt;Impact&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.first.org/cvss/calculator/3-0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:N"&gt;CVSS v3.0 Base Score: 7.1&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Attack Vector: Network&lt;/li&gt;
+&lt;li&gt;Attack Complexity: Low&lt;/li&gt;
+&lt;li&gt;Privileges Required: Low&lt;/li&gt;
+&lt;li&gt;User Interaction: None&lt;/li&gt;
+&lt;li&gt;Scope: Unchanged&lt;/li&gt;
+&lt;li&gt;Confidentiality: Low&lt;/li&gt;
+&lt;li&gt;Integrity: High&lt;/li&gt;
+&lt;li&gt;Availability: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40798-workaround-2" name="p-40798-workaround-2"&gt;&lt;/a&gt;Workaround&lt;/h2&gt;
+&lt;p&gt;There is no known workaround.&lt;/p&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40798-resolution-3" name="p-40798-resolution-3"&gt;&lt;/a&gt;Resolution&lt;/h2&gt;
+&lt;p&gt;All affected users should upgrade all &lt;code&gt;trytond&lt;/code&gt; to the latest version.&lt;/p&gt;
+&lt;p&gt;Affected versions per series:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;trytond&lt;/code&gt;:
+&lt;ul&gt;
+&lt;li&gt;8.2: &amp;lt;= 8.2.3&lt;/li&gt;
+&lt;li&gt;8.0: &amp;lt;= 8.0.14&lt;/li&gt;
+&lt;li&gt;7.8: &amp;lt;= 7.8.20&lt;/li&gt;
+&lt;li&gt;7.0: &amp;lt;= 7.0.61&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Not affected versions per series:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;trytond&lt;/code&gt;:
+&lt;ul&gt;
+&lt;li&gt;8.2: &amp;gt;= 8.2.4&lt;/li&gt;
+&lt;li&gt;8.0: &amp;gt;= 8.0.15&lt;/li&gt;
+&lt;li&gt;7.8: &amp;gt;= 7.8.21&lt;/li&gt;
+&lt;li&gt;7.0: &amp;gt;= 7.0.62&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40798-reference-4" name="p-40798-reference-4"&gt;&lt;/a&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://bugs.tryton.org/15266"&gt;https://bugs.tryton.org/15266&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40798-concerns-5" name="p-40798-concerns-5"&gt;&lt;/a&gt;Concerns?&lt;/h2&gt;
+&lt;p&gt;Any security concerns should be reported on the bug-tracker at &lt;a href="https://bugs.tryton.org/"&gt;https://bugs.tryton.org/&lt;/a&gt; with the confidential checkbox checked.&lt;/p&gt;
+            &lt;p&gt;&lt;small&gt;1 post - 1 participant&lt;/small&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;a href="https://discuss.tryton.org/t/security-release-for-issue-15266/9497"&gt;Read full topic&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">92628dc8df9f0e53fdd4c3e03e6e259809b46ad3c5857dd83de46032399a6837</guid>
+      <pubDate>Fri, 27 Nov 2026 07:00:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>Tryton News: Security Release for issue 15259 and 15263 - Planet Python</title>
+      <link>https://discuss.tryton.org/t/security-release-for-issue-15259-and-15263/9494</link>
+      <description>&lt;p&gt;&lt;a href="https://foss.heptapod.net/superbot-helper"&gt;EZO Labs Security&lt;/a&gt; using AI tools has discovered that &lt;a href="https://bugs.tryton.org/15259"&gt;it is possible for an authenticated user to read the temporary reset password&lt;/a&gt; and &lt;a href="https://bugs.tryton.org/15263"&gt;the password hash&lt;/a&gt; of any web user.&lt;/p&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40789-impact-1" name="p-40789-impact-1"&gt;&lt;/a&gt;Impact&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.first.org/cvss/calculator/3-0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"&gt;CVSS v3.0 Base Score: 5.4&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Attack Vector: Network&lt;/li&gt;
+&lt;li&gt;Attack Complexity: Low&lt;/li&gt;
+&lt;li&gt;Privileges Required: Low&lt;/li&gt;
+&lt;li&gt;User Interaction: None&lt;/li&gt;
+&lt;li&gt;Scope: Unchanged&lt;/li&gt;
+&lt;li&gt;Confidentiality: Low&lt;/li&gt;
+&lt;li&gt;Integrity: Low&lt;/li&gt;
+&lt;li&gt;Availability: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40789-workaround-2" name="p-40789-workaround-2"&gt;&lt;/a&gt;Workaround&lt;/h2&gt;
+&lt;p&gt;A field access rule can be added for those fields to forbid the access to users.&lt;/p&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40789-resolution-3" name="p-40789-resolution-3"&gt;&lt;/a&gt;Resolution&lt;/h2&gt;
+&lt;p&gt;All affected users should upgrade all &lt;code&gt;web_user&lt;/code&gt; module to the latest version.&lt;/p&gt;
+&lt;p&gt;Affected versions per series:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;web_user&lt;/code&gt;:
+&lt;ul&gt;
+&lt;li&gt;8.2: &amp;lt;= 8.2.0&lt;/li&gt;
+&lt;li&gt;8.0: &amp;lt;= 8.0.1&lt;/li&gt;
+&lt;li&gt;7.8: &amp;lt;= 7.8.2&lt;/li&gt;
+&lt;li&gt;7.0: &amp;lt;= 7.0.2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Not affected versions per series:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;trytond&lt;/code&gt;:
+&lt;ul&gt;
+&lt;li&gt;8.2: &amp;gt;= 8.2.1&lt;/li&gt;
+&lt;li&gt;8.0: &amp;gt;= 8.0.2&lt;/li&gt;
+&lt;li&gt;7.8: &amp;gt;= 7.8.3&lt;/li&gt;
+&lt;li&gt;7.0: &amp;gt;= 7.0.3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40789-reference-4" name="p-40789-reference-4"&gt;&lt;/a&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://bugs.tryton.org/15259"&gt;https://bugs.tryton.org/15259&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://bugs.tryton.org/15263"&gt;https://bugs.tryton.org/15263&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40789-concerns-5" name="p-40789-concerns-5"&gt;&lt;/a&gt;Concerns?&lt;/h2&gt;
+&lt;p&gt;Any security concerns should be reported on the bug-tracker at &lt;a href="https://bugs.tryton.org/"&gt;https://bugs.tryton.org/&lt;/a&gt; with the confidential checkbox checked.&lt;/p&gt;
+            &lt;p&gt;&lt;small&gt;1 post - 1 participant&lt;/small&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;a href="https://discuss.tryton.org/t/security-release-for-issue-15259-and-15263/9494"&gt;Read full topic&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">c55f63255ccb2a087a49a21256f04184f78ee0aaa035125dc41e022fa4753ec0</guid>
+      <pubDate>Fri, 27 Nov 2026 07:00:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>Tryton News: Security Release for issue 15264 - Planet Python</title>
+      <link>https://discuss.tryton.org/t/security-release-for-issue-15264/9499</link>
+      <description>&lt;p&gt;&lt;a href="https://foss.heptapod.net/superbot-helper"&gt;EZO Labs Security&lt;/a&gt; using AI tools has discovered that &lt;a href="https://bugs.tryton.org/15264"&gt;it is possible for a user to use the export data on resources without the access rights inherited from the linked record&lt;/a&gt;. The resources are attachments, notes and avatars.&lt;/p&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40802-impact-1" name="p-40802-impact-1"&gt;&lt;/a&gt;Impact&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.first.org/cvss/calculator/3-0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"&gt;CVSS v3.0 Base Score: 4.3&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Attack Vector: Network&lt;/li&gt;
+&lt;li&gt;Attack Complexity: Low&lt;/li&gt;
+&lt;li&gt;Privileges Required: Low&lt;/li&gt;
+&lt;li&gt;User Interaction: None&lt;/li&gt;
+&lt;li&gt;Scope: Unchanged&lt;/li&gt;
+&lt;li&gt;Confidentiality: Low&lt;/li&gt;
+&lt;li&gt;Integrity: None&lt;/li&gt;
+&lt;li&gt;Availability: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40802-workaround-2" name="p-40802-workaround-2"&gt;&lt;/a&gt;Workaround&lt;/h2&gt;
+&lt;p&gt;The administrator can add global access rights on the resource directly.&lt;/p&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40802-resolution-3" name="p-40802-resolution-3"&gt;&lt;/a&gt;Resolution&lt;/h2&gt;
+&lt;p&gt;All affected users should upgrade all &lt;code&gt;trytond&lt;/code&gt; to the latest version.&lt;/p&gt;
+&lt;p&gt;Affected versions per series:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;trytond&lt;/code&gt;:
+&lt;ul&gt;
+&lt;li&gt;8.2: &amp;lt;= 8.2.3&lt;/li&gt;
+&lt;li&gt;8.0: &amp;lt;= 8.0.14&lt;/li&gt;
+&lt;li&gt;7.8: &amp;lt;= 7.8.20&lt;/li&gt;
+&lt;li&gt;7.0: &amp;lt;= 7.0.61&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Not affected versions per series:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;trytond&lt;/code&gt;:
+&lt;ul&gt;
+&lt;li&gt;8.2: &amp;gt;= 8.2.4&lt;/li&gt;
+&lt;li&gt;8.0: &amp;gt;= 8.0.15&lt;/li&gt;
+&lt;li&gt;7.8: &amp;gt;= 7.8.21&lt;/li&gt;
+&lt;li&gt;7.0: &amp;gt;= 7.0.62&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40802-reference-4" name="p-40802-reference-4"&gt;&lt;/a&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://bugs.tryton.org/15264"&gt;https://bugs.tryton.org/15264&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40802-concerns-5" name="p-40802-concerns-5"&gt;&lt;/a&gt;Concerns?&lt;/h2&gt;
+&lt;p&gt;Any security concerns should be reported on the bug-tracker at &lt;a href="https://bugs.tryton.org/"&gt;https://bugs.tryton.org/&lt;/a&gt; with the confidential checkbox checked.&lt;/p&gt;
+            &lt;p&gt;&lt;small&gt;1 post - 1 participant&lt;/small&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;a href="https://discuss.tryton.org/t/security-release-for-issue-15264/9499"&gt;Read full topic&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">d11fa213fe8f10f106589732a013b8fd70ffd115810a11bfad16262a691c20e3</guid>
+      <pubDate>Fri, 27 Nov 2026 07:00:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>Tryton News: Security Release for issue 15258 - Planet Python</title>
+      <link>https://discuss.tryton.org/t/security-release-for-issue-15258/9493</link>
+      <description>&lt;p&gt;&lt;a href="https://foss.heptapod.net/superbot-helper"&gt;EZO Labs Security&lt;/a&gt; using AI tools has discovered that &lt;a href="https://bugs.tryton.org/15258"&gt;it is possible for a user to read the temporary reset password of another user&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40788-impact-1" name="p-40788-impact-1"&gt;&lt;/a&gt;Impact&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.first.org/cvss/calculator/3-0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"&gt;CVSS v3.0 Base Score: 8.1&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Attack Vector: Network&lt;/li&gt;
+&lt;li&gt;Attack Complexity: Low&lt;/li&gt;
+&lt;li&gt;Privileges Required: Low&lt;/li&gt;
+&lt;li&gt;User Interaction: None&lt;/li&gt;
+&lt;li&gt;Scope: Unchanged&lt;/li&gt;
+&lt;li&gt;Confidentiality: High&lt;/li&gt;
+&lt;li&gt;Integrity: High&lt;/li&gt;
+&lt;li&gt;Availability: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40788-workaround-2" name="p-40788-workaround-2"&gt;&lt;/a&gt;Workaround&lt;/h2&gt;
+&lt;p&gt;The RPC request to &lt;code&gt;common.db.reset_password&lt;/code&gt; can be blocked by a firewall to mitigate the possibility for an attacker to create a reset password for a targeted user.&lt;/p&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40788-resolution-3" name="p-40788-resolution-3"&gt;&lt;/a&gt;Resolution&lt;/h2&gt;
+&lt;p&gt;All affected users should upgrade all &lt;code&gt;trytond&lt;/code&gt; to the latest version.&lt;/p&gt;
+&lt;p&gt;Affected versions per series:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;trytond&lt;/code&gt;:
+&lt;ul&gt;
+&lt;li&gt;8.2: &amp;lt;= 8.2.3&lt;/li&gt;
+&lt;li&gt;8.0: &amp;lt;= 8.0.14&lt;/li&gt;
+&lt;li&gt;7.8: &amp;lt;= 7.8.20&lt;/li&gt;
+&lt;li&gt;7.0: &amp;lt;= 7.0.61&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Not affected versions per series:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;trytond&lt;/code&gt;:
+&lt;ul&gt;
+&lt;li&gt;8.2: &amp;gt;= 8.2.4&lt;/li&gt;
+&lt;li&gt;8.0: &amp;gt;= 8.0.15&lt;/li&gt;
+&lt;li&gt;7.8: &amp;gt;= 7.8.21&lt;/li&gt;
+&lt;li&gt;7.0: &amp;gt;= 7.0.62&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40788-reference-4" name="p-40788-reference-4"&gt;&lt;/a&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://bugs.tryton.org/15258"&gt;https://bugs.tryton.org/15258&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40788-concerns-5" name="p-40788-concerns-5"&gt;&lt;/a&gt;Concerns?&lt;/h2&gt;
+&lt;p&gt;Any security concerns should be reported on the bug-tracker at &lt;a href="https://bugs.tryton.org/"&gt;https://bugs.tryton.org/&lt;/a&gt; with the confidential checkbox checked.&lt;/p&gt;
+            &lt;p&gt;&lt;small&gt;1 post - 1 participant&lt;/small&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;a href="https://discuss.tryton.org/t/security-release-for-issue-15258/9493"&gt;Read full topic&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">70b8415b471b616d392469d4b5dc8f1150fb438ffed53711ba06f81bf8e97b8e</guid>
+      <pubDate>Fri, 27 Nov 2026 07:00:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>Tryton News: Security Release for issue 15256 - Planet Python</title>
+      <link>https://discuss.tryton.org/t/security-release-for-issue-15256/9491</link>
+      <description>&lt;p&gt;&lt;a href="https://foss.heptapod.net/superbot-helper"&gt;EZO Labs Security&lt;/a&gt; using AI tools has discovered that &lt;a href="https://bugs.tryton.org/15256"&gt;it is possible for a user to change the companies, employees and roles it was assigned to&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40784-impact-1" name="p-40784-impact-1"&gt;&lt;/a&gt;Impact&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.first.org/cvss/calculator/3-0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N"&gt;CVSS v3.0 Base Score: 7.1&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Attack Vector: Network&lt;/li&gt;
+&lt;li&gt;Attack Complexity: Low&lt;/li&gt;
+&lt;li&gt;Privileges Required: Low&lt;/li&gt;
+&lt;li&gt;User Interaction: None&lt;/li&gt;
+&lt;li&gt;Scope: Unchanged&lt;/li&gt;
+&lt;li&gt;Confidentiality: High&lt;/li&gt;
+&lt;li&gt;Integrity: Low&lt;/li&gt;
+&lt;li&gt;Availability: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40784-workaround-2" name="p-40784-workaround-2"&gt;&lt;/a&gt;Workaround&lt;/h2&gt;
+&lt;p&gt;There is no known workaround.&lt;/p&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40784-resolution-3" name="p-40784-resolution-3"&gt;&lt;/a&gt;Resolution&lt;/h2&gt;
+&lt;p&gt;All affected users should upgrade all &lt;code&gt;trytond&lt;/code&gt;, &lt;code&gt;company&lt;/code&gt; and &lt;code&gt;user_role&lt;/code&gt; modules to the latest version.&lt;/p&gt;
+&lt;p&gt;Affected versions per series:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;trytond&lt;/code&gt;:
+&lt;ul&gt;
+&lt;li&gt;8.2: &amp;lt;= 8.2.3&lt;/li&gt;
+&lt;li&gt;8.0: &amp;lt;= 8.0.14&lt;/li&gt;
+&lt;li&gt;7.8: &amp;lt;= 7.8.20&lt;/li&gt;
+&lt;li&gt;7.0: &amp;lt;= 7.0.61&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;company&lt;/code&gt;:
+&lt;ul&gt;
+&lt;li&gt;8.2: &amp;lt;= 8.2.0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;user_role&lt;/code&gt;:
+&lt;ul&gt;
+&lt;li&gt;8.2: &amp;lt;= 8.2.0&lt;/li&gt;
+&lt;li&gt;8.0: &amp;lt;= 8.0.2&lt;/li&gt;
+&lt;li&gt;7.8: &amp;lt;= 7.8.1&lt;/li&gt;
+&lt;li&gt;7.0: &amp;lt;= 7.0.1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Not affected versions per series:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;trytond&lt;/code&gt;:
+&lt;ul&gt;
+&lt;li&gt;8.2: &amp;gt;= 8.2.4&lt;/li&gt;
+&lt;li&gt;8.0: &amp;gt;= 8.0.15&lt;/li&gt;
+&lt;li&gt;7.8: &amp;gt;= 7.8.21&lt;/li&gt;
+&lt;li&gt;7.0: &amp;gt;= 7.0.62&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;company&lt;/code&gt;:
+&lt;ul&gt;
+&lt;li&gt;8.2: &amp;gt;= 8.2.1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;user_role&lt;/code&gt;:
+&lt;ul&gt;
+&lt;li&gt;8.2: &amp;gt;= 8.2.1&lt;/li&gt;
+&lt;li&gt;8.0: &amp;gt;= 8.0.3&lt;/li&gt;
+&lt;li&gt;7.8: &amp;gt;= 7.8.2&lt;/li&gt;
+&lt;li&gt;7.0: &amp;gt;= 7.0.2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40784-reference-4" name="p-40784-reference-4"&gt;&lt;/a&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://bugs.tryton.org/15256"&gt;https://bugs.tryton.org/15256&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40784-concerns-5" name="p-40784-concerns-5"&gt;&lt;/a&gt;Concerns?&lt;/h2&gt;
+&lt;p&gt;Any security concerns should be reported on the bug-tracker at &lt;a href="https://bugs.tryton.org/"&gt;https://bugs.tryton.org/&lt;/a&gt; with the confidential checkbox checked.&lt;/p&gt;
+            &lt;p&gt;&lt;small&gt;1 post - 1 participant&lt;/small&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;a href="https://discuss.tryton.org/t/security-release-for-issue-15256/9491"&gt;Read full topic&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">28c7aa9322e3b94c84c323bceb9b9534ba60068e0884c1fbb6b1a84f3240121c</guid>
+      <pubDate>Fri, 27 Nov 2026 07:00:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>Tryton News: Security Release for issue 15257 - Planet Python</title>
+      <link>https://discuss.tryton.org/t/security-release-for-issue-15257/9492</link>
+      <description>&lt;p&gt;&lt;a href="https://foss.heptapod.net/ced"&gt;Cédric Krier&lt;/a&gt; has discovered that &lt;a href="https://bugs.tryton.org/15257"&gt;the server accept compressed request from user without enforcing size limit&lt;/a&gt; which makes it vulnerable to &lt;a href="https://en.wikipedia.org/wiki/Zip_bomb"&gt;zip bomb&lt;/a&gt; attacks.&lt;br /&gt;
+This is a continuation of &lt;a class="inline-onebox" href="https://discuss.tryton.org/t/security-release-for-issue-13142/7196"&gt;Security Release for issue #13142&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40785-impact-1" name="p-40785-impact-1"&gt;&lt;/a&gt;Impact&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.first.org/cvss/calculator/3-0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"&gt;CVSS v3.0 Base Score: 6.5&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Attack Vector: Network&lt;/li&gt;
+&lt;li&gt;Attack Complexity: Low&lt;/li&gt;
+&lt;li&gt;Privileges Required: Low&lt;/li&gt;
+&lt;li&gt;User Interaction: None&lt;/li&gt;
+&lt;li&gt;Scope: Unchanged&lt;/li&gt;
+&lt;li&gt;Confidentiality: None&lt;/li&gt;
+&lt;li&gt;Integrity: None&lt;/li&gt;
+&lt;li&gt;Availability: High&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40785-workaround-2" name="p-40785-workaround-2"&gt;&lt;/a&gt;Workaround&lt;/h2&gt;
+&lt;p&gt;A proxy can be deployed in front of the &lt;code&gt;trytond&lt;/code&gt; server to forbid this kind of request.&lt;/p&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40785-resolution-3" name="p-40785-resolution-3"&gt;&lt;/a&gt;Resolution&lt;/h2&gt;
+&lt;p&gt;All affected users should upgrade &lt;code&gt;trytond&lt;/code&gt; to the latest version.&lt;/p&gt;
+&lt;p&gt;Affected versions per series:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;trytond&lt;/code&gt;:
+&lt;ul&gt;
+&lt;li&gt;8.2: &amp;lt;= 8.2.3&lt;/li&gt;
+&lt;li&gt;8.0: &amp;lt;= 8.0.14&lt;/li&gt;
+&lt;li&gt;7.8: &amp;lt;= 7.8.20&lt;/li&gt;
+&lt;li&gt;7.0: &amp;lt;= 7.0.61&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Not affected versions per series:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;trytond&lt;/code&gt;:
+&lt;ul&gt;
+&lt;li&gt;8.2: &amp;gt;= 8.2.4&lt;/li&gt;
+&lt;li&gt;8.0: &amp;gt;= 8.0.15&lt;/li&gt;
+&lt;li&gt;7.8: &amp;gt;= 7.8.21&lt;/li&gt;
+&lt;li&gt;7.0: &amp;gt;= 7.0.62&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40785-reference-4" name="p-40785-reference-4"&gt;&lt;/a&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://bugs.tryton.org/15257"&gt;https://bugs.tryton.org/15257&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a class="anchor" href="https://discuss.tryton.org#p-40785-concerns-5" name="p-40785-concerns-5"&gt;&lt;/a&gt;Concerns?&lt;/h2&gt;
+&lt;p&gt;Any security concerns should be reported on the bug-tracker at &lt;a href="https://bugs.tryton.org/"&gt;https://bugs.tryton.org/&lt;/a&gt; with the confidential checkbox checked.&lt;/p&gt;
+            &lt;p&gt;&lt;small&gt;1 post - 1 participant&lt;/small&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;a href="https://discuss.tryton.org/t/security-release-for-issue-15257/9492"&gt;Read full topic&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="false">4692520ed67c4562e88ea80407fe5649c78bd747bd1aad9003f8f36f4dfd80bc</guid>
+      <pubDate>Fri, 27 Nov 2026 07:00:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>Jaime Buelta: What a year, huh? - Planet Python</title>
+      <link>https://wrongsideofmemphis.com/2026/11/27/what-a-year-huh/</link>
+      <description>This week marks a full year since the release of Opus 4.5 (24th Nov 2025). And it feels like a decade has happened since then in software. Opus 4.5 was the model that really turned agentic coding from a curiosity that was somehow useful into a real strategy that you could use day to day.But it didn’t stop there. We got new releases, with the Big Two frontier labs (OpenAI and Anthropic) consolidating into models with Small (Luna/Haiku), Medium (Terra/Sonnet), Large (Sol/Opus) and a new XLarge class first introduced with the ominous... &lt;a class="read-more" href="https://wrongsideofmemphis.com/2026/11/27/what-a-year-huh/"&gt;Read More&lt;/a&gt;</description>
+      <guid isPermaLink="false">a9cb04706908e220453574d13c6a1cff2a20046d09ceda9da2a92b5d3d3f7cbb</guid>
+      <pubDate>Fri, 27 Nov 2026 01:38:52 +0000</pubDate>
+    </item>
     <item>
       <title>LernerPython blog, from Reuven Lerner: Do programmers have a future? - Planet Python</title>
       <link>https://lernerpython.com/2026/11/26/do-programmers-have-a-future/</link>
@@ -16878,654 +17284,6 @@ def test_gateway_recovers(stub_charge):
 &lt;p&gt;The error path test leaned on the timeline and the tape without much explanation of what they are or what an event holds. That is the subject of the next post, where the example is a resource leak, which is a bug nothing in a return value will ever tell you about.&lt;/p&gt;</description>
       <guid isPermaLink="false">44a9b077c91b16eb65945f9ab4c32660f42e1e0f69ba3eb2f1d9d09e7fb3169e</guid>
       <pubDate>Tue, 01 Sep 2026 07:38:51 +0000</pubDate>
-    </item>
-    <item>
-      <title>Seth Michael Larson: Buying GameCube games from other regions - Planet Python</title>
-      <link>https://sethmlarson.dev/buying-gamecube-games-from-another-region?utm_campaign=rss</link>
-      <description>&lt;p&gt;This blog post was inspired by discovering that &lt;a href="https://en.wikipedia.org/wiki/Pok%C3%A9mon_Ruby_and_Sapphire#Pok%C3%A9mon_Box:_Ruby_and_Sapphire"&gt;Pokémon Box: Ruby &amp;amp; Sapphire&lt;/a&gt;,
-a legendarily rare and expensive GameCube game in the United States (&lt;a href="https://www.pricecharting.com/game/gamecube/pokemon-box"&gt;&amp;gt;$2,500 USD&lt;/a&gt;),
-could be purchased &lt;a href="https://www.pricecharting.com/game/jp-gamecube/pokemon-box"&gt;complete-in-box (CIB) in Japan for $50 USD&lt;/a&gt;.
-That's a savings of $2450, or ~98% of the US price.
-This is a somewhat extreme example: in the US market
-Pokémon Box was only sold online
-and at a single store: the Pokémon Center in New York City.&lt;/p&gt;
-&lt;p&gt;This big price difference between regions got me thinking:
-what other games are cheaper in other regions and by how much?
-&lt;!-- more --&gt;
-Please note that the below data was taken from &lt;a href="https://pricecharting.com"&gt;Pricecharting&lt;/a&gt; on
-August 30th, 2026. Shipping costs aren't included in the price, shipping from
-Japan to the US is typically $15-$20 USD on eBay, but many games are already
-imported to the US.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;&lt;th colspan="2"&gt;Game&lt;/th&gt;&lt;th&gt;Diff.&lt;/th&gt;&lt;th&gt;Price (US)&lt;/th&gt;&lt;th&gt;Price (PAL)&lt;/th&gt;&lt;th&gt;Price (JP)&lt;/th&gt;&lt;/thead&gt;
-&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/pokemon-box"&gt;Pokémon Box&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$2348&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/pokemon-box"&gt;$2400&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/pokemon-box"&gt;$204&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/pokemon-box"&gt;$52&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$1553&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/pokemon-box"&gt;$1574&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/pokemon-box"&gt;$137&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/pokemon-box"&gt;$21&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/cubivore"&gt;Cubivore&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$612&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/cubivore"&gt;$640&lt;/a&gt;&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/cubivore"&gt;$28&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$318&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/cubivore"&gt;$341&lt;/a&gt;&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/cubivore"&gt;$23&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/gotcha-force"&gt;Gotcha Force&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$405&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/gotcha-force"&gt;$474&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/gotcha-force"&gt;$137&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/gotcha-force"&gt;$69&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$204&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/gotcha-force"&gt;$249&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/gotcha-force"&gt;$121&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/gotcha-force"&gt;$45&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/resident-evil-code-veronica-x"&gt;Resident Evil: Code Veronica X&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$239&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/resident-evil-code-veronica-x"&gt;$299&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/resident-evil-code-veronica-x"&gt;$80&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/biohazard-code-veronica-x"&gt;$60&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$151&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/resident-evil-code-veronica-x"&gt;$213&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/resident-evil-code-veronica-x"&gt;$62&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/biohazard-code-veronica-x"&gt;—&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/chibi-robo"&gt;Chibi Robo&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$189&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/chibi-robo"&gt;$210&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/chibi-robo"&gt;$223&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/chibi-robo"&gt;$34&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$136&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/chibi-robo"&gt;$144&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/chibi-robo"&gt;$161&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/chibi-robo"&gt;$25&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/pokemon-xd-gale-of-darkness"&gt;Pokémon XD: Gale of Darkness&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$170&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/pokemon-xd-gale-of-darkness"&gt;$209&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/pokemon-xd-gale-of-darkness"&gt;$232&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/pokemon-xd-gale-of-darkness"&gt;$62&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$129&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/pokemon-xd-gale-of-darkness"&gt;$150&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/pokemon-xd-gale-of-darkness"&gt;$183&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/pokemon-xd-gale-of-darkness"&gt;$54&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/fire-emblem-path-of-radiance"&gt;Fire Emblem: Path of Radiance&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$166&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/fire-emblem-path-of-radiance"&gt;$214&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/fire-emblem-path-of-radiance"&gt;$187&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/fire-emblem-path-of-radiance"&gt;$48&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$101&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/fire-emblem-path-of-radiance"&gt;$145&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/fire-emblem-path-of-radiance"&gt;$145&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/fire-emblem-path-of-radiance"&gt;$44&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/resident-evil-2"&gt;Resident Evil 2&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$90&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/resident-evil-2"&gt;$161&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/resident-evil-2"&gt;$78&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/biohazard-2"&gt;$71&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$77&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/resident-evil-2"&gt;$106&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/resident-evil-2"&gt;$29&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/biohazard-2"&gt;$44&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/pokemon-colosseum"&gt;Pokémon Colosseum&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$98&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/pokemon-colosseum"&gt;$142&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/pokemon-colosseum"&gt;$64&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/pokemon-colosseum"&gt;$44&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$83&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/pokemon-colosseum"&gt;$109&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/pokemon-colosseum"&gt;$49&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/pokemon-colosseum"&gt;$26&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/zelda-twilight-princess"&gt;Legend of Zelda: Twilight Princess&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$108&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/zelda-twilight-princess"&gt;$196&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/zelda-twilight-princess"&gt;$115&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/zelda-twilight-princess"&gt;$88&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$66&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/zelda-twilight-princess"&gt;$146&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/zelda-twilight-princess"&gt;$107&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/zelda-twilight-princess"&gt;$80&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/resident-evil-3-nemesis"&gt;Resident Evil 3: Nemesis&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$97&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/resident-evil-3-nemesis"&gt;$156&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/resident-evil-3-nemesis"&gt;$59&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/biohazard-3-last-escape"&gt;$74&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$52&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/resident-evil-3-nemesis"&gt;$99&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/resident-evil-3-nemesis"&gt;$47&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/biohazard-3-last-escape"&gt;$69&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/zelda-four-swords-adventures"&gt;Legend of Zelda: Four Swords Adventures&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$92&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/zelda-four-swords-adventures"&gt;$77&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/zelda-four-swords-adventures"&gt;$130&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/zelda-four-swords"&gt;$38&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$58&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/zelda-four-swords-adventures"&gt;$56&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/zelda-four-swords-adventures"&gt;$79&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/zelda-four-swords"&gt;$21&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/eternal-darkness"&gt;Eternal Darkness&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$82&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/eternal-darkness"&gt;$114&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/eternal-darkness"&gt;$32&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/eternal-darkness"&gt;$34&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$60&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/eternal-darkness"&gt;$85&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/eternal-darkness"&gt;$25&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/eternal-darkness"&gt;$33&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/billy-hatcher-and-the-giant-egg"&gt;Billy Hatcher and the Giant Egg&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$66&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/billy-hatcher-and-the-giant-egg"&gt;$89&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/billy-hatcher-and-the-giant-egg"&gt;$23&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/billy-hatcher-and-the-giant-egg"&gt;$34&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$55&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/billy-hatcher-and-the-giant-egg"&gt;$65&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/billy-hatcher-and-the-giant-egg"&gt;$10&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/billy-hatcher-and-the-giant-egg"&gt;$34&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td rowspan="2"&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/wario-world"&gt;Wario World&lt;/a&gt;&lt;/td&gt;&lt;td&gt;CIB&lt;/td&gt;&lt;td&gt;-$55&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/wario-world"&gt;$80&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/wario-world"&gt;$60&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/wario-world"&gt;$25&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;Loose&lt;/td&gt;&lt;td&gt;-$44&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/gamecube/wario-world"&gt;$62&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/pal-gamecube/wario-world"&gt;$45&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://www.pricecharting.com/game/jp-gamecube/wario-world"&gt;$18&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;/table&gt;
-&lt;p&gt;Even more excitingly, &lt;a href="https://projectpokemon.org/home/files/file/4950-pokemon-box-ruby-sapphire-universal-version/"&gt;there is a mod patch for Pokémon Box&lt;/a&gt; enabling the
-Japanese version to communicate and trade Pokémon between
-&lt;a href="https://bulbapedia.bulbagarden.net/wiki/Software_region"&gt;US, JP, and PAL Game Boy Advance games&lt;/a&gt;. This means if you wanted
-to use Pokémon Box functionality you could buy a Japanese copy for $50,
-patch the software, and use the software as if it were from any region.&lt;/p&gt;
-&lt;p&gt;This fact carries beyond GameCube games, as you'd imagine.
-Legend of Zelda: Minish Cap is &lt;a href="https://www.pricecharting.com/game/gameboy-advance/zelda-minish-cap"&gt;$90 for a loose US copy&lt;/a&gt;
-and &lt;a href="https://www.pricecharting.com/game/jp-gameboy-advance/zelda-minish-cap"&gt;only $40 for a Japanese copy&lt;/a&gt;.
-Surprisingly it's not always the case that the US release is
-cheaper than the Japanese release. For example, the &lt;a href="https://en.wikipedia.org/wiki/Sonic_Gems_Collection"&gt;Sonic Gems Collection&lt;/a&gt;
-for GameCube costs &lt;a href="https://www.pricecharting.com/game/gamecube/sonic-gems-collection"&gt;$55 CIB for a US release&lt;/a&gt;
-compared to &lt;a href="https://www.pricecharting.com/game/jp-gamecube/sonic-gems-collection"&gt;$180 CIB for JP&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I suspect this is because the soundtrack for Sonic CD is different for
-each region, JP Sonic Gems Collection carrying the far-superior
-and sought after JP Sonic CD soundtrack. The US Sonic CD soundtrack
-was included in the US and PAL Sonic Gems Collection releases.
-The Japanese Sonic CD soundtrack was &lt;a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2825322428"&gt;released for the first time
-outside Japan in Sonic Origins&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Why shouldn't you buy other regions' games?&lt;/h2&gt;
-&lt;p&gt;The primary reason is if you don't speak the language. Many PAL
-GameCube titles include English as one of the many supported languages,
-but this can't be said for NTSC-J. Most Japanese titles are exclusively
-in Japanese, and I don't speak the language. For some games this is fine,
-not knowing Japanese won't hamper games that aren't text-heavy, but
-RPGs or story-based adventures will impact the fun-factor.
-There are some modifications you can apply to translate the Japanese
-text back into English.&lt;/p&gt;
-&lt;p&gt;Many consoles are region-locked, and thus require
-either purchasing a matching region console, modifying a console to support all regions,
-or dumping ROMs and using emulators (usually with a dedicated device or console modification).
-So you can't use any region's software without at least some extra work
-or hardware. The Nintendo GameCube has three main regions: NTSC-J (Japan), NTSC-M (Americas),
-and PAL (and maybe NTSC-K (Korea)? I cannot tell if this is actually its own region).&lt;/p&gt;
-&lt;p&gt;I've gone the way of modifying my GameCube hardware with a solderless
-mod-chip called the &lt;a href="https://docs.flippydrive.com/"&gt;FlippyDrive&lt;/a&gt;, but other &lt;a href="https://github.com/makeo/PicoLoader"&gt;open source options
-for a similar device are now available&lt;/a&gt;.
-This modification allows running any regions games on any region hardware.&lt;/p&gt;
-&lt;p&gt;If you are using unmodified hardware you may run into issues with
-frame rate if you're mixing software and hardware from an NTSC region (US, JP, KR)
-and the PAL region. I am not super knowledgeable in this area,
-look around for solutions to this issue before buying.&lt;/p&gt;
-&lt;br /&gt;&lt;hr /&gt;&lt;p&gt;Thanks for reading ♥ I would love to hear your thoughts! Contact me via &lt;a href="https://mastodon.social/@sethmlarson"&gt;Mastodon&lt;/a&gt;, &lt;a href="https://bsky.app/profile/sethmlarson.dev"&gt;Bluesky&lt;/a&gt;, or &lt;a href="mailto:sethmichaellarson@gmail.com"&gt;email&lt;/a&gt;. Browse the &lt;a href="https://sethmlarson.dev/"&gt;blog archive&lt;/a&gt;. Check out my &lt;a href="https://sethmlarson.dev/blogroll"&gt;blogroll&lt;/a&gt;.&lt;/p&gt;&lt;hr /&gt;&lt;br /&gt;</description>
-      <guid isPermaLink="false">f1608cf916fd80385f47bcde74f5b3b255b4f1b48d65ffafddf806d26937dcfa</guid>
-      <pubDate>Tue, 01 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>PyCharm: Fine-Tuning SOTA Object Detection Models on Real-World Datasets - Planet Python</title>
-      <link>https://blog.jetbrains.com/pycharm/2026/08/fine-tuning-sota-object-detection-models-on-real-world-datasets/</link>
-      <description>&lt;p&gt;In our &lt;a href="https://blog.jetbrains.com/pycharm/2026/07/best-object-detection-models-for-machine-learning-in-2026/"&gt;previous blog post&lt;/a&gt; in this series, we discussed state-of-the-art models for object detection: the architectures, the theory, and what makes YOLO12, YOLO26, and RF-DETR tick. If you want the theoretical background on these models, start there.&lt;/p&gt;
-&lt;p&gt;This post is the practical follow-up: how to actually &lt;strong&gt;use&lt;/strong&gt; these models, how to &lt;strong&gt;fine-tune&lt;/strong&gt; them on diverse, specialized datasets that look nothing like their training data, and how to &lt;strong&gt;evaluate&lt;/strong&gt; the results – all within PyCharm.&lt;/p&gt;
-&lt;h2 class="wp-block-heading"&gt;Why fine-tune at all?&lt;/h2&gt;
-&lt;p&gt;Every pretrained detector you download was trained on some distribution of images, almost always &lt;a href="https://cocodataset.org/" rel="noopener" target="_blank"&gt;COCO&lt;/a&gt;, which is ~118k training images of everyday scenes containing 80 common object categories (people, cars, dogs, chairs, etc.).&lt;/p&gt;
-&lt;p&gt;Real-world deployment data rarely looks like COCO. Things that object detection might actually be applied to, such as damaged industrial cables, bone fractures on X-rays, or densely stacked soda bottles on a shelf, are:&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;&lt;strong&gt;Out of vocabulary&lt;/strong&gt;: &amp;#8220;Bone fracture&amp;#8221; is not one of COCO&amp;#8217;s 80 classes, so the model literally has no output category for it.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Out of visual distribution&lt;/strong&gt;: X-ray imagery, industrial close-ups, and heavily occluded shelf scenes differ drastically from consumer photos in texture, viewpoint, and object density.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Deploying a detector on off-distribution data therefore requires &lt;strong&gt;fine-tuning&lt;/strong&gt;. But before we break the models, let&amp;#8217;s establish that we get similar results on our hardware to the ones reported by developers.&lt;/p&gt;
-&lt;h2 class="wp-block-heading"&gt;The models&lt;/h2&gt;
-&lt;p&gt;For the purposes of this experiment, we’ll focus on three current SOTA object detection families and examine two sizes of each model:&lt;/p&gt;
-&lt;table class="has-fixed-layout"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;strong&gt;Family&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;Variants&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;Implementation&lt;/strong&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;YOLO12&lt;/td&gt;&lt;td&gt;&lt;code&gt;yolov12n, yolov12m&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://github.com/sunsmarterjie/yolov12" rel="noopener" target="_blank"&gt;Original authors&amp;#8217; repo&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLO26&lt;/td&gt;&lt;td&gt;&lt;code&gt;yolo26n, yolo26m&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://github.com/ultralytics/ultralytics" rel="noopener" target="_blank"&gt;Ultralytics&lt;/a&gt; PyPI package&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;RF-DETR&lt;/td&gt;&lt;td&gt;&lt;code&gt;RFDETRNano, RFDETRBase&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="https://github.com/roboflow/rf-detr" rel="noopener" target="_blank"&gt;Roboflow&lt;/a&gt; PyPI package&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;h3 class="wp-block-heading"&gt;Sanity check: Reproducing COCO &lt;code&gt;val2017&lt;/code&gt; baselines&lt;/h3&gt;
-&lt;p&gt;We’re going to be working with six pretrained checkpoints: Two different sizes of each of the three models. To check that these models are behaving as expected, we evaluated all of them on the full 5,000-image COCO validation dataset (&lt;code&gt;val2017&lt;/code&gt;) to verify the numbers reported in the previous post:&lt;/p&gt;
-&lt;table class="has-fixed-layout"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;strong&gt;Model&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;Params (M)&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;mAP50&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;mAP50-95&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;Latency (ms)&lt;/strong&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;YOLOv12-N&lt;/td&gt;&lt;td&gt;2.55&lt;/td&gt;&lt;td&gt;0.5548&lt;/td&gt;&lt;td&gt;0.4021&lt;/td&gt;&lt;td&gt;23.9&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLO26-N&lt;/td&gt;&lt;td&gt;2.57&lt;/td&gt;&lt;td&gt;0.5498&lt;/td&gt;&lt;td&gt;0.3952&lt;/td&gt;&lt;td&gt;&lt;strong&gt;12.3&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLOv12-M&lt;/td&gt;&lt;td&gt;19.67&lt;/td&gt;&lt;td&gt;0.6953&lt;/td&gt;&lt;td&gt;&lt;strong&gt;0.5259&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;72.4&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLO26-M&lt;/td&gt;&lt;td&gt;21.90&lt;/td&gt;&lt;td&gt;0.6906&lt;/td&gt;&lt;td&gt;0.5181&lt;/td&gt;&lt;td&gt;13.9&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;RF-DETR Nano&lt;/td&gt;&lt;td&gt;30.47&lt;/td&gt;&lt;td&gt;0.6750&lt;/td&gt;&lt;td&gt;0.4835&lt;/td&gt;&lt;td&gt;&lt;strong&gt;12.4&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;RF-DETR Base&lt;/td&gt;&lt;td&gt;32.17&lt;/td&gt;&lt;td&gt;0.7210&lt;/td&gt;&lt;td&gt;&lt;strong&gt;0.5325&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;12.9&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;p&gt;Three things stand out even before we leave COCO behind:&lt;/p&gt;
-&lt;ol class="wp-block-list"&gt;
-&lt;li&gt;&lt;strong&gt;Larger models (mostly) have better performance.&lt;/strong&gt; RF-DETR Base leads (0.5325 mAP50-95), but the medium YOLOs get remarkably close (0.5259 / 0.5181) with ~10M fewer parameters.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;YOLO26&amp;#8217;s NMS-free design pays off in throughput.&lt;/strong&gt; YOLO26-N is the fastest model in the lineup (12.3 ms latency) at essentially the same mAP50-95 as YOLOv12-N, which, despite being the smallest model here, is considerably slower (23.9 ms latency). Attention is expensive. (If you want more detail on the model architectures and how they affect performance, see the &lt;a href="https://blog.jetbrains.com/pycharm/2026/07/best-object-detection-models-for-machine-learning-in-2026/"&gt;previous blog post&lt;/a&gt; in this series.)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;RF-DETR Nano is not &amp;#8220;nano&amp;#8221; by parameter count&lt;/strong&gt; (~30M – more than YOLO26-M), but it is well-optimized: With 12.4 ms latency, it is the second-fastest overall.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Published papers report &lt;em&gt;optimized&lt;/em&gt; inference latency: That is, they measure the model&amp;#8217;s forward pass in isolation, stripped of the surrounding stages of the object detection pipeline. We deliberately skipped that aggressive optimization so our numbers reflect what you&amp;#8217;d actually see when deploying these models.&lt;/p&gt;
-&lt;p&gt;As a result, our latency figures don&amp;#8217;t line up with the benchmarks in the models&amp;#8217; white papers. There are two main reasons for this:&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;&lt;strong&gt;Hardware:&lt;/strong&gt; We used different hardware from the NVIDIA T4 GPU that serves as the &lt;em&gt;de facto&lt;/em&gt; standard in object detection benchmarking.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Unoptimized computation graph:&lt;/strong&gt; We ran the models in their native framework rather than converting them to TensorRT. TensorRT compiles a network into a hardware-specific engine, fusing layers, selecting the fastest kernels for the target GPU, and optionally running in reduced precision. That can cut latency substantially, but the resulting engine is tied to one GPU and requires an extra build step, so it doesn&amp;#8217;t represent how these models perform out of the box.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Accuracy is a different story: While our latencies diverge from the published ones, our mAP50-95 results fall within reasonable noise bounds of the reported figures.&lt;/p&gt;
-&lt;p&gt;Now that we’ve seen what our pretrained models can do on COCO, the dataset they were trained on, let&amp;#8217;s see what happens when they&amp;#8217;re tested off distribution.&lt;/p&gt;
-&lt;h2 class="wp-block-heading"&gt;The datasets&lt;/h2&gt;
-&lt;p&gt;For evaluation, we used &lt;a href="https://rf100-vl.org/" rel="noopener" target="_blank"&gt;RF100-VL&lt;/a&gt;, a large-scale collection of 100 multimodal datasets covering concepts deliberately chosen to be rare in object detection models’ pretraining data. These datasets contain exactly the off-distribution targets we care about. These targets also mirror common real-life applications for object detection, giving us a realistic test of these models’ capabilities out in the wild.&lt;/p&gt;
-&lt;p&gt;We picked three datasets that stress test the models in different ways:&lt;/p&gt;
-&lt;table class="has-fixed-layout"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;strong&gt;Dataset&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;Domain&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;Why it&amp;#8217;s hard&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;Classes&lt;/strong&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;strong&gt;&lt;code&gt;cable-damage&lt;/code&gt;&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Technical/industrial&lt;/td&gt;&lt;td&gt;Fine-grained damage types on visually similar backgrounds&lt;/td&gt;&lt;td&gt;&lt;code&gt;break, thunderbolt&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;strong&gt;&lt;code&gt;bone-fracture&lt;/code&gt;&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Medical (X-ray)&lt;/td&gt;&lt;td&gt;Entirely different imaging modality; subtle features&lt;/td&gt;&lt;td&gt;&lt;code&gt;angle, fracture, line, messed_up_angle&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;strong&gt;&lt;code&gt;soda-bottles&lt;/code&gt;&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Retail&lt;/td&gt;&lt;td&gt;Heavy occlusion, many near-identical instances per image&lt;/td&gt;&lt;td&gt;&lt;code&gt;coca-cola, fanta, sprite&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;h2 class="wp-block-heading"&gt;Tutorial: Fine-tuning all three models in PyCharm 🙂&lt;/h2&gt;
-&lt;h3 class="wp-block-heading"&gt;Step 1: Setting up the project&lt;/h3&gt;
-&lt;p&gt;One of the first challenges we had to overcome in this project was that the three implementations do &lt;strong&gt;not&lt;/strong&gt; share a compatible set of dependencies. In particular, the two different generations of YOLO require different versions of the &lt;code&gt;ultralytics&lt;/code&gt; package. PyCharm offers a clean solution for this: one PyCharm project with three isolated &lt;code&gt;uv&lt;/code&gt; environments – one per model family.&lt;/p&gt;
-&lt;p&gt;We&amp;#8217;ll run our computations on a remote GPU. Configuring a remote interpreter in PyCharm follows the same workflow as a local one: the same dialog and the same dropdown as in the local case. Note that remote interpreters require PyCharm Professional; Community Edition supports local environments only.&lt;/p&gt;
-&lt;p&gt;Firstly, we need to instantiate our three &lt;code&gt;uv&lt;/code&gt; virtual environments via:&lt;br /&gt;&lt;/p&gt;
-&lt;pre class="EnlighterJSRAW"&gt;cd yolov12 &amp;amp;&amp;amp; uv venv .venv --python 3.11 
-cd yolov26 &amp;amp;&amp;amp; uv venv .venv --python 3.11 
-cd rf-detr &amp;amp;&amp;amp; uv venv .venv --python 3.11&lt;/pre&gt;
-&lt;p&gt;Once your uv virtual environments exist, register each one as an existing interpreter. Go to &lt;em&gt;Settings | Python | Interpreter&lt;/em&gt;, click &lt;em&gt;Add Interpreter → Add Local Interpreter&lt;/em&gt;, choose &lt;em&gt;Environment &lt;/em&gt;as &lt;em&gt;Select existing&lt;/em&gt;, and point the interpreter field at that environment&amp;#8217;s &lt;code&gt;bin/python&lt;/code&gt;. PyCharm doesn&amp;#8217;t create anything here, it just picks up the environment &lt;code&gt;uv&lt;/code&gt; already built.&lt;/p&gt;
-&lt;p&gt;Repeat for each environment. From then on, switching is a matter of picking one from the &lt;em&gt;Settings | Python | Interpreter&lt;/em&gt; dropdown, or from the interpreter widget in the bottom-right-hand status bar.&lt;/p&gt;
-&lt;img alt="" class="wp-image-733186" src="https://blog.jetbrains.com/wp-content/uploads/2026/08/uv_virtual_env.png" /&gt;
-&lt;p&gt;You can find the full list of dependencies required for each model in their respective project repositories. You can either install all the projects’ dependencies in PyCharm’s built-in &lt;em&gt;Terminal&lt;/em&gt; tool window or install individual packages using the&lt;em&gt; Python Packages&lt;/em&gt; tool window (including selecting specific versions of packages). You can access both of these tool windows by clicking the relevant icons in the lower left-hand corner of the PyCharm toolbar.&amp;nbsp;&lt;/p&gt;
-&lt;img alt="" class="wp-image-733197" src="https://blog.jetbrains.com/wp-content/uploads/2026/08/Screenshot-2026-08-14-at-16.29.31-1.png" /&gt;
-&lt;p&gt;For a step-by-step guide on setting up the environments for all three models, see our &lt;a href="https://github.com/ArinaBelova/sota-object-detection-tutorial/blob/main/environments_setup.md" rel="noopener" target="_blank"&gt;GitHub implementation&lt;/a&gt; of this tutorial.&lt;/p&gt;
-&lt;h3 class="wp-block-heading"&gt;Step 2: Getting the datasets&lt;/h3&gt;
-&lt;p&gt;To obtain the out-of-COCO-distribution datasets, we can install our datasets via the &lt;code&gt;rf-detr&lt;/code&gt; virtual environment, since it has &lt;code&gt;roboflow&lt;/code&gt; as one of its core dependencies. We then set the Roboflow API key as an environment variable so that it is available to the API when downloading the datasets.&lt;/p&gt;
-&lt;pre class="EnlighterJSRAW"&gt;pip install roboflow
-export ROBOFLOW_API_KEY="your_key_here" # you can get API key here: https://docs.roboflow.com/reference/authentication/authentication/find-your-roboflow-api-key &lt;/pre&gt;
-&lt;p&gt;After setting everything up, now you can run the Python script below to get the three datasets we’re going to use in our tutorial:&lt;/p&gt;
-&lt;pre class="EnlighterJSRAW"&gt;import os
-from roboflow import Roboflow
-api_key = os.environ.get("ROBOFLOW_API_KEY")
-if not api_key:
-    raise RuntimeError("ROBOFLOW_API_KEY is not set")
-DATASETS = [
-    "bone-fracture-7fylg",
-    "cable-damage",
-    "soda-bottles",
-]
-VERSION = 2          # RF100 projects are generally published at version 2
-FORMAT = "yolov8"    # or "coco", "voc", "yolov5"
-rf = Roboflow(api_key=api_key)
-workspace = rf.workspace("rf100")
-for slug in DATASETS:
-    print(f"Downloading {slug} ...")
-    try:
-        project = workspace.project(slug)
-        dataset = project.version(VERSION).download(FORMAT)
-        print(f"  -&gt; {dataset.location}")
-    except Exception as e:
-        print(f"  !! failed: {e}")&lt;/pre&gt;
-&lt;p&gt;This script connects to the Roboflow cloud service via its Python API client and downloads three specified RF100 datasets in YOLOv8 format. It loops through each dataset, reports where successful downloads are saved, and prints an error if any download fails.&lt;/p&gt;
-&lt;h3 class="wp-block-heading"&gt;Step 3: Getting a zero-shot baseline by using pretrained models on custom data&lt;/h3&gt;
-&lt;p&gt;Before fine-tuning, we’re going to evaluate the COCO-pretrained checkpoints directly on our three datasets, to see whether the fine-tuning is actually necessary. The result was unambiguous: &lt;strong&gt;The models predicted essentially nothing.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Zero-shot mAP50-95 on the test splits of our three datasets:&lt;/em&gt;&lt;/p&gt;
-&lt;table class="has-fixed-layout"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;strong&gt;Model&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;&lt;code&gt;cable-damage&lt;/code&gt;&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;&lt;code&gt;bone-fracture&lt;/code&gt;&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;&lt;code&gt;soda-bottles&lt;/code&gt;&lt;/strong&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;RF-DETR Nano&lt;/td&gt;&lt;td&gt;0.0004&lt;/td&gt;&lt;td&gt;0.0000&lt;/td&gt;&lt;td&gt;0.0027&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;RF-DETR Base&lt;/td&gt;&lt;td&gt;0.0005&lt;/td&gt;&lt;td&gt;0.0000&lt;/td&gt;&lt;td&gt;0.0004&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLOv12-N&lt;/td&gt;&lt;td&gt;0.0007&lt;/td&gt;&lt;td&gt;0.0000&lt;/td&gt;&lt;td&gt;0.0266&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLO26-N&lt;/td&gt;&lt;td&gt;0.0000&lt;/td&gt;&lt;td&gt;0.0000&lt;/td&gt;&lt;td&gt;0.0033&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLOv12-M&lt;/td&gt;&lt;td&gt;0.0000&lt;/td&gt;&lt;td&gt;0.0000&lt;/td&gt;&lt;td&gt;0.0160&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLO26-M&lt;/td&gt;&lt;td&gt;0.0000&lt;/td&gt;&lt;td&gt;0.0000&lt;/td&gt;&lt;td&gt;0.0012&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;p&gt;This is to be expected; it’s not a bug! As the models are closed-vocabulary detectors, that is, they have a finite number of predefined target classes, they physically cannot output a class like &lt;code&gt;fracture&lt;/code&gt; that isn&amp;#8217;t in their 80-class COCO head.&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;This is the punchline of this whole post: A model scoring 0.72 mAP50 on COCO scores 0.00 on bone fractures. Pretrained ≠ deployable, even when the model is state of the art. Basic machine learning principles still apply, even in the age of AI!&lt;/p&gt;
-&lt;h3 class="wp-block-heading"&gt;Step 4: Fine-tuning&lt;/h3&gt;
-&lt;p&gt;All models were fine-tuned on a single &lt;strong&gt;A100 GPU&lt;/strong&gt; for &lt;strong&gt;10 epochs&lt;/strong&gt;. We used standard Ultralytics/RF-DETR fine-tuning pipelines in order to fine-tune the models on our three datasets. We fine-tuned a model for each dataset. The full fine-tuning pipeline can be found in &lt;code&gt;finetune_rf100.py&lt;/code&gt; scripts in the project repo, under the folders for each model.&lt;/p&gt;
-&lt;p&gt;You can see the core of the training setup below. Both YOLO and RF-DETR are built on PyTorch under the hood, but the training loops are abstracted behind higher-level library APIs: Ultralytics’ &lt;code&gt;YOLO.train()&lt;/code&gt; for the YOLO models, and RF-DETR’s own &lt;code&gt;train()&lt;/code&gt; functionality.&lt;/p&gt;
-&lt;h4 class="wp-block-heading"&gt;YOLO12 and YOLO26&lt;/h4&gt;
-&lt;pre class="EnlighterJSRAW"&gt;train_model = YOLO(args.model)
-train_res = train_model.train(
-                data=str(yaml_path),
-                epochs=args.epochs,
-                imgsz=args.imgsz,
-                batch=args.batch,
-                device=args.device,
-                project=args.project,
-                name=run_name,
-                exist_ok=True,
-                verbose=False,
-            )&lt;/pre&gt;
-&lt;h4 class="wp-block-heading"&gt;RF-DETR&lt;/h4&gt;
-&lt;pre class="EnlighterJSRAW"&gt;ModelClass().train(
-                dataset_dir=str(coco_dir),
-                output_dir=str(output_dir),
-                epochs=args.epochs,
-                batch_size=args.batch_size,
-                grad_accum_steps=args.grad_accum,
-                lr=args.lr,
-                resolution=resolution,
-                early_stopping=True,
-                checkpoint_interval=1,
-            )&lt;/pre&gt;
-&lt;h3 class="wp-block-heading"&gt;Step 5: Results&lt;/h3&gt;
-&lt;p&gt;Fine-tuning transforms the picture. You can see the results on the test set after training:&lt;/p&gt;
-&lt;img alt="" class="wp-image-733209" src="https://blog.jetbrains.com/wp-content/uploads/2026/08/accuracy_vs_speed.png" /&gt;
-&lt;p&gt;On the left, we have the pretrained models’ results for the COCO validation dataset. As we showed earlier, accuracy (mAP50-95) fell between 0.39 and 0.53, and all models except for YOLOv12-M showed low latency. The fine-tuned models on the right showed a similar range of accuracy for the &lt;code&gt;cable-damage&lt;/code&gt; and &lt;code&gt;soda-bottle&lt;/code&gt; detection tasks, only falling lower for the &lt;code&gt;bone-fracture&lt;/code&gt; task. Moreover, the fine-tuned models were comparable in latency to the pretrained models for their intended tasks, and for YOLOv12-M, they were even faster. This suggests that, after fine-tuning to the target domain, the models achieve performance that’s broadly comparable to the pretrained performance on their original training domain.&lt;/p&gt;
-&lt;p&gt;Let’s now have a closer look at the fine-tuned models’ performance, breaking it down by mAP50 and mAP50-95 for the three separate RF-100 datasets:&lt;/p&gt;
-&lt;table class="has-fixed-layout"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;strong&gt;Model&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;&lt;code&gt;cable-damage&lt;/code&gt;&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;&lt;code&gt;bone-fracture&lt;/code&gt;&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;&lt;code&gt;soda-bottles&lt;/code&gt;&lt;/strong&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;RF-DETR Nano&lt;/td&gt;&lt;td&gt;0.9195 (0.4391)&lt;/td&gt;&lt;td&gt;0.2317 (0.1136)&lt;/td&gt;&lt;td&gt;0.9617 (0.6223)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;RF-DETR Base&lt;/td&gt;&lt;td&gt;&lt;strong&gt;0.9281&lt;/strong&gt; (&lt;strong&gt;0.4456&lt;/strong&gt;)&lt;/td&gt;&lt;td&gt;&lt;strong&gt;0.4474&lt;/strong&gt; (&lt;strong&gt;0.1915&lt;/strong&gt;)&lt;/td&gt;&lt;td&gt;0.9688 (0.6332)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLOv12-N&lt;/td&gt;&lt;td&gt;0.9236 (0.4378)&lt;/td&gt;&lt;td&gt;0.0911 (0.0532)&lt;/td&gt;&lt;td&gt;0.9677 (0.6343)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLO26-N&lt;/td&gt;&lt;td&gt;0.8165 (0.3681)&lt;/td&gt;&lt;td&gt;0.0193 (0.0064)&lt;/td&gt;&lt;td&gt;0.9148 (0.5896)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLOv12-M&lt;/td&gt;&lt;td&gt;0.8266 (0.3649)&lt;/td&gt;&lt;td&gt;0.1500 (0.0635)&lt;/td&gt;&lt;td&gt;&lt;strong&gt;0.9706&lt;/strong&gt; (&lt;strong&gt;0.6422&lt;/strong&gt;)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;YOLO26-M&lt;/td&gt;&lt;td&gt;0.8707 (0.3896)&lt;/td&gt;&lt;td&gt;0.2194 (0.1038)&lt;/td&gt;&lt;td&gt;0.9596 (0.6304)&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;p&gt;What the numbers say:&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;&lt;strong&gt;The &lt;code&gt;soda-bottles&lt;/code&gt; target is the easy win.&lt;/strong&gt; Every model lands in the 0.91–0.97 mAP50 band. This is likely due to the fact that the domain (consumer products in photos) is visually close to existing classes in COCO, so only the vocabulary was new. Interestingly, the attention model family does great here, with YOLOv12-M taking the top spot (0.6422 mAP50-95).&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;cable-damage&lt;/code&gt;: Detection is easy, but localization is hard.&lt;/strong&gt; mAP50 reaches 0.93, but mAP50-95 tops out at 0.446. It appears that the models find the damage reliably, yet they struggle to box thin, elongated defects precisely. If your application needs tight boxes at high IoU, this gap would be a significant issue.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;bone-fracture&lt;/code&gt; remains genuinely hard.&lt;/strong&gt; The best model (RF-DETR Base, 0.447 mAP50) is far from production-ready, and the performance spread across models is huge. The modality shift from photos to X-rays means the pretrained backbone features transfer poorly. The different image modality and small, sometimes almost indistinguishable bone fractures make the detection task way harder than the one employed on common objects identification. This is the dataset that would most benefit from domain-specific pretraining, more data, or longer fine-tuning.&amp;nbsp;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;RF-DETR Base is the most consistent performer&lt;/strong&gt;, winning on two out of three datasets and challenging seriously for the third. The DETR-style architecture seems to transfer more robustly to unfamiliar domains.&amp;nbsp;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 class="wp-block-heading"&gt;Qualitative results&lt;/h3&gt;
-&lt;p&gt;To visually assess how these models perform, we can overlay the predicted bounding boxes on the images. Let&amp;#8217;s look at the objects our models detected in six random images per class:&lt;/p&gt;
-&lt;img alt="" class="wp-image-733331" src="https://blog.jetbrains.com/wp-content/uploads/2026/08/cable-damage_very_low_res.png" /&gt;
-&lt;img alt="" class="wp-image-733256" src="https://blog.jetbrains.com/wp-content/uploads/2026/08/bone-fracture-7fylg.png" /&gt;
-&lt;img alt="" class="wp-image-733320" src="https://blog.jetbrains.com/wp-content/uploads/2026/08/soda-bottles_very_low_res.png" /&gt;
-&lt;p&gt;We can see this confirms the accuracy values we saw above: The noisy images of soda bottles in fridges are labeled accurately, with tight bounding boxes for each object. The cable damage is identified less consistently, with some models failing to find the damage altogether, and others creating unnecessarily large bounding boxes. Finally, the images of broken bones contrast sharply with the other two, with less than half of the images having any break identified, and different models identifying different potential breakage points.&lt;/p&gt;
-&lt;h2 class="wp-block-heading"&gt;Conclusions&amp;nbsp;&lt;/h2&gt;
-&lt;p&gt;Pretrained object detectors are powerful, based on advancements in model architecture over the past five years, but as we’ve seen here, pretrained does not necessarily mean deployable. All six models performed well on COCO, yet when we applied those same checkpoints directly to our specialized datasets, their performance fell close to zero. However, fine-tuning completely changed that picture.&lt;/p&gt;
-&lt;p&gt;After only 10 epochs of fine-tuning, all three model families were able to adapt well to both the &lt;code&gt;cable-damage&lt;/code&gt; and &lt;code&gt;soda-bottle&lt;/code&gt; datasets. As we noted, the &lt;code&gt;soda-bottle&lt;/code&gt; task was particularly transferable, likely because it contained objects similar to those contained in COCO. &lt;code&gt;cable-damage&lt;/code&gt; was also detected relatively reliably, although the larger gap between mAP50 and mAP50-95 showed that precisely locating these tiny defects was still challenging for all of the models. However, &lt;code&gt;bone-fracture&lt;/code&gt; was a completely different story, likely because moving from the sort of natural images contained in COCO to X-rays is a much larger domain shift. While RF-DETR handled this jump best, even its performance shows the limits of fine-tuning, and there are times when you might need to consider more data, longer training, or even domain-specific pretraining.&lt;/p&gt;
-&lt;p&gt;The broader takeaway is that there is no single “best” detector: It is dependent on the task. Model size, latency requirements, licensing restrictions, and most importantly, the similarity between the model’s pretraining data and your target domain all affect the outcome. It is important to refrain from unquestioningly trusting the numbers reported by model providers and explore the fit of a specific model for your own particular task.&lt;/p&gt;
-&lt;h2 class="wp-block-heading"&gt;Get started with PyCharm today&lt;/h2&gt;
-&lt;p&gt;In this post, we’ve gone from validating pretrained YOLO12, YOLO26, and RF-DETR checkpoints on COCO to testing them zero-shot on specialized data, to fine-tuning them on three very different object detection tasks, and then finally, comparing the resulting accuracy and latency. Along the way, we’ve seen how PyCharm can help manage the practical side of a project like this, where multiple model families require different dependency sets and training environments.&lt;/p&gt;
-&lt;p&gt;PyCharm helps you keep these workflows together in a single project while using isolated Python environments for each model family. Its interpreter management, built-in terminal, &lt;em&gt;Python Packages&lt;/em&gt; tool window, and support for remote development make it easier to move between environments and run training on remote GPU hardware without having to manage each part of this workflow separately.&lt;/p&gt;
-&lt;p&gt;If you’d like to try these experiments yourself, maybe look into fine-tuning these models for your own specific object detection use case! PyCharm is available to download and try. You can use the accompanying project code to reproduce our COCO baselines, download the RF100 datasets, fine-tune the models, and evaluate them using the held-out test splits.&lt;/p&gt;
-&lt;p&gt;You can find the &lt;a href="https://github.com/ArinaBelova/sota-object-detection-tutorial" rel="noopener" target="_blank"&gt;full code for this project on GitHub&lt;/a&gt;. And if you’d like to learn more about object detection, including the architectures behind the models we used in this post, check out the &lt;a href="https://blog.jetbrains.com/pycharm/2026/07/best-object-detection-models-for-machine-learning-in-2026/"&gt;previous post in this series&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;</description>
-      <guid isPermaLink="false">0f95c06a91632c29a1454af2faef51411eb393e07758ee73d37c7fe3577e71af</guid>
-      <pubDate>Mon, 31 Aug 2026 13:50:29 +0000</pubDate>
-    </item>
-    <item>
-      <title>Graham Dumpleton: Introducing wrapture - Planet Python</title>
-      <link>https://grahamdumpleton.me/posts/2026/08/introducing-wrapture/</link>
-      <description>&lt;p&gt;For the best part of two decades, through &lt;a href="https://github.com/GrahamDumpleton/wrapt"&gt;wrapt&lt;/a&gt;, I have been dealing with the mechanics of monkey patching in Python. Anyone who has followed wrapt will know I am quite pedantic about correctness, to the point of caring whether a wrapper preserves every last introspectable detail of the thing it wraps. For much of that time I have wanted the same standard from the tools I use when testing code, and &lt;code&gt;unittest.mock&lt;/code&gt;, which does what it does well enough, was never designed to give it. A fabricated &lt;code&gt;Mock&lt;/code&gt; answers every method call and verifies nothing. A patched call records a flat list of calls, with no return values and no sense of what was called from what. The calls an object makes to itself are invisible, because the substitute never runs the real code at all. What I want a test to be sure of, that the right calls happened, in the right order, with the real code actually running, sits just outside what substitution can express.&lt;/p&gt;
-&lt;p&gt;Seeing the real calls as they happen, with the real code still doing the work, was also something I had already spent years on for a quite different purpose. I was the original author of the New Relic Python agent, written while I worked there, and that left me with a lasting interest in instrumenting Python programs. Attaching observation to code you do not control, recording what flows through it, and doing so without disturbing the program being watched, is a problem I have never really stopped thinking about.&lt;/p&gt;
-&lt;p&gt;Testing and tracing look like different problems, but from where I sat they wanted the same thing, and I had long believed that wrapt's approach of wrapping real code rather than replacing it could serve both. wrapture (the name being &lt;code&gt;wrapt&lt;/code&gt; plus &lt;code&gt;capture&lt;/code&gt;) is me finally getting around to finding out whether that belief held up.&lt;/p&gt;
-&lt;h2&gt;Wrap anything, capture everything&lt;/h2&gt;
-&lt;p&gt;The one idea everything in wrapture sits on is to wrap rather than replace. A binding names a location in code, a method of a class or a function in a module, and when applied installs a wrapt wrapper around the real callable. Unless you tell it otherwise the wrapper is transparent. The real code runs, with wrapture in a position to watch the call, change it, or answer it instead.&lt;/p&gt;
-&lt;p&gt;Take a small call graph where an order service charges a payment gateway and then records the result in a ledger:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-python"&gt;import wrapture
-class Gateway:
-    def charge(self, amount, currency=&amp;quot;USD&amp;quot;):
-        return {&amp;quot;id&amp;quot;: f&amp;quot;ch_{amount}&amp;quot;, &amp;quot;amount&amp;quot;: amount}
-class Ledger:
-    def record(self, entry):
-        return f&amp;quot;led_{entry['id']}&amp;quot;
-class OrderService:
-    def __init__(self):
-        self.gateway = Gateway()
-        self.ledger = Ledger()
-    def place(self, amount):
-        result = self.gateway.charge(amount)
-        self.ledger.record(result)
-        return result
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;None of these classes import wrapture or know they are about to be observed. Bindings are created by naming the methods, and a timeline opens a recording scope in which every call through them lands on a tape:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-python"&gt;place = wrapture.binding(OrderService, &amp;quot;place&amp;quot;)
-charge = wrapture.binding(Gateway, &amp;quot;charge&amp;quot;)
-record = wrapture.binding(Ledger, &amp;quot;record&amp;quot;)
-with wrapture.timeline(place, charge, record) as tape:
-    OrderService().place(500)
-print(tape.tree())
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Running this the output is:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;__main__:OrderService.place(amount=500)  -&amp;gt; {'id': 'ch_500', 'amount': 500}
-  __main__:Gateway.charge(amount=500, currency='USD')  -&amp;gt; {'id': 'ch_500', 'amount': 500}
-  __main__:Ledger.record(entry={'id': 'ch_500', 'amount': 500})  -&amp;gt; 'led_ch_500'
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;That is the call graph as it actually ran. The arguments are normalised against the real signatures (so &lt;code&gt;charge(500)&lt;/code&gt; and &lt;code&gt;charge(amount=500)&lt;/code&gt; look the same), the return values are the real ones, and the nesting comes from what really called what. The &lt;code&gt;tape.tree()&lt;/code&gt; call is a convenience for debugging and for demonstrations like this one; in a test you would query the tape instead, and outside of a test the events would be going to a sink, which I will come to.&lt;/p&gt;
-&lt;p&gt;The same bindings intervene as well as observe. The real method can be stubbed out, made to fail, or left running while one thing about the call is changed on the way in or out:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-python"&gt;gateway = Gateway()
-with wrapture.binding(Gateway, &amp;quot;charge&amp;quot;).on_call.raises(TimeoutError(&amp;quot;down&amp;quot;)):
-    gateway.charge(500)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Inside the block the call raises &lt;code&gt;TimeoutError&lt;/code&gt;, and after the block exits the original method is back exactly as it was.&lt;/p&gt;
-&lt;h2&gt;Three uses of one mechanism&lt;/h2&gt;
-&lt;p&gt;That is the whole mechanism. What makes it interesting is that it serves three purposes which are usually handled by three different tools.&lt;/p&gt;
-&lt;p&gt;The first is plain monkey patching. wrapt's &lt;code&gt;wrap_object()&lt;/code&gt; has always been able to patch a target, but it leaves the bookkeeping to you. wrapture adds a lifecycle and a vocabulary over the top of it. A binding declares a target without touching it, &lt;code&gt;apply()&lt;/code&gt; installs the patch, &lt;code&gt;remove()&lt;/code&gt; restores the original, &lt;code&gt;suspend()&lt;/code&gt; makes it inert in place, and a group of bindings applies and removes as one unit. Behaviour is configured on the binding, with &lt;code&gt;returns()&lt;/code&gt;, &lt;code&gt;raises()&lt;/code&gt;, &lt;code&gt;transforms_args()&lt;/code&gt;, &lt;code&gt;transforms_result()&lt;/code&gt; and a few others, and can be scripted to change over time, so &amp;quot;succeed twice, then time out&amp;quot; is three lines rather than a hand-written counter. This layer is useful on its own with nothing else switched on.&lt;/p&gt;
-&lt;p&gt;The second is unit testing, which is where the recording comes in. Because the real code runs, a test can assert on how calls actually flowed through it, and the interesting cases are the error paths. Inject a failure at the gateway, then check that the ledger was never written:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-python"&gt;with wrapture.timeline(place, charge, record) as tape:
-    charge.on_call.raises(TimeoutError(&amp;quot;down&amp;quot;))
-    try:
-        OrderService().place(500)
-    except TimeoutError:
-        pass
-    record.events.assert_never()
-    print(tape.tree())
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;With the assertion passing, the tree shows where the failure was injected and how it propagated:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;__main__:OrderService.place(amount=500)  !! TimeoutError
-  __main__:Gateway.charge(amount=500, currency='USD')  !! TimeoutError (injected)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;When a test must supply a stand-in, because the code under test receives a collaborator rather than importing it, wrapture provides &lt;code&gt;stub()&lt;/code&gt; for a callable and &lt;code&gt;mock(Spec)&lt;/code&gt; for a whole object, and these record onto the same tape as everything else. Both are strict: signatures are checked and nothing is invented on first touch. There is deliberately no spec-less &lt;code&gt;Mock()&lt;/code&gt; equivalent, and the &lt;a href="https://wrapture.readthedocs.io/en/latest/coming-from-mock.html"&gt;comparison with unittest.mock&lt;/a&gt; in the documentation explains why, alongside a mapping of each mock idiom to its wrapture counterpart. An opt-in pytest plugin sweeps each test for patches left applied and attaches recordings to failure reports.&lt;/p&gt;
-&lt;p&gt;The third use is ad-hoc tracing of a running application, including one you cannot modify or redeploy. Take the bindings, drop the test around them, and the only remaining question is where the events go. A sink answers that. In practice this is done with a &lt;code&gt;wrapture.toml&lt;/code&gt; file naming the targets and the sink, and no code at all. Here is one for a slightly bigger version of the shop above, where the gateway declines some cards and the order service logs a warning when it does:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-toml"&gt;[[observe]]
-target = &amp;quot;shop:OrderService&amp;quot;
-name = &amp;quot;place&amp;quot;
-[[observe]]
-target = &amp;quot;shop:PaymentGateway&amp;quot;
-match = &amp;quot;*&amp;quot;
-exclude = &amp;quot;_*&amp;quot;
-[[observe]]
-target = &amp;quot;shop:Ledger&amp;quot;
-name = &amp;quot;record&amp;quot;
-[[log]]
-name = &amp;quot;shop.*&amp;quot;
-[[sink]]
-type = &amp;quot;printer&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Running the program as &lt;code&gt;python -m wrapture main.py&lt;/code&gt; applies the config before the program starts, so the patches are in place before the application imports anything, and the printer sink writes the trace to stderr as it happens:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;shop:OrderService.place(order_id='order-1', amount=30, card='5100-0010')
-  shop:PaymentGateway.charge(amount=30, card='5100-0010')
-  shop:PaymentGateway.charge -&amp;gt; 'ch_30' [7us]
-  shop:Ledger.record(order_id='order-1', amount=30)
-  shop:Ledger.record -&amp;gt; 'ledger:order-1:30' [5us]
-shop:OrderService.place -&amp;gt; 'ch_30' [234us]
-shop:OrderService.place(order_id='order-2', amount=240, card='5100-0020')
-  shop:PaymentGateway.charge(amount=240, card='5100-0020')
-  shop:PaymentGateway.charge -&amp;gt; 'ch_240' [4us]
-  shop:Ledger.record(order_id='order-2', amount=240)
-  shop:Ledger.record -&amp;gt; 'ledger:order-2:240' [3us]
-shop:OrderService.place -&amp;gt; 'ch_240' [105us]
-shop:OrderService.place(order_id='order-3', amount=75, card='4000-0030')
-  shop:PaymentGateway.charge(amount=75, card='4000-0030')
-  shop:PaymentGateway.charge !! PaymentDeclinedError [4us]
-  log shop.orders WARNING 'order order-3 declined'
-shop:OrderService.place !! PaymentDeclinedError [260us]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Unlike the tidy reconstruction from &lt;code&gt;tape.tree()&lt;/code&gt;, this is the live view, with an opening line as each call begins and a closing line with the outcome and how long it took. The &lt;code&gt;[[log]]&lt;/code&gt; entry captures the application's ordinary &lt;code&gt;logging&lt;/code&gt; calls as events too, so the warning appears nested inside the call that logged it rather than somewhere in a separate log file. With &lt;a href="https://github.com/GrahamDumpleton/autowrapt"&gt;autowrapt&lt;/a&gt; installed, even the launcher is unnecessary: &lt;code&gt;AUTOWRAPT_BOOTSTRAP=wrapture&lt;/code&gt; in the environment applies the same config at interpreter startup, so the program runs with plain &lt;code&gt;python&lt;/code&gt;. That covers the case where something else owns the command line, like a container entry point or a WSGI server.&lt;/p&gt;
-&lt;p&gt;The printer is the simplest sink. Others stream events to disk as JSON lines, count without retaining, and compose with fan-out, sampling and filtering. Sitting on top of the tracing layer is &lt;a href="https://wrapture.readthedocs.io/en/latest/otel-export.html"&gt;OpenTelemetry export&lt;/a&gt;: with the &lt;code&gt;wrapture[otel]&lt;/code&gt; extra installed, one &lt;code&gt;[otel]&lt;/code&gt; table in the config sends the same events to any OTLP backend as spans, metrics and correlated logs. Every tree of events carries a W3C trace id, and the id arrives and leaves in &lt;code&gt;traceparent&lt;/code&gt; headers, so two services both observed by wrapture join up as one distributed trace without either of them calling an OpenTelemetry API.&lt;/p&gt;
-&lt;p&gt;The point I want to land is that these are layers of one mechanism and not separate products. The binding vocabulary that stubs a method in a test is the same one that traces it in production, and the config that names methods for a printed call tree is the config that exports spans. What starts as a monkey patch or a test assertion can grow into observability without the code being rewritten along the way.&lt;/p&gt;
-&lt;h2&gt;Where it sits beside what already exists&lt;/h2&gt;
-&lt;p&gt;Part of why I built this is that nothing I could find did all of it. &lt;code&gt;unittest.mock&lt;/code&gt; records a flat call list with no nesting and no return values, and a patched call returns a fabricated &lt;code&gt;MagicMock&lt;/code&gt; rather than running the real code. Span assertion tools such as OpenTelemetry's &lt;code&gt;InMemorySpanExporter&lt;/code&gt; require the code to already be instrumented. Tools built on &lt;code&gt;sys.settrace&lt;/code&gt; give you a firehose with no assertion API. APM agents are all-or-nothing products rather than toolkits, and their auto-instrumentation only covers the frameworks they already know about. wrapture needs none of that. You point at your own methods by name and a trace appears, and the same pointing is how it lands in a test, a terminal, or a backend.&lt;/p&gt;
-&lt;p&gt;Just as important is what it is not. It is not a fabrication tool, and &lt;code&gt;unittest.mock&lt;/code&gt; remains the right thing for invented objects. It is not a production APM, although it is a toolkit that APM-like things could be built on. And it is not an OpenTelemetry competitor; it emits to OpenTelemetry rather than trying to replace it.&lt;/p&gt;
-&lt;h2&gt;Pre-built instrumentation&lt;/h2&gt;
-&lt;p&gt;Pointing at your own methods is the core of wrapture, but for common third-party packages the pointing has already been done. The companion &lt;a href="https://github.com/GrahamDumpleton/wrapture-instrumentation"&gt;wrapture-instrumentation&lt;/a&gt; package provides ready-made instrumentation, with Flask and Jinja2 covered so far. Each records a request or a template render as one structured tree, and enabling one is an &lt;code&gt;[[instrument]]&lt;/code&gt; entry in &lt;code&gt;wrapture.toml&lt;/code&gt; naming the target. Installing the package brings in wrapture and nothing else; the instrumentation for a package you do not have is inert. It is being built target by target, and the &lt;a href="https://wrapture.readthedocs.io/en/latest/instrumentation-packages.html"&gt;instrumentation packages&lt;/a&gt; guide describes how to write one for a package not yet covered.&lt;/p&gt;
-&lt;h2&gt;Built with AI, on purpose&lt;/h2&gt;
-&lt;p&gt;Every line of code and documentation in wrapture was written by an AI assistant working under my direction. I want to be upfront about that, and equally upfront about what it was not. This was not vibe coding, where a one-shot prompt produces a pile of generated code and the person driving hopes for the best because they lack the knowledge to judge what came back. Vibe coding has earned its bad reputation. I engineered wrapture carefully from the start. I have spent a long time in this particular corner of Python and knew exactly what the result needed to be, and the AI was the means of producing it rather than the source of the design.&lt;/p&gt;
-&lt;p&gt;The experiment had two halves. The first was whether an idea I had carried around for years actually held up once built. The second, and just as much the point, was whether a library of this kind could be produced this way, with an AI doing the writing and me doing the directing, to a standard I would be happy to put my name to.&lt;/p&gt;
-&lt;p&gt;The process is what makes the result worth trusting or not, so it deserves describing. The work started well before any code, with days spent on design documents setting out the goals, the scope, the shape of the API and the layers it would be built in, which the AI and I argued over before implementation began. From there it proceeded in layers, each one specified, discussed, implemented, tested and documented before the next began. Documentation grew with the code rather than after it, and every example in the docs runs as a doctest, so the docs are continually proven against the implementation. Writing them repeatedly exposed designs that read worse than they demoed. The test suite runs against every supported Python version, including the free-threaded builds, on every change. The overhead of Python instrumentation is the usual objection to it, so the recording path was also put through a performance pass, with the cost of a call observed and exported through wrapture measured against the same call instrumented directly with the OpenTelemetry SDK and in the style of its instrumentation packages. The result was comparable per call, with the figures in the &lt;a href="https://wrapture.readthedocs.io/en/latest/otel-export.html#what-it-costs"&gt;OpenTelemetry export&lt;/a&gt; guide.&lt;/p&gt;
-&lt;p&gt;The step I would most recommend to anyone attempting something similar came late. I took the unit test suites of well-known Python packages that lean heavily on &lt;code&gt;unittest.mock&lt;/code&gt; and had the AI replicate their tests using wrapture instead, side by side with the originals. Every point of friction became a decision: sometimes a documented position on why wrapture deliberately differs, and sometimes a missing feature that got specified, built and documented like everything else. Several pieces of wrapture exist only because a real test suite could not be expressed cleanly without them.&lt;/p&gt;
-&lt;p&gt;Throughout, the division of labour was consistent. The AI wrote the code, the tests and the prose. I set the direction, made the design calls, reviewed what came back, and sent plenty of it back. My experience with wrapt and with Python's darker corners is all through the result, in what was asked for as much as in what was refused.&lt;/p&gt;
-&lt;p&gt;The first commit was in the middle of August and the current release is the eleventh alpha, so this all happened in a bit over two weeks. In that time it accumulated over 1000 tests and over 150 pages of documentation. The documentation is admittedly quite dense in places and needs some work still, but it is complete in the sense that every part of the package is covered. One thing a brand new library has over an old one is coherence. Mature packages accrete features one release at a time, and there is never a moment when the whole API can be redesigned to match what was learned along the way. Because wrapture arrived in a compressed period with the whole design still in view, when validation showed a design could be better it was redesigned rather than worked around.&lt;/p&gt;
-&lt;p&gt;I know some people are firmly opposed to using AI-written software. If that is you, I understand, and I am not going to argue with your position. It is a reasonable one to hold, and this post exists so you can make the call with the facts in hand rather than discover them later. If AI involvement rules wrapture out for you then wrapture is not for you, and that does not worry me one bit. This has been about finding out whether the process works, and I now have my answer to that. The longer version of all this is on the &lt;a href="https://wrapture.readthedocs.io/en/latest/how-wrapture-was-built.html"&gt;how wrapture was built&lt;/a&gt; page in the documentation.&lt;/p&gt;
-&lt;h2&gt;What's next&lt;/h2&gt;
-&lt;p&gt;wrapture is in alpha, with pre-releases on &lt;a href="https://pypi.org/project/wrapture/"&gt;PyPI&lt;/a&gt;. Until 1.0.0 is final a plain &lt;code&gt;pip install wrapture&lt;/code&gt; picks up the latest pre-release, so there is no need to pin a version. It requires Python 3.12 or later and wrapt 2.4.0 or later. The API is complete for the three uses described above and I am not expecting it to break, so code written against it today should carry forward to 1.0.0.&lt;/p&gt;
-&lt;p&gt;What it needs now is use. &lt;code&gt;unittest.mock&lt;/code&gt; and OpenTelemetry's own instrumentation are the established tools for the two halves of what wrapture does, and the open question is whether an alternative that does both from one mechanism is something people want. Reports of it working, or not, on real code, and of what confused or was missing, are what will decide whether anything changes before a beta. They go to the &lt;a href="https://github.com/GrahamDumpleton/wrapture/issues"&gt;issue tracker&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;To be clear, wrapture was never premised on anyone else using it. I built it because I wanted to see it exist, not because I had identified a gap in the market. If people find it useful and pick it up, that is great, and I will aim to support it. If there is no interest, I will keep treating it as an experiment and work on it for my own purposes. Either way the questions got answered, and getting them answered was the point.&lt;/p&gt;
-&lt;p&gt;There is a lot more in wrapture than fits in an introduction, and I expect to write about specific parts of it in follow-up posts, starting with how it can be used for unit testing, and then tracing a Flask application through to an OpenTelemetry backend without touching the application code. For now the &lt;a href="https://wrapture.readthedocs.io/en/latest/getting-started.html"&gt;getting started&lt;/a&gt; page is the place to begin.&lt;/p&gt;</description>
-      <guid isPermaLink="false">fcfae531909f877e4e581a3482254130d66a364f4ad09d3275b956953d7a96ae</guid>
-      <pubDate>Mon, 31 Aug 2026 13:39:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Django Weblog: Django Developers Survey 2026 results - Planet Python</title>
-      <link>https://www.djangoproject.com/weblog/2026/aug/28/django-developers-survey-2026-results/</link>
-      <description>&lt;p&gt;The results from the &lt;a href="https://lp.jetbrains.com/django-developer-survey-2026/"&gt;2026 Django Developers Survey&lt;/a&gt; are now available. This is the fifth annual report conducted from May to July 2026 by the &lt;a href="https://www.djangoproject.com/foundation/"&gt;Django Software Foundation&lt;/a&gt; in collaboration with &lt;a href="https://www.jetbrains.com/pycharm/"&gt;JetBrains PyCharm&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The full report includes infographics, quotes, and dedicated sections so you can easily navigate the results. There is also a &lt;a href="https://blog.jetbrains.com/pycharm/2026/08/the-state-of-django-2026-boring-is-so-back/"&gt;The State of Django 2026: Boring is so back&lt;/a&gt; blog post highlighting key Django trends in 2026 and actionable ideas for your own Django development.&lt;/p&gt;
-&lt;p&gt;The &lt;a href="https://djangochat.com/episodes/django-developers-survey-2026"&gt;Django Chat podcast&lt;/a&gt; also covers the survey in a special summer episode, from Django 6.1 and HTMX to async, AI, deployment, testing, and Python tooling.&lt;/p&gt;</description>
-      <guid isPermaLink="false">7120680d54d557f47c08bb5e300ad1cd4d7e5012e5f77356fc722420323a4f4c</guid>
-      <pubDate>Fri, 28 Aug 2026 14:55:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>PyCharm: Security Incident Affecting JetBrains Cadence - Planet Python</title>
-      <link>https://blog.jetbrains.com/pycharm/2026/08/cadence-security-incident-august-2026/</link>
-      <description>&lt;p&gt;We are investigating a security incident affecting JetBrains Cadence. Cadence is a JetBrains-hosted service that integrates with PyCharm through an optional plugin, and lets you run your projects on cloud compute resources. Our investigation has confirmed unauthorized access to the service and the exposure of customer data associated with its use.&lt;/p&gt;
-&lt;p&gt;We have contacted affected users directly and have taken steps to contain the incident.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;This post provides the latest information about the incident, its potential impact, and the actions we recommend Cadence users take. We will update it as our investigation progresses and additional information becomes available.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Last updated: &lt;/strong&gt;August 28, 2026, 11:50 CEST&lt;/p&gt;
-&lt;h2 class="wp-block-heading"&gt;August 28, 2026, 11:50 CEST&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://blog.jetbrains.com/pycharm/2025/06/training-your-ml-models-with-cadence/"&gt;Cadence&lt;/a&gt; is a JetBrains-hosted service integrated with PyCharm through an optional plugin, that lets you run your projects on cloud compute resources. Cadence uses JetBrains TeamCity to orchestrate this work. We recently disclosed &lt;a href="https://blog.jetbrains.com/teamcity/2026/07/cve-2026-63077/"&gt;CVE-2026-63077&lt;/a&gt;, a critical vulnerability in TeamCity that can allow an unauthenticated attacker to execute arbitrary commands on a vulnerable server.&lt;/p&gt;
-&lt;p&gt;We have since confirmed the Cadence environment was vulnerable to CVE-2026-63077 and was exploited through this vulnerability.&lt;/p&gt;
-&lt;p&gt;Cadence users should immediately revoke or rotate all credentials and secrets that may have been used to run their Cadence executions. They should also treat all executions, including their inputs and outputs in your Cadence project, as potentially untrusted.&lt;/p&gt;
-&lt;h3 class="wp-block-heading"&gt;&lt;strong&gt;Actions required immediately&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;We strongly recommend that Cadence users:&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;Revoke and rotate all credentials and secrets that may have been used to run Cadence executions.&lt;/li&gt;
-&lt;li&gt;Review connected systems for suspicious activity, particularly AWS accounts, S3 buckets, deployment environments, package/container registries, and other systems accessible using credentials mentioned above.&lt;/li&gt;
-&lt;li&gt;Review source code repositories for unauthorized changes made during the affected period.&lt;/li&gt;
-&lt;li&gt;Review any source code or project files synchronized to Cadence from PyCharm and rotate any credentials, tokens, or other sensitive information contained within them.&lt;/li&gt;
-&lt;li&gt;Treat all executions, including their inputs and outputs in your Cadence project, as potentially untrusted.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Cadence users can contact us to request an inventory of the credentials and secrets associated with their Cadence usage. This may help users identify which credentials need to be revoked or rotated, but the inventory should not be considered exhaustive.&lt;/p&gt;
-&lt;p&gt;We have collated a list of Indicators of Compromise (IoCs) below. These indicators are not exhaustive, and the absence of these indicators does not confirm that an account or system was unaffected:&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;Activity occurring from August 8, 2026, onwards, particularly authentication or activity using credentials previously stored in or accessible through Cadence.&lt;/li&gt;
-&lt;li&gt;IP addresses associated with observed exploitation activity:
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;150.109.230.104&lt;/li&gt;
-&lt;li&gt;43.153.227.206&lt;/li&gt;
-&lt;li&gt;62.210.127.48&lt;/li&gt;
-&lt;li&gt;210.247.242.190&lt;/li&gt;
-&lt;li&gt;15.235.225.205&lt;/li&gt;
-&lt;li&gt;152.233.30.18&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Authentication or other activity from unexpected IP addresses or locations.&lt;/li&gt;
-&lt;li&gt;Unexpected repository clones or downloads, and unexpected commits to repositories.&lt;/li&gt;
-&lt;li&gt;Changes to repository secrets, webhooks, collaborators, or permissions.&lt;/li&gt;
-&lt;li&gt;New or modified personal access tokens, API tokens, or SSH keys in external services.&lt;/li&gt;
-&lt;li&gt;New service accounts created in external services.&lt;/li&gt;
-&lt;li&gt;Unexpected changes to cloud IAM roles, policies, or permissions.&lt;/li&gt;
-&lt;li&gt;Unexpected access to cloud storage, including S3 buckets and objects, in services such as AWS and Google Cloud.&lt;/li&gt;
-&lt;li&gt;Unexpected publication or modification of packages or releases.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 class="wp-block-heading"&gt;&lt;strong&gt;Affected server&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;We have confirmed that the following Cadence server was successfully exploited: &lt;code&gt;api.cadence.jetbrains.com&lt;/code&gt;.&lt;/p&gt;
-&lt;h3 class="wp-block-heading"&gt;&lt;strong&gt;Affected period&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;August 8, 2026, to August 24, 2026.&lt;/p&gt;
-&lt;h3 class="wp-block-heading"&gt;&lt;strong&gt;What happened&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;The Cadence server used TeamCity to orchestrate workloads and was vulnerable to CVE-2026-63077. Threat actors exploited the vulnerability and gained unauthorized access to the affected Cadence environments, with activity identified from August 8, 2026. We discovered the exploitation on August 23, 2026, and took the affected server offline on August 24, 2026, while we continued our investigation.&lt;/p&gt;
-&lt;h3 class="wp-block-heading"&gt;&lt;strong&gt;What we know&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;Our investigation is ongoing, but we have confirmed that the threat actors:&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;Accessed personal data and extracted it from the affected environment. Confirmed affected personal data includes usernames, real names, email addresses, last-login timestamps, and last accessed IP addresses.&lt;/li&gt;
-&lt;li&gt;Compromised a full backup of the Cadence server dating from 2024. This means credentials, configuration, artifacts, logs, or other data present in that backup must also be treated as potentially exposed.&lt;/li&gt;
-&lt;li&gt;Compromised multiple AWS IAM users and associated credentials/secrets used with Cadence, including IAM users belonging to JetBrains employees who used the service. These credentials were present in the compromised 2024 backup.&lt;/li&gt;
-&lt;li&gt;Accessed files stored in S3 buckets within JetBrains AWS accounts used by Cadence. We are still determining the full scope of the data accessed. We do not currently know whether the threat actors accessed storage buckets in customer accounts. However, some users may have configured Cadence to access their own storage buckets, and the credentials used for those connections may have also been exposed.&lt;/li&gt;
-&lt;li&gt;May have accessed source code synchronized from PyCharm projects to the affected server. If you used PyCharm to upload or synchronize project files for execution in Cadence, you should treat that code, and any credentials or configuration contained within it, as potentially compromised.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The likely consequences of the personal data exposure include an increased risk of targeted phishing, social engineering, impersonation, and other unsolicited or malicious communications using the affected names and email addresses.&lt;/p&gt;
-&lt;p&gt;As the threat actors gained access to the Cadence server, any credentials or secrets stored in Cadence, contained in the compromised backup, or made available to executions on the affected server should be considered compromised and must be revoked or rotated.&lt;/p&gt;
-&lt;p&gt;This includes but is not limited to:&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;Cloud credentials, including AWS, Azure, and Google Cloud.&lt;/li&gt;
-&lt;li&gt;Source control credentials and tokens, including GitHub, GitLab, and Bitbucket.&lt;/li&gt;
-&lt;li&gt;Package repository credentials, including npm, Maven, NuGet, PyPI, and similar services.&lt;/li&gt;
-&lt;li&gt;Container registry credentials, including Docker Hub, ECR, GCR, ACR, and other registries.&lt;/li&gt;
-&lt;li&gt;Slack tokens, webhooks, API tokens, SSH/deployment keys, service account credentials, signing keys/certificates, and credentials for any other external systems used by your Cadence executions.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 class="wp-block-heading"&gt;&lt;strong&gt;Actions JetBrains has taken&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;We took the Cadence server offline on August 24, 2026, while we continue to investigate the incident. At present, we have confirmed that the incident is limited to data associated with the Cadence host mentioned above.&lt;/p&gt;
-&lt;p&gt;The server should have been patched as part of our response to the vulnerability, but it was not. We sincerely apologize for this failure and the impact it may have on you.&lt;/p&gt;
-&lt;p&gt;We have invalidated all access tokens used by the JetBrains Cadence plugin in PyCharm to connect to Cadence, and took the server offline on August 24, 2026.&lt;/p&gt;
-&lt;p&gt;We are also notifying the relevant authorities and taking the necessary steps to protect the data of Cadence users.&lt;/p&gt;
-&lt;h3 class="wp-block-heading"&gt;&lt;strong&gt;Further updates&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;We will publish further findings and guidance here as our investigation progresses. We recommend checking this page frequently for the latest information. We will also contact affected users directly if we identify any important new information that may require action on their part.&lt;/p&gt;
-&lt;p&gt;For more information about the underlying vulnerability, please see our original &lt;a href="https://blog.jetbrains.com/teamcity/2026/07/cve-2026-63077/"&gt;security advisory&lt;/a&gt; to TeamCity customers and users.&lt;/p&gt;
-&lt;p&gt;If you previously used Cadence and need assistance identifying which credentials may have been exposed or have any questions regarding this incident, contact the JetBrains Security team at &lt;a href="mailto:security@jetbrains.com?subject=Security incident affecting JetBrains Cadence"&gt;security@jetbrains.com&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;We recognize the seriousness of this incident and apologize again for the impact.&lt;/p&gt;</description>
-      <guid isPermaLink="false">22a7630ed258bca220a1209b4059e2f77c594d5a5f74477a3f08ce832e574cd3</guid>
-      <pubDate>Fri, 28 Aug 2026 09:50:14 +0000</pubDate>
-    </item>
-    <item>
-      <title>Python Morsels: When to use NotImplemented - Planet Python</title>
-      <link>https://www.pythonmorsels.com/when-to-use-notimplemented/</link>
-      <description>&lt;p&gt;When should you return &lt;code&gt;NotImplemented&lt;/code&gt; from a dunder method? Why not return &lt;code&gt;False&lt;/code&gt; or raise an exception instead?&lt;/p&gt;
-&lt;div&gt;
-    &lt;a href="https://www.pythonmorsels.com/when-to-use-notimplemented/"&gt;&lt;img height="270" src="https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F2194688607-133ce96fdb5268e41a80febe64c1eef8ebae405d26bc8242e6e63d3a0388b004-d_1920x1080%3F%26region%3Dus&amp;amp;src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png" width="480" /&gt;&lt;/a&gt;
-  &lt;p&gt;
-  &lt;strong&gt;Table of contents&lt;/strong&gt;
-  &lt;ol&gt;
-  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/when-to-use-notimplemented/#dunder-methods-return-notimplemented" target="_blank"&gt;Dunder methods return &lt;code&gt;NotImplemented&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/when-to-use-notimplemented/#notimplemented-means-i-dont-know" target="_blank"&gt;&lt;code&gt;NotImplemented&lt;/code&gt; means "I don't know"&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/when-to-use-notimplemented/#using-notimplemented-with-your-objects" target="_blank"&gt;Using &lt;code&gt;NotImplemented&lt;/code&gt; with &lt;em&gt;your&lt;/em&gt; objects&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/when-to-use-notimplemented/#why-not-return-false-instead-of-notimplemented" target="_blank"&gt;Why not return &lt;code&gt;False&lt;/code&gt; instead of &lt;code&gt;NotImplemented&lt;/code&gt;?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/when-to-use-notimplemented/#return-notimplemented-from-your-dunder-methods" target="_blank"&gt;Return &lt;code&gt;NotImplemented&lt;/code&gt; from your dunder methods&lt;/a&gt;&lt;/li&gt;
-  &lt;/ol&gt;
-  &lt;/p&gt;
-&lt;/div&gt;
-&lt;div&gt;
-    &lt;h2&gt;Dunder methods return &lt;code&gt;NotImplemented&lt;/code&gt;&lt;/h2&gt;
-        &lt;p&gt;Integers and floating point numbers can be compared with equality:&lt;/p&gt;
-        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
-&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;3.0&lt;/span&gt;
-&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
-&lt;span class="go"&gt;True&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-        &lt;p&gt;This is powered by the &lt;a href="https://www.pythonmorsels.com/overloading-equality-in-python/" target="_blank"&gt;&lt;code&gt;__eq__&lt;/code&gt;&lt;/a&gt; method.&lt;/p&gt;
-        &lt;p&gt;But strangely, if we call the &lt;code&gt;__eq__&lt;/code&gt; method on an integer, giving it a floating point number, we'll get back &lt;code&gt;NotImplemented&lt;/code&gt;:&lt;/p&gt;
-        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
-&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;3.0&lt;/span&gt;
-&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__eq__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="go"&gt;NotImplemented&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-        &lt;p&gt;But if we do the same thing on a floating point number, giving it an integer, we get the answer we're expecting:&lt;/p&gt;
-        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
-&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;3.0&lt;/span&gt;
-&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__eq__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="go"&gt;True&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-        &lt;p&gt;The same thing happens with many other operations in Python.&lt;/p&gt;
-        &lt;p&gt;For example, the &lt;code&gt;+&lt;/code&gt; operator is &lt;a href="https://www.pythonmorsels.com/arithmetic-dunder-methods/" target="_blank"&gt;powered by the &lt;code&gt;__add__&lt;/code&gt; method&lt;/a&gt;:&lt;/p&gt;
-        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
-&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;3.0&lt;/span&gt;
-&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;
-&lt;span class="go"&gt;6.0&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-        &lt;p&gt;But just as with equality, floating point numbers can be added to integers, but integers cannot be added to floating point numbers:&lt;/p&gt;
-        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
-&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;3.0&lt;/span&gt;
-&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__add__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="go"&gt;6.0&lt;/span&gt;
-&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__add__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="go"&gt;NotImplemented&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-        &lt;p&gt;What is the &lt;code&gt;NotImplemented&lt;/code&gt; value and why do we get it?&lt;/p&gt;
-    &lt;h2&gt;&lt;code&gt;NotImplemented&lt;/code&gt; means "I don't know"&lt;/h2&gt;
-      &lt;p&gt;&lt;a href="https://www.pythonmorsels.com/what-are-dunder-methods/" target="_blank"&gt;Dunder methods&lt;/a&gt; that perform an …&lt;/p&gt;
-&lt;/div&gt;
-&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/when-to-use-notimplemented/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/when-to-use-notimplemented/&lt;/a&gt;&lt;/h3&gt;</description>
-      <guid isPermaLink="false">29ab8e63a1648b591f934b990cb0b36152d8912fe3c7357b9ed57bb9bd5cc13a</guid>
-      <pubDate>Thu, 27 Aug 2026 21:45:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Robin Wilson: How to fix a weird pandas and pyarrow issue with BirdNetPi - Planet Python</title>
-      <link>https://blog.rtwilson.com/how-to-fix-a-weird-pandas-and-pyarrow-issue-with-birdnetpi/</link>
-      <description>&lt;p&gt;&lt;strong&gt;Summary:&lt;/strong&gt; If you get Python crashing immediately in BirdNetPi, try uninstalling the pyarrow Python package.&lt;/p&gt;
-&lt;p&gt;I&amp;#8217;ve got a &lt;a href="https://github.com/Nachtzuster/BirdNET-Pi"&gt;BirdNetPi&lt;/a&gt; set up at home. This is a bit of software that runs on a Raspberry Pi and listens on a microphone (I&amp;#8217;ve mounted mine on the outside of an upstairs window, using a 3D printed mount/cover to protect it from the rain) for bird noises. It then classifies them using a machine learning model and tells you what birds it&amp;#8217;s heard. It has a nice web interface which shows graphs like this:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="file" src="https://blog.rtwilson.com/wp-content/uploads/2026/08/image-1787852896012.png" /&gt;&lt;/p&gt;
-&lt;p&gt;as well as allowing you to listen to the recordings, correct errors, do more detailed statistics etc.&lt;/p&gt;
-&lt;p&gt;When I first installed it, I had some problems. One of the big ones, in fact, was that the graph above wasn&amp;#8217;t present on the homepage (I didn&amp;#8217;t actually know there &lt;em&gt;should&lt;/em&gt; be a graph there, so it took me a while to realise it was missing) and when loading the detailed Species Stats page I just got a message from Streamlit saying &amp;quot;Connecting&amp;#8230;&amp;quot;.&lt;/p&gt;
-&lt;p&gt;Investigating this in more depth, I found that a lot (but not all) of the Python scripts involved in creating the visualisations crashed as soon as you started them, giving an &amp;#8216;Illegal instruction&amp;#8217; error. This is a remarkably low-level error to get from Python, and suggested something was going wrong with a package that had some sort of native (C/C++) extension.&lt;/p&gt;
-&lt;p&gt;My first guess was that it was something to do with pandas, so I tried uninstalling and reinstalling pandas &amp;#8211; but that didn&amp;#8217;t fix it. I installed pandas in a new virtual environment and I could import it fine &amp;#8211; so it wasn&amp;#8217;t pandas itself that was causing the problem.&lt;/p&gt;
-&lt;p&gt;Then I realised I could use part of Python&amp;#8217;s profiling tools to help narrow down what import was the problem. I ran &lt;code&gt;birdnet/bin/python -X importtime -c &amp;#039;import pandas&amp;#039;&lt;/code&gt;, which uses the BirdNet Python interpreter to run &lt;code&gt;import pandas&lt;/code&gt; while printing out timing information about how long each import took. This should allow me to see what package was imported just before the crash &amp;#8211; and it did. The output looked like this:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;import time:      1623 |      10550 |     pandas.compat.numpy
-import time:       309 |        309 |         gc
-import time:      1121 |       1121 |         pyarrow._generated_version&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The most recently imported package at the time of the crash was &lt;a href="https://arrow.apache.org/docs/python/index.html"&gt;pyarrow&lt;/a&gt; &amp;#8211; a Python interface for the arrow file format. I believe it was originally installed as an optional dependency of pandas. I confirmed this was the problem by running &lt;code&gt;import pyarrow&lt;/code&gt; in the BirdNet Python interpreter, and it immediately crashed.&lt;/p&gt;
-&lt;p&gt;This narrowed down the problem, but I wasn&amp;#8217;t sure how I&amp;#8217;d get the correct version of pyarrow installed. However, before doing that, I thought I&amp;#8217;d try and see whether BirdNetPi actually used pyarrow anywhere. Searching through the git repo for &lt;code&gt;arrow&lt;/code&gt; found no uses of it, so I thought it was worth trying uninstalling the package entirely.&lt;/p&gt;
-&lt;p&gt;This solved the problem straight away &amp;#8211; and I haven&amp;#8217;t found anything in BirdNetPi that has broken as a result of it.&lt;/p&gt;</description>
-      <guid isPermaLink="false">b287a2cb131bb24171da8081c5d99ca1af53232cdc0e708994b09d9ea282b9df</guid>
-      <pubDate>Thu, 27 Aug 2026 17:57:36 +0000</pubDate>
-    </item>
-    <item>
-      <title>Core Dispatch: Core Dispatch #10 - Planet Python</title>
-      <link>https://coredispatch.xyz/editions/10</link>
-      <description>&lt;p&gt;Welcome back to Core Dispatch! This edition covers August 5 through August 27,
-2026. Python 3.12.14, 3.11.16, and 3.10.21 shipped on August 12. Next up is
-Python 3.15.0 release candidate 2, due September 1.&lt;/p&gt;
-&lt;p&gt;There are five new PEPs to catch up on. &lt;a href="https://peps.python.org/pep-0805/"&gt;PEP 805&lt;/a&gt;
-proposes a model for safe parallel Python. &lt;a href="https://peps.python.org/pep-0843/"&gt;PEP 843&lt;/a&gt;
-and &lt;a href="https://peps.python.org/pep-0844/"&gt;PEP 844&lt;/a&gt; offer two approaches to
-explicit module exports. &lt;a href="https://peps.python.org/pep-0841/"&gt;PEP 841&lt;/a&gt; proposes
-syntax for frozen types, while &lt;a href="https://peps.python.org/pep-0839/"&gt;PEP 839&lt;/a&gt;
-adds C APIs for building immutable collections. &lt;a href="https://peps.python.org/pep-0833/"&gt;PEP 833&lt;/a&gt;
-also reached Final, freezing the HTML form of the simple repository API. HTML
-support stays, but future standards work moves to JSON. Speaking of PEPs, PEP
-11 was also updated to list RISC-V as a &lt;a href="https://peps.python.org/pep-0011/#tier-3"&gt;tier 3&lt;/a&gt;
-platform.&lt;/p&gt;
-&lt;p&gt;Many core team members spoke about Python core development at EuroPython this
-year. All nine talks are in this edition&amp;#x27;s Core Team Musings, covering the
-CPython ABI, the JIT, free-threading, interpreter internals, security, and
-contributing to Python. Voters can also catch up on nominee AMAs for the PSF
-Board and inaugural Python Packaging Council elections before ballots open on
-September 1.&lt;/p&gt;
-&lt;p&gt;Python 3.15 is in the release candidate phase, so this is the moment
-for maintainers to test their projects and
-&lt;a href="https://discuss.python.org/t/python-3-15-0-release-candidate-1-is-here/108395#p-298000-call-to-action-1"&gt;publish Python 3.15 wheels to PyPI&lt;/a&gt;.
-Wheels built against the 3.15 release candidates will work with future 3.15
-releases, and publishing them now helps downstream projects test too. Please
-&lt;a href="https://github.com/python/cpython/issues"&gt;file any CPython issues&lt;/a&gt; you find.&lt;/p&gt;
-&lt;h3&gt;Upcoming Releases&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://peps.python.org/pep-0790/"&gt;Python 3.15.0 release candidate 2&lt;/a&gt; — Sep 01&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Official News&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://blog.python.org/2026/08/riscv-now-officially-supported/"&gt;RISC-V is now officially supported by CPython&lt;/a&gt; — By Stan Ulbrych&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.python.org/2026/08/2026-packaging-council-nominees/"&gt;2026 Python Packaging Council election candidates announced&lt;/a&gt; — By Pradyun Gedam&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.python.org/2026/08/python-31214-31116-31021/"&gt;Python 3.12.14, 3.11.16, and 3.10.21 are now available&lt;/a&gt; — By Thomas Wouters&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://pyfound.blogspot.com/2026/08/announcing-psf-board-candidates-for-2026.html"&gt;2026 PSF Board candidates announced&lt;/a&gt; — By Marie Nordin&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;PEP Updates&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://peps.python.org/pep-0833/"&gt;PEP 833: Freezing the HTML simple repository API&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://peps.python.org/pep-0805/"&gt;PEP 805: Safe parallel Python&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://peps.python.org/pep-0843/"&gt;PEP 843: &lt;code&gt;export&lt;/code&gt; statement for DRY re-exports&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://peps.python.org/pep-0839/"&gt;PEP 839: &lt;code&gt;PyFrozenSetWriter&lt;/code&gt; and &lt;code&gt;PyFrozenDictWriter&lt;/code&gt; C API&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://peps.python.org/pep-0844/"&gt;PEP 844: &lt;code&gt;public&lt;/code&gt; and &lt;code&gt;private&lt;/code&gt; builtins&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://peps.python.org/pep-0841/"&gt;PEP 841: Adding &lt;code&gt;frozen&lt;/code&gt; syntax to optimize immutable types&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Steering Council Updates&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://discuss.python.org/t/2026-08-06-python-steering-council-meeting-summary/108612"&gt;2026-08-06 Python Steering Council meeting summary&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://discuss.python.org/t/2026-07-30-python-steering-council-meeting-summary/108449"&gt;2026-07-30 Python Steering Council meeting summary&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://discuss.python.org/t/2026-07-23-python-steering-council-meeting-summary/108442"&gt;2026-07-23 Python Steering Council meeting summary&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Merged PRs&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://github.com/python/cpython/pull/156003"&gt;Bound ZIP member decompression for bzip2, LZMA, and Zstandard&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/python/cpython/pull/155293"&gt;Keep &lt;code&gt;stringprep&lt;/code&gt; and &lt;code&gt;encodings.idna&lt;/code&gt; limited to RFC 3454 Unicode attributes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/python/cpython/pull/155025"&gt;Make asynchronous generators thread-safe in free-threaded builds&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/python/cpython/pull/153462"&gt;Prevent crashes when &lt;code&gt;os.scandir()&lt;/code&gt; iterators are shared across threads&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/python/cpython/pull/155439"&gt;Preserve outside cancellation after &lt;code&gt;asyncio.TaskGroup.cancel()&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/python/cpython/pull/156176"&gt;Raise &lt;code&gt;zlib.error&lt;/code&gt; instead of returning corrupted output from &lt;code&gt;zlib.Decompress.flush()&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/python/cpython/pull/155936"&gt;Fix socket leaks and silent errors for accepted &lt;code&gt;asyncio&lt;/code&gt; connections&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/python/cpython/pull/6898"&gt;Make &lt;code&gt;PyCapsule_Import()&lt;/code&gt; import submodules when needed&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/python/cpython/pull/155119"&gt;Add build options for &lt;code&gt;zlib-rs&lt;/code&gt;, &lt;code&gt;zlib-ng&lt;/code&gt;, and &lt;code&gt;libbzip2-rs&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Discussion&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://discuss.python.org/t/pep-842-module-exports-new-revision/108460"&gt;PEP 842: Module exports (new revision)&lt;/a&gt; — 🆕 🔥 136 new replies · 3.2k views&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://discuss.python.org/t/pep-844-public-and-private-builtins/108515"&gt;PEP 844: &lt;code&gt;public&lt;/code&gt; and &lt;code&gt;private&lt;/code&gt; builtins&lt;/a&gt; — 🆕 🔥 130 new replies · 3.3k views&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://discuss.python.org/t/pep-805-safe-parallel-python/108670"&gt;PEP 805: Safe parallel Python&lt;/a&gt; — 🆕 🔥 56 new replies · 1.7k views&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://discuss.python.org/t/pep-843-export-statement-for-dry-re-exports/108687"&gt;PEP 843: &lt;code&gt;export&lt;/code&gt; statement for DRY re-exports&lt;/a&gt; — 🆕 🔥 38 new replies · 916 views&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://discuss.python.org/t/pep-718-subscriptable-functions/28457"&gt;PEP 718: Subscriptable functions&lt;/a&gt; — 🔥 38 new replies · 16.0k views&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://discuss.python.org/t/pep-835-shorthand-syntax-for-annotated-type-metadata/107814"&gt;PEP 835: Shorthand syntax for &lt;code&gt;Annotated&lt;/code&gt; type metadata&lt;/a&gt; — 🔥 26 new replies · 6.4k views&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://discuss.python.org/t/pep-832-virtual-environment-discovery/106998"&gt;PEP 832: Virtual environment discovery&lt;/a&gt; — 🔥 19 new replies · 10.8k views&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://discuss.python.org/t/pep-767-annotating-read-only-attributes/73408"&gt;PEP 767: Annotating read-only attributes&lt;/a&gt; — 9 new replies · 8.0k views&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://discuss.python.org/t/pep-822-dedented-multiline-string-d-string/105519"&gt;PEP 822: Dedented multiline string (&lt;code&gt;d&lt;/code&gt;-string)&lt;/a&gt; — 8 new replies · 9.0k views&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://discuss.python.org/t/pep-838-adding-python-version-to-pyvenv-cfg/108234"&gt;PEP 838: Adding &lt;code&gt;python-version&lt;/code&gt; to &lt;code&gt;pyvenv.cfg&lt;/code&gt;&lt;/a&gt; — 5 new replies · 782 views&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Core Dev Musings&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://snarky.ca/whats-missing-to-have-reproducible-builds-on-pypi/"&gt;What&amp;#x27;s missing for reproducible builds on PyPI&lt;/a&gt; — By Brett Cannon&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://sethmlarson.dev/when-str-lower-is-a-security-vulnerability?utm_campaign=rss"&gt;When &lt;code&gt;str.lower()&lt;/code&gt; is a security vulnerability in Python&lt;/a&gt; — By Seth Larson&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=An8lO29SxXE"&gt;What every Python developer should know about the CPython ABI&lt;/a&gt; — By Nathan Goldbaum&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=QP9fiB_c8Kk"&gt;CPython JIT update: What to expect in Python 3.15&lt;/a&gt; — By Diego Russo&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=NN_kHSIw0SY"&gt;Inside Python 3.15&amp;#x27;s JIT optimizer&lt;/a&gt; — By Ken Jin&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=kRq2V_2252A"&gt;Free-threaded Python: Past, present, and future&lt;/a&gt; — By Thomas Wouters&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=rYbMwGNNFc8"&gt;Python dictionaries: Past, present, and free-threaded future&lt;/a&gt; — By Lysandros Nikolaou&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=Xmr89QEr720"&gt;Learning from the not-so-secret Python security &amp;quot;cabal&amp;quot;&lt;/a&gt; — By Seth Larson&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=bVYh2LDPG3M"&gt;The coolest feature in Python 3.14: &lt;code&gt;sys.remote_exec()&lt;/code&gt;&lt;/a&gt; — By Savannah Ostrowski&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=ZMxuMIFmDuc"&gt;Become a Python core developer in three easy steps&lt;/a&gt; — By Tomas Roun&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=SavVPtsqUf0"&gt;Lazy imports and the art of interpreter procrastination&lt;/a&gt; — By Pablo Galindo Salgado and Noah Kim&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Upcoming CFPs &amp;amp; Conferences&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://istanbul.python.pizza/"&gt;📋 Python Pizza Istanbul 2026 Deadline&lt;/a&gt; — Aug 26&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://2026.pycon.org.au/"&gt;PyCon AU 2026&lt;/a&gt; — Aug 26&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://pl.pycon.org/2026/"&gt;PyCon PL 2026&lt;/a&gt; — Aug 27&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.pycon.ke/"&gt;PyCon Kenya 2026&lt;/a&gt; — Aug 28&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://pycontg.pytogo.org/"&gt;PyCon Togo 2026&lt;/a&gt; — Aug 28&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://2026.pycon.ie/"&gt;📋 PyCon Ireland 2026 Deadline (extended)&lt;/a&gt; — Aug 31&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://wagtail.org/wagtail-space-2026/"&gt;📋 Wagtail Space 2026 Deadline&lt;/a&gt; — Sep 11&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.pyday.co/"&gt;PyDay Boyacá 2026&lt;/a&gt; — Sep 12&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://pycon.pythoncameroon.org/"&gt;PyCon Cameroon 2026&lt;/a&gt; — Sep 17&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://na.pycon.org/"&gt;📋 PyCon Namibia 2027 Deadline&lt;/a&gt; — Sep 20&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;One More Thing&lt;/h3&gt;
-&lt;blockquote&gt;&lt;p&gt;"No CVE, no merg-e"&lt;/p&gt;— &lt;a href="https://github.com/sethmlarson"&gt;Seth Larson&lt;/a&gt;&lt;/blockquote&gt;
-&lt;h3&gt;Credits&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://github.com/savannahostrowski"&gt;Savannah Ostrowski&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
-      <guid isPermaLink="false">8206c8dcb163037eb86ee09177f8eaf252b2a65012269f898e3c6f75704e11b4</guid>
-      <pubDate>Thu, 27 Aug 2026 00:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>
