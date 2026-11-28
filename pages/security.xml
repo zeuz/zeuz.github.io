@@ -5,7 +5,51 @@
     <link>https://zeuz.github.io/pages/</link>
     <description>Filtered posts in the Security category</description>
     <generator>rss-classifier</generator>
-    <lastBuildDate>Fri, 27 Nov 2026 14:01:02 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 28 Nov 2026 14:00:57 +0000</lastBuildDate>
+    <item>
+      <title>pCloud Password Manager Hit by Cyber Attack Involving Email Address Exposure and Login Attempts - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/pcloud-password-manager-hit-by-cyber.html</link>
+      <description>Cross-platform password manager pCloud Pass has confirmed it was targeted by a cyber attack after users reported seeing unknown devices being connected to their accounts.
+"A cyber attack targeting pCloud Pass occurred, which was promptly contained by the pCloud team," the Swiss company said in response to a number of posts on Reddit. "Unfortunately, a small number of pCloud Pass user email</description>
+      <guid isPermaLink="false">aa8ae19fcdb11afcddf1b854667c4c097544d3f816ff7fb902f0b3a20a877310</guid>
+      <pubDate>Sat, 28 Nov 2026 08:08:11 +0000</pubDate>
+    </item>
+    <item>
+      <title>DNSdist -- multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/dff8fa28-e9eb-11f1-a071-a0369ff35ee6.html</link>
+      <description/>
+      <guid isPermaLink="false">164a16487757e1dc9c6e6acc0d5460b42dadb148fa4bf3db09e1905d102c5031</guid>
+      <pubDate>Sat, 28 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>librelp -- GnuTLS "certvalid" authentication mode accepts any certificate - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/2090e695-eb15-11f1-9e78-04421a04139e.html</link>
+      <description/>
+      <guid isPermaLink="false">7b90a2376583ea3ebd93e08fef6634e16dd73d199f30444fa2caed18c86acd2c</guid>
+      <pubDate>Sat, 28 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>PowerDNS Authoritative Server -- multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/2591b0d4-e9f1-11f1-a071-a0369ff35ee6.html</link>
+      <description/>
+      <guid isPermaLink="false">a179f75a452d1030c35ea366d3b2c7ea080660ef12d56083240d323cabe3ca93</guid>
+      <pubDate>Sat, 28 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Suspected Vietnam-Linked Hackers Target Southeast Asia in South China Sea Espionage Campaign - The Hacker News</title>
+      <link>https://thehackernews.com/2026/11/suspected-vietnam-linked-hackers-target.html</link>
+      <description>A Vietnam-sponsored hacking group has been attributed to attacks targeting Southeast Asian military, government, and legislative organizations with an aim to gather intelligence on South China Sea defense and military agreements.
+The previously undocumented incursion set, detailed by SOCRadar, has been codenamed WeaveLotus. The activity is assessed to have comprised five intrusions in Thailand</description>
+      <guid isPermaLink="false">4991f0685ce9c2e01074c3a3855061ed9303108c0578de3f9565733aeed80ef3</guid>
+      <pubDate>Fri, 27 Nov 2026 16:36:11 +0000</pubDate>
+    </item>
+    <item>
+      <title>Malware History – From Creeper to WannaCry and NotPetya - Darknet - The Darkside</title>
+      <link>https://www.darknet.org.uk/2026/11/malware-complete-history-viruses-stickler/</link>
+      <description>Before malware came experiments and pranks; then came extortion, a service hired out to criminals and, by US prosecutors' account, government attacks. A summary of the Stickler Files episode, from Creeper and the Morris worm to ILOVEYOU and WannaCry.</description>
+      <guid isPermaLink="false">66a3710c0d59e4141e9a1a950c61c42e09ad96ff4efb7d178cd72028c5edcac6</guid>
+      <pubDate>Fri, 27 Nov 2026 14:14:57 +0000</pubDate>
+    </item>
     <item>
       <title>Microsoft Store App Found Delivering Vinci RAT Capable of Remote System Control - The Hacker News</title>
       <link>https://thehackernews.com/2026/11/microsoft-store-app-found-delivering.html</link>
@@ -108,6 +152,13 @@ The Mitel MiCollab vulnerabilities are listed below -
       <link>http://www.vuxml.org/freebsd/a22c60b3-e987-11f1-97dc-40b034429ecf.html</link>
       <description/>
       <guid isPermaLink="false">8554dc0255d9ce252fc56a18819b5bb4f97744ed0352f33334c8e23e36b3e6a3</guid>
+      <pubDate>Thu, 26 Nov 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Stalwart -- multiple vulnerabilities - FreeBSD VuXML</title>
+      <link>http://www.vuxml.org/freebsd/495b04ca-e96e-11f1-9ff2-6ab7a97fec4b.html</link>
+      <description/>
+      <guid isPermaLink="false">e5134e2edfe93766654858d0182139230af01533c44ad6f63e963d833a8b2ad6</guid>
       <pubDate>Thu, 26 Nov 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
@@ -1507,62 +1558,6 @@ Details of the vulnerabilities are below -
 The flaw, tracked as CVE-2026-111760, is an integer truncation in how Git handles its index. An</description>
       <guid isPermaLink="false">f2ea3f099062de4c7eb9d39a64376b3a87ba5a6d4b98bf30aa817e6c34289c73</guid>
       <pubDate>Tue, 10 Nov 2026 19:23:10 +0000</pubDate>
-    </item>
-    <item>
-      <title>SGLang RCE Exploit Breaches NEAR AI, Steals Data From 18 Agents and About 100 Users - The Hacker News</title>
-      <link>https://thehackernews.com/2026/11/sglang-rce-exploit-breaches-near-ai.html</link>
-      <description>An attacker exploited a remote code execution flaw in SGLang, an open-source inference engine, and ran code on one of NEAR AI's inference servers last Sunday.
-The attacker could also have seen requests being processed on that server that day, including requests sent in confidential mode, the company said earlier this week. That mode processes requests inside a trusted execution environment (TEE</description>
-      <guid isPermaLink="false">5584c172e1f7896bed99f421121eb2a114abb01f0071d3ca10a00c5b7d32db95</guid>
-      <pubDate>Tue, 10 Nov 2026 19:19:39 +0000</pubDate>
-    </item>
-    <item>
-      <title>I added Bluetooth Classic/A2DP on ESP32 devices that don't natively support it (Tab5 P4/C6) - Reverse Engineering</title>
-      <link>https://www.reddit.com/r/ReverseEngineering/comments/1xsumja/i_added_bluetooth_classica2dp_on_esp32_devices/</link>
-      <description>&amp;#32; submitted by &amp;#32; &lt;a href="https://www.reddit.com/user/ProgrammingAce"&gt; /u/ProgrammingAce &lt;/a&gt; &lt;br /&gt; &lt;span&gt;&lt;a href="https://github.com/ProgrammingAce/tab5-a2dp"&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href="https://www.reddit.com/r/ReverseEngineering/comments/1xsumja/i_added_bluetooth_classica2dp_on_esp32_devices/"&gt;[comments]&lt;/a&gt;&lt;/span&gt;</description>
-      <guid isPermaLink="false">c1a4335137ebb463ce35f4bb473de211d7b65d1709d8987b1d35a394a67c6d45</guid>
-      <pubDate>Tue, 10 Nov 2026 18:29:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>Hackers Exploit Critical Xen Orchestra Auth Bypass Flaw to Gain Admin Access - The Hacker News</title>
-      <link>https://thehackernews.com/2026/11/hackers-exploit-critical-xen-orchestra.html</link>
-      <description>French software company Vates VMS has warned of a critical security vulnerability in Xen Orchestra that it said is being actively exploited in the wild.
-The authentication bypass flaw, which does not yet have a CVE identifier, is tracked as VSA-2026-062.
-"REST cookie parsing turns authenticationToken=j:%7B%7D into {}," Vates VMS said in an alert. "REST authentication passes that object to the</description>
-      <guid isPermaLink="false">9c159279503de6374685f5d72c40ae0cc1ff6f6882886b5f6239daaa02d0677b</guid>
-      <pubDate>Tue, 10 Nov 2026 18:12:21 +0000</pubDate>
-    </item>
-    <item>
-      <title>Three China-Nexus Espionage Campaigns Linked Through Sparrow Malware Ecosystem - The Hacker News</title>
-      <link>https://thehackernews.com/2026/11/three-china-nexus-espionage-campaigns.html</link>
-      <description>Three distinct threat activity clusters with shared infrastructure and malware code similarities have been observed targeting telecommunications providers, government organizations, military entities, research institutions, and critical infrastructure across Latin America, Asia, and Europe over the past year.
-Check Point Research is tracking the clusters under the names SilentDelivery,</description>
-      <guid isPermaLink="false">8ee6595161f5d5ed66a67e6b8468f12fe4ba45d4c33d42fb57d42d0c2def0272</guid>
-      <pubDate>Tue, 10 Nov 2026 17:43:23 +0000</pubDate>
-    </item>
-    <item>
-      <title>Attackers Exploit AhsayCBS Flaws to Deploy Sandbox-Evading Python Backdoor - The Hacker News</title>
-      <link>https://thehackernews.com/2026/11/attackers-exploit-ahsaycbs-flaws-to.html</link>
-      <description>Cybersecurity researchers have disclosed details of an attack that exploited two now-patched vulnerabilities in AhsayCBS to deliver a Python-based implant.
-The activity, observed by Huntress in early October 2026, involves the exploitation of a chain comprising CVE-2026-105133 and CVE-2026-105134 to bypass authentication and execute arbitrary commands on affected systems. Patches for the two</description>
-      <guid isPermaLink="false">6c1aeebfded1ec88d38ff839e3329c1e4095420ab7368301f417338012d17e49</guid>
-      <pubDate>Tue, 10 Nov 2026 16:00:55 +0000</pubDate>
-    </item>
-    <item>
-      <title>Blind Eagle Uses Fake Court Notices to Deliver Remote Access Trojan Across Latin America - The Hacker News</title>
-      <link>https://thehackernews.com/2026/11/blind-eagle-uses-fake-court-notices-to.html</link>
-      <description>The threat actor known as Blind Eagle has resurfaced with a new campaign targeting organizations in Latin America through judicial and administrative-themed phishing lures to deliver a remote access trojan (RAT) that shares its lineage with AsyncRAT and DCRat.
-"The campaign uses Portuguese and Spanish lures that resemble court notifications, fiscalía notices, tutela proceedings, and</description>
-      <guid isPermaLink="false">bbecd1748b64f4f722ffc7ddf628968d2b5d0d74b546fb9cd51b833b74f5b44e</guid>
-      <pubDate>Tue, 10 Nov 2026 15:58:44 +0000</pubDate>
-    </item>
-    <item>
-      <title>Fireworks AI Confirms Wider Breach Affecting Customer Datasets, Model Weights and Notion AI Chats - The Hacker News</title>
-      <link>https://thehackernews.com/2026/11/fireworks-ai-breach-widens-to-expose.html</link>
-      <description>Fireworks AI disclosed on Monday that its investigation into a security incident first reported early last month&amp;nbsp; uncovered further malicious activity, affecting account and billing information, alongside secrets, datasets, and incomplete models for a "limited set of accounts."
-In a notice published on October 10, 2026, the company said it detected unauthorized use of internal Fireworks</description>
-      <guid isPermaLink="false">297dfa3f0526b9ad440f0cfd3650a0506b32fe160e664cd9ac2aa7d94c1425f0</guid>
-      <pubDate>Tue, 10 Nov 2026 15:33:59 +0000</pubDate>
     </item>
   </channel>
 </rss>
